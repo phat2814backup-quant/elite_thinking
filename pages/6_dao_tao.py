@@ -14,6 +14,8 @@ model_choice = ctx["model_choice"]
 from utils.daily_workout import (
     DAILY_WORKOUT_BANK,
     get_today_workout,
+    get_workouts_by_track,
+    get_workout_by_id,
     get_user_streak_info,
     record_daily_workout_answer,
     evaluate_daily_workout,
@@ -66,14 +68,55 @@ with tab6_subtabs[0]:
     w_track = st.radio(
         "Chọn chủ đề bài tập hôm nay:",
         ["all", "k12", "adult"],
-        format_func=lambda x: "🌐 Đa Lĩnh Vực / Tổng Hợp" if x == "all" else ("🎒 Học Sinh Wellspring (K12)" if x == "k12" else "💼 Chuyên Sâu Người Lớn"),
+        format_func=lambda x: "🌐 Đa Lĩnh Vực / Tổng Hợp (18 tình huống)" if x == "all" else ("🎒 Học Sinh Wellspring K12 (18 tình huống)" if x == "k12" else "💼 Chuyên Sâu Người Lớn & Đầu Tư (18 tình huống)"),
         horizontal=True,
         key="dw_track_filter",
     )
 
-    today_workout = get_today_workout(track=w_track)
+    track_workouts = get_workouts_by_track(w_track)
+    total_track_scenarios = len(track_workouts)
+    today_default_workout = get_today_workout(track=w_track)
 
-    st.markdown(f"#### 🎯 Bài Tập Hôm Nay: {today_workout['title']}")
+    c_w_head1, c_w_head2 = st.columns([3, 2])
+    with c_w_head1:
+        track_desc_map = {
+            "all": "🌐 **Phân hệ Đa Lĩnh Vực:** 18 bài toán chiến lược, First Principles, Bayes, Inversion, Antifragility, Power Law...",
+            "k12": "🎒 **Phân hệ K12 Wellspring:** 18 tình huống bài tập nhóm STEM, áp lực thi cử, bẫy TikTok/mạng xã hội, chọn khối lớp 10, AI...",
+            "adult": "💼 **Phân hệ Chuyên Sâu Người Lớn:** 18 tình huống thực chiến CKVN, Trading Vàng/BTC, đòn bẩy kinh doanh, quản trị rủi ro..."
+        }
+        st.caption(track_desc_map.get(w_track, ""))
+    with c_w_head2:
+        if st.button("🎲 Đổi tình huống ngẫu nhiên trong chủ đề này", key=f"btn_shuf_{w_track}", use_container_width=True):
+            import random
+            rand_w = random.choice(track_workouts)
+            st.session_state[f"dw_selected_id_{w_track}"] = rand_w["id"]
+            st.rerun()
+
+    # Dropdown to choose workout within track
+    options_workouts = [{"id": "__today__", "title": f"📅 [Gợi ý hôm nay theo lịch] {today_default_workout['title']}"}] + track_workouts
+    
+    current_stored_id = st.session_state.get(f"dw_selected_id_{w_track}", "__today__")
+    sel_idx = 0
+    for idx, opt in enumerate(options_workouts):
+        if opt["id"] == current_stored_id:
+            sel_idx = idx
+            break
+
+    chosen_workout_opt = st.selectbox(
+        f"🎯 Danh sách tình huống thuộc chủ đề này ({total_track_scenarios} bài tập thực chiến độc lập):",
+        options=options_workouts,
+        index=sel_idx,
+        format_func=lambda w: w["title"] if w["id"] == "__today__" else f"[{w['id']}] {w['title']}",
+        key=f"dw_picker_select_{w_track}"
+    )
+
+    if chosen_workout_opt["id"] == "__today__":
+        today_workout = today_default_workout
+    else:
+        today_workout = chosen_workout_opt
+        st.session_state[f"dw_selected_id_{w_track}"] = chosen_workout_opt["id"]
+
+    st.markdown(f"#### 🎯 Bài Tập Đang Chọn: [{today_workout['id']}] {today_workout['title']}")
     st.info(f"**Tình huống thực tế:**\n\n{today_workout['scenario']}")
     st.caption("Các nguyên lý / mô hình định hướng: " + " · ".join([f"`{p}`" for p in today_workout.get('guiding_principles', [])]))
 
@@ -83,7 +126,7 @@ with tab6_subtabs[0]:
             "Phân tích Sự thật vs Ý kiến:",
             height=90,
             placeholder="Chỉ ra rõ: Sự thật đo lường được là gì? Điều gì chỉ là ý kiến, phỏng đoán hoặc cảm xúc đám đông?",
-            key="dw_step1_input",
+            key=f"dw_step1_{today_workout['id']}",
         )
 
         st.markdown(f"##### 2️⃣ {today_workout['step2_prompt']}")
@@ -91,7 +134,7 @@ with tab6_subtabs[0]:
             "Chiếu lăng kính mô hình hạt nhân:",
             height=90,
             placeholder="Gọi tên chính xác mô hình hạt nhân (Tâm lý, Vật lý, Kinh tế) đang chi phối tình huống này và cơ chế của nó...",
-            key="dw_step2_input",
+            key=f"dw_step2_{today_workout['id']}",
         )
 
         st.markdown(f"##### 3️⃣ {today_workout['step3_prompt']}")
@@ -99,7 +142,7 @@ with tab6_subtabs[0]:
             "Đề xuất hành động bất đối xứng:",
             height=90,
             placeholder="Nếu ở vị thế người trong cuộc, nước cờ tối ưu nào giúp hạn chế tối đa rủi ro tổn thất và đón đầu thặng dư lớn nhất?",
-            key="dw_step3_input",
+            key=f"dw_step3_{today_workout['id']}",
         )
 
         submit_dw = st.form_submit_button("🔥 Hoàn Tất 15 Phút & Nhận Phản Hồi AI Mentor", type="primary", use_container_width=True)

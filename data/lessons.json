@@ -1,6 +1,6 @@
 {
   "version": "2.5",
-  "updated_at": "2026-09-04",
+  "updated_at": "2026-09-05",
   "updated_by": "Phat",
   "tracks_meta": {
     "grade_6": {
@@ -826,6 +826,114 @@
       "exercise_prompt": "Mô tả quy trình hiệu chỉnh kịch bản Bayesian khi thị trường xuất hiện tín hiệu bất thường đi ngược lại kế hoạch ban đầu của bạn.",
       "hint": "Trader thất bại cưới lấy ý kiến của mình; Trader thành công chỉ trung thành với dữ liệu khách quan trên biểu đồ.",
       "related_principle": "Cập nhật Bayesian & Game Theory trong Thanh khoản"
+    },
+    {
+      "id": "tr_c1_03",
+      "track": "trading",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 03: Tâm lý học FOMO & Cắt cơn Tilt trong phiên biến động mạnh",
+      "mode": "First Principles",
+      "objective": "Nhận diện phản ứng hoảng loạn sinh học khi thị trường chạy mạnh không có mình và cài đặt kỷ luật thép.",
+      "situation": "Giá Vàng vừa bắn vọt 30 giá trong 5 phút sau tin tức Non-Farm. Bạn chưa kịp vào lệnh và thấy các nhóm chat rộn ràng khoe lãi x2 tài khoản. Bạn cảm thấy bồn chồn muốn nhảy vào mua đuổi ngay lập tức.",
+      "guide_steps": [
+        "Bóc tách cảm xúc: Tâm lý sợ bỏ lỡ cơ hội (FOMO) đang kích hoạt phản xạ hạch hạnh nhân.",
+        "Phân tích cấu trúc thị trường: Sau một cú bung thanh khoản (Liquidity Expansion), xác suất rất cao sẽ có nhịp hồi kiểm định (Pullback) hoặc bẫy đu đỉnh.",
+        "Quy tắc bất khả xâm phạm: Không bao giờ vào lệnh khi giá đã rời xa điểm cắt lỗ hợp lý (Invalidation point)."
+      ],
+      "exercise_prompt": "Viết quy trình 3 bước tự vấn trước khi bạn định bấm nút 'Buy' khi nến xanh đang dựng đứng.",
+      "hint": "Cơ hội trên thị trường tài chính giống như chuyến xe buýt: Chuyến này lỡ thì 15 phút sau sẽ có chuyến khác. Đừng đuổi theo xe đang chạy tốc độ cao.",
+      "related_principle": "Kiểm soát FOMO & Kỷ luật Điểm vào lệnh"
+    },
+    {
+      "id": "tr_c1_04",
+      "track": "trading",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 04: Tỷ lệ Risk:Reward (R:R) và ảo tưởng Winrate cao",
+      "mode": "Bayesian",
+      "objective": "Hiểu cốt lõi toán học của trading: Tỷ lệ thắng (Winrate) không quyết định giàu nghèo, mà là tỷ lệ Lợi nhuận / Rủi ro trên mỗi lệnh.",
+      "situation": "Một khóa học quảng cáo phương pháp giao dịch có tỷ lệ thắng 95%. Khi tham gia, bạn phát hiện mỗi lệnh lãi 5 USD nhưng khi lỗ thì gồng lỗ đến cháy tài khoản 2.000 USD mới chịu cắt.",
+      "guide_steps": [
+        "Bóc tách toán học: Kỳ vọng EV = (Winrate x Avg Win) - (Lossrate x Avg Loss). Nếu 95% x 5 - 5% x 2000 = 475 - 10000 = -9525 USD (Kỳ vọng âm cực nặng).",
+        "Hiểu sức mạnh của hệ thống Winrate 40% nhưng R:R = 1:3: 40% x 300 - 60% x 100 = 120 - 60 = +60 USD (Kỳ vọng dương bền vững).",
+        "Chấp nhận việc bị cắt lỗ thường xuyên như một phần chi phí vận hành doanh nghiệp."
+      ],
+      "exercise_prompt": "Tính toán kỳ vọng toán học của một hệ thống có Winrate 45% và tỷ lệ R:R = 1:2.5 sau 100 lệnh giao dịch.",
+      "hint": "Bậc thầy không tìm kiếm sự đúng đắn mọi lúc; bậc thầy đảm bảo khi đúng thì ăn thật đậm, khi sai thì mất ít nhất có thể.",
+      "related_principle": "Risk:Reward & Kỳ vọng Toán học"
+    },
+    {
+      "id": "tr_c2_02",
+      "track": "trading",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 05: Định vị vùng thanh khoản săn mồi (Liquidity Pools & Order Blocks)",
+      "mode": "Game theory",
+      "objective": "Nhìn thị trường dưới con mắt của Market Maker (Tạo lập): Nơi nào tập trung nhiều lệnh cắt lỗ nhất, nơi đó là đích đến của giá.",
+      "situation": "Một vùng hỗ trợ rõ ràng đã được kiểm định 3 lần. Đám đông nhỏ lẻ đồng loạt đặt lệnh Mua và đặt Stoploss ngay sát dưới vùng hỗ trợ đó.",
+      "guide_steps": [
+        "Đọc vị động lực Tạo lập: Để gom một lượng hàng khổng lồ, Smart Money cần ai bán cho họ? Họ cần kích hoạt toàn bộ stoploss bán tháo của nhỏ lẻ.",
+        "Nhận diện cú quét thanh khoản (Liquidity Sweep / Stop Hunt): Giá thọc thủng hỗ trợ trong 5 phút rồi lập tức rút chân đóng nến bên trên.",
+        "Kịch bản hành động: Không mua tại hỗ trợ phẳng; chờ đợi cú quét thanh khoản hoàn tất rồi mới mở vị thế theo dấu chân tạo lập."
+      ],
+      "exercise_prompt": "Vẽ và mô tả cơ chế một cú 'Fakeout quét thanh khoản' tại vùng đỉnh/đáy đôi và cách bạn mở lệnh an toàn.",
+      "hint": "Nơi bạn nghĩ là điểm an toàn nhất để đặt cắt lỗ chính là mồi ngon béo bở nhất cho các thuật toán săn thanh khoản.",
+      "related_principle": "Lý thuyết Trò chơi trong Săn Thanh khoản"
+    },
+    {
+      "id": "tr_c2_03",
+      "track": "trading",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 06: Kỹ thuật Trailing Stop và bảo toàn lợi nhuận sóng lớn",
+      "mode": "Second-order thinking",
+      "objective": "Tránh bẫy chốt non khi giá vừa mới vào sóng tăng dài hạn bằng kỹ thuật dời điểm chặn lãi theo cấu trúc nến.",
+      "situation": "Bạn vào được vị thế mua Bitcoin ở chân sóng giá 60.000. Khi giá lên 62.000 (lãi 3%), bạn sợ mất lãi nên vội vàng chốt hết. Sau đó Bitcoin phi thẳng lên 85.000 trong sự tiếc nuối tột cùng.",
+      "guide_steps": [
+        "Bóc tách tâm lý sợ hãi: Não bộ có xu hướng ghét rủi ro khi đang có lãi (chốt non) và thích chấp nhận rủi ro khi đang lỗ (gồng lỗ).",
+        "Kỹ thuật Trailing Stop cấu trúc: Dời stoploss lên đáy đỉnh gần nhất (Swing Low/High) trên khung H4 thay vì chốt lệnh bằng tay.",
+        "Tận dụng sức mạnh bất đối xứng: Cho phép lợi nhuận tự do sinh sôi trong khi rủi ro đã được khóa chặt ở mức 0."
+      ],
+      "exercise_prompt": "Xây dựng quy tắc dời chặn lãi (Trailing Stop) 3 tầng cho một xu hướng tăng mạnh trên khung thời gian D1.",
+      "hint": "Cắt lỗ thật nhanh và để lợi nhuận tự chạy đến khi cấu trúc xu hướng bị phá vỡ — Quy tắc vàng của George Soros.",
+      "related_principle": "Asymmetric Payoff & Trailing Stop"
+    },
+    {
+      "id": "tr_c3_02",
+      "track": "trading",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 07: Quản lý vốn theo Tiêu chuẩn Kelly mở rộng & Tránh Absorbing Barrier",
+      "mode": "Bayesian + Quantitative",
+      "objective": "Ứng dụng công thức Kelly để tìm quy mô vị thế tối ưu hóa tốc độ tăng trưởng kép của tài khoản mà triệt tiêu rủi ro phá sản.",
+      "situation": "Sau khi thống kê 200 lệnh, bạn có hệ thống giao dịch với tỷ lệ thắng p = 50%, tỷ lệ lời/lỗ b = 2.0. Bạn muốn biết nên đi bao nhiêu % tài khoản cho mỗi lệnh.",
+      "guide_steps": [
+        "Tính Kelly đầy đủ: f* = (bp - q) / b = (2*0.5 - 0.5) / 2 = 0.5 / 2 = 25% tài khoản mỗi lệnh.",
+        "Nhận diện rủi ro thực tế: Full Kelly 25% sẽ khiến tài khoản biến động (Drawdown) cực kỳ khốc liệt và dễ chạm rào cản phá sản tâm lý.",
+        "Áp dụng Fractional Kelly (Fractional Kelly 1/4 hoặc 1/5): Đi từ 2% đến 5% tài khoản mỗi lệnh để đạt được 80% tốc độ tăng trưởng với mức biến động an toàn."
+      ],
+      "exercise_prompt": "Viết bảng tính phân bổ % rủi ro cho mỗi lệnh dựa trên thống kê thực tế hệ thống giao dịch của bạn.",
+      "hint": "Sự kiên nhẫn tích lũy với quy mô vốn được kiểm soát chặt chẽ chính là bí mật đưa các quỹ định lượng như Renaissance Technologies lên đỉnh cao.",
+      "related_principle": "Tiêu chuẩn Kelly & Absorbing Barrier"
+    },
+    {
+      "id": "tr_c3_03",
+      "track": "trading",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 08: Phân tích tương quan liên thị trường (DXY, Lợi suất, Vàng, SPX)",
+      "mode": "System Thinking",
+      "objective": "Kết nối các bánh răng tài chính vĩ mô toàn cầu để xác định hướng đi dòng tiền lớn trước khi nhìn biểu đồ giá đơn lẻ.",
+      "situation": "Bạn chuẩn bị vào lệnh Mua Vàng nhưng quan sát thấy Chỉ số Đô la Mỹ (DXY) đang phá đỉnh 2 năm và Lợi suất Trái phiếu Chính phủ Mỹ 10 năm (US10Y) tăng vọt.",
+      "guide_steps": [
+        "Bóc tách cơ chế vĩ mô: Khi DXY và Lợi suất thực tăng cao, chi phí cơ hội nắm giữ tài sản không sinh lãi như Vàng tăng vọt.",
+        "Đánh giá xung lực dòng tiền: Dòng tiền toàn cầu đang rút về tài sản định giá bằng USD và các công cụ lợi suất cao.",
+        "Đồng pha liên thị trường: Chỉ vào lệnh Buy Vàng khi DXY có dấu hiệu suy yếu hoặc xuất hiện khủng hoảng địa chính trị nghiêm trọng làm thay đổi quy luật thông thường."
+      ],
+      "exercise_prompt": "Lập bản đồ ma trận tương quan giữa 4 tài sản: DXY, Lợi suất US10Y, Giá Vàng và Chỉ số S&P 500.",
+      "hint": "Không có tài sản tài chính nào tồn tại trên một hòn đảo cô độc. Nhìn bức tranh toàn cảnh vĩ mô để không bị lạc lối trong nến 15 phút.",
+      "related_principle": "Tư duy Hệ thống trong Phân tích Liên thị trường"
     }
   ],
   "ckvn": [
@@ -882,6 +990,114 @@
       "exercise_prompt": "Thiết kế kế hoạch hành động phân tách rõ: Việc cần làm cho tài khoản hôm nay vs Chiến lược tích sản cho chu kỳ 3 năm tới.",
       "hint": "Đừng dùng tư duy của nhà đầu tư 10 năm để biện minh cho việc không quản trị rủi ro đòn bẩy trong 10 ngày.",
       "related_principle": "Tư duy Đa quy mô thời gian trong Đầu tư"
+    },
+    {
+      "id": "ck_c1_02",
+      "track": "ckvn",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 02: Đọc bảng cân đối kế toán: Phân biệt tài sản thật và tài sản ảo",
+      "mode": "First Principles",
+      "objective": "Nhận diện các thủ thuật làm đẹp báo cáo tài chính của doanh nghiệp niêm yết tại Việt Nam.",
+      "situation": "Một công ty xây dựng công bố lợi nhuận tăng trưởng 50%, cổ phiếu được nhiều hội nhóm hô hào 'siêu cổ phiếu'. Tuy nhiên, khi nhìn vào bảng cân đối kế toán, khoản 'Phải thu khách hàng' chiếm tới 70% tổng tài sản và dòng tiền hoạt động kinh doanh (CFO) âm nặng 3 năm liên tiếp.",
+      "guide_steps": [
+        "Bóc tách dòng tiền: Lợi nhuận trên giấy (Doanh thu chưa thu được tiền) khác xa với tiền mặt thực tế chảy vào tài khoản ngân hàng.",
+        "Nhận diện rủi ro trích lập dự phòng: Nếu đối tác không trả nợ, các khoản phải thu này sẽ biến thành chi phí xóa sổ vốn chủ sở hữu.",
+        "Áp dụng First Principles: Doanh nghiệp không thể trả cổ tức hoặc trả nợ ngân hàng bằng 'lợi nhuận trên giấy'."
+      ],
+      "exercise_prompt": "Viết danh sách 3 dấu hiệu cảnh báo đỏ (Red Flags) trên Báo cáo tài chính doanh nghiệp CKVN bạn sẽ kiểm tra trước khi mua cổ phiếu.",
+      "hint": "Doanh thu là phù hoa, Lợi nhuận là ảo tưởng, chỉ có Dòng tiền mặt mới là chân lý sống còn.",
+      "related_principle": "First Principles trong Phân tích Tài chính Doanh nghiệp"
+    },
+    {
+      "id": "ck_c1_03",
+      "track": "ckvn",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 03: Bẫy cổ phiếu P/E thấp nhưng đang trên đà suy tàn (Value Trap)",
+      "mode": "Second-order thinking",
+      "objective": "Tránh bẫy mua các cổ phiếu nhìn có vẻ 'rẻ mạt' nhưng thực chất là doanh nghiệp bước vào chu kỳ thoái trào vĩnh viễn.",
+      "situation": "Một cổ phiếu ngành xi măng hoặc dệt may có chỉ số P/E chỉ 4.5 lần (trong khi P/E thị trường chung là 14 lần). Nhiều nhà đầu tư F0 cho rằng đây là món hời kinh điển và dồn toàn bộ vốn để bắt đáy.",
+      "guide_steps": [
+        "Bóc tách nguyên nhân P/E thấp: P/E thấp là do mẫu số E (Lợi nhuận) của năm ngoái đang ở đỉnh chu kỳ và chuẩn bị lao dốc 80% trong năm nay.",
+        "Hệ quả bậc 2: Khi ngành nghề mất lợi thế cạnh tranh hoặc dư thừa công suất nghiêm trọng, P/E thấp sẽ nhanh chóng biến thành P/E cao vút khi lợi nhuận bốc hơi.",
+        "Quy tắc chọn lọc: Phân biệt giữa 'Rẻ vì thị trường hoảng loạn ngắn hạn' vs 'Rẻ vì doanh nghiệp đang chết dần'."
+      ],
+      "exercise_prompt": "Phân tích sự khác biệt giữa một món hời thực sự của Warren Buffett và một chiếc bẫy giá trị (Value Trap) trên thị trường CKVN.",
+      "hint": "Thà mua một công ty tuyệt vời với mức giá hợp lý, còn hơn mua một công ty tồi tàn với mức giá siêu rẻ.",
+      "related_principle": "Value Trap & Phân tích Chu kỳ Ngành"
+    },
+    {
+      "id": "ck_c2_02",
+      "track": "ckvn",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 04: Chu kỳ nhóm ngành: Chứng khoán - Thép - Bất động sản - Ngân hàng",
+      "mode": "System Thinking",
+      "objective": "Nắm vững quy luật dịch chuyển dòng tiền theo 4 mùa kinh tế vĩ mô Việt Nam để cưỡi trên lưng sóng lớn.",
+      "situation": "Khi Ngân hàng Nhà nước bắt đầu hạ lãi suất điều hành và nới room tín dụng, thị trường chứng khoán nhen nhóm phục hồi. Bạn phân vân không biết nhóm ngành nào sẽ là ngòi nổ bứt phá đầu tiên.",
+      "guide_steps": [
+        "Nhận diện nhóm nhạy cảm lãi suất đầu tiên: Ngành Chứng khoán (hưởng lợi trực tiếp từ thanh khoản và dư nợ margin bùng nổ).",
+        "Theo dõi mắt xích lan tỏa tiếp theo: Bất động sản và Thép/Vật liệu xây dựng (khi vốn rẻ thẩm thấu vào dự án và đầu tư công).",
+        "Mắt xích cuối chu kỳ: Nhóm ngành Tiêu dùng phòng thủ và Năng lượng/Tiện ích (khi lạm phát đạt đỉnh và chính sách bắt đầu thắt chặt lại)."
+      ],
+      "exercise_prompt": "Vẽ chu trình luân chuyển dòng tiền qua 4 nhóm ngành chủ lực của CKVN tương ứng với chu kỳ nới lỏng/thắt chặt tiền tệ.",
+      "hint": "Đừng cố gắng đón đầu mọi con sóng nhỏ; hãy định vị chính xác bạn đang ở góc phần tư nào của chu kỳ vĩ mô để chọn đúng nhóm ngành dẫn dắt.",
+      "related_principle": "Chu kỳ Ngành & Luân chuyển Dòng tiền Vĩ mô"
+    },
+    {
+      "id": "ck_c2_03",
+      "track": "ckvn",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 05: Quản trị danh mục và chiến lược đi vốn Kim tự tháp giải ngân",
+      "mode": "Optionality",
+      "objective": "Loại bỏ thói quen 'tất tay một lệnh' (All-in), xây dựng chiến lược giải ngân thăm dò và gia tăng vị thế khoa học.",
+      "situation": "Bạn chọn được một cổ phiếu cơ bản tốt nhưng thị trường chung vẫn đang trong xu hướng điều chỉnh rung lắc mạnh. Nếu mua hết 1 lần, bạn có thể bị lỗ 10-15% ngắn hạn gây hoảng loạn tâm lý.",
+      "guide_steps": [
+        "Bước 1 (Thăm dò vị thế): Giải ngân 20-30% tại vùng nền tích lũy biên độ hẹp để có vị thế quan sát.",
+        "Bước 2 (Xác nhận dòng tiền): Chỉ gia tăng thêm 30-40% khi cổ phiếu bứt phá mạnh kèm thanh khoản đột biến xác nhận dòng tiền lớn bảo hộ.",
+        "Bước 3 (Gia tăng lợi nhuận): Mua nốt phần còn lại tại nhịp kiểm định thành công, dời toàn bộ điểm cắt lỗ lên mức hòa vốn của khối lượng ban đầu."
+      ],
+      "exercise_prompt": "Thiết kế kế hoạch giải ngân 500 triệu đồng vào một mã cổ phiếu mục tiêu theo nguyên tắc Kim tự tháp giá tăng.",
+      "hint": "Không bao giờ trung bình giá xuống với một vị thế đang thua lỗ; chỉ gia tăng vị thế khi thị trường chứng minh nhận định ban đầu của bạn là chính xác.",
+      "related_principle": "Kim tự tháp Đi vốn & Quản trị Rủi ro Danh mục"
+    },
+    {
+      "id": "ck_c3_02",
+      "track": "ckvn",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 06: Dự báo đỉnh chu kỳ tín dụng & Tái cơ cấu danh mục sang tài sản phòng thủ",
+      "mode": "Inversion + Macro",
+      "objective": "Nhận biết các chỉ báo cảnh báo sớm khi bong bóng tài sản sắp nổ để rút tiền mặt an toàn trước đám đông.",
+      "situation": "VN-Index vượt đỉnh lịch sử với thanh khoản 35.000 tỷ/phiên. Từ bà bán trà đá đến tài xế công nghệ đều bàn chuyện cổ phiếu. Định giá P/E toàn thị trường tiệm cận 22 lần trong khi lãi suất liên ngân hàng bắt đầu nhích tăng do áp lực tỷ giá.",
+      "guide_steps": [
+        "Áp dụng tư duy đảo ngược: Khi ai cũng đang giàu lên dễ dàng từ thị trường, tiền mới ở đâu sẽ tiếp tục chảy vào để đẩy giá tăng gấp đôi?",
+        "Theo dõi chỉ báo vĩ mô cốt lõi: Tốc độ tăng trưởng cung tiền M2, chênh lệch lãi suất VND-USD, và hành vi phát hành cổ phiếu tăng vốn ồ ạt của các doanh nghiệp.",
+        "Kế hoạch rút lui có trật tự: Chuyển dịch dần từ cổ phiếu đầu cơ sang tiền mặt, trái phiếu chính phủ và vàng để đón chờ cơ hội ở chu kỳ mới."
+      ],
+      "exercise_prompt": "Liệt kê 4 chỉ báo đo lường vùng đỉnh chu kỳ đầu cơ tại thị trường chứng khoán Việt Nam.",
+      "hint": "Bữa tiệc nào cũng phải tàn. Người thông minh là người rời khỏi phòng khi âm nhạc vẫn còn đang rộn rã và ánh đèn vẫn chưa tắt.",
+      "related_principle": "Tư duy Đảo ngược & Chu kỳ Tín dụng Vĩ mô"
+    },
+    {
+      "id": "ck_c3_03",
+      "track": "ckvn",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 07: Định giá chiết khấu dòng tiền tự do (DCF/FCFF) cho doanh nghiệp sản xuất",
+      "mode": "Quantitative + First Principles",
+      "objective": "Tự tay dựng mô hình định giá nội tại doanh nghiệp dựa trên khả năng sinh dòng tiền mặt tự do thay vì chỉ nhìn P/E.",
+      "situation": "Một doanh nghiệp đầu ngành chế biến xuất khẩu có tài sản cố định lớn. Môi giới định giá theo phương pháp so sánh P/E ngành là 50.000đ/cổ phiếu. Bạn muốn dùng DCF để tính giá trị thực chất.",
+      "guide_steps": [
+        "Ước tính Dòng tiền tự do cho doanh nghiệp: FCFF = EBIT*(1-t) + Khấu hao - Chi phí vốn CapEx - Thay đổi Vốn lưu động.",
+        "Xác định Chi phí vốn bình quân gia quyền (WACC): Tỷ trọng nợ vay và vốn chủ sở hữu phù hợp với rủi ro thị trường Việt Nam.",
+        "Chiết khấu dòng tiền tương lai về hiện tại và cộng giá trị thanh lý để tìm Biên an toàn (Margin of Safety)."
+      ],
+      "exercise_prompt": "Viết công thức và giải thích từng thành tố của mô hình định giá DCF cho một doanh nghiệp CKVN.",
+      "hint": "Giá trị của bất kỳ tài sản tài chính nào đều bằng tổng giá trị hiện tại của toàn bộ dòng tiền mặt mà nó sinh ra trong suốt vòng đời.",
+      "related_principle": "DCF & Giá trị Nội tại Doanh nghiệp"
     }
   ],
   "neuroscience": [
@@ -938,6 +1154,114 @@
       "exercise_prompt": "Chọn 1 kỹ năng bạn từng sợ hãi và thiết kế bài tập vi mô 20 phút mỗi ngày trong 30 ngày để tái kết nối thần kinh.",
       "hint": "Cảm giác bỡ ngỡ, khó chịu khi học thứ mới chính là bằng chứng vật lý cho thấy các synapse thần kinh đang được thiết lập.",
       "related_principle": "Neuroplasticity & Luyện tập có chủ đích"
+    },
+    {
+      "id": "ns_c1_02",
+      "track": "neuroscience",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 02: Đồng hồ sinh học (Circadian Rhythm) & Tối ưu hóa Cortisol/Melatonin",
+      "mode": "First Principles",
+      "objective": "Căn chỉnh các hoạt động trí tuệ đỉnh cao theo đúng chu kỳ nội tiết tố tự nhiên của cơ thể.",
+      "situation": "Bạn thường thức đến 1-2h sáng làm việc với ánh đèn led xanh, sau đó ngủ đến 9h sáng hôm sau và cảm thấy uể oải, mất tập trung suốt buổi chiều.",
+      "guide_steps": [
+        "Bóc tách sinh học: Ánh sáng mặt trời buổi sớm kích hoạt đỉnh tiết Cortisol tự nhiên giúp tỉnh táo và kích hoạt đồng hồ sinh học trung ương (SCN).",
+        "Hiểu tác hại của ánh sáng xanh ban đêm: Ức chế tuyến tùng tiết Melatonin, phá hủy giai đoạn ngủ sâu (Deep Sleep) và giấc ngủ REM củng cố trí nhớ.",
+        "Thiết kế chu kỳ vàng: Tiếp xúc ánh sáng tự nhiên 15 phút đầu ngày, dừng tiếp xúc màn hình trước khi ngủ 60 phút."
+      ],
+      "exercise_prompt": "Thiết lập lịch trình 24 giờ tối ưu hóa theo nhịp sinh học: Giờ tập trung cao nhất (Deep Work), Giờ vận động thể chất, và Giờ chuẩn bị giấc ngủ.",
+      "hint": "Bạn không thể chiến thắng quy luật sinh học tiến hóa hàng triệu năm của cơ thể bằng một cốc cà phê tăng lực.",
+      "related_principle": "Nhịp sinh học Circadian & Tối ưu hóa Năng lượng"
+    },
+    {
+      "id": "ns_c2_02",
+      "track": "neuroscience",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 04: Thiết kế không gian Deep Work 90 phút theo nguyên lý Attention Residue",
+      "mode": "Second-order thinking",
+      "objective": "Triệt tiêu sự phân mảnh nhận thức để tạo ra sản lượng trí tuệ chất lượng cao trong thời gian ngắn nhất.",
+      "situation": "Bạn vừa ngồi viết tài liệu vừa bật cửa sổ Zalo và kiểm tra email. Bạn nghĩ rằng mình vẫn làm việc bình thường vì mỗi lần trả lời tin nhắn chỉ tốn 10 giây.",
+      "guide_steps": [
+        "Bóc tách hiện tượng 'Dư lượng chú ý' (Attention Residue): Mỗi khi chuyển đổi tác vụ, một phần năng lượng nhận thức của não bộ vẫn bị kẹt lại ở tác vụ trước.",
+        "Hệ quả bậc 2: Sau 5 lần liếc màn hình, não bộ rơi vào trạng thái 'sương mù nhận thức', giảm 50% khả năng suy luận logic sâu.",
+        "Thiết lập khối thời gian nguyên khối (Monolithic Time Block): 90 phút đóng toàn bộ tab trình duyệt, đặt điện thoại ở chế độ máy bay."
+      ],
+      "exercise_prompt": "Viết quy trình khởi động (Ritual) trước khi bước vào phiên Deep Work 90 phút để đưa não vào trạng thái tập trung sâu nhanh nhất.",
+      "hint": "Khả năng tập trung sâu không bị phân tâm đang trở thành siêu năng lực khan hiếm và có giá trị kinh tế cao nhất thế kỷ 21.",
+      "related_principle": "Attention Residue & Deep Work Mastery"
+    },
+    {
+      "id": "ns_c3_02",
+      "track": "neuroscience",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 04: Tối ưu hóa trạng thái Dòng chảy (Flow State) trong giải quyết bài toán phức tạp",
+      "mode": "Optimal Experience",
+      "objective": "Làm chủ công thức kích hoạt trạng thái hưng phấn nhận thức tột đỉnh (Mihaly Csikszentmihalyi).",
+      "situation": "Khi đối mặt với một bài toán quá khó, bạn thấy hoảng loạn muốn bỏ cuộc; khi làm bài toán quá dễ, bạn thấy buồn ngủ chán chường. Làm sao để bước vào vùng Dòng chảy?",
+      "guide_steps": [
+        "Hiểu điều kiện biên của Flow State: Thử thách phải cao hơn kỹ năng hiện tại khoảng 4%, nằm ngay rìa ranh giới của sự thoải mái.",
+        "Mục tiêu rõ ràng và Phản hồi tức thì: Chia nhỏ bài toán lớn thành các cột mốc vi mô có thể kiểm chứng kết quả trong 10-15 phút.",
+        "Hóa học não bộ trong Flow: Sự kết hợp của Dopamine, Norepinephrine, Endorphin và Anandamide giúp gia tăng tốc độ xử lý thông tin gấp nhiều lần."
+      ],
+      "exercise_prompt": "Mô tả một trải nghiệm bạn từng rơi vào Flow State trong quá khứ và cách bạn có thể tái tạo lại môi trường đó một cách chủ động hôm nay.",
+      "hint": "Trạng thái Dòng chảy không phải là may mắn ngẫu nhiên; đó là một trạng thái thần kinh có thể lập trình được bằng cách căn chỉnh độ khó và mục tiêu.",
+      "related_principle": "Khoa học Trạng thái Dòng chảy (Flow State)"
+    },
+    {
+      "id": "ns_c1_03",
+      "track": "neuroscience",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 03: Cơ chế mệt mỏi nhận thức (Decision Fatigue) & Quản trị năng lượng ý chí",
+      "mode": "First Principles",
+      "objective": "Nhận biết sự suy giảm chất lượng phán đoán sau một chuỗi quyết định liên tục và bảo vệ các quyết định sinh tử.",
+      "situation": "Vào lúc 4 giờ chiều sau khi đã xử lý 20 đầu việc lặt vặt và ký duyệt hàng chục chứng từ, bạn phải đưa ra quyết định duyệt giải ngân một khoản đầu tư lớn. Bạn cảm thấy kiệt sức và tặc lưỡi 'thôi ký đại đi cho xong'.",
+      "guide_steps": [
+        "Bóc tách khoa học não bộ: Vỏ não trước trán tiêu thụ một lượng Glucose lớn khi đưa ra mỗi quyết định; năng lượng này cạn kiệt dần theo ngày (Decision Fatigue).",
+        "Hiểu hiện tượng 'Quyết định tồi tệ lúc xế chiều': Các thẩm phán có xu hướng bác đơn ân xá nhiều hơn vào cuối buổi làm việc vì não kiệt sức.",
+        "Quy tắc bảo vệ: Chỉ đưa ra quyết định sinh tử vào buổi sáng khi não bộ đã được sạc đầy năng lượng qua giấc ngủ."
+      ],
+      "exercise_prompt": "Thiết kế danh sách 3 việc bạn sẽ 'tự động hóa thói quen' (như cách mặc quần áo của Steve Jobs) để giảm thiểu Decision Fatigue mỗi sáng.",
+      "hint": "Đừng lãng phí năng lượng não bộ quý giá vào việc hôm nay ăn gì hay mặc gì; hãy để dành nó cho các quyết định chiến lược lớn.",
+      "related_principle": "Decision Fatigue & Bảo tồn Năng lượng Não bộ"
+    },
+    {
+      "id": "ns_c2_03",
+      "track": "neuroscience",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 05: Tái cấu trúc nhận thức (Cognitive Reframing) giải tỏa stress cực hạn",
+      "mode": "Inversion",
+      "objective": "Chuyển hóa cảm xúc căng thẳng lo âu thành nguồn năng lượng tập trung thông qua việc đổi khung nhìn.",
+      "situation": "Bạn chuẩn bị bước vào cuộc thuyết trình quan trọng trước hội đồng quản trị hoặc nhà đầu tư. Tim đập dồn dập, lòng bàn tay đổ mồ hôi. Bạn tự nhủ: 'Mình đang quá sợ hãi và chắc chắn sẽ làm hỏng việc'.",
+      "guide_steps": [
+        "Bóc tách sinh lý: Phản ứng cơ thể khi 'Sợ hãi' và 'Hưng phấn chuẩn bị chiến đấu' (Excited) là hoàn toàn giống hệt nhau (Adrenaline, nhịp tim tăng).",
+        "Kỹ thuật Reframing: Thay vì nói 'Tôi đang sợ hãi', hãy nói to: 'Cơ thể tôi đang bơm năng lượng đỉnh cao để tôi tỏa sáng trong 30 phút tới!'.",
+        "Tác động thần kinh: Việc dán nhãn lại cảm xúc giúp chuyển quyền kiểm soát từ Hạch hạnh nhân hoảng loạn sang Thùy trán trước tỉnh táo."
+      ],
+      "exercise_prompt": "Viết lại 2 tình huống gây lo âu gần đây của bạn bằng ngôn ngữ Tái cấu trúc nhận thức (Cognitive Reframing).",
+      "hint": "Ý nghĩa của sự kiện không nằm ở chính sự kiện, mà nằm ở lăng kính bạn dùng để diễn giải nó.",
+      "related_principle": "Cognitive Reframing & Làm chủ Cảm xúc"
+    },
+    {
+      "id": "ns_c3_03",
+      "track": "neuroscience",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 05: Kiểm soát trục Não - Ruột (Gut-Brain Axis) và ảnh hưởng đến trực giác ra quyết định",
+      "mode": "Biology + Systems",
+      "objective": "Thấu hiểu hệ thần kinh ruột (Enteric Nervous System) - Bộ não thứ hai - trong việc định hình cảm xúc và trực giác.",
+      "situation": "Mỗi khi đối mặt với một thương vụ rủi ro cao hoặc căng thẳng kéo dài, bạn thường bị đau bụng, khó tiêu hoặc cảm thấy 'bồn chồn cồn cào trong bụng' (Gut feeling).",
+      "guide_steps": [
+        "Bóc tách khoa học: Hơn 90% Serotonin và 50% Dopamine của toàn cơ thể được sản xuất tại đường ruột, truyền trực tiếp lên não qua dây thần kinh phế vị (Vagus Nerve).",
+        "Hệ vi sinh vật đường ruột (Microbiome) và Tâm trạng: Chế độ ăn nhiều đường và thức ăn nhanh phá hủy vi sinh vật, gây viêm nhiễm hệ thống và trầm cảm kéo dài.",
+        "Ứng dụng thực chiến: Duy trì hệ tiêu hóa khỏe mạnh kết hợp với việc lắng nghe trực giác ruột (Gut intuition) đã được hiệu chuẩn qua nhiều năm kinh nghiệm."
+      ],
+      "exercise_prompt": "Mô tả một lần 'trực giác ruột' (Gut feeling) mách bảo bạn điều gì đó trước khi lý trí kịp nhận ra và cơ chế sinh học đằng sau nó.",
+      "hint": "Trực giác ruột thực chất là khả năng nhận diện mẫu vô thức của bộ não thứ hai sau khi đã xử lý hàng triệu điểm dữ liệu ngầm.",
+      "related_principle": "Trục Não - Ruột & Trực giác Ra quyết định"
     }
   ],
   "buddhism": [
@@ -994,6 +1318,115 @@
       "exercise_prompt": "Viết quy trình thực hành Chánh niệm 5 phút trước khi bạn bấm nút đặt một lệnh giao dịch hoặc đưa ra một quyết định nhân sự quan trọng.",
       "hint": "Tâm trí giống như mặt hồ nước: Khi hồ yên ả, bạn mới nhìn thấy đáy; khi hồ dậy sóng vì tham sân si, mọi quyết định đều sai lệch.",
       "related_principle": "Chánh Niệm & Tĩnh Lặng Tâm Thức"
+    },
+    {
+      "id": "bd_c1_02",
+      "track": "buddhism",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 02: Tứ Diệu Đế dưới lăng kính tư duy hệ thống giải quyết vấn đề",
+      "mode": "First Principles",
+      "objective": "Áp dụng cấu trúc chẩn đoán và trị liệu nguyên bản của Đức Phật vào việc gỡ rối mọi bế tắc trong công việc và cuộc sống.",
+      "situation": "Dự án của bạn gặp thất bại, khách hàng rời bỏ và mâu thuẫn nội bộ gia tăng. Mọi người đổ lỗi cho nhau và không ai biết bắt đầu sửa từ đâu.",
+      "guide_steps": [
+        "Khổ đế (Dukkha) - Nhìn nhận thực tế: Thừa nhận thẳng thắn sự thật rằng hệ thống đang bị trục trặc mà không trốn tránh hay tô hồng.",
+        "Tập đế (Samudaya) - Tìm nguyên nhân gốc rễ (Root Cause): Đi tìm nguồn gốc phát sinh vấn đề từ sự thiếu minh bạch hoặc lòng tham quá mức.",
+        "Diệt đế (Nirodha) - Xác định trạng thái lý tưởng: Định hình rõ ràng bức tranh hệ thống sau khi đã được chữa lành và vận hành trơn tru.",
+        "Đạo đế (Magga) - Lộ trình hành động 8 nhánh: Thiết lập kế hoạch hành động cụ thể, kỷ luật và đo lường được để đi từ Tập sang Diệt."
+      ],
+      "exercise_prompt": "Chọn 1 vấn đề nan giải trong công việc của bạn và phân rã nó theo đúng 4 bước của Tứ Diệu Đế.",
+      "hint": "Tứ Diệu Đế chính là phương pháp luận khoa học giải quyết vấn đề cổ xưa và sắc bén nhất trong lịch sử nhân loại.",
+      "related_principle": "Tứ Diệu Đế & First Principles Giải quyết Vấn đề"
+    },
+    {
+      "id": "bd_c2_02",
+      "track": "buddhism",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 04: Thực hành Chánh ngữ và Giao tiếp Bất bạo động trong tổ chức",
+      "mode": "System Thinking",
+      "objective": "Loại bỏ lời nói độc hại mang tính chỉ trích cá nhân, xây dựng văn hóa đối thoại chân thật và xây dựng.",
+      "situation": "Một nhân viên cấp dưới làm sai báo cáo quan trọng. Cơn giận bốc lên, bạn định mắng: 'Sao cô dốt nát và cẩu thả thế, làm việc kiểu gì vậy?'.",
+      "guide_steps": [
+        "Tiêu chuẩn 4 yếu tố của Chánh ngữ: Lời nói đó có (1) Chân thật không? (2) Có mang tính xây dựng không? (3) Nói đúng thời điểm không? (4) Nói với tâm từ ái hay để thỏa mãn cơn giận?",
+        "Kỹ thuật Giao tiếp Bất bạo động (NVC): Quan sát khách quan sự việc -> Bày tỏ cảm xúc của bạn -> Chỉ ra nhu cầu chưa được đáp ứng -> Đưa ra đề nghị hành động cụ thể.",
+        "Tách bạch giữa 'Hành vi sai lầm' và 'Giá trị con người'."
+      ],
+      "exercise_prompt": "Viết lại lời phản hồi cho nhân viên trên theo đúng tinh thần Chánh ngữ và Giao tiếp Bất bạo động.",
+      "hint": "Lời nói sắc như dao có thể cắt đứt lòng tin đã gây dựng 10 năm chỉ trong 3 giây. Giữ Chánh ngữ là chiếc khiên bảo vệ các mối quan hệ quý giá.",
+      "related_principle": "Chánh Ngữ & Giao tiếp Bất bạo động"
+    },
+    {
+      "id": "bd_c3_02",
+      "track": "buddhism",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 04: Quán chiếu Tính Không (Sunyata) để giải phóng sự cố chấp và định kiến",
+      "mode": "Inversion + Detachment",
+      "objective": "Hiểu rằng mọi sự vật hiện tượng không có một tự tính cố định độc lập, từ đó mở rộng dung lượng đón nhận các góc nhìn mới.",
+      "situation": "Bạn đang tranh cãi kịch liệt với đối tác về một chiến lược kinh doanh. Bạn tin chắc 100% quan điểm của mình là chân lý duy nhất và bất kỳ ai phản đối đều là sai lầm hoặc ngu ngốc.",
+      "guide_steps": [
+        "Bóc tách bản chất Tính Không: Một chiếc bút là 'cây bút' đối với con người, nhưng là 'đồ chơi gặm nhấm' đối với chú chó. Tự thân đồ vật vốn trống rỗng (Không), tính chất của nó phụ thuộc vào lăng kính của người quan sát.",
+        "Phá vỡ ngụy biện Bản ngã: Ý kiến của bạn chỉ là một mô hình tinh thần được tạo nên từ kinh nghiệm quá khứ, không phải là chân lý tuyệt đối của vũ trụ.",
+        "Giải phóng tâm trí: Khi buông bỏ sự cố chấp vào 'cái tôi' và 'ý kiến của tôi', bạn có được sự linh hoạt vô tận để tích hợp mọi góc nhìn giá trị."
+      ],
+      "exercise_prompt": "Viết bài quán chiếu về một vấn đề bạn đang bất đồng gay gắt với người khác dưới lăng kính Tính Không.",
+      "hint": "Cái cốc chỉ hữu dụng khi nó rỗng; tâm trí chỉ có thể tiếp nhận sự thông thái khi nó trống rỗng khỏi những định kiến tự phụ.",
+      "related_principle": "Triết học Tính Không (Sunyata) & Trí tuệ Toàn diện"
+    },
+    {
+      "id": "bd_c1_03",
+      "track": "buddhism",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 03: Bản ngã (Ego) & Sự dính mắc vào danh vị và thắng thua",
+      "mode": "First Principles",
+      "objective": "Nhận diện cái tôi ảo tưởng đang điều khiển các phản xạ tự ái, hiếu thắng và hủy hoại các mối quan hệ.",
+      "situation": "Trong một cuộc họp lãnh đạo, một đồng nghiệp trẻ chỉ ra lỗi sai trong kế hoạch của bạn trước mặt mọi người. Cảm giác bị sỉ nhục bùng nổ, bạn tìm mọi lý lẽ ngụy biện để bảo vệ cái tôi của mình.",
+      "guide_steps": [
+        "Bóc tách bản chất: Cái tôi (Ego) là một cấu trúc tâm lý được xây dựng từ danh vị, bằng cấp và hình ảnh xã hội; nó luôn sợ hãi việc bị hạ bệ.",
+        "Hệ quả tai hại: Bảo vệ bản ngã khiến bạn mù quáng trước sự thật khách quan và đánh mất cơ hội sửa sai sớm.",
+        "Thực hành Vô ngã vi mô: Tách bạch giữa 'Kế hoạch bị sai' (một đối tượng khách quan) và 'Giá trị bản thân tôi'."
+      ],
+      "exercise_prompt": "Viết lời tự nhắc nhở khi bản ngã của bạn bị công kích: Làm sao để lắng nghe sự thật mà không phản ứng phòng vệ?",
+      "hint": "Càng ít bản ngã, bạn càng có nhiều tự do và sự sáng suốt để tiếp nhận thế giới như chính nó là.",
+      "related_principle": "Vô Ngã (Anatta) & Giải phóng Bản ngã"
+    },
+    {
+      "id": "bd_c2_03",
+      "track": "buddhism",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 05: Giữ tâm bất biến (Tâm xả - Upekkha) giữa 8 ngọn gió đời (Bát Phong)",
+      "mode": "Equanimity",
+      "objective": "Đứng vững không chao đảo trước: Được - Thua, Vinh - Nhục, Khen - Chê, Vui - Khổ.",
+      "situation": "Một ngày bạn được báo chí khen ngợi hết lời vì một thành công; ngày hôm sau trên mạng xuất hiện các bài viết chỉ trích tiêu cực bới móc đời tư của bạn. Bạn thấy tâm trạng mình trồi sụt như tàu lượn siêu tốc.",
+      "guide_steps": [
+        "Nhận diện 8 ngọn gió đời (Bát Phong): Lợi - Suy, Hủy - Dự, Xưng - Cơ, Khổ - Lạc luôn thổi luân phiên qua cuộc đời mọi con người.",
+        "Hiểu nguồn gốc của dao động: Khi ta đặt hạnh phúc vào lời khen của người khác, ta đã trao chiếc điều khiển từ xa tâm trạng của mình cho thiên hạ.",
+        "Thiết lập Tâm xả (Upekkha): Trở thành một ngọn núi đá vững chãi; gió khen chê thổi qua nhưng ngọn núi không hề lay chuyển."
+      ],
+      "exercise_prompt": "Viết bài thực hành giữ tâm quân bình trước một lời chỉ trích bất công hoặc một lời khen ngợi tâng bốc gần đây.",
+      "hint": "Khen chê chỉ là tiếng vang trong hang đá. Người trí tuệ tự soi rọi bằng lương tri và sự thật, không sống bằng tiếng vỗ tay của người khác.",
+      "related_principle": "Bát Phong & Tâm Xả Bất Biến (Upekkha)"
+    },
+    {
+      "id": "bd_c3_03",
+      "track": "buddhism",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 05: Lãnh đạo từ tâm thức tỉnh: Quản trị bằng Từ - Bi - Hỷ - Xả",
+      "mode": "Compassionate Leadership",
+      "objective": "Kết hợp sự nghiêm khắc của kỷ luật tổ chức với lòng trắc ẩn bao dung để xây dựng đội ngũ bền vững trường tồn.",
+      "situation": "Bạn quản lý 50 nhân sự. Áp lực KPI doanh số khiến bạn liên tục la mắng, tạo môi trường làm việc sợ hãi và kiệt sức. Nhiều nhân sự giỏi âm thầm nộp đơn xin nghỉ.",
+      "guide_steps": [
+        "Từ (Metta) & Bi (Karuna): Mong muốn người khác hạnh phúc và thấu hiểu sâu sắc những khó khăn, rào cản mà cấp dưới đang gặp phải.",
+        "Hỷ (Mudita): Thật tâm vui mừng trước sự thăng tiến và thành công vượt trội của đồng đội mà không có chút ghen tị.",
+        "Xả (Upekkha): Công tâm, không thiên vị người thân cận, nhìn nhận mọi vấn đề với cái nhìn khách quan không thành kiến."
+      ],
+      "exercise_prompt": "Thiết kế một buổi đối thoại 1-1 với nhân viên đang gặp khủng hoảng theo tinh thần Tứ Vô Lượng Tâm (Từ - Bi - Hỷ - Xả).",
+      "hint": "Lãnh đạo bằng nỗi sợ hãi chỉ tạo ra sự phục tùng ngắn hạn; lãnh đạo bằng sự thông tuệ và lòng từ bi tạo ra lòng trung thành trọn đời.",
+      "related_principle": "Tứ Vô Lượng Tâm trong Lãnh đạo Tinh hoa"
     }
   ],
   "ai_tech": [
@@ -1050,6 +1483,114 @@
       "exercise_prompt": "Đề xuất 1 ý tưởng sản phẩm / công cụ số bạn có thể tự xây dựng bằng AI trong 1 tuần giúp giải quyết vấn đề cho 100 người.",
       "hint": "Trong thế kỷ 21, người sở hữu tư duy First Principles kết hợp với công cụ AI chính là một đội quân 1 người (One-person army).",
       "related_principle": "Đòn bẩy Không Cần Xin Phép (Naval Ravikant)"
+    },
+    {
+      "id": "ai_c1_02",
+      "track": "ai_tech",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 02: Kỹ nghệ Prompt First Principles: Tách biệt Ngữ cảnh, Vai trò và Ràng buộc",
+      "mode": "First Principles",
+      "objective": "Chuyển từ việc ra lệnh mơ hồ sang thiết kế Prompt có cấu trúc kỹ thuật giúp AI trả về kết quả chính xác 99%.",
+      "situation": "Bạn gõ một câu ngắn: 'Hãy viết cho tôi kế hoạch kinh doanh quán cà phê'. AI trả về một bài văn chung chung, sáo rỗng và vô dụng. Bạn kết luận 'AI chỉ chém gió vớ vẩn'.",
+      "guide_steps": [
+        "Bóc tách nguyên lý: Chất lượng đầu ra của LLM phụ thuộc vào mật độ thông tin và sự thu hẹp không gian xác suất (Probability Space) của câu lệnh đầu vào.",
+        "Bộ khung Prompt First Principles: Role (Vai trò chuyên gia) + Context (Dữ liệu bối cảnh thực tế) + Task (Nhiệm vụ cụ thể) + Constraints (Ràng buộc cứng và những việc CẤM làm) + Output Format (Cấu trúc đầu ra mong muốn).",
+        "Thực hành kiểm thử: Cung cấp số vốn, địa điểm, tệp khách hàng mục tiêu và yêu cầu AI lập bảng dòng tiền chi tiết."
+      ],
+      "exercise_prompt": "Viết lại prompt xin kế hoạch kinh doanh quán cà phê theo chuẩn 5 thành phần của Kỹ nghệ First Principles.",
+      "hint": "AI giống như một thiên tài bị mất trí nhớ tạm thời. Nó chỉ thông minh bằng chính sự chính xác và sắc nét của ngữ cảnh bạn cấp cho nó.",
+      "related_principle": "Kỹ nghệ Prompt First Principles"
+    },
+    {
+      "id": "ai_c2_02",
+      "track": "ai_tech",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 04: Xây dựng Bộ não Số Thứ Hai (Second Brain) với Vector Search & RAG",
+      "mode": "System Thinking + Leverage",
+      "objective": "Kết nối dữ liệu cá nhân của bạn với AI để tạo thành một trợ lý ảo siêu việt am hiểu toàn bộ tri thức của bạn.",
+      "situation": "Bạn đã đọc 200 cuốn sách và ghi chép hàng nghìn trang tài liệu trong 5 năm qua. Khi cần tìm một ý tưởng cụ thể để giải quyết công việc, bạn mất 3 tiếng lục lọi mà không nhớ nó nằm ở đâu.",
+      "guide_steps": [
+        "Bóc tách công nghệ RAG (Retrieval-Augmented Generation): Chuyển hóa văn bản thành tọa độ toán học (Vector Embeddings) trong không gian nhiều chiều.",
+        "Cơ chế tìm kiếm theo ngữ nghĩa (Semantic Search): Tìm kiếm ý niệm và mối liên hệ bản chất thay vì chỉ khớp từ khóa chính xác như Google cũ.",
+        "Tạo giá trị đòn bẩy: Chat trực tiếp với toàn bộ thư viện sách và ghi chú của bạn để tổng hợp luận điểm chỉ trong 10 giây."
+      ],
+      "exercise_prompt": "Mô tả cấu trúc thư mục dữ liệu cá nhân bạn muốn đưa vào hệ thống RAG để phục vụ công việc chuyên môn.",
+      "hint": "Bộ não con người sinh ra để sáng tạo ý tưởng mới, không phải để làm kho chứa dữ liệu tĩnh. Hãy giao việc lưu trữ và tra cứu cho Bộ não số.",
+      "related_principle": "RAG Architecture & Second Brain"
+    },
+    {
+      "id": "ai_c3_02",
+      "track": "ai_tech",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 04: Định vị năng lực cạnh tranh cốt lõi của con người trong kỷ nguyên AI siêu thông minh",
+      "mode": "Inversion + Future Strategy",
+      "objective": "Xác định chính xác những phẩm chất mà máy móc không bao giờ có thể sao chép để xây dựng con hào phòng thủ sự nghiệp bền vững.",
+      "situation": "Các công cụ AI tạo sinh ngày càng hoàn thiện: viết code, vẽ tranh, làm nhạc, phân tích dữ liệu nhanh gấp hàng nghìn lần con người. Nhiều chuyên gia lo sợ sự vô nghĩa của lao động trí óc.",
+      "guide_steps": [
+        "Áp dụng tư duy đảo ngược: Điều gì máy tính làm tốt nhất? (Tính toán tốc độ cao, ghi nhớ dung lượng lớn, nhận diện mẫu lặp lại). Điều gì máy tính không bao giờ có? (Trải nghiệm sinh học có thật, sự thấu cảm nỗi đau con người, trách nhiệm đạo đức trước pháp luật, ý thức tự thân).",
+        "Chiến lược 'Nhân bản giá trị độc bản': Đặt cược vào: Khả năng đặt câu hỏi đúng (Problem Formulation), Năng lực lãnh đạo truyền cảm hứng, và Bản lĩnh ra quyết định trong điều kiện bất định hoàn toàn.",
+        "Trở thành Centaur (Nửa người nửa ngựa): Kết hợp trực giác con người với sức mạnh tính toán của AI để tạo ra năng suất vượt trội gấp 10 lần."
+      ],
+      "exercise_prompt": "Viết tuyên ngôn định vị nghề nghiệp 5 năm tới của bạn: Bạn sẽ sử dụng đòn bẩy AI ở đâu và giữ lại mắt xích con người độc bản nào?",
+      "hint": "Đừng cố trở thành một cỗ máy tính toán giỏi hơn máy tính; hãy trở thành một con người sâu sắc, nhân bản và thông tuệ hơn bao giờ hết.",
+      "related_principle": "Con hào Cạnh tranh Con người vs AI (Centaur Strategy)"
+    },
+    {
+      "id": "ai_c1_03",
+      "track": "ai_tech",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "title": "Bài 03: Cấu trúc Context Window & Tối ưu hóa chi phí Token trong tư duy",
+      "mode": "First Principles",
+      "objective": "Hiểu cơ chế hoạt động của bộ nhớ ngữ cảnh và cách cô đọng thông tin để AI suy luận sắc bén nhất.",
+      "situation": "Bạn copy toàn bộ cuốn sách 500 trang vào cửa sổ chat AI rồi hỏi một câu chung chung. AI trả lời lạc đề và bỏ sót chi tiết then chốt ở giữa văn bản (Hiện tượng Lost in the Middle).",
+      "guide_steps": [
+        "Bóc tách kỹ thuật: Mô hình chú ý (Attention Mechanism) có xu hướng tập trung mạnh vào đầu và cuối ngữ cảnh, suy giảm ở đoạn giữa.",
+        "Kỹ thuật Nén thông tin hạt nhân: Thay vì nạp rác dữ liệu thô, hãy trích xuất các tiên đề và cấu trúc dữ liệu súc tích nhất.",
+        "Tư duy phân cấp: Chia nhỏ tài liệu thành các khối logic độc lập và xử lý tuần tự (Chained Prompts)."
+      ],
+      "exercise_prompt": "Viết kỹ thuật tóm tắt tài liệu 50 trang thành một bản tóm lược 500 từ chuẩn bị làm ngữ cảnh cho AI phân tích.",
+      "hint": "Độ dài ngữ cảnh không bằng độ tinh khiết của dữ liệu. Rác vào thì rác ra (Garbage In, Garbage Out).",
+      "related_principle": "Context Window & Lost in the Middle Optimization"
+    },
+    {
+      "id": "ai_c2_03",
+      "track": "ai_tech",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "title": "Bài 05: Thiết kế vòng lặp phản hồi tự sửa lỗi (Self-Correction Reflection Loops)",
+      "mode": "Iterative + Systems",
+      "objective": "Nâng độ chính xác của AI từ 70% lên 95% bằng cách lập trình quy trình AI tự đánh giá và hiệu chỉnh kết quả.",
+      "situation": "Một Agent AI viết code hoặc làm báo cáo tài chính thường có những lỗi ngớ ngẩn nếu chỉ chạy một lần duy nhất (Zero-shot).",
+      "guide_steps": [
+        "Bước 1 (Generator): Agent A tạo ra bản thảo đầu tiên.",
+        "Bước 2 (Critic / Evaluator): Agent B (hoặc chính Agent A với prompt độc lập) đóng vai trò thẩm định viên khắt khe, đối chiếu bản thảo với rubric chuẩn mực.",
+        "Bước 3 (Refiner): Tổng hợp các điểm chưa đạt và tự động viết lại bản thảo phiên bản 2 tối ưu hơn."
+      ],
+      "exercise_prompt": "Thiết kế một prompt kép (Generator + Critic) để tự động kiểm toán một bản phân tích tài chính.",
+      "hint": "Thiên tài không phải là người làm đúng ngay từ lần đầu tiên; thiên tài là người có chu kỳ tự phản biện và sửa sai nhanh nhất.",
+      "related_principle": "Reflection Pattern & Self-Correction trong Agentic AI"
+    },
+    {
+      "id": "ai_c3_03",
+      "track": "ai_tech",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "title": "Bài 05: Xây dựng Hệ sinh thái Multi-Agent tự phối hợp giải quyết bài toán phức tạp",
+      "mode": "Systems + Leverage",
+      "objective": "Thiết kế một đội ngũ các AI Agent chuyên biệt (Nhà nghiên cứu, Kỹ sư, Kiểm thử, Quản lý dự án) tự giao tiếp và phối hợp.",
+      "situation": "Một dự án nghiên cứu thị trường toàn diện đòi hỏi 4 chuyên môn khác nhau: Cào dữ liệu web, Phân tích số liệu định lượng, Viết báo cáo tổng quan và Thiết kế slide thuyết trình.",
+      "guide_steps": [
+        "Phân công vai trò rạch ròi: Mỗi Agent có một system prompt chuyên biệt, bộ công cụ riêng và quyền hạn rõ ràng.",
+        "Giao thức truyền thông điệp (Inter-agent communication): Thiết lập cấu trúc dữ liệu chuẩn JSON để các agent trao đổi đầu vào/đầu ra mượt mà.",
+        "Agent chỉ huy (Orchestrator): Đóng vai trò tổng đạo diễn phân bổ công việc, theo dõi tiến độ và xử lý điểm nghẽn."
+      ],
+      "exercise_prompt": "Vẽ sơ đồ kiến trúc gồm 4 Agent phối hợp thực hiện một chiến dịch marketing hoặc nghiên cứu sản phẩm mới.",
+      "hint": "Tương lai của công việc không phải là 1 con bot làm hết mọi thứ, mà là một dàn nhạc giao hưởng gồm nhiều agent chuyên gia cùng tấu lên một bản hòa ca hoàn hảo.",
+      "related_principle": "Multi-Agent Systems & Đòn bẩy Siêu quy mô"
     }
   ]
 }
