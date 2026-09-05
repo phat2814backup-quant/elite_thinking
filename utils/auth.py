@@ -229,8 +229,16 @@ def require_login() -> bool:
             else:
                 st.error("Sai tên đăng nhập hoặc mật khẩu.")
 
+    from utils.db import supabase_status
+
     st.caption("Tài khoản gia đình · Dữ liệu kiến thức dùng chung · Tiến độ học tập riêng")
-    st.caption("🔒 Password hashed (PBKDF2) · Persistence: Supabase nếu đã cấu hình")
+    sb_stat = supabase_status()
+    if sb_stat["connected"]:
+        st.caption("🔒 Password hashed (PBKDF2) · 🟢 Persistence: **Supabase** (đang hoạt động)")
+    elif sb_stat["configured"]:
+        st.caption("🔒 Password hashed (PBKDF2) · 🟡 Persistence: **Supabase** (đã cấu hình, kiểm tra kết nối)")
+    else:
+        st.caption("🔒 Password hashed (PBKDF2) · 🟠 Persistence: **Local JSON**")
     return False
 
 
