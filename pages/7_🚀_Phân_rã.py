@@ -85,23 +85,33 @@ with tab7_subtabs[0]:
 
                 c1, c2 = st.columns(2)
                 with c1:
-                    st.markdown("#### First Principles")
+                    st.markdown("#### 🔬 First Principles (Bản chất gốc)")
                     st.write(result.get("first_principles_breakdown", "—"))
-                    st.markdown("#### Nguyên lý liên quan")
+                    st.markdown("#### 📚 Nguyên lý Khởi thủy Liên quan")
                     for p in result.get("core_principles_found", [])[:5]:
-                        st.markdown(f"- **{p.get('name')}** ({p.get('domain')}): {p.get('description', '')[:120]}")
+                        domain_str = f" *({p.get('domain')})*" if p.get('domain') else ""
+                        desc_str = f": {p.get('description')}" if p.get('description') else ""
+                        st.markdown(f"- **{p.get('name')}**{domain_str}{desc_str}")
 
                 with c2:
-                    st.markdown("#### Elite Lenses")
+                    st.markdown("#### 👁️ Elite Lenses (Các lăng kính tư duy)")
                     lenses = result.get("elite_lenses", {})
+                    lens_titles = {
+                        "inversion": "🔄 Tư duy Đảo ngược (Inversion)",
+                        "second_order": "🎯 Hệ quả bậc hai (Second-Order)",
+                        "bayesian": "🎲 Xác suất Bayes (Bayesian Thinking)",
+                        "leverage": "⚙️ Điểm tựa & Đòn bẩy (Leverage)",
+                        "multi_timescale": "⏳ Đa quy mô thời gian (Multi-timescale)",
+                    }
                     for k, v in lenses.items():
-                        st.markdown(f"**{k}**: {v}")
+                        title = lens_titles.get(k, k.replace('_', ' ').title())
+                        st.markdown(f"**{title}:** {v}")
 
-                st.markdown("#### Hành động gợi ý")
+                st.markdown("#### ⚡ Hành động gợi ý có đòn bẩy cao")
                 for a in result.get("actionable_insights", []):
                     st.markdown(f"- {a}")
 
-                st.markdown("#### Cần bạn quyết định")
+                st.markdown("#### 🧭 Câu hỏi cốt lõi cần bạn quyết định")
                 for h in result.get("human_decision_needed", []):
                     st.markdown(f"- {h}")
 

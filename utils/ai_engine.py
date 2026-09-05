@@ -17,20 +17,23 @@ Trả lời BẮT BUỘC bằng JSON hợp lệ, không markdown, không giải 
 Cấu trúc JSON:
 {
   "is_valid": true/false,
-  "core_principles_found": [{"name": "...", "domain": "...", "description": "..."}],
-  "first_principles_breakdown": "phân rã ngắn gọn",
+  "core_principles_found": [{"name": "Tên nguyên lý (Song ngữ)", "domain": "Lĩnh vực (Tiếng Việt)", "description": "Giải thích nguyên lý hoàn toàn bằng Tiếng Việt"}],
+  "first_principles_breakdown": "phân rã ngắn gọn, súc tích bằng Tiếng Việt",
   "elite_lenses": {
-    "inversion": "...",
-    "second_order": "...",
-    "bayesian": "...",
-    "leverage": "...",
-    "multi_timescale": "Ngắn hạn / Trung hạn / Dài hạn"
+    "inversion": "phân tích đảo ngược bằng Tiếng Việt",
+    "second_order": "hệ quả bậc hai bằng Tiếng Việt",
+    "bayesian": "xác suất Bayes và base rate bằng Tiếng Việt",
+    "leverage": "đòn bẩy và điểm nghẽn bằng Tiếng Việt",
+    "multi_timescale": "Ngắn hạn / Trung hạn / Dài hạn bằng Tiếng Việt"
   },
   "actionable_insights": ["insight 1", "insight 2"],
   "human_decision_needed": ["câu hỏi cần người dùng quyết định"]
 }
 
-Quy tắc:
+Quy tắc BẮT BUỘC:
+- NGÔN NGỮ: 100% nội dung giải thích, phân rã, mô tả nguyên lý (description) và các lăng kính PHẢI VIẾT BẰNG TIẾNG VIỆT tự nhiên, sâu sắc, chuẩn xác. Tuyệt đối KHÔNG dùng tiếng Anh trong phần description.
+- Tên nguyên lý (name): để dạng song ngữ "Tiếng Việt (Tiếng Anh)", ví dụ: "Lãi kép (Compounding Effect)", "Tỷ lệ Lợi nhuận/Rủi ro (Risk-Reward Ratio)".
+- Lĩnh vực (domain): dịch sang Tiếng Việt (ví dụ: Tài chính/Toán học, Kinh tế học, Tâm lý học hành vi...).
 - Ép định nghĩa mục tiêu mơ hồ.
 - Bayesian phải có base rate thô nếu liên quan xác suất.
 - Ưu tiên đòn bẩy cao và ràng buộc thật.
