@@ -13,145 +13,449 @@
       "week": 1,
       "title": "Bản đồ & First Principles",
       "theme": "foundation",
-      "goal": "Hiểu app là hệ điều hành tư duy, không phải thư viện đọc chơi; nắm First Principles.",
-      "core_idea": "Mọi vấn đề phức tạp đều có thể bóc về chân lý cơ bản không thể suy diễn thêm — tách Fact khỏi Opinion.",
+      "goal": "Làm chủ phương pháp đập vụn vấn đề về chân lý gốc không thể suy diễn thêm; tách triệt để Dữ kiện cứng (Facts) khỏi Ý kiến/Cảm xúc (Noise).",
+      "core_idea": "Reasoning by Analogy (bắt chước) khiến bạn trả giá đắt cho sai lầm của người khác. First Principles (nguyên lý gốc) giúp bạn nhìn xuyên qua lớp sương mù của thói quen để tái thiết kế giải pháp từ con số 0.",
       "read": [
         {
-          "label": "Trang Home — Bản đồ 7 bước",
+          "label": "Trang Home — Bản đồ Huấn luyện 7 bước",
           "page": "app"
         },
         {
-          "label": "9 Chế độ — First Principles",
-          "page": "2_9_che_do_tu_duy"
+          "label": "9 Chế độ Tư duy — First Principles Thinking",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Khử nhiễu & Phân tích nguyên nhân gốc",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Nguyên lý Khởi thủy (First Principles)",
+          "summary": "Phương pháp quy nạp của Aristotle, Descartes và Elon Musk: Đập nhỏ vấn đề thành các chân lý cơ bản nhất mà bạn chắc chắn đúng (định luật vật lý, sinh học, toán học), sau đó suy luận ngược lên thay vì sao chép cách người khác đang làm.",
+          "good_example": "Elon Musk thấy giá pin xe điện là $600/kWh. Thay vì chấp nhận mức giá đó, ông hỏi: Pin gồm các nguyên tố nào trên sàn giao dịch London? (Cobalt, Nickel, Nhôm, Carbon...). Tổng giá trị vật liệu chỉ là $80/kWh. Ông tự chế tạo quy trình đóng gói để hạ giá thành về sát $100/kWh.",
+          "bad_example": "Thấy thị trường mở chuỗi trà sữa thành công, vội vàng đi nhượng quyền đúng mô hình đó mà không tính chi phí thuê mặt bằng trên từng mét vuông và vòng đời khách hàng trẻ.",
+          "boundary": "Không dùng khi quyết định cần tốc độ sinh tồn ngay lập tức (phản xạ chạy khỏi đám cháy), hoặc với các chuẩn mực văn hóa/giao tiếp mang tính quy ước xã hội thông thường.",
+          "lattice_link": "Model #01 (First Principles) kết hợp Model #14 (Ockham's Razor) và Model #05 (Entropy)."
+        },
+        {
+          "name": "Phân Tách Dữ Kiện Cứng vs Nhiễu (Facts vs Noise)",
+          "summary": "Fact là dữ liệu khách quan, có thể đo lường, không phụ thuộc vào cảm xúc của người quan sát. Opinion/Noise là diễn giải chủ quan mang thiên kiến, nỗi sợ hoặc áp lực đám đông.",
+          "good_example": "Fact: 'Con đạt 5/10 bài kiểm tra Toán đại số chương Hàm số, sai 4 câu phần vẽ đồ thị parabol'. (Rõ ràng, đo lường được, chỉ ra đúng chỗ hổng kiến thức).",
+          "bad_example": "Noise: 'Dạo này con học dốt hẳn đi, lười biếng và không có tương lai!' (Phán xét cảm xúc, tổng quát hóa tiêu cực, không tạo ra hành động khắc phục).",
+          "boundary": "Khi giải quyết xung đột tình cảm gia đình, cảm xúc của người thân là một 'fact tâm lý' cần được lắng nghe thấu cảm, không nên gạt bỏ máy móc.",
+          "lattice_link": "Model #28 (Confirmation Bias) và Model #42 (Cognitive Dissonance)."
+        }
+      ],
+      "case_study": {
+        "title": "Bẫy Luyện Thi 4 Lò: Đốt Tiền Chạy Theo Đám Đông Hay Thiết Kế Lại Từ Bản Chất?",
+        "context": "Gia đình có con chuẩn bị chuyển cấp (Lớp 6 lên Lớp 7 hoặc Lớp 9 lên Lớp 10). Mẹ sốt ruột vì phụ huynh trong lớp rủ nhau đăng ký học thêm 4 lò luyện thi tuần 5 buổi tối (Toán, Văn, Anh, Khoa học), học phí 10 triệu/tháng. Mẹ nói: 'Cả lớp con đều học, mình không cho học thì con rớt lại phía sau'. Trong khi đó, con ngày càng đờ đẫn, đi học về lúc 21h30, ngủ không đủ 6 tiếng, điểm kiểm tra trên lớp chỉ đạt mức trung bình khá (6.5 - 7.0).",
+        "decision_question": "Bố mẹ có nên tiếp tục ép con học thêm kín lịch như đám đông, hay tái cấu trúc lại việc học từ First Principles?",
+        "facts": [
+          "Thời gian và năng lượng não bộ là tài nguyên hữu hạn: Con chỉ có tối đa 24 giờ/ngày. Trẻ tuổi dậy thì cần tối thiểu 8 giờ ngủ để vỏ não củng cố trí nhớ dài hạn (Memory Consolidation).",
+          "Đo lường hiệu suất học: Việc ngồi nghe thụ động ở lò luyện thi chỉ giúp não lưu giữ 5–10% kiến thức sau 48 giờ. Việc tự giải bài và tự giải thích lại (Active Recall + Feynman) giúp lưu giữ đến 80–90%.",
+          "Phân tích lỗi sai: Điểm kiểm tra của con mất điểm không phải do 'thiếu kiến thức mới', mà do hổng kỹ năng nền tảng cơ bản và mất tập trung vì thiếu ngủ."
+        ],
+        "noise": [
+          "'Con nhà bác A học lò thầy X đỗ trường chuyên top đầu' (Bẫy Survivorship Bias — chỉ nhìn người đỗ, không đếm hàng nghìn người trượt ở lò đó).",
+          "'Học thêm nhiều để bố mẹ yên tâm rằng mình đã làm hết trách nhiệm' (Bẫy xoa dịu cảm xúc tội lỗi của phụ huynh).",
+          "'Thầy cô trên lớp không dạy hết bài khó' (Nỗi sợ hãi tưởng tượng chưa qua kiểm chứng giáo trình)."
+        ],
+        "framework_application": "Đập nhỏ việc học thành 3 thành tố cơ bản: (1) Năng lượng sinh học (Ngủ & Dinh dưỡng) -> (2) Kỹ năng tự nạp khái niệm (Concept Acquisition) -> (3) Vòng lặp phản hồi bài tập (Deliberate Practice Loop).",
+        "exemplar_analysis": "Bước 1: Cắt ngay 3/4 lớp học thêm thụ động (tiết kiệm 7.5 triệu VNĐ/tháng và giải phóng 9 giờ quý giá mỗi tuần).\nBước 2: Thiết lập quy tắc bất khả xâm phạm: Con phải lên giường trước 22h30 để ngủ đủ 8 tiếng (phục hồi năng lực nhận thức).\nBước 3: Tái thiết kế 1 giờ tự học buổi tối theo kỹ thuật Feynman: Con tự giải bài khó, sau đó dành 10 phút giảng lại cho bố/mẹ nghe. Khi con vấp ở đâu, đó chính là 'nút thắt' (bottleneck).\nBước 4: Chỉ thuê gia sư 1-1 chuyên sâu 1 buổi/tuần chỉ để giải quyết đúng các nút thắt đó.",
+        "action_plan": "Họp gia đình tối nay, dừng 3 lớp học thêm không hiệu quả, lập bảng theo dõi giấc ngủ 8 tiếng và bắt đầu chu trình 30 phút Feynman mỗi tối.",
+        "common_traps": [
+          "Bẫy đồng hóa nỗ lực với kết quả: Tưởng con ngồi học 14 tiếng là tiến bộ, thực chất não đã quá tải và chỉ tạo ra ảo tưởng tiếp thu.",
+          "Bẫy bắt chước mù quáng (Reasoning by Analogy): Sao chép công thức của gia đình khác mà không xét đến cá tính, thể trạng và năng khiếu riêng của con mình."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Chọn 1 vấn đề thật tuần này (học / tiền / gia đình). Viết: (1) Mục tiêu mơ hồ đang nói gì? (2) 3 sự thật cứng bạn biết chắc? (3) 2 ý kiến đang bị nhầm là sự thật?",
-        "success_criteria": "Có tách Fact vs Opinion rõ ràng."
+        "prompt": "Chọn 1 vấn đề bức bối nhất trong cuộc sống của bạn tuần này (chi tiêu gia đình, học tập của con, hoặc công việc cá nhân). Hãy bóc tách theo đúng cấu trúc:\n1. Mục tiêu mơ hồ ban đầu bạn từng nghĩ là gì?\n2. Liệt kê chính xác 3 Dữ kiện cứng (Facts) khách quan, đo lường được.\n3. Nhận diện 2 Ý kiến / Cảm xúc (Noise) mà bạn hoặc người khác đang ngộ nhận là sự thật.\n4. Giải pháp tái thiết kế lại từ First Principles.",
+        "checklist": [
+          "Có nêu rõ mục tiêu cụ thể, không dùng từ mơ hồ",
+          "Liệt kê đủ 3 dữ kiện cứng có số liệu hoặc bằng chứng quan sát độc lập",
+          "Chỉ đích danh 2 định kiến/nhiễu đang chi phối quyết định",
+          "Đưa ra được ít nhất 1 hành động tái thiết kế không sao chép lối mòn cũ"
+        ],
+        "bad_example": "Vấn đề: Dạo này nhà tôi tiêu hoang quá, không để dành được đồng nào. Fact: Tiền lương không đủ sống. Noise: Vợ tôi mua sắm linh tinh. Giải pháp: Từ mai cả nhà phải tiết kiệm hơn.",
+        "good_example": "Vấn đề: Quỹ tiết kiệm gia đình 3 tháng qua không tăng thêm được đồng nào.\n1. Mục tiêu mơ hồ: 'Cố gắng tiết kiệm tiền mỗi tháng'.\n2. 3 Facts cứng: (a) Tổng thu nhập cố định: 65 triệu/tháng; (b) Khoản chi không cố định (ăn ngoài, cà phê, mua sắm online) chiếm 28 triệu/tháng; (c) Trong đó có 6.2 triệu chi cho các gói đăng ký định kỳ và mua đồ giảm giá chưa dùng đến.\n3. 2 Noises: (a) 'Sống ở thành phố lớn chi phí cái gì cũng đắt đỏ nên không thể tiết kiệm hơn được'; (b) 'Thỉnh thoảng phải tự thưởng cho bản thân để có động lực làm việc'.\n4. Giải pháp First Principles: Đảo ngược quy trình chi tiêu — ngày nhận lương, tự động trích lập 20% (13 triệu) chuyển thẳng vào tài khoản đầu tư tích lũy khóa 1 năm. Chỉ sống trong phần 52 triệu còn lại."
       },
       "quiz": [
         {
-          "q": "First Principles khác Reasoning by Analogy ở điểm nào?",
+          "q": "Khác biệt cốt lõi nhất giữa 'Reasoning by Analogy' (Bắt chước) và 'First Principles' (Nguyên lý gốc) là gì?",
           "options": [
-            "Bóc về chân lý cơ bản rồi dựng lại từ 0",
-            "Làm ngược lại đối thủ",
-            "Lấy trung bình ý kiến chuyên gia",
-            "Tin kinh nghiệm bản thân là đủ"
+            "Bóc tách sự vật về chân lý nền tảng đã được kiểm chứng rồi suy luận logic từ con số 0",
+            "Làm hoàn toàn trái ngược với số đông để tạo sự độc lạ",
+            "Tham khảo ý kiến của 10 chuyên gia hàng đầu rồi lấy giá trị trung bình",
+            "Dựa vào trực giác và kinh nghiệm tích lũy cá nhân trong quá khứ"
           ],
           "answer": 0,
-          "explain": "Analogy = bắt chước; First Principles = phân rã tới chân lý rồi thiết kế lại."
+          "explain": "Analogy là sao chép lời giải của người khác mà không hiểu giả định ngầm. First Principles là đập vỡ giả định, bóc tách về chân lý cơ bản nhất rồi thiết kế lại.",
+          "trap_analysis": "Nhiều người chọn đáp án 'Làm ngược lại số đông' (Contrarianism) — đây là bẫy phổ biến: làm ngược đám đông một cách mù quáng cũng nguy hiểm hệt như đi theo đám đông."
+        },
+        {
+          "q": "Trong một cuộc họp gia đình về việc chọn trường cho con, câu nói nào sau đây là 'Dữ kiện cứng' (Fact)?",
+          "options": [
+            "Học phí trường Quốc tế X là 280 triệu/năm, khoảng cách từ nhà đến trường là 4.2 km",
+            "Trường đó môi trường rất năng động và toàn con nhà tử tế",
+            "Học trường công sau này con sẽ bị cùn mòn khả năng sáng tạo",
+            "Ai cũng bảo trường X là lựa chọn số 1 hiện nay"
+          ],
+          "answer": 0,
+          "explain": "Học phí và khoảng cách là dữ liệu khách quan đo lường được. Các phương án còn lại đều là phán xét cảm tính hoặc ý kiến chủ quan.",
+          "trap_analysis": "Mọi người hay nhầm 'lời khen của nhiều người' là dữ kiện, trong khi đó chỉ là dư luận xã hội (Social Proof)."
+        },
+        {
+          "q": "Khi nào bạn KHÔNG NÊN tốn thời gian áp dụng First Principles?",
+          "options": [
+            "Khi đối mặt với tình huống khẩn cấp đe dọa an toàn tính mạng cần phản xạ tức thì",
+            "Khi chuẩn bị đầu tư một số tiền lớn tích lũy cả đời",
+            "Khi thiết kế lại định hướng nghề nghiệp 5 năm tới",
+            "Khi giải quyết một mâu thuẫn dai dẳng trong gia đình"
+          ],
+          "answer": 0,
+          "explain": "First Principles đòi hỏi năng lượng nhận thức cao và thời gian phân tích sâu. Khi gặp hỏa hoạn hoặc tai nạn khẩn cấp, bạn cần phản xạ quy ước an toàn ngay lập tức.",
+          "trap_analysis": "Người theo chủ nghĩa duy lý cực đoan thường cố phân tích nguyên lý trong những tình huống cần hành động tức thì."
         }
       ],
-      "estimated_minutes": 35
+      "estimated_minutes": 45
     },
     {
       "week": 2,
       "title": "Inversion & Hậu quả bậc 2",
       "theme": "foundation",
-      "goal": "Luyện nhìn thất bại trước thành công; thấy hệ quả dây chuyền.",
-      "core_idea": "Tránh stupidity dễ hơn tìm brilliance. Mọi hành động có hậu quả bậc 1, 2, 3.",
+      "goal": "Làm chủ nghệ thuật đảo ngược bài toán (Inversion) để triệt tiêu các sai lầm chết người trước khi tìm kiếm sự hoàn hảo; nhìn thấu dây chuyền hệ quả bậc 2, bậc 3.",
+      "core_idea": "Tránh sự ngu xuẩn dễ hơn cố gắng tìm kiếm sự kiệt xuất. Tất cả những gì Charlie Munger muốn biết là nơi ông sẽ chết để ông không bao giờ đến đó. Mọi quyết định đều có hệ quả bậc 1 (ngọt ngào) và hệ quả bậc 2 (cay đắng).",
       "read": [
         {
-          "label": "9 Chế độ — Inversion",
-          "page": "2_9_che_do_tu_duy"
+          "label": "9 Chế độ Tư duy — Inversion & Second-order Thinking",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Biên an toàn & Nghịch lý đòn bẩy",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Tư duy Đảo ngược (Inversion Thinking)",
+          "summary": "Lời khuyên của nhà toán học Carl Jacobi: 'Invert, always invert' (Đảo ngược, luôn luôn đảo ngược). Thay vì hỏi làm sao để thành công/hạnh phúc, hãy hỏi: 'Những hành vi nào chắc chắn sẽ hủy hoại hôn nhân, sức khỏe hoặc tài chính của tôi?' Sau đó lập danh sách và triệt tiêu từng cái một.",
+          "good_example": "Muốn nuôi dạy một đứa trẻ tự lập, hãy hỏi: 'Làm thế nào để biến con thành kẻ ỷ lại, bất tài và ích kỷ?' Đáp án: Bao bọc từng bước, làm hộ mọi việc vặt, đáp ứng 100% đòi hỏi vật chất ngay lập tức, và không bao giờ để con nếm trải thất bại nhỏ. Nhìn thấy danh sách này, bố mẹ lập tức dừng ngay các hành vi đó.",
+          "bad_example": "Chỉ đọc sách về 10 bí quyết làm giàu và làm theo mà không để ý 3 lỗi cơ bản làm doanh nghiệp phá sản (mất thanh khoản, nợ vay vượt mức chịu đựng, gian lận kế toán).",
+          "boundary": "Inversion giúp phòng thủ và tránh thua lỗ cực tốt, nhưng để tạo ra đột phá sáng tạo nghệ thuật hoặc tầm nhìn đột phá vẫn cần kết hợp tư duy xuôi (Forward Thinking).",
+          "lattice_link": "Model #02 (Inversion), Model #21 (Via Negativa) và Model #07 (Margin of Safety)."
+        },
+        {
+          "name": "Hậu Quả Bậc 2 & Bậc 3 (Second-order Thinking)",
+          "summary": "Người tư duy bậc 1 chỉ nhìn thấy hệ quả ngay trước mắt: 'Điều này có cảm giác tốt ngay bây giờ không?'. Người tư duy bậc 2 tự hỏi: 'Và rồi điều gì sẽ xảy ra sau 6 tháng, 2 năm nữa?'. Thường những thứ ngọt ngào ở bậc 1 sẽ sinh ra chất độc ở bậc 2, và ngược lại.",
+          "good_example": "Tập thể dục cường độ cao: Bậc 1 là mệt mỏi, đau nhức cơ bắp (tiêu cực); Bậc 2 là tim mạch khỏe, chuyển hóa tốt, năng lượng tràn trề trong cả năm (tích cực).",
+          "bad_example": "Cho con dán mắt vào iPad để con ngồi im cho người lớn ăn cơm: Bậc 1 là nhà cửa yên tĩnh ngay lập tức (tích cực); Bậc 2 là con suy giảm khả năng tập trung sâu, phụ thuộc dopamine số, ăn vạ mỗi khi bị tịch thu máy (tiêu cực).",
+          "boundary": "Khi suy luận đến bậc 4-5, mức độ bất định tăng theo cấp số nhân (hỗn loạn), chỉ nên tập trung tính toán chắc chắn đến bậc 2 và bậc 3.",
+          "lattice_link": "Model #04 (Second-order Effects) và Model #51 (Tragedy of the Commons)."
+        }
+      ],
+      "case_study": {
+        "title": "Vay Đòn Bẩy Mua Đất / Xe Sang: Hào Nhoáng Bậc 1 Hay Cơn Ác Mộng Bậc 2?",
+        "context": "Gia đình anh Nam có thu nhập ổn định 80 triệu/tháng và tích lũy được 1.2 tỷ gửi ngân hàng. Cơn sốt đất nền vùng ven đang nóng, một người bạn môi giới rủ anh vay ngân hàng thêm 2.5 tỷ (lãi suất ưu đãi 7.5% năm đầu, thả nổi sau đó) để ôm lô đất 3.7 tỷ, cam kết sau 18 tháng bán chênh ít nhất 1 tỷ. Vợ anh Nam cũng muốn đổi xe ô tô mới từ dòng xe phổ thông lên dòng xe sang 1.8 tỷ để 'tiện gặp gỡ đối tác làm ăn'.",
+        "decision_question": "Gia đình có nên tận dụng đòn bẩy tài chính để thực hiện thương vụ này ngay bây giờ không?",
+        "facts": [
+          "Khoản vay 2.5 tỷ trong 15 năm với lãi suất thả nổi 12% sẽ đòi hỏi tiền trả gốc + lãi khoảng 32-35 triệu/tháng.",
+          "Chi phí nuôi xe sang (bảo hiểm, khấu hao, bảo dưỡng, xăng xe) tốn trung bình 12-15 triệu/tháng, gấp 3 lần xe phổ thông hiện tại.",
+          "Tổng nghĩa vụ tài chính cố định mới: 35tr (tiền đất) + 15tr (xe) + 30tr (sinh hoạt phí gia đình) = 80 triệu/tháng -> Chiếm 100% tổng thu nhập hàng tháng."
+        ],
+        "noise": [
+          "'Giá đất Việt Nam chỉ có tăng chứ không bao giờ giảm' (Niềm tin ảo tưởng dựa trên chu kỳ tăng giá trong quá khứ).",
+          "'Đi xe sang thì đối tác mới tin tưởng ký hợp đồng lớn' (Bẫy phóng chiếu vị thế xã hội).",
+          "'Nếu không mua ngay hôm nay thì ngày mai người khác mua mất' (Tâm lý sợ bỏ lỡ FOMO)."
+        ],
+        "framework_application": "Áp dụng Kỹ thuật Premortem (Tiên đoán thất bại) & Lăng kính Hậu quả bậc 2:\nGiả định sau 18 tháng, gia đình anh Nam chính thức vỡ nợ. Những nguyên nhân chết người nào đã xảy ra?",
+        "exemplar_analysis": "Phân tích bậc 2 & 3 của kịch bản xấu:\n- Bậc 1 (Tháng 1-6): Hãnh diện vì sở hữu lô đất to và xe sang xịn xò. Mọi người trầm trồ khen ngợi.\n- Bậc 2 (Tháng 7-18): Thị trường bất động sản đóng băng thanh khoản, không ai mua lại. Lãi suất hết ưu đãi vọt lên 13.5%. Tiền trả ngân hàng tăng lên 40 triệu/tháng. Công ty anh Nam chậm lương 2 tháng do suy thoái. Toàn bộ quỹ dự phòng 1.2 tỷ đã cạn sạch vì dồn vào cọc đất và mua xe.\n- Bậc 3 (Tháng 19 trở đi): Gia đình cắt giảm tiền học của con, vợ chồng lục đục cãi vã triền miên vì áp lực nợ nần. Ngân hàng gửi trát siết nợ, bị ép bán tháo lô đất cắt lỗ 30% ngay đáy thị trường -> Mất trắng 1.2 tỷ vốn tích lũy 10 năm.",
+        "action_plan": "Hủy bỏ kế hoạch vay mua đất lướt sóng và hoãn việc đổi xe sang. Giữ vững 'Biên an toàn' (Margin of Safety): Giới hạn tổng nghĩa vụ nợ không bao giờ vượt quá 30% thu nhập thực tế.",
+        "common_traps": [
+          "Bẫy lạc quan bậc 1 (First-order bias): Chỉ nhìn vào lợi nhuận kỳ vọng khi thị trường đi lên mà không có kịch bản sống sót khi thị trường đi ngang hoặc sụp đổ.",
+          "Bẫy mong manh tài chính: Tự tước bỏ khả năng hấp thụ cú sốc bằng việc đẩy tỷ lệ đòn bẩy lên kịch trần."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Lấy quyết định bạn sắp làm. Viết Premortem: 'Đã thất bại sau 6 tháng — liệt kê 5 nguyên nhân'. Với mỗi nguyên nhân, ghi hậu quả bậc 2.",
-        "success_criteria": "≥5 nguyên nhân thất bại + ít nhất 3 hậu quả bậc 2."
+        "prompt": "Hãy chọn một kế hoạch hoặc quyết định lớn mà bạn sắp triển khai trong 3 tháng tới. Hãy tiến hành một bài tập PREMORTEM chi tiết:\n1. Giả định hôm nay là thời điểm 1 năm sau: Kế hoạch của bạn đã THẤT BẠI HOÀN TOÀN và gây ra tổn thất nặng nề.\n2. Liệt kê chính xác 5 nguyên nhân gốc rễ cụ thể đã dẫn tới thảm họa này.\n3. Phân tích ít nhất 3 chuỗi Hậu quả bậc 2 và bậc 3 của sự thất bại đó đối với gia đình/sự nghiệp.\n4. Đưa ra 3 quy tắc phòng ngừa (Safety Checks) để đảm bảo kịch bản xấu này không thể xảy ra.",
+        "checklist": [
+          "Đã thực sự đặt tâm thế vào kịch bản dự án ĐÃ THẤT BẠI (không nói chung chung)",
+          "Chỉ ra đủ 5 nguyên nhân thất bại cụ thể và thực tế",
+          "Mô tả rõ ràng ít nhất 3 hậu quả bậc 2, bậc 3 kéo theo",
+          "Thiết lập các chốt chặn an toàn (Margin of Safety) có thể đo lường"
+        ],
+        "bad_example": "Kế hoạch mở tiệm bánh. Thất bại vì: Không có khách, hết tiền, nhân viên nghỉ việc, Covid quay lại, thời tiết xấu. Hậu quả là tôi bị mất tiền và buồn bã. Biện pháp: Phải cố gắng quảng cáo nhiều hơn.",
+        "good_example": "Kế hoạch: Chuyển việc từ công ty đa quốc gia ổn định sang một Startup công nghệ giai đoạn hạt giống.\n1. Giả định 1 năm sau thất bại: Startup hết vốn vòng Series A và đóng cửa, tôi thất nghiệp.\n2. 5 Nguyên nhân thất bại: (a) Đánh giá quá cao năng lực tài chính của Founder; (b) Sản phẩm không đạt Product-Market Fit nhưng chi quá nhiều tiền cho marketing rỗng; (c) Không có thỏa thuận văn bản rõ ràng về cổ phần ESOP; (d) Bản thân bị burn-out do làm việc 14 tiếng/ngày nhưng không có quy trình; (e) Bỏ bê gia đình khiến áp lực tâm lý đè nặng.\n3. Hậu quả bậc 2 & 3: (a) Thu nhập gián đoạn 6 tháng làm tiêu lẹm 60% quỹ tiết kiệm khẩn cấp; (b) Mất vị thế trên thị trường chuyên môn vì nhảy việc ngắn hạn (<1 năm); (c) Mối quan hệ vợ chồng căng thẳng do bất an tài chính.\n4. 3 Chốt chặn an toàn: (a) Yêu cầu chứng minh Runway tiền mặt của Startup tối thiểu 18 tháng trước khi nhận lời; (b) Đảm bảo quỹ khẩn cấp gia đình đủ chi tiêu 9 tháng độc lập; (c) Ký hợp đồng lao động có điều khoản đền bù bảo vệ rõ ràng."
       },
       "quiz": [
         {
-          "q": "Premortem là gì?",
+          "q": "Tư duy Đảo ngược (Inversion) được tóm gọn qua câu nói nổi tiếng nào của Charlie Munger?",
           "options": [
-            "Giả định dự án đã thất bại rồi tìm nguyên nhân",
-            "Tối ưu KPI sau khi thành công",
-            "Brainstorm ý tưởng mới",
-            "Bỏ qua rủi ro để giữ morale"
+            "Tất cả những gì tôi muốn biết là nơi tôi sẽ chết, để tôi không bao giờ đến đó",
+            "Hãy tham lam khi người khác sợ hãi",
+            "Cứ tiến về phía trước và đập vỡ mọi rào cản",
+            "Nếu bạn muốn thành công, hãy bắt chước người thành công nhất"
           ],
           "answer": 0,
-          "explain": "Premortem = inversion áp dụng vào kế hoạch trước khi triển khai."
+          "explain": "Munger luôn tìm cách tránh thất bại và sự ngu xuẩn trước tiên, vì tránh ngu xuẩn dễ hơn và chắc chắn hơn nhiều so với việc cố gắng làm điều siêu phàm.",
+          "trap_analysis": "Mọi người hay nhầm câu của Warren Buffett ('Tham lam khi người khác sợ hãi') với triết lý Inversion cốt lõi của Munger."
+        },
+        {
+          "q": "Dấu hiệu rõ nhất của việc mắc bẫy 'Tư duy bậc 1' (First-order thinking) là gì?",
+          "options": [
+            "Chỉ đánh giá hành động dựa trên kết quả sướng/khổ trước mắt mà bỏ qua hệ quả dây chuyền sau đó",
+            "Suy nghĩ quá nhiều kịch bản phức tạp",
+            "Luôn đòi hỏi số liệu thống kê trước khi làm",
+            "Không tin vào lời khuyên của người đi trước"
+          ],
+          "answer": 0,
+          "explain": "Tư duy bậc 1 chỉ thấy phần thưởng tức thời (như ăn đồ ngọt, vay nợ tiêu dùng, nuông chiều con vô lối) mà mù quáng trước cái giá đắt đỏ ở bậc 2 và 3.",
+          "trap_analysis": "Rất nhiều người lầm tưởng tư duy bậc 1 là 'quyết đoán, hành động nhanh', trong khi thực chất là nông cạn."
+        },
+        {
+          "q": "Tại sao bài tập 'Premortem' lại hiệu quả hơn nhiều so với bài tập 'Post-mortem' truyền thống?",
+          "options": [
+            "Vì nó kích hoạt tâm lý phản biện trung thực trước khi sự việc xảy ra, giúp sửa sai khi còn cơ hội",
+            "Vì nó giúp tìm người để quy trách nhiệm kỷ luật",
+            "Vì nó luôn vẽ ra viễn cảnh thành công rực rỡ để nâng cao tinh thần đội ngũ",
+            "Vì nó không cần dùng đến dữ liệu thực tế"
+          ],
+          "answer": 0,
+          "explain": "Post-mortem là mổ xẻ sau khi đã chết (không cứu được nữa). Premortem giải phóng mọi người khỏi áp lực phải tỏ ra lạc quan mù quáng để dũng cảm chỉ ra các lỗ hổng chí mạng.",
+          "trap_analysis": "Nhiều tổ chức sợ Premortem vì nghĩ nó làm 'mất nhuệ khí' (bẫy Groupthink)."
         }
       ],
-      "estimated_minutes": 35
+      "estimated_minutes": 45
     },
     {
       "week": 3,
       "title": "Bayesian & Base Rate",
       "theme": "foundation",
-      "goal": "Cập nhật niềm tin theo bằng chứng; không quên tỷ lệ nền.",
-      "core_idea": "Niềm tin là xác suất, không phải nhị phân đúng/sai. Base rate trước, câu chuyện sau.",
+      "goal": "Xem niềm tin là một phân phối xác suất cần liên tục cập nhật theo dữ liệu mới; làm chủ Tỷ lệ nền (Base Rate) để không bị đánh lừa bởi những câu chuyện hào nhoáng.",
+      "core_idea": "Đừng hỏi 'Ý kiến này đúng hay sai?'. Hãy hỏi: 'Xác suất đúng là bao nhiêu phần trăm, và bằng chứng mới này thay đổi xác suất đó như thế nào?'. Khi câu chuyện mâu thuẫn với Tỷ lệ nền, hãy đặt cược vào Tỷ lệ nền.",
       "read": [
         {
-          "label": "9 Chế độ — Bayesian",
-          "page": "2_9_che_do_tu_duy"
-        }
-      ],
-      "systems_concepts": [],
-      "uncertainty_tools": [],
-      "ai_drills": [],
-      "exercise": {
-        "prompt": "Một niềm tin bạn đang giữ mạnh. Ghi: Prior (0–100%), bằng chứng mới tuần này, Posterior sau cập nhật, và base rate liên quan (nếu có).",
-        "success_criteria": "Có prior, evidence, posterior số hóa."
-      },
-      "quiz": [
-        {
-          "q": "Base rate fallacy là gì?",
-          "options": [
-            "Bỏ qua tỷ lệ nền, chỉ tin câu chuyện cụ thể",
-            "Tin quá nhiều vào thống kê",
-            "Luôn lấy trung bình",
-            "Không bao giờ đổi ý"
-          ],
-          "answer": 0,
-          "explain": "Bẫy phổ biến: case sinh động át tỷ lệ nền."
-        }
-      ],
-      "estimated_minutes": 40
-    },
-    {
-      "week": 4,
-      "title": "Latticework — nối model",
-      "theme": "foundation",
-      "goal": "Không học model rời; luyện kết lưới 2–3 model lên một vấn đề.",
-      "core_idea": "Hiểu biết đa ngành tạo lợi thế không sao chép được bằng một chuyên môn hẹp.",
-      "read": [
-        {
-          "label": "88 Mô hình Hạt nhân",
-          "page": "3_88_mo_hinh"
+          "label": "9 Chế độ Tư duy — Bayesian Probability & Updating",
+          "page": "pages/2_9_che_do_tu_duy.py"
         },
         {
-          "label": "Thư viện nguyên lý",
-          "page": "4_thu_vien_nguyen_ly"
+          "label": "88 Mô hình Hạt nhân — Luật số lớn & Hiệu chuẩn nhận thức",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Tư Duy Xác Suất Bayes (Bayesian Updating)",
+          "summary": "Mô hình toán học của Thomas Bayes: Bắt đầu bằng một niềm tin ban đầu (Prior Probability), khi tiếp nhận bằng chứng mới (New Evidence), ta nhân với mức độ đáng tin cậy của bằng chứng (Likelihood) để ra niềm tin cập nhật (Posterior Probability). Người có tư duy Bayes không bao giờ cố chấp giữ định kiến khi sự thật thay đổi.",
+          "good_example": "Khi John Maynard Keynes bị chỉ trích vì thay đổi quan điểm kinh tế, ông đáp: 'Khi sự thật thay đổi, tôi thay đổi suy nghĩ của mình. Còn ngài thì làm gì, thưa ngài?'.",
+          "bad_example": "Mua một mã cổ phiếu vì tin doanh nghiệp tốt, dù công ty liên tục thua lỗ, ban giám đốc gian lận số liệu nhưng vẫn ôm khư khư vì 'mình không thể nhìn nhận sai được' (Bẫy Ego + Sunk Cost).",
+          "boundary": "Khi đối diện với các giá trị đạo đức cốt lõi (sự trung thực, lòng trắc ẩn, tình yêu gia đình), chúng ta không biến chúng thành các con số xác suất để mặc cả.",
+          "lattice_link": "Model #03 (Bayesian Thinking), Model #10 (Regression to the Mean) và Model #31 (Overconfidence Bias)."
+        },
+        {
+          "name": "Tỷ Lệ Nền (Base Rate Neglect Fallacy)",
+          "summary": "Base Rate là tỷ lệ thống kê khách quan của một hiện tượng trong toàn bộ tổng thể trước khi xem xét trường hợp cụ thể. Não người có xu hướng bỏ qua Base Rate để tin vào những câu chuyện kể sinh động, chi tiết (Narrative Fallacy).",
+          "good_example": "Khi mở nhà hàng: Nhớ rằng Base Rate là 80% nhà hàng đóng cửa trong năm đầu. Người khôn ngoan sẽ chuẩn bị đủ vốn lưu động cho 18 tháng và thiết kế chi phí cố định cực thấp để sống sót qua tỷ lệ nền khắc nghiệt.",
+          "bad_example": "Nghe bạn bè kể về một người bỏ học đại học trở thành tỷ phú công nghệ, liền tin rằng bỏ học là con đường tắt để giàu có (quên rằng Base Rate người bỏ học thất nghiệp cao gấp hàng chục lần).",
+          "boundary": "Base rate áp dụng cho các hệ thống có tính lặp lại (kinh doanh, y tế, đầu tư). Không áp dụng tuyệt đối cho những sự kiện mang tính cách mạng tiền lệ duy nhất (Singularity).",
+          "lattice_link": "Model #33 (Availability Heuristic) và Model #35 (Survivorship Bias)."
+        }
+      ],
+      "case_study": {
+        "title": "Góp Vốn Mở Quán Cà Phê Cùng Bạn Thân: Câu Chuyện Triệu Đô Vs Tỷ Lệ Nền Lạnh Lùng",
+        "context": "Một người bạn thân đại học rất tài năng và nhiệt huyết đến gặp bạn, rủ góp 400 triệu để cùng mở một quán cà phê 'concept chữa lành & làm việc độc lạ' tại một khu đô thị mới. Bạn thân đưa ra bản kế hoạch kinh doanh tuyệt đẹp, dự báo dòng tiền hoàn vốn sau đúng 7 tháng và tỷ suất sinh lời 35%/năm. Bạn thân nói: 'Tao nghiên cứu kỹ lắm rồi, quanh đấy chưa ai làm concept này, mình đi đầu là ăn chắc!'. Bạn rất quý người bạn này và thấy ý tưởng vô cùng thuyết phục.",
+        "decision_question": "Bạn nên định giá xác suất thành công thực tế của thương vụ này là bao nhiêu trước khi ký hợp đồng chuyển tiền?",
+        "facts": [
+          "Tỷ lệ nền (Base Rate) ngành F&B tại Việt Nam: Khoảng 75-80% quán cà phê giải thể hoặc sang nhượng trong vòng 12-18 tháng đầu. Trong số sống sót, tỷ suất lợi nhuận trung bình thực tế chỉ dao động từ 10-15%.",
+          "Năng lực người vận hành: Người bạn này xuất thân từ ngành Thiết kế/Marketing, chưa từng quản lý vận hành dòng tiền F&B, chưa từng quản lý nhân sự ca kíp hay kiểm soát hao hụt nguyên vật liệu.",
+          "Chi phí cố định: Mặt bằng thuê dài hạn 35 triệu/tháng cọc 3 tháng, tiền decor ban đầu 600 triệu là chi phí chìm không thể thu hồi nếu đóng cửa."
+        ],
+        "noise": [
+          "'Ý tưởng concept này chưa ai có, mình là người tiên phong' (Nhiễu: Chưa ai làm thường vì thị trường ở đó không đủ nhu cầu, chứ không phải vì họ không nghĩ ra).",
+          "'Bạn thân thông minh và sống tử tế như thế chắc chắn sẽ làm việc hết mình' (Nhầm lẫn giữa phẩm chất đạo đức tốt với năng lực quản trị rủi ro kinh doanh).",
+          "'Nếu không làm ngay bây giờ thì lỡ mất cơ hội vàng' (Áp lực nhân tạo)."
+        ],
+        "framework_application": "Quy trình Cập nhật Bayesian 3 bước:\n- Bước 1 (Prior): Bắt đầu từ Base Rate ngành F&B -> Xác suất thành công ban đầu P(Thành công) = 20%.\n- Bước 2 (Evidence Evaluation): Đánh giá bằng chứng mới.\n  + Điểm cộng: Ý tưởng decor bắt mắt (+5%).\n  + Điểm trừ: Chưa có kinh nghiệm vận hành thực chiến (-10%), chi phí thuê cao (-5%).\n- Bước 3 (Posterior): Cập nhật xác suất thực tế P(Thành công | Evidence) = 20% + 5% - 10% - 5% = 10%.",
+        "exemplar_analysis": "Một thương vụ có xác suất mất vốn đến 90% là một ván cược cực kỳ bất đối xứng theo chiều tiêu cực (Negative Asymmetry). Người tinh hoa không đánh cược 400 triệu mồ hôi nước mắt vào một ván bài có xác suất thắng 10% chỉ vì nể bạn bè.\nCách xử lý khôn ngoan của Elite:\n1. Từ chối góp vốn cổ phần, giải thích chân thành dựa trên phân tích rủi ro tài chính và bảo vệ tình bạn.\n2. Đề xuất phương án hỗ trợ không rủi ro: Giúp bạn review hợp đồng thuê nhà, làm khách hàng thân thiết, hoặc giới thiệu bạn bè đến ủng hộ ngày khai trương.\n3. Nếu bạn vẫn quyết tâm làm, khuyên bạn giảm quy mô thử nghiệm (Pop-up stall) với chi phí 50 triệu thay vì ném 1 tỷ vào mở quán to.",
+        "action_plan": "Giữ vững 400 triệu trong tài khoản an toàn; gửi cho bạn bản phân tích chi phí vận hành điểm hòa vốn để bạn tự đánh giá lại rủi ro.",
+        "common_traps": [
+          "Bẫy bỏ qua tỷ lệ nền (Base Rate Neglect): Tin rằng 'mình và bạn mình đặc biệt hơn 80% người thất bại ngoài kia'.",
+          "Bẫy câu chuyện truyền cảm hứng (Narrative Fallacy): Bị mê hoặc bởi một bài thuyết trình slide đẹp mắt và cảm xúc hừng hực."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Chọn 1 vấn đề. Áp dụng đúng 3 model khác trụ (vd: Opportunity Cost + Feedback Loop + Margin of Safety). Viết mỗi model 3–5 câu.",
-        "success_criteria": "3 model khác domain, có kết luận hành động."
+        "prompt": "Chọn một nhận định quan trọng trong đầu tư, công việc hoặc định kiến cá nhân mà bạn đang tin tưởng mạnh mẽ. Hãy áp dụng tư duy xác suất Bayes để kiểm định:\n1. Tuyên bố nhận định của bạn là gì? Gán cho nó một xác suất ban đầu (Prior: từ 0% đến 100%).\n2. Tìm kiếm Tỷ lệ nền (Base Rate) khách quan trong ngành/lĩnh vực đó.\n3. Liệt kê 2 Bằng chứng mới mâu thuẫn hoặc thách thức nhận định này.\n4. Cập nhật lại niềm tin của bạn thành con số xác suất mới (Posterior).\n5. Bạn sẽ thay đổi hành động gì sau khi cập nhật xác suất?",
+        "checklist": [
+          "Có số hóa rõ ràng niềm tin ban đầu (Prior) bằng phần trăm (%)",
+          "Tìm được Base rate thống kê thực tế, không bịa đặt",
+          "Chỉ ra được bằng chứng khách quan làm thay đổi tỷ lệ",
+          "Đưa ra con số Posterior mới và hành vi thích ứng cụ thể"
+        ],
+        "bad_example": "Tôi tin rằng đầu tư chứng khoán sẽ giúp tôi đổi đời. Prior: 100%. Base rate: Nhiều người giàu vì chứng khoán. Bằng chứng: Thị trường dạo này đang giảm. Posterior: 80%. Tôi sẽ tiếp tục mua thêm.",
+        "good_example": "Nhận định: 'Tôi có thể vừa làm công việc toàn thời gian, vừa kinh doanh bán hàng online đạt doanh thu 50 triệu/tháng sau 3 tháng'.\n1. Prior ban đầu: 75% (rất tự tin vì thấy nhiều bạn trên TikTok khoe đơn).\n2. Tỷ lệ nền (Base Rate): Báo cáo Hiệp hội Thương mại Điện tử cho thấy chỉ có khoảng 4% người bán hàng cá nhân tay ngang đạt mốc lợi nhuận trên 20 triệu/tháng và duy trì được sau 6 tháng.\n3. 2 Bằng chứng mới: (a) Sau 2 tuần chạy thử, thời gian xử lý đơn, đóng hàng và trả lời khách tốn 5 tiếng/ngày, khiến công việc chính bị sụt giảm hiệu suất và tôi kiệt sức; (b) Chi phí quảng cáo Facebook/TikTok tăng 40% làm tỷ suất lợi nhuận ròng teo tóp chỉ còn 8%.\n4. Posterior sau cập nhật: 15%.\n5. Hành động điều chỉnh: Dừng việc tự làm tất cả; chuyển sang hợp tác với một đối tác lo khâu kho vận, hoặc chỉ tập trung làm Affiliate marketing để không phải ôm hàng."
       },
       "quiz": [
         {
-          "q": "Latticework of mental models nhấn mạnh điều gì?",
+          "q": "Bản chất của tư duy Bayesian trong việc ra quyết định là gì?",
           "options": [
-            "Nối nhiều model đa ngành thành lưới",
-            "Thuộc lòng 1 framework duy nhất",
-            "Chỉ dùng toán",
-            "Tránh mô hình để giữ trực giác"
+            "Coi mọi niềm tin là xác suất và liên tục hiệu chuẩn lại khi có bằng chứng mới",
+            "Tuyệt đối trung thành với nhận định ban đầu của mình",
+            "Chỉ tin vào những điều đã được chứng minh đúng 100%",
+            "Bỏ qua mọi trực giác cá nhân và chỉ làm theo máy tính"
           ],
           "answer": 0,
-          "explain": "Munger: đa model > một dual chuyên sâu mù."
+          "explain": "Tư duy Bayesian là sự khiêm nhường trí tuệ: Không có gì là tuyệt đối 0% hay 100%, tất cả là mức độ tin cậy được cập nhật liên tục theo thực tế.",
+          "trap_analysis": "Người có tôi quá lớn thường coi việc 'đổi ý' là yếu đuối, trong khi người tinh hoa coi đổi ý khi có dữ liệu mới là đỉnh cao của sự thông thái."
+        },
+        {
+          "q": "Một bác sĩ chẩn đoán một căn bệnh hiếm gặp có tỷ lệ mắc trong dân số là 1/10,000 (0.01%). Xét nghiệm có độ chính xác 99%. Một người có kết quả Dương tính. Xác suất thực tế người này mắc bệnh là khoảng bao nhiêu?",
+          "options": [
+            "Chỉ khoảng 1% (vì bệnh quá hiếm, số ca dương tính giả trong 9,999 người lành vẫn lấn át ca bệnh thật)",
+            "Chắc chắn 99% vì độ chính xác xét nghiệm là 99%",
+            "Chính xác 50/50",
+            "Khoảng 90%"
+          ],
+          "answer": 0,
+          "explain": "Đây là bài toán kinh điển về Base Rate Neglect: Trong 10,000 người, chỉ có 1 người bệnh (dương tính thật), nhưng có khoảng 100 người lành bị dương tính giả (1% của 9,999). Vậy tỷ lệ người có kết quả dương tính thực sự mắc bệnh chỉ là 1/(1 + 100) ≈ 1%.",
+          "trap_analysis": "95% người bình thường (và thậm chí nhiều bác sĩ) chọn ngay 99% vì bị bẫy bởi con số độ chính xác của xét nghiệm mà quên tỷ lệ nền cực thấp của căn bệnh."
+        },
+        {
+          "q": "Khi một người đưa ra nhận định mang tính khẳng định 'Chắc chắn 100% việc này sẽ thành công', người có tư duy tinh hoa sẽ phản ứng thế nào?",
+          "options": [
+            "Nhận diện ngay đây là dấu hiệu của sự tự tin thái quá (Overconfidence Bias) và thiếu hiểu biết về xác suất",
+            "Ngưỡng mộ sự tự tin và lập tức làm theo",
+            "Cho rằng người đó có thông tin mật nội bộ chính xác",
+            "Nghĩ rằng người đó có năng lực siêu phàm"
+          ],
+          "answer": 0,
+          "explain": "Trong thế giới thực đầy tính bất định (Complex Adaptive System), không có bất kỳ kế hoạch nào đạt xác suất thành công 100%. Tuyên bố 100% chỉ chứng tỏ người nói chưa tính đến các rủi ro đuôi (Tail Risk).",
+          "trap_analysis": "Đám đông thường bị thu hút bởi sự quả quyết, nhưng trong đầu tư và chiến lược, kẻ quả quyết 100% thường là kẻ phá sản đầu tiên."
         }
       ],
       "estimated_minutes": 45
+    },
+    {
+      "week": 4,
+      "title": "Latticework — Mạng Lưới Mô Hình Đa Ngành",
+      "theme": "foundation",
+      "goal": "Thoát khỏi hội chứng 'Người cầm búa'; thành thạo việc kết nối 2–3 mô hình tư duy từ các ngành khoa học khác nhau lên cùng một vấn đề để tạo hiệu ứng cộng hưởng Lollapalooza.",
+      "core_idea": "Bạn không thể giải quyết một bài toán phức tạp bằng một công cụ đơn lẻ. Nếu công cụ duy nhất bạn có là cây búa, bạn sẽ nhìn mọi thứ như chiếc đinh. Trí tuệ đích thực là một mạng lưới các mô hình tư duy đa ngành treo các trải nghiệm thực tế lên đó.",
+      "read": [
+        {
+          "label": "Trang Home — 4 Nguyên Tắc Vàng Khi Rèn Luyện",
+          "page": "app"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — 6 Trụ Cột Charlie Munger",
+          "page": "pages/3_88_mo_hinh.py"
+        },
+        {
+          "label": "Thư viện Nguyên lý — Các Định luật Khoa học Bất biến",
+          "page": "pages/4_thu_vien_nguyen_ly.py"
+        }
+      ],
+      "concept_deep_dive": [
+        {
+          "name": "Hội Chứng Người Cầm Búa (Man with a Hammer Syndrome)",
+          "summary": "Mô tả của Charlie Munger về các chuyên gia có góc nhìn đường hầm (tunnel vision): Một chuyên gia kinh tế chỉ nhìn vấn đề qua tiền bạc; một luật sư chỉ nhìn qua kiện tụng; một bác sĩ phẫu thuật chỉ muốn mổ. Họ cố gắng bóp méo thực tế để vừa vặn với công cụ duy nhất mà họ thành thạo.",
+          "good_example": "Khi xem xét nguyên nhân một đứa trẻ không chịu học: Thay vì chỉ kết luận 'con lười' (đạo đức), người tinh hoa phân tích: Thiếu ngủ (Sinh học), Sợ thất bại bị chê cười (Tâm lý học), Bài giảng thiết kế nhàm chán (Sư phạm), và Không có phần thưởng xứng đáng (Kinh tế học hành vi).",
+          "bad_example": "Doanh số công ty sụt giảm liền vội vã đổ thêm tiền chạy quảng cáo Facebook (công cụ quen thuộc) trong khi nguyên nhân gốc là chất lượng sản phẩm kém và dịch vụ chăm sóc khách hàng tệ hại.",
+          "boundary": "Trong một số tác vụ mang tính kỹ thuật hẹp (như viết một thuật toán sắp xếp cụ thể), chuyên môn sâu đơn ngành là cần thiết.",
+          "lattice_link": "Model #32 (Man with a Hammer), Model #48 (Deformation Professionnelle) và Model #01 (Latticework)."
+        },
+        {
+          "name": "Hiệu Ứng Lollapalooza (Cộng Hưởng Đa Mô Hình)",
+          "summary": "Thuật ngữ do Charlie Munger đặt ra: Khi 3, 4 mô hình hoặc động lực tâm lý cùng kéo về một hướng, chúng không chỉ cộng lại $(1+1+1=3)$ mà sẽ nhân lên theo cấp số nhân tạo thành một lực đẩy khổng lồ bẻ cong hành vi con người (cả theo hướng cực kỳ tích cực hoặc cực kỳ thảm họa).",
+          "good_example": "Mô hình kinh doanh của Costco hoặc Berkshire Hathaway: Kết hợp Lợi thế quy mô (Vật lý) + Chi phí cơ hội thấp (Kinh tế) + Văn hóa tin cậy trung thực (Tâm lý) tạo thành con hào kinh tế bất khả chiến bại.",
+          "bad_example": "Các buổi hội thảo lừa đảo đa cấp: Kết hợp Áp lực đám đông (Social Proof) + Nỗi sợ bỏ lỡ (FOMO) + Hiệu ứng khan hiếm nhân tạo + Uy tín giả mạo tạo thành cơn điên loạn khiến người tham gia rút sạch tiền gửi tiết kiệm nộp cho kẻ lừa đảo.",
+          "boundary": "Hiệu ứng Lollapalooza rất mạnh nên khó kiểm soát, cần cẩn trọng để không bị cuốn vào các cơn sốt cuồng loạn tập thể.",
+          "lattice_link": "Model #50 (Lollapalooza Effect) và Model #27 (Social Proof)."
+        }
+      ],
+      "case_study": {
+        "title": "Bế Tắc Xung Đột Con Tuổi Dậy Thì: Gỡ Rối Bằng 3 Lăng Kính (Sinh Học + Tâm Lý + Động Lực Kinh Tế)",
+        "context": "Một gia đình có con trai 15 tuổi (bước vào lớp 10). Dạo gần đây con trở nên khép kín, cộc cằn, thường xuyên cãi lại bố mẹ, mê game và lướt mạng xã hội thâu đêm, kết quả học tập sa sút nghiêm trọng. Bố mẹ đã áp dụng biện pháp kỷ luật cứng rắn nhất: Tịch thu điện thoại, cắt tiền tiêu vặt, mắng mỏ thậm tệ trước mặt người thân và cấm túc cuối tuần. Kết quả: Con đập cửa phòng, tuyệt thực, không nói chuyện với bố mẹ suốt 2 tuần, không khí gia đình ngột ngạt như hầm thuốc súng.",
+        "decision_question": "Bố mẹ nên thay đổi chiến lược tiếp cận thế nào để giải quyết bế tắc này tận gốc rễ?",
+        "facts": [
+          "Biện pháp kỷ luật cưỡng chế đơn chiều (chiếc búa quyền lực) đã hoàn toàn phản tác dụng và đẩy xung đột lên đỉnh điểm.",
+          "Sinh học thần kinh (Neuroscience): Ở tuổi 15, vùng não cảm xúc và tìm kiếm vị thế xã hội (Amygdala & Dopamine receptors) phát triển cực đại, trong khi vỏ não trước trán (Prefrontal Cortex - vùng kiểm soát xung động và tư duy hậu quả dài hạn) phải đến năm 25 tuổi mới hoàn thiện.",
+          "Thực tế tương tác: 95% lời nói của bố mẹ dành cho con trong 6 tháng qua là mệnh lệnh, chỉ trích, so sánh con với người khác hoặc phàn nàn."
+        ],
+        "noise": [
+          "'Con bây giờ hư đốn, mất dạy, đạo đức có vấn đề' (Bẫy gán nhãn đạo đức thay vì hiểu cơ chế phát triển tự nhiên).",
+          "'Ngày xưa bằng tuổi nó bố mẹ chịu khổ quen rồi, sướng quá hóa rồ' (Bẫy áp đặt trải nghiệm cá nhân lỗi thời).",
+          "'Phải dùng biện pháp mạnh hơn nữa, tịch thu máy tính luôn thì nó mới sợ' (Càng dùng búa to càng đập vỡ mối quan hệ)."
+        ],
+        "framework_application": "Kết nối Mạng lưới 3 Mô hình Đa ngành (Latticework):\n1. Mô hình Sinh học Thần kinh: Hiểu sự lệch pha phát triển não bộ tuổi dậy thì.\n2. Mô hình Tâm lý học (Psychological Reactance - Phản kháng tâm lý): Khi con người bị tước đoạt tự do đột ngột, họ sẽ khao khát hành vi bị cấm gấp đôi và nổi loạn để tái lập quyền tự chủ.\n3. Mô hình Kinh tế học (Incentive Alignment & Opportunity Cost): Game mang lại Dopamine tức thì và cảm giác được bạn bè công nhận vị thế (Incentive). Bữa cơm gia đình chỉ mang lại áp lực và chê bai. Muốn con đổi hành vi, phải đổi cấu trúc phần thưởng.",
+        "exemplar_analysis": "Giải pháp Lollapalooza tích cực của Elite:\n- Bước 1 (Khử phản kháng tâm lý): Bố mẹ chủ động xin lỗi con vì đã nóng nảy và tịch thu điện thoại bất công. Trả lại điện thoại kèm một thỏa thuận mới do hai bên cùng soạn thảo (Co-creation of Rules).\n- Bước 2 (Đồng thuận động lực - Incentive Alignment): Không cấm chơi game, nhưng gắn quyền lợi chơi game với trách nhiệm hoàn thành mục tiêu học tập và rèn luyện thể lực (Win-Win).\n- Bước 3 (Kênh xả năng lượng thay thế): Đăng ký cho con tham gia một môn thể thao đối kháng (Boxing, Bóng rổ) hoặc dự án lập trình/làm video để con thỏa mãn nhu cầu khẳng định vị thế và đốt bớt năng lượng sinh học.\n- Bước 4 (Tái lập dòng phản hồi): Mỗi tuần dành 1 buổi đi ăn riêng với con, áp dụng nguyên tắc 80/20: Bố mẹ lắng nghe 80% thời gian không phán xét, chỉ nói 20%.",
+        "action_plan": "Viết một bức thư ngắn chân thành gửi con tối nay, đề xuất một buổi đi cà phê cuối tuần để hai bố con cùng đàm phán lại luật chơi gia đình.",
+        "common_traps": [
+          "Hội chứng người cầm búa: Nghĩ rằng giải pháp duy nhất cho mọi vấn đề của con cái là 'kỷ luật thép và đòn roi'.",
+          "Bẫy quy gán nguyên nhân cơ bản (Fundamental Attribution Error): Nghĩ rằng con cãi là do bản chất con xấu, mà không thấy lỗi ở cấu trúc môi trường và cách giao tiếp của chính mình."
+        ]
+      },
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Chọn một vấn đề phức tạp và dai dẳng nhất bạn đang gặp phải. Hãy phân tích nó bằng Mạng lưới Mô hình Latticework:\n1. Gọi tên vấn đề cần giải quyết.\n2. Nhận diện 'Cây búa đơn độc' (cách giải quyết cũ đơn ngành bạn từng dùng mà thất bại).\n3. Chọn đúng 3 Mô hình tư duy từ 3 TRỤ CỘT KHÁC NHAU (ví dụ: 1 mô hình từ Vật lý, 1 mô hình từ Tâm lý học, 1 mô hình từ Kinh tế/Sinh học) để cùng mổ xẻ vấn đề.\n4. Đưa ra một giải pháp cộng hưởng (Lollapalooza Solution) từ sự giao thoa của 3 mô hình đó.",
+        "checklist": [
+          "Chọn đủ 3 mô hình từ 3 lĩnh vực khoa học khác nhau rõ rệt",
+          "Chỉ ra được chiếc búa đơn độc cũ đã thất bại ra sao",
+          "Mỗi mô hình được phân tích ứng dụng từ 3–5 câu sâu sắc",
+          "Giải pháp đề xuất có tính liên ngành và có thể hành động được ngay"
+        ],
+        "bad_example": "Vấn đề: Tôi bị béo phì. Cây búa cũ: Nhịn ăn. 3 Model: Ăn kiêng, Chạy bộ, Uống thuốc giảm cân. Giải pháp: Tôi sẽ vừa ăn kiêng vừa chạy bộ để giảm cân nhanh.",
+        "good_example": "Vấn đề: Tôi liên tục trì hoãn việc viết cuốn sách chuyên môn đầu tay suốt 2 năm qua.\n1. Cây búa cũ: Dùng 'Ý chí và sự tự kỷ luật' để ép mình ngồi vào bàn viết mỗi tối (thất bại vì ý chí là tài nguyên tiêu hao nhanh).\n2. 3 Mô hình Latticework từ 3 trụ cột khác nhau:\n- Model 1: Ma sát & Quán tính (Vật lý học): Ma sát khởi động việc viết quá lớn (mở laptop, tìm tài liệu, sợ trang giấy trắng). Cần giảm ma sát kích hoạt về gần bằng 0 (Setup sẵn bàn viết, mở sẵn file tài liệu từ tối hôm trước, mục tiêu chỉ cần viết 50 chữ đầu tiên).\n- Model 2: Lý thuyết Động lực & Tự quyết (Tâm lý học): Bộ não trì hoãn vì nỗi sợ bị chê bai khi sách xuất bản (Ego Defense). Khắc phục bằng cách coi bản thảo đầu tiên là 'bản nháp rác' (Shitty First Draft) không cho ai xem, triệt tiêu áp lực hoàn hảo.\n- Model 3: Thiết kế Khế ước Cam kết & Mất mát (Kinh tế học hành vi - Loss Aversion): Gửi 20 triệu cho một người bạn thân với thỏa thuận: Nếu mỗi tuần không nộp 3,000 chữ đúng hạn, người bạn đó sẽ chuyển 5 triệu quyên góp từ thiện. Nỗi sợ mất tiền sẽ lấn át sự lười biếng.\n3. Giải pháp Lollapalooza: Kết hợp cả 3 đòn bẩy: Giảm ma sát bàn viết + Cho phép viết bản nháp dở + Ký khế ước cam kết tiền bạc. Kết quả: Hoàn thành 3 chương đầu sau 3 tuần."
+      },
+      "quiz": [
+        {
+          "q": "Khái niệm 'Mạng lưới Mô hình Tư duy' (Latticework of Mental Models) của Charlie Munger có nghĩa là gì?",
+          "options": [
+            "Nắm vững 80-90 mô hình cốt lõi từ các ngành khoa học nền tảng và đan dệt chúng lại để nhìn nhận thực tế đa chiều",
+            "Học thuộc lòng tất cả các công thức toán học và thống kê phức tạp nhất",
+            "Chỉ tập trung trở thành chuyên gia số một trong một lĩnh vực chuyên môn hẹp",
+            "Đọc thật nhiều sách tóm tắt và mẹo vặt kinh doanh trên mạng"
+          ],
+          "answer": 0,
+          "explain": "Munger tin rằng kiến thức chuyên môn hẹp giống như một ốc đảo cô lập. Trí tuệ tinh hoa đòi hỏi phải xây dựng một mạng lưới mô hình đa ngành (Vật lý, Sinh học, Tâm lý, Kinh tế, Hệ thống) để tương tác và kiểm chứng lẫn nhau.",
+          "trap_analysis": "Nhiều người lầm tưởng 'đa ngành' là 'biết mỗi thứ một tí cưỡi ngựa xem hoa', trong khi Munger nhấn mạnh việc phải hiểu sâu sắc các NGUYÊN LÝ NỀN TẢNG (Big Ideas) của từng ngành."
+        },
+        {
+          "q": "Khi nào xảy ra 'Hiệu ứng Lollapalooza'?",
+          "options": [
+            "Khi nhiều động lực hoặc mô hình tâm lý/vật lý cùng tác động theo một hướng, tạo ra kết quả bùng nổ theo cấp số nhân",
+            "Khi một mô hình tư duy duy nhất giải quyết được tất cả mọi vấn đề",
+            "Khi hệ thống rơi vào trạng thái cân bằng tuyệt đối không thay đổi",
+            "Khi mọi người trong nhóm đều đồng thuận 100% ý kiến với nhau"
+          ],
+          "answer": 0,
+          "explain": "Lollapalooza là hiệu ứng cộng hưởng phi tuyến tính: các yếu tố tương tác với nhau tạo ra sức mạnh vượt xa tổng số học giản đơn của các phần tử riêng lẻ.",
+          "trap_analysis": "Đám đông thường tư duy tuyến tính (Linear thinking), nên luôn bất ngờ và choáng váng trước những sự kiện bùng nổ của hiệu ứng Lollapalooza."
+        },
+        {
+          "q": "Một chuyên gia tài chính luôn giải thích mọi biến động xã hội bằng 'Dòng tiền và Lãi suất' là biểu hiện của điều gì?",
+          "options": [
+            "Hội chứng 'Người cầm búa' (Man with a Hammer Syndrome)",
+            "Tư duy liên ngành đỉnh cao",
+            "Bản lĩnh nghề nghiệp kiên định",
+            "Khả năng phân tích First Principles xuất sắc"
+          ],
+          "answer": 0,
+          "explain": "Khi một người chỉ có một cây búa (chuyên môn tài chính), họ sẽ coi mọi hiện tượng xã hội, chính trị hay tâm lý đều là những chiếc đinh liên quan đến tiền tệ.",
+          "trap_analysis": "Xã hội thường ca ngợi sự 'chuyên môn hóa sâu', nhưng việc thiếu hiểu biết đa ngành sẽ biến chuyên gia thành kẻ mù lòa trước các biến cố phức hợp."
+        }
+      ],
+      "estimated_minutes": 50
     },
     {
       "week": 5,

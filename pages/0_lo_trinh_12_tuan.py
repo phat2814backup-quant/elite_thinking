@@ -91,6 +91,48 @@ if week.get("read"):
     for r in week["read"]:
         st.markdown(f"- **{r.get('label')}** _(trang: `{r.get('page', '')}`)_")
 
+# Concept deep dive
+deep_dive = week.get("concept_deep_dive")
+if deep_dive:
+    st.subheader("🔬 Đào Sâu Khái Niệm & Liên Kết Mô Hình")
+    for c in deep_dive:
+        with st.expander(f"✨ {c.get('name')}", expanded=False):
+            st.markdown(f"**Bản chất:** {c.get('summary', '')}")
+            c_g, c_b = st.columns(2)
+            with c_g:
+                st.success(f"**✅ Áp dụng đúng:**\n\n{c.get('good_example', '')}")
+            with c_b:
+                st.error(f"**❌ Áp dụng sai / Bẫy:**\n\n{c.get('bad_example', '')}")
+            if c.get("boundary"):
+                st.caption(f"**⚖️ Điều kiện biên (Khi nào KHÔNG dùng):** {c.get('boundary')}")
+            if c.get("lattice_link"):
+                st.info(f"**🕸️ Liên kết Latticework:** {c.get('lattice_link')}")
+
+# Case study
+cs = week.get("case_study")
+if cs:
+    st.subheader(f"🎯 Tình Huống Thực Chiến: {cs.get('title', '')}")
+    st.markdown(f"**Bối cảnh:** {cs.get('context', '')}")
+    st.info(f"**❓ Câu hỏi quyết định:** {cs.get('decision_question', '')}")
+
+    c_f, c_n = st.columns(2)
+    with c_f:
+        st.markdown("##### 📌 Dữ kiện cứng (Facts)")
+        for f in cs.get("facts", []):
+            st.markdown(f"- {f}")
+    with c_n:
+        st.markdown("##### 📢 Nhiễu / Cảm tính (Noise & Biases)")
+        for n in cs.get("noise", []):
+            st.markdown(f"- {n}")
+
+    with st.expander("💡 Xem Hướng Dẫn Phân Tích & Đáp Án Mẫu Của Elite", expanded=False):
+        st.markdown(f"**🔬 Ứng dụng mô hình:**\n\n{cs.get('framework_application', '')}")
+        st.markdown(f"**📋 Phân tích mẫu từng bước:**\n\n{cs.get('exemplar_analysis', '')}")
+        if cs.get("action_plan"):
+            st.success(f"**🎯 Hành động đề xuất:** {cs.get('action_plan')}")
+        if cs.get("common_traps"):
+            st.warning("**⚠️ Các bẫy tư duy phổ biến:**\n\n" + "\n".join(f"- {t}" for t in cs.get("common_traps", [])))
+
 # Systems concepts
 if week.get("systems_concepts"):
     st.subheader("🕸️ Systems concepts")
@@ -128,7 +170,22 @@ if week.get("ai_drills"):
 st.subheader("✅ Bài tập áp dụng (bắt buộc để hoàn thành tuần)")
 ex = week.get("exercise") or {}
 st.markdown(ex.get("prompt", ""))
-st.caption(f"Tiêu chí đạt: {ex.get('success_criteria', '')}")
+if ex.get("success_criteria"):
+    st.caption(f"Tiêu chí đạt: {ex.get('success_criteria')}")
+
+if ex.get("checklist"):
+    with st.expander("📋 Checklist tiêu chí tự đánh giá", expanded=False):
+        for item in ex.get("checklist", []):
+            st.markdown(f"- [ ] {item}")
+
+if ex.get("bad_example") or ex.get("good_example"):
+    with st.expander("👀 Xem ví dụ bài làm Đạt vs Chưa đạt", expanded=False):
+        if ex.get("bad_example"):
+            st.markdown("**❌ Bài làm chưa đạt (hời hợt / bắt chước):**")
+            st.info(ex.get("bad_example"))
+        if ex.get("good_example"):
+            st.markdown("**✅ Bài làm đạt chuẩn Elite (sâu sắc, có dữ kiện):**")
+            st.success(ex.get("good_example"))
 
 default_ans = wp.get("exercise_answer") or ""
 answer = st.text_area("Câu trả lời của bạn", value=default_ans, height=180, key=f"ex_{wn}")
@@ -168,6 +225,8 @@ if quiz:
                 st.error(
                     f"Câu {i+1}: Sai — Đáp án đúng: {item['options'][item['answer']]}. {item.get('explain', '')}"
                 )
+                if item.get("trap_analysis"):
+                    st.caption(f"⚠️ **Phân tích bẫy:** {item.get('trap_analysis')}")
         save_week_quiz_score(username, wn, score, len(quiz))
         st.info(f"Điểm: {score}/{len(quiz)}")
 
