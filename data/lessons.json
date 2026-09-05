@@ -934,6 +934,57 @@
       "exercise_prompt": "Lập bản đồ ma trận tương quan giữa 4 tài sản: DXY, Lợi suất US10Y, Giá Vàng và Chỉ số S&P 500.",
       "hint": "Không có tài sản tài chính nào tồn tại trên một hòn đảo cô độc. Nhìn bức tranh toàn cảnh vĩ mô để không bị lạc lối trong nến 15 phút.",
       "related_principle": "Tư duy Hệ thống trong Phân tích Liên thị trường"
+    },
+    {
+      "id": "tr_c2_04",
+      "title": "Bài 09: Đọc vị Bẫy Thanh Khoản (Liquidity Sweeps & Stop Hunts)",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "mode": "Game Theory + Inversion",
+      "related_principle": "Bất cân xứng thông tin",
+      "objective": "Hiểu cách các thuật toán Market Maker quét thanh khoản ở các vùng cản rõ ràng trước khi đẩy giá thực sự.",
+      "situation": "Giá Vàng (XAU/USD) tạo một đỉnh đôi rất đẹp tại vùng 2.650 USD. Hàng ngàn trader nhỏ lẻ đồng loạt đặt lệnh Sell Limit và để Stop Loss ngay trên mức 2.653 USD. Đến phiên Mỹ, giá bất ngờ giật mạnh lên 2.655 USD chỉ trong 3 phút rồi quay đầu lao dốc 40 giá.",
+      "guide_steps": [
+        "1. Xác định vùng mà đám đông nhỏ lẻ đặt lệnh dừng lỗ (Stop Loss) dày đặc nhất.",
+        "2. Đặt câu hỏi: Để khớp một khối lượng lệnh Mua/Bán khổng lồ, Market Maker cần thanh khoản đối ứng ở đâu?",
+        "3. Thiết kế chiến lược: Chờ đợi đợt quét thanh khoản (Sweep) hoàn tất và cấu trúc thị trường xác nhận mới mở vị thế."
+      ],
+      "hint": "Đừng bao giờ đặt Stop Loss ở nơi mà 'ai nhìn vào biểu đồ cũng thấy là cản'. Hãy đặt Stop Loss ở nơi mà luận điểm của bạn thực sự bị phá vỡ.",
+      "exercise_prompt": "Hãy phân tích tại sao việc đặt Stop Loss quá hiển nhiên theo sách giáo khoa phân tích kỹ thuật cổ điển lại là 'mồi ngon' cho các thuật toán săn thanh khoản?"
+    },
+    {
+      "id": "tr_c3_04",
+      "title": "Bài 10: Tái Cân Bằng Danh Mục Đa Tài Sản & Quản Trị Rút Vốn Sâu (Drawdown)",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Systems Thinking + Antifragility",
+      "related_principle": "Entropy & Định luật 2 Nhiệt động học",
+      "objective": "Thiết lập quy tắc tái cân bằng cơ học giữa tài sản rủi ro (BTC/Cổ phiếu) và tài sản phòng thủ (Vàng/Tiền gửi).",
+      "situation": "Sau một năm Uptrend mạnh mẽ, tỷ trọng Bitcoin trong tài khoản của bạn tăng từ 20% lên 65% tổng tài sản. Thị trường đang tràn ngập tin tức hưng phấn, nhưng bạn nhận thấy nếu BTC điều chỉnh 50%, tổng tài sản của bạn sẽ bị sụt giảm nặng nề.",
+      "guide_steps": [
+        "1. Tính toán độ lệch tỷ trọng danh mục so với kế hoạch ban đầu.",
+        "2. Áp dụng quy tắc tái cân bằng tự động không cảm xúc (Rebalancing Threshold): Chốt lời một phần BTC để đưa tỷ trọng về 25% và chuyển thặng dư sang Vàng hoặc tiền gửi an toàn.",
+        "3. Đánh giá tính Chống mong manh (Antifragility): Khi thị trường sụp đổ, bạn có nguồn tiền mặt dồi dào để gom tài sản giá rẻ."
+      ],
+      "hint": "Lợi nhuận chỉ thực sự là của bạn khi nó được bảo vệ khỏi chu kỳ sụp đổ tiếp theo của thị trường.",
+      "exercise_prompt": "Viết quy trình tái cân bằng danh mục tài sản cá nhân của bạn theo ngưỡng phần trăm định kỳ (ví dụ: mỗi khi một lớp tài sản lệch quá 10% so với mục tiêu)."
+    },
+    {
+      "id": "tr_c3_05",
+      "title": "Bài 11: Nhật Ký Giao Dịch Định Lượng & Đo Lường Sai Số Nhận Thức (Edge Tracking)",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Bayesian Updating + Empirical",
+      "related_principle": "Luật số lớn",
+      "objective": "Xây dựng hệ thống đo lường lợi thế cạnh tranh (Edge) và loại bỏ hoàn toàn cảm tính bằng dữ liệu thống kê mẫu lớn.",
+      "situation": "Một trader sau 3 lệnh thua liên tiếp bắt đầu hoài nghi phương pháp của mình, cảm thấy lo lắng và tự ý đổi sang hệ thống chỉ báo mới trên Youtube. Hai tuần sau, tài khoản tiếp tục thua lỗ nặng hơn vì phương pháp chắp vá.",
+      "guide_steps": [
+        "1. Nhận diện Luật số lớn: Một mẫu 3-5 lệnh không thể đại diện cho xác suất của một hệ sinh thái giao dịch (cần ít nhất 50-100 lệnh).",
+        "2. Ghi chép nhật ký 5 biến số: Lý do vào lệnh, Tỷ lệ R:R kế hoạch, Cảm xúc lúc bấm lệnh, R:R thực tế đạt được, Bài học sau khi đóng lệnh.",
+        "3. Cập nhật Bayes: Chỉ điều chỉnh quy tắc giao dịch khi dữ liệu thống kê trên 50 lệnh cho thấy lợi thế đã suy giảm."
+      ],
+      "hint": "Trader chuyên nghiệp là một nhà điều hành sòng bạc (Casino Operator), không phải là người chơi cờ bạc (Gambler). Sòng bạc không đổi luật chỉ vì một khách thắng 3 ván liên tiếp.",
+      "exercise_prompt": "Thiết kế một biểu mẫu ghi chép nhật ký giao dịch tối thiểu 5 trường thông tin để bảo vệ bạn khỏi hội chứng thay đổi phương pháp tùy tiện."
     }
   ],
   "ckvn": [
@@ -1098,6 +1149,57 @@
       "exercise_prompt": "Viết công thức và giải thích từng thành tố của mô hình định giá DCF cho một doanh nghiệp CKVN.",
       "hint": "Giá trị của bất kỳ tài sản tài chính nào đều bằng tổng giá trị hiện tại của toàn bộ dòng tiền mặt mà nó sinh ra trong suốt vòng đời.",
       "related_principle": "DCF & Giá trị Nội tại Doanh nghiệp"
+    },
+    {
+      "id": "ck_c1_04",
+      "title": "Bài 08: Đọc Báo Cáo Lưu Chuyển Tiền Tệ (Cash Flow Is Fact, Profit Is Opinion)",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "mode": "First Principles",
+      "related_principle": "Bảo toàn Khối lượng & Năng lượng",
+      "objective": "Phân biệt giữa lợi nhuận kế toán trên giấy và dòng tiền thực tế chảy vào tài khoản ngân hàng của doanh nghiệp.",
+      "situation": "Một công ty bất động sản niêm yết báo cáo lãi sau thuế 500 tỷ đồng, tăng trưởng 40% so với cùng kỳ. Tuy nhiên, khi nhìn vào Báo cáo Lưu chuyển Tiền tệ, dòng tiền từ hoạt động kinh doanh (CFO) lại âm 800 tỷ đồng do tiền bị chôn ở khoản phải thu và hàng tồn kho.",
+      "guide_steps": [
+        "1. Tách biệt: Lợi nhuận (Accounting Profit) là ước tính kế toán có thể điều chỉnh; Dòng tiền (Cash Flow) là sự thật vật lý không thể làm giả.",
+        "2. Kiểm tra CFO (Cash Flow from Operations): Doanh nghiệp bán được hàng nhưng có thu được tiền mặt về không?",
+        "3. Đánh giá rủi ro thanh khoản: Doanh nghiệp có phải liên tục vay nợ ngân hàng hoặc phát hành thêm cổ phiếu để bù đắp sự thiếu hụt tiền mặt không?"
+      ],
+      "hint": "Doanh nghiệp có thể tồn tại nhiều năm không có lãi, nhưng sẽ phá sản ngay lập tức nếu cạn kiệt dòng tiền mặt.",
+      "exercise_prompt": "Hãy giải thích tại sao một công ty liên tục báo lãi lớn trên báo cáo tài chính nhưng vẫn có thể rơi vào cảnh vỡ nợ trái phiếu?"
+    },
+    {
+      "id": "ck_c2_04",
+      "title": "Bài 09: Phương Pháp Wyckoff — Nhận Diện Pha Tích Lũy (Accumulation) & Phân Phối (Distribution)",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "mode": "Game Theory + Systems Thinking",
+      "related_principle": "Khối lượng Tới hạn (Critical Mass)",
+      "objective": "Làm chủ quy luật Cung - Cầu và chu kỳ 4 pha của cổ phiếu: Tích lũy - Đẩy giá - Phân phối - Đè giá.",
+      "situation": "Sau một đợt giảm 60%, một cổ phiếu đầu ngành dao động đi ngang trong biên độ hẹp suốt 6 tháng với thanh khoản cạn kiệt. Đa số nhà đầu tư nhỏ lẻ chán nản bỏ theo dõi. Đột nhiên xuất hiện một phiên rũ bỏ thủng đáy ngắn hạn (Spring) rồi giá nhanh chóng hồi phục và bùng nổ vượt cản.",
+      "guide_steps": [
+        "1. Nhận diện hành vi gom hàng: Smart Money mua dần trong sự im ắng khi thanh khoản cạn kiệt.",
+        "2. Bẫy rũ bỏ cuối cùng (Spring/Shakeout): Đạp gãy vùng hỗ trợ để kích hoạt các lệnh cắt lỗ của nhỏ lẻ, gom nốt lượng hàng trôi nổi cuối cùng.",
+        "3. Điểm vào lệnh chuẩn: Mua tại phiên Breakout có dòng tiền lớn xác nhận (Sign of Strength - SOS)."
+      ],
+      "hint": "Cổ phiếu không tự nhiên tăng giá; nó chỉ tăng khi nguồn cung trôi nổi đã được thu gom vào những bàn tay chặt chẽ của các tay chơi lớn.",
+      "exercise_prompt": "Phân tích tâm lý của nhà đầu tư nhỏ lẻ ở vùng đáy tích lũy: Tại sao họ luôn bán ra đúng phiên Spring trước khi cổ phiếu bước vào sóng tăng x2?"
+    },
+    {
+      "id": "ck_c3_04",
+      "title": "Bài 10: Xây Dựng Biên Độ An Toàn (Margin of Safety) & Luận Điểm Đảo Ngược (Pre-Mortem)",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Inversion + Margin of Safety",
+      "related_principle": "Biên độ An toàn (Margin of Safety)",
+      "objective": "Áp dụng kỹ thuật Pre-mortem của Charlie Munger để mổ xẻ rủi ro tiềm ẩn trước khi giải ngân một khoản tiền lớn.",
+      "situation": "Bạn đang rất hào hứng muốn giải ngân 30% danh mục vào một cổ phiếu ngành bán lẻ vì tin rằng sức mua tiêu dùng sẽ phục hồi mạnh mẽ trong quý tới.",
+      "guide_steps": [
+        "1. Đặt giả định Pre-mortem: 'Giả sử 1 năm nữa khoản đầu tư này bị lỗ 40%, những nguyên nhân cốt tử nào đã dẫn đến kết cục đó?'",
+        "2. Lập danh sách nguy cơ: Lạm phát kéo dài, sức mua suy yếu, đối thủ cạnh tranh mới mở chuỗi giá rẻ, chi phí mặt bằng tăng vọt.",
+        "3. Thiết lập Biên độ An toàn: Chỉ mua khi giá thị trường thấp hơn giá trị nội tại ít nhất 30% để có lớp đệm bảo vệ."
+      ],
+      "hint": "Biên độ an toàn không phải là sự đảm bảo bạn sẽ không lỗ; nó là công cụ đảm bảo bạn không bị loại khỏi cuộc chơi khi những điều bất ngờ tồi tệ xảy ra.",
+      "exercise_prompt": "Thực hành bài tập Pre-mortem: Chọn 1 cổ phiếu bạn đang nắm giữ hoặc quan tâm, viết ra 3 kịch bản xấu nhất có thể làm luận điểm đầu tư của bạn sụp đổ."
     }
   ],
   "neuroscience": [
@@ -1262,6 +1364,58 @@
       "exercise_prompt": "Mô tả một lần 'trực giác ruột' (Gut feeling) mách bảo bạn điều gì đó trước khi lý trí kịp nhận ra và cơ chế sinh học đằng sau nó.",
       "hint": "Trực giác ruột thực chất là khả năng nhận diện mẫu vô thức của bộ não thứ hai sau khi đã xử lý hàng triệu điểm dữ liệu ngầm.",
       "related_principle": "Trục Não - Ruột & Trực giác Ra quyết định"
+    },
+    {
+      "id": "ns_c1_04",
+      "title": "Bài 08: Vòng Lặp Thói Quen (Habit Loop: Cue - Craving - Response - Reward)",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "mode": "Systems Thinking + Neuroscience",
+      "related_principle": "Vòng lặp Phản hồi (Feedback Loops)",
+      "objective": "Hiểu cấu trúc 4 bước của não bộ để tự động hóa các thói quen tích cực và xóa bỏ các thói quen độc hại.",
+      "situation": "Mỗi khi cảm thấy bế tắc khi đang giải một bài toán khó hoặc viết báo cáo, bạn lại vô thức cầm điện thoại lên mở Facebook/TikTok, lướt 30 phút mà không hề hay biết.",
+      "guide_steps": [
+        "1. Nhận diện Gợi ý (Cue): Cảm giác căng thẳng/bế tắc là tín hiệu kích hoạt.",
+        "2. Nhận diện Khao khát (Craving): Não bộ thèm một liều Dopamine nhanh để trốn tránh cảm giác khó chịu.",
+        "3. Thay đổi Hành động (Response): Thay vì cầm điện thoại, đứng dậy uống 1 cốc nước hoặc hít thở sâu 5 nhịp.",
+        "4. Thiết lập Phần thưởng (Reward): Đánh dấu hoàn thành một chặng nhỏ để não bộ ghi nhận cảm giác thành tựu."
+      ],
+      "hint": "Bạn không thể xóa bỏ hoàn toàn một thói quen; bạn chỉ có thể thay thế Hành động phản ứng (Response) trong khi giữ nguyên Gợi ý (Cue) và Phần thưởng (Reward).",
+      "exercise_prompt": "Phân tích một thói quen xấu bạn muốn từ bỏ theo đúng 4 thành tố (Cue - Craving - Response - Reward) và đề xuất hành động thay thế mới."
+    },
+    {
+      "id": "ns_c2_04",
+      "title": "Bài 09: Mạng Lưới Mặc Định Của Não Bộ (Default Mode Network vs Task-Positive Network)",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "mode": "Neuroscience + Mental Modes",
+      "related_principle": "Hiện tượng Cộng hưởng (Resonance)",
+      "objective": "Làm chủ cơ chế chuyển đổi giữa tư duy tập trung sâu (TPN) và tư duy liên kết sáng tạo (DMN).",
+      "situation": "Bạn ngồi trước máy tính 4 tiếng liên tục để cố nghĩ ra một ý tưởng kinh doanh mới nhưng đầu óc hoàn toàn trống rỗng và bế tắc. Chiều hôm đó, khi đang đi dạo bộ dưới công viên hoặc đang tắm, ý tưởng đột phá bất ngờ lóe lên trong đầu.",
+      "guide_steps": [
+        "1. Phân biệt hai mạng thần kinh: TPN (Task-Positive Network) hoạt động khi tập trung thực thi; DMN (Default Mode Network) hoạt động khi tâm trí thả lỏng, kết nối các vùng ký ức ngầm.",
+        "2. Ứng dụng quy trình sáng tạo 2 pha: Pha 1 nạp dữ liệu tập trung cao độ (TPN) ➔ Pha 2 nghỉ ngơi chủ động (đi bộ, ngủ trưa, tắm) để DMN ươm mầm ý tưởng.",
+        "3. Ghi chép tức thì: Mang theo sổ tay hoặc ứng dụng note để bắt trọn tia sáng ý tưởng khi DMN hoạt động."
+      ],
+      "hint": "Sự thông thái không chỉ đến từ việc cày cuốc liên tục; nó đến từ nhịp điệu luân phiên giữa tập trung sâu và thả lỏng có chủ đích.",
+      "exercise_prompt": "Thiết kế lịch làm việc và nghỉ ngơi trong ngày của bạn để tận dụng tối đa sức mạnh của cả TPN (tập trung) và DMN (sáng tạo)."
+    },
+    {
+      "id": "ns_c3_04",
+      "title": "Bài 10: Tái Lập Trình Não Bộ Bằng Kỹ Thuật Ghi Đè Khắc Sâu (Neuroplasticity Protocol)",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Neuroplasticity + First Principles",
+      "related_principle": "Cơ chế Thích nghi & Chọn lọc Tự nhiên",
+      "objective": "Ứng dụng 3 yếu tố thần kinh cốt lõi (Tập trung cao độ - Cảm giác sai sót - Giấc ngủ sâu) để tăng tốc học tập x3 lần.",
+      "situation": "Bạn muốn học một kỹ năng hoàn toàn mới (như phân tích dữ liệu Python hoặc ngoại ngữ) nhưng cảm thấy não bộ tiếp thu rất chậm và nhanh mệt mỏi.",
+      "guide_steps": [
+        "1. Kích hoạt Acetylcholine bằng sự tập trung không xao nhãng trong 45-60 phút.",
+        "2. Đón nhận cảm giác bối rối/sai sót (Friction & Frustration): Đây là lúc não tiết ra Epinephrine báo hiệu cho các neuron cần tái cấu trúc liên kết.",
+        "3. Củng cố liên kết qua giấc ngủ sâu (NREM Sleep): Não bộ chỉ thực sự tái cấu trúc synap và chuyển trí nhớ ngắn hạn thành dài hạn trong lúc bạn ngủ."
+      ],
+      "hint": "Cảm giác khó chịu và bối rối khi học cái mới không phải là dấu hiệu của sự ngu dốt; đó là tín hiệu sinh học cho thấy não bộ của bạn đang bắt đầu phát triển.",
+      "exercise_prompt": "Áp dụng giao thức 3 bước (Tập trung - Đón nhận sai sót - Ngủ đủ 7.5h) vào việc học một kỹ năng mới trong tuần này và ghi lại sự thay đổi."
     }
   ],
   "buddhism": [
@@ -1427,6 +1581,58 @@
       "exercise_prompt": "Thiết kế một buổi đối thoại 1-1 với nhân viên đang gặp khủng hoảng theo tinh thần Tứ Vô Lượng Tâm (Từ - Bi - Hỷ - Xả).",
       "hint": "Lãnh đạo bằng nỗi sợ hãi chỉ tạo ra sự phục tùng ngắn hạn; lãnh đạo bằng sự thông tuệ và lòng từ bi tạo ra lòng trung thành trọn đời.",
       "related_principle": "Tứ Vô Lượng Tâm trong Lãnh đạo Tinh hoa"
+    },
+    {
+      "id": "bd_c1_04",
+      "title": "Bài 08: Bát Chánh Đạo Dưới Lăng Kính Quản Trị Mục Tiêu Cuộc Đời (The 8-Fold Path OS)",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "mode": "Systems Thinking + First Principles",
+      "related_principle": "Bản đồ không phải là Lãnh thổ",
+      "objective": "Chuyển hóa 8 nhánh của Bát Chánh Đạo thành hệ điều hành quản trị tư duy, hành động và sự nghiệp bền vững.",
+      "situation": "Một người rất tài năng và kiếm được nhiều tiền nhưng luôn cảm thấy bất an, các mối quan hệ rạn nứt và công việc kinh doanh dựa trên sự lừa dối khách hàng.",
+      "guide_steps": [
+        "1. Chánh kiến & Chánh tư duy: Nhìn nhận thực tế đúng như nó là (không ảo tưởng) và nuôi dưỡng động cơ chân chính.",
+        "2. Chánh ngữ, Chánh nghiệp, Chánh mạng: Giao tiếp trung thực, hành động có đạo đức và kiếm sống bằng nghề nghiệp chân chính không gây hại cho cộng đồng.",
+        "3. Chánh tinh tấn, Chánh niệm, Chánh định: Rèn luyện kỷ luật bền bỉ, tỉnh thức trong từng khoảnh khắc và giữ tâm trí định tĩnh trước biến cố."
+      ],
+      "hint": "Đạo đức trong Phật giáo không phải là những điều cấm đoán giáo điều; nó là các định luật an toàn giúp bạn không tự tạo ra lực cản và sự tự hủy hoại cho chính mình.",
+      "exercise_prompt": "Hãy đánh giá công việc hiện tại của bạn theo tiêu chí 'Chánh Mạng' (Right Livelihood): Công việc này có tạo ra giá trị thực cho xã hội hay đang bòn rút nguồn lực của người khác?"
+    },
+    {
+      "id": "bd_c2_04",
+      "title": "Bài 09: Ngũ Uẩn (Skandhas) & Cơ Chế Tách Biệt Cảm Xúc Khỏi Quyết Định",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "mode": "First Principles + Cognitive Detachment",
+      "related_principle": "Phân phối Xác suất",
+      "objective": "Bóc tách 5 tầng nhận thức (Sắc - Thọ - Tưởng - Hành - Thức) để ngăn chặn phản xạ giận dữ hoặc sợ hãi tức thì.",
+      "situation": "Khi nhận được một email chỉ trích gay gắt từ khách hàng hoặc cấp trên, cơn giận bùng lên làm tim bạn đập nhanh và bạn muốn gõ ngay một email phản pháo nảy lửa.",
+      "guide_steps": [
+        "1. Nhận diện Sắc (Body): Cảm nhận nhịp tim nhanh, lồng ngực thắt lại.",
+        "2. Nhận diện Thọ (Feeling): Cảm giác khó chịu (Bất như ý).",
+        "3. Nhận diện Tưởng (Perception): Não bộ gán nhãn: 'Kẻ này đang xúc phạm danh dự của mình!'.",
+        "4. Dừng lại ở tầng Hành (Action): Giữ khoảng trống 10 phút trước khi phản hồi; không để Thọ và Tưởng tự động kích hoạt hành động trả đũa."
+      ],
+      "hint": "Giữa kích thích bên ngoài và phản ứng của bạn luôn có một khoảng trống. Trong khoảng trống đó là tự do và sức mạnh lựa chọn của bạn.",
+      "exercise_prompt": "Mô tả một tình huống bạn từng bị cảm xúc chi phối dẫn đến quyết định sai lầm, và phân tích tình huống đó theo chuỗi 5 uẩn."
+    },
+    {
+      "id": "bd_c3_04",
+      "title": "Bài 10: Tâm Buông Xả (Letting Go) & Nghệ Thuật Cắt Lỗ Cảm Xúc (Emotional Stop-Loss)",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Inversion + Sunk Cost Fallacy",
+      "related_principle": "Chi phí Chìm (Sunk Cost Fallacy)",
+      "objective": "Áp dụng triết lý Buông bỏ (Vô chấp) để dũng cảm từ bỏ các dự án, mối quan hệ hoặc khoản đầu tư độc hại.",
+      "situation": "Bạn đã dồn 2 năm tâm huyết và 500 triệu đồng vào một dự án kinh doanh nhưng thị trường đã thay đổi và dự án liên tục thua lỗ. Bạn không nỡ đóng cửa vì tiếc công sức đã bỏ ra trong quá khứ.",
+      "guide_steps": [
+        "1. Quán chiếu Vô thường: Mọi thứ sinh ra đều có lúc suy tàn. Dự án này đã hoàn thành sứ mệnh đem lại bài học cho bạn.",
+        "2. Nhận diện Bẫy chi phí chìm: Thời gian và tiền bạc trong 2 năm qua đã biến mất vĩnh viễn; việc tiếp tục giữ chỉ làm bạn mất thêm tương lai.",
+        "3. Thực hành Tâm xả: Cảm ơn bài học, dứt khoát đóng cửa dự án để giải phóng năng lượng và vốn cho cơ hội mới."
+      ],
+      "hint": "Buông bỏ không phải là đầu hàng; buông bỏ là hành động dũng cảm nhất để nhường chỗ cho những điều tốt đẹp mới bước vào cuộc đời bạn.",
+      "exercise_prompt": "Viết về một thứ bạn đang cố chấp bám víu dù biết nó không còn mang lại giá trị tích cực, và phác thảo kế hoạch buông bỏ dứt khoát."
     }
   ],
   "ai_tech": [
@@ -1591,6 +1797,57 @@
       "exercise_prompt": "Vẽ sơ đồ kiến trúc gồm 4 Agent phối hợp thực hiện một chiến dịch marketing hoặc nghiên cứu sản phẩm mới.",
       "hint": "Tương lai của công việc không phải là 1 con bot làm hết mọi thứ, mà là một dàn nhạc giao hưởng gồm nhiều agent chuyên gia cùng tấu lên một bản hòa ca hoàn hảo.",
       "related_principle": "Multi-Agent Systems & Đòn bẩy Siêu quy mô"
+    },
+    {
+      "id": "ai_c1_04",
+      "title": "Bài 08: RAG (Retrieval-Augmented Generation) vs Fine-Tuning — Lựa Chọn Kiến Trúc Tối Ưu",
+      "level_code": "level_1",
+      "level": "Cơ bản",
+      "mode": "First Principles + Systems Thinking",
+      "related_principle": "Nguyên lý Cực tiểu Tác dụng (Principle of Least Action)",
+      "objective": "Bóc tách sự khác biệt bản chất giữa việc nạp tri thức ngoài (RAG) và dạy lại phong cách/hành vi (Fine-Tuning).",
+      "situation": "Một doanh nghiệp muốn xây dựng trợ lý AI để tra cứu 5.000 trang tài liệu nội bộ và chính sách nhân sự. Đội ngũ kỹ thuật đề xuất chi 50.000 USD để Fine-tune một mô hình mã nguồn mở.",
+      "guide_steps": [
+        "1. Phân biệt bản chất: Fine-tuning giống như dạy ai đó nói giọng điệu hoặc phong cách mới; RAG giống như cho trợ lý cuốn sách mở để tra cứu khi cần.",
+        "2. Đánh giá chi phí & Cập nhật: Khi chính sách nội bộ thay đổi, RAG chỉ cần cập nhật cơ sở dữ liệu Vector trong 5 giây; Fine-tuning phải huấn luyện lại tốn kém.",
+        "3. Quyết định chuẩn First Principles: Sử dụng RAG cho bài toán tri thức động và tra cứu chính xác số liệu."
+      ],
+      "hint": "Đừng dùng đại bác bắn chim sẻ. Giải pháp đơn giản nhất giải quyết được đúng nút thắt luôn là giải pháp đòn bẩy cao nhất.",
+      "exercise_prompt": "Nếu bạn muốn xây dựng một con AI hỗ trợ bạn học tập hoặc làm việc cá nhân, bạn sẽ chọn kiến trúc RAG hay Prompt Context dài? Vì sao?"
+    },
+    {
+      "id": "ai_c2_04",
+      "title": "Bài 09: Thiết Kế Vòng Lặp Đánh Giá (Eval Loops) Cho Hệ Thống AI Agents",
+      "level_code": "level_2",
+      "level": "Thực hành",
+      "mode": "Empirical + Systems Thinking",
+      "related_principle": "Tính Khả bác (Karl Popper Falsification)",
+      "objective": "Xây dựng bộ tiêu chuẩn đánh giá tự động (Evals) để đo lường độ chính xác và an toàn của AI Agent trước khi đưa vào sản xuất.",
+      "situation": "Bạn viết một AI Agent để tự động tóm tắt tin tức chứng khoán và phát hiện rủi ro. Đôi khi Agent tóm tắt rất tốt, nhưng đôi khi nó lại 'bịa đặt' (Hallucinate) số liệu tài chính khiến người dùng hiểu nhầm.",
+      "guide_steps": [
+        "1. Thiết lập Ground Truth Dataset: Chuẩn bị 20 bài viết mẫu kèm đáp án tóm tắt chuẩn xác do con người kiểm định.",
+        "2. Xây dựng thước đo tự động (LLM-as-a-Judge): Dùng một model mạnh chấm điểm độ trung thực, độ đầy đủ và tỷ lệ ảo giác.",
+        "3. Chạy kiểm thử tự động mỗi khi thay đổi Prompt: Chỉ chấp nhận cập nhật Prompt mới khi điểm Eval tổng thể tăng lên."
+      ],
+      "hint": "Trong kỷ nguyên AI, bạn không thể cải tiến những gì bạn không thể đo lường một cách tự động và định lượng.",
+      "exercise_prompt": "Thiết kế một rubric 3 tiêu chí để đánh giá chất lượng câu trả lời của AI cho bài toán chuyên môn của bạn."
+    },
+    {
+      "id": "ai_c3_04",
+      "title": "Bài 10: Xây Dựng 'Con Hào Kinh Tế Cá Nhân' (Personal Moat) Khi AI Đạt AGI",
+      "level_code": "level_3",
+      "level": "Nâng cao",
+      "mode": "Second-order + Optionality",
+      "related_principle": "Trách Nhiệm Dấn Thân (Skin in the Game)",
+      "objective": "Xác định 4 trụ cột giúp bạn không thể bị thay thế: Uy tín cá nhân, Dữ liệu độc quyền, Mối quan hệ tin cậy và Khả năng chịu trách nhiệm.",
+      "situation": "AI ngày càng thông minh, có thể viết code, vẽ tranh, phân tích dữ liệu và ra quyết định thay cho chuyên viên phân tích. Nhiều người rơi vào hoảng loạn và sợ bị đào thải nghề nghiệp.",
+      "guide_steps": [
+        "1. Bóc tách thứ AI không thể có: AI không thể ngồi tù, không thể chịu trách nhiệm pháp lý, không có Skin in the game.",
+        "2. Chuyển dịch vị thế: Từ người làm việc chân tay/tính toán (Thợ) ➔ sang người chịu trách nhiệm cuối cùng và ra quyết định chiến lược (Chủ tướng).",
+        "3. Xây dựng Personal Brand & Network: Con người luôn muốn giao dịch và tin tưởng một con người cụ thể có uy tín thật sự."
+      ],
+      "hint": "AI không thay thế con người; con người biết dùng AI và dám chịu trách nhiệm với quyết định của mình sẽ thay thế những người còn lại.",
+      "exercise_prompt": "Viết ra 3 giá trị độc bản của riêng bạn mà dù AI có phát triển đến đâu cũng không thể nào sao chép hoặc thay thế được."
     }
   ]
 }

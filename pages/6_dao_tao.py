@@ -196,26 +196,39 @@ with tab6_subtabs[0]:
 with tab6_subtabs[1]:
     user_group = st.radio(
         "Chọn nhóm đối tượng đào tạo",
-        ["🎒 Học sinh Wellspring (Lớp 6, 9, 10)", "💼 Chuyên sâu Người lớn (Trading, CKVN, Não bộ, Phật giáo, AI)"],
+        [
+            "🌟 Toàn bộ 8 Chuyên đề (Xem tất cả)",
+            "🎒 Học sinh Wellspring (Lớp 6, 9, 10)",
+            "💼 Chuyên sâu Người lớn (Trading, CKVN, Não bộ, Phật giáo, AI)"
+        ],
         horizontal=True,
     )
 
     tracks_meta = get_tracks_meta()
+    all_lessons_data = load_lessons()
+
+    all_tracks_dict = {
+        "grade_6": "Lớp 6 (Wellspring) — Khởi đầu tự chủ & AI cơ bản",
+        "grade_9": "Lớp 9 (Wellspring) — Tư duy phản biện & Chọn hướng đi",
+        "grade_10": "Lớp 10 (Wellspring) — Chiến lược dự án & Đòn bẩy AI",
+        "trading": "Trading Vàng, FX, Crypto/BTC — Xác suất & Quản trị rủi ro",
+        "ckvn": "Đầu tư Chứng khoán VN — Chu kỳ & Dòng tiền Smart Money",
+        "neuroscience": "Khoa học Não bộ & Nhận thức — Dopamine & Khắc phục thiên kiến",
+        "buddhism": "Phật giáo & Tâm thức — Vô thường & Chánh niệm ra quyết định",
+        "ai_tech": "Công nghệ AI & Tương lai — Đòn bẩy không cần xin phép",
+    }
 
     if "Học sinh Wellspring" in user_group:
-        track_options = {
-            "grade_6": "Lớp 6 (Wellspring) — Khởi đầu tự chủ & AI cơ bản",
-            "grade_9": "Lớp 9 (Wellspring) — Tư duy phản biện & Chọn hướng đi",
-            "grade_10": "Lớp 10 (Wellspring) — Chiến lược dự án & Đòn bẩy AI",
-        }
+        filtered_track_keys = ["grade_6", "grade_9", "grade_10"]
+    elif "Chuyên sâu Người lớn" in user_group:
+        filtered_track_keys = ["trading", "ckvn", "neuroscience", "buddhism", "ai_tech"]
     else:
-        track_options = {
-            "trading": "Trading Vàng, FX, Crypto/BTC — Xác suất & Quản trị rủi ro",
-            "ckvn": "Đầu tư Chứng khoán VN — Chu kỳ & Dòng tiền Smart Money",
-            "neuroscience": "Khoa học Não bộ & Nhận thức — Dopamine & Khắc phục thiên kiến",
-            "buddhism": "Phật giáo & Tâm thức — Vô thường & Chánh niệm ra quyết định",
-            "ai_tech": "Công nghệ AI & Tương lai — Đòn bẩy không cần xin phép",
-        }
+        filtered_track_keys = list(all_tracks_dict.keys())
+
+    track_options = {}
+    for k in filtered_track_keys:
+        count_k = len(all_lessons_data.get(k, []))
+        track_options[k] = f"{all_tracks_dict[k]} ({count_k} bài học)"
 
     c_sel1, c_sel2 = st.columns([3, 2])
     with c_sel1:
@@ -227,7 +240,12 @@ with tab6_subtabs[1]:
     with c_sel2:
         level_choice = st.selectbox(
             "Trình độ rèn luyện",
-            ["🌱 Cấp 1: Nền tảng (Foundation)", "🔥 Cấp 2: Thực hành (Practice)", "👑 Cấp 3: Nhuần nhuyễn (Mastery)"],
+            [
+                "🌟 Tất cả cấp độ (Xem toàn bộ lộ trình khóa)",
+                "🌱 Cấp 1: Nền tảng (Foundation)",
+                "🔥 Cấp 2: Thực hành (Practice)",
+                "👑 Cấp 3: Nhuần nhuyễn (Mastery)"
+            ],
             index=0,
         )
 
@@ -236,6 +254,7 @@ with tab6_subtabs[1]:
         st.caption(f"💡 *Mục tiêu khóa:* {track_info['desc']}")
 
     level_map = {
+        "🌟 Tất cả cấp độ (Xem toàn bộ lộ trình khóa)": ("all", "Toàn bộ cấp độ"),
         "🌱 Cấp 1: Nền tảng (Foundation)": ("level_1", "Cơ bản"),
         "🔥 Cấp 2: Thực hành (Practice)": ("level_2", "Thực hành"),
         "👑 Cấp 3: Nhuần nhuyễn (Mastery)": ("level_3", "Nâng cao"),
@@ -255,7 +274,10 @@ with tab6_subtabs[1]:
     with c_p1:
         st.progress(done_count / max(total_count, 1))
     with c_p2:
-        st.caption(f"Tiến độ cấp độ: **{done_count}/{total_count}** bài")
+        if sel_level_code == "all":
+            st.caption(f"Tiến độ toàn khóa: **{done_count}/{total_count}** bài")
+        else:
+            st.caption(f"Tiến độ cấp độ ({sel_level_name}): **{done_count}/{total_count}** bài")
 
     # Sub-tabs tách bạch rõ ràng giữa Lộ trình bài tập và AI Mentor sinh bài tập
     sub_train_labels = [
@@ -272,7 +294,8 @@ with tab6_subtabs[1]:
             def format_lesson_title(l: dict) -> str:
                 done_icon = "✅" if l["id"] in user_training else "📖"
                 is_ai = " [✨ AI]" if l.get("created_by") == "AI" or "_ai_" in l.get("id", "") else ""
-                return f"{done_icon} {l.get('title', l['id'])} — ({l.get('mode', '')}){is_ai}"
+                lvl_tag = f"[{l.get('level', 'Cơ bản')}] " if sel_level_code == "all" else ""
+                return f"{done_icon} {lvl_tag}{l.get('title', l['id'])} — ({l.get('mode', '')}){is_ai}"
 
             # Tự động chọn bài vừa tạo nếu có trong session
             target_id = st.session_state.get(f"target_lesson_{sel_track_id}_{sel_level_code}")
@@ -413,6 +436,23 @@ with tab6_subtabs[1]:
             key=f"topic_input_{sel_track_id}_{sel_level_code}",
         )
 
+        ai_target_level_code = sel_level_code
+        ai_target_level_name = sel_level_name
+        if sel_level_code == "all":
+            c_gen_lvl, _ = st.columns([2, 2])
+            with c_gen_lvl:
+                pick_gen_lvl = st.selectbox(
+                    "Chọn cấp độ cho bài tập mới:",
+                    ["🌱 Cấp 1: Nền tảng (Foundation)", "🔥 Cấp 2: Thực hành (Practice)", "👑 Cấp 3: Nhuần nhuyễn (Mastery)"],
+                    key="gen_lvl_picker_subtab"
+                )
+                gen_lvl_map = {
+                    "🌱 Cấp 1: Nền tảng (Foundation)": ("level_1", "Cơ bản"),
+                    "🔥 Cấp 2: Thực hành (Practice)": ("level_2", "Thực hành"),
+                    "👑 Cấp 3: Nhuần nhuyễn (Mastery)": ("level_3", "Nâng cao"),
+                }
+                ai_target_level_code, ai_target_level_name = gen_lvl_map[pick_gen_lvl]
+
         if st.button("🚀 Yêu Cầu AI Sinh Bài Tập Mới Ngay", key=f"btn_gen_{sel_track_id}_{sel_level_code}", type="primary", use_container_width=True):
             if not active_keys:
                 st.warning("Cần API Key để sinh bài tập.")
@@ -422,8 +462,8 @@ with tab6_subtabs[1]:
                         api_keys=active_keys,
                         model_name=model_choice,
                         track_title=track_options[sel_track_id],
-                        level_code=sel_level_code,
-                        level_name=sel_level_name,
+                        level_code=ai_target_level_code,
+                        level_name=ai_target_level_name,
                         custom_topic=custom_topic.strip(),
                     )
                 if new_lesson and not new_lesson.get("error"):
