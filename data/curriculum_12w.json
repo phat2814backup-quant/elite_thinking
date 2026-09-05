@@ -459,216 +459,523 @@
     },
     {
       "week": 5,
-      "title": "Hệ thống: Stock, Flow, Feedback",
+      "title": "Hệ thống: Stock, Flow & Feedback Loops",
       "theme": "systems",
-      "goal": "Nhìn đời sống/công việc như hệ: tồn kho, dòng chảy, vòng phản hồi.",
-      "core_idea": "Hành vi hệ thống bị chi phối bởi cấu trúc — không chỉ bởi nỗ lực cá nhân.",
+      "goal": "Làm chủ tư duy hệ thống: phân biệt rõ rệt giữa Bể tích lũy (Stock) và Dòng chảy (Flow); nhận diện các vòng lặp phản hồi âm/dương và thời gian trễ chi phối gia đình và tổ chức.",
+      "core_idea": "Hành vi của một hệ thống bị quyết định bởi cấu trúc của nó, không phải bởi ý chí hay sự nỗ lực đơn lẻ. Bạn không thể giải quyết vấn đề cạn kiệt Stock bằng cách tăng tốc Flow một cách mù quáng.",
       "read": [
         {
-          "label": "Ôn First Principles + Inversion",
-          "page": "2_9_che_do_tu_duy"
+          "label": "9 Chế độ Tư duy — Systems Thinking & Feedback Loops",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Vòng lặp phản hồi & Cân bằng động",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Bể Tích Lũy vs Dòng Chảy (Stock & Flow)",
+          "summary": "Stock là lượng tích tụ vật chất hoặc phi vật chất tại một thời điểm (tiền tiết kiệm, cơ bắp, kiến thức sâu, uy tín, sự gắn kết gia đình). Flow là tốc độ chảy vào (Inflow) hoặc chảy ra (Outflow) làm thay đổi Stock theo thời gian. Mức của Stock chỉ thay đổi khi Inflow khác Outflow.",
+          "good_example": "Quản lý sức bền não bộ: Năng lượng nhận thức là Stock. Ngủ sâu 8 tiếng và dinh dưỡng tốt là Inflow. Stress công việc và màn hình điện thoại là Outflow. Muốn não khỏe, hoặc phải tăng Inflow, hoặc phải bịt van rò rỉ Outflow.",
+          "bad_example": "Tự hào vì kiếm được 100 triệu/tháng (Flow vào cao) nhưng tiêu hết 98 triệu và nợ thẻ tín dụng 500 triệu (Stock tài sản ròng âm). Khi mất việc (Flow ngừng), hệ thống sụp đổ ngay lập tức.",
+          "boundary": "Kém hữu ích đối với các sự kiện đơn lẻ diễn ra trong tích tắc mà không có quá trình tích lũy theo thời gian.",
+          "lattice_link": "Model #05 (Entropy & Động lực học), Model #25 (Tragedy of the Commons) và Model #09 (Compounding)."
+        },
+        {
+          "name": "Vòng Lặp Phản Hồi & Thời Gian Trễ (Feedback Loops & Delays)",
+          "summary": "Vòng phản hồi tăng cường (Reinforcing Loop - Vòng +) tạo ra sự bùng nổ hoặc sụp đổ dây chuyền. Vòng phản hồi cân bằng (Balancing Loop - Vòng -) đưa hệ thống về trạng thái mục tiêu ổn định. Thời gian trễ (Delay) giữa hành động và kết quả là nguyên nhân số 1 khiến con người phản ứng thái quá (Overshoot) làm vỡ hệ thống.",
+          "good_example": "Khi điều chỉnh nhiệt độ vòi nước nóng lạnh: Nước từ bình nóng lạnh ra vòi mất 5 giây trễ (Delay). Người thông thái vặn một chút rồi kiên nhẫn chờ 5 giây để kiểm tra, thay vì liên tục vặn hết cỡ sang nóng rồi sang lạnh.",
+          "bad_example": "Thấy con bị điểm kém bài kiểm tra tuần này, bố mẹ lập tức cuống cuồng đăng ký thêm 3 lò luyện thi (phản ứng thái quá do không hiểu độ trễ tiếp thu kiến thức), khiến con quá tải và đạt điểm tệ hơn.",
+          "boundary": "Khi hệ thống có phản hồi tức thì (Instantaneous Feedback), nguy cơ dao động do trễ giảm đi đáng kể.",
+          "lattice_link": "Model #44 (Bullwhip Effect) và Model #17 (Homeostasis)."
+        }
+      ],
+      "case_study": {
+        "title": "Ảo Tưởng Thu Nhập 150 Triệu & Kiệt Quệ 'Stock Năng Lượng' Của Gia Đình Doanh Nhân Trẻ",
+        "context": "Gia đình anh Tuấn (36 tuổi) có thu nhập hàng tháng (Flow vào) rất cao: 120–150 triệu/tháng từ kinh doanh phân phối và quản lý cấp cao. Gia đình chi tiêu thoải mái: thuê chung cư cao cấp 35 triệu, cho 2 con học trường quốc tế 40 triệu, trả góp xe sang 20 triệu (Flow ra cố định: 110 triệu/tháng). Nhìn bề ngoài ai cũng ngưỡng mộ. Tuy nhiên, khi soi vào các 'Stock' (bể tích lũy) cốt lõi: (1) Stock tài sản thanh khoản an toàn gần như bằng 0 vì toàn bộ tiền dư được quay vòng vào công nợ hàng hóa; (2) Stock sức khỏe của anh Tuấn chạm đáy: men gan cao, đau dạ dày và mất ngủ triền miên do làm việc 14h/ngày; (3) Stock tình cảm gia đình rạn nứt: vợ chồng không có cuộc trò chuyện chất lượng nào quá 15 phút suốt 6 tháng.",
+        "decision_question": "Anh Tuấn có nên tiếp tục nhận thêm một hợp đồng phân phối mới để đẩy doanh thu (Flow vào) lên 200 triệu/tháng như kỳ vọng của đối tác không?",
+        "facts": [
+          "Thu nhập hàng tháng là FLOW (dòng chảy), có thể biến mất trong 30 ngày nếu chuỗi cung ứng đứt gãy hoặc anh Tuấn phải nhập viện.",
+          "Năng lượng sinh học và sức khỏe tế bào não là STOCK (bể tích lũy) có giới hạn chịu tải. Khi rơi vào trạng thái kiệt quệ hoàn toàn (Burnout), thời gian hồi phục thần kinh tối thiểu là 12–24 tháng.",
+          "Chi phí cố định (Flow ra) 110 triệu/tháng tạo ra áp lực đòn bẩy vận hành cực lớn, tước đoạt hoàn toàn khả năng chịu đựng cú sốc của gia đình."
+        ],
+        "noise": [
+          "'Còn trẻ còn cơ hội thì phải cày cật lực để kiếm thật nhiều tiền trước tuổi 40' (Định kiến xã hội xem nhẹ cái giá sinh học).",
+          "'Bạn bè cùng lứa ai cũng mở rộng quy mô, mình dừng lại là hèn nhát tụt hậu' (Bẫy vị thế xã hội).",
+          "'Chỉ cần cố nốt năm nay cho xong dự án rồi sẽ nghỉ ngơi dưỡng sức' (Ảo tưởng trì hoãn)."
+        ],
+        "framework_application": "Phân tích Cấu trúc Hệ thống Gia đình:\n1. Bể chứa Stock nguy cấp: Sức khỏe & Quỹ khẩn cấp đang ở mức báo động đỏ.\n2. Vòng lặp củng cố độc hại (Reinforcing Trap): Thu nhập tăng -> Nâng chuẩn sống (Lifestyle Creep) -> Chi phí cố định tăng -> Bắt buộc phải cày nhiều hơn -> Sức khỏe suy kiệt -> Nguy cơ sụp đổ toàn diện.\n3. Vòng cân bằng tự nhiên bị triệt tiêu: Cơ thể phát tín hiệu mệt nhưng dùng cà phê và nước tăng lực để át đi, làm mất cơ chế tự điều hòa (Homeostasis).",
+        "exemplar_analysis": "Quyết định chuẩn mực của Elite:\n- Bước 1: Quyết liệt TỪ CHỐI hợp đồng phân phối mới. Nhận diện rằng vấn đề của gia đình lúc này không phải là 'thiếu Flow vào' mà là 'Stock an toàn và sức khỏe đang bị thủng đáy'.\n- Bước 2: Tái cấu trúc Flow ra: Cắt giảm chi phí không thiết yếu từ 110 triệu xuống 70 triệu/tháng (giải phóng 40 triệu thặng dư).\n- Bước 3: Bơm đầy Stock thanh khoản: Dành toàn bộ thặng dư xây dựng Quỹ dự phòng khẩn cấp 800 triệu (tương đương hơn 11 tháng chi tiêu an toàn) gửi vào công cụ rủi ro bằng 0.\n- Bước 4: Bảo vệ Stock năng lượng: Khóa cứng khung giờ làm việc: Sau 19h00 cất điện thoại, tối thiểu 7.5 tiếng ngủ mỗi đêm và 3 buổi tập thể thao/tuần.",
+        "action_plan": "Họp gia đình vào cuối tuần này, thống nhất từ chối dự án mới, rà soát cắt giảm 30% chi phí sinh hoạt thừa thãi để xây đập an toàn tài chính.",
+        "common_traps": [
+          "Bẫy đồng hóa Flow với Stock: Tưởng mình kiếm nhiều tiền là mình giàu, trong khi thực chất chỉ là một trạm trung chuyển tiền bạc với rủi ro khổng lồ.",
+          "Bẫy trễ phản hồi sinh học (Biological Delay): Bệnh tật và sự xa cách của con cái không ập đến ngay ngày mai, nhưng khi nó xuất hiện thì không có số tiền nào mua lại được."
+        ]
+      },
       "systems_concepts": [
         {
           "id": "stock_flow",
-          "name": "Stock & Flow",
-          "summary": "Stock = mức tích lũy (tiền tiết kiệm, kỹ năng, uy tín). Flow = dòng vào/ra theo thời gian.",
-          "boundary": "Áp dụng khi có tích lũy theo thời gian; kém hữu ích với sự kiện one-shot thuần.",
-          "trap": "Chỉ nhìn flow (thu nhập tháng) quên stock (tài sản ròng / nợ).",
-          "action": "Với 1 mục tiêu: gọi tên 1 stock và 2 flow (in/out) đang chi phối nó."
+          "name": "Stock & Flow (Bể tích lũy & Dòng chảy)",
+          "summary": "Stock = mức tích lũy tại một thời điểm (sức khỏe, tài sản ròng, uy tín). Flow = lượng chảy vào/ra trong một đơn vị thời gian.",
+          "boundary": "Áp dụng khi hệ thống có tính tích tụ và tiêu hao theo thời gian.",
+          "trap": "Chỉ đắm chìm vào thu nhập tháng (flow) mà quên mất tài sản ròng và sức khỏe (stock) đang bị bào mòn.",
+          "action": "Vẽ sơ đồ 1 Stock quan trọng nhất của bạn và liệt kê đúng 2 van: Inflow và Outflow."
         },
         {
           "id": "feedback",
-          "name": "Feedback Loop (+/−)",
-          "summary": "Vòng + khuếch đại; vòng − ổn định về mục tiêu. Trễ phản hồi gây dao động.",
-          "boundary": "Cần quan sát lặp lại theo thời gian.",
-          "trap": "Can thiệp mạnh vào hệ có delay → overshoot.",
-          "action": "Vẽ 1 vòng feedback trong gia đình hoặc công việc (ai/cái gì phản hồi cái gì)."
+          "name": "Vòng lặp Phản hồi (+ và −)",
+          "summary": "Vòng lặp (+) khuếch đại xu hướng (tăng trưởng cấp số nhân hoặc sụp đổ nhanh). Vòng lặp (−) giữ hệ thống cân bằng quanh một mục tiêu.",
+          "boundary": "Cần quan sát chu kỳ lặp lại theo thời gian.",
+          "trap": "Can thiệp vội vã vào hệ thống có độ trễ lớn gây ra hiện tượng dao động dữ dội (Overshoot).",
+          "action": "Nhận diện 1 vòng lặp phản hồi tiêu cực đang lặp đi lặp lại trong gia đình bạn."
         }
       ],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Chọn 1 'stock' quan trọng (sức khỏe / kỹ năng / quan hệ / tiền). Mô tả flow vào, flow ra, 1 vòng feedback đang giữ hoặc phá stock đó.",
-        "success_criteria": "Có stock, 2 flow, 1 feedback rõ."
+        "prompt": "Hãy chọn một 'Bể Tích Lũy' (Stock) quan trọng nhất mà bạn đang cảm thấy bất an (Sức khỏe thể chất, Quỹ tài chính dự phòng, Năng lực chuyên môn sâu, hoặc Mối quan hệ vợ chồng/con cái):\n1. Định nghĩa rõ Stock đó hiện tại đang ở mức nào (thừa, đủ, hay cạn kiệt)?\n2. Liệt kê chính xác Dòng chảy vào (Inflow) hàng tuần giúp làm đầy Stock này.\n3. Liệt kê các Dòng chảy ra (Outflow) hoặc lỗ rò rỉ đang âm thầm bào mòn Stock này.\n4. Nhận diện 1 Vòng lặp phản hồi (Feedback loop) và Độ trễ (Delay) đang chi phối nó.\n5. Đưa ra 1 hành động can thiệp cấu trúc cụ thể: Bạn sẽ mở van Inflow nào hay khóa chặt van Outflow nào?",
+        "checklist": [
+          "Chỉ đích danh Stock cụ thể, không nói chung chung trừu tượng",
+          "Liệt kê rõ ràng cả van nạp (Inflow) và van rò rỉ (Outflow)",
+          "Nhận diện được vòng lặp phản hồi và thời gian trễ thực tế",
+          "Đưa ra giải pháp can thiệp van dòng chảy có thể đo lường được"
+        ],
+        "bad_example": "Stock: Sức khỏe. Inflow: Ăn uống. Outflow: Làm việc mệt mỏi. Feedback: Mệt thì ngủ. Giải pháp: Cố gắng ngủ nhiều hơn và ăn nhiều rau.",
+        "good_example": "1. Stock: 'Năng lượng nhận thức và sự kiên nhẫn buổi tối với con'. Hiện trạng: Cạn kiệt nghiêm trọng (thường xuyên cáu gắt với con sau 19h).\n2. Inflow: Giấc ngủ trưa 20 phút tại văn phòng + 30 phút chạy bộ sau giờ làm.\n3. Outflows đang rò rỉ: (a) Đọc tin nhắn công việc trên Zalo/Slack liên tục từ 17h–19h trong lúc tắc đường; (b) Thói quen vừa ăn tối vừa lướt Facebook khiến não không được giải phóng vi lượng chú ý.\n4. Feedback Loop & Delay: Cáu gắt với con -> Con khóc và chống đối -> Không khí gia đình căng thẳng -> Mất ngủ đêm -> Sáng hôm sau mệt mỏi -> Chiều tối lại càng cáu gắt hơn (Vòng lặp củng cố tiêu cực).\n5. Can thiệp cấu trúc: Khóa chặt van Outflow bằng quy tắc 'Vùng đệm 45 phút': Tắt thông báo công việc lúc 17h30, đi bộ thư giãn 20 phút trước khi bước vào cửa nhà. Không mang việc vào bàn ăn."
       },
       "quiz": [
         {
-          "q": "Stock khác flow chỗ nào?",
+          "q": "Sự khác biệt cốt lõi giữa 'Stock' và 'Flow' trong tư duy hệ thống là gì?",
           "options": [
-            "Stock là mức tại một thời điểm; flow là tốc độ thay đổi theo thời gian",
-            "Stock là ý tưởng; flow là cảm xúc",
-            "Hai khái niệm giống nhau",
-            "Flow luôn quan trọng hơn stock"
+            "Stock là lượng tích lũy tại một thời điểm cụ thể; Flow là tốc độ thay đổi làm tăng hoặc giảm Stock theo thời gian",
+            "Stock là tiền mặt; Flow là các khoản nợ ngân hàng",
+            "Stock là kế hoạch dài hạn; Flow là hành động ngắn hạn",
+            "Hai khái niệm này có thể hoán đổi cho nhau mà không làm thay đổi bản chất"
           ],
           "answer": 0,
-          "explain": "Nhầm stock/flow là nguồn gốc nhiều quyết định ngắn hạn sai."
+          "explain": "Stock giống như lượng nước trong bồn tắm tại thời điểm t. Flow là vòi nước chảy vào hoặc lỗ xả đáy chảy ra theo thời gian.",
+          "trap_analysis": "Rất nhiều người nhầm lẫn thu nhập (Flow) với tài sản thực sự (Stock), dẫn đến bẫy kiếm nhiều tiêu nhiều mà vẫn trắng tay."
         },
         {
-          "q": "Phản hồi trễ (delayed feedback) thường dẫn tới?",
+          "q": "Hiện tượng 'Dao động và vọt lố' (Overshoot & Oscillation) trong hệ thống thường xuất phát từ nguyên nhân nào?",
           "options": [
-            "Dao động / overshoot khi can thiệp quá mạnh",
-            "Hệ luôn ổn định",
-            "Không ảnh hưởng",
-            "Chỉ xảy ra trong vật lý"
+            "Sự tồn tại của 'Thời gian trễ' (Delay) giữa hành động can thiệp và tín hiệu phản hồi thực tế",
+            "Do hệ thống không có người quản lý",
+            "Do thiếu vốn đầu tư ban đầu",
+            "Do các thành viên trong hệ thống không nỗ lực hết mình"
           ],
           "answer": 0,
-          "explain": "Delay + gain cao → dao động."
+          "explain": "Khi có độ trễ lớn (ví dụ can thiệp giáo dục con cái hoặc điều hành kinh tế vĩ mô), nếu can thiệp quá mạnh tay trước khi nhìn thấy kết quả, hệ thống sẽ bị vọt lố và dao động mất kiểm soát.",
+          "trap_analysis": "Người thiếu tư duy hệ thống thường thiếu kiên nhẫn trước độ trễ, họ liên tục tăng liều lượng can thiệp khiến hệ thống đổ vỡ."
+        },
+        {
+          "q": "Để cứu một 'Bể chứa Stock' đang cạn kiệt nhanh chóng, hành động nào sau đây mang lại hiệu quả tức thời và ít tốn tài nguyên nhất?",
+          "options": [
+            "Khóa chặt hoặc thu hẹp ngay lập tức các van rò rỉ (Outflow)",
+            "Cố gắng tăng gấp đôi van nạp (Inflow) bằng mọi giá",
+            "Thay đổi tên gọi của Stock để tạo động lực mới",
+            "Chờ đợi hệ thống tự cân bằng mà không can thiệp"
+          ],
+          "answer": 0,
+          "explain": "Nguyên lý Via Negativa: Khi một chiếc thuyền đang chìm, việc đầu tiên là bịt lỗ thủng (chặn Outflow) chứ không phải cố gắng tát nước ra ngoài (tăng Inflow).",
+          "trap_analysis": "Bản năng con người thường thích 'cộng thêm' (Addiction to addition) — ví dụ khi mệt thì đi uống thuốc bổ thay vì cắt bớt giờ làm việc thừa thãi."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 6,
-      "title": "Leverage Points & Độ phức tạp",
+      "title": "Điểm Đòn Bẩy & Tính Chất Nảy Sinh",
       "theme": "systems",
-      "goal": "Tìm điểm đòn bẩy trong hệ; phân biệt phức tạp vs rối.",
-      "core_idea": "Không phải mọi nút đều quan trọng như nhau — đòn bẩy nằm ở cấu trúc, mục tiêu, paradigm.",
+      "goal": "Làm chủ 12 điểm đòn bẩy can thiệp hệ thống của Donella Meadows; phân biệt rõ 'Phức tạp' (Complex) vs 'Rối rắm' (Complicated); tìm ra điểm can thiệp nhỏ tạo ra chuyển dịch khổng lồ.",
+      "core_idea": "Đừng dùng sức mạnh cơ bắp để đẩy một bức tường bê tông. Người tinh hoa tìm đúng 'chốt hãm' của hệ thống: thay đổi cấu trúc thông tin, quy tắc trò chơi hoặc mô hình tư duy (Paradigm) để toàn bộ hành vi tự động chuyển hướng.",
       "read": [
         {
-          "label": "88 Mô hình — hệ thống / đòn bẩy",
-          "page": "3_88_mo_hinh"
+          "label": "9 Chế độ Tư duy — First Principles & Đòn bẩy",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Donella Meadows 12 Leverage Points & Điểm uốn",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Các Điểm Đòn Bẩy Can Thiệp Hệ Thống (Donella Meadows)",
+          "summary": "Nhà khoa học hệ thống Donella Meadows phân loại các can thiệp từ đòn bẩy thấp đến đòn bẩy cao: Tầng thấp (Thông số, hạn ngạch, tiền thưởng/phạt) tốn nhiều công sức nhưng ít làm đổi hệ. Tầng cao (Quy chế hệ thống, cấu trúc dòng thông tin, mục tiêu tối thượng và Paradigm/Mô hình nhận thức) thay đổi tận gốc rễ hành vi của mọi thành viên.",
+          "good_example": "Muốn giảm tai nạn giao thông: Phạt tiền người vượt đèn đỏ (Đòn bẩy thấp). Đổi thiết kế bùng binh ngã tư và lắp camera phạt nguội tự động gửi giấy về nhà (Đòn bẩy trung bình). Thay đổi văn hóa coi việc nhường đường là biểu hiện của người văn minh (Đòn bẩy cao - Paradigm).",
+          "bad_example": "Nhân viên làm việc kém hiệu quả liền tăng mức phạt tiền đi muộn 50,000đ (Đòn bẩy thấp nhất), khiến nhân viên ấm ức, đối phó và nghỉ việc hàng loạt.",
+          "boundary": "Can thiệp ở đòn bẩy cao (thay đổi niềm tin/mục tiêu) đòi hỏi sự kiên trì và nghệ thuật lãnh đạo, không thể ép buộc cơ học trong một sớm một chiều.",
+          "lattice_link": "Model #06 (Leverage), Model #46 (Goodhart's Law) và Model #49 (Incentives)."
+        },
+        {
+          "name": "Tính Chất Nảy Sinh & Hệ Phức Hợp (Emergence in Complex Systems)",
+          "summary": "Một hệ thống phức hợp (gia đình, xã hội, nền kinh tế) có các đặc tính nảy sinh mà bạn không thể tìm thấy ở từng cá nhân riêng lẻ (ví dụ: giọt nước không có tính 'ướt', nhưng tập hợp hàng triệu giọt nước tạo thành đại dương). Bạn không thể bắt ép một đứa trẻ 'tự giác' nếu toàn bộ môi trường xung quanh ngập tràn cám dỗ và sự kiểm soát gắt gao.",
+          "good_example": "Văn hóa gia đình tự học nảy sinh một cách tự nhiên (Emergent) khi trong nhà có một tủ sách to ở phòng khách, bố mẹ có thói quen đọc sách buổi tối và không có tivi mở ầm ĩ.",
+          "bad_example": "Đổ lỗi cho từng cá nhân khi dự án thất bại trong khi quy trình phối hợp giữa các phòng ban bị tắc nghẽn thông tin trầm trọng.",
+          "boundary": "Phân biệt với hệ thống cơ học (Complicated như đồng hồ cơ): đồng hồ tháo ra từng bánh răng có thể hiểu hết, còn hệ sinh thái phức hợp (Complex) thì không thể cộng gộp cơ học.",
+          "lattice_link": "Model #43 (Complex Adaptive Systems) và Model #18 (Critical Mass)."
+        }
+      ],
+      "case_study": {
+        "title": "Chiến Tranh Bàn Học & Căn Phòng Bừa Bộn: Quát Mắng (Đòn Bẩy Thấp) Hay Tái Thiết Kế Luật Chơi (Đòn Bẩy Cao)?",
+        "context": "Gia đình có con trai 13 tuổi (Lớp 8). Mỗi tối là một cuộc chiến dai dẳng: Con vừa ngồi vào bàn học 5 phút đã cầm điện thoại lướt mạng, bàn học ngổn ngang vỏ bánh kẹo, bài tập làm qua loa chống đối, phòng ngủ như bãi chiến trường. Mẹ áp dụng triệt để các đòn bẩy thấp nhất: Quát to hơn mỗi ngày, cắt tiền tiêu vặt, treo thưởng 500k nếu dọn phòng sạch sẽ. Kết quả: Con nhận tiền thưởng dọn đúng 1 hôm rồi hôm sau lại bừa bộn như cũ. Mẹ kiệt quệ cảm xúc than thở: 'Con tôi vô phương cứu chữa, lười biếng ngấm vào máu rồi!'.",
+        "decision_question": "Làm thế nào để thay đổi hành vi tự giác của con mà không cần tốn một giọt năng lượng quát mắng nào?",
+        "facts": [
+          "Quát mắng và phạt tiền thuộc Tầng 12 & 11 (Parameters) của Donella Meadows: Hiệu lực suy giảm nhanh theo thời gian (Hiện tượng lờn thuốc / Habituation).",
+          "Thiết kế môi trường vật lý (Choice Architecture): Chiếc điện thoại thông minh được thiết kế bởi hàng nghìn kỹ sư hàng đầu thung lũng Silicon với mục đích duy nhất là cướp đoạt sự chú ý của người dùng. Để điện thoại trong tầm tay của đứa trẻ 13 tuổi là một cuộc chiến không cân sức về mặt sinh học.",
+          "Cấu trúc dòng thông tin (Information Flows): Con không hề biết một ngày mình lãng phí bao nhiêu giờ vào màn hình vì không có dữ liệu đối chiếu trực quan."
+        ],
+        "noise": [
+          "'Tính cách lười biếng là do di truyền hoặc bản chất' (Bẫy đổ lỗi cá nhân, bỏ qua lỗi kiến trúc môi trường).",
+          "'Trẻ con thời nay sướng quá hóa hư' (Phán xét cảm xúc không mang tính giải pháp).",
+          "'Phải tịch thu vĩnh viễn mọi thiết bị thì con mới học được' (Giải pháp cực đoan gây phản kháng tâm lý)."
+        ],
+        "framework_application": "Chuyển dịch can thiệp lên Tầng Đòn Bẩy Cao của Donella Meadows:\n- Đòn bẩy thấp (Bỏ): Ngừng hoàn toàn việc quát mắng và cằn nhằn.\n- Đòn bẩy trung bình (Cấu trúc thông tin & Quy tắc vật lý):\n  + Quy tắc vật lý: 'Bàn học chỉ để học' — Điện thoại có trạm sạc riêng ngoài phòng khách.\n  + Minh bạch thông tin: Cài ứng dụng Screen Time hiển thị công khai thời gian dùng máy của cả bố, mẹ và con trên tủ lạnh.\n- Đòn bẩy cao nhất (Mô hình tư duy / Paradigm Shift):\n  + Chuyển từ 'Bố mẹ cai ngục vs Con tù nhân' sang 'Gia đình là một đội cùng rèn luyện khả năng tập trung sâu'. Bố mẹ cũng cam kết không bấm điện thoại khi ngồi vào bàn làm việc.",
+        "exemplar_analysis": "Giải pháp Đòn Bẩy Cao của Elite:\n1. Tối thứ 7, bố mẹ ngồi lại với con, công nhận sự bất lực của cách làm cũ và xin lỗi con vì đã quát mắng vô ích.\n2. Cùng con thiết kế 'Thử thách Không Gian Tinh Khiết' (Pure Focus Space):\n   - Mua tặng con 1 kệ sách nhỏ và 3 khay phân loại tài liệu.\n   - Luật bất khả xâm phạm của cả nhà: Sau 20h00, mọi thiết bị thông minh được đặt vào khay sạc tại phòng khách.\n3. Thiết kế cấu trúc phần thưởng tự nhiên: Con hoàn thành bài học trước 21h30, 2 bố con sẽ có 30 phút chơi cờ vua hoặc đi dạo nói chuyện.\nKết quả sau 3 tuần: Con tự giác ngồi vào bàn học tập trung cao độ, phòng ốc ngăn nắp vì ma sát gây xao nhãng đã bị triệt tiêu từ cấp độ cấu trúc.",
+        "action_plan": "Dọn sạch bàn học cùng con vào chiều Chủ Nhật, lắp đặt trạm sạc điện thoại tập trung tại phòng khách và kích hoạt cam kết dùng màn hình cho cả gia đình.",
+        "common_traps": [
+          "Ảo tưởng ý chí (Willpower Myth): Nghĩ rằng con người có thể dùng ý chí thuần túy để chiến thắng một môi trường đầy rẫy bẫy xao nhãng.",
+          "Kẹt ở đòn bẩy tham số: Cứ nghĩ rằng tăng tiền thưởng hoặc phạt nặng hơn sẽ giải quyết được vấn đề cấu trúc."
+        ]
+      },
       "systems_concepts": [
         {
           "id": "leverage",
-          "name": "Leverage Points (Meadows)",
-          "summary": "Đòn bẩy tăng dần: số liệu → buffer → feedback → rule → mục tiêu → paradigm.",
-          "boundary": "Đòn bẩy cao khó đẩy hơn nhưng bền hơn.",
-          "trap": "Chỉ tối ưu KPI (đòn bẩy thấp) rồi tưởng đã đổi hệ.",
-          "action": "Với 1 vấn đề lặp lại: liệt kê can thiệp đòn bẩy thấp vs cao."
+          "name": "12 Điểm Đòn Bẩy Can Thiệp (Donella Meadows)",
+          "summary": "Đòn bẩy tăng dần theo thứ tự: Số liệu/thông số -> Bộ đệm (Buffer) -> Dòng chảy thông tin -> Quy tắc hệ thống -> Mục tiêu của hệ -> Hệ hình tư duy (Paradigm).",
+          "boundary": "Can thiệp đòn bẩy càng cao thì lực cản tâm lý ban đầu càng lớn nhưng giá trị thay đổi càng bền vững.",
+          "trap": "Tiêu tốn 90% sinh lực vào việc tranh cãi các thông số vụn vặt (ai đúng ai sai) mà không chịu thay đổi luật chơi.",
+          "action": "Xác định 1 vấn đề nan giải và tự hỏi: 'Quy tắc ngầm nào đang tạo ra vấn đề này?'."
         },
         {
           "id": "emergence",
-          "name": "Emergence",
-          "summary": "Tính chất hệ không suy ra từ phần tử đơn lẻ (kẹt xe, văn hóa nhóm).",
-          "boundary": "Khi tương tác nhiều agent.",
-          "trap": "Đổ lỗi một cá nhân cho thất bại mang tính cấu trúc.",
-          "action": "Tìm 1 hiện tượng 'emergent' trong nhà hoặc team."
+          "name": "Tính Chất Nảy Sinh (Emergent Properties)",
+          "summary": "Đặc tính của tổng thể được sinh ra từ sự tương tác giữa các phần tử, không thể tìm thấy ở từng phần tử đơn lẻ (như sự tin cậy, lòng tự giác, văn hóa gia đình).",
+          "boundary": "Chỉ xuất hiện trong các hệ thống phức hợp thích nghi (Complex Adaptive Systems).",
+          "trap": "Cố gắng 'sửa chữa' từng cá nhân bằng cách nhồi nhét lý thuyết thay vì xây dựng môi trường để hành vi tốt tự nảy sinh.",
+          "action": "Tạo ra 1 thay đổi nhỏ trong môi trường sống để hành vi tích cực có cơ hội nảy mầm."
         }
       ],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Một vấn đề lặp lại 3 lần trở lên. Viết: can thiệp bạn từng thử (đòn bẩy thấp) và 1 can thiệp cấu trúc/rule/mục tiêu (đòn bẩy cao) chưa thử.",
-        "success_criteria": "Phân biệt can thiệp thấp vs cao cụ thể."
+        "prompt": "Hãy chọn một vấn đề đã lặp đi lặp lại ít nhất 3 lần trong gia đình, công việc hoặc bản thân bạn:\n1. Mô tả cách can thiệp cũ bạn từng dùng (thuộc tầng Đòn bẩy thấp: nhắc nhở, hối thúc, phạt tiền, tăng KPI) và giải thích tại sao nó thất bại.\n2. Phân tích Cấu trúc ngầm: Luật chơi nào hoặc dòng thông tin bị nghẽn nào đang duy trì vấn đề này?\n3. Thiết kế một Can thiệp ở tầng Đòn bẩy cao: Bạn sẽ thay đổi Quy chế hệ thống (Rules), Cấu trúc môi trường (Environment Architecture), hay Mô hình nhận thức (Paradigm) như thế nào?\n4. Chỉ số kiểm chứng: Sau bao lâu bạn sẽ đo lường lại và bằng dấu hiệu cụ thể nào?",
+        "checklist": [
+          "Chỉ ra rõ ràng can thiệp cũ thuộc tầng đòn bẩy thấp (thông số/hình phạt)",
+          "Phân tích được cấu trúc hoặc quy tắc ngầm đang chi phối hành vi",
+          "Đề xuất được giải pháp ở tầng đòn bẩy cao (luật chơi, môi trường, mục tiêu)",
+          "Có chỉ số đo lường khách quan về sự dịch chuyển hành vi"
+        ],
+        "bad_example": "Vấn đề: Nhân viên đi làm muộn. Can thiệp cũ: Phạt 100k mỗi lần đi muộn (thất bại vì họ vẫn đi muộn và nộp phạt). Đòn bẩy cao: Quán triệt tinh thần trách nhiệm trong cuộc họp. Đo lường: Theo dõi xem mọi người có đi làm sớm hơn không.",
+        "good_example": "1. Vấn đề: Vợ chồng thường xuyên bất đồng về các khoản chi tiêu lớn trong tháng.\n2. Can thiệp cũ (Đòn bẩy thấp): Mỗi lần vượt ngân sách lại cãi nhau, trách móc đối phương hoang phí, hứa tháng sau sẽ ghi chép từng bữa ăn (thất bại vì việc ghi chép thủ công tạo ma sát quá lớn và gây ức chế tâm lý).\n3. Phân tích cấu trúc ngầm: Tiền của gia đình nằm chung trong một tài khoản duy nhất, không có ranh giới ngân sách rõ ràng, ai chi gì cũng phải giải trình tạo cảm giác bị kiểm soát mất tự do.\n4. Can thiệp Đòn bẩy cao (Thay đổi Quy chế & Cấu trúc dòng tiền): Thiết lập 'Hệ thống 3 Tài khoản Tự động':\n   - Tài khoản 1 (Thiết yếu gia đình - 55% thu nhập): Tự động trích tiền điện nước, học phí, tiền ăn chung.\n   - Tài khoản 2 (Đầu tư tích lũy - 25% thu nhập): Khóa cứng không được rút.\n   - Tài khoản 3 & 4 (Quỹ tự do cá nhân - mỗi người 10% thu nhập): Mỗi người có toàn quyền chi tiêu số tiền này cho sở thích riêng mà không cần hỏi ý kiến hay giải trình với người kia.\n5. Đo lường: Triệt tiêu 100% các cuộc cãi vã về chi tiêu cá nhân sau 30 ngày áp dụng."
       },
       "quiz": [
         {
-          "q": "Theo tư duy hệ thống, thay đổi paradigm thuộc nhóm đòn bẩy?",
+          "q": "Theo Donella Meadows, can thiệp nào sau đây mang lại điểm đòn bẩy CAO NHẤT trong một hệ thống?",
           "options": [
-            "Rất cao — khó nhưng thay đổi sâu",
-            "Thấp nhất — chỉ nên sửa số liệu",
-            "Không liên quan",
-            "Chỉ dành cho chính trị"
+            "Thay đổi Mô hình nhận thức (Paradigm) và Mục tiêu tối thượng của hệ thống",
+            "Tăng mức hình phạt tiền đối với các hành vi sai phạm",
+            "Bổ sung thêm 20 quy định và tiêu chuẩn chi tiết bằng văn bản",
+            "Thay đổi người đứng đầu nhưng giữ nguyên toàn bộ cơ chế vận hành cũ"
           ],
           "answer": 0,
-          "explain": "Meadows xếp paradigm/mục tiêu cao hơn parameter."
+          "explain": "Paradigm là cội nguồn sinh ra mục tiêu, cấu trúc quyền lực, quy tắc và thông số của toàn bộ hệ thống. Khi Paradigm thay đổi, mọi thứ bên dưới tự động sắp xếp lại.",
+          "trap_analysis": "Đa số nhà quản lý thường thích sửa thông số hoặc ban hành văn bản phạt (vì dễ làm ngay), nhưng hiệu quả gần như bằng không."
+        },
+        {
+          "q": "Khái niệm 'Tính chất nảy sinh' (Emergence) giải thích hiện tượng nào sau đây?",
+          "options": [
+            "Văn hóa kỷ luật tự giác của một tập thể được hình thành từ cấu trúc môi trường và quy tắc minh bạch, chứ không thể ép buộc cơ học từ từng cá nhân",
+            "Một cỗ máy hoạt động nhanh hơn khi được tra dầu mỡ",
+            "Tổng trọng lượng của một chiếc xe bằng tổng trọng lượng các linh kiện cộng lại",
+            "Nhân viên làm việc chăm chỉ hơn khi được hứa thưởng tiền mặt"
+          ],
+          "answer": 0,
+          "explain": "Emergence là đặc tính chỉ xuất hiện ở cấp độ toàn hệ thống thông qua mạng lưới tương tác phức hợp giữa các thành phần.",
+          "trap_analysis": "Tư duy cơ học giản lược (Reductionism) luôn cố bóc tách từng phần tử để sửa chữa, trong khi bản chất vấn đề nằm ở mối quan hệ tương tác giữa chúng."
+        },
+        {
+          "q": "Một dấu hiệu kinh điển cho thấy bạn đang can thiệp vào 'Điểm đòn bẩy SAI LẦM' là gì?",
+          "options": [
+            "Bạn tốn rất nhiều công sức, mệt mỏi hò hét mỗi ngày nhưng vấn đề chỉ cải thiện tạm thời rồi quay lại trạng thái cũ",
+            "Mọi người trong gia đình đều cảm thấy nhẹ nhõm và tự giác",
+            "Vấn đề được giải quyết triệt để sau một thay đổi nhỏ về không gian vật lý",
+            "Hệ thống vận hành trơn tru mà không cần bạn phải giám sát liên tục"
+          ],
+          "answer": 0,
+          "explain": "Khi bạn phải dùng lực đẩy liên tục (như quát tháo, kiểm tra, đôn đốc) mà buông tay ra là hệ thống sụp đổ, bạn chắc chắn đang can thiệp ở tầng đòn bẩy thấp nhất.",
+          "trap_analysis": "Nhiều người lầm tưởng việc mình 'bận rộn hò hét kiểm soát' là bằng chứng của việc mình đang làm việc có trách nhiệm."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 7,
-      "title": "Bất định: Scenario & Premortem nâng cao",
+      "title": "Bất định: Lập Kế Hoạch Đa Kịch Bản & Chốt Chặn Kích Hoạt",
       "theme": "uncertainty",
-      "goal": "Sống với không biết chắc: nhiều kịch bản, không một forecast duy nhất.",
-      "core_idea": "Tương lai là phân phối, không phải điểm. Lập kế hoạch trên nhiều thế giới có thể.",
-      "read": [],
+      "goal": "Thoát khỏi ảo tưởng dự báo đơn điểm (Single-point forecast); thành thạo phương pháp xây dựng 3 Kịch bản tương lai kèm Tín hiệu nhận diện sớm (Early Triggers) và Kế hoạch ứng phó sẵn sàng (Contingency Actions).",
+      "core_idea": "Tương lai không phải là một điểm cố định mà là một phân phối xác suất của nhiều thế giới có thể xảy ra. Người tinh hoa không cố đoán xem thế giới nào sẽ xảy ra; họ thiết kế vị thế để kịch bản nào xảy ra họ cũng sống sót và hưởng lợi.",
+      "read": [
+        {
+          "label": "9 Chế độ Tư duy — Bayesian & Tư duy kịch bản",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Kịch bản giả định & Premortem nâng cao",
+          "page": "pages/3_88_mo_hinh.py"
+        }
+      ],
+      "concept_deep_dive": [
+        {
+          "name": "Lập Kế Hoạch Theo Kịch Bản (Scenario Planning)",
+          "summary": "Phương pháp do tập đoàn dầu khí Royal Dutch Shell tiên phong trong thập niên 1970: Thay vì cố gắng dự báo giá dầu sẽ là bao nhiêu đô-la, Shell xây dựng sẵn các kịch bản tương lai khác nhau (khủng hoảng dầu mỏ, cấm vận, công nghệ mới). Khi khủng hoảng nổ ra thật, trong khi các đối thủ hoảng loạn thì Shell chỉ việc mở tập hồ sơ kịch bản tương ứng ra và thực thi hành động đã chuẩn bị trước.",
+          "good_example": "Khi chuẩn bị tài chính cho gia đình: Xây dựng 3 kịch bản thu nhập trong 2 năm tới: Kịch bản Cơ sở (giữ nguyên thu nhập), Kịch bản Tăng trưởng (thăng chức/tăng lương 30%), Kịch bản Mùa đông (mất việc/thu nhập giảm 50%). Mỗi kịch bản có sẵn phương án chi tiêu tương ứng.",
+          "bad_example": "Vay tiền mua nhà dựa trên giả định duy nhất rằng công ty sẽ thưởng Tết 300 triệu đều đặn như năm ngoái.",
+          "boundary": "Không nên vẽ ra quá nhiều kịch bản (trên 4 kịch bản) gây tê liệt phân tích (Analysis Paralysis). Khung 3 kịch bản (Cơ sở / Thuận lợi / Bất lợi) là tối ưu cho cá nhân và gia đình.",
+          "lattice_link": "Model #37 (Scenario Analysis), Model #03 (Probabilistic Thinking) và Model #07 (Margin of Safety)."
+        },
+        {
+          "name": "Tín Hiệu Sớm & Dây Kích Hoạt (Early Triggers & Tripwires)",
+          "summary": "Một kịch bản chỉ có giá trị khi đi kèm với 'Tín hiệu nhận diện sớm' (Trigger). Tripwire là một ngưỡng số liệu khách quan được định nghĩa từ trước: khi chạm ngưỡng này, kế hoạch ứng phó tự động được kích hoạt ngay lập tức mà không cần tranh cãi hay do dự.",
+          "good_example": "Trong kinh doanh: Đặt Tripwire: 'Nếu sau 90 ngày khai trương, dòng tiền hoạt động âm quá 50 triệu và số khách quay lại dưới 15%, tự động đóng cửa cắt lỗ ngay lập tức'. Điều này loại bỏ hoàn toàn bẫy chi phí chìm (Sunk Cost Fallacy).",
+          "bad_example": "Kinh doanh thua lỗ liên tục nhưng mỗi tháng đều tự an ủi: 'Chắc tháng sau sẽ tốt hơn', cho đến khi cạn sạch vốn liếng và ôm một đống nợ.",
+          "boundary": "Tripwire phải được thiết lập bằng các con số đo lường khách quan trước khi bước vào trận chiến, không được thay đổi ngưỡng giữa chừng vì cảm xúc tiếc nuối.",
+          "lattice_link": "Model #29 (Sunk Cost Fallacy) và Model #30 (Loss Aversion)."
+        }
+      ],
+      "case_study": {
+        "title": "Nghỉ Việc Công Ty Lớn Mở Trung Tâm Đào Tạo / Phòng Gym: Dự Báo Màu Hồng Vs 3 Kịch Bản Thực Tế",
+        "context": "Chị Mai (34 tuổi) đang là trưởng phòng nhân sự tại một tập đoàn với mức lương 50 triệu/tháng. Chị ấp ủ đam mê mở một trung tâm huấn luyện kỹ năng sống & yoga cao cấp cho trẻ em và phụ nữ. Chị dự tính rút toàn bộ 1.2 tỷ tiền tiết kiệm và vay thêm ngân hàng 800 triệu để thuê mặt bằng 3 tầng tại một khu đô thị mới. Bản kế hoạch kinh doanh của chị Mai dự báo duy nhất một con số: Sau 6 tháng sẽ có 150 học viên thường xuyên, đạt doanh thu 180 triệu/tháng, trừ chi phí lãi 60 triệu/tháng. Chồng chị Mai rất bất an vì kinh tế đang có dấu hiệu chững lại, nhưng chị Mai quả quyết: 'Em đã khảo sát quanh đây toàn nhà giàu, nhu cầu cực lớn, không thể thất bại được!'.",
+        "decision_question": "Chị Mai nên lập kế hoạch như thế nào để bảo vệ gia đình khỏi thảm họa phá sản trong khi vẫn theo đuổi được ước mơ?",
+        "facts": [
+          "Mặt bằng kinh doanh yêu cầu ký hợp đồng thuê tối thiểu 3 năm, cọc 6 tháng (360 triệu) và phạt 100% tiền cọc nếu chấm dứt trước hạn.",
+          "Thực tế chi phí chuyển đổi của khách hàng: Trong giai đoạn thắt chặt chi tiêu, các dịch vụ yoga/kỹ năng sống thường là khoản đầu tiên bị người tiêu dùng cắt giảm.",
+          "Nếu chỉ có Kịch bản duy nhất (Plan A), khi số lượng học viên chỉ đạt 30% so với kỳ vọng, chi phí cố định (mặt bằng, nhân sự, lãi vay) lên tới 85 triệu/tháng sẽ bào mòn sạch vốn lưu động trong vòng 4 tháng."
+        ],
+        "noise": [
+          "'Khu này toàn cư dân có tiền nên họ sẽ không tiếc tiền cho con học' (Suy luận cảm tính không dựa trên khảo sát ngân sách thực tế).",
+          "'Mình làm vì đam mê và sự tử tế nên vũ trụ sẽ ủng hộ' (Ảo tưởng niềm tin đạo đức thay thế cho quy luật thị trường).",
+          "'Người ta mở trung tâm ầm ầm ra đó có sao đâu' (Bẫy Survivorship Bias)."
+        ],
+        "framework_application": "Chuyển dịch từ Dự báo đơn điểm sang Mô hình 3 Kịch bản kèm Tripwire:\n- Kịch bản 1: Cơ sở (Base Case - Xác suất 50%): Đạt 70-90 học viên sau 6 tháng. Hòa vốn sau 9 tháng.\n- Kịch bản 2: Thuận lợi (Upside Case - Xác suất 20%): Đạt 150 học viên sau 4 tháng.\n- Kịch bản 3: Mùa đông (Downside Case - Xác suất 30%): Sau 4 tháng chỉ có dưới 35 học viên, dòng tiền âm 45 triệu/tháng.",
+        "exemplar_analysis": "Thiết kế vị thế sinh tồn của Elite:\n1. Tái cấu trúc quy mô (De-risking): Không thuê mặt bằng to 3 tầng 60 triệu/tháng. Chuyển sang thuê hợp tác chia sẻ không gian (Co-sharing space) theo giờ hoặc thuê mặt bằng nhỏ 25 triệu/tháng để giảm 60% chi phí cố định.\n2. Thiết lập Tripwire bất khả xâm phạm cho Kịch bản Mùa đông:\n   - Tripwire 1 (Ngày 60): Nếu số học viên đăng ký chính thức < 25 người -> Lập tức dừng tuyển thêm nhân sự cố định, chuyển sang cộng tác viên trả theo giờ.\n   - Tripwire 2 (Ngày 120): Nếu tổng lỗ chạm mốc 250 triệu -> Kích hoạt điều khoản sang nhượng mặt bằng hoặc chuyển mô hình dạy online, tuyệt đối không bơm thêm tiền tiết kiệm của gia đình vào gồng lỗ.\n3. Vẫn giữ lại công việc bán thời gian hoặc làm tư vấn nhân sự độc lập để duy trì dòng tiền tối thiểu 20 triệu/tháng trong năm đầu.",
+        "action_plan": "Viết lại kế hoạch tài chính với 3 kịch bản, đàm phán hợp đồng thuê có điều khoản linh hoạt theo quý và chốt bảng Tripwire cắt lỗ với chồng trước khi đặt bút ký hợp đồng.",
+        "common_traps": [
+          "Bẫy tôn thờ một tương lai duy nhất (Tunnel Vision): Coi kế hoạch trên giấy là sự thật tất yếu của tương lai.",
+          "Bẫy leo thang cam kết (Escalation of Commitment): Khi thua lỗ không chịu cắt lỗ theo Tripwire mà tiếp tục vay mượn người thân để 'đốt tiếp' vào dự án đang chìm."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [
         {
           "id": "scenarios",
-          "name": "Scenario Planning",
-          "summary": "Dự 3–4 kịch bản (cơ sở / tốt / xấu / đen) với trigger signs.",
-          "boundary": "Khi quyết định nhạy cảm với môi trường bên ngoài.",
-          "trap": "Chỉ có plan A; hoặc 20 kịch bản không hành động được.",
-          "action": "3 kịch bản + tín hiệu nhận diện sớm cho mỗi cái."
+          "name": "Scenario Planning (Hoạch định Đa Kịch Bản)",
+          "summary": "Xây dựng 3 thế giới tương lai độc lập (Cơ sở, Thuận lợi, Bất lợi) và chuẩn bị trước phản ứng cho từng kịch bản.",
+          "boundary": "Khi tương lai có độ bất định cao và chịu tác động lớn từ các biến số vĩ mô bên ngoài.",
+          "trap": "Vẽ ra kịch bản cho vui trên giấy nhưng khi hành động vẫn chỉ chuẩn bị duy nhất cho kịch bản màu hồng.",
+          "action": "Viết 3 kịch bản cho quyết định lớn sắp tới của bạn."
         },
         {
           "id": "premortem_plus",
-          "name": "Premortem + Contingency",
-          "summary": "Không chỉ liệt kê thất bại — gắn sẵn hành động nếu trigger xuất hiện.",
-          "boundary": "Quyết định có thời gian chuẩn bị.",
-          "trap": "Premortem xong rồi quên, không có trigger.",
-          "action": "Mỗi rủi ro lớn ↔ 1 trigger ↔ 1 hành động dự phòng."
+          "name": "Premortem Nâng Cao & Dây Kích Hoạt (Tripwires)",
+          "summary": "Xác định trước các ngưỡng số liệu cụ thể (Tripwires) để khi chạm ngưỡng, hành động ứng phó tự động được kích hoạt mà không bị cảm xúc chi phối.",
+          "boundary": "Áp dụng cho các dự án kinh doanh, đầu tư hoặc thay đổi công việc có rủi ro mất vốn.",
+          "trap": "Không đặt ra ngưỡng số liệu rõ ràng dẫn đến việc liên tục dời mốc cắt lỗ vì tiếc tiền.",
+          "action": "Gắn đúng 1 Tripwire số hóa cho 1 kế hoạch quan trọng của bạn."
         }
       ],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Một quyết định 3–12 tháng tới. Viết 3 scenarios (base/upside/downside). Mỗi scenario: 2 dấu hiệu sớm + 1 việc bạn sẽ làm nếu nó hiện ra.",
-        "success_criteria": "3 scenarios, mỗi cái có trigger + action."
+        "prompt": "Hãy chọn một kế hoạch hoặc quyết định quan trọng mà bạn sắp thực hiện trong vòng 6–12 tháng tới (chuyển việc, khởi nghiệp, đầu tư tài chính, hoặc kế hoạch học tập lớn của con):\n1. Nêu quyết định và mục tiêu kỳ vọng ban đầu.\n2. Thiết kế chi tiết 3 Kịch bản tương lai:\n   - Kịch bản Cơ sở (Base Case): Điều gì sẽ xảy ra nếu mọi thứ diễn ra bình thường?\n   - Kịch bản Thuận lợi (Upside Case): Cơ hội đột phá nào có thể mở ra?\n   - Kịch bản Bất lợi (Downside Case): Khủng hoảng xấu nhất có thể ập đến là gì?\n3. Với mỗi kịch bản, hãy chỉ rõ: (a) 1 Tín hiệu nhận diện sớm (Early Trigger) đo lường được; (b) Hành động cụ thể bạn sẽ thực hiện ngay khi tín hiệu đó xuất hiện.\n4. Thiết lập 1 Dây kích hoạt tối hậu (Tripwire): Ngưỡng nào chạm vào bạn sẽ lập tức dừng lại/cắt lỗ để bảo toàn sinh mạng tài chính?",
+        "checklist": [
+          "Mô tả đầy đủ cả 3 kịch bản riêng biệt (không chỉ tập trung vào kịch bản tốt)",
+          "Mỗi kịch bản đều có Early Trigger bằng con số hoặc sự kiện cụ thể",
+          "Có kế hoạch hành động định sẵn tương ứng cho từng kịch bản",
+          "Xác định được Tripwire cắt lỗ bất khả xâm phạm"
+        ],
+        "bad_example": "Quyết định: Đầu tư chứng khoán 200 triệu. Kịch bản tốt: Lãi 50%, tôi sẽ mua xe mới. Kịch bản bình thường: Lãi 15%, tôi để tiền đó. Kịch bản xấu: Thị trường giảm, tôi sẽ kiên nhẫn chờ nó tăng lại.",
+        "good_example": "Quyết định: Nhận vị trí Giám đốc Kinh doanh mới tại một công ty công nghệ vừa gọi vốn.\n1. Mục tiêu kỳ vọng: Xây dựng đội ngũ 10 nhân sự và đạt mốc doanh số 2 tỷ/tháng sau 6 tháng.\n2. 3 Kịch bản tương lai:\n- Kịch bản Cơ sở (Xác suất 50%): Sau 6 tháng tuyển được 6 nhân sự, doanh số đạt 1.2 tỷ/tháng, công ty hòa vốn vận hành.\n  + Early Trigger (Tháng thứ 3): Doanh số đạt 500 triệu, tỷ lệ chốt hợp đồng mẫu đạt 15%.\n  + Hành động: Tinh gọn quy trình bán hàng, tập trung vào tệp khách hàng sinh lời cao nhất.\n- Kịch bản Thuận lợi (Xác suất 20%): Sản phẩm bùng nổ, doanh số vượt 2.5 tỷ/tháng sau 4 tháng.\n  + Early Trigger: Khách hàng tự tìm đến qua truyền miệng, chu kỳ chốt hợp đồng rút ngắn từ 30 ngày xuống 10 ngày.\n  + Hành động: Yêu cầu ban giám đốc đàm phán lại gói thưởng cổ phần (ESOP) và ngân sách tuyển dụng mở rộng.\n- Kịch bản Bất lợi (Xác suất 30%): Sản phẩm lỗi nhiều, khách hàng từ chối, sau 3 tháng doanh số không vượt quá 200 triệu, quỹ tiền mặt công ty cạn dần.\n  + Early Trigger (Tháng thứ 2): Tỷ lệ hủy dịch vụ (Churn rate) > 40%, ban giám đốc chậm thanh toán lương 10 ngày.\n  + Hành động: Cắt giảm chi phí marketing bên ngoài, chuyển hướng sang khai thác tệp khách cũ.\n3. Dây kích hoạt tối hậu (Tripwire): 'Nếu đến hết tháng thứ 4, công ty nợ lương quá 20 ngày HOẶC sản phẩm không sửa được lỗi cốt lõi khiến doanh số < 300 triệu/tháng -> Tôi sẽ chủ động nộp đơn từ chức trong vòng 7 ngày để tìm cơ hội mới, tuyệt đối không dùng tiền túi bù vào công việc'."
       },
       "quiz": [
         {
-          "q": "Scenario planning khác forecast điểm ở chỗ?",
+          "q": "Tại sao việc chỉ lập 'Kế hoạch A' (Dự báo đơn điểm) lại là một cạm bẫy tư duy nguy hiểm nhất trong môi trường bất định?",
           "options": [
-            "Chuẩn bị nhiều thế giới có thể xảy ra + tín hiệu",
-            "Chọn 1 con số tương lai duy nhất",
-            "Bỏ qua dữ liệu",
-            "Chỉ dùng trực giác"
+            "Vì nó tạo ra sự mong manh tối đa (Maximum Fragility): khi thực tế chệch khỏi dự báo, bạn hoàn toàn không có phương án ứng phó và rơi vào hoảng loạn",
+            "Vì Kế hoạch A thường tốn quá ít thời gian để chuẩn bị",
+            "Vì mọi người sẽ không tin tưởng vào người chỉ có một kế hoạch",
+            "Vì Kế hoạch A luôn luôn sai trong 100% trường hợp"
           ],
           "answer": 0,
-          "explain": "Elite chuẩn bị phân phối, không tôn thờ một con số."
+          "explain": "Trong môi trường bất định, tương lai là một phân phối xác suất. Tối ưu hóa tuyệt đối cho một kịch bản duy nhất khiến bạn trở nên cực kỳ mong manh trước mọi biến động bất ngờ.",
+          "trap_analysis": "Con người có xu hướng thích sự chắc chắn giả tạo (Illusion of Certainty), nên thường bám víu vào một con số dự báo duy nhất để cảm thấy an tâm."
+        },
+        {
+          "q": "Mục đích cốt lõi của việc cài đặt 'Dây kích hoạt' (Tripwire) trước khi triển khai một dự án là gì?",
+          "options": [
+            "Loại bỏ hoàn toàn sự can thiệp của cảm xúc và bẫy chi phí chìm, giúp kích hoạt hành động cắt lỗ hoặc chuyển hướng một cách tự động",
+            "Để đe dọa các thành viên trong nhóm phải làm việc chăm chỉ hơn",
+            "Để chứng minh với cấp trên rằng mình là người cẩn thận",
+            "Để đảm bảo dự án chắc chắn thành công 100%"
+          ],
+          "answer": 0,
+          "explain": "Khi đang ở trong cơn say máu hoặc hoảng loạn của trận chiến, não bộ sẽ tìm mọi lý lẽ ngụy biện để gồng lỗ. Tripwire là thỏa thuận lý trí được thiết lập từ trước khi cảm xúc bị bẻ cong.",
+          "trap_analysis": "Rất nhiều người lập kế hoạch dự phòng nhưng không có Tripwire số hóa, dẫn đến khi kịch bản xấu xảy ra họ vẫn chần chừ và bị chôn vùi."
+        },
+        {
+          "q": "Trong phương pháp Scenario Planning của tập đoàn Shell, số lượng kịch bản lý tưởng cho một quyết định chiến lược là bao nhiêu?",
+          "options": [
+            "Khoảng 2 đến 4 kịch bản (tối ưu nhất là 3 kịch bản: Cơ sở, Thuận lợi, Bất lợi)",
+            "Càng nhiều càng tốt (từ 10 đến 20 kịch bản để bao quát hết mọi khả năng)",
+            "Chỉ cần 1 kịch bản chi tiết nhất",
+            "Chỉ cần 2 kịch bản: Tốt nhất và Xấu nhất"
+          ],
+          "answer": 0,
+          "explain": "Quá nhiều kịch bản (>4) sẽ làm não bộ quá tải và gây tê liệt hành động. Khung 3 kịch bản là cấu trúc hoàn hảo nhất để vừa bao quát được phân phối xác suất, vừa đủ sắc bén để hành động.",
+          "trap_analysis": "Nhiều người rơi vào bẫy 'phức tạp hóa hình thức', vẽ ra hàng chục kịch bản chi tiết nhưng không có kịch bản nào có kế hoạch hành động thực tế."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 8,
-      "title": "Đuôi phân phối, Optionality, Antifragile",
+      "title": "Đuôi Phân Phối, Quyền Chọn & Tính Khả Tri Tăng Trưởng",
       "theme": "uncertainty",
-      "goal": "Bảo vệ khỏi rủi ro đuôi; thiết kế để hưởng upside bất đối xứng.",
-      "core_idea": "Một số hệ vỡ khi sốc (fragile); một số sống sót (robust); một số *mạnh lên* nhờ biến động (antifragile).",
-      "read": [],
+      "goal": "Làm chủ nguyên tắc Chống Hủy Diệt (Avoid Ruin at all costs); thiết kế Chiến lược Thanh Tạ (Barbell Strategy) để vừa bảo vệ 100% sự an toàn của gia đình, vừa nắm giữ các Quyền chọn (Optionality) có tiềm năng tăng trưởng đột phá bất đối xứng.",
+      "core_idea": "Sống sót không phải là một phần của trò chơi; sống sót là điều kiện tiên quyết để được tiếp tục chơi. Đừng bao giờ đánh đổi thứ bạn cần và không thể mất để lấy thứ bạn muốn nhưng không thực sự cần thiết. Hãy thiết kế cuộc đời để trở nên Khả tri tăng trưởng (Antifragile) trước các biến cố.",
+      "read": [
+        {
+          "label": "9 Chế độ Tư duy — Bayesian & Xác suất đuôi béo",
+          "page": "pages/2_9_che_do_tu_duy.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Bất đối xứng (Asymmetry) & Thiên nga đen",
+          "page": "pages/3_88_mo_hinh.py"
+        },
+        {
+          "label": "Thư viện Nguyên lý — Nguyên lý Taleb & Chiến lược Barbell",
+          "page": "pages/4_thu_vien_nguyen_ly.py"
+        }
+      ],
+      "concept_deep_dive": [
+        {
+          "name": "Rủi Ro Hủy Diệt & Phân Phối Đuôi Béo (Ruin Risk & Fat Tails)",
+          "summary": "Trong thế giới thực (Extremistan), các biến cố cực đoan (khủng hoảng tài chính, đại dịch, đột phá công nghệ) xảy ra với xác suất cao hơn nhiều so với phân phối chuẩn. Quy tắc số 1 của Nassim Taleb: 'Nếu có một xác suất nhỏ dẫn tới sự hủy diệt (phá sản, mất mạng, mất danh dự), không có bất kỳ tỷ suất lợi nhuận kỳ vọng nào có thể bù đắp được'. Khi xác suất hủy diệt xuất hiện, luật số lớn và kỳ vọng toán học đều trở nên vô nghĩa.",
+          "good_example": "Không bao giờ dùng đòn bẩy vay nợ (Margin/Nợ tín dụng) để đầu tư tài chính. Nếu thị trường giảm sốc 30% trong ngắn hạn, người không vay nợ vẫn sống sót và phục hồi khi thị trường tăng lại; còn người dùng đòn bẩy cao sẽ bị công ty chứng khoán bán giải chấp (Call Margin) và cháy sạch tài khoản ngay đáy.",
+          "bad_example": "Chơi trò 'Cò quay Nga' (Russian Roulette): Dù khẩu súng có 6 lỗ và chỉ có 1 viên đạn, được thưởng 10 tỷ nếu sống sót, người thông thái tuyệt đối không bao giờ chơi vì cái giá của thất bại là cái chết (Hủy diệt hoàn toàn).",
+          "boundary": "Áp dụng nghiêm ngặt cho các quyết định có nguy cơ xóa sổ sự nghiệp, tài sản tích lũy cả đời, sức khỏe tính mạng hoặc sự gắn kết gia đình.",
+          "lattice_link": "Model #38 (Fat-tailed Distributions), Model #39 (Black Swan) và Model #07 (Margin of Safety)."
+        },
+        {
+          "name": "Chiến Lược Thanh Tạ & Quyền Chọn (Barbell Strategy & Optionality)",
+          "summary": "Chiến lược Thanh Tạ (Nassim Taleb): Thay vì đầu tư vào vùng giữa rủi ro trung bình (nơi chứa đựng rủi ro ngầm lớn nhất), hãy chia nguồn lực thành 2 cực đối lập: (1) Cực siêu an toàn (85–90%): Bảo vệ tuyệt đối khỏi mọi rủi ro hủy diệt; (2) Cực siêu quyền chọn (10–15%): Nắm giữ các cơ hội có rủi ro mất mát giới hạn nhưng tiềm năng tăng trưởng vô hạn (Positive Asymmetry). Quyền chọn (Optionality) là quyền được làm (hoặc không làm) một điều gì đó với chi phí nhỏ mà không bị bắt buộc.",
+          "good_example": "Sự nghiệp cá nhân: 85% thời gian làm công việc chuyên môn ổn định, tích lũy uy tín và dòng tiền đều đặn; 15% thời gian rảnh buổi tối xây dựng các dự án sáng tạo cá nhân (viết sách, làm kênh chia sẻ tri thức, học làm chủ công cụ AI). Nếu dự án thất bại, chỉ mất vài giờ nghỉ ngơi; nếu thành công, mở ra cơ hội đổi đời.",
+          "bad_example": "Bỏ hẳn công việc ổn định, dồn toàn bộ tiền tiết kiệm và vay nợ để 'tất tay' mở một mô hình kinh doanh rủi ro cao theo trào lưu đám đông.",
+          "boundary": "Chiến lược Thanh tạ đòi hỏi sự kỷ luật sắt thép để không để cực siêu rủi ro lấn át sang cực an toàn khi lòng tham trỗi dậy.",
+          "lattice_link": "Model #40 (Antifragility) và Model #41 (Optionality)."
+        }
+      ],
+      "case_study": {
+        "title": "Cơn Sốt Đầu Tư 'Làm Giàu Nhanh' Thời AI: Tất Tay Đổi Đời Hay Thiết Kế Chiến Lược Thanh Tạ (Barbell)?",
+        "context": "Anh Hoàng (39 tuổi) đang là quản lý dự án công nghệ với mức lương 70 triệu/tháng và có 1.5 tỷ tiền tiết kiệm. Dạo gần đây anh chứng kiến làn sóng cắt giảm nhân sự mạnh mẽ do tự động hóa AI, công việc của anh chịu áp lực gia tăng gấp đôi. Một nhóm bạn thân đầu tư rủ anh tham gia một nhóm kín 'bắt đáy cổ phiếu đầu cơ và tiền số đòn bẩy x5', khoe tài khoản nhân 3 lần sau 2 tháng. Bạn anh thúc giục: 'Làm công ăn lương cả đời cũng chỉ đủ ăn, thời buổi AI này muốn tự do tài chính thì phải dám cược lớn!'. Anh Hoàng dao động dữ dội, tính rút sạch 1.5 tỷ tiết kiệm để 'tất tay một phen đổi đời' cho vợ con đỡ khổ.",
+        "decision_question": "Anh Hoàng nên phản ứng ra sao trước cơ hội này để vừa bảo vệ gia đình, vừa nắm bắt được làn sóng công nghệ mới?",
+        "facts": [
+          "Đầu tư đòn bẩy x5 trong thị trường biến động mạnh có xác suất cháy sạch tài khoản trong vòng 12 tháng lên tới 95% (Ruin Risk). Chỉ cần một cú sập 20% là toàn bộ 1.5 tỷ mồ hôi nước mắt biến mất vĩnh viễn.",
+          "Áp lực nghề nghiệp từ AI là có thật, nhưng giải pháp cho sự bất định không bao giờ là tăng thêm sự bất định tài chính có nguy cơ hủy diệt.",
+          "Gia đình có 2 con nhỏ đang tuổi ăn học: 1.5 tỷ tiền tiết kiệm là 'Pháo đài sinh tồn' (Survival Fortress) của cả nhà trước rủi ro ốm đau, sa thải hoặc khủng hoảng kinh tế."
+        ],
+        "noise": [
+          "'Không mạo hiểm lớn thì không bao giờ giàu' (Khẩu hiệu sáo rỗng bỏ qua rủi ro hủy diệt).",
+          "'Bạn bè mình toàn người thông minh, họ làm được thì mình cũng làm được' (Bẫy Social Proof & Survivorship Bias — người cháy tài khoản thường im lặng không khoe).",
+          "'Nếu không mua ngay hôm nay thì sẽ hối hận cả đời' (Tâm lý FOMO bị thao túng)."
+        ],
+        "framework_application": "Ứng dụng Chiến Lược Thanh Tạ (Barbell Strategy) của Nassim Taleb:\n- Bịt chặt đầu rủi ro hủy diệt: Tuyệt đối không chạm vào 1.5 tỷ tiết kiệm để đánh bạc tài chính. 1.5 tỷ này phải nằm ở cực Siêu An Toàn (Tiết kiệm ngân hàng, vàng, quỹ trái phiếu thanh khoản).\n- Thiết kế cực Siêu Quyền Chọn (Optionality) với chi phí nhỏ:\n  + Về tài chính: Trích tối đa 50-100 triệu (dưới 5% tài sản) từ thu nhập thặng dư hàng tháng để thử nghiệm đầu tư nếu muốn học hỏi thị trường. Chấp nhận mất trắng số tiền này mà không ảnh hưởng một li đến cuộc sống gia đình.\n  + Về sự nghiệp: Dành 10 giờ/tuần học sâu cách ứng dụng AI Agents vào tối ưu hóa công việc quản lý dự án hiện tại, biến mình thành nhân sự không thể thay thế (Chống mong manh nghề nghiệp).",
+        "exemplar_analysis": "Quyết định của Người Tinh Hoa:\n1. Kiên quyết từ chối lời rủ rê 'tất tay' của nhóm bạn. Nhận diện rõ đây là trò chơi có kỳ vọng toán học âm và nguy cơ hủy diệt tuyệt đối.\n2. Gia cố cực an toàn: Đảm bảo gia đình có thể sống bình yên 24 tháng kể cả khi anh Hoàng bị mất việc đột ngột.\n3. Khai thác tính Khả Tri Tăng Trưởng (Antifragility): Biến biến cố AI thành cơ hội: Trở thành chuyên gia đào tạo nội bộ về công cụ AI cho công ty, từ đó mở ra quyền chọn được thăng chức hoặc nhận các hợp đồng tư vấn độc lập giá trị cao vào cuối tuần.\nKết quả: Giữ trọn 1.5 tỷ vốn an toàn, tâm lý thanh thản, năng lực chuyên môn tăng vọt và sự nghiệp được nâng lên một tầm cao mới.",
+        "action_plan": "Khóa sổ tiết kiệm 1.5 tỷ gửi kỳ hạn an toàn; đăng ký ngay một khóa học ứng dụng AI thực chiến cho công việc và cam kết dành 90 phút mỗi tối để làm chủ công cụ mới.",
+        "common_traps": [
+          "Nhầm lẫn giữa dũng cảm và liều lĩnh ngu xuẩn: Đánh cược tài sản sinh tồn của gia đình vào một canh bạc rủi ro cao không phải là dũng cảm, mà là sự vô trách nhiệm.",
+          "Bẫy ở giữa thanh tạ (The Fragile Middle): Không dám cực kỳ an toàn mà cũng không hiểu rõ quyền chọn bất đối xứng, để tiền ở những nơi rủi ro âm thầm nhưng sinh lời thấp."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [
         {
           "id": "fat_tail",
-          "name": "Fat tails & ruin",
-          "summary": "Rủi ro nhỏ xác suất nhưng phá hủy không bù được bằng lời trung bình.",
-          "boundary": "Khi có khả năng ruin (nợ xấu, sức khỏe, danh tiếng).",
-          "trap": "Tối ưu lợi nhuận trung bình, bỏ qua xác suất phá sản.",
-          "action": "Liệt kê 1 rủi ro 'ruin' trong đời bạn và cách cắt đuôi."
+          "name": "Phân Phối Đuôi Béo & Rủi Ro Hủy Diệt (Fat Tails & Ruin Risk)",
+          "summary": "Biến cố cực đoan xảy ra thường xuyên hơn dự đoán. Khi có rủi ro hủy diệt (Ruin), kỳ vọng toán học trở nên vô nghĩa. Quy tắc bất biến: Luôn cắt đuôi rủi ro phá sản trước tiên.",
+          "boundary": "Áp dụng cho mọi quyết định tài chính, sức khỏe, pháp lý và danh tiếng của cá nhân và gia đình.",
+          "trap": "Tối ưu hóa lợi nhuận trung bình trên giấy mà bỏ qua khả năng xảy ra biến cố sụp đổ tài chính.",
+          "action": "Kiểm tra danh mục tài chính và cuộc sống: Có khoản nợ hoặc ván cược nào có thể xóa sổ bạn không? Cắt bỏ ngay lập tức."
         },
         {
           "id": "optionality",
-          "name": "Optionality",
-          "summary": "Giữ quyền làm / không làm với chi phí nhỏ; upside lớn, downside giới hạn.",
-          "boundary": "Khi tương lai mơ hồ và chi phí giữ option chấp nhận được.",
-          "trap": "Trả quá đắt cho option không bao giờ exercise; hoặc đóng mọi option sớm.",
-          "action": "1 option bạn đang giữ hoặc nên mở tuần này."
+          "name": "Quyền Chọn & Tính Bất Đối Xứng (Optionality & Asymmetry)",
+          "summary": "Tạo ra các vị thế có rủi ro mất mát giới hạn và nhỏ (Limited Downside) nhưng tiềm năng tăng trưởng không giới hạn (Unlimited Upside).",
+          "boundary": "Cần kiên nhẫn tích lũy nhiều quyền chọn nhỏ mà không nản lòng khi phần lớn chúng không kích hoạt.",
+          "trap": "Trả giá quá đắt để mua các quyền chọn vô nghĩa hoặc đóng sập mọi cánh cửa thử nghiệm quá sớm.",
+          "action": "Tạo ra 1 dự án cá nhân hoặc kỹ năng mới có tiềm năng tăng trưởng bất đối xứng tuần này."
         },
         {
           "id": "antifragile",
-          "name": "Antifragility (thực dụng)",
-          "summary": "Thiết kế thói quen/hệ để biến động nhỏ *có ích* (luyện tập, stress vừa).",
-          "boundary": "Không áp dụng cho rủi ro ruin.",
-          "trap": "Gọi 'antifragile' cho thứ chỉ là robust; hoặc tự hại bằng stress quá lớn.",
-          "action": "1 thói quen có stressor nhỏ có kiểm soát (học, tập, feedback)."
+          "name": "Tính Khả Tri Tăng Trưởng (Antifragility)",
+          "summary": "Hệ thống không chỉ chống chịu được các cú sốc (Robust) mà còn trở nên mạnh mẽ hơn, thông thái hơn nhờ biến động và căng thẳng có kiểm soát (Hormesis).",
+          "boundary": "Chỉ áp dụng với các tác nhân gây căng thẳng (Stressors) vừa phải, không được chạm vào ngưỡng hủy diệt.",
+          "trap": "Nhầm lẫn giữa việc 'hành hạ bản thân quá mức' (gây chấn thương vĩnh viễn) với việc rèn luyện tạo tính Antifragile.",
+          "action": "Thiết lập 1 thói quen có áp lực nhỏ (như tắm nước lạnh, tập tạ nặng ngắt quãng, nhận phản biện thẳng thắn) để nâng cao sức bền tâm lý."
         }
       ],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Vẽ barbell cá nhân: (A) phần đời cần an toàn / tránh ruin, (B) phần nhỏ được phép thử nghiệm upside. Nêu 1 thay đổi tuần này để barbell rõ hơn.",
-        "success_criteria": "Có A, B và 1 thay đổi cụ thể."
+        "prompt": "Hãy tự tay thiết kế 'Chiến Lược Thanh Tạ' (Personal Barbell Strategy) cho cuộc đời và tài chính của bạn hiện nay:\n1. Đầu Cực Siêu An Toàn (85–90% nguồn lực):\n   - Bạn đang làm gì để bảo vệ gia đình khỏi 3 rủi ro hủy diệt lớn nhất (Mất khả năng lao động/sức khỏe, Mất nguồn thu nhập chính, Nợ xấu tài chính)?\n   - Bạn có quỹ dự phòng khẩn cấp bằng tiền mặt đủ sinh tồn bao nhiêu tháng?\n2. Đầu Cực Siêu Quyền Chọn (10–15% nguồn lực):\n   - Bạn đang nuôi dưỡng những 'Quyền chọn bất đối xứng' nào (dự án cá nhân, kỹ năng mới, mạng lưới quan hệ chất lượng, thử nghiệm đầu tư nhỏ) có rủi ro mất mát giới hạn nhưng tiềm năng bùng nổ lớn?\n3. Nhận diện 'Vùng Giữa Mong Manh' (The Fragile Middle):\n   - Có thói quen, khoản đầu tư hay mối quan hệ nào đang nằm ở vùng giữa (tốn nhiều thời gian/tiền bạc nhưng rủi ro ngầm cao mà lợi ích mờ nhạt) cần phải cắt bỏ không?",
+        "checklist": [
+          "Định nghĩa rõ ràng thành phần của đầu Cực An Toàn (có số tháng sinh tồn cụ thể)",
+          "Chỉ ra ít nhất 1 quyền chọn bất đối xứng ở đầu Cực Quyền Chọn",
+          "Nhận diện và lên kế hoạch loại bỏ ít nhất 1 thứ thuộc Vùng Giữa Mong Manh",
+          "Hành động đề xuất có tính thực tế, không dùng đòn bẩy nguy hiểm"
+        ],
+        "bad_example": "Đầu an toàn: Tôi đi làm công ty và gửi tiết kiệm 50 triệu. Đầu mạo hiểm: Tôi mua vé số và chơi coin theo nhóm kín trên mạng. Vùng giữa: Không có. Tôi thấy cuộc sống của mình rất ổn định.",
+        "good_example": "1. Đầu Cực Siêu An Toàn (85% tài sản & thời gian):\n- Tài chính: Duy trì Quỹ sinh tồn 600 triệu (tương đương 15 tháng chi phí tối thiểu của gia đình) phân bổ 70% gửi tiết kiệm kỳ hạn ngắn ở 2 ngân hàng quốc doanh lớn, 30% giữ vàng vật chất. Không vay nợ tiêu dùng, không dùng margin chứng khoán.\n- Sự nghiệp: Dành 40 giờ/tuần làm xuất sắc vai trò Chuyên viên Tài chính doanh nghiệp, luôn hoàn thành 100% KPI để đảm bảo nguồn lương ổn định.\n- Sức khỏe: Khám sức khỏe định kỳ 6 tháng/lần, mua bảo hiểm nhân thọ và bảo hiểm sức khỏe cao cấp cho cả 4 thành viên trong nhà.\n2. Đầu Cực Siêu Quyền Chọn (15% tài sản & thời gian):\n- Kỹ năng & Dự án: Dành 8 giờ/tuần vào sáng sớm thứ Bảy và tối thứ Ba để xây dựng một bản tin Substack chuyên sâu về phân tích báo cáo tài chính doanh nghiệp bán lẻ tại VN. Chi phí mất mát: 0 đồng và một chút thời gian rảnh. Tiềm năng: Xây dựng thương hiệu cá nhân uy tín, mở ra các hợp đồng tư vấn tài chính độc lập trong tương lai.\n- Thử nghiệm tài chính: Trích 5% thặng dư hàng tháng đầu tư vào danh mục 3 cổ phiếu công nghệ có lợi thế cạnh tranh độc quyền với tầm nhìn 5 năm.\n3. Cắt bỏ Vùng Giữa Mong Manh: Dừng việc cho người quen vay tiền lấy lãi suất 1.5%/tháng (rủi ro mất trắng vốn cực cao mà lợi nhuận không bù đắp được rủi ro hủy diệt); rút toàn bộ số tiền này về nhập vào quỹ tiết kiệm an toàn."
       },
       "quiz": [
         {
-          "q": "Ruin risk nên được xử lý thế nào?",
+          "q": "Tại sao theo Nassim Taleb, khi một quyết định có 'Xác suất Hủy Diệt' (Ruin Risk) lớn hơn 0%, mọi phép tính về Kỳ vọng Toán học (Expected Value) đều trở nên vô nghĩa?",
           "options": [
-            "Ưu tiên cắt / tránh trước khi tối ưu lợi nhuận trung bình",
-            "Chấp nhận nếu expected value dương",
-            "Bỏ qua vì hiếm",
-            "Mua càng nhiều đòn bẩy càng tốt"
+            "Vì một khi bạn đã bị hủy diệt (phá sản hoặc mất mạng), bạn không còn cơ hội để tiếp tục bước vào các lượt chơi tiếp theo nhằm thu về giá trị kỳ vọng trung bình",
+            "Vì các nhà toán học không giỏi tính toán rủi ro thực tế",
+            "Vì kỳ vọng toán học chỉ áp dụng cho môn bài bạc trong sòng bạc",
+            "Vì thị trường luôn luôn biến động ngẫu nhiên không có quy luật"
           ],
           "answer": 0,
-          "explain": "Không có expected value nào bù được khi đã ruin."
+          "explain": "Sự khác biệt giữa xác suất theo nhóm (Ensemble probability) và xác suất theo thời gian (Time probability): Nếu 100 người cùng chơi trò rủi ro phá sản 1%, 99 người sẽ giàu lên; nhưng nếu 1 người chơi trò đó 100 lần liên tiếp, anh ta chắc chắn sẽ phá sản và rời cuộc chơi.",
+          "trap_analysis": "Rất nhiều chuyên gia tài chính và người chơi chứng khoán mắc bẫy này khi dùng đòn bẩy cao: họ thắng 99 lần nhưng chỉ cần 1 lần thiên nga đen là mất sạch toàn bộ cơ nghiệp."
+        },
+        {
+          "q": "Cấu trúc của 'Chiến lược Thanh Tạ' (Barbell Strategy) được thiết kế như thế nào?",
+          "options": [
+            "Kết hợp giữa một đầu CỰC KỲ AN TOÀN (85-90%) để chống chọi mọi cú sốc, và một đầu CỰC KỲ MẠO HIỂM NHƯNG RỦI RO GIỚI HẠN (10-15%) để nắm bắt cơ hội tăng trưởng đột phá",
+            "Đầu tư 50% vào nơi an toàn và 50% vào nơi rủi ro trung bình",
+            "Chia đều tài sản vào tất cả các kênh đầu tư có trên thị trường để đa dạng hóa",
+            "Tập trung 100% nguồn lực vào một tài sản duy nhất có tiềm năng tăng giá mạnh nhất"
+          ],
+          "answer": 0,
+          "explain": "Thanh tạ triệt tiêu hoàn toàn Vùng Giữa Mong Manh (nơi rủi ro cao nhưng lợi nhuận trung bình), chỉ giữ lại cực phòng thủ tuyệt đối và cực tấn công bất đối xứng.",
+          "trap_analysis": "Đa số mọi người chọn vùng an toàn giả tạo ở giữa (như mua trái phiếu lãi suất 10% nhưng nguy cơ vỡ nợ không thu hồi được gốc)."
+        },
+        {
+          "q": "Một hệ thống được gọi là 'Khả tri tăng trưởng' (Antifragile) khác với một hệ thống 'Bền vững' (Robust) ở điểm cốt lõi nào?",
+          "options": [
+            "Hệ thống Robust chỉ giữ nguyên trạng thái khi gặp biến cố, trong khi hệ thống Antifragile trở nên mạnh mẽ hơn và hưởng lợi từ các cú sốc và biến động",
+            "Hệ thống Robust không bao giờ bị tổn thương",
+            "Hệ thống Antifragile luôn luôn ổn định tuyệt đối",
+            "Hai khái niệm này hoàn toàn đồng nghĩa với nhau"
+          ],
+          "answer": 0,
+          "explain": "Cơ bắp con người là Antifragile: khi chịu áp lực nâng tạ nặng (stressor), các sợi cơ bị rách vi mô và sau đó tái tạo trở nên to khỏe hơn. Một viên đá chỉ là Robust (chống chịu va đập nhưng không mạnh lên).",
+          "trap_analysis": "Mọi người thường chỉ đặt mục tiêu 'ổn định, bền vững' (Robust), mà không biết cách thiết kế cuộc đời để mỗi biến cố nghịch cảnh đều trở thành bàn đạp nâng cấp bản thân."
         }
       ],
-      "estimated_minutes": 50
+      "estimated_minutes": 55
     },
     {
       "week": 9,
