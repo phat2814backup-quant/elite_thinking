@@ -171,19 +171,56 @@ def append_analysis(
     username: str,
     problem: str,
     result_summary: str,
-    full_result: Optional[Dict] = None,
-) -> None:
+    full_result: Optional[Dict[str, Any]] = None,
+    user_note: str = "",
+) -> Dict[str, Any]:
     hist = load_user_history(username)
-    entry = {
-        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "problem": problem[:500],
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    entry_id = f"ana_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    entry: Dict[str, Any] = {
+        "id": entry_id,
+        "time": now_str,
+        "problem": problem.strip(),
         "summary": result_summary[:1000],
+        "user_note": user_note.strip(),
     }
     if full_result:
-        entry["is_valid"] = full_result.get("is_valid")
+        entry["is_valid"] = full_result.get("is_valid", True)
+        entry["details"] = full_result
     hist.setdefault("analyses", []).insert(0, entry)
-    hist["analyses"] = hist["analyses"][:50]
+    hist["analyses"] = hist["analyses"][:100]
     save_user_history(username, hist)
+    return entry
+
+
+def update_analysis_note(username: str, analysis_id_or_time: str, user_note: str) -> bool:
+    """Cập nhật ghi chú / nhận định cá nhân cho một bản phân rã cụ thể."""
+    hist = load_user_history(username)
+    analyses = hist.get("analyses", [])
+    updated = False
+    for a in analyses:
+        if a.get("id") == analysis_id_or_time or a.get("time") == analysis_id_or_time:
+            a["user_note"] = user_note.strip()
+            updated = True
+            break
+    if updated:
+        save_user_history(username, hist)
+    return updated
+
+
+def delete_analysis(username: str, analysis_id_or_time: str) -> bool:
+    """Xóa một bản phân rã khỏi lịch sử người dùng."""
+    hist = load_user_history(username)
+    analyses = hist.get("analyses", [])
+    new_analyses = [
+        a for a in analyses 
+        if a.get("id") != analysis_id_or_time and a.get("time") != analysis_id_or_time
+    ]
+    if len(new_analyses) != len(analyses):
+        hist["analyses"] = new_analyses
+        save_user_history(username, hist)
+        return True
+    return False
 
 
 def save_training_answer(

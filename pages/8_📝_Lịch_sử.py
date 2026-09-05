@@ -70,14 +70,21 @@ if recent_tests:
         for t in recent_tests[:10]:
             st.markdown(f"- `{t.get('time')}` · **{t.get('category')}**: **{t.get('score')}/{t.get('total')}** đúng ({t.get('percentage')}%)")
 
-st.markdown("#### Phân rã đã làm")
+st.markdown("#### 🚀 Các lần phân rã đã thực hiện")
 analyses = hist.get("analyses", [])
 if not analyses:
     st.info("Chưa có phân rã nào.")
 else:
     for a in analyses[:30]:
-        with st.expander(f"{a.get('time', '')} — {a.get('problem', '')[:80]}"):
-            st.write(a.get("summary", ""))
+        note_badge = " · 📝 Có nhận định" if a.get("user_note") else ""
+        with st.expander(f"🔍 [{a.get('time', '')}] {a.get('problem', '')[:80]}...{note_badge}"):
+            st.markdown(f"**📌 Vấn đề:** {a.get('problem', '')}")
+            st.markdown(f"**🔬 Bản chất First Principles:**")
+            details = a.get("details", {})
+            st.write(details.get("first_principles_breakdown") or a.get("summary", "—"))
+            if a.get("user_note"):
+                st.success(f"📝 **Nhận định cá nhân của bạn:**\n\n{a.get('user_note')}")
+            st.caption("💡 Xem đầy đủ 9 Lăng kính & chỉnh sửa nhận định tại Tab **'🚀 Phân rã' ➔ 'Lịch sử bản phân rã chi tiết'**.")
 
 st.markdown("#### Bài đào tạo đã làm")
 training = hist.get("training", {})

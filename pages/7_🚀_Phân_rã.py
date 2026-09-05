@@ -12,7 +12,13 @@ active_keys = ctx["active_keys"]
 model_choice = ctx["model_choice"]
 
 from utils.ai_engine import analyze_problem
-from utils.knowledge import append_analysis
+from utils.ai_engine import analyze_problem
+from utils.knowledge import (
+    append_analysis,
+    load_user_history,
+    update_analysis_note,
+    delete_analysis,
+)
 from utils.decision_journal import (
     DECISION_CATEGORIES,
     REVIEW_INTERVALS,
@@ -24,10 +30,11 @@ from utils.decision_journal import (
 )
 
 st.title("🚀 Phân Rã Thực Chiến & Nhật Ký Quyết Định")
-st.caption("Bóc tách vấn đề qua 9 Lăng kính Tinh hoa & Lưu vết quyết định để tự hiệu chỉnh sai số nhận thức sau 30-90 ngày.")
+st.caption("Bóc tách vấn đề qua 9 Lăng kính Tinh hoa, Lưu vết nhận định cá nhân & Hiệu chuẩn sai số sau 30-90 ngày.")
 
 tab7_subtabs = st.tabs([
-    "🚀 Phân Rã Vấn Đề Tức Thì (AI 9 Lenses)",
+    "🚀 Phân Rã Vấn Đề (AI 9 Lenses)",
+    "📜 Lịch Sử Bản Phân Rã Chi Tiết (Deep Archive)",
     "📓 Elite Decision Journal (Nhật Ký Quyết Định & Đo Sai Số)",
 ])
 
@@ -43,6 +50,7 @@ with tab7_subtabs[0]:
         [
             "— Chọn ví dụ —",
             "Đầu tư CKVN: Thị trường giảm mạnh, tin tức xấu bủa vây, có nên bán tháo hay giải ngân tích sản?",
+            "Giao dịch Vàng / XAU: Mục tiêu x5 tài khoản trong 1 năm từ vốn 10.000 lên 50.000, khả thi và rủi ro ra sao?",
             "Quyết định nghề nghiệp: Nên ở lại công ty ổn định hay khởi nghiệp với rủi ro cao nhưng tiềm năng lớn?",
             "Học sinh Wellspring: Muốn tham gia nhiều CLB nhưng sợ tụt điểm số và áp lực thi cử, giải quyết ra sao?",
             "Thời gian: Cuối tuần nên cày phim xả stress hay dành 3 giờ rèn luyện tư duy và đọc sách?",
@@ -53,7 +61,16 @@ with tab7_subtabs[0]:
 
     problem = st.text_area("Nội dung vấn đề cần phân rã:", value=initial, height=120, placeholder="Mô tả cụ thể bối cảnh, mục tiêu, các ràng buộc và điều bạn đang băn khoăn...", key="tab7_problem_input")
 
-    if st.button("🚀 Phân rã ngay", type="primary", use_container_width=True, key="tab7_btn_breakdown"):
+    col_b1, col_b2 = st.columns([3, 1])
+    with col_b1:
+        run_click = st.button("🚀 Phân rã ngay", type="primary", use_container_width=True, key="tab7_btn_breakdown")
+    with col_b2:
+        if st.session_state.get("active_analysis"):
+            if st.button("🔄 Phân rã mới", use_container_width=True, key="tab7_btn_clear"):
+                st.session_state.pop("active_analysis", None)
+                st.rerun()
+
+    if run_click:
         if not active_keys:
             st.warning("Cần Gemini API Key (cấu hình trong Secrets hoặc sidebar).")
         elif not problem.strip():
@@ -70,52 +87,171 @@ with tab7_subtabs[0]:
                     st.code(result["raw"])
             else:
                 summary = result.get("first_principles_breakdown", "")[:300]
-                append_analysis(username, problem.strip(), summary, result)
-
-                key_info = f" (Key: `{result.get('_used_key')}`)" if result.get("_used_key") else ""
-                st.success(f"Đã phân rã xong{key_info} · Đã lưu vào lịch sử của bạn")
+                entry = append_analysis(username, problem.strip(), summary, full_result=result)
+                st.session_state["active_analysis"] = entry
 
                 st.session_state["dj_pref_title"] = problem.strip()[:60]
                 st.session_state["dj_pref_hypo"] = result.get("first_principles_breakdown", "")[:300]
                 st.session_state["dj_pref_inv"] = result.get("elite_lenses", {}).get("inversion", "")[:200]
                 st.session_state["dj_pref_sec"] = result.get("elite_lenses", {}).get("second_order", "")[:200]
                 st.session_state["open_new_decision_form"] = True
+                st.rerun()
 
-                st.info("💡 **Gợi ý:** Dữ liệu phân tích đã được nạp sẵn. Hãy bấm sang tab **'📓 Elite Decision Journal'** bên cạnh để lưu quyết định này và đặt lịch kiểm định sau 30/90 ngày!")
+    active_entry = st.session_state.get("active_analysis")
+    if active_entry:
+        res = active_entry.get("details", {})
+        a_id = active_entry.get("id") or active_entry.get("time")
+        key_info = f" (Key: `{res.get('_used_key')}`)" if res.get("_used_key") else ""
+        st.success(f"✅ Đã phân rã xong{key_info} · Đã lưu vĩnh viễn vào Supabase")
 
-                c1, c2 = st.columns(2)
-                with c1:
-                    st.markdown("#### 🔬 First Principles (Bản chất gốc)")
-                    st.write(result.get("first_principles_breakdown", "—"))
-                    st.markdown("#### 📚 Nguyên lý Khởi thủy Liên quan")
-                    for p in result.get("core_principles_found", [])[:5]:
-                        domain_str = f" *({p.get('domain')})*" if p.get('domain') else ""
-                        desc_str = f": {p.get('description')}" if p.get('description') else ""
-                        st.markdown(f"- **{p.get('name')}**{domain_str}{desc_str}")
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### 🔬 First Principles (Bản chất gốc)")
+            st.write(res.get("first_principles_breakdown", active_entry.get("summary", "—")))
+            st.markdown("#### 📚 Nguyên lý Khởi thủy Liên quan")
+            pr_list = res.get("core_principles_found", [])
+            if pr_list:
+                for p in pr_list:
+                    domain_str = f" *({p.get('domain')})*" if p.get('domain') else ""
+                    desc_str = f": {p.get('description')}" if p.get('description') else ""
+                    st.markdown(f"- **{p.get('name')}**{domain_str}{desc_str}")
+            else:
+                st.caption("Không có nguyên lý liên quan cụ thể.")
 
-                with c2:
-                    st.markdown("#### 👁️ Elite Lenses (Các lăng kính tư duy)")
-                    lenses = result.get("elite_lenses", {})
-                    lens_titles = {
-                        "inversion": "🔄 Tư duy Đảo ngược (Inversion)",
-                        "second_order": "🎯 Hệ quả bậc hai (Second-Order)",
-                        "bayesian": "🎲 Xác suất Bayes (Bayesian Thinking)",
-                        "leverage": "⚙️ Điểm tựa & Đòn bẩy (Leverage)",
-                        "multi_timescale": "⏳ Đa quy mô thời gian (Multi-timescale)",
-                    }
-                    for k, v in lenses.items():
-                        title = lens_titles.get(k, k.replace('_', ' ').title())
-                        st.markdown(f"**{title}:** {v}")
+        with c2:
+            st.markdown("#### 👁️ Elite Lenses (Các lăng kính tư duy)")
+            lenses = res.get("elite_lenses", {})
+            lens_titles = {
+                "inversion": "🔄 Tư duy Đảo ngược (Inversion)",
+                "second_order": "🎯 Hệ quả bậc hai (Second-Order)",
+                "bayesian": "🎲 Xác suất Bayes (Bayesian Thinking)",
+                "leverage": "⚙️ Điểm tựa & Đòn bẩy (Leverage)",
+                "multi_timescale": "⏳ Đa quy mô thời gian (Multi-timescale)",
+            }
+            for k, v in lenses.items():
+                title = lens_titles.get(k, k.replace('_', ' ').title())
+                st.markdown(f"**{title}:** {v}")
 
-                st.markdown("#### ⚡ Hành động gợi ý có đòn bẩy cao")
-                for a in result.get("actionable_insights", []):
-                    st.markdown(f"- {a}")
+        st.markdown("#### ⚡ Hành động gợi ý có đòn bẩy cao")
+        for a in res.get("actionable_insights", []):
+            st.markdown(f"- {a}")
 
-                st.markdown("#### 🧭 Câu hỏi cốt lõi cần bạn quyết định")
-                for h in result.get("human_decision_needed", []):
-                    st.markdown(f"- {h}")
+        st.markdown("#### 🧭 Câu hỏi cốt lõi cần bạn quyết định")
+        for h in res.get("human_decision_needed", []):
+            st.markdown(f"- {h}")
+
+        st.divider()
+        st.markdown("### 📝 Ghi Chú & Nhận Định Cá Nhân Của Bạn")
+        st.caption("Đúc kết nhận định, bài học hoặc chiến lược hành động bạn tự rút ra từ phân rã này (được lưu trực tiếp vào cơ sở dữ liệu).")
+
+        curr_note = active_entry.get("user_note", "")
+        user_note_input = st.text_area(
+            "Nhận định / Kết luận hành động của bạn:",
+            value=curr_note,
+            placeholder="Ví dụ: Sau khi xem lăng kính đảo ngược và xác suất Bayes, việc đặt mục tiêu x5 tài khoản trong 1 năm là quá tham vọng. Tôi quyết định hạ mục tiêu về 30-50%/năm, rủi ro 1%/lệnh để bảo toàn vốn...",
+            height=90,
+            key=f"active_note_input_{a_id}",
+        )
+
+        col_n1, col_n2 = st.columns([1, 2])
+        with col_n1:
+            if st.button("💾 Lưu Nhận Định Này", type="primary", use_container_width=True, key=f"btn_save_active_note_{a_id}"):
+                update_analysis_note(username, a_id, user_note_input)
+                active_entry["user_note"] = user_note_input
+                st.session_state["active_analysis"] = active_entry
+                st.success("✅ Đã lưu nhận định cá nhân của bạn vào Supabase!")
+                st.rerun()
+        with col_n2:
+            st.info("💡 Bạn có thể bấm sang tab **'📓 Elite Decision Journal'** bên cạnh để đặt lịch theo dõi và kiểm định kết quả sau 30-90 ngày.")
 
 with tab7_subtabs[1]:
+    st.markdown("### 📜 Lịch Sử Toàn Bộ Các Bản Phân Rã Chi Tiết")
+    st.caption("Xem lại trọn vẹn từng lăng kính, nguyên lý khởi thủy và cập nhật ghi chú nhận định cá nhân của bạn bất cứ lúc nào.")
+
+    hist_arch = load_user_history(username)
+    all_ana = hist_arch.get("analyses", [])
+
+    if not all_ana:
+        st.info("Chưa có bản phân rã nào được lưu. Hãy nhập vấn đề ở Tab 1 để bắt đầu!")
+    else:
+        st.metric("📊 Tổng số bản phân rã đã lưu", f"{len(all_ana)} bản")
+        st.markdown("---")
+
+        for idx, a in enumerate(all_ana):
+            a_id = a.get("id") or a.get("time")
+            a_time = a.get("time", "—")
+            a_prob = a.get("problem", "—")
+            a_note = a.get("user_note", "")
+            has_note_badge = " · 📝 Có nhận định" if a_note else ""
+
+            with st.expander(f"🔍 [{a_time}] {a_prob[:80]}...{has_note_badge}", expanded=(idx == 0)):
+                st.markdown("**📌 Vấn đề ban đầu:**")
+                st.info(a_prob)
+
+                details = a.get("details")
+                if details and isinstance(details, dict):
+                    col_d1, col_d2 = st.columns(2)
+                    with col_d1:
+                        st.markdown("#### 🔬 First Principles (Bản chất gốc)")
+                        st.write(details.get("first_principles_breakdown", "—"))
+
+                        st.markdown("#### 📚 Nguyên lý Khởi thủy Liên quan")
+                        pr_list = details.get("core_principles_found", [])
+                        if pr_list:
+                            for p in pr_list:
+                                domain_str = f" *({p.get('domain')})*" if p.get('domain') else ""
+                                desc_str = f": {p.get('description')}" if p.get('description') else ""
+                                st.markdown(f"- **{p.get('name')}**{domain_str}{desc_str}")
+                        else:
+                            st.caption("Không có nguyên lý liên quan cụ thể.")
+
+                    with col_d2:
+                        st.markdown("#### 👁️ Elite Lenses (Các lăng kính tư duy)")
+                        lenses = details.get("elite_lenses", {})
+                        lens_titles = {
+                            "inversion": "🔄 Tư duy Đảo ngược (Inversion)",
+                            "second_order": "🎯 Hệ quả bậc hai (Second-Order)",
+                            "bayesian": "🎲 Xác suất Bayes (Bayesian Thinking)",
+                            "leverage": "⚙️ Điểm tựa & Đòn bẩy (Leverage)",
+                            "multi_timescale": "⏳ Đa quy mô thời gian (Multi-timescale)",
+                        }
+                        for k, v in lenses.items():
+                            title = lens_titles.get(k, k.replace('_', ' ').title())
+                            st.markdown(f"**{title}:** {v}")
+
+                    st.markdown("#### ⚡ Hành động gợi ý có đòn bẩy cao")
+                    for act in details.get("actionable_insights", []):
+                        st.markdown(f"- {act}")
+
+                    st.markdown("#### 🧭 Câu hỏi cốt lõi cần bạn quyết định")
+                    for dec in details.get("human_decision_needed", []):
+                        st.markdown(f"- {dec}")
+                else:
+                    st.markdown("#### 🔬 Tóm tắt First Principles")
+                    st.write(a.get("summary", "—"))
+
+                st.divider()
+                st.markdown("#### 📝 Nhận định / Ghi chú cá nhân")
+                edit_note = st.text_area(
+                    "Cập nhật nhận định / đúc kết:",
+                    value=a_note,
+                    key=f"archive_note_{a_id}_{idx}",
+                    height=80,
+                    placeholder="Nhập nhận định cá nhân của bạn tại đây...",
+                )
+                col_save_arch, col_del_arch = st.columns([1, 4])
+                with col_save_arch:
+                    if st.button("💾 Cập nhật nhận định", key=f"btn_save_arch_{a_id}_{idx}"):
+                        update_analysis_note(username, a_id, edit_note)
+                        st.success("✅ Đã cập nhật nhận định!")
+                        st.rerun()
+                with col_del_arch:
+                    if st.button("🗑️ Xóa bản phân rã này", key=f"btn_del_arch_{a_id}_{idx}"):
+                        delete_analysis(username, a_id)
+                        st.warning("Đã xóa bản phân rã khỏi lịch sử!")
+                        st.rerun()
+
+with tab7_subtabs[2]:
     st.markdown("### 📓 Elite Decision Journal — Lưu Vết & Hiệu Chuẩn Quyết Định")
     st.caption("Phương pháp của Ray Dalio & Howard Marks: Không thể nâng cao chất lượng tư duy nếu không ghi chép giả định ban đầu và kiểm định lại kết quả thực tế sau 30-90 ngày để triệt tiêu Thiên kiến nhận thức muộn (Hindsight Bias).")
 
