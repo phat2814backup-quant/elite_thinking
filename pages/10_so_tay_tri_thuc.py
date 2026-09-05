@@ -70,31 +70,48 @@ with tab_capture:
         "tìm ẩn dụ, nhận diện bẫy tư duy và kết nối vào mạng lưới **88 Mô hình & 100 Nguyên lý**."
     )
 
-    # Nút bấm nạp mẫu nhanh
+    def _do_clear_note_inputs():
+        st.session_state["note_custom_title_input"] = ""
+        st.session_state["note_raw_text_area"] = ""
+        st.session_state.pop("latest_decomposed_preview", None)
+
+    def _do_load_feynman_sample():
+        st.session_state["note_custom_title_input"] = "Kỹ thuật Feynman (Feynman Technique) — Giải thích bình dân"
+        st.session_state["note_raw_text_area"] = DEFAULT_FEYNMAN_NOTE["raw_content"]
+        st.session_state.pop("latest_decomposed_preview", None)
+
+    # Đảm bảo khởi tạo key trong session_state
+    if "note_custom_title_input" not in st.session_state:
+        st.session_state["note_custom_title_input"] = ""
+    if "note_raw_text_area" not in st.session_state:
+        st.session_state["note_raw_text_area"] = ""
+
+    # Nút bấm nạp mẫu nhanh & Xóa trắng
     c_btn_sample, c_btn_clear = st.columns([3, 1])
     with c_btn_sample:
-        if st.button("💡 Nạp nội dung mẫu: Kỹ thuật Feynman (Trải nghiệm nhanh)", use_container_width=True):
-            st.session_state["raw_input_content"] = DEFAULT_FEYNMAN_NOTE["raw_content"]
-            st.session_state["input_custom_title"] = "Kỹ thuật Feynman (Feynman Technique) — Giải thích bình dân"
-            st.rerun()
+        st.button(
+            "💡 Nạp nội dung mẫu: Kỹ thuật Feynman (Trải nghiệm nhanh)",
+            on_click=_do_load_feynman_sample,
+            use_container_width=True,
+            key="btn_load_sample_note",
+        )
 
     with c_btn_clear:
-        if st.button("🗑️ Xóa trắng ô nhập", use_container_width=True):
-            st.session_state["raw_input_content"] = ""
-            st.session_state["input_custom_title"] = ""
-            st.session_state.pop("latest_decomposed_preview", None)
-            st.rerun()
+        st.button(
+            "🗑️ Xóa trắng ô nhập",
+            on_click=_do_clear_note_inputs,
+            use_container_width=True,
+            key="btn_clear_note_inputs",
+        )
 
     custom_title = st.text_input(
         "Tiêu đề ghi chú (Tùy chọn — để trống nếu muốn AI tự đặt tiêu đề tinh hoa):",
-        value=st.session_state.get("input_custom_title", ""),
         placeholder="Ví dụ: Kỹ thuật Feynman: Giải thích cho trẻ 10 tuổi...",
         key="note_custom_title_input",
     )
 
     raw_text = st.text_area(
         "Nội dung ghi chú nguyên bản (dán bài viết, trích dẫn, suy ngẫm thực chiến...):",
-        value=st.session_state.get("raw_input_content", ""),
         height=320,
         placeholder="Dán toàn bộ văn bản ghi chú vào đây... Hệ thống sẽ bảo toàn 100% văn bản này.",
         key="note_raw_text_area",
@@ -119,6 +136,11 @@ with tab_capture:
                 )
                 st.session_state["latest_decomposed_preview"] = new_note
                 st.success(f"✅ Đã phân rã và lưu thành công ghi chú: **{new_note['title']}** (Mã: `{new_note['id']}`)!")
+                col_post1, col_post2 = st.columns([1, 1])
+                with col_post1:
+                    st.button("📝 Viết thêm ghi chú mới (Xóa trắng)", on_click=_do_clear_note_inputs, key="btn_clear_after_save", use_container_width=True)
+                with col_post2:
+                    st.caption("👉 Ghi chú đã được lưu vĩnh viễn. Bạn có thể sang Tab **🗂️ Kho Tri Thức** để tra cứu và ôn tập.")
 
     # Hiển thị bản xem trước của Note vừa được phân rã
     preview_note = st.session_state.get("latest_decomposed_preview")
