@@ -215,7 +215,7 @@ with arena_tab_th:
                 key="th_scope_sel"
             )
         with col_f2:
-            th_filter_pillar = st.selectbox("Lọc theo Trụ cột", ["Tất cả"] + get_pillars(), key="th_filter_pillar")
+            th_filter_pillar = st.selectbox("Lọc theo Trụ cột", get_pillars(), key="th_filter_pillar")
         with col_f3:
             th_model_angle = st.selectbox(
                 "Góc độ khảo sát:",
@@ -389,19 +389,39 @@ with arena_tab1:
         cat_key = "models"
         col_q1, col_q2 = st.columns(2)
         with col_q1:
-            filter_pillar = st.selectbox("Lọc theo Trụ cột", ["Tất cả"] + get_pillars())
+            filter_pillar = st.selectbox("Lọc theo Trụ cột", get_pillars(), key="filter_mq_pillar")
         with col_q2:
-            only_tier1 = st.checkbox("Chỉ luyện 25 Mô hình Siêu hạt nhân (Tier 1 Pareto)", value=True)
+            scope_mq = st.selectbox(
+                "Phân loại Cấp độ:",
+                [
+                    "⭐ 25 Siêu mô hình Cốt lõi (Tier 1 Pareto)",
+                    "🎯 37 Mô hình Chiến lược (Tier 2)",
+                    "🌐 Tất cả cấp độ (Tier 1 & Tier 2)",
+                ],
+                key="filter_mq_scope"
+            )
 
         filtered_q = MODELS_QUIZ
         if filter_pillar != "Tất cả":
             filtered_q = [q for q in filtered_q if q.get("pillar") == filter_pillar]
-        if only_tier1:
+        if "Tier 1" in scope_mq:
             filtered_q = [q for q in filtered_q if q.get("tier") == 1]
-        selected_questions = filtered_q if filtered_q else MODELS_QUIZ
+        elif "Tier 2" in scope_mq:
+            filtered_q = [q for q in filtered_q if q.get("tier") == 2]
+        selected_questions = filtered_q
     else:
         cat_key = "principles"
-        selected_questions = PRINCIPLES_QUIZ
+        col_pq1, col_pq2 = st.columns([2, 2])
+        with col_pq1:
+            pq_domains = ["Tất cả"] + sorted(list({q.get("domain") for q in PRINCIPLES_QUIZ if q.get("domain")}))
+            filter_domain = st.selectbox("Lọc theo Lĩnh vực Khoa học", pq_domains, key="filter_pq_domain")
+        with col_pq2:
+            st.caption("🔬 28 bài toán tình huống chuyên sâu trải rộng trên toàn bộ 7 phân ngành khoa học khởi thủy.")
+
+        if filter_domain != "Tất cả":
+            selected_questions = [q for q in PRINCIPLES_QUIZ if q.get("domain") == filter_domain]
+        else:
+            selected_questions = PRINCIPLES_QUIZ
 
     st.info(f"📋 Khoang thi hiện có **{len(selected_questions)} câu hỏi tình huống**. Hãy đọc kỹ tình huống để tìm ra bản chất:")
 
@@ -462,7 +482,9 @@ with arena_tab2:
     with fc_col2:
         fc_filter_pillar = "Tất cả"
         if "88 Mô hình" in fc_cat:
-            fc_filter_pillar = st.selectbox("Lọc Trụ cột", ["Tất cả"] + get_pillars())
+            fc_filter_pillar = st.selectbox("Lọc Trụ cột", get_pillars(), key="fc_sel_pillar")
+        elif "100 Nguyên lý" in fc_cat:
+            fc_filter_pillar = st.selectbox("Lọc Lĩnh vực", get_domains(), key="fc_sel_domain")
     with fc_col3:
         fc_tier = None
         if "88 Mô hình" in fc_cat:

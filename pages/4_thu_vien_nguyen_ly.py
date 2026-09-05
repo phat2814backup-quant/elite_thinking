@@ -29,7 +29,7 @@ else:
 
 st.caption(f"Hiển thị {len(principles)} nguyên lý")
 
-for p in principles[:40]:
+for p in principles:
     with st.expander(f"{p.get('principle_name', '?')} · {p.get('domain', '')}"):
         st.markdown(f"**Mô tả:** {p.get('description', '')}")
         if p.get("formal_definition"):

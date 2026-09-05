@@ -1161,9 +1161,12 @@ MODES_QUIZ = [
 ]
 
 # =============================================================================
-# 2. NGÂN HÀNG TRẮC NGHIỆM TÌNH HUỐNG 88 MÔ HÌNH HẠT NHÂN (CURATED)
+# 2. NGÂN HÀNG TRẮC NGHIỆM TÌNH HUỐNG 88 MÔ HÌNH HẠT NHÂN (36 BÀI TOÁN THỰC CHIẾN ĐA TRỤ CỘT)
 # =============================================================================
 MODELS_QUIZ = [
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 1: VẬT LÝ HỌC (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
     {
         "id": "Q-PHYS-01",
         "model_id": "PHYS-01",
@@ -1187,35 +1190,124 @@ MODELS_QUIZ = [
         "trap_analysis": "Đòn bẩy hai chiều: Nếu áp dụng đòn bẩy tài chính (Margin) mà không có biên độ an toàn, bạn sẽ bị khuếch đại sự phá sản."
     },
     {
+        "id": "Q-PHYS-02",
+        "model_id": "PHYS-02",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Quán tính & Định luật 1 Newton (Inertia)",
+        "scenario": (
+            "Một tập đoàn bán lẻ khổng lồ đã hoạt động 30 năm theo mô hình cửa hàng truyền thống. Khi làn sóng thương mại điện tử bùng nổ, "
+            "dù ban lãnh đạo thấy rõ nguy cơ, bộ máy 10.000 nhân viên và hệ thống quy trình cồng kềnh vẫn tiếp tục vận hành theo thói quen cũ, "
+            "khiến công ty dần bị đối thủ công nghệ mới đánh bại."
+        ),
+        "question": "Quy luật vật lý nào phản ánh sức ỳ nguy hiểm của bộ máy tổ chức này?",
+        "options": [
+            "A. Quán tính tổ chức (Organizational Inertia): Thực thể có khối lượng càng lớn thì càng khó đổi hướng chuyển động",
+            "B. Bảo toàn năng lượng",
+            "C. Nguyên lý Ác-si-mét",
+            "D. Hiện tượng cộng hưởng"
+        ],
+        "correct_index": 0,
+        "explanation": "Vật có khối lượng càng lớn thì gia tốc đổi hướng càng nhỏ. Cỗ máy doanh nghiệp càng đồ sộ thì quán tính duy trì thói quen cũ càng mạnh mẽ.",
+        "trap_analysis": "Tin rằng khi có lệnh từ sếp thì cả bộ máy sẽ lập tức đổi hướng; thực tế lực ma sát và quán tính thói quen sẽ triệt tiêu mệnh lệnh."
+    },
+    {
         "id": "Q-PHYS-03",
         "model_id": "PHYS-03",
         "pillar": "Vật lý học",
         "tier": 1,
         "model_name": "Entropy & Định luật 2 Nhiệt động học",
         "scenario": (
-            "Một công ty khởi nghiệp sau 3 năm phát triển rất thành công bắt đầu xuất hiện tình trạng: quy trình giấy tờ rườm rà, "
-            "nhân sự tị nạnh công việc, giao tiếp giữa các phòng ban bị tắc nghẽn, dù ban giám đốc không hề cố ý tạo ra những điều đó."
+            "Một nhóm làm việc chung sau 6 tháng không được rà soát quy trình và không có người kiểm tra tiêu chuẩn chất lượng. "
+            "Các thành viên bắt đầu đi muộn, tài liệu lưu trữ bừa bãi, thông tin trao đổi bị thất lạc dù không ai có chủ đích phá hoại."
         ),
         "question": "Quy luật vật lý vũ trụ nào chi phối sự suy thoái tự nhiên này?",
         "options": [
-            "A. Entropy: Trong một hệ kín, sự hỗn loạn và thoái hóa luôn tự động tăng dần nếu không được nạp thêm năng lượng bảo trì",
+            "A. Entropy: Trong một hệ kín, độ hỗn loạn luôn tự động tăng dần nếu không được nạp thêm năng lượng bảo trì",
             "B. Bảo toàn động lượng",
             "C. Thuyết tương đối",
             "D. Hiện tượng chuyển pha"
         ],
         "correct_index": 0,
-        "explanation": "Entropy là mặc định của vũ trụ. Không làm gì cả không có nghĩa là giữ nguyên, mà là tự suy thoái. Tổ chức muốn trật tự phải liên tục bơm năng lượng kiểm tra và tối ưu.",
-        "trap_analysis": "Bẫy ảo tưởng tự ổn định: Tin rằng một cỗ máy hay một mối quan hệ một khi đã tốt đẹp thì sẽ tự vận hành hoàn hảo mãi mãi."
+        "explanation": "Entropy là trạng thái mặc định của tự nhiên: Mọi thứ sẽ tự động xuống cấp nếu bạn không liên tục bơm năng lượng và kỷ luật vào để duy trì trật tự.",
+        "trap_analysis": "Bẫy ảo tưởng tự ổn định: Tin rằng một hệ thống hay một mối quan hệ một khi đã tốt đẹp thì sẽ tự vận hành hoàn hảo mãi mãi."
     },
     {
-        "id": "Q-BIOL-01",
-        "model_id": "BIOL-01",
+        "id": "Q-PHYS-05",
+        "model_id": "PHYS-05",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Khối lượng Tới hạn (Critical Mass)",
+        "scenario": (
+            "Một nền tảng mạng xã hội chi hàng triệu USD quảng cáo suốt 1 năm nhưng chỉ có 50.000 người dùng rời rạc, tỷ lệ tương tác rất thấp. "
+            "Nhưng khi lượng người dùng vượt qua cột mốc 1.000.000 người, nền tảng bất ngờ bùng nổ theo cấp số nhân mà không cần tốn thêm tiền quảng cáo."
+        ),
+        "question": "Hiện tượng vật lý hạt nhân nào mô tả phản ứng dây chuyền tự bùng nổ này?",
+        "options": [
+            "A. Năng lượng tiềm năng",
+            "B. Khối lượng Tới hạn (Critical Mass): Khi đạt đủ lượng vật chất tối thiểu, phản ứng dây chuyền tự duy trì sẽ được kích hoạt",
+            "C. Lực ma sát tĩnh",
+            "D. Định luật khúc xạ"
+        ],
+        "correct_index": 1,
+        "explanation": "Trước khi chạm khối lượng tới hạn, mọi nỗ lực đều có vẻ không hiệu quả. Khi vượt qua ngưỡng tới hạn, phản ứng dây chuyền bùng nổ tự thân.",
+        "trap_analysis": "Bỏ cuộc quá sớm ở giai đoạn 80% chỉ vì chưa nhìn thấy sự bùng nổ bề mặt."
+    },
+    {
+        "id": "Q-PHYS-07",
+        "model_id": "PHYS-07",
+        "pillar": "Vật lý học",
+        "tier": 2,
+        "model_name": "Chuyển pha (Phase Transition)",
+        "scenario": (
+            "Nước được đun từ 20 độ lên 99 độ C vẫn hoàn toàn là chất lỏng. Nhưng chỉ cần tăng thêm đúng 1 độ C (từ 99 lên 100 độ C), "
+            "toàn bộ cấu trúc phân tử đột ngột biến đổi từ chất lỏng sang thể khí với thể tích nở rộng gấp 1.600 lần."
+        ),
+        "question": "Mô hình vật lý này giúp giải thích hiện tượng nào trong xã hội và kinh doanh?",
+        "options": [
+            "A. Sự biến đổi chậm chạp tích lũy về lượng đến một ngưỡng giới hạn sẽ tạo ra bước nhảy vọt đột biến về chất (Tipping Point)",
+            "B. Nước luôn sôi ở mọi nhiệt độ nếu có áp suất",
+            "C. Sự nguội lạnh dần của cảm xúc",
+            "D. Quy luật bảo toàn khối lượng"
+        ],
+        "correct_index": 0,
+        "explanation": "Chuyển pha chứng minh rằng những thay đổi nhỏ tiệm tiến tích lũy bên dưới bề mặt có thể bất ngờ làm thay đổi toàn bộ trạng thái của hệ thống.",
+        "trap_analysis": "Nhầm lẫn giữa việc 'chưa thấy kết quả' với 'không có tiến bộ gì đang diễn ra ngầm'."
+    },
+    {
+        "id": "Q-PHYS-11",
+        "model_id": "PHYS-11",
+        "pillar": "Vật lý học",
+        "tier": 2,
+        "model_name": "Vận tốc Thoát (Escape Velocity)",
+        "scenario": (
+            "Một tên lửa muốn bay vào quỹ đạo không gian phải đốt 80% tổng nhiên liệu chỉ trong vài phút đầu tiên để đạt tốc độ 11.2 km/s nhằm thắng lực hút Trái Đất. "
+            "Nếu chỉ bay với tốc độ 9 km/s, dù tốn rất nhiều nhiên liệu thì tên lửa cuối cùng vẫn sẽ rơi ngược trở lại mặt đất."
+        ),
+        "question": "Bài học chiến lược nào được rút ra từ mô hình Vận tốc Thoát cho các dự án khởi nghiệp?",
+        "options": [
+            "A. Làm việc từ từ túc tắc sẽ luôn tới đích",
+            "B. Cần phải tập trung nguồn lực cực đại trong giai đoạn đầu để vượt qua lực cản quán tính cũ, nửa vời đồng nghĩa với thất bại hoàn toàn",
+            "C. Tiết kiệm tối đa nhiên liệu ở giai đoạn phóng tên lửa",
+            "D. Trọng lực không ảnh hưởng đến các tập đoàn lớn"
+        ],
+        "correct_index": 1,
+        "explanation": "Muốn thoát khỏi trọng lực của sự tầm thường và thói quen cũ, nỗ lực 90% cũng giống như nỗ lực 10%: đều rơi ngược lại mặt đất. Cần sự bứt phá vượt ngưỡng.",
+        "trap_analysis": "Ảo tưởng rằng duy trì một chút nỗ lực nhỏ giọt có thể giúp dự án cất cánh thoát khỏi vùng xoáy thất bại."
+    },
+
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 2: SINH HỌC (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-BIO-01",
+        "model_id": "BIO-01",
         "pillar": "Sinh học",
         "tier": 1,
-        "model_name": "Tiến hóa & Chọn lọc Tự nhiên",
+        "model_name": "Tiến hóa & Chọn lọc Tự nhiên (Natural Selection)",
         "scenario": (
             "Trong cuộc khủng hoảng thị trường năm 2008 và đại dịch 2020, hàng ngàn doanh nghiệp khổng lồ, hùng mạnh nhưng xơ cứng bị phá sản. "
-            "Ngược lại, các doanh nghiệp vừa và nhỏ có khả năng xoay trục linh hoạt sang kinh doanh online lại tồn tại và phát triển rực rỡ."
+            "Ngược lại, các doanh nghiệp vừa và nhỏ có khả năng xoay trục linh hoạt sang kinh doanh số lại tồn tại và phát triển rực rỡ."
         ),
         "question": "Chân lý sinh học nào của Charles Darwin được chứng thực ở đây?",
         "options": [
@@ -1225,40 +1317,127 @@ MODELS_QUIZ = [
             "D. Đồng sinh tuyệt đối"
         ],
         "correct_index": 1,
-        "explanation": "Chọn lọc tự nhiên đào thải những thực thể không khớp với môi trường mới. Sự linh hoạt và khả năng biến dị có kiểm soát là chìa khóa sinh tồn.",
-        "trap_analysis": "Bẫy tối ưu hóa quá mức cho hiện tại: Một loài quá chuyên biệt cho một môi trường duy nhất sẽ tuyệt chủng ngay khi môi trường đó đổi thay."
+        "explanation": "Chọn lọc tự nhiên đào thải những thực thể không khớp với môi trường mới. Sự linh hoạt và khả năng thích ứng là chìa khóa sinh tồn.",
+        "trap_analysis": "Bẫy tối ưu hóa quá mức cho quá khứ: Quá hoàn hảo trong môi trường cũ sẽ chết đầu tiên khi môi trường chuyển dịch."
     },
     {
-        "id": "Q-BIOL-04",
-        "model_id": "BIOL-04",
+        "id": "Q-BIO-02",
+        "model_id": "BIO-02",
+        "pillar": "Sinh học",
+        "tier": 1,
+        "model_name": "Đột biến & Biến dị (Mutation & Variation)",
+        "scenario": (
+            "Tập đoàn công nghệ 3M áp dụng chính sách cho phép các kỹ sư dành 15% thời gian làm việc để theo đuổi các thử nghiệm cá nhân kỳ lạ. "
+            "Từ một thử nghiệm tạo ra chất keo 'dính không chặt' tưởng chừng thất bại, một kỹ sư đã phát minh ra sản phẩm Giấy ghi chú Post-it mang lại hàng tỷ USD."
+        ),
+        "question": "Cơ chế sinh học nào giải thích tại sao các tổ chức cần dung dưỡng các thử nghiệm sai số nhỏ?",
+        "options": [
+            "A. Sao chép DNA hoàn hảo 100% không cho phép sai số",
+            "B. Đột biến ngẫu nhiên (Mutation): Sự sai lệch vi mô chính là nguồn nguyên liệu duy nhất tạo ra các biến dị thích nghi đột phá cho giống loài",
+            "C. Tuyệt chủng hàng loạt",
+            "D. Ký sinh trùng bắt buộc"
+        ],
+        "correct_index": 1,
+        "explanation": "Nếu không có đột biến ngẫu nhiên, sự sống không bao giờ tiến hóa. Doanh nghiệp muốn đổi mới phải chủ động tạo không gian cho các thử nghiệm sai số an toàn.",
+        "trap_analysis": "Áp đặt quy trình kiểm soát 100% không tì vết, triệt tiêu mọi không gian thử nghiệm khiến tổ chức chết mòn vì thiếu đột biến sáng tạo."
+    },
+    {
+        "id": "Q-BIO-04",
+        "model_id": "BIO-04",
         "pillar": "Sinh học",
         "tier": 1,
         "model_name": "Hiệu ứng Nữ hoàng Đỏ (Red Queen Effect)",
         "scenario": (
-            "Trong ngành bán lẻ điện máy, hai chuỗi cửa hàng lớn liên tục đầu tư hàng triệu USD nâng cấp app, rút ngắn thời gian giao hàng "
-            "từ 2 giờ xuống 1 giờ, tăng khuyến mãi. Nhưng sau 3 năm, thị phần của cả hai bên vẫn giữ nguyên 40% - 40% và biên lợi nhuận bị bào mòn."
+            "Trong ngành bán lẻ thương mại điện tử, hai sàn lớn liên tục chi tiền tỷ nâng cấp hệ thống giao hàng từ 2 ngày xuống 2 giờ, tung voucher giảm giá. "
+            "Nhưng sau 3 năm, thị phần của cả hai bên vẫn giữ nguyên 45% - 45% và biên lợi nhuận bị bào mòn kiệt quệ."
         ),
         "question": "Mô hình sinh học nào mô tả trạng thái 'phải chạy hết sức chỉ để đứng yên một chỗ' này?",
         "options": [
             "A. Hốc sinh thái",
-            "B. Hiệu ứng Nữ hoàng Đỏ (Red Queen Effect trong thuyết đồng tiến hóa săn mồi - con mồi)",
+            "B. Hiệu ứng Nữ hoàng Đỏ (Red Queen Effect trong thuyết đồng tiến hóa kẻ săn mồi - con mồi)",
             "C. Gen vị kỷ",
             "D. Thắt cổ chai di truyền"
         ],
         "correct_index": 1,
-        "explanation": "Trong môi trường có đối thủ cạnh tranh cùng tiến hóa, việc bạn nỗ lực không giúp bạn vượt lên mà chỉ giúp bạn không bị đào thải. Muốn bứt phá phải đổi hốc sinh thái.",
-        "trap_analysis": "Chạy đua vũ trang không lối thoát: Tiêu tốn toàn bộ tài nguyên chỉ để duy trì vị thế hiện tại thay vì tìm một con đường hoàn toàn mới."
+        "explanation": "Trong môi trường có đối thủ cùng chạy đua vũ trang, việc bạn nỗ lực chỉ giúp bạn không bị loại bỏ. Muốn chiến thắng thực chất phải đổi hốc sinh thái.",
+        "trap_analysis": "Chạy đua vũ trang tiêu hao cạn kiệt nguồn lực mà không nhận ra mình đang bị giam cầm trong cuộc đua chuột (Rat Race)."
     },
     {
-        "id": "Q-PSYC-01",
-        "model_id": "PSYC-01",
+        "id": "Q-BIO-06",
+        "model_id": "BIO-06",
+        "pillar": "Sinh học",
+        "tier": 2,
+        "model_name": "Hốc Sinh Thái (Ecological Niche)",
+        "scenario": (
+            "Trên quần đảo Galapagos, các loài chim sẻ có hình dạng mỏ khác nhau: loài mỏ to ăn hạt cứng, loài mỏ dài hút mật hoa, loài mỏ mảnh bắt côn trùng trong vỏ cây. "
+            "Nhờ đó, hàng chục loài chim sẻ cùng chung sống hòa bình và phát triển thịnh vượng trên cùng một hòn đảo nhỏ mà không tàn sát lẫn nhau."
+        ),
+        "question": "Nguyên lý sinh học này mang lại bài học chiến lược định vị nào cho doanh nghiệp?",
+        "options": [
+            "A. Đối đầu trực diện với kẻ thống trị để giành giật con mồi lớn nhất",
+            "B. Định vị vào một Hốc Sinh Thái độc bản (Niche): Tìm kiếm thị trường ngách mà đối thủ khổng lồ bỏ qua hoặc không thể phục vụ hiệu quả",
+            "C. Mở rộng quy mô ra toàn bộ các phân khúc cùng lúc",
+            "D. Bán phá giá sản phẩm để độc chiếm thị trường"
+        ],
+        "correct_index": 1,
+        "explanation": "Nguyên lý loại trừ cạnh tranh của Gause: Hai loài cùng tranh giành một nguồn tài nguyên hệt nhau không thể cùng tồn tại lâu dài. Muốn sống tốt phải tìm hốc riêng.",
+        "trap_analysis": "Lao vào cạnh tranh trực diện với kẻ khổng lồ ở thị trường đại trà mà không có lợi thế bất đối xứng."
+    },
+    {
+        "id": "Q-BIO-08",
+        "model_id": "BIO-08",
+        "pillar": "Sinh học",
+        "tier": 2,
+        "model_name": "Gen Vị Kỷ & Hợp Tác Vị Tha (The Selfish Gene)",
+        "scenario": (
+            "Trong một đàn dơi quỷ, một con dơi kiếm được nhiều máu sẽ sẵn sàng nhả thức ăn cho một con dơi khác đang sắp chết đói. "
+            "Tuy nhiên, nếu con dơi được cứu sau này đi săn được mồi mà từ chối chia sẻ lại, cả đàn dơi sẽ tẩy chay và không bao giờ cứu nó lần thứ hai."
+        ),
+        "question": "Cơ chế sinh học tiến hóa nào giải thích nguồn gốc của sự hợp tác đạo đức trong xã hội loài người?",
+        "options": [
+            "A. Chủ nghĩa vị tha vô điều kiện không màng tới phản hồi",
+            "B. Lòng vị tha có đi có lại (Reciprocal Altruism): Sự hợp tác bền vững được xây dựng trên cơ chế trừng phạt kẻ gian lận và đền đáp người giúp đỡ",
+            "C. Thống trị bằng bạo lực",
+            "D. Chọn lọc nhóm ngẫu nhiên"
+        ],
+        "correct_index": 1,
+        "explanation": "Sinh vật hợp tác vì điều đó giúp tối đa hóa xác suất sinh tồn của nguồn gen. Lòng tin trong xã hội tồn tại dựa trên cơ chế phản hồi có đi có lại (Tit-for-Tat).",
+        "trap_analysis": "Ngây thơ tin rằng có thể duy trì sự hợp tác lâu dài mà không có cơ chế trừng phạt kẻ bội tín (Free-rider)."
+    },
+    {
+        "id": "Q-BIO-10",
+        "model_id": "BIO-10",
+        "pillar": "Sinh học",
+        "tier": 2,
+        "model_name": "Sức Tải Môi Trường (Carrying Capacity)",
+        "scenario": (
+            "Một hồ cá sinh thái có diện tích nuôi thả tối đa 1.000 con cá. Một người nuôi cá tham lam thả thêm 3.000 con vào hồ. "
+            "Chỉ sau 2 tuần, lượng oxy hòa tan cạn kiệt, chất thải ô nhiễm quá tải khiến toàn bộ 4.000 con cá bị chết ngạt trắng bụng."
+        ),
+        "question": "Khái niệm sinh thái học nào đã bị vi phạm nghiêm trọng trong trường hợp này?",
+        "options": [
+            "A. Sức tải môi trường (Carrying Capacity): Giới hạn tối đa về quy mô mà một hệ sinh thái có thể duy trì mà không bị phá hủy hoàn toàn",
+            "B. Tháp năng lượng sinh thái",
+            "C. Đa dạng sinh học",
+            "D. Chuỗi thức ăn tuần hoàn"
+        ],
+        "correct_index": 0,
+        "explanation": "Bất kỳ hệ thống vật lý hay sinh thái nào cũng có trần tải giới hạn. Ép hệ thống vượt quá sức tải sẽ dẫn đến sự sụp đổ thảm họa phi tuyến tính.",
+        "trap_analysis": "Cố ép doanh nghiệp tăng trưởng nóng vượt qua ngưỡng năng lực chịu đựng của đội ngũ vận hành và hạ tầng kỹ thuật."
+    },
+
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 3: TÂM LÝ HỌC (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PSY-01",
+        "model_id": "PSY-01",
         "pillar": "Tâm lý học",
         "tier": 1,
         "model_name": "Thiên kiến Xác nhận (Confirmation Bias)",
         "scenario": (
             "Sau khi mua một mã cổ phiếu bất động sản, nhà đầu tư chỉ tìm đọc các bài phân tích khen ngợi tiềm năng của công ty, "
-            "tham gia các diễn đàn của những người cùng mua cổ phiếu đó để tán dương lẫn nhau, và lập tức chê bai hoặc bỏ qua "
-            "mọi bài báo cảnh báo về rủi ro pháp lý và nợ trái phiếu của doanh nghiệp."
+            "tham gia các nhóm chat của những người cùng ôm cổ phiếu đó để tung hô nhau, và gạt bỏ mọi cảnh báo về nợ trái phiếu."
         ),
         "question": "Thiên kiến tâm lý nguy hiểm nào đang che mờ mắt nhà đầu tư này?",
         "options": [
@@ -1268,21 +1447,63 @@ MODELS_QUIZ = [
             "D. Hiệu ứng Hào quang"
         ],
         "correct_index": 0,
-        "explanation": "Bộ não người muốn bảo vệ cái tôi bằng cách chỉ tìm kiếm bằng chứng ủng hộ kết luận đã chọn. Khắc phục bằng cách chủ động tìm kiếm lý do tại sao mình sai.",
+        "explanation": "Bộ não muốn bảo vệ sự dễ chịu của nhận thức bằng cách chỉ lọc lấy thông tin hợp ý mình. Khắc phục bằng cách chủ động tìm kiếm bằng chứng chứng minh mình sai.",
         "trap_analysis": "Confirmation bias là nguyên nhân số một dẫn tới việc gồng lỗ và phá sản trong đầu tư tài chính."
     },
     {
-        "id": "Q-PSYC-05",
-        "model_id": "PSYC-05",
+        "id": "Q-PSY-02",
+        "model_id": "PSY-02",
         "pillar": "Tâm lý học",
         "tier": 1,
-        "model_name": "Hiệu ứng Lollapalooza (Charlie Munger)",
+        "model_name": "Ác Cảm Mất Mát (Loss Aversion — Kahneman & Tversky)",
         "scenario": (
-            "Trong một buổi đấu giá từ thiện sôi động, một người bình thường vốn rất tiết kiệm đã bỏ ra số tiền gấp 10 lần giá trị thật "
-            "để mua một bức tranh. Phân tích cho thấy sự cộng hưởng đồng thời của: Bằng chứng xã hội (đám đông hò reo), "
-            "Ác cảm mất mát (sợ người khác cướp mất), Thiên kiến nhất quán (đã lỡ giơ biển trả giá 3 lần), và Hiệu ứng tương phản."
+            "Một người được đề nghị tham gia trò chơi tung đồng xu: Ngửa thì nhận 10 triệu đồng, Sấp thì mất 10 triệu đồng. "
+            "Dù kỳ vọng toán học bằng 0, đa số mọi người đều từ chối và yêu cầu: Nếu ngửa phải nhận ít nhất 20-25 triệu thì họ mới chấp nhận rủi ro mất 10 triệu."
         ),
-        "question": "Charlie Munger gọi hiện tượng nhiều xu hướng tâm lý cùng đẩy về một hướng tạo ra sức mạnh hủy diệt này là gì?",
+        "question": "Quy luật tâm lý học hành vi nào giải thích sự bất đối xứng cảm xúc này?",
+        "options": [
+            "A. Ác cảm mất mát (Loss Aversion): Nỗi đau khi mất một khoản tiền lớn gấp 2 đến 2.5 lần niềm vui khi kiếm được chính khoản tiền đó",
+            "B. Bẫy chi phí chìm",
+            "C. Ảo tưởng kiểm soát",
+            "D. Thiên kiến vị kỷ"
+        ],
+        "correct_index": 0,
+        "explanation": "Não người tiến hóa để sinh tồn: Mất thức ăn đồng nghĩa với cái chết, nên nỗi sợ mất mát luôn áp đảo khao khát đạt được điều mới.",
+        "trap_analysis": "Vì sợ mất mát nhỏ mà không dám cắt lỗ sớm, để rồi khoản lỗ nhỏ biến thành khoản lỗ khổng lồ hủy hoại toàn bộ tài khoản."
+    },
+    {
+        "id": "Q-PSY-04",
+        "model_id": "PSY-04",
+        "pillar": "Tâm lý học",
+        "tier": 1,
+        "model_name": "Bằng Chứng Xã Hội (Social Proof & Bầy Đàn)",
+        "scenario": (
+            "Một người đi dạo trên phố tìm quán ăn. Có hai quán phở cạnh nhau: Quán A rất đông người xếp hàng tràn ra vỉa hè, "
+            "Quán B bên cạnh rộng rãi, sạch sẽ nhưng không có một bóng khách nào. Người này lập tức đứng vào hàng đợi của quán A."
+        ),
+        "question": "Cơ chế tâm lý học tiến hóa nào đã định đoạt quyết định của người này?",
+        "options": [
+            "A. Đánh giá chất lượng độc lập dựa trên khẩu vị",
+            "B. Bằng chứng xã hội (Social Proof): Khi ở trong trạng thái không chắc chắn, ta mặc định hành vi của đám đông là đúng đắn",
+            "C. Hiệu ứng tương phản ánh sáng",
+            "D. Nguyên lý khan hiếm nhân tạo"
+        ],
+        "correct_index": 1,
+        "explanation": "Thời tiền sử, chạy theo đám đông giúp bạn thoát khỏi thú dữ mà không cần nhìn thấy nó. Thời hiện đại, đám đông thường xuyên cùng nhau lao xuống vực thẳm tài chính.",
+        "trap_analysis": "Mua tài sản ở đỉnh bong bóng chỉ vì thấy tất cả bạn bè, báo chí và mạng xã hội đều đang đổ xô mua."
+    },
+    {
+        "id": "Q-PSY-05",
+        "model_id": "PSY-05",
+        "pillar": "Tâm lý học",
+        "tier": 1,
+        "model_name": "Hiệu Ứng Lollapalooza (Charlie Munger)",
+        "scenario": (
+            "Trong một buổi đấu giá tranh từ thiện sôi động, một người bình thường vốn rất tiết kiệm đã bỏ ra số tiền gấp 10 lần giá trị thật. "
+            "Phân tích cho thấy sự cộng hưởng cùng lúc của: Bằng chứng xã hội (đám đông hò reo), Ác cảm mất mát (sợ người khác cướp mất), "
+            "Thiên kiến nhất quán (đã lỡ giơ biển 3 lần), và Men say chiến thắng."
+        ),
+        "question": "Charlie Munger gọi hiện tượng nhiều khuynh hướng tâm lý cùng cộng hưởng đẩy về một hướng này là gì?",
         "options": [
             "A. Hiệu ứng Mỏ neo đơn lẻ",
             "B. Hiệu ứng Lollapalooza: Sự hội tụ cộng hưởng đa chiều dẫn tới hành vi bùng nổ phi lý trí cực độ",
@@ -1290,20 +1511,67 @@ MODELS_QUIZ = [
             "D. Định luật Gresham"
         ],
         "correct_index": 1,
-        "explanation": "1 + 1 không bằng 2 mà bằng 10 khi 3-4 thiên kiến tâm lý tác động cùng một lúc. Nhận diện Lollapalooza giúp bạn né tránh bong bóng tài chính và các thảm họa cuộc đời.",
-        "trap_analysis": "Coi thường sức mạnh cộng hưởng: Nghĩ rằng từng yếu tố nhỏ không đáng lo ngại mà quên mất sự kết hợp của chúng có thể làm sập cả một đế chế."
+        "explanation": "Khi 3-4 thiên kiến tâm lý tác động cùng một lúc, chúng không cộng gộp tuyến tính mà nhân bản sức mạnh theo hàm mũ, đánh sập lý trí của con người.",
+        "trap_analysis": "Coi thường sức mạnh cộng hưởng: Nghĩ rằng từng yếu tố nhỏ không đáng lo ngại mà quên mất sự hội tụ của chúng có thể tạo nên thảm họa."
     },
     {
-        "id": "Q-ECON-02",
-        "model_id": "ECON-02",
+        "id": "Q-PSY-08",
+        "model_id": "PSY-08",
+        "pillar": "Tâm lý học",
+        "tier": 2,
+        "model_name": "Thiên Kiến Sẵn Có (Availability Heuristic)",
+        "scenario": (
+            "Sau khi xem tin tức về một vụ rơi máy bay thảm khốc trên tivi, nhiều người lập tức hủy vé máy bay để đi tàu hỏa hoặc lái xe ô tô đường dài, "
+            "mặc dù số liệu thống kê chứng minh xác suất chết vì tai nạn giao thông đường bộ cao gấp 100 lần tai nạn hàng không."
+        ),
+        "question": "Lỗi tư duy định lượng nào đang chi phối phản ứng này của đám đông?",
+        "options": [
+            "A. Phân tích xác suất Bayes khách quan",
+            "B. Thiên kiến sẵn có (Availability Heuristic): Đánh giá xác suất một sự kiện xảy ra dựa trên mức độ dễ dàng hồi tưởng lại hình ảnh sống động của nó trong tâm trí",
+            "C. Bỏ qua tỷ lệ nền",
+            "D. Quy luật số lớn"
+        ],
+        "correct_index": 1,
+        "explanation": "Hình ảnh càng giật gân, đẫm máu thì càng dễ nhớ, khiến não bộ lầm tưởng rằng tần suất xảy ra của nó trong thực tế là rất cao.",
+        "trap_analysis": "Ra các quyết định quản trị rủi ro tốn kém chỉ để phòng ngừa những biến cố giật gân hiếm gặp, trong khi phớt lờ những rủi ro thầm lặng hàng ngày."
+    },
+    {
+        "id": "Q-PSY-12",
+        "model_id": "PSY-12",
+        "pillar": "Tâm lý học",
+        "tier": 2,
+        "model_name": "Hiệu Ứng Mỏ Neo (Anchoring Effect)",
+        "scenario": (
+            "Một cửa hàng thời trang cao cấp treo một chiếc áo khoác với bảng giá 20.000.000đ ở ngay lối ra vào. "
+            "Khi khách bước vào trong và thấy các chiếc áo sơ mi có giá 2.500.000đ, họ cảm thấy mức giá 2.500.000đ này 'vô cùng hợp lý và rẻ', "
+            "dù giá vốn sản xuất thực tế chỉ là 300.000đ."
+        ),
+        "question": "Kỹ thuật định giá tâm lý này khai thác mô hình nhận thức nào?",
+        "options": [
+            "A. Hiệu ứng Mỏ neo (Anchoring): Thông tin số liệu xuất hiện đầu tiên sẽ trở thành điểm tham chiếu vô thức để đánh giá toàn bộ thông tin phía sau",
+            "B. Chi phí cận biên giảm dần",
+            "C. Đòn bẩy tài chính",
+            "D. Cân bằng Nash"
+        ],
+        "correct_index": 0,
+        "explanation": "Bộ não không thể định giá tài sản trong chân không. Nó luôn tìm kiếm một mỏ neo gần nhất để so sánh tương đối.",
+        "trap_analysis": "Trong đàm phán, nếu bạn để đối phương thả mỏ neo trước, bạn sẽ bị cuốn vào phạm vi mặc cả hoàn toàn có lợi cho họ."
+    },
+
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 4: KINH TẾ HỌC (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-ECON-01",
+        "model_id": "ECON-01",
         "pillar": "Kinh tế học",
         "tier": 1,
-        "model_name": "Chi phí Cơ hội (Opportunity Cost)",
+        "model_name": "Chi Phí Cơ Hội (Opportunity Cost)",
         "scenario": (
-            "Một bạn trẻ dành 4 giờ mỗi tối để cày phim giải trí miễn phí trên mạng và nghĩ rằng: 'Mình xem phim miễn phí nên chẳng mất đồng nào'. "
-            "Một cố vấn tư duy chỉ ra: 'Bạn đang trả giá bằng 4 giờ có thể dùng để học lập trình, tập thể dục, hoặc xây dựng mối quan hệ giá trị'."
+            "Một người dành 4 giờ mỗi tối để xem phim giải trí miễn phí trên mạng và nghĩ rằng: 'Mình xem phim miễn phí nên chẳng mất đồng nào'. "
+            "Một cố vấn tư duy chỉ ra: 'Bạn đang trả giá bằng 4 giờ có thể dùng để học kỹ năng mới, tập thể thao hoặc tạo thêm thu nhập'."
         ),
-        "question": "Cố vấn tư duy đang áp dụng khái niệm kinh tế học cơ bản nào?",
+        "question": "Cố vấn tư duy đang áp dụng khái niệm kinh tế học căn bản nào?",
         "options": [
             "A. Chi phí cơ hội: Giá trị của phương án tốt nhất bị bỏ qua khi bạn đưa ra một lựa chọn",
             "B. Chi phí cận biên",
@@ -1311,36 +1579,149 @@ MODELS_QUIZ = [
             "D. Hiệu ứng Mạng lưới"
         ],
         "correct_index": 0,
-        "explanation": "Không có gì là miễn phí. Chi phí thực sự của bất kỳ hành động nào chính là điều giá trị nhất mà bạn ĐÃ KHÔNG THỂ LÀM trong khoảng thời gian đó.",
-        "trap_analysis": "Chỉ nhìn thấy chi phí bằng tiền mặt (Explicit cost) mà hoàn toàn mù tịt trước chi phí thời gian và tiềm năng bị mất (Implicit cost)."
+        "explanation": "Không có bữa trưa nào miễn phí. Chi phí thực sự của bất kỳ hành động nào chính là giá trị lớn nhất mà bạn ĐÃ KHÔNG THỂ LÀM trong thời gian đó.",
+        "trap_analysis": "Chỉ nhìn thấy tiền mặt chi ra mà hoàn toàn mù tịt trước chi phí thời gian và tiềm năng bị mất đi vĩnh viễn."
+    },
+    {
+        "id": "Q-ECON-02",
+        "model_id": "ECON-02",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Bẫy Chi Phí Chìm (Sunk Cost Fallacy)",
+        "scenario": (
+            "Một công ty đã đầu tư 10 tỷ đồng vào một phần mềm nội bộ suốt 2 năm. Hiện tại trên thị trường xuất hiện một giải pháp SaaS mới "
+            "hiện đại hơn, giá chỉ 20 triệu/tháng. Giám đốc CNTT từ chối đổi sang SaaS vì: 'Đã bỏ 10 tỷ đồng vào phần mềm này rồi, bỏ đi thì mất trắng à?!'."
+        ),
+        "question": "Sai lầm nhận thức kinh tế học nào đang làm công ty tiếp tục chảy máu dòng tiền?",
+        "options": [
+            "A. Chi phí chìm (Sunk Cost): Cố gắng bám víu và đổ thêm tiền vào một dự án tồi chỉ vì tiếc nuối những nguồn lực đã mất trong quá khứ không thể lấy lại",
+            "B. Tối ưu hóa danh mục đầu tư",
+            "C. Bẫy thanh khoản",
+            "D. Quy luật giá trị thặng dư"
+        ],
+        "correct_index": 0,
+        "explanation": "Tiền trong quá khứ đã mất vĩnh viễn (sunk cost = 0). Mọi quyết định lý trí chỉ được dựa trên chi phí và lợi ích biên từ ngày mai trở đi.",
+        "trap_analysis": "'Đã lỡ phóng lao thì phải theo lao' — Câu nói dân gian này chính là công thức hoàn hảo để tự sát tài chính."
     },
     {
         "id": "Q-ECON-04",
         "model_id": "ECON-04",
         "pillar": "Kinh tế học",
         "tier": 1,
-        "model_name": "Hiệu ứng Mạng lưới (Network Effects)",
+        "model_name": "Hiệu Ứng Mạng Lưới (Network Effects)",
         "scenario": (
-            "Một ứng dụng nhắn tin mới ra mắt có giao diện đẹp hơn Zalo và nhiều tính năng vượt trội hơn, nhưng người dùng cài thử rồi lại xoá "
-            "vì bạn bè, gia đình và đồng nghiệp của họ đều đang ở trên Zalo. Ứng dụng mới không thể lôi kéo được người dùng."
+            "Một ứng dụng nhắn tin mới ra mắt có giao diện đẹp hơn và bảo mật cao hơn Zalo, nhưng người dùng cài thử rồi xóa ngay "
+            "vì bạn bè, đối tác và gia đình của họ đều đang ở trên Zalo. Ứng dụng mới không thể lôi kéo được thị phần."
         ),
-        "question": "Con hào kinh tế bất khả xâm phạm nào đang bảo vệ Zalo?",
+        "question": "Con hào kinh tế bất khả xâm phạm nào đang bảo vệ vị thế của Zalo?",
         "options": [
-            "A. Chi phí sản xuất thấp",
-            "B. Hiệu ứng Mạng lưới (Network Effects): Giá trị của hệ thống tăng theo cấp số nhân với mỗi người dùng mới tham gia (Định luật Metcalfe)",
-            "C. Đòn bẩy tài chính",
-            "D. Phá hủy sáng tạo"
+            "A. Chi phí sản xuất rẻ hơn",
+            "B. Hiệu ứng Mạng lưới (Network Effects): Giá trị của mạng lưới tăng theo cấp số nhân với mỗi người dùng mới gia nhập (Định luật Metcalfe)",
+            "C. Đòn bẩy vốn nhà nước",
+            "D. Bản quyền sở hữu trí tuệ"
         ],
         "correct_index": 1,
-        "explanation": "Sản phẩm tốt hơn chưa chắc thắng sản phẩm có mạng lưới lớn hơn. Mỗi nút mạng gia nhập làm tăng giá trị cho tất cả các nút mạng còn lại.",
-        "trap_analysis": "Đầu tư vào sản phẩm chỉ chăm chăm làm tính năng tốt hơn mà không có cơ chế tích lũy hiệu ứng mạng lưới."
+        "explanation": "Sản phẩm tốt hơn chưa chắc thắng sản phẩm có mạng lưới người dùng lớn hơn. Mỗi mắt xích mới làm tăng giá trị cho toàn bộ các mắt xích còn lại.",
+        "trap_analysis": "Đầu tư vào sản phẩm chỉ chăm chăm làm tính năng mà không thiết kế cơ chế tạo ra hiệu ứng mạng lưới tự tích lũy."
+    },
+    {
+        "id": "Q-ECON-06",
+        "model_id": "ECON-06",
+        "pillar": "Kinh tế học",
+        "tier": 2,
+        "model_name": "Lợi Thế So Sánh (Comparative Advantage — David Ricardo)",
+        "scenario": (
+            "Một luật sư hàng đầu có mức thu nhập 2.000.000đ/giờ. Cô ấy gõ bàn phím nhanh gấp đôi cô thư ký. "
+            "Nếu tự gõ văn bản hợp đồng, cô ấy chỉ mất 1 giờ thay vì 2 giờ của thư ký (lương thư ký 100.000đ/giờ). "
+            "Tuy nhiên, vị luật sư vẫn thuê thư ký gõ toàn bộ hợp đồng."
+        ),
+        "question": "Định luật kinh tế học vĩ đại nào chứng minh quyết định của vị luật sư là hoàn toàn thông thái?",
+        "options": [
+            "A. Lợi thế Tuyệt đối",
+            "B. Lợi thế So sánh (Comparative Advantage): Dù giỏi hơn ở mọi việc, bạn vẫn nên tập trung vào việc có chi phí cơ hội thấp nhất và thuê ngoài việc khác",
+            "C. Cân bằng kinh tế vi mô",
+            "D. Quy luật giá trị lao động"
+        ],
+        "correct_index": 1,
+        "explanation": "Nếu luật sư tự gõ phím 1 giờ, cô ấy tiết kiệm được 200.000đ tiền thuê thư ký nhưng mất đi 2.000.000đ tiền tư vấn pháp lý. Chi phí cơ hội quá đắt.",
+        "trap_analysis": "Bệnh ôm đồm của người giỏi: Nghĩ rằng 'mình làm tốt hơn người khác thì mình nên tự làm hết', dẫn đến việc tự giam cầm bản thân trong việc giá trị thấp."
+    },
+    {
+        "id": "Q-ECON-08",
+        "model_id": "ECON-08",
+        "pillar": "Kinh tế học",
+        "tier": 2,
+        "model_name": "Con Hào Kinh Tế (Economic Moat — Warren Buffett)",
+        "scenario": (
+            "Một công ty đồ uống giải khát không có công nghệ bí mật gì cao siêu ngoài công thức nước ngọt có gas và đường. "
+            "Tuy nhiên suốt 100 năm qua, dù hàng ngàn đối thủ tung sản phẩm rẻ hơn và ngon hơn, công ty này vẫn duy trì biên lợi nhuận ròng 25% "
+            "và thương hiệu biểu tượng ăn sâu vào văn hóa toàn cầu."
+        ),
+        "question": "Warren Buffett gọi lợi thế cạnh tranh bền vững che chở doanh nghiệp khỏi sự tấn công của đối thủ là gì?",
+        "options": [
+            "A. Con hào kinh tế (Economic Moat): Lợi thế cấu trúc dài hạn (Thương hiệu vô hình, Chi phí chuyển đổi, Lợi thế chi phí hoặc Hiệu ứng mạng)",
+            "B. Độc quyền cưỡng bức",
+            "C. Bán phá giá có bảo trợ",
+            "D. Tối ưu hóa chuỗi cung ứng"
+        ],
+        "correct_index": 0,
+        "explanation": "Một doanh nghiệp tuyệt vời là một tòa lâu đài kiên cố được bao quanh bởi một con hào sâu và rộng chứa đầy cá sấu (Economic Moat).",
+        "trap_analysis": "Nhầm lẫn giữa lợi thế cạnh tranh tạm thời (ra sản phẩm mới trước 3 tháng) với Con hào kinh tế cấu trúc không thể sao chép."
+    },
+    {
+        "id": "Q-ECON-11",
+        "model_id": "ECON-11",
+        "pillar": "Kinh tế học",
+        "tier": 2,
+        "model_name": "Bất Cân Xứng Thông Tin & Thị Trường Xe Cũ (Akerlof's Market for Lemons)",
+        "scenario": (
+            "Trên thị trường xe ô tô cũ, người bán biết chính xác xe có bị ngập nước hay tai nạn không, nhưng người mua thì không thể biết được. "
+            "Vì sợ mua phải xe hỏng (xe quả chanh), người mua chỉ đồng ý trả mức giá trung bình thấp. Kết quả là những người có xe tốt thực sự rút khỏi thị trường, "
+            "chỉ còn lại xe nát được đem bán."
+        ),
+        "question": "Hiện tượng thị trường bị hủy hoại do thiếu minh bạch thông tin được kinh tế học gọi là gì?",
+        "options": [
+            "A. Lựa chọn Bất lợi (Adverse Selection) do Bất cân xứng thông tin (Information Asymmetry)",
+            "B. Cạnh tranh hoàn hảo",
+            "C. Cân bằng tiền tệ",
+            "D. Phân bổ hiệu quả Pareto"
+        ],
+        "correct_index": 0,
+        "explanation": "Khi một bên nắm nhiều thông tin hơn bên kia, hàng kém chất lượng sẽ đánh bạt hàng tốt ra khỏi thị trường nếu thiếu cơ chế bảo hành hoặc kiểm định độc lập.",
+        "trap_analysis": "Trong bất kỳ cuộc đàm phán hay đầu tư nào: nếu bạn không biết đối phương đang nắm lợi thế thông tin gì, bạn chính là bên chịu lựa chọn bất lợi."
+    },
+
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 5: TOÁN HỌC & XÁC SUẤT (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-MATH-01",
+        "model_id": "MATH-01",
+        "pillar": "Toán học & Xác suất",
+        "tier": 1,
+        "model_name": "Lãi Kép (Compounding — Kỳ quan thứ 8)",
+        "scenario": (
+            "Hai người bạn cùng bắt đầu sự nghiệp ở tuổi 20: Người A đầu tư 50 triệu/năm với lãi suất 12%/năm từ năm 20 đến 30 tuổi (tổng nộp 500 triệu) rồi ngừng không nạp thêm. "
+            "Người B đợi đến năm 30 tuổi mới bắt đầu đầu tư 50 triệu/năm liên tục suốt 30 năm từ 30 đến 60 tuổi (tổng nộp 1.5 tỷ đồng). "
+            "Đến tuổi 60, tài sản của Người A lại lớn hơn Người B gấp bội."
+        ),
+        "question": "Yếu tố toán học nào đóng vai trò khuếch đại uy lực nhất trong công thức lãi kép $A = P(1+r)^t$?",
+        "options": [
+            "A. Số vốn ban đầu $P$",
+            "B. Thời gian tích lũy $t$ nằm ở số mũ của hàm số",
+            "C. Việc chọn ngân hàng giao dịch",
+            "D. May mắn ngắn hạn"
+        ],
+        "correct_index": 1,
+        "explanation": "Lãi kép là sự tích lũy theo hàm mũ. 99% tài sản của Warren Buffett được tạo ra sau sinh nhật lần thứ 50 của ông nhờ giữ vốn chạy qua số mũ thời gian.",
+        "trap_analysis": "Ngắt quãng chu kỳ lãi kép: Nhảy qua nhảy lại giữa các phương pháp đầu tư hoặc rút vốn chi tiêu trước khi đường cong hàm mũ cất cánh."
     },
     {
         "id": "Q-MATH-02",
         "model_id": "MATH-02",
         "pillar": "Toán học & Xác suất",
         "tier": 1,
-        "model_name": "Định luật Lũy thừa & Pareto 80/20",
+        "model_name": "Định Luật Lũy Thừa & Pareto 80/20 (Power Law)",
         "scenario": (
             "Phân tích doanh thu của một công ty cho thấy: trong số 100 sản phẩm đang bán, chỉ có 20 sản phẩm mang lại 80% tổng lợi nhuận ròng. "
             "80 sản phẩm còn lại làm tiêu tốn 80% thời gian hỗ trợ khách hàng, kho bãi và vận hành nhưng chỉ đem về 20% lợi nhuận."
@@ -1348,81 +1729,240 @@ MODELS_QUIZ = [
         "question": "Mô hình phân phối toán học nào giải thích hiện tượng phân bổ bất đối xứng này?",
         "options": [
             "A. Phân phối Chuẩn hình chuông Gauss",
-            "B. Định luật Lũy thừa & Nguyên lý Pareto 80/20: Mối quan hệ bất đối xứng giữa đầu vào và đầu ra",
+            "B. Định luật Lũy thừa & Nguyên lý Pareto 80/20: Mối quan hệ bất đối xứng sâu sắc giữa đầu vào và đầu ra",
             "C. Hồi quy về trung bình",
             "D. Nghịch lý Simpson"
         ],
         "correct_index": 1,
-        "explanation": "Thế giới không phân phối đồng đều. 20% nguyên nhân tạo ra 80% kết quả. Giới tinh hoa tập trung tối đa nguồn lực vào 20% nòng cốt này.",
+        "explanation": "Thế giới hiện đại bị thống trị bởi phân phối lũy thừa. 20% nguyên nhân tạo ra 80% kết quả. Giới tinh hoa tập trung tối đa nguồn lực vào 20% hạt nhân này.",
         "trap_analysis": "Dàn trải nguồn lực cào bằng: Đối xử bình đẳng với mọi công việc, dẫn đến cạn kiệt năng lượng mà không tạo ra đột phá."
     },
     {
-        "id": "Q-SYST-02",
-        "model_id": "SYST-02",
+        "id": "Q-MATH-03",
+        "model_id": "MATH-03",
+        "pillar": "Toán học & Xác suất",
+        "tier": 1,
+        "model_name": "Xác Suất Bayes & Tỷ Lệ Nền (Base Rate)",
+        "scenario": (
+            "Một căn bệnh hiếm gặp có tỷ lệ mắc trong cộng đồng là 1/1.000 (0.1%). "
+            "Một que xét nghiệm có độ chính xác 99%. Một người đi xét nghiệm ngẫu nhiên và nhận kết quả 'Dương tính'. "
+            "Bác sĩ nói với người đó rằng: 'Xác suất bạn thực sự bị bệnh chỉ khoảng 9%, đừng quá hoảng sợ'."
+        ),
+        "question": "Tại sao xác suất mắc bệnh thật chỉ là 9% chứ không phải 99% như độ chính xác của que thử?",
+        "options": [
+            "A. Vì que thử bị hết hạn sử dụng",
+            "B. Do Bỏ quên Tỷ lệ nền (Base Rate): Vì tỷ lệ người không mắc bệnh quá lớn (99.9%), 1% dương tính giả của nhóm người khỏe mạnh vẫn áp đảo số ca bệnh thật",
+            "C. Vì bác sĩ tính nhầm toán",
+            "D. Vì virus tự biến mất trong máu"
+        ],
+        "correct_index": 1,
+        "explanation": "Khi tỷ lệ nền cực thấp, số ca dương tính giả sẽ lấn át số ca dương tính thật. Không bao giờ đánh giá một tín hiệu mà quên đi tỷ lệ nền của tổng thể.",
+        "trap_analysis": "Bẫy thờ ơ tỷ lệ nền (Base Rate Fallacy): Tin vào các lời hứa hẹn làm giàu siêu tốc mà quên rằng tỷ lệ thành công nền chỉ là 1 phần vạn."
+    },
+    {
+        "id": "Q-MATH-05",
+        "model_id": "MATH-05",
+        "pillar": "Toán học & Xác suất",
+        "tier": 2,
+        "model_name": "Hồi Quy Về Trung Bình (Regression to the Mean)",
+        "scenario": (
+            "Một vận động viên thể thao sau một mùa giải thi đấu thăng hoa xuất thần được lên bìa tạp chí danh tiếng. "
+            "Ở mùa giải tiếp theo, phong độ của anh ta tụt giảm về mức trung bình khá. Nhiều nhà phê bình quy cho 'Lời nguyền trang bìa tạp chí'."
+        ),
+        "question": "Quy luật thống kê toán học nào giải thích hiện tượng sụt giảm phong độ tự nhiên này?",
+        "options": [
+            "A. Lời nguyền siêu nhiên có thật",
+            "B. Hồi quy về trung bình (Regression to the Mean): Một kết quả cực đoan bất thường (do kỹ năng kết hợp với may mắn lớn) sẽ có xu hướng quay về mức trung bình ở lần thử tiếp theo",
+            "C. Định luật phân rã sinh học",
+            "D. Thuyết hỗn loạn"
+        ],
+        "correct_index": 1,
+        "explanation": "Khi ai đó đạt thành tích đỉnh cao bất thường, một phần lớn kết quả là nhờ may mắn ngẫu nhiên. Lần sau, khi may mắn trở lại mức bình thường, kết quả sẽ giảm xuống.",
+        "trap_analysis": "Tưởng nhầm một kết quả đột biến ngắn hạn là năng lực vĩnh viễn của cá nhân và đưa ra các cam kết vượt quá thực tế."
+    },
+    {
+        "id": "Q-MATH-07",
+        "model_id": "MATH-07",
+        "pillar": "Toán học & Xác suất",
+        "tier": 2,
+        "model_name": "Rủi Ro Đuôi Béo & Thiên Nga Đen (Fat-Tailed Risk & Black Swan)",
+        "scenario": (
+            "Một quỹ phòng hộ kiếm được lợi nhuận đều đặn 1.5% mỗi tháng suốt 5 năm bằng chiến lược bán quyền chọn (nhặt tiền lẻ trước đầu xe lu). "
+            "Đến năm thứ 6, một cuộc khủng hoảng tài chính bất ngờ xảy ra chỉ trong 3 ngày đã xóa sạch toàn bộ vốn liếng và đẩy quỹ vào cảnh phá sản nợ nần."
+        ),
+        "question": "Nassim Taleb dùng mô hình toán học nào để cảnh báo về các thảm họa này?",
+        "options": [
+            "A. Phân phối Chuẩn hình chuông Gauss",
+            "B. Phân phối Đuôi béo (Fat-Tailed Distribution): Các biến cố cực đoan hiếm gặp có tác động hủy diệt vượt ngoài mọi mô hình tính toán rủi ro truyền thống",
+            "C. Luật bù trừ số học",
+            "D. Cực tiểu toàn cục"
+        ],
+        "correct_index": 1,
+        "explanation": "Trong môi trường đuôi béo, 1 ngày duy nhất có thể xóa sổ thành quả của 10 năm. Không bao giờ chơi trò chơi mà trong đó một thất bại có thể tiêu diệt bạn hoàn toàn.",
+        "trap_analysis": "Dùng mô hình phân phối chuẩn (Gaussian) vốn chỉ đúng cho chiều cao/cân nặng để tính toán rủi ro tài chính và thị trường."
+    },
+    {
+        "id": "Q-MATH-10",
+        "model_id": "MATH-10",
+        "pillar": "Toán học & Xác suất",
+        "tier": 2,
+        "model_name": "Kỳ Vọng Toán Học (Expected Value — EV)",
+        "scenario": (
+            "Một quyết định kinh doanh có 70% xác suất thành công mang lại 200 triệu đồng, nhưng có 30% xác suất thất bại làm mất 500 triệu đồng. "
+            "Một người thiếu tư duy xác suất chỉ nhìn vào con số 70% thắng và cho rằng đây là kèo thơm nên làm."
+        ),
+        "question": "Công thức Kỳ vọng Toán học $EV = (P_{win} \times Win) - (P_{loss} \times Loss)$ cho ra kết quả gì về thương vụ này?",
+        "options": [
+            "A. $EV = +140$ triệu (Kèo thắng lớn)",
+            "B. $EV = (0.7 \times 200) - (0.3 \times 500) = 140 - 150 = -10$ triệu (Kỳ vọng âm, càng làm càng nghèo)",
+            "C. $EV = 0$ (Hòa vốn)",
+            "D. $EV = +300$ triệu"
+        ],
+        "correct_index": 1,
+        "explanation": "Tỷ lệ thắng cao không có ý nghĩa nếu khoản lỗ khi thua quá lớn làm cho kỳ vọng toán học bị âm. Người thông minh chỉ xuống tiền khi EV dương.",
+        "trap_analysis": "Ảo tưởng tỷ lệ thắng (Winrate Illusion): Thích đúng 9 lần ăn nhỏ để rồi lần thứ 10 mất sạch toàn bộ cơ đồ."
+    },
+
+    # -------------------------------------------------------------------------
+    # TRỤ CỘT 6: KỸ THUẬT & HỆ THỐNG (6 CÂU: TIER 1 & TIER 2)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-SYS-01",
+        "model_id": "SYS-01",
         "pillar": "Kỹ thuật & Hệ thống",
         "tier": 1,
-        "model_name": "Biên độ An toàn (Margin of Safety)",
+        "model_name": "Vòng Phản Hồi Âm & Dương (Feedback Loops)",
         "scenario": (
-            "Khi các kỹ sư xây một cây cầu dự kiến chỉ chở tối đa xe tải nặng 10 tấn, họ thiết kế cây cầu có sức chịu tải thực tế lên tới 30 tấn. "
-            "Tương tự, khi Warren Buffett định giá một công ty có giá trị thực 100.000 đồng/cổ phiếu, ông chỉ mua khi giá thị trường rớt xuống dưới 65.000 đồng."
+            "Trong một hệ thống sưởi ấm thông minh: Khi nhiệt độ phòng tăng quá 28 độ C, cảm biến kích hoạt rơ-le ngắt nguồn sưởi; "
+            "khi nhiệt độ giảm dưới 20 độ C, cảm biến tự bật máy sưởi trở lại để giữ phòng luôn ở mức 24 độ C ổn định."
+        ),
+        "question": "Cơ chế điều khiển học (Cybernetics) nào đang giúp căn phòng duy trì trạng thái cân bằng động?",
+        "options": [
+            "A. Vòng phản hồi dương khuếch đại không giới hạn",
+            "B. Vòng phản hồi âm (Negative Feedback Loop): Tự động sinh lực đảo nghịch để triệt tiêu độ lệch và đưa hệ thống về điểm cân bằng mong muốn",
+            "C. Mất cân bằng nội môi",
+            "D. Vận hành tuyến tính hở"
+        ],
+        "correct_index": 1,
+        "explanation": "Phản hồi âm là cơ chế sống còn để duy trì sự ổn định của sinh vật (thân nhiệt) và tổ chức (kiểm soát rủi ro). Không có phản hồi âm, hệ thống sẽ nổ tung.",
+        "trap_analysis": "Nhầm tưởng 'phản hồi âm' là điều tiêu cực; thực chất phản hồi âm là chiếc phanh hãm cứu mạng giữ cho cỗ máy không trật bánh."
+    },
+    {
+        "id": "Q-SYS-02",
+        "model_id": "SYS-02",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Biên Độ An Toàn (Margin of Safety)",
+        "scenario": (
+            "Khi thiết kế thang máy dự kiến chở tối đa 10 người (khoảng 700 kg), các kỹ sư sử dụng dây cáp và động cơ có sức chịu tải thực tế lên tới 3.500 kg (gấp 5 lần). "
+            "Tương tự, khi nhà đầu tư định giá cổ phiếu đáng giá 100.000đ, họ kiên nhẫn đợi giá thị trường giảm xuống 65.000đ mới giải ngân."
         ),
         "question": "Nguyên lý kỹ thuật và đầu tư cốt lõi này có tên là gì?",
         "options": [
-            "A. Tối ưu hóa hiệu suất tối đa",
-            "B. Biên độ An toàn (Margin of Safety): Tạo lớp đệm dự phòng chống lại sai số trong tính toán và những cú sốc bất ngờ",
+            "A. Tối ưu hóa hiệu suất tối đa không dư thừa",
+            "B. Biên độ An toàn (Margin of Safety): Tạo lớp đệm dự phòng chống lại sai số trong đo lường và những cú sốc bất ngờ của tương lai",
             "C. Vòng phản hồi dương",
             "D. Nút cổ chai"
         ],
         "correct_index": 1,
-        "explanation": "Tương lai vốn bất định và không thể dự báo chính xác. Biên độ an toàn giúp bạn sống sót ngay cả khi bạn tính toán sai hoặc gặp thiên nga đen.",
-        "trap_analysis": "Vận hành hệ thống ở mức công suất 100% không có dự phòng; chỉ cần một cú xóc nhỏ là toàn bộ hệ thống sụp đổ."
-    }
+        "explanation": "Tương lai vốn chứa đựng những điều không thể biết. Biên độ an toàn giúp bạn sống sót ngay cả khi tính toán sai hoặc gặp thiên nga đen.",
+        "trap_analysis": "Vận hành hệ thống ở mức 100% công suất không có lớp đệm dự phòng; chỉ cần một cú xóc nhỏ là toàn bộ hệ thống sụp đổ dây chuyền."
+    },
+    {
+        "id": "Q-SYS-03",
+        "model_id": "SYS-03",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Điểm Nghẽn Nút Cổ Chai (Theory of Constraints / Bottleneck)",
+        "scenario": (
+            "Một dây chuyền sản xuất gồm 4 công đoạn: Cắt vải (100 áo/h) -> May ráp (30 áo/h) -> Đính cúc (80 áo/h) -> Đóng gói (120 áo/h). "
+            "Giám đốc nhà máy quyết định chi 2 tỷ đồng mua máy Đóng gói siêu tốc mới để nâng công suất đóng gói lên 300 áo/h."
+        ),
+        "question": "Theo Thuyết Điểm thắt (Goldratt's Theory of Constraints), sản lượng của cả nhà máy sẽ thay đổi thế nào?",
+        "options": [
+            "A. Sản lượng tăng lên 300 áo/h",
+            "B. Sản lượng vẫn giữ nguyên 30 áo/h và 2 tỷ đồng bị lãng phí, vì công đoạn May ráp (nút cổ chai) chưa được giải phóng",
+            "C. Sản lượng tăng gấp đôi",
+            "D. Toàn bộ nhà máy bị đình trệ"
+        ],
+        "correct_index": 1,
+        "explanation": "Sức mạnh của một sợi xích được quyết định bởi mắt xích yếu nhất. Tối ưu hóa bất kỳ bộ phận nào ngoài nút cổ chai đều là sự lãng phí vô ích.",
+        "trap_analysis": "Bệnh tối ưu hóa cục bộ: Chi tiền và sức lực vào những mắt xích không phải là điểm thắt cổ chai của hệ thống."
+    },
+    {
+        "id": "Q-SYS-05",
+        "model_id": "SYS-05",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 2,
+        "model_name": "Sự Dư Thừa Dự Phòng (Redundancy & Fail-Safe)",
+        "scenario": (
+            "Máy bay thương mại Boeing hay Airbus luôn được trang bị 2 hoặc 3 hệ thống thủy lực và máy tính điều khiển bay độc lập. "
+            "Nếu hệ thống chính bị chập cháy hoặc hỏng hóc giữa không trung, hệ thống phụ lập tức kích hoạt tự động trong vòng 0.1 giây để phi công hạ cánh an toàn."
+        ),
+        "question": "Nguyên lý thiết kế hệ thống quan trọng này được gọi là gì?",
+        "options": [
+            "A. Tinh gọn triệt để",
+            "B. Sự dư thừa dự phòng (Redundancy): Sao chép các thành phần cốt tử để đảm bảo hệ thống không bị tê liệt hoàn toàn khi một bộ phận bị hỏng",
+            "C. Đòn bẩy vô hình",
+            "D. Vòng lặp đơn lẻ"
+        ],
+        "correct_index": 1,
+        "explanation": "Hiệu quả ngắn hạn ghét sự dư thừa (vì tốn chi phí); nhưng sự sinh tồn dài hạn bắt buộc phải có sự dư thừa dự phòng.",
+        "trap_analysis": "Cắt giảm toàn bộ quỹ dự phòng tiền mặt và nhân sự thay thế để 'tối ưu hóa chi phí', để rồi phá sản khi gặp biến cố bất ngờ."
+    },
+    {
+        "id": "Q-SYS-08",
+        "model_id": "SYS-08",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 2,
+        "model_name": "Điểm Gãy Đơn Lẻ (Single Point of Failure — SPOF)",
+        "scenario": (
+            "Một công ty phần mềm có 50 nhân viên nhưng toàn bộ mật khẩu quản trị máy chủ cơ sở dữ liệu và mã nguồn gốc "
+            "chỉ được lưu trong chiếc máy tính xách tay của một lập trình viên duy nhất. Một ngày nọ, lập trình viên này bị tai nạn và chiếc máy tính bị mất."
+        ),
+        "question": "Lỗi kiến trúc hệ thống chết người nào đã đẩy công ty vào bờ vực sụp đổ?",
+        "options": [
+            "A. Quá nhiều bậc tự do",
+            "B. Điểm gãy đơn lẻ (Single Point of Failure): Một mắt xích duy nhất mà nếu nó ngừng hoạt động, toàn bộ hệ thống lớn sẽ sụp đổ theo",
+            "C. Lỗi phần mềm ngẫu nhiên",
+            "D. Chi phí cận biên tăng vọt"
+        ],
+        "correct_index": 1,
+        "explanation": "Giới tinh hoa luôn kiểm tra hệ thống của mình để tìm kiếm và triệt tiêu mọi SPOF: Từ tài chính (phụ thuộc 1 nguồn thu), vận hành đến nhân sự then chốt.",
+        "trap_analysis": "Chủ quan tin tưởng một cá nhân hoặc một nhà cung cấp duy nhất mà không có phương án thay thế sẵn sàng."
+    },
+    {
+        "id": "Q-SYS-11",
+        "model_id": "SYS-11",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 2,
+        "model_name": "Độ Trễ Thời Gian Trong Hệ Thống (System Delay & Oscillation)",
+        "scenario": (
+            "Bạn bước vào phòng tắm khách sạn và vặn vòi nước nóng. Vì đường ống dài nên nước mất 15 giây mới ấm lên. "
+            "Vì sốt ruột không thấy nóng ngay sau 3 giây, bạn vặn hết cỡ sang nấc tối đa. 15 giây sau, dòng nước sôi 80 độ C phụt ra làm bạn bỏng rát hoảng hốt vặn ngược về cực lạnh."
+        ),
+        "question": "Quy luật vận hành hệ thống nào giải thích sự dao động cực đoan (Oscillation) này?",
+        "options": [
+            "A. Độ trễ thời gian (System Delay): Khoảng thời gian trễ giữa hành động can thiệp và phản hồi thực tế của hệ thống khiến người điều khiển phản ứng thái quá",
+            "B. Áp suất thủy lực không đổi",
+            "C. Hiện tượng tự cảm ứng",
+            "D. Cân bằng nhiệt động"
+        ],
+        "correct_index": 0,
+        "explanation": "Trong kinh tế và chính sách tiền tệ (lãi suất), mỗi can thiệp phải mất 6-18 tháng mới thẩm thấu vào nền kinh tế. Thiếu kiên nhẫn với độ trễ sẽ gây ra khủng hoảng chu kỳ.",
+        "trap_analysis": "Can thiệp dồn dập khi chưa kịp nhìn thấy tác động của hành động trước, biến một biến động nhỏ thành cơn bão hỗn loạn."
+    },
 ]
 
 # =============================================================================
-# 3. NGÂN HÀNG TRẮC NGHIỆM TÌNH HUỐNG 100 NGUYÊN LÝ KHỞI THỦY (CURATED)
+# 3. NGÂN HÀNG TRẮC NGHIỆM TÌNH HUỐNG 100 NGUYÊN LÝ KHỞI THỦY (28 BÀI TOÁN THỰC CHIẾN 7 LĨNH VỰC)
 # =============================================================================
 PRINCIPLES_QUIZ = [
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 1: VẬT LÝ HỌC (4 CÂU)
+    # -------------------------------------------------------------------------
     {
-        "id": "Q-PRIN-01",
-        "principle_name": "Nguyên lý Chuyển dịch Cân bằng Le Chatelier",
-        "domain": "Hóa học & Khoa học Vật liệu",
-        "scenario": (
-            "Khi một người lãnh đạo mới về một phòng ban đang vận hành ổn định và ngay lập tức ban hành hàng loạt nội quy thắt chặt đột ngột, "
-            "nhân viên không công khai phản đối nhưng ngầm làm việc chậm lại, xin nghỉ ốm nhiều hơn, khiến năng suất tụt giảm trầm trọng."
-        ),
-        "question": "Nguyên lý tự nhiên nào giải thích phản ứng kháng cự tự động này của hệ thống?",
-        "options": [
-            "A. Định luật Bảo toàn Khối lượng",
-            "B. Nguyên lý Le Chatelier: Khi một hệ thống cân bằng bị cưỡng bức thay đổi, nó sẽ tự động sinh phản lực chống lại sự thay đổi đó",
-            "C. Định luật Vạn vật hấp dẫn",
-            "D. Nguyên lý Bất định Heisenberg"
-        ],
-        "correct_index": 1,
-        "explanation": "Muốn thay đổi một hệ thống đang cân bằng bền, không thể dùng bạo lực áp đặt tức thời mà phải tăng nhiệt độ từ từ hoặc dịch chuyển điều kiện biên khéo léo.",
-        "trap_analysis": "Ảo tưởng có thể ép buộc con người hoặc tổ chức thay đổi mà không phải trả giá bằng phản lực nội tại."
-    },
-    {
-        "id": "Q-PRIN-02",
-        "principle_name": "Nguyên lý Chất Xúc tác (Catalysis)",
-        "domain": "Hóa học & Khoa học Vật liệu",
-        "scenario": (
-            "Hai nhóm sinh viên cùng tham gia nghiên cứu khoa học. Nhóm A cặm cụi đọc tài liệu giấy và dịch thủ công từng trang, mất 3 tháng. "
-            "Nhóm B dùng công cụ AI tổng hợp tài liệu và lập trình mã nguồn, hoàn thành nghiên cứu chỉ sau 1 tuần với chất lượng tương đương."
-        ),
-        "question": "Công cụ AI đóng vai trò gì trong phản ứng nghiên cứu khoa học theo nguyên lý hóa học?",
-        "options": [
-            "A. Chất phản ứng bị tiêu hao",
-            "B. Chất Xúc tác (Catalyst): Làm hạ thấp năng lượng hoạt hóa (rào cản độ khó) giúp phản ứng xảy ra nhanh gấp bội mà không bị hao mòn",
-            "C. Chất ức chế",
-            "D. Sản phẩm phụ"
-        ],
-        "correct_index": 1,
-        "explanation": "Người thông minh không dùng bạo lực vượt qua rào cản năng lượng; họ tìm kiếm chất xúc tác (công nghệ, quy trình, mạng lưới) để hạ độ khó xuống.",
-        "trap_analysis": "Cố chấp làm việc theo lối khổ hạnh, xem thường các đòn bẩy xúc tác hiện đại."
-    },
-    {
-        "id": "Q-PRIN-03",
+        "id": "Q-PRIN-PHYS-01",
         "principle_name": "Nguyên lý Bất định Heisenberg (Uncertainty Principle)",
         "domain": "Vật lý học",
         "scenario": (
@@ -1441,8 +1981,310 @@ PRINCIPLES_QUIZ = [
         "trap_analysis": "Tin rằng có thể đo lường và giám sát con người một cách hoàn toàn khách quan mà không làm thay đổi tâm lý và hành vi của họ."
     },
     {
-        "id": "Q-PRIN-04",
-        "principle_name": "Định luật Gresham (Gresham's Law)",
+        "id": "Q-PRIN-PHYS-02",
+        "principle_name": "Định luật 1 Nhiệt động học (Bảo toàn Năng lượng)",
+        "domain": "Vật lý học",
+        "scenario": (
+            "Một người làm việc 16 tiếng mỗi ngày, uống 4 lon nước tăng lực và chỉ ngủ 3 tiếng. Họ tự hào rằng mình đã 'hack được thời gian' "
+            "và tạo ra năng lượng vô tận từ ý chí. Đến tuần thứ ba, họ ngã quỵ nhập viện vì suy kiệt thượng thận và mất 2 tháng để hồi phục."
+        ),
+        "question": "Quy luật vật lý bất biến nào đã trừng phạt người này?",
+        "options": [
+            "A. Định luật Bảo toàn Năng lượng: Năng lượng không tự nhiên sinh ra, việc dùng chất kích thích chỉ là vay nóng năng lượng từ tương lai với lãi suất cắt cổ",
+            "B. Thuyết vạn vật hấp dẫn",
+            "C. Hiện tượng khúc xạ ánh sáng",
+            "D. Định luật phản xạ"
+        ],
+        "correct_index": 0,
+        "explanation": "Cơ thể con người là một cỗ máy sinh học tuân theo định luật bảo toàn năng lượng. Mọi sự vay mượn sinh lực không bền vững đều phải trả bằng suy thoái hệ thống.",
+        "trap_analysis": "Ảo tưởng rằng ý chí tinh thần có thể phá vỡ các giới hạn sinh lý và nhiệt động học của cơ thể vật lý."
+    },
+    {
+        "id": "Q-PRIN-PHYS-03",
+        "principle_name": "Nguyên lý Cực tiểu Tác dụng (Principle of Least Action)",
+        "domain": "Vật lý học",
+        "scenario": (
+            "Một tia sáng khi truyền từ không khí vào mặt nước luôn tự động bẻ cong (khúc xạ) theo đúng đường đi giúp nó tốn ít thời gian nhất để đến đích. "
+            "Tương tự, dòng sông luôn uốn lượn theo sườn đồi thay vì đâm xuyên qua vách đá hoa cương."
+        ),
+        "question": "Nguyên lý tự nhiên tối ưu hóa đường đi ngắn nhất này được gọi là gì?",
+        "options": [
+            "A. Nguyên lý Cực tiểu Tác dụng (Principle of Least Action / Fermat): Tự nhiên luôn vận hành theo con đường tiêu hao ít hành động/năng lượng nhất",
+            "B. Định luật ly tâm",
+            "C. Hiện tượng mao dẫn",
+            "D. Hiệu ứng Doppler"
+        ],
+        "correct_index": 0,
+        "explanation": "Bậc thầy chiến lược không dùng sức mạnh thô bạo chống lại dòng chảy tự nhiên; họ thiết kế hệ thống theo con đường có lực cản nhỏ nhất.",
+        "trap_analysis": "Húc đầu vào bức tường đá kiên cố của đối thủ thay vì luồn lách qua những khe hở tự nhiên không có người phòng thủ."
+    },
+    {
+        "id": "Q-PRIN-PHYS-04",
+        "principle_name": "Hiện tượng Cộng hưởng (Resonance)",
+        "domain": "Vật lý học",
+        "scenario": (
+            "Một trung đoàn quân đội khi đi đều bước qua một cây cầu treo đã vô tình tạo ra nhịp chân trùng khít với tần số dao động riêng của cây cầu. "
+            "Biên độ dao động của cầu tăng vọt dữ dội khiến cây cầu thép sụp đổ tan tành, dù trọng lượng của đoàn quân không hề quá tải."
+        ),
+        "question": "Quy luật vật lý nào biến các xung lực nhỏ đồng nhịp thành sức mạnh phá hủy hoặc kiến tạo khổng lồ?",
+        "options": [
+            "A. Hiện tượng giao thoa sóng",
+            "B. Hiện tượng Cộng hưởng (Resonance): Khi tần số cưỡng bức trùng với tần số riêng của hệ thống, biên độ dao động sẽ tăng lên cực đại",
+            "C. Phản xạ toàn phần",
+            "D. Áp suất tĩnh học"
+        ],
+        "correct_index": 1,
+        "explanation": "Trong truyền thông và lãnh đạo: khi thông điệp của bạn cộng hưởng đúng tần số tâm lý và nỗi đau của đám đông, một lực tác động nhỏ sẽ tạo nên làn sóng bùng nổ.",
+        "trap_analysis": "Bỏ qua sức mạnh cộng hưởng nhịp điệu: Đẩy một chiếc xích đu sai nhịp sẽ triệt tiêu lực; đẩy đúng nhịp sẽ đưa xích đu lên trời cao."
+    },
+
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 2: HÓA HỌC & KHOA HỌC VẬT LIỆU (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-CHEM-01",
+        "principle_name": "Nguyên lý Chuyển dịch Cân bằng Le Chatelier",
+        "domain": "Hóa học & Khoa học Vật liệu",
+        "scenario": (
+            "Khi một người lãnh đạo mới về một phòng ban đang vận hành ổn định và ngay lập tức ban hành hàng loạt nội quy thắt chặt đột ngột, "
+            "nhân viên không công khai phản đối nhưng ngầm làm việc chậm lại, xin nghỉ ốm nhiều hơn, khiến năng suất tụt giảm trầm trọng."
+        ),
+        "question": "Nguyên lý tự nhiên nào giải thích phản ứng kháng cự tự động này của hệ thống?",
+        "options": [
+            "A. Định luật Bảo toàn Khối lượng",
+            "B. Nguyên lý Le Chatelier: Khi một hệ thống cân bằng bị cưỡng bức thay đổi, nó sẽ tự động sinh phản lực chống lại sự thay đổi đó",
+            "C. Định luật Vạn vật hấp dẫn",
+            "D. Nguyên lý Bất định Heisenberg"
+        ],
+        "correct_index": 1,
+        "explanation": "Muốn thay đổi một hệ thống đang cân bằng bền, không thể dùng bạo lực áp đặt tức thời mà phải tăng nhiệt độ từ từ hoặc dịch chuyển điều kiện biên khéo léo.",
+        "trap_analysis": "Ảo tưởng có thể ép buộc con người hoặc tổ chức thay đổi mà không phải trả giá bằng phản lực nội tại."
+    },
+    {
+        "id": "Q-PRIN-CHEM-02",
+        "principle_name": "Nguyên lý Chất Xúc tác (Catalysis)",
+        "domain": "Hóa học & Khoa học Vật liệu",
+        "scenario": (
+            "Hai nhóm sinh viên cùng tham gia nghiên cứu khoa học. Nhóm A cặm cụi đọc tài liệu giấy và dịch thủ công từng trang, mất 3 tháng. "
+            "Nhóm B dùng công cụ AI tổng hợp tài liệu và lập trình mã nguồn, hoàn thành nghiên cứu chỉ sau 1 tuần với chất lượng tương đương."
+        ),
+        "question": "Công cụ AI đóng vai trò gì trong phản ứng nghiên cứu khoa học theo nguyên lý hóa học?",
+        "options": [
+            "A. Chất phản ứng bị tiêu hao",
+            "B. Chất Xúc tác (Catalyst): Làm hạ thấp năng lượng hoạt hóa (rào cản độ khó) giúp phản ứng xảy ra nhanh gấp bội mà không bị hao mòn",
+            "C. Chất ức chế",
+            "D. Sản phẩm phụ"
+        ],
+        "correct_index": 1,
+        "explanation": "Người thông minh không dùng bạo lực vượt qua rào cản năng lượng; họ tìm kiếm chất xúc tác (công nghệ, quy trình, mạng lưới) để hạ độ khó xuống.",
+        "trap_analysis": "Cố chấp làm việc theo lối khổ hạnh, xem thường các đòn bẩy xúc tác hiện đại."
+    },
+    {
+        "id": "Q-PRIN-CHEM-03",
+        "principle_name": "Nửa Đời Phân Rã (Half-Life)",
+        "domain": "Hóa học & Khoa học Vật liệu",
+        "scenario": (
+            "Một kỹ sư phần mềm nắm vững một công nghệ lập trình thịnh hành năm 2015. Sau 5 năm không học thêm kiến thức mới, "
+            "hơn 50% kiến thức cũ của anh ta đã trở nên lỗi thời và không còn công ty nào tuyển dụng công nghệ đó nữa."
+        ),
+        "question": "Quy luật phân rã phóng xạ nào mô tả tốc độ suy hao giá trị của tri thức công nghệ theo thời gian?",
+        "options": [
+            "A. Chu kỳ Bán rã (Half-Life of Knowledge): Khoảng thời gian để một nửa lượng tri thức trong một lĩnh vực bị thay thế hoặc trở nên lỗi thời",
+            "B. Phản ứng trùng hợp",
+            "C. Tốc độ kết tủa",
+            "D. Cân bằng hóa học"
+        ],
+        "correct_index": 0,
+        "explanation": "Trong thời đại số, chu kỳ bán rã của kỹ năng công nghệ rút ngắn xuống chỉ còn 2-3 năm. Muốn giữ giá trị, bạn phải liên tục tái nạp tri thức mới.",
+        "trap_analysis": "Thỏa mãn với tấm bằng đại học và nghĩ rằng kiến thức học một lần có thể dùng để kiếm sống suốt 40 năm."
+    },
+    {
+        "id": "Q-PRIN-CHEM-04",
+        "principle_name": "Giới Hạn Bão Hòa Dung Dịch (Saturation Limit)",
+        "domain": "Hóa học & Khoa học Vật liệu",
+        "scenario": (
+            "Một cốc nước chỉ có thể hòa tan tối đa 36g muối ở nhiệt độ phòng. Nếu bạn đổ thêm 100g muối vào, "
+            "lượng muối thừa sẽ không thể tan thêm mà lắng xuống đáy cốc thành cặn bã làm đục ngầu nước."
+        ),
+        "question": "Quy luật hóa học này cảnh báo điều gì về việc tiếp thu thông tin và học tập nhồi nhét?",
+        "options": [
+            "A. Dung lượng hấp thụ nhận thức của não bộ có Giới hạn bão hòa; tiếp tục nhồi nhét khi não đã bão hòa chỉ tạo ra rác và sự kiệt sức",
+            "B. Muối luôn tan vô hạn trong nước",
+            "C. Càng đổ nhiều kiến thức thì não càng thông minh ngay lập tức",
+            "D. Nước sẽ biến thành chất rắn"
+        ],
+        "correct_index": 0,
+        "explanation": "Học tập hiệu quả đòi hỏi các khoảng nghỉ để kết tinh tinh thể tri thức. Vượt quá ngưỡng bão hòa chỉ tạo ra sự quá tải nhận thức.",
+        "trap_analysis": "Cố học liên tục 10 tiếng một ngày mà không cho não ngủ nghỉ để tổng hợp khớp thần kinh."
+    },
+
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 3: SINH HỌC & TIẾN HÓA (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-BIO-01",
+        "principle_name": "Cân Bằng Nội Môi (Homeostasis)",
+        "domain": "Sinh học & Tiến hóa",
+        "scenario": (
+            "Khi trời nóng 40 độ C, cơ thể con người tự động toát mồ hôi để hạ nhiệt; khi trời lạnh 5 độ C, cơ thể tự động run rẩy sinh nhiệt "
+            "để duy trì thân nhiệt chuẩn 37 độ C bảo vệ các cơ quan nội tạng."
+        ),
+        "question": "Khả năng tự điều chỉnh duy trì sự ổn định sinh học bên trong bất chấp biến động môi trường ngoài được gọi là gì?",
+        "options": [
+            "A. Cân bằng nội môi (Homeostasis): Khả năng của hệ thống tự duy trì các thông số sinh tồn ổn định trước ngoại cảnh",
+            "B. Thích nghi đột biến",
+            "C. Phản xạ có điều kiện",
+            "D. Chuyển hóa kỵ khí"
+        ],
+        "correct_index": 0,
+        "explanation": "Một tổ chức xuất sắc phải xây dựng được cơ chế Homeostasis: Dù thị trường biến động bão bùng bên ngoài, kỷ luật và dòng tiền bên trong vẫn giữ được sự vững chãi.",
+        "trap_analysis": "Để hoàn cảnh bên ngoài chi phối hoàn toàn tâm trạng và cấu trúc vận hành bên trong."
+    },
+    {
+        "id": "Q-PRIN-BIO-02",
+        "principle_name": "Tiến Hóa Phân Kỳ vs Đồng Quy (Convergent Evolution)",
+        "domain": "Sinh học & Tiến hóa",
+        "scenario": (
+            "Cá mập (loài cá sụn) và Cá heo (loài thú có vú thở bằng phổi) có tổ tiên cách nhau hàng trăm triệu năm. "
+            "Tuy nhiên, do cùng sống trong môi trường nước và săn mồi tốc độ cao, cả hai loài đều tiến hóa thành hình dáng thủy động học hình thoi giống hệt nhau."
+        ),
+        "question": "Hiện tượng các thực thể có nguồn gốc khác nhau tự tiến hóa về cùng một giải pháp tối ưu được gọi là gì?",
+        "options": [
+            "A. Tiến hóa phân kỳ",
+            "B. Tiến hóa đồng quy (Convergent Evolution): Khi đối mặt với cùng một áp lực môi trường vật lý, các giải pháp tối ưu độc lập sẽ tự tìm về cùng một hình thái",
+            "C. Đột biến gen nhân tạo",
+            "D. Ký sinh đồng chủng"
+        ],
+        "correct_index": 1,
+        "explanation": "Tại sao các ứng dụng công nghệ như Uber và Grab lại giống nhau? Không hẳn là sao chép, mà vì áp lực tối ưu hóa trải nghiệm người dùng dẫn về cùng một cấu trúc tối ưu.",
+        "trap_analysis": "Cố gắng tạo ra sự khác biệt dị hợm chỉ để khác người mà vi phạm các quy luật tối ưu hóa đã được chọn lọc tự nhiên chứng thực."
+    },
+    {
+        "id": "Q-PRIN-BIO-03",
+        "principle_name": "Đột Biến Thích Nghi (Adaptive Mutation)",
+        "domain": "Sinh học & Tiến hóa",
+        "scenario": (
+            "Khi một loại thuốc kháng sinh mới được đưa vào bệnh viện, 99.9% vi khuẩn bị tiêu diệt ngay lập tức. "
+            "Tuy nhiên, có một số lượng cực nhỏ vi khuẩn mang đột biến gen ngẫu nhiên giúp chúng sống sót và nhân bản thành chủng siêu vi khuẩn kháng thuốc."
+        ),
+        "question": "Quy luật sinh học này nhắc nhở điều gì về việc loại trừ rủi ro trong quản trị chiến lược?",
+        "options": [
+            "A. Không có giải pháp đơn lẻ nào có thể tiêu diệt hoàn toàn một vấn đề phức tạp; sự sống luôn tìm ra lối thoát thông qua các biến thể mới",
+            "B. Thuốc kháng sinh luôn vô dụng",
+            "C. Vi khuẩn có trí thông minh nhân tạo",
+            "D. Đột biến luôn có hại"
+        ],
+        "correct_index": 0,
+        "explanation": "Thế giới thực liên tục tiến hóa chống lại các giải pháp can thiệp thô bạo. Hãy chuẩn bị cho các đợt biến dị thích nghi tiếp theo của đối thủ.",
+        "trap_analysis": "Chủ quan tuyên bố chiến thắng vĩnh viễn sau một chiến dịch thành công ngắn hạn."
+    },
+    {
+        "id": "Q-PRIN-BIO-04",
+        "principle_name": "Cộng Sinh Tương Hỗ (Mutualism)",
+        "domain": "Sinh học & Tiến hóa",
+        "scenario": (
+            "Loài ong hút mật hoa để làm thức ăn nuôi đàn, đồng thời phấn hoa dính vào thân ong được phát tán đi khắp nơi giúp cây cối thụ phấn sinh sản. "
+            "Cả hai loài cùng hưởng lợi và nương tựa vào nhau để bùng nổ dân số."
+        ),
+        "question": "Mô hình quan hệ sinh học đôi bên cùng có lợi này mang tên là gì?",
+        "options": [
+            "A. Ký sinh bắt buộc (Parasitism)",
+            "B. Cộng sinh tương hỗ (Mutualism): Mối quan hệ hợp tác mà cả hai bên cùng nâng đỡ nhau phát triển vượt bậc so với việc sống đơn độc",
+            "C. Cạnh tranh sinh tồn",
+            "D. Hội sinh một chiều"
+        ],
+        "correct_index": 1,
+        "explanation": "Chiến lược bền vững nhất trong kinh doanh và đời sống không phải là ăn thịt đối tác (Ký sinh/Zero-sum), mà là thiết kế hệ sinh thái đôi bên cùng thịnh vượng (Positive-sum).",
+        "trap_analysis": "Tư duy vắt kiệt nhà cung cấp hoặc đối tác để tối đa hóa lợi nhuận ngắn hạn, dẫn đến việc đối tác phá sản và hệ thống sụp đổ."
+    },
+
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 4: TÂM LÝ & NHẬN THỨC (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-PSY-01",
+        "principle_name": "Định Luật Weber-Fechner",
+        "domain": "Tâm lý & Nhận thức",
+        "scenario": (
+            "Nếu bạn đang cầm một gói đường 100g, ai đó đặt thêm 10g bạn sẽ cảm nhận thấy sự nặng thêm ngay lập tức. "
+            "Nhưng nếu bạn đang vác một bao tải cát 50kg, ai đó đặt thêm 10g đường thì bạn hoàn toàn không thể cảm nhận được bất kỳ sự khác biệt nào."
+        ),
+        "question": "Định luật tâm lý học giác quan này phản ánh điều gì về nhận thức con người?",
+        "options": [
+            "A. Khả năng cảm nhận sự thay đổi tỷ lệ nghịch với cường độ kích thích nền ban đầu: Kích thích nền càng lớn, ta càng cần sự thay đổi lớn hơn mới nhận biết được",
+            "B. Mọi giác quan đều hoàn toàn chính xác",
+            "C. Bao cát nặng hơn gói đường",
+            "D. Cảm giác của con người không đổi"
+        ],
+        "correct_index": 0,
+        "explanation": "Khi một người đã quen tiêu 100 triệu mỗi ngày, việc thưởng thêm 1 triệu sẽ vô nghĩa. Khi bắt đầu từ số 0, 1 triệu là món quà kỳ diệu. Hiệu ứng biên giảm dần.",
+        "trap_analysis": "Bệnh chai lì nhận thức: Sống trong môi trường tiêu cực lâu ngày sẽ mất khả năng nhận diện các dấu hiệu nguy hiểm nhỏ."
+    },
+    {
+        "id": "Q-PRIN-PSY-02",
+        "principle_name": "Quy Tắc Đỉnh - Đáy (Peak-End Rule — Kahneman)",
+        "domain": "Tâm lý & Nhận thức",
+        "scenario": (
+            "Một kỳ nghỉ dưỡng 7 ngày: 6 ngày đầu tiên diễn ra bình thường, nhưng ngày thứ 4 bạn được trải nghiệm lặn biển ngắm san hô ngoạn mục (Đỉnh cao), "
+            "và vào giây phút trả phòng ngày cuối cùng, khách sạn tặng bạn một món quà lưu niệm viết tay xúc động (Kết thúc). "
+            "Nhiều năm sau nhìn lại, bạn vẫn đánh giá kỳ nghỉ đó là 10/10 điểm hoàn hảo."
+        ),
+        "question": "Quy luật ghi nhớ trải nghiệm nào của Daniel Kahneman chi phối ký ức của bạn?",
+        "options": [
+            "A. Tính toán trung bình cộng thời gian thực",
+            "B. Quy tắc Đỉnh - Kết (Peak-End Rule): Não bộ đánh giá một trải nghiệm hầu như chỉ dựa vào cảm xúc tại điểm mãnh liệt nhất (Peak) và cảm xúc ở giây phút kết thúc (End)",
+            "C. Trí nhớ nhiếp ảnh toàn diện",
+            "D. Hiệu ứng quên lãng đều đặn"
+        ],
+        "correct_index": 1,
+        "explanation": "Khách hàng không nhớ toàn bộ quá trình trải nghiệm; họ chỉ nhớ khoảnh khắc thăng hoa nhất và cách bạn chào tạm biệt họ. Thiết kế điểm kết thúc thật ấn tượng.",
+        "trap_analysis": "Làm rất tốt từ đầu đến cuối nhưng phá hỏng giây phút bàn giao cuối cùng, để lại ký ức tồi tệ trong tâm trí đối tác."
+    },
+    {
+        "id": "Q-PRIN-PSY-03",
+        "principle_name": "Hiệu Ứng Zeigarnik (Zeigarnik Effect)",
+        "domain": "Tâm lý & Nhận thức",
+        "scenario": (
+            "Một người bồi bàn có thể ghi nhớ chính xác bàn nào gọi món gì của 20 bàn ăn cùng lúc mà không cần ghi chép. "
+            "Nhưng ngay sau khi hóa đơn được thanh toán xong xuôi, người bồi bàn lập tức quên sạch toàn bộ chi tiết các món ăn của bàn đó."
+        ),
+        "question": "Hiện tượng não bộ liên tục nhắc nhở về những công việc chưa hoàn thành được gọi là gì?",
+        "options": [
+            "A. Hiệu ứng Zeigarnik: Não bộ duy trì sự tập trung và căng thẳng nhận thức đối với các tác vụ dang dở, và chỉ giải phóng bộ nhớ khi tác vụ được đóng lại",
+            "B. Bệnh mất trí nhớ ngắn hạn",
+            "C. Hiệu ứng hào quang",
+            "D. Thuyết phản xạ vô thức"
+        ],
+        "correct_index": 0,
+        "explanation": "Các việc dang dở (Open Loops) giống như các ứng dụng chạy ngầm ngốn pin não bộ. Muốn giải phóng sương mù não, hãy ghi toàn bộ việc dang dở ra giấy.",
+        "trap_analysis": "Mở ra hàng chục dự án cùng lúc mà không đóng lại cái nào, khiến năng lượng tinh thần bị cạn kiệt bởi hàng trăm vòng lặp Zeigarnik gặm nhấm."
+    },
+    {
+        "id": "Q-PRIN-PSY-04",
+        "principle_name": "Bất Hòa Nhận Thức (Cognitive Dissonance — Festinger)",
+        "domain": "Tâm lý & Nhận thức",
+        "scenario": (
+            "Một người biết rõ rằng hút thuốc lá gây ung thư phổi và tốn tiền. Thay vì bỏ thuốc lá, "
+            "người đó tự biện minh: 'Hút thuốc giúp tôi sáng tạo công việc, và ông hàng xóm hút thuốc suốt đời vẫn sống thọ 90 tuổi đấy thôi!'."
+        ),
+        "question": "Cơ chế tâm lý tự dối mình để giải tỏa sự mâu thuẫn nội tâm này có tên là gì?",
+        "options": [
+            "A. Bất hòa nhận thức (Cognitive Dissonance): Nỗi khó chịu tột cùng khi hành vi đi ngược lại niềm tin, buộc não bộ phải bẻ cong lý lẽ để tự an ủi",
+            "B. Tư duy logic hình thức",
+            "C. Thuyết động lực nội tại",
+            "D. Hiệu ứng tự kỷ ám thị"
+        ],
+        "correct_index": 0,
+        "explanation": "Khi hành vi thực tế và niềm tin đạo đức mâu thuẫn nhau, con người hiếm khi thay đổi hành vi mà thường thay đổi lý lẽ ngụy biện để bảo vệ cái tôi.",
+        "trap_analysis": "Tự huyễn hoặc bản thân bằng những lý do giả tạo khi phạm phải sai lầm thay vì dũng cảm đối diện với sự thật."
+    },
+
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 5: KINH TẾ HỌC & TIỀN TỆ (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-ECON-01",
+        "principle_name": "Định Luật Gresham",
         "domain": "Kinh tế học & Tiền tệ",
         "scenario": (
             "Trong một môi trường làm việc mà những người giỏi, trung thực, cống hiến thật sự không được công nhận, "
@@ -1458,9 +2300,225 @@ PRINCIPLES_QUIZ = [
         "correct_index": 1,
         "explanation": "Nếu tổ chức không có cơ chế thanh lọc nghiêm ngặt, cái xấu/chất lượng kém sẽ tích tụ và đuổi sạch các giá trị tinh hoa ra ngoài.",
         "trap_analysis": "Bẫy thờ ơ với tiêu chuẩn: Nghĩ rằng dung túng một vài nhân sự yếu kém sẽ không ảnh hưởng tới nhân sự xuất sắc."
-    }
-]
+    },
+    {
+        "id": "Q-PRIN-ECON-02",
+        "principle_name": "Lợi Ích Cận Biên Giảm Dần (Diminishing Marginal Utility)",
+        "domain": "Kinh tế học & Tiền tệ",
+        "scenario": (
+            "Khi bạn đang đói cồn cào, chiếc bánh pizza đầu tiên mang lại cảm giác ngon tuyệt đỉnh (100 điểm thỏa mãn). "
+            "Chiếc thứ hai chỉ còn 60 điểm, chiếc thứ ba còn 20 điểm, và đến chiếc thứ tư bạn cảm thấy buồn nôn và ghê sợ."
+        ),
+        "question": "Quy luật kinh tế học hành vi này phản ánh điều gì?",
+        "options": [
+            "A. Lợi ích cận biên giảm dần: Lợi ích tăng thêm thu được từ việc tiêu dùng thêm một đơn vị sản phẩm sẽ giảm dần sau mỗi lần tiêu dùng",
+            "B. Giá trị trao đổi không đổi",
+            "C. Chi phí cố định",
+            "D. Lạm phát chi phí đẩy"
+        ],
+        "correct_index": 0,
+        "explanation": "Quy luật này chi phối từ tiền bạc, đồ ăn đến tình cảm: Cái gì quá nhiều cũng sẽ mất giá trị biên. Bí quyết hạnh phúc là biết điểm dừng tối ưu.",
+        "trap_analysis": "Cố tích lũy thêm của cải vượt quá ngưỡng hưởng dụng mà không biết rằng giá trị biên của chúng đang tiến về 0."
+    },
+    {
+        "id": "Q-PRIN-ECON-03",
+        "principle_name": "Hiệu Ứng Cantillon (Cantillon Effect)",
+        "domain": "Kinh tế học & Tiền tệ",
+        "scenario": (
+            "Khi ngân hàng trung ương in tiền để cứu trợ kinh tế, các ngân hàng thương mại lớn, tập đoàn tài chính và giới tinh hoa gần nguồn tiền "
+            "nhận được tiền trước tiên khi giá cả hàng hóa chưa kịp tăng. Đến khi dòng tiền này lan tới tay người lao động nghèo, giá thịt, giá nhà đã tăng vọt 50%."
+        ),
+        "question": "Quy luật kinh tế vĩ mô nào giải thích tại sao việc bơm tiền luôn làm giàu cho giới tài phiệt và làm nghèo người làm công ăn lương?",
+        "options": [
+            "A. Thuyết phân phối tiền tệ đồng đều",
+            "B. Hiệu ứng Cantillon: Dòng tiền mới bơm không lan tỏa tức thời mà chảy qua các mắt xích, tạo lợi thế bất đối xứng khổng lồ cho người đứng gần van bơm tiền",
+            "C. Cân bằng tiền tệ Fisher",
+            "D. Định luật tiền tệ M2"
+        ],
+        "correct_index": 1,
+        "explanation": "Lạm phát là một loại thuế ngầm vô hình. Người gần nguồn tiền được mua tài sản giá rẻ; người xa nguồn tiền phải gánh trọn cơn bão giá cả.",
+        "trap_analysis": "Giữ tiền mặt trong thời kỳ bơm tiền tệ và nghĩ rằng mình đang an toàn, trong khi sức mua thực tế đang bị bốc hơi 10-15% mỗi năm."
+    },
+    {
+        "id": "Q-PRIN-ECON-04",
+        "principle_name": "Chi Phí Giao Dịch Coase (Coase's Theory of the Firm)",
+        "domain": "Kinh tế học & Tiền tệ",
+        "scenario": (
+            "Tại sao các công ty lại tồn tại thay vì để mọi cá nhân tự do ký hợp đồng mua bán dịch vụ với nhau trên thị trường tự do? "
+            "Nhà kinh tế học đoạt giải Nobel Ronald Coase chỉ ra: Chi phí tìm kiếm đối tác, thương lượng, đàm phán hợp đồng và giám sát thực thi trên thị trường là rất đắt đỏ."
+        ),
+        "question": "Khái niệm kinh tế học nào quyết định ranh giới độ lớn của một doanh nghiệp?",
+        "options": [
+            "A. Chi phí giao dịch (Transaction Costs): Công ty sẽ mở rộng quy mô chừng nào chi phí tổ chức nội bộ còn rẻ hơn chi phí giao dịch ngoài thị trường mở",
+            "B. Chi phí kế toán thuần túy",
+            "C. Thuế thu nhập doanh nghiệp",
+            "D. Chi phí quảng cáo tiếp thị"
+        ],
+        "correct_index": 0,
+        "explanation": "Khi Internet và AI kéo tụt chi phí giao dịch về 0, các tập đoàn khổng lồ cồng kềnh sẽ bị phân rã thành các mạng lưới cá nhân tự trị (Sovereign Individuals).",
+        "trap_analysis": "Cố nuôi một bộ máy nhân sự nội bộ cồng kềnh khi chi phí thuê ngoài và dùng AI công cụ bên ngoài đã rẻ hơn gấp 10 lần."
+    },
 
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 6: TOÁN HỌC & KHOA HỌC MÁY TÍNH (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-COMP-01",
+        "principle_name": "Định Luật Moore & Tăng Trưởng Hàm Mũ",
+        "domain": "Toán học & Khoa học Máy tính",
+        "scenario": (
+            "Năm 1965, Gordon Moore dự báo: Số lượng bóng bán dẫn trên một vi mạch sẽ tăng gấp đôi sau mỗi 2 năm trong khi giá thành không đổi. "
+            "Nhờ quy luật này, một chiếc điện thoại thông minh giá vài triệu đồng hôm nay có sức mạnh tính toán vượt xa toàn bộ siêu máy tính của NASA thời đưa người lên Mặt Trăng."
+        ),
+        "question": "Sức mạnh toán học nào đang lèo lái sự phát triển của công nghệ thông tin và AI?",
+        "options": [
+            "A. Tăng trưởng tuyến tính số học (1, 2, 3, 4...)",
+            "B. Tăng trưởng hàm mũ (Exponential Growth): Tốc độ tăng trưởng tỷ lệ thuận với chính quy mô hiện tại của hệ thống, tạo ra sự bùng nổ vũ bão sau điểm uốn",
+            "C. Phân phối logarit đều",
+            "D. Dao động điều hòa"
+        ],
+        "correct_index": 1,
+        "explanation": "Bộ não người tiến hóa trong thế giới tuyến tính nên rất kém trong việc hình dung sự tăng trưởng hàm mũ. Sau 30 bước nhảy hàm mũ, bạn không đi được 30 mét mà đi được 1 tỷ mét.",
+        "trap_analysis": "Đánh giá thấp tương lai của công nghệ chỉ vì thấy những phiên bản đầu tiên còn ngô nghê và vụng về."
+    },
+    {
+        "id": "Q-PRIN-COMP-02",
+        "principle_name": "Định Lý Giới Hạn Trung Tâm (Central Limit Theorem)",
+        "domain": "Toán học & Khoa học Máy tính",
+        "scenario": (
+            "Bạn tung một con xúc xắc 6 mặt độc lập nhiều lần: Mỗi lần tung kết quả là ngẫu nhiên đều từ 1 đến 6. "
+            "Tuy nhiên, nếu bạn lấy trung bình cộng của 30 lần tung và lặp lại thí nghiệm 1.000 lần, đồ thị phân bố của các giá trị trung bình này sẽ tự động vẽ nên một hình chuông hoàn hảo."
+        ),
+        "question": "Định lý xác suất nền tảng nào bảo đảm rằng tổng của nhiều biến ngẫu nhiên độc lập sẽ hội tụ về phân phối chuẩn?",
+        "options": [
+            "A. Định luật số lớn",
+            "B. Định lý Giới hạn Trung tâm (Central Limit Theorem): Bất kể phân phối gốc là gì, giá trị trung bình mẫu sẽ xấp xỉ phân phối chuẩn khi kích thước mẫu đủ lớn",
+            "C. Bất đẳng thức Cauchy-Schwarz",
+            "D. Ma trận nghịch đảo"
+        ],
+        "correct_index": 1,
+        "explanation": "Định lý này là hòn đá tảng của thống kê thực nghiệm và học máy: Cho phép ta đo lường sai số và kiểm định giả thuyết khoa học một cách vững chắc.",
+        "trap_analysis": "Đưa ra kết luận vội vàng từ một kích thước mẫu quá nhỏ (2-3 lần thử) mà không đạt đến ngưỡng hội tụ của định lý."
+    },
+    {
+        "id": "Q-PRIN-COMP-03",
+        "principle_name": "Bài Toán Dừng Tối Ưu (Optimal Stopping / Quy Tắc 37%)",
+        "domain": "Toán học & Khoa học Máy tính",
+        "scenario": (
+            "Bạn có kế hoạch phỏng vấn 100 ứng viên để chọn 1 trợ lý xuất sắc nhất. Bạn phải quyết định nhận hoặc loại ngay sau mỗi buổi phỏng vấn mà không được gọi lại người cũ. "
+            "Toán học máy tính đưa ra thuật toán tối ưu: Phỏng vấn 37 ứng viên đầu tiên chỉ để quan sát chuẩn mực, sau đó chọn ngay người đầu tiên xuất sắc hơn tất cả những người trong nhóm 37 người đó."
+        ),
+        "question": "Thuật toán toán học nổi tiếng này giải quyết bài toán gì trong cuộc sống?",
+        "options": [
+            "A. Chọn ngẫu nhiên cầu may",
+            "B. Bài toán Dừng tối ưu (Optimal Stopping / 37% Rule): Cân bằng hoàn hảo giữa Chi phí thăm dò (Explore) và Lợi ích khai thác (Exploit)",
+            "C. Quy hoạch tuyến tính",
+            "D. Sắp xếp nổi bọt"
+        ],
+        "correct_index": 1,
+        "explanation": "Quy tắc 37% giúp bạn tối đa hóa xác suất chọn được phương án tốt nhất trong việc tìm nhà, tuyển dụng nhân sự hay chọn bạn đời.",
+        "trap_analysis": "Dừng lại quá sớm khi chưa có đủ dữ liệu thăm dò, hoặc thăm dò quá lâu cho đến khi cơ hội tốt nhất đã trôi qua mất."
+    },
+    {
+        "id": "Q-PRIN-COMP-04",
+        "principle_name": "Nghịch Lý Moravec (Moravec's Paradox)",
+        "domain": "Toán học & Khoa học Máy tính",
+        "scenario": (
+            "Một siêu máy tính AI có thể đánh bại đại kiện tướng cờ vua số 1 thế giới và giải các phương trình vi phân phức tạp chỉ trong vài mili-giây. "
+            "Tuy nhiên, việc lập trình cho một cánh tay robot nhận biết và nhặt một quả táo trong rổ mà không làm dập nát lại ngốn hàng chục năm nghiên cứu của các viện khoa học hàng đầu."
+        ),
+        "question": "Nghịch lý công nghệ máy tính này mang tên là gì?",
+        "options": [
+            "A. Nghịch lý Moravec: Những bài toán trí tuệ trừu tượng cấp cao (cờ vua, toán học) lại đòi hỏi rất ít tính toán máy tính, trong khi các kỹ năng cảm giác - vận động bản năng của đứa trẻ 1 tuổi lại đòi hỏi tài nguyên tính toán khổng lồ",
+            "B. Nghịch lý Fermi",
+            "C. Định lý Bất toàn Gödel",
+            "D. Thuyết dừng Turing"
+        ],
+        "correct_index": 0,
+        "explanation": "Kỹ năng vận động của con người đã được tự nhiên tôi luyện hàng triệu năm tiến hóa; còn tư duy trừu tượng mới xuất hiện vài ngàn năm. AI dễ dàng làm chủ cái mới hơn cái cũ.",
+        "trap_analysis": "Lo sợ AI sẽ thay thế các công việc tay chân thợ điện, thợ sửa ống nước trước các công việc bàn giấy phân tích tài chính và luật sư."
+    },
+
+    # -------------------------------------------------------------------------
+    # LĨNH VỰC 7: TRIẾT HỌC & NHẬN THỨC LUẬN (4 CÂU)
+    # -------------------------------------------------------------------------
+    {
+        "id": "Q-PRIN-PHIL-01",
+        "principle_name": "Chiếc Dao Cạo Ockham (Occam's Razor)",
+        "domain": "Triết học & Nhận thức luận",
+        "scenario": (
+            "Một bệnh nhân bị sốt nhẹ, đau đầu và hắt hơi sổ mũi vào mùa đông. Một bác sĩ trẻ đưa ra chẩn đoán mắc một hội chứng rối loạn thần kinh hiếm gặp chỉ có 1 ca trên 1 triệu người. "
+            "Bác sĩ trưởng khoa bác bỏ và nói: 'Bệnh nhân chỉ đơn thuần bị cảm cúm thông thường'."
+        ),
+        "question": "Nguyên lý triết học khoa học nào được phát biểu qua câu 'Khi nghe tiếng vó ngựa, hãy nghĩ đến ngựa trước khi nghĩ đến kỳ lân'?",
+        "options": [
+            "A. Chiếc dao cạo Ockham (Occam's Razor): Khi có hai lời giải thích cho cùng một hiện tượng, lời giải thích nào đòi hỏi ít giả định chưa được chứng minh nhất thường là lời giải thích đúng",
+            "B. Thuyết đa vũ trụ",
+            "C. Thuyết hoài nghi tuyệt đối",
+            "D. Ngụy biện khái quát hóa"
+        ],
+        "correct_index": 0,
+        "explanation": "Không nhân thêm các thực thể nếu không cần thiết. Đừng thêu dệt các thuyết âm mưu phức tạp khi một sai sót do cẩu thả giản đơn có thể giải thích trọn vẹn sự việc.",
+        "trap_analysis": "Phức tạp hóa vấn đề để tạo cảm giác thông thái giả tạo thay vì đi thẳng vào giải pháp đơn giản và hiệu quả nhất."
+    },
+    {
+        "id": "Q-PRIN-PHIL-02",
+        "principle_name": "Tính Khả Bác Của Karl Popper (Falsifiability)",
+        "domain": "Triết học & Nhận thức luận",
+        "scenario": (
+            "Một thầy bói phán: 'Năm nay anh sẽ gặp một biến cố lớn, nhưng nếu nó không xảy ra thì tức là phúc đức tổ tiên của anh đã hóa giải nó rồi'. "
+            "Dù năm đó chuyện gì xảy ra, lời phán của thầy bói dường như luôn luôn 'đúng'."
+        ),
+        "question": "Triết gia khoa học Karl Popper chỉ ra tại sao các lý thuyết kiểu này là ngụy khoa học?",
+        "options": [
+            "A. Vì thầy bói lấy phí quá đắt",
+            "B. Tính Khả bác (Falsifiability): Một lý thuyết chỉ được coi là khoa học khi nó chỉ rõ điều kiện thực nghiệm cụ thể nào có thể chứng minh nó là SAI; nếu một lý thuyết không thể bị bác bỏ, nó vô giá trị",
+            "C. Vì không ai kiểm chứng tương lai",
+            "D. Thuyết định mệnh luận"
+        ],
+        "correct_index": 1,
+        "explanation": "Khoa học tiến bộ bằng cách bác bỏ các giả thuyết sai, không phải bằng cách tìm kiếm sự khẳng định vòng vo. Một giả thuyết không thể bị chứng minh sai thì không thể tạo ra tri thức mới.",
+        "trap_analysis": "Xây dựng các kế hoạch kinh doanh hoặc nhận định mơ hồ đến mức xảy ra kết quả nào mình cũng có thể tự nhận là 'đã dự đoán từ trước'."
+    },
+    {
+        "id": "Q-PRIN-PHIL-03",
+        "principle_name": "Nghịch Lý Con Tàu Theseus (Ship of Theseus)",
+        "domain": "Triết học & Nhận thức luận",
+        "scenario": (
+            "Con tàu của người anh hùng Theseus sau nhiều năm đi biển được bảo tồn tại cảng. Mỗi khi một tấm ván gỗ bị mục nát, người ta thay bằng một tấm ván mới. "
+            "Sau 50 năm, 100% các tấm ván, cột buồm và dây thừng trên tàu đều đã được thay mới hoàn toàn."
+        ),
+        "question": "Nghịch lý triết học sâu sắc này đặt ra câu hỏi gì cho quản trị tổ chức và bản sắc con người?",
+        "options": [
+            "A. Con tàu sau khi thay hết ván có còn là con tàu Theseus ban đầu không? Bản sắc của một hệ thống nằm ở Vật chất cấu thành hay nằm ở Cấu trúc tổ chức và Dòng chảy liên tục?",
+            "B. Gỗ mới luôn tốt hơn gỗ cũ",
+            "C. Cần phá hủy con tàu để xây bảo tàng",
+            "D. Vận tốc con tàu bị suy giảm"
+        ],
+        "correct_index": 0,
+        "explanation": "Mỗi tế bào trong cơ thể bạn đều thay mới sau 7 năm; toàn bộ nhân sự công ty bạn có thể thay đổi sau 10 năm. Bản sắc tồn tại ở cấu trúc giá trị và văn hóa, không ở từng tế bào vật chất.",
+        "trap_analysis": "Cố chấp bám víu vào những con người hoặc công cụ cũ mà quên mất linh hồn và sứ mệnh cốt lõi của tổ chức mới là thứ cần bảo tồn."
+    },
+    {
+        "id": "Q-PRIN-PHIL-04",
+        "principle_name": "Trách Nhiệm Dấn Thân (Skin in the Game — Taleb)",
+        "domain": "Triết học & Nhận thức luận",
+        "scenario": (
+            "Bộ luật Hammurabi của Babylon cổ đại quy định: 'Nếu một người thợ xây một ngôi nhà cho người khác, và ngôi nhà bị sập làm chết người chủ nhà, "
+            "thì chính người thợ xây đó phải bị xử tử hình'."
+        ),
+        "question": "Quy tắc đạo đức và quản trị rủi ro tối thượng này của Nassim Taleb có tên là gì?",
+        "options": [
+            "A. Trách nhiệm Dấn thân (Skin in the Game): Người đưa ra quyết định hoặc lời khuyên phải trực tiếp chịu chung rủi ro và tổn thất nếu quyết định đó sai lầm",
+            "B. Bất bạo động tuyệt đối",
+            "C. Trách nhiệm hữu hạn của cổ đông",
+            "D. Bảo hiểm toàn diện rủi ro"
+        ],
+        "correct_index": 0,
+        "explanation": "Thảm họa kinh tế xảy ra khi các chuyên gia tư vấn hay lãnh đạo nhận thưởng khi thắng, nhưng đẩy toàn bộ hậu quả thua lỗ cho người dân gánh chịu (Không có Skin in the Game).",
+        "trap_analysis": "Nghe theo lời khuyên đầu tư của những kẻ không hề bỏ một đồng tiền thật nào của chính họ vào thương vụ mà họ đang quảng cáo."
+    },
+]
 
 # =============================================================================
 # 4. ACTIVE RECALL FLASHCARDS GENERATOR
