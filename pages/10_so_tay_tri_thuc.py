@@ -29,8 +29,9 @@ from utils.notes_manager import (
     export_notes_to_markdown,
     export_notes_to_json,
     heuristic_decompose_note,
+    decompose_knowledge_note,
+    synthesize_cross_notes,
 )
-from utils.ai_engine import decompose_knowledge_note, synthesize_cross_notes
 
 # -----------------------------------------------------------------------------
 # Bootstrap & Auth
