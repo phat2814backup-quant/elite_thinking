@@ -1,0 +1,14 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+data/histories/*.json
+!data/histories/.gitkeep
+.streamlit/secrets.toml
+scratch/
+*.bak
+.idea/
+.vscode/

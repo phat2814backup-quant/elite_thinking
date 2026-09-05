@@ -1,0 +1,285 @@
+# -*- coding: utf-8 -*-
+"""Phân rã thực chiến"""
+from __future__ import annotations
+
+import streamlit as st
+from utils.app_common import bootstrap
+
+ctx = bootstrap()
+username = ctx["username"]
+display_name = ctx["display_name"]
+active_keys = ctx["active_keys"]
+model_choice = ctx["model_choice"]
+
+from utils.ai_engine import analyze_problem
+from utils.knowledge import append_analysis
+from utils.decision_journal import (
+    DECISION_CATEGORIES,
+    REVIEW_INTERVALS,
+    OUTCOME_RATINGS,
+    create_decision_entry,
+    get_user_decisions,
+    resolve_decision_review,
+    get_decision_summary_stats,
+)
+
+st.title("🚀 Phân Rã Thực Chiến & Nhật Ký Quyết Định")
+st.caption("Bóc tách vấn đề qua 9 Lăng kính Tinh hoa & Lưu vết quyết định để tự hiệu chỉnh sai số nhận thức sau 30-90 ngày.")
+
+tab7_subtabs = st.tabs([
+    "🚀 Phân Rã Vấn Đề Tức Thì (AI 9 Lenses)",
+    "📓 Elite Decision Journal (Nhật Ký Quyết Định & Đo Sai Số)",
+])
+
+with tab7_subtabs[0]:
+    st.markdown("""
+    Đưa bất kỳ vấn đề, quyết định, tình huống hóc búa hay dự án thực tế vào đây. 
+    Hệ thống AI sẽ kích hoạt cùng lúc **9 Lăng kính Tinh hoa & Các Mô hình Hạt nhân** để bóc tách tận cùng First Principles, 
+    nhận diện hệ quả bậc hai, lật ngược vấn đề và đề xuất hành động đòn bẩy cao nhất.
+    """)
+
+    sample = st.selectbox(
+        "💡 Chọn ví dụ mẫu để thử nghiệm:",
+        [
+            "— Chọn ví dụ —",
+            "Đầu tư CKVN: Thị trường giảm mạnh, tin tức xấu bủa vây, có nên bán tháo hay giải ngân tích sản?",
+            "Quyết định nghề nghiệp: Nên ở lại công ty ổn định hay khởi nghiệp với rủi ro cao nhưng tiềm năng lớn?",
+            "Học sinh Wellspring: Muốn tham gia nhiều CLB nhưng sợ tụt điểm số và áp lực thi cử, giải quyết ra sao?",
+            "Thời gian: Cuối tuần nên cày phim xả stress hay dành 3 giờ rèn luyện tư duy và đọc sách?",
+        ],
+        key="tab7_sample_select",
+    )
+    initial = "" if sample.startswith("—") else sample
+
+    problem = st.text_area("Nội dung vấn đề cần phân rã:", value=initial, height=120, placeholder="Mô tả cụ thể bối cảnh, mục tiêu, các ràng buộc và điều bạn đang băn khoăn...", key="tab7_problem_input")
+
+    if st.button("🚀 Phân rã ngay", type="primary", use_container_width=True, key="tab7_btn_breakdown"):
+        if not active_keys:
+            st.warning("Cần Gemini API Key (cấu hình trong Secrets hoặc sidebar).")
+        elif not problem.strip():
+            st.warning("Hãy nhập nội dung.")
+        else:
+            with st.spinner("Đang chạy 9 lenses qua Gemini (tự động xoay tua nếu bận/hết quota)..."):
+                result = analyze_problem(active_keys, model_choice, problem.strip())
+
+            if not result:
+                st.error("Không có kết quả.")
+            elif result.get("error"):
+                st.error(result["error"])
+                if result.get("raw"):
+                    st.code(result["raw"])
+            else:
+                summary = result.get("first_principles_breakdown", "")[:300]
+                append_analysis(username, problem.strip(), summary, result)
+
+                key_info = f" (Key: `{result.get('_used_key')}`)" if result.get("_used_key") else ""
+                st.success(f"Đã phân rã xong{key_info} · Đã lưu vào lịch sử của bạn")
+
+                st.session_state["dj_pref_title"] = problem.strip()[:60]
+                st.session_state["dj_pref_hypo"] = result.get("first_principles_breakdown", "")[:300]
+                st.session_state["dj_pref_inv"] = result.get("elite_lenses", {}).get("inversion", "")[:200]
+                st.session_state["dj_pref_sec"] = result.get("elite_lenses", {}).get("second_order", "")[:200]
+                st.session_state["open_new_decision_form"] = True
+
+                st.info("💡 **Gợi ý:** Dữ liệu phân tích đã được nạp sẵn. Hãy bấm sang tab **'📓 Elite Decision Journal'** bên cạnh để lưu quyết định này và đặt lịch kiểm định sau 30/90 ngày!")
+
+                c1, c2 = st.columns(2)
+                with c1:
+                    st.markdown("#### First Principles")
+                    st.write(result.get("first_principles_breakdown", "—"))
+                    st.markdown("#### Nguyên lý liên quan")
+                    for p in result.get("core_principles_found", [])[:5]:
+                        st.markdown(f"- **{p.get('name')}** ({p.get('domain')}): {p.get('description', '')[:120]}")
+
+                with c2:
+                    st.markdown("#### Elite Lenses")
+                    lenses = result.get("elite_lenses", {})
+                    for k, v in lenses.items():
+                        st.markdown(f"**{k}**: {v}")
+
+                st.markdown("#### Hành động gợi ý")
+                for a in result.get("actionable_insights", []):
+                    st.markdown(f"- {a}")
+
+                st.markdown("#### Cần bạn quyết định")
+                for h in result.get("human_decision_needed", []):
+                    st.markdown(f"- {h}")
+
+with tab7_subtabs[1]:
+    st.markdown("### 📓 Elite Decision Journal — Lưu Vết & Hiệu Chuẩn Quyết Định")
+    st.caption("Phương pháp của Ray Dalio & Howard Marks: Không thể nâng cao chất lượng tư duy nếu không ghi chép giả định ban đầu và kiểm định lại kết quả thực tế sau 30-90 ngày để triệt tiêu Thiên kiến nhận thức muộn (Hindsight Bias).")
+
+    d_stats = get_decision_summary_stats(username)
+
+    dj_c1, dj_c2, dj_c3, dj_c4 = st.columns(4)
+    with dj_c1:
+        st.metric("📋 Tổng quyết định", f"{d_stats['total_logged']} mục")
+    with dj_c2:
+        st.metric("🕒 Đang chờ kiểm định", f"{d_stats['pending_count']} mục")
+    with dj_c3:
+        due_cnt = d_stats['due_count']
+        st.metric("⏳ Đến hạn kiểm định", f"{due_cnt} mục", "Cần xem lại ngay!" if due_cnt > 0 else "Đúng tiến độ")
+    with dj_c4:
+        acc = d_stats['calibration_accuracy']
+        st.metric("🎯 Điểm Hiệu Chuẩn", f"{acc}%" if d_stats['reviewed_count'] > 0 else "Chưa có", f"{d_stats['reviewed_count']} bài đã duyệt")
+
+    st.divider()
+
+    with st.expander("➕ Ghi Nhận Quyết Định Mới Vào Nhật Ký", expanded=(d_stats['total_logged'] == 0 or st.session_state.get("open_new_decision_form", False))):
+        with st.form("form_create_decision"):
+            pref_title = st.session_state.get("dj_pref_title", "")
+            pref_hypo = st.session_state.get("dj_pref_hypo", "")
+            pref_inv = st.session_state.get("dj_pref_inv", "")
+            pref_sec = st.session_state.get("dj_pref_sec", "")
+
+            dec_title = st.text_input("Tiêu đề quyết định:", value=pref_title, placeholder="Ví dụ: Đầu tư cổ phiếu FPT, Chọn chuyên ngành AI, Rời bỏ công ty X...")
+            
+            c_f1, c_f2 = st.columns(2)
+            with c_f1:
+                dec_cat = st.selectbox("Lĩnh vực:", DECISION_CATEGORIES)
+            with c_f2:
+                dec_interval_label = st.selectbox("Mốc hẹn kiểm định thực tế:", list(REVIEW_INTERVALS.keys()), index=1)
+                dec_interval_days = REVIEW_INTERVALS[dec_interval_label]
+
+            dec_hypo = st.text_area(
+                "Giả định cốt lõi (Core Hypothesis):",
+                value=pref_hypo,
+                height=80,
+                placeholder="Tại sao bạn đưa ra quyết định này? Bạn tin rằng điều gì sẽ xảy ra và vì sao?",
+            )
+
+            dec_conf = st.slider(
+                "Mức độ tự tin / Xác suất Bayes chủ quan của bạn:",
+                min_value=10,
+                max_value=100,
+                value=75,
+                step=5,
+                format="%d%%",
+                help="Theo tư duy Bayes: Đừng bao giờ đặt 100% hay 0%. Hãy thành thật với mức độ không chắc chắn.",
+            )
+
+            c_ta1, c_ta2 = st.columns(2)
+            with c_ta1:
+                dec_inv = st.text_area(
+                    "Bẫy đảo ngược đã lường trước (Inversion):",
+                    value=pref_inv,
+                    height=80,
+                    placeholder="Những điều gì có thể biến quyết định này thành thảm họa? Bạn phòng vệ thế nào?",
+                )
+            with c_ta2:
+                dec_sec = st.text_area(
+                    "Hệ quả bậc hai dự kiến (Second-Order Effects):",
+                    value=pref_sec,
+                    height=80,
+                    placeholder="Sau khi quyết định này được thực thi, phản ứng tiếp theo của hệ thống sẽ là gì?",
+                )
+
+            btn_save_dec = st.form_submit_button("💾 Lưu Quyết Định Vào Nhật Ký", type="primary", use_container_width=True)
+
+        if btn_save_dec:
+            if not dec_title.strip() or not dec_hypo.strip():
+                st.warning("Vui lòng nhập ít nhất Tiêu đề và Giả định cốt lõi của quyết định.")
+            else:
+                new_dec = create_decision_entry(
+                    username=username,
+                    title=dec_title.strip(),
+                    category=dec_cat,
+                    hypothesis=dec_hypo.strip(),
+                    confidence_pct=dec_conf,
+                    inversion_traps=dec_inv.strip(),
+                    second_order_consequences=dec_sec.strip(),
+                    review_days=dec_interval_days,
+                )
+                st.session_state["open_new_decision_form"] = False
+                st.success(f"✅ Đã ghi nhận quyết định '{new_dec['title']}'! Hệ thống sẽ nhắc bạn kiểm định vào ngày {new_dec['review_date']}.")
+                st.rerun()
+
+    st.markdown("#### 📋 Danh Sách Quyết Định Trong Nhật Ký")
+    user_decs = d_stats["decisions"]
+
+    if not user_decs:
+        st.info("Nhật ký của bạn đang trống. Hãy bấm '➕ Ghi Nhận Quyết Định Mới Vào Nhật Ký' ở trên để bắt đầu lưu vết các quyết định quan trọng!")
+    else:
+        filter_status = st.radio(
+            "Lọc theo trạng thái:",
+            ["Tất cả", "⏳ Đến hạn kiểm định (Due)", "🕒 Đang chờ (Pending)", "✅ Đã kiểm định (Reviewed)"],
+            horizontal=True,
+            key="dj_filter_status",
+        )
+
+        status_map = {
+            "⏳ Đến hạn kiểm định (Due)": "due",
+            "🕒 Đang chờ (Pending)": "pending",
+            "✅ Đã kiểm định (Reviewed)": "reviewed",
+        }
+
+        for d in user_decs:
+            if filter_status != "Tất cả":
+                target_st = status_map[filter_status]
+                if d.get("status") != target_st:
+                    continue
+
+            st_icon = "⏳ CẦN KIỂM ĐỊNH" if d.get("status") == "due" else ("🕒 Đang chờ" if d.get("status") == "pending" else "✅ Đã kiểm định")
+            expander_title = f"{st_icon} · [{d.get('category', '').split()[0]}] {d.get('title')} (Tạo: {d.get('created_at')} — Hẹn: {d.get('review_date')})"
+
+            with st.expander(expander_title, expanded=(d.get("status") == "due")):
+                c_det1, c_det2 = st.columns(2)
+                with c_det1:
+                    st.markdown(f"**📌 Giả định gốc:**  \n{d.get('hypothesis')}")
+                    st.markdown(f"**🎯 Độ tự tin ban đầu:** `{d.get('confidence_pct')}%`")
+                with c_det2:
+                    if d.get("inversion_traps"):
+                        st.markdown(f"**⚠️ Bẫy đảo ngược lường trước:**  \n{d.get('inversion_traps')}")
+                    if d.get("second_order_consequences"):
+                        st.markdown(f"**🌊 Hệ quả bậc hai dự kiến:**  \n{d.get('second_order_consequences')}")
+
+                st.markdown("---")
+
+                if d.get("status") == "reviewed":
+                    st.success(f"**Kết quả thực tế ({d.get('reviewed_at')}):**  \n{d.get('actual_outcome')}")
+                    sc_c1, sc_c2 = st.columns(2)
+                    with sc_c1:
+                        st.metric("Đánh giá kết quả", f"{d.get('outcome_score')}%")
+                    with sc_c2:
+                        diff_val = d.get('calibration_diff', 0)
+                        st.metric("Độ lệch nhận thức", f"{diff_val}%", "Khớp hoàn hảo!" if diff_val <= 10 else "Có sai lệch")
+                    if d.get("lessons_learned"):
+                        st.info(f"💡 **Bài học rút ra:** {d.get('lessons_learned')}")
+                else:
+                    st.markdown("##### 🔍 Kiểm Định Thực Tế & Tự Đo Sai Số Nhận Thức")
+                    with st.form(key=f"form_review_{d['id']}"):
+                        actual_res = st.text_area(
+                            "Thực tế diễn ra như thế nào?",
+                            height=80,
+                            placeholder="Ghi nhận khách quan: Điều gì đã xảy ra so với giả định ban đầu của bạn?",
+                        )
+                        rate_label = st.selectbox(
+                            "Mức độ chính xác so với dự tính ban đầu:",
+                            list(OUTCOME_RATINGS.keys()),
+                            index=1,
+                        )
+                        outcome_num = OUTCOME_RATINGS[rate_label]
+
+                        lessons = st.text_area(
+                            "Bài học rút ra (Tư duy nào đã giúp ích hoặc mô hình nào bạn đã bỏ sót?):",
+                            height=80,
+                            placeholder="Ví dụ: Đã quá lạc quan về tiến độ, bỏ quên bẫy chi phí chìm...",
+                        )
+
+                        btn_submit_rev = st.form_submit_button("🎯 Hoàn Tất Kiểm Định & Ghi Nhận Sai Số", type="primary", use_container_width=True)
+
+                    if btn_submit_rev:
+                        if not actual_res.strip():
+                            st.warning("Vui lòng ghi lại kết quả thực tế để hoàn tất kiểm định.")
+                        else:
+                            resolve_decision_review(
+                                username=username,
+                                decision_id=d["id"],
+                                actual_outcome=actual_res.strip(),
+                                outcome_score=outcome_num,
+                                lessons_learned=lessons.strip(),
+                            )
+                            st.success("✅ Đã hoàn tất kiểm định quyết định! Điểm hiệu chuẩn của bạn đã được cập nhật.")
+                            st.rerun()
+
+

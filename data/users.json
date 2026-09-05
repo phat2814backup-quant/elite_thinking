@@ -1,0 +1,34 @@
+{
+  "users": {
+    "Phat": {
+      "password_hash": "4XZ1OGxFfzsMGp0jL9ZWAY5sua5Sget41k7wRVW6f/MUbtPTgr0S0XhpezFhpJOH",
+      "role": "admin",
+      "display_name": "Phat"
+    },
+    "Ha": {
+      "password_hash": "XFQir4RYE2pOAJI+gxhp1f2sA3I1mLqSIH+Gz9HgM2RCgoWotfX0xnGycRX6vZJY",
+      "role": "user",
+      "display_name": "Ha"
+    },
+    "xuka": {
+      "password_hash": "q7YzsWlybw94zneqhbJp8bxZ0YznXjNcA2Z6H3b+iQHtkPyL+STmaGi2VTOYg0rD",
+      "role": "user",
+      "display_name": "Xuka"
+    },
+    "bong": {
+      "password_hash": "HWQs55+ixnOgljcRZjJ955VtMtRezaTx71BKIplNB8j2eYbp+97sP6xrwZ1w2dWC",
+      "role": "user",
+      "display_name": "Bong"
+    },
+    "A1": {
+      "password_hash": "B2TVLGhxlBjo2f39ZRTrztLnN/70UcAO5g6QJMp9+sK0q5CYTdTya46lG28c3HD2",
+      "role": "user",
+      "display_name": "A1"
+    },
+    "A2": {
+      "password_hash": "r4LaIXS3XITe5zaq0pGVexuGd/O+BCtF3TZACM2kshuhI2NZA8aT+OhW4c/tKba5",
+      "role": "user",
+      "display_name": "A2"
+    }
+  }
+}
