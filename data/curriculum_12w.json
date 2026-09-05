@@ -979,214 +979,520 @@
     },
     {
       "week": 9,
-      "title": "AI Judgment: Ủy thác có ranh giới",
+      "title": "AI Judgment: Ủy Thác Có Ranh Giới (Bounded Delegation)",
       "theme": "ai_judgment",
-      "goal": "Quyết định phần nào giao AI, phần nào giữ judgment người.",
-      "core_idea": "AI là đòn bẩy nhận thức — không phải người thay thế trách nhiệm.",
+      "goal": "Làm chủ nghệ thuật phân cấp quyền tự chủ cho AI; thiết lập ma trận ranh giới bất khả xâm phạm giữa đòn bẩy năng suất và trách nhiệm giải trình cá nhân.",
+      "core_idea": "AI là một siêu đòn bẩy nhận thức chứ không phải người thay thế trách nhiệm cuộc đời bạn. Ủy thác năng lực phân tích cho AI là sự thông thái; ủy thác trách nhiệm ra quyết định cho AI là sự tự sát trí tuệ.",
       "read": [
         {
-          "label": "Phân rã thực chiến (AI)",
-          "page": "7_phan_ra"
+          "label": "Trang Phân Rã Thực Chiến — Trợ lý AI Đa Lăng Kính",
+          "page": "pages/7_phan_ra.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Skin in the Game & Trách nhiệm giải trình",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Bản Đồ 3 Tầng Ủy Thác (Levels of Autonomy & Bounded Delegation)",
+          "summary": "Phân loại mọi tác vụ thành 3 cấp độ ủy thác rõ ràng: Tầng 1 (Full Auto - Ủy thác toàn phần): Các tác vụ máy móc lặp lại, tóm tắt tin tức, trích xuất dữ liệu, sửa lỗi chính tả. Tầng 2 (Co-pilot - Đồng hành nháp): Tạo dàn ý, brainstorm góc nhìn đa chiều, viết code mẫu (con người duyệt và chịu trách nhiệm 100%). Tầng 3 (Human Sanctuary - Vùng cấm ủy thác): Quyết định gắn liền với đạo đức, cam kết tình cảm, phân bổ tài chính lớn, và rủi ro hủy diệt (Ruin Risk).",
+          "good_example": "Dùng AI để tóm tắt 100 trang báo cáo tài chính của doanh nghiệp thành 2 trang tóm tắt (Tầng 1). Dùng AI gợi ý 5 rủi ro tiềm ẩn (Tầng 2). Tự tay mình đối chiếu số liệu gốc với kiểm toán và tự quyết định có mua cổ phiếu hay không (Tầng 3).",
+          "bad_example": "Gõ vào AI: 'Tôi có 500 triệu, hãy chọn giúp tôi 3 mã cổ phiếu tốt nhất để mua ngay hôm nay' và làm theo răm rắp mà không tự kiểm chứng (Ủy thác vùng cấm Tầng 3).",
+          "boundary": "AI không có 'Skin in the game' (không chịu đau đớn khi bạn mất tiền hay phá sản), do đó nó không bao giờ được phép nắm quyền quyết định cuối cùng.",
+          "lattice_link": "Model #45 (Skin in the Game), Model #15 (Principal-Agent Problem) và Model #01 (First Principles)."
+        },
+        {
+          "name": "Kỹ Thuật Đóng Khung Đề Bài (Spec-Driven Prompting)",
+          "summary": "Chất lượng đầu ra của AI phản ánh chính xác chất lượng tư duy của người ra đề bài. Người nghiệp dư hỏi AI những câu mơ hồ ('Hãy cho tôi lời khuyên kinh doanh'); người tinh hoa cung cấp bản đặc tả chặt chẽ: Bối cảnh, Dữ kiện cứng, Ràng buộc thời gian/tiền bạc, Mục tiêu đo lường được, và Tiêu chí loại trừ.",
+          "good_example": "Đề bài chuẩn Elite: 'Đóng vai chuyên gia đàm phán hợp đồng thương mại. Bối cảnh: Tôi thuê mặt bằng 40 triệu/tháng. Ràng buộc: Ngân sách tối đa 35 triệu, hợp đồng 2 năm. Mục tiêu: Soạn 3 phương án đàm phán giảm giá thuê kèm các quyền lợi bù trừ cho chủ nhà. Không dùng văn phong hoa mỹ, gạch đầu dòng ngắn gọn'.",
+          "bad_example": "Đề bài mơ hồ: 'Làm sao để đàm phán giảm tiền thuê nhà?'.",
+          "boundary": "Khi cần brainstorm sáng tạo mở ở giai đoạn đầu, có thể nới lỏng ràng buộc; nhưng khi cần giải pháp hành động, ràng buộc phải cực kỳ chặt chẽ.",
+          "lattice_link": "Model #14 (Ockham's Razor) và Model #08 (Incentive Design)."
+        }
+      ],
+      "case_study": {
+        "title": "Giao Toàn Bộ Kế Hoạch Kinh Doanh & Đầu Tư Cho AI: Đột Phá Năng Suất Hay Ảo Tưởng Nguy Hiểm?",
+        "context": "Anh Tuấn là giám đốc một công ty thương mại thời trang kiêm nhà đầu tư cá nhân. Khi các mô hình AI ngôn ngữ lớn (LLMs) bùng nổ, anh Tuấn vô cùng kinh ngạc trước khả năng lập luận trôi chảy của AI. Anh bắt đầu phụ thuộc hoàn toàn vào AI: Giao AI viết toàn bộ bản kế hoạch mở rộng thị trường miền Trung, giao AI phân tích tài chính và đưa ra quyết định chọn nhà cung cấp vải độc quyền. Bản kế hoạch AI viết dài 30 trang với biểu đồ tuyệt đẹp và phân tích rất tự tin. Anh Tuấn không kiểm chứng lại số liệu mà trình thẳng lên Hội đồng Quản trị duyệt chi 2 tỷ đồng. Sau 3 tháng giải ngân, công ty phát hiện nhà cung cấp vải mà AI ca ngợi thực chất đang vướng vào tranh chấp pháp lý và số liệu thị phần mà AI đưa ra hoàn toàn là số liệu bịa đặt (AI Hallucination). Công ty đối mặt với nguy cơ mất trắng 800 triệu tiền cọc.",
+        "decision_question": "Làm thế nào để thiết lập quy chế ủy thác AI cho bản thân và tổ chức để tận dụng tối đa sức mạnh của AI mà không bao giờ rơi vào bẫy ảo giác?",
+        "facts": [
+          "AI là mô hình toán học dự đoán từ ngữ tiếp theo (Next-Token Prediction) dựa trên xác suất thống kê; AI không có khả năng tự kiểm chứng chân lý khách quan và rất giỏi tạo ra những lời nói dối nghe vô cùng hợp lý (Fluent Hallucinations).",
+          "Anh Tuấn đã vi phạm nguyên tắc cơ bản: Ủy thác công việc thuộc Tầng 3 (Quyết định giải ngân tài chính lớn và thẩm định tư cách pháp nhân) cho AI mà không có bước xác thực nguồn sơ cấp (Primary Source Verification).",
+          "Trách nhiệm giải trình (Accountability) 100% thuộc về anh Tuấn trước Hội đồng Quản trị; không ai có thể đưa một mô hình AI ra tòa án kinh tế để kiện đòi bồi thường."
+        ],
+        "noise": [
+          "'AI phiên bản mới nhất gần như không bao giờ sai sót' (Ảo tưởng công nghệ).",
+          "'Mình bận rộn quá, có AI làm hộ từ A-Z thì tội gì không dùng' (Bẫy lười biếng nhận thức).",
+          "'Văn phong AI viết chuyên nghiệp thế này thì chắc chắn số liệu phải chuẩn' (Bẫy đồng hóa sự trôi chảy với sự thật)."
+        ],
+        "framework_application": "Áp dụng Ma trận Ranh giới Ủy thác (Bounded Delegation Matrix):\n- Tầng 1 (Giao AI làm tự động): Thu thập danh sách 20 nhà cung cấp vải tại Việt Nam kèm số điện thoại, địa chỉ (cần rà quét nhanh).\n- Tầng 2 (AI làm nháp - Người duyệt): Giao AI soạn thảo khung tiêu chí đánh giá nhà cung cấp (Rubric 10 tiêu chí), viết nháp email hỏi giá.\n- Tầng 3 (Vùng cấm tuyệt đối - Chỉ con người): Đích thân cử nhân sự đến tận nhà máy kiểm tra máy móc, yêu cầu xem giấy phép kinh doanh và báo cáo thuế 3 năm gần nhất, trực tiếp đàm phán điều khoản thanh toán.",
+        "exemplar_analysis": "Quy trình làm việc chuẩn mực thời AI:\n1. Coi mọi câu trả lời của AI là 'Bản nháp của một thực tập sinh thông minh nhưng thiếu trải nghiệm thực tế'.\n2. Thiết lập quy tắc 'Không có nguồn sơ cấp, không có quyết định' (No primary source, no decision): Mọi con số, tên đối tác hay dữ liệu thị trường do AI đưa ra đều phải được kiểm chứng lại bằng văn bản pháp lý hoặc hóa đơn thực tế.\n3. Ban hành quy chế làm việc cho công ty: Nhân viên được khuyến khích dùng AI để tăng tốc độ làm nháp, nhưng nếu phát hiện số liệu ảo giác trong văn bản chính thức, người ký duyệt sẽ chịu trách nhiệm kỷ luật hoàn toàn.",
+        "action_plan": "Hủy bỏ quyết định ký hợp đồng với nhà cung cấp lỗi; thiết lập bản quy chế 'Ma trận 3 Tầng Ủy thác AI' cho gia đình và phòng ban ngay trong tuần này.",
+        "common_traps": [
+          "Bẫy thoái thác trách nhiệm (Abdication of Responsibility): Tự lừa dối bản thân rằng nếu quyết định sai thì lỗi là do công nghệ.",
+          "Bẫy cùn mòn tư duy phản biện: Khi lạm dụng AI quá mức, não bộ mất dần thói quen đào sâu bản chất (First Principles) và chỉ biết gật đầu chấp nhận câu trả lời có sẵn."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [
         {
           "id": "delegate_map",
-          "name": "Bản đồ ủy thác",
-          "summary": "Chia việc: (1) AI được làm tự động (2) AI nháp, người duyệt (3) Chỉ người.",
+          "name": "Bản Đồ Ma Trận 3 Tầng Ủy Thác (Bounded Delegation)",
+          "summary": "Phân chia mọi quyết định thành 3 ranh giới: (1) Tự động hóa hoàn toàn; (2) AI làm nháp - Người duyệt; (3) Vùng cấm ủy thác (Chỉ con người).",
           "steps": [
-            "Liệt kê quyết định/tuần",
-            "Gán 1 trong 3 mức",
-            "Viết 'cấm ủy thác' (giá trị, rủi ro ruin, quan hệ)"
+            "Liệt kê 5 tác vụ lớn bạn xử lý mỗi tuần",
+            "Gán mỗi tác vụ vào đúng 1 trong 3 tầng ranh giới",
+            "Ghi rõ lý do tại sao các tác vụ Tầng 3 bị nghiêm cấm ủy thác hoàn toàn (Ruin risk, đạo đức, pháp lý)"
           ],
-          "trap": "Ủy thác cả phần accountability; hoặc không ủy thác gì vì sợ."
+          "trap": "Ủy thác cả phần trách nhiệm giải trình hoặc không dám ủy thác bất kỳ việc gì vì định kiến sợ hãi công nghệ."
         },
         {
           "id": "spec_quality",
-          "name": "Chất lượng đề bài cho AI",
-          "summary": "Output AI kém thường do đề bài mơ hồ — thiếu ràng buộc, mục tiêu, tiêu chí.",
+          "name": "Thiết Kế Đề Bài Ràng Buộc Cao (Spec-Driven Prompting)",
+          "summary": "Nâng cấp đề bài cho AI từ câu hỏi mở mơ hồ sang bản đặc tả có cấu trúc: Bối cảnh -> Ràng buộc -> Tiêu chí đạt -> Ranh giới loại trừ.",
           "steps": [
-            "Mục tiêu đo được",
-            "Ràng buộc (thời gian, tiền, giá trị)",
-            "Định nghĩa 'xong'"
+            "Xác định mục tiêu đo lường được",
+            "Liệt kê các ràng buộc cứng (ngân sách, thời gian, giá trị cốt lõi)",
+            "Yêu cầu AI chỉ ra các giả định ngầm và tự phản biện câu trả lời của chính nó"
           ],
-          "trap": "Hỏi AI 'nên làm gì?' không ngữ cảnh."
+          "trap": "Hỏi AI 'Tôi nên làm gì?' mà không cung cấp dữ kiện cứng và các điều kiện biên của vấn đề."
         }
       ],
       "exercise": {
-        "prompt": "Liệt kê 5 việc tuần này. Phân loại: Auto / Nháp-AI-duyệt / Chỉ-người. Với 1 việc 'Chỉ-người', giải thích vì sao không được ủy thác.",
-        "success_criteria": "5 việc phân loại + 1 lý do cấm ủy thác rõ (ruin/giá trị/trách nhiệm)."
+        "prompt": "Hãy chọn 5 công việc hoặc quyết định thực tế bạn đang đối mặt trong tuần này (công việc, quản lý tiền bạc, hoặc nuôi dạy con cái). Hãy xây dựng 'Bản Đồ Ủy Thác AI Có Ranh Giới':\n1. Liệt kê 5 công việc cụ thể.\n2. Phân loại từng việc vào đúng 3 cấp độ: (a) Tầng 1: AI làm tự động; (b) Tầng 2: AI làm nháp, người duyệt kỹ; (c) Tầng 3: Cấm ủy thác, 100% con người quyết định.\n3. Với việc thuộc Tầng 3, hãy giải thích sâu sắc: Tại sao việc này tuyệt đối không được phép giao cho AI (xét trên khía cạnh rủi ro hủy diệt, đạo đức, hoặc trách nhiệm cá nhân)?\n4. Soạn thảo 1 đề bài (Prompt) chuẩn mực theo phương pháp Spec-Driven cho một việc thuộc Tầng 2.",
+        "checklist": [
+          "Liệt kê đủ 5 công việc thực tế, đa dạng khía cạnh",
+          "Phân loại chính xác vào 3 tầng ranh giới theo logic rủi ro",
+          "Giải thích sâu sắc lý do cấm ủy thác ở Tầng 3 (Skin in the game / Ruin risk)",
+          "Đề bài mẫu cho Tầng 2 có đủ Bối cảnh, Ràng buộc cứng và Tiêu chí kiểm chứng"
+        ],
+        "bad_example": "5 việc: (1) Viết email; (2) Đầu tư chứng khoán; (3) Dọn nhà; (4) Nói chuyện với vợ; (5) Tìm trường cho con. Phân loại: AI làm hết trừ dọn nhà. Lý do: Vì AI thông minh hơn tôi. Đề bài: 'Hãy chỉ tôi cách đầu tư chứng khoán giàu nhanh'.",
+        "good_example": "1. 5 công việc thực tế tuần này:\n- Việc 1: Tóm tắt 40 bài nghiên cứu về phương pháp giáo dục Montessori vs STEAM cho trẻ mầm non.\n- Việc 2: Lập dàn ý bài thuyết trình chiến lược kinh doanh quý 4 cho ban giám đốc.\n- Việc 3: Đàm phán giải quyết mâu thuẫn tranh chấp đất đai trong dòng họ.\n- Việc 4: Soát lỗi cú pháp code và tối ưu hóa câu lệnh SQL trong cơ sở dữ liệu công ty.\n- Việc 5: Quyết định có nên bảo lãnh tài chính khoản vay 1 tỷ cho người em ruột hay không.\n2. Phân loại ranh giới:\n- Tầng 1 (AI tự động): Việc 4 (Soát lỗi cú pháp SQL).\n- Tầng 2 (AI làm nháp, người duyệt): Việc 1 (Tóm tắt tài liệu) và Việc 2 (Lập dàn ý thuyết trình).\n- Tầng 3 (Vùng cấm ủy thác, 100% con người): Việc 3 (Mâu thuẫn dòng họ) và Việc 5 (Bảo lãnh khoản vay 1 tỷ).\n3. Lý do cấm ủy thác ở Việc 5: Bảo lãnh khoản vay gắn liền với 'Rủi ro Hủy diệt' (Ruin Risk) tài chính của gia đình và mối quan hệ huyết thống thiêng liêng. AI không có Skin in the game, không phải chịu cảnh siết nợ hay rạn nứt gia đình. Đây là quyết định đòi hỏi thấu cảm tâm lý, phân tích dòng tiền thực tế và sự can đảm chịu trách nhiệm cá nhân.\n4. Đề bài mẫu cho Việc 2: 'Bối cảnh: Tôi là Giám đốc Marketing của chuỗi bán lẻ 30 cửa hàng tại VN. Ràng buộc: Ngân sách quý 4 giảm 20%, mục tiêu doanh thu tăng 15% mùa Tết. Hãy đóng vai chuyên gia chiến lược tinh gọn, đề xuất 3 kịch bản tăng trưởng không phụ thuộc vào quảng cáo Facebook trả tiền. Đưa ra KPI đo lường cho từng tuần và chỉ rõ 3 bẫy tư duy thường gặp. Trả lời bằng bảng so sánh súc tích'."
       },
       "quiz": [
         {
-          "q": "Phần nào thường *không* nên ủy thác hoàn toàn cho AI?",
+          "q": "Tại sao một người có tư duy tinh hoa TUYỆT ĐỐI KHÔNG BAO GIỜ ủy thác toàn quyền quyết định đầu tư tài chính lớn cho AI?",
           "options": [
-            "Quyết định có rủi ro ruin hoặc gắn accountability cá nhân",
-            "Tóm tắt tài liệu dài",
-            "Soạn nháp email",
-            "Liệt kê ý tưởng thô"
+            "Vì AI không có 'Skin in the game' (không chịu trách nhiệm pháp lý và không phải gánh chịu nỗi đau mất tiền khi quyết định sai)",
+            "Vì AI xử lý toán học kém hơn con người",
+            "Vì AI luôn luôn đưa ra số liệu sai trong mọi tình huống",
+            "Vì luật pháp quốc tế cấm dùng AI trong ngành tài chính"
           ],
           "answer": 0,
-          "explain": "AI hỗ trợ phân tích; người chịu trách nhiệm đuôi rủi ro và giá trị."
+          "explain": "Nguyên lý Skin in the game của Nassim Taleb: Không bao giờ tin tưởng vào lời khuyên của một thực thể không có gì để mất khi lời khuyên đó dẫn tới thảm họa.",
+          "trap_analysis": "Rất nhiều người bị mê hoặc bởi khả năng phân tích biểu đồ cực nhanh của AI và lầm tưởng rằng tốc độ xử lý đồng nghĩa với sự bảo đảm an toàn tài chính."
+        },
+        {
+          "q": "Hiện tượng 'AI Hallucination' (Ảo giác AI / Bịa đặt thông tin) nguy hiểm nhất khi nào?",
+          "options": [
+            "Khi AI trình bày thông tin bịa đặt với một văn phong cực kỳ tự tin, logic chặt chẽ và trôi chảy hoàn hảo",
+            "Khi AI từ chối trả lời câu hỏi của người dùng",
+            "Khi AI xuất ra các đoạn mã báo lỗi cú pháp rõ ràng",
+            "Khi AI bảo 'Tôi không có thông tin về vấn đề này'"
+          ],
+          "answer": 0,
+          "explain": "Ảo giác nguy hiểm nhất là ảo giác được ngụy trang dưới lớp vỏ của sự thông thái và tự tin (Fluency Fallacy), khiến người dùng mất cảnh giác và bỏ qua khâu kiểm chứng nguồn sơ cấp.",
+          "trap_analysis": "Người bình thường thường đánh đồng sự 'trôi chảy, tự tin' với 'sự thật', trong khi AI được tối ưu hóa để nghe có vẻ thuyết phục chứ không phải để bảo vệ sự thật."
+        },
+        {
+          "q": "Đâu là cách tiếp cận thông thái nhất khi sử dụng AI trong công việc hàng ngày?",
+          "options": [
+            "Coi AI như một thực tập sinh siêu năng suất: Giao việc có ranh giới rõ ràng, kiểm chứng nguồn sơ cấp và con người chịu 100% trách nhiệm giải trình",
+            "Cấm tiệt không cho nhân viên sử dụng AI vì sợ lộ dữ liệu",
+            "Giao toàn bộ công việc phân tích và ký duyệt cho AI để tiết kiệm tối đa thời gian",
+            "Chỉ dùng AI để giải trí và nói chuyện phiếm"
+          ],
+          "answer": 0,
+          "explain": "Định vị AI là Cognitive Copilot (Đồng hành nhận thức): Tận dụng tốc độ của máy tính để mở rộng đòn bẩy, nhưng giữ chặt tay lái định hướng giá trị và phán đoán của con người.",
+          "trap_analysis": "Hai thái cực sai lầm phổ biến là: (1) Sợ hãi công nghệ cực đoan và (2) Sùng bái công nghệ mù quáng."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 10,
-      "title": "AI Judgment: Kiểm chứng & bắt lỗi",
+      "title": "AI Judgment: Kiểm Chứng & Kỹ Thuật Red-Teaming",
       "theme": "ai_judgment",
-      "goal": "Luyện phản xạ verify: AI nghe hay ≠ AI đúng.",
-      "core_idea": "Verification là kỹ năng elite trong kỷ nguyên model sinh văn bản.",
+      "goal": "Làm chủ phương pháp phản biện nghịch đảo (Red-Teaming) đối với các câu trả lời của AI; xây dựng thói quen kiểm chứng chéo (Triangulation) và bóc trần các giả định ẩn trước khi hành động.",
+      "core_idea": "Sự trôi chảy không đồng nghĩa với chân lý. Kỹ năng tinh hoa trong thời đại mô hình sinh ngôn ngữ (LLMs) không phải là kỹ năng viết prompt tạo nội dung, mà là kỹ năng kiểm chứng (Verification) và săn tìm điểm mù của mô hình.",
       "read": [
         {
-          "label": "Phân rã / Đấu trường",
-          "page": "7_phan_ra"
+          "label": "Trang Phân Rã Thực Chiến — Đấu trường phản biện AI",
+          "page": "pages/7_phan_ra.py"
+        },
+        {
+          "label": "9 Chế độ Tư duy — Inversion & Falsification (Tính khả bác)",
+          "page": "pages/2_9_che_do_tu_duy.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Kỹ Thuật Đội Phản Biện Đối Kháng (Red-Teaming Prompting)",
+          "summary": "Phương pháp mượn từ an ninh mạng và quân sự: Sau khi AI đưa ra một kế hoạch có vẻ hoàn hảo, bạn lập tức ép chính AI (hoặc một mô hình AI độc lập khác) đóng vai kẻ thù hoặc nhà phê bình hoài nghi nhất (Red Team) với mục tiêu duy nhất là tìm ra 3–5 lỗ hổng chí mạng có thể đánh sập kế hoạch đó.",
+          "good_example": "Prompt Red-Team: 'Bây giờ hãy gạt bỏ vai trò tư vấn viên lạc quan. Hãy đóng vai Charlie Munger ở tuổi 99 — một nhà đầu tư cực kỳ hoài nghi, ghét rủi ro và ghét sự tự phụ. Hãy chỉ ra cho tôi 4 lý do tại sao kế hoạch kinh doanh này sẽ thất bại thảm hại trong vòng 12 tháng tới'.",
+          "bad_example": "Đọc xong kế hoạch của AI thấy hay quá liền hỏi: 'Tuyệt vời, bạn có nghĩ kế hoạch này chắc chắn thành công không?' (Dẫn dụ AI nói lời nịnh nọt - Sycophancy trap).",
+          "boundary": "Red-teaming giúp loại bỏ rủi ro đuôi và củng cố kế hoạch, nhưng không nên biến thành chủ nghĩa hoài nghi tê liệt (Cynicism) khiến bạn không bao giờ dám bắt đầu hành động.",
+          "lattice_link": "Model #02 (Inversion), Model #13 (Falsification Principle) và Model #36 (Devil's Advocate)."
+        },
+        {
+          "name": "Kiểm Chứng Chéo Tam Giác (Cross-Model Triangulation)",
+          "summary": "Không bao giờ tin vào một nguồn duy nhất. Phương pháp định vị tam giác: Đưa cùng một dữ kiện phức tạp qua 2 mô hình AI có kiến trúc và dữ liệu huấn luyện khác nhau (ví dụ: Claude vs Gemini), sau đó đối chiếu kết quả với Nguồn Thực Tế Sơ Cấp (phỏng vấn người trong ngành, số liệu kiểm toán, điều lệ luật). Điểm giao thoa giữa 3 nguồn mới là chân lý đáng tin cậy.",
+          "good_example": "Khi kiểm tra một điều khoản hợp đồng mua bán nhà đất: Đưa cho Claude phân tích rủi ro pháp lý; đưa cho Gemini tra cứu các tiền lệ tranh chấp tòa án; sau đó mang kết quả đối chiếu với một luật sư công chứng thực tế.",
+          "bad_example": "Chỉ hỏi 1 chatbot và tin rằng câu trả lời đầu tiên xuất hiện trên màn hình là quy định pháp luật chính xác 100%.",
+          "boundary": "Chỉ áp dụng kiểm chứng tam giác sâu cho các quyết định có tác động tài chính hoặc pháp lý lớn (> 50 triệu hoặc hợp đồng dài hạn).",
+          "lattice_link": "Model #01 (Latticework) và Model #16 (Triangulation)."
+        }
+      ],
+      "case_study": {
+        "title": "Bản Báo Cáo 400 Triệu Lắp Điện Mặt Trời Của AI: Dự Báo Hoàn Vốn 4 Năm Vs 4 Lỗ Hổng Bị Bóc Trần",
+        "context": "Gia đình chị Hạnh (Hà Nội) chuẩn bị chi 400 triệu để lắp đặt hệ thống điện mặt trời áp mái công suất 15kWp kèm bộ pin lưu trữ Lithium 15kWh cho căn biệt thự liền kề. Chị Hạnh đưa toàn bộ báo giá và thông số kỹ thuật của nhà thầu vào một mô hình AI hàng đầu và hỏi: 'Tôi có nên đầu tư hệ thống này không?'. AI trả lời một bản báo cáo 6 trang cực kỳ chuyên nghiệp, tính toán chi tiết dựa trên biểu giá điện bậc thang của EVN, kết luận: 'Thời gian hoàn vốn là 4.2 năm, mỗi tháng tiết kiệm trung bình 4.5 triệu tiền điện, tỷ suất sinh lời nội bộ IRR đạt 18%/năm. Đây là một khoản đầu tư tài chính xuất sắc, bạn nên ký hợp đồng ngay'. Cả nhà chị Hạnh vô cùng hào hứng và chuẩn bị chuyển khoản tiền cọc 100 triệu.",
+        "decision_question": "Chồng chị Hạnh — một người có tư duy tinh hoa — sẽ kích hoạt quy trình Red-team để kiểm chứng lời khuyên này của AI như thế nào?",
+        "facts": [
+          "AI mặc định giả định các điều kiện lý tưởng: Bức xạ mặt trời tại miền Bắc đạt trung bình 4.2 giờ nắng/ngày (thực tế mùa đông và mùa nồm miền Bắc có những đợt âm u kéo dài 2–3 tuần, bức xạ thực tế chỉ đạt ~3.2 giờ/ngày).",
+          "Sự suy giảm hiệu suất và chi phí thay thế: Pin lưu trữ Lithium trong điều kiện khí hậu nóng ẩm suy giảm dung lượng (Cell degradation) khoảng 3–4%/năm; bộ biến tần (Inverter) có tuổi thọ trung bình 5–7 năm và chi phí thay mới khoảng 40–50 triệu không hề được AI đưa vào mô hình chi phí dòng tiền.",
+          "Cơ chế bán điện dư thừa: AI giả định điện dư thừa không dùng hết ban ngày sẽ được EVN mua lại với giá cao, trong khi chính sách mua điện mặt trời mái nhà tự sản tự tiêu hiện hành có rào cản pháp lý và giới hạn công suất phát lên lưới."
+        ],
+        "noise": [
+          "'AI tính toán chi tiết từng tháng bằng biểu đồ toán học thế này thì không thể sai được' (Bẫy sùng bái định lượng rỗng).",
+          "'Xu hướng thế giới là năng lượng xanh, ai đi đầu thì người đó thắng' (Slogan cảm xúc át dữ liệu tài chính).",
+          "'Nhà thầu cam kết bảo hành 10 năm nên không lo rủi ro hỏng hóc' (Nhầm lẫn cam kết marketing với năng lực tồn tại của doanh nghiệp bảo hành)."
+        ],
+        "framework_application": "Thực hiện Quy trình Red-Teaming 3 bước đối với báo cáo của AI:\n- Bước 1 (Săn tìm giả định ẩn): Hỏi AI: 'Liệt kê 5 giả định ngầm về thời tiết, chính sách EVN và tuổi thọ linh kiện mà bạn đã sử dụng trong phép tính hoàn vốn 4.2 năm?'.\n- Bước 2 (Kiểm tra độ nhạy / Sensitivity Stress-test): Hỏi AI: 'Nếu bức xạ thực tế giảm 25% do mùa đông miền Bắc và phải thay Inverter ở năm thứ 6, thời gian hoàn vốn thực tế sẽ là bao nhiêu năm?'.\n- Bước 3 (Đối chiếu thực địa): Gặp trực tiếp 2 hộ gia đình trong cùng khu đô thị đã lắp đặt hệ thống tương tự từ năm 2022 để xem hóa đơn tiền điện thực tế.",
+        "exemplar_analysis": "Kết quả sau khi Red-Team:\n- Khi đưa các dữ kiện thực tế miền Bắc vào tính toán lại, thời gian hoàn vốn thực tế vọt lên 9.5 năm (gần gấp đôi tuổi thọ hiệu quả của bộ pin lưu trữ ban đầu).\n- Hệ thống pin lưu trữ đắt đỏ (chiếm 180 triệu trong gói 400 triệu) không đạt hiệu quả kinh tế vì gia đình chủ yếu sinh hoạt và dùng điện nhiều vào buổi tối, trong khi ban ngày đi làm vắng nhà.\nQuyết định khôn ngoan của Elite:\n1. Hủy bỏ gói lắp đặt 400 triệu có pin lưu trữ đắt đỏ.\n2. Chuyển sang phương án tinh gọn: Chỉ lắp hệ thống điện mặt trời hòa lưới không lưu trữ công suất nhỏ 6kWp (chi phí chỉ 75 triệu) để đáp ứng đúng nhu cầu làm mát và thiết bị chạy nền ban ngày.\n3. Tiết kiệm ngay lập tức 325 triệu tiền vốn đầu tư lãng phí, đưa thời gian hoàn vốn thực tế về mức 4.5 năm an toàn.",
+        "action_plan": "Dừng việc chuyển cọc 100 triệu; yêu cầu nhà thầu báo giá lại phương án 75 triệu không pin lưu trữ và thẩm định lại hợp đồng.",
+        "common_traps": [
+          "Bẫy đồng hóa sự hoàn hảo trên lý thuyết với sự thật trần trụi ngoài thực địa.",
+          "Bẫy bỏ qua chi phí bảo trì và suy thoái vật lý (Entropy & Degradation) của phần cứng."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [
         {
           "id": "red_team",
-          "name": "Red-team câu trả lời AI",
-          "summary": "Bắt buộc tìm: giả định ẩn, thiếu base rate, nhầm stock/flow, khuyến nghị không hành động được.",
+          "name": "Quy Trình Red-Team Bắt Lỗi AI 4 Bước",
+          "summary": "Bắt buộc mô hình AI tự bóc trần điểm mù của chính nó bằng các prompt nghịch đảo, kiểm tra độ nhạy và săn tìm giả định ẩn.",
           "steps": [
-            "Yêu cầu AI trả lời 1 quyết định",
-            "Tự viết ≥3 lỗ hổng",
-            "Hỏi lại AI đúng lỗ hổng đó"
+            "Yêu cầu AI đưa ra khuyến nghị cho một quyết định lớn",
+            "Prompt đối kháng: 'Hãy chỉ ra 5 giả định ẩn và 3 kịch bản tồi tệ nhất có thể phá vỡ lời khuyên trên'",
+            "Đưa các điều kiện biên thực tế (chi phí ẩn, thời tiết, rủi ro con người) vào để ép AI tính toán lại độ nhạy",
+            "Đối chiếu kết luận với ít nhất 1 nguồn dữ liệu thực tế sơ cấp ngoài đời thực"
           ],
-          "trap": "Accept câu văn trôi chảy."
+          "trap": "Hài lòng với câu trả lời đầu tiên vì nó viết quá mượt mà và đúng ý mình muốn nghe."
         },
         {
           "id": "two_model",
-          "name": "Đối chiếu 2 góc",
-          "summary": "Cùng câu hỏi, yêu cầu 2 frame (inversion vs first principles) rồi hợp nhất.",
+          "name": "Kiểm Chứng Chéo Đa Góc Nhìn (Triangulation Prompting)",
+          "summary": "Cùng một bài toán, yêu cầu 2 lăng kính triệt tiêu lẫn nhau (ví dụ: một bên tối đa hóa tăng trưởng vs một bên tối thiểu hóa rủi ro phá sản) rồi tự mình hợp nhất.",
           "steps": [
-            "Prompt frame A",
-            "Prompt frame B",
-            "Người tổng hợp"
+            "Prompt góc nhìn Tấn công (Growth & Upside)",
+            "Prompt góc nhìn Phòng thủ (Inversion & Capital Preservation)",
+            "Con người đóng vai thẩm phán độc lập tổng hợp điểm cân bằng"
           ],
-          "trap": "Trung bình hai câu trả lời sai."
+          "trap": "Lấy trung bình cộng của 2 câu trả lời sai để tạo ra một kết luận sai lầm ở giữa."
         }
       ],
       "exercise": {
-        "prompt": "Cho AI (hoặc tự giả lập) 1 lời khuyên quan trọng. Viết red-team: (1) giả định ẩn (2) dữ liệu thiếu (3) rủi ro đuôi bị bỏ qua (4) bạn sẽ verify bằng nguồn nào.",
-        "success_criteria": "≥3 lỗ hổng + 1 kế hoạch verify."
+        "prompt": "Hãy chọn một kế hoạch hoặc lời khuyên quan trọng mà bạn đang cân nhắc (ví dụ: mua một khóa học đắt tiền, mua một thiết bị gia đình lớn, đổi danh mục đầu tư, hoặc chiến lược kinh doanh mới). Hãy thực hiện một bài tập RED-TEAMING thực chiến với AI:\n1. Nhập đề bài vào AI và ghi lại lời khuyên ban đầu của nó.\n2. Viết bản phản biện Red-Team gồm 4 mục cụ thể:\n   - (a) 3 Giả định ngầm (Unstated Assumptions) mà AI đã coi là đúng một cách ngây thơ;\n   - (b) 2 Dữ liệu hoặc Chi phí ẩn ngoài đời thực bị AI bỏ qua;\n   - (c) 1 Rủi ro đuôi (Tail risk / Worst-case scenario) chưa được tính đến;\n   - (d) Kế hoạch kiểm chứng bằng Nguồn sơ cấp ngoài đời thực của bạn.\n3. Nhập lại bản Red-team này vào AI và ghi lại sự thay đổi trong kết luận của nó.",
+        "checklist": [
+          "Có lời khuyên ban đầu rõ ràng của AI kèm con số/kết luận",
+          "Bóc trần được ít nhất 3 giả định ngầm không thực tế",
+          "Chỉ ra được chi phí ẩn hoặc rủi ro đuôi bị bỏ qua",
+          "Có phương án kiểm chứng bằng nguồn dữ liệu thực địa độc lập"
+        ],
+        "bad_example": "Tôi hỏi AI có nên mua xe máy mới không, AI bảo nên mua để đi làm an toàn. Tôi thấy đúng. Red-team: Xe mới đắt tiền. AI bảo vậy thì cân nhắc mua xe cũ. Tôi quyết định sẽ suy nghĩ thêm.",
+        "good_example": "1. Lời khuyên ban đầu của AI: Khuyên nên chi 65 triệu đăng ký khóa học Mini-MBA trực tuyến của một tổ chức quốc tế để 'thăng tiến lên vị trí Giám đốc Marketing trong vòng 6 tháng với mức lương tăng 40%'.\n2. Bản Red-Team bóc trần:\n- 3 Giả định ngầm ngây thơ: (a) Giả định bằng cấp chứng chỉ trực tuyến có giá trị pháp lý và uy tín tương đương bằng chính quy tại thị trường VN; (b) Giả định việc thăng chức chỉ phụ thuộc vào kiến thức lý thuyết sách vở mà bỏ qua năng lực chính trị nội bộ, quan hệ với hội đồng quản trị và kết quả kinh doanh thực tế; (c) Giả định bản thân có đủ 15 giờ/tuần liên tục trong 6 tháng mà không bị quá tải công việc chính.\n- 2 Chi phí ẩn bị bỏ qua: (a) Chi phí cơ hội của 65 triệu tiền mặt và 360 giờ học tập (nếu dùng số giờ đó trực tiếp dẫn dắt 1 chiến dịch thực chiến tại công ty thì cơ hội thăng tiến cao hơn nhiều); (b) Chi phí làm lại bài thi và gia hạn tài khoản nếu không theo kịp tiến độ.\n- 1 Rủi ro đuôi: Bị kiệt sức (burn-out) dẫn đến tụt dốc hiệu suất công việc hiện tại, vừa mất 65 triệu vừa bị đánh giá thấp trong kỳ review cuối năm.\n- Nguồn sơ cấp kiểm chứng: Nhắn tin trực tiếp hỏi 2 cựu học viên đã tốt nghiệp khóa học này năm ngoái trên LinkedIn xem họ có thực sự được tăng lương hay thăng chức nhờ khóa học không.\n3. Kết quả sau Red-Team: Cả 2 cựu học viên đều chia sẻ kiến thức rất chung chung, không giúp ích nhiều cho việc thăng tiến tại công ty nội địa. Tôi quyết định dừng đăng ký khóa học, tiết kiệm 65 triệu và đầu tư thời gian vào dự án thực chiến tại công ty."
       },
       "quiz": [
         {
-          "q": "Dấu hiệu nguy hiểm khi đọc output AI?",
+          "q": "Tại sao câu trả lời của AI nghe có vẻ cực kỳ uyên bác và thuyết phục nhưng vẫn có thể sai lầm nghiêm trọng?",
           "options": [
-            "Trôi chảy, tự tin, thiếu giả định/ràng buộc/rủi ro đuôi",
-            "Có nêu uncertainty",
-            "Có liệt kê nguồn",
-            "Có bảo 'tôi không chắc'"
+            "Vì AI được tối ưu hóa cho 'Sự trôi chảy ngôn ngữ' (Fluency) và xác suất ghép từ, chứ không có cơ chế tự động thẩm định chân lý thực nghiệm ngoài đời thực",
+            "Vì AI luôn cố tình lừa dối người dùng để trục lợi",
+            "Vì dữ liệu trên internet 100% là thông tin sai lệch",
+            "Vì AI không biết làm các phép tính số học cơ bản"
           ],
           "answer": 0,
-          "explain": "Fluency ≠ truth; elite săn giả định và đuôi rủi ro."
+          "explain": "Độ trôi chảy ngôn ngữ (Fluency) hoàn toàn độc lập với Tính chân lý khách quan (Truth). Một bài văn sai be bét vẫn có thể được viết bằng giọng văn hào hùng và chuẩn mực ngữ pháp.",
+          "trap_analysis": "Bộ não người có điểm mù tiến hóa: Chúng ta có xu hướng vô thức tin tưởng những ai ăn nói lưu loát, tự tin và dùng từ ngữ chuyên môn cao cấp."
+        },
+        {
+          "q": "Kỹ thuật 'Red-Teaming' trong giao tiếp với AI có nghĩa là gì?",
+          "options": [
+            "Chủ động ép AI (hoặc tự mình) đóng vai kẻ phản biện hoài nghi nhất để tấn công và tìm kiếm các lỗ hổng chí mạng của kế hoạch ban đầu",
+            "Bôi đỏ các câu trả lời sai của AI để huấn luyện lại mô hình",
+            "Sử dụng AI của một công ty đối thủ để kiểm tra",
+            "Chỉ trích AI bằng những từ ngữ tiêu cực để thử độ bền của hệ thống"
+          ],
+          "answer": 0,
+          "explain": "Red-teaming là việc mô phỏng cuộc tấn công của đối thủ hoặc nghịch cảnh vào kế hoạch của bạn khi nó còn nằm trên giấy, giúp vá các lỗ hổng trước khi thực chiến.",
+          "trap_analysis": "Đa số mọi người thích nghe lời khẳng định ủng hộ (Confirmation), nên rất ngại tự mời kẻ thù vào phản biện kế hoạch của mình."
+        },
+        {
+          "q": "Nguyên tắc 'Kiểm chứng chéo tam giác' (Triangulation) khuyên bạn điều gì khi đứng trước một quyết định lớn?",
+          "options": [
+            "Đối chiếu lời khuyên của AI với ít nhất một mô hình độc lập khác và một nguồn dữ liệu thực tế sơ cấp (con người/hóa đơn thực tế)",
+            "Hỏi cùng một câu hỏi 3 lần với cùng một chatbot",
+            "Hỏi ý kiến của 3 người bạn thân nhất",
+            "Vẽ một hình tam giác để phân bổ ngân sách thành 3 phần bằng nhau"
+          ],
+          "answer": 0,
+          "explain": "Chân lý chỉ lộ diện tại điểm giao nhau giữa lý thuyết thuật toán và dữ liệu thực nghiệm sơ cấp ngoài đời thực.",
+          "trap_analysis": "Nhiều người tưởng rằng hỏi đi hỏi lại 1 con AI nhiều lần là kiểm chứng chéo, trong khi thực chất chỉ là lặp lại cùng một bias của mô hình đó."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 11,
-      "title": "Incentive, Decision Review, Goodhart",
+      "title": "Động Lực (Incentives), Định Luật Goodhart & Đóng Vòng Quyết Định",
       "theme": "integration",
-      "goal": "Nhìn incentive làm méo hành vi; đóng vòng decision journal.",
-      "core_idea": "Show me the incentive and I will show you the outcome. Metric sai → hành vi sai.",
+      "goal": "Thấu suốt quy luật động lực ngầm chi phối hành vi con người (Charlie Munger); nhận diện cái bẫy bóp méo chỉ số của Định luật Goodhart; xây dựng quy trình đóng vòng phản hồi bằng Nhật Ký Quyết Định (Decision Journal).",
+      "core_idea": "'Hãy cho tôi xem cấu trúc động lực, tôi sẽ chỉ cho bạn thấy kết quả hành vi'. Khi một thước đo trở thành mục tiêu săn đuổi, nó lập tức bị thao túng và phá hủy mục tiêu thực sự. Người tinh hoa không đánh giá quyết định qua kết quả may rủi ngắn hạn, mà đánh giá qua chất lượng quy trình tư duy.",
       "read": [
         {
-          "label": "Nhật ký quyết định (Phân rã)",
-          "page": "7_phan_ra"
+          "label": "Trang Phân Rã Thực Chiến — Nhật Ký Quyết Định (Decision Journal)",
+          "page": "pages/7_phan_ra.py"
         },
         {
-          "label": "Lịch sử của tôi",
-          "page": "8_lich_su"
+          "label": "Trang Lịch Sử Của Tôi — Chỉ Số Hiệu Chuẩn Nhận Thức",
+          "page": "pages/8_lich_su.py"
+        },
+        {
+          "label": "88 Mô hình Hạt nhân — Siêu động lực Munger & Định luật Goodhart",
+          "page": "pages/3_88_mo_hinh.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Siêu Năng Lực Của Động Lực (Munger's Incentive-Caused Bias)",
+          "summary": "Charlie Munger coi động lực (Incentive) là một trong những lực đẩy mạnh mẽ nhất bẻ cong nhận thức của con người: 'Tôi nghĩ rằng tôi đã nằm trong top 5% người hiểu rõ sức mạnh của động lực suốt cả cuộc đời mình, vậy mà tôi vẫn luôn luôn đánh giá thấp nó'. Con người hiếm khi hành động theo những lời hô hào đạo đức; họ hành động chính xác theo cách mà cấu trúc khen thưởng và trừng phạt định hướng họ (kể cả trong vô thức).",
+          "good_example": "Khi thiết kế chế độ làm việc cho nhân viên kinh doanh: Nếu chỉ thưởng theo doanh số bán ra (Revenue) mà không gắn với tỷ lệ thu hồi công nợ và lợi nhuận ròng, nhân viên sẽ sẵn sàng bán chịu cho những khách hàng rủi ro cao để nhận hoa hồng rồi bỏ mặc công ty gánh nợ xấu.",
+          "bad_example": "Kêu gọi mọi người trong gia đình 'hãy sống tiết kiệm vì tương lai' nhưng lại liên tục khen ngợi và tỏ ra tự hào mỗi khi ai đó mua đồ hiệu đắt tiền về nhà.",
+          "boundary": "Bên cạnh động lực vật chất/tiền bạc, con người còn chịu chi phối bởi động lực xã hội (sự tôn trọng, vị thế, ý nghĩa cuộc sống) — không nên quy giản mọi thứ về tiền mặt một cách thô thiển.",
+          "lattice_link": "Model #49 (Incentive-Caused Bias), Model #15 (Principal-Agent Problem) và Model #08 (Reward & Punishment Superresponse)."
+        },
+        {
+          "name": "Định Luật Goodhart (Goodhart's & Campbell's Law)",
+          "summary": "Nhà kinh tế học Charles Goodhart đúc kết: 'Khi một thước đo (Metric) được chọn làm mục tiêu phấn đấu (Target), nó sẽ lập tức bị tha hóa và đánh mất vai trò của một thước đo tốt'. Con người sẽ tìm mọi cách 'chơi xỏ hệ thống' (Gaming the system), tối ưu hóa chỉ số bề nổi và phá nát bản chất cốt lõi bên trong.",
+          "good_example": "Thực dân Pháp tại Hà Nội ngày xưa muốn diệt chuột nên treo thưởng: cứ nộp 1 cái đuôi chuột là được nhận tiền. Kết quả: Người dân bắt chuột, cắt đuôi lấy tiền rồi thả chuột sống về cống để chúng tiếp tục sinh sản tạo ra thêm đuôi chuột (Hiệu ứng Rắn hổ mang - Cobra Effect).",
+          "bad_example": "Bệnh viện đánh giá bác sĩ dựa trên 'Tỷ lệ sống sót của bệnh nhân phẫu thuật' -> Bác sĩ từ chối mổ cho các ca bệnh nặng nguy kịch và chỉ chọn mổ các ca nhẹ để giữ tỷ lệ 100%.",
+          "boundary": "Để giảm thiểu định luật Goodhart, không bao giờ dùng một chỉ số đơn lẻ; luôn dùng một cặp chỉ số đối trọng (ví dụ: Tốc độ giao hàng PHẢI đi kèm với Tỷ lệ hài lòng của khách hàng).",
+          "lattice_link": "Model #46 (Goodhart's Law), Model #47 (Cobra Effect) và Model #04 (Second-order Effects)."
+        }
+      ],
+      "case_study": {
+        "title": "Treo Thưởng Tiền Mặt Cho Điểm 10 Của Con: Điểm Số Tăng Vọt & Sự Tha Hóa Động Lực Tự Học",
+        "context": "Gia đình anh Bình có con gái 11 tuổi (Lớp 6). Đầu năm học, thấy con có dấu hiệu chểnh mảng môn Toán và Tiếng Anh, anh Bình áp dụng chính sách khuyến khích tài chính mạnh tay: 'Cứ mỗi bài kiểm tra được điểm 10 con sẽ được thưởng 200,000đ tiền mặt bỏ heo đất; điểm 9 thưởng 100,000đ; nếu bị điểm dưới 7 sẽ bị phạt trừ 100,000đ'. Trong 2 tháng đầu, kết quả đẹp như mơ: Sổ liên lạc của con ngập tràn điểm 9 và 10, anh Bình rất tự hào đem khoe khắp họ hàng. Tuy nhiên, đến giữa học kỳ, cô giáo chủ nhiệm gọi điện hẹn gặp riêng: Cô phát hiện con gái anh Bình có hành vi nhìn trộm bài bạn trong giờ thi, chọn bài tập dễ để làm trước lấy điểm an toàn, từ chối tham gia đội tuyển học sinh giỏi toán vì 'sợ đề khó bị điểm thấp mất tiền thưởng', và bắt đầu có thái độ ngã giá với mẹ: 'Mẹ muốn con rửa bát thì phải trả con 20,000đ con mới làm!'.",
+        "decision_question": "Tại sao một chính sách khen thưởng xuất phát từ tình thương và mục đích tốt đẹp lại dẫn tới sự biến chất nhân cách của con? Làm thế nào để sửa sai tận gốc?",
+        "facts": [
+          "Định luật Goodhart đã bị kích hoạt: Điểm số vốn là 'thước đo kiến thức' đã bị biến thành 'mục tiêu kiếm tiền'. Để tối đa hóa số tiền thưởng, bộ não của đứa trẻ tự động tìm con đường ngắn nhất (gian lận, chọn việc dễ) thay vì con đường học thật thi thật.",
+          "Hiệu ứng Thừa nhận thức (Overjustification Effect): Phần thưởng tiền mặt ngoại thân (Extrinsic Reward) đã tiêu diệt hoàn toàn Động lực nội tại (Intrinsic Motivation). Niềm vui tự nhiên của sự tò mò và lòng tự trọng đã bị thay thế hoàn toàn bằng tư duy mặc cả con buôn.",
+          "Bẫy tư duy kết quả (Outcome Bias): Anh Bình đã ca ngợi 'con số điểm 10' (Kết quả) mà hoàn toàn mù tịt về 'Hành vi và Quy trình' con tạo ra con số đó."
+        ],
+        "noise": [
+          "'Xã hội này đi làm cũng vì tiền, dạy con kiếm tiền từ điểm số là thực tế và thức thời' (Sự ngụy biện thô thiển bóp méo giá trị nhân cách).",
+          "'Bản chất con gian lận là do con hư hỏng' (Đổ lỗi cho đứa trẻ trong khi chính người lớn đã thiết kế ra một cấu trúc động lực độc hại).",
+          "'Chỉ cần tăng hình phạt gian lận lên gấp 10 lần là con sẽ sợ không dám làm nữa' (Tiếp tục lún sâu vào bẫy đòn bẩy thấp)."
+        ],
+        "framework_application": "Tái Cấu Trúc Hệ Thống Động Lực Gia Đình:\n1. Bãi bỏ hoàn toàn việc gắn tiền mặt với điểm số học tập và trách nhiệm gia đình thông thường.\n2. Tách biệt rõ ràng 2 khái niệm: 'Trách nhiệm thành viên' vs 'Phần thưởng nỗ lực vượt bậc'. Rửa bát, dọn phòng là trách nhiệm đóng góp tự nhiên của một thành viên gia đình, không phải việc làm thuê.\n3. Thiết kế cặp chỉ số đối trọng (Counter-metrics): Khen ngợi và ghi nhận sự trung thực, thái độ dũng cảm đối mặt với bài toán hóc búa (dù bị điểm 7 nhưng tự làm) cao hơn một điểm 10 nhờ học vẹt hoặc quay cóp.\n4. Kích hoạt chu trình Decision Journal: Anh Bình tự ghi lại sai lầm này vào nhật ký quyết định để làm bài học cảnh tỉnh suốt đời.",
+        "exemplar_analysis": "Hành động chuẩn mực của Người Cha Tinh Hoa:\n- Bước 1 (Thừa nhận sai lầm và gỡ bỏ luật chơi lỗi): Anh Bình ngồi lại với con gái, chân thành xin lỗi con: 'Bố đã sai khi treo thưởng tiền cho điểm số của con. Điểm số là để con biết mình đang hiểu bài đến đâu, chứ không phải để kiếm tiền'.\n- Bước 2 (Thay đổi văn hóa khen ngợi - Growth Mindset): Chuyển từ khen 'Con thông minh / điểm cao' sang khen 'Bố rất tự hào vì con đã kiên trì ngồi giải bài toán khó này suốt 45 phút không bỏ cuộc'.\n- Bước 3 (Gắn động lực với Sự Tự Chủ - Autonomy & Mastery): Cho con quyền tự quản lý thời gian học tập; khi con đạt được một cột mốc năng lực mới (ví dụ đọc xong 1 cuốn sách tiếng Anh), phần thưởng là cả nhà cùng đi cắm trại hoặc một trải nghiệm văn hóa ý nghĩa, tuyệt đối không dùng tiền mặt mặc cả.",
+        "action_plan": "Hủy bỏ bảng thưởng tiền điểm số tối nay; cùng con tổng kết bài học về sự trung thực và bắt đầu thiết lập thói quen ghi nhận nỗ lực hàng tuần.",
+        "common_traps": [
+          "Bẫy coi thường động lực nội tại: Nghĩ rằng trẻ con không có động lực tự học nếu không có tiền thưởng nhử trước mắt.",
+          "Bẫy Outcome Bias: Chỉ vỗ tay tán thưởng khi thấy kết quả tốt mà bỏ qua sự xói mòn đạo đức trong quá trình thực hiện."
+        ]
+      },
       "systems_concepts": [
         {
           "id": "goodhart",
-          "name": "Goodhart's Law",
-          "summary": "Khi chỉ số trở thành mục tiêu, nó hết là chỉ số tốt.",
-          "boundary": "Mọi hệ KPI/KPI giả.",
-          "trap": "Tối ưu metric công khai, phá mục tiêu thật.",
-          "action": "Tìm 1 metric trong đời/team đang bị game."
+          "name": "Định Luật Goodhart (Goodhart's Law)",
+          "summary": "Khi một chỉ số đo lường trở thành mục tiêu săn đuổi, nó lập tức bị thao túng và phá hỏng mục tiêu cốt lõi ban đầu.",
+          "boundary": "Áp dụng trong mọi hệ thống quản trị KPI doanh nghiệp, thang điểm học đường và quy chế thưởng phạt gia đình.",
+          "trap": "Cố gắng đặt ra thêm nhiều chỉ số chi tiết hơn để kiểm soát việc lách luật, tạo ra một bộ máy quan liêu ngột ngạt.",
+          "action": "Rà soát lại 1 KPI bạn đang áp dụng cho bản thân hoặc người khác: Có ai đang tìm cách 'chơi xỏ' chỉ số đó không?"
         }
       ],
       "uncertainty_tools": [],
       "ai_drills": [],
       "exercise": {
-        "prompt": "Mở decision journal (hoặc liệt kê 3 quyết định cũ). Với mỗi cái: outcome thực tế vs kỳ vọng; incentive nào đã đẩy bạn; bài học 1 câu.",
-        "success_criteria": "≥2 quyết định có review outcome + incentive."
+        "prompt": "Hãy mở trang 'Nhật Ký Quyết Định' (hoặc chọn 2 quyết định quan trọng nhất mà bạn đã đưa ra trong vòng 6–12 tháng qua để mổ xẻ):\n1. Với mỗi quyết định, hãy ghi lại: Kết quả thực tế (Outcome) diễn ra như thế nào so với Kỳ vọng ban đầu (Expectation)?\n2. Bóc tách Động lực ngầm (Incentive): Những động lực vật chất, áp lực xã hội hoặc thiên kiến nào đã âm thầm thúc đẩy bạn đưa ra quyết định đó tại thời điểm đó?\n3. Phân biệt 'Chất lượng quyết định' vs 'Kết quả may rủi': Đây là một quyết định tốt có kết quả xấu (do xui xẻo), hay một quyết định tệ nhưng gặp may (Bad process, good outcome)?\n4. Rút ra đúng 1 bài học bất biến (Principle) để nạp vào hệ điều hành tư duy của bạn.",
+        "checklist": [
+          "Mổ xẻ đủ 2 quyết định thực tế trong quá khứ có kết quả rõ ràng",
+          "Chỉ đích danh động lực ngầm hoặc thiên kiến tâm lý đã chi phối lúc ra quyết định",
+          "Phân biệt rạch ròi giữa chất lượng quy trình tư duy và sự may rủi của kết quả",
+          "Đúc kết được nguyên lý hành động cụ thể để không lặp lại sai lầm"
+        ],
+        "bad_example": "Quyết định: Mua vàng lúc giá 75 triệu. Kết quả: Vàng tăng lên 85 triệu tôi lãi 10 triệu. Động lực: Thích kiếm tiền. Đánh giá: Quyết định quá xuất sắc vì tôi đã có lãi. Bài học: Lần sau thấy vàng tăng lại mua tiếp.",
+        "good_example": "1. Quyết định: Vay thêm 400 triệu để cố mua một căn chung cư 3 phòng ngủ vượt quá khả năng tài chính thay vì căn 2 phòng ngủ vừa vặn vào đầu năm 2023.\n- Kết quả thực tế vs Kỳ vọng: Kỳ vọng là gia đình ở rộng rãi thoải mái và giá nhà tăng; kết quả thực tế là lãi suất ngân hàng thả nổi tăng từ 8% lên 13.5%, mỗi tháng tiền trả góp chiếm 55% thu nhập khiến gia đình căng thẳng, cắt giảm toàn bộ chi phí du lịch và học tập ngoại khóa của con suốt 18 tháng.\n2. Bóc tách Động lực ngầm: Động lực thúc đẩy lúc đó là Bẫy so sánh xã hội (Social Comparison) và Hội chứng giữ thể diện: Thấy bạn bè cùng trang lứa đều mua nhà to, tôi sợ bị đánh giá là kém cỏi nếu chỉ mua căn 2 phòng ngủ. Tôi đã tối ưu hóa cho 'thể diện trước người ngoài' thay vì 'sự bình an tài chính của gia đình'.\n3. Đánh giá quy trình: Đây là một Quyết định Cực Kỳ Tệ (Bad Process) vì đã vi phạm nguyên tắc Biên an toàn (Margin of Safety), đẩy tỷ lệ đòn bẩy vượt ngưỡng sinh tồn. Việc giá nhà sau đó có tăng nhẹ cũng không thể bù đắp được sự tổn thương tinh thần và chất lượng sống của gia đình trong suốt 18 tháng qua.\n4. Bài học bất biến: 'Không bao giờ đem sự bình an và thanh thản của gia đình ra đánh đổi lấy sự tán thưởng hời hợt của xã hội. Mức trả nợ hàng tháng tuyệt đối không được vượt quá 30% thu nhập thực tế'."
       },
       "quiz": [
         {
-          "q": "Goodhart's Law nói gì?",
+          "q": "Câu nói nổi tiếng của Charlie Munger về sức mạnh của động lực là gì?",
           "options": [
-            "Khi metric trở thành target thì metric hỏng",
-            "Metric càng nhiều càng tốt",
-            "Chỉ số tài chính luôn trung thực",
-            "Không liên quan incentive"
+            "Hãy cho tôi xem cấu trúc động lực, tôi sẽ chỉ cho bạn thấy kết quả của hành vi",
+            "Động lực chỉ là yếu tố phụ, ý chí con người mới là tất cả",
+            "Con người luôn hành động dựa trên các quy chuẩn đạo đức cao đẹp",
+            "Muốn quản trị tốt chỉ cần ban hành thật nhiều quy định nghiêm ngặt"
           ],
           "answer": 0,
-          "explain": "Incentive quanh metric làm méo hành vi."
+          "explain": "Munger nhấn mạnh rằng nếu bạn muốn dự đoán hoặc thay đổi hành vi của một cá nhân hay tổ chức, hãy nhìn vào nơi tiền bạc và sự công nhận được trao thưởng, chứ đừng nghe những lời tuyên bố trên giấy.",
+          "trap_analysis": "Rất nhiều nhà lãnh đạo và phụ huynh ngây thơ tin rằng chỉ cần kêu gọi tinh thần trách nhiệm là có thể thay đổi được hành vi mà không cần sửa cấu trúc khen thưởng."
+        },
+        {
+          "q": "Định luật Goodhart giải thích hiện tượng nào sau đây?",
+          "options": [
+            "Khi bệnh viện đánh giá bác sĩ bằng 'Tỷ lệ sống sót của ca mổ', các bác sĩ bắt đầu từ chối tiếp nhận các bệnh nhân nguy kịch để bảo vệ chỉ số",
+            "Bác sĩ làm việc tận tụy hơn khi được tăng lương cơ bản",
+            "Bệnh viện đầu tư nhiều máy móc hiện đại hơn sẽ chữa khỏi nhiều bệnh nhân hơn",
+            "Chỉ số KPI luôn phản ánh trung thực 100% chất lượng công việc"
+          ],
+          "answer": 0,
+          "explain": "Đây là ví dụ kinh điển về việc khi một thước đo bị biến thành mục tiêu sống còn, con người sẽ tìm cách bóp méo hành vi để đạt chỉ số, gây ra hậu quả tai hại cho mục tiêu đạo đức ban đầu.",
+          "trap_analysis": "Người quản trị kém thường ảo tưởng rằng 'chỉ cần đo lường chặt chẽ là mọi thứ sẽ tốt lên', mà không lường trước được hành vi lách luật (Gaming)."
+        },
+        {
+          "q": "Khái niệm 'Outcome Bias' (Thiên kiến kết quả) trong việc đánh giá quyết định là gì?",
+          "options": [
+            "Đánh giá một quyết định là đúng hay sai chỉ dựa thuần túy vào kết quả may rủi cuối cùng, mà bỏ qua chất lượng của quy trình suy luận lúc đưa ra quyết định",
+            "Luôn tập trung vào việc đạt được kết quả bằng mọi giá",
+            "Không quan tâm đến kết quả mà chỉ quan tâm đến cảm xúc",
+            "Quyết định luôn có kết quả ngược lại với dự tính ban đầu"
+          ],
+          "answer": 0,
+          "explain": "Uống rượu say rồi lái xe về nhà an toàn không có nghĩa đó là một quyết định đúng đắn (đó chỉ là kẻ ngu xuẩn gặp may). Người tinh hoa phân biệt rạch ròi giữa Chất lượng quyết định (Process) và Sự may mắn ngẫu nhiên (Luck).",
+          "trap_analysis": "Xã hội thường có xu hướng tôn sùng kẻ chiến thắng nhờ liều lĩnh may rủi, tạo ra ảo tưởng cho những kẻ bắt chước đi vào cửa tử."
         }
       ],
-      "estimated_minutes": 45
+      "estimated_minutes": 50
     },
     {
       "week": 12,
-      "title": "Personal OS & Truyền tư duy trong gia đình",
+      "title": "Hệ Điều Hành Cá Nhân (Personal OS) & Truyền Lửa Gia Đình",
       "theme": "integration",
-      "goal": "Chốt hệ điều hành cá nhân 90 ngày tới; thiết kế cách truyền cho người nhà.",
-      "core_idea": "Tư duy tinh hoa chỉ bền khi thành nhịp — và có thể dạy lại.",
+      "goal": "Đóng gói toàn bộ 12 tuần thành một Hệ Điều Hành Cá Nhân 90 Ngày (Personal OS) có nhịp điệu sinh hoạt bền vững; làm chủ kỹ thuật Teach-Back để chuyển hóa tư duy tinh hoa thành văn hóa gia đình tự nhiên.",
+      "core_idea": "Tư duy tinh hoa không phải là một khóa học bạn hoàn thành rồi cất vào tủ kính; nó là một Hệ điều hành tâm trí cần được cập nhật và vận hành mỗi ngày. Bạn chỉ thực sự sở hữu một tri thức khi bạn có thể dạy lại nó cho người thân bằng thứ ngôn ngữ giản dị nhất.",
       "read": [
         {
-          "label": "Đấu trường / Diagnostic",
-          "page": "5_dau_truong"
+          "label": "Trang Đấu Trường — Flashcard & Diagnostic Radar",
+          "page": "pages/5_dau_truong.py"
         },
         {
-          "label": "Daily Workout",
-          "page": "6_dao_tao"
+          "label": "Trang Đào Tạo — Bài tập phản biện AI Mentor",
+          "page": "pages/6_dao_tao.py"
+        },
+        {
+          "label": "Trang Lịch Sử Của Tôi — Bộ 3 Động Lực Tinh Hoa (Elite Trinity)",
+          "page": "pages/8_lich_su.py"
         }
       ],
+      "concept_deep_dive": [
+        {
+          "name": "Kỹ Thuật Dạy Lại Feynman (The Teach-Back Technique)",
+          "summary": "Nguyên tắc vàng của nhà vật lý đoạt giải Nobel Richard Feynman: Kiểm tra tối thượng của sự thấu hiểu không phải là bạn dùng được bao nhiêu thuật ngữ hàn lâm hoa mỹ, mà là bạn có thể giải thích nguyên lý đó cho một đứa trẻ 10 tuổi hiểu và áp dụng được hay không. Nếu người nghe cảm thấy khó hiểu hoặc bạn phải dùng thuật ngữ chuyên ngành để ngụy biện, chính bạn là người chưa thực sự hiểu thấu vấn đề.",
+          "good_example": "Dạy con 10 tuổi về 'Biên an toàn' (Margin of Safety): 'Cầu này chịu được tải trọng 10 tấn, nhưng các bác kỹ sư chỉ cho phép xe dưới 6 tấn đi qua. 4 tấn còn lại là để phòng khi có xe chở quá tải hoặc gió bão bất ngờ. Trong cuộc sống cũng vậy, tiền tiết kiệm của nhà mình chính là cây cầu 4 tấn đó để nhà mình không bao giờ sợ bão'.",
+          "bad_example": "Nói với con: 'Con phải hiểu về hệ số an toàn cơ học và rủi ro đuôi béo bất đối xứng trong phân phối xác suất Gaussian!' (Tự thỏa mãn cái tôi trí thức rỗng).",
+          "boundary": "Khi trao đổi với các chuyên gia kỹ thuật cùng ngành, thuật ngữ chính xác vẫn cần thiết để tối ưu hóa tốc độ truyền tin.",
+          "lattice_link": "Model #01 (First Principles), Model #12 (Feynman Technique) và Model #52 (Circle of Competence)."
+        },
+        {
+          "name": "Nhịp Điệu Vận Hành Cá Nhân 90 Ngày (The 90-Day Cadence)",
+          "summary": "Bộ não con người không thể duy trì sự tập trung cao độ trên một kế hoạch 5 năm hay 10 năm mơ hồ. Nhịp 90 ngày (1 quý) là chu kỳ sinh học và tâm lý tối ưu nhất: đủ dài để tạo ra một chuyển dịch cấu trúc sâu sắc, nhưng đủ ngắn để tạo ra cảm giác cấp bách và phản hồi kịp thời.",
+          "good_example": "Cấu trúc nhịp điệu của Elite:\n- Hàng ngày (15 phút): 1 bài tập Flashcard hoặc 1 câu hỏi phản xạ tại Tab Đào tạo.\n- Hàng tuần (30 phút tối Chủ Nhật): Ghi nhận 1 quyết định vào Decision Journal và rà soát các Stock năng lượng.\n- Hàng quý (90 ngày): Đánh giá lại Radar năng lực tại Tab Diagnostic, cập nhật lại Chiến lược Thanh Tạ (Barbell Strategy) và dọn dẹp các mục tiêu rác.",
+          "bad_example": "Đầu năm viết một danh sách 20 mục tiêu hoành tráng rồi bỏ quên trong ngăn kéo suốt 11 tháng, đến cuối năm lôi ra tiếc nuối.",
+          "boundary": "Nhịp điệu phải được thiết kế tối giản để không tạo ra gánh nặng áp lực quá mức, dẫn tới việc bỏ cuộc giữa chừng.",
+          "lattice_link": "Model #09 (Compounding) và Model #17 (Homeostasis)."
+        }
+      ],
+      "case_study": {
+        "title": "Chuyển Hóa Khung Tư Duy Tinh Hoa Thành 'Hiến Pháp Bữa Cơm Tối' Của Gia Đình",
+        "context": "Anh Dũng (42 tuổi) là một chuyên gia quản trị sau khi hoàn thành 11 tuần huấn luyện đã nâng cấp rõ rệt năng lực tư duy cá nhân. Tuy nhiên, khi về nhà, anh nhận thấy các thành viên trong gia đình vẫn đang tranh cãi theo lối mòn cảm tính cũ: Vợ thường lo lắng thái quá về những tin đồn trên mạng xã hội; hai con (14 tuổi và 10 tuổi) thường xuyên tranh giành đồ đạc, đổ lỗi cho nhau và sợ thất bại mỗi khi bị điểm kém. Ban đầu, anh Dũng thử 'lên lớp giảng đạo' về Charlie Munger và First Principles, nhưng vợ con đều gạt đi: 'Bố cứ đem chuyện công ty về nhà làm không khí gia đình ngột ngạt!'. Anh Dũng nhận ra rằng: Nếu tri thức chỉ nằm trong đầu một người mà không được chuyển hóa thành văn hóa gia đình tự nhiên, thì hệ thống gia đình vẫn cực kỳ mong manh.",
+        "decision_question": "Làm thế nào để truyền tải các nguyên lý tư duy tinh hoa vào nếp sống gia đình một cách vui vẻ, tự nhiên và gắn kết yêu thương?",
+        "facts": [
+          "Con người (đặc biệt là trẻ em và bạn đời) học tập qua GƯƠNG MẪU HÀNH ĐỘNG (Modeling Behavior), không bao giờ học qua những bài giảng đạo lý sáo rỗng.",
+          "Không gian gia đình là nơi của sự thấu cảm, gắn kết và an toàn tâm lý; nếu biến phòng khách thành phòng họp hội đồng quản trị, bạn sẽ phá hủy Stock tình cảm của gia đình.",
+          "Trẻ em có bản năng tò mò tự nhiên rất lớn; các nguyên lý như Đảo ngược (Inversion), Thử nghiệm sai (Falsification) hay Đòn bẩy (Leverage) nếu được biến thành trò chơi đóng vai sẽ kích hoạt sự hào hứng cực đại của trẻ."
+        ],
+        "noise": [
+          "'Triết học và tư duy mô hình quá cao siêu với trẻ con, đợi chúng nó lớn rồi tính' (Định kiến hạ thấp tiềm năng nhận thức của trẻ).",
+          "'Mình là chủ gia đình, mình nói thì mọi người phải nghe' (Bẫy quyền lực gia trưởng phá hủy đối thoại bình đẳng).",
+          "'Gia đình chỉ cần yêu thương nhau là đủ, không cần tư duy hệ thống' (Nhầm lẫn giữa tình cảm và năng lực ra quyết định sinh tồn)."
+        ],
+        "framework_application": "Thiết lập 'Hiến Pháp Bữa Cơm Tối' & Kỹ thuật Teach-Back Vui Nhộn:\n- Bước 1 (Nguyên lý Làm Gương): Bố mẹ là người đầu tiên thực hành: Khi gặp biến cố (bị hỏng xe, mất tiền), bố mẹ không cáu gắt mà bình tĩnh nói: 'Nào, hãy cùng Inversion xem điều may mắn trong chuyện này là gì?'.\n- Bước 2 (Nghi thức Trò Chuyện 15 Phút Tối Thứ Bảy - Saturday Teach-Back):\n  + Thay vì hỏi 'Tuần này con được mấy điểm?', bố mẹ hỏi: 'Tuần này con đã dám thử làm điều gì mới bị thất bại và học được bài học gì?'.\n  + Biến thất bại thành huy chương: Khen ngợi đứa trẻ khi chúng dũng cảm thừa nhận sai lầm và phân tích nguyên nhân gốc rễ.\n- Bước 3 (Trò chơi Đóng Vai Red-Team):\n  + Khi gia đình chuẩn bị lên kế hoạch đi du lịch hè: Giao cho con 14 tuổi làm 'Đội Trưởng Phản Biện Red-Team' — tìm ra 3 rủi ro có thể phá hỏng chuyến đi (quên giấy tờ, trễ máy bay, thời tiết xấu) và chuẩn bị kế hoạch dự phòng. Đứa trẻ cảm thấy mình được tôn trọng và hào hứng tham gia.",
+        "exemplar_analysis": "Kết quả chuyển hóa sau 90 ngày:\n- Không khí gia đình hoàn toàn thay đổi: Không còn những lời cằn nhằn hay đổ lỗi cá nhân; thay vào đó, các thành viên tự nhiên dùng chung một ngôn ngữ tư duy: 'Mẹ ơi, con nghĩ chuyện này mình đang mắc bẫy First-order thinking rồi đấy!'.\n- Đứa con 10 tuổi tự tin giải thích cho bạn bè về cách chia tiền tiết kiệm theo Chiến lược Thanh tạ; đứa con 14 tuổi biết lập kế hoạch học tập theo 3 kịch bản.\n- Gia đình anh Dũng trở thành một 'Tổ chức Tự học Bền vững' (Antifragile Family), sẵn sàng đối mặt và vượt qua mọi biến động của thời đại.",
+        "action_plan": "Khởi động bữa ăn tối thứ Bảy tuần này bằng câu hỏi: 'Tuần này điều ngạc nhiên nhất mà bố/mẹ/con học được là gì?'; cùng nhau viết ra 3 giá trị cốt lõi của gia đình dán lên góc học tập.",
+        "common_traps": [
+          "Bẫy biến nhà thành trường học: Quá nghiêm nghị và giáo điều khiến các thành viên cảm thấy bị phán xét.",
+          "Bẫy thiếu kiên nhẫn: Mong muốn thay đổi tư duy của cả gia đình trong 1 tuần, trong khi đây là một quá trình tích lũy Stock văn hóa tính bằng năm."
+        ]
+      },
       "systems_concepts": [],
       "uncertainty_tools": [],
       "ai_drills": [
         {
           "id": "teach_back",
-          "name": "Teach-back 15 phút",
-          "summary": "Dạy lại 1 ý cho thành viên gia đình; nếu họ áp dụng được thì bạn đã hiểu.",
+          "name": "Nghi Thức Teach-Back 15 Phút Không Thuật Ngữ",
+          "summary": "Chọn 1 nguyên lý tư duy sâu sắc trong 12 tuần và giải thích lại cho con cái hoặc bạn đời trong 15 phút bằng ngôn ngữ đời thường kèm ví dụ minh họa sinh động.",
           "steps": [
-            "Chọn 1 ý trong 12 tuần",
-            "Dạy không jargon",
-            "Họ nêu 1 áp dụng"
+            "Chọn 1 nguyên lý (ví dụ: Inversion, Stock/Flow, Margin of Safety)",
+            "Loại bỏ 100% thuật ngữ kỹ thuật chuyên ngành",
+            "Kể một câu chuyện ngụ ngôn hoặc tình huống thực tế gần gũi",
+            "Yêu cầu người nghe tự đưa ra 1 ví dụ áp dụng trong cuộc sống của chính họ"
           ],
-          "trap": "Thuyết trình dài; không có bài tập nhỏ."
+          "trap": "Thuyết trình một chiều dài dòng và dùng từ ngữ trừu tượng."
         }
       ],
       "exercise": {
-        "prompt": "Viết Personal OS 90 ngày: (1) 3 thói quen tư duy/tuần (2) 1 rủi ro ruin cần cắt (3) 1 option cần mở (4) quy tắc ủy thác AI (5) ai trong nhà bạn sẽ teach-back ý gì trong 15 phút.",
-        "success_criteria": "Đủ 5 mục, cụ thể lịch/nhịp."
+        "prompt": "Hãy tự tay thiết kế 'Bản Tuyên Ngôn Hệ Điều Hành Cá Nhân 90 Ngày' (Personal OS) và kế hoạch Chuyển giao Gia đình:\n1. 3 Nghi thức Nhịp điệu Tư duy cố định bạn cam kết thực hiện mỗi tuần (Lịch cụ thể, giờ cụ thể).\n2. 1 Rủi ro Hủy diệt (Ruin Risk) lớn nhất bạn cam kết cắt đứt vĩnh viễn trong 90 ngày tới.\n3. 1 Quyền chọn Bất đối xứng (Positive Optionality) bạn cam kết nuôi dưỡng trong 90 ngày tới.\n4. Ma trận Ranh giới Ủy thác AI của bạn: 1 việc bạn giao AI làm ngay hôm nay và 1 vùng cấm tuyệt đối không giao cho AI.\n5. Kế hoạch Teach-Back: Bạn sẽ chọn Nguyên lý nào trong 12 tuần để chia sẻ cho ai trong gia đình vào ngày nào tuần này? Bạn sẽ dùng ví dụ đời thường nào để người đó hiểu ngay lập tức?",
+        "checklist": [
+          "Có đủ 5 trụ cột của Hệ điều hành cá nhân 90 ngày với lịch trình đo lường được",
+          "Chỉ đích danh rủi ro Ruin cần loại bỏ và quyền chọn cần mở",
+          "Xác lập ranh giới ủy thác AI thực tế và có trách nhiệm",
+          "Kế hoạch Teach-back cụ thể người nhận, thời gian và ví dụ đời thường không dùng thuật ngữ"
+        ],
+        "bad_example": "Personal OS: Tôi sẽ suy nghĩ tích cực hơn mỗi ngày. Cắt rủi ro: Không thức khuya. Quyền chọn: Chờ cơ hội đến. AI: Dùng AI nhiều hơn. Teach-back: Tôi sẽ bảo con tôi học bài chăm chỉ.",
+        "good_example": "1. 3 Nghi thức Nhịp điệu cố định hàng tuần:\n- Nghi thức 1 (Hàng ngày - 10 phút, 06h30 sáng): Làm 1 lượt Flashcard phản xạ tại Tab Đấu trường của app để kích hoạt lăng kính nhận thức trước ngày làm việc.\n- Nghi thức 2 (Tối thứ Năm - 30 phút, 20h30): Mở tab Decision Journal ghi lại 1 quyết định quan trọng trong tuần và tự chấm điểm hiệu chuẩn nhận thức.\n- Nghi thức 3 (Tối Chủ Nhật - 15 phút, 19h30): Họp gia đình ngắn gọn, mỗi người chia sẻ 1 sai lầm đã mắc phải trong tuần và bài học rút ra.\n2. 1 Rủi ro Hủy diệt cần cắt bỏ trong 90 ngày: Quyết định tất toán dứt điểm khoản vay thấu chi tín dụng 150 triệu lãi suất cao (24%/năm); cam kết không bao giờ quẹt thẻ tín dụng vượt quá số dư tiền mặt hiện có.\n3. 1 Quyền chọn Bất đối xứng nuôi dưỡng: Dành 6 giờ/tuần vào sáng thứ Bảy viết loạt bài phân tích chuyên môn về Tư duy Hệ thống ứng dụng trong Doanh nghiệp vừa và nhỏ đăng lên LinkedIn cá nhân để xây dựng mạng lưới đối tác độc lập.\n4. Ranh giới Ủy thác AI: Giao AI tự động phân loại và tóm tắt toàn bộ hóa đơn chi tiêu hàng tuần (Tầng 1); Nghiêm cấm dùng AI đưa ra quyết định chọn trường đại học hoặc hướng nghiệp cho con gái (Tầng 3 - chỉ con người đối thoại thấu cảm).\n5. Kế hoạch Teach-Back tuần này:\n- Người nhận: Vợ tôi.\n- Thời gian: Sáng Chủ Nhật tại quán cà phê.\n- Nguyên lý chọn: 'Second-order Thinking' (Hậu quả bậc 2).\n- Cách giải thích đời thường: So sánh việc mua một chú chó cảnh cho con: Bậc 1 là niềm vui thích tức thì khi thấy cún con dễ thương; Bậc 2 là 10 năm cam kết dọn vệ sinh hàng ngày, chi phí thú y, và không thể đi du lịch dài ngày tùy tiện nếu không có người gửi nuôi. Giúp hai vợ chồng cùng cân nhắc kỹ lưỡng trước khi quyết định nhận nuôi."
       },
       "quiz": [
         {
-          "q": "Dấu hiệu curriculum 12 tuần 'thành công' với gia đình?",
+          "q": "Dấu hiệu chuẩn xác nhất chứng minh bạn đã hoàn thành xuất sắc Lộ trình 12 Tuần Tư duy Tinh hoa là gì?",
           "options": [
-            "Có nhịp review quyết định + teach-back được 1 ý cho người khác",
-            "Thuộc 88 model",
-            "Chỉ hoàn thành quiz",
-            "Không cần áp dụng đời thực"
+            "Bạn thiết lập được nhịp điệu sinh hoạt tư duy đều đặn và có thể giải thích, truyền tải thành công các nguyên lý cốt lõi cho người thân áp dụng được vào đời thực",
+            "Bạn thuộc lòng tên gọi của tất cả 88 mô hình tư duy trong app",
+            "Bạn đạt điểm số tuyệt đối 100% trong tất cả các bài kiểm tra trắc nghiệm",
+            "Bạn dùng thật nhiều thuật ngữ chuyên môn tiếng Anh phức tạp khi nói chuyện với người khác"
           ],
           "answer": 0,
-          "explain": "Elite transfer = hành vi + dạy lại, không phải điểm quiz."
+          "explain": "Đích đến tối thượng của Elite Thinking không phải là tích lũy kiến thức hàn lâm để khoe mẽ, mà là chuyển hóa thành Thói quen phản xạ tự nhiên và chuyển giao văn hóa bền vững cho thế hệ tương lai.",
+          "trap_analysis": "Rất nhiều người rơi vào bẫy 'sưu tầm chứng chỉ' hoặc tự thỏa mãn với điểm số lý thuyết mà không tạo ra bất kỳ thay đổi nào trong hành vi thực tế ngoài đời."
+        },
+        {
+          "q": "Theo Kỹ thuật Teach-back của Richard Feynman, khi người nghe không hiểu điều bạn đang giải thích, nguyên nhân gốc rễ là gì?",
+          "options": [
+            "Do chính bạn chưa thực sự hiểu thấu đáo bản chất của vấn đề và đang che đậy sự mơ hồ bằng các thuật ngữ phức tạp",
+            "Do người nghe thiếu thông minh và không có nền tảng học vấn",
+            "Do nguyên lý khoa học đó quá cao siêu không thể diễn đạt bằng lời",
+            "Do thời gian giải thích chưa đủ dài"
+          ],
+          "answer": 0,
+          "explain": "Feynman tin rằng sự thấu suốt thực sự luôn đi kèm với sự giản dị tột cùng. Mọi sự rườm rà, bí hiểm về mặt ngôn từ đều là triệu chứng của sự nhận thức nửa vời.",
+          "trap_analysis": "Bản năng con người thường thích đổ lỗi cho người nghe là 'chậm hiểu', thay vì dũng cảm thừa nhận lỗ hổng trong tư duy của chính mình."
+        },
+        {
+          "q": "Tại sao chu kỳ 'Nhịp điệu 90 ngày' (90-Day Cadence) lại là khung thời gian tối ưu nhất để vận hành Hệ Điều Hành Cá Nhân (Personal OS)?",
+          "options": [
+            "Vì nó đủ dài để tạo ra các chuyển dịch cấu trúc có ý nghĩa, nhưng đủ ngắn để não bộ duy trì sự tập trung, tính cấp bách và nhận phản hồi hiệu chỉnh kịp thời",
+            "Vì một năm có 4 mùa tự nhiên",
+            "Vì các công ty lớn đều báo cáo tài chính theo quý nên cá nhân phải làm theo",
+            "Vì sau 90 ngày con người bắt buộc phải đổi mục tiêu mới"
+          ],
+          "answer": 0,
+          "explain": "Khoa học hành vi chỉ ra rằng 90 ngày là điểm ngọt (Sweet Spot) giữa tầm nhìn chiến lược và kỷ luật thực thi hàng tuần, giúp tránh bẫy trì hoãn của các kế hoạch năm dài lê thê.",
+          "trap_analysis": "Mọi người thường đặt mục tiêu cả năm (Annual Resolutions) rồi nhanh chóng bỏ cuộc sau tháng đầu tiên vì khoảng cách thời gian quá xa vời."
         }
       ],
-      "estimated_minutes": 50
+      "estimated_minutes": 55
     }
   ]
 }
