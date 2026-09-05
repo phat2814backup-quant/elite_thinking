@@ -50,6 +50,7 @@ with admin_tabs[1]:
     data = load_lessons()
     st.caption(f"Version {data.get('version')} · Cập nhật lần cuối: {data.get('updated_at')} bởi {data.get('updated_by')}")
 
+    tracks_meta = get_tracks_meta()
     all_available_tracks = list(tracks_meta.keys())
     g_edit = st.selectbox("Khóa học / Track cần sửa", all_available_tracks, format_func=lambda x: tracks_meta.get(x, {}).get("name", x))
     lessons_edit = data.get(g_edit, [])
