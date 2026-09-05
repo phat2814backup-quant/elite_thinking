@@ -187,6 +187,6 @@ st.divider()
 st.markdown("### Toàn cảnh 12 tuần")
 for w in weeks:
     p = get_week_progress(username, w["week"])
-    st = p.get("status", "not_started")
-    icon = {"completed": "✅", "in_progress": "🟡"}.get(st, "⚪")
+    status_val = p.get("status", "not_started")
+    icon = {"completed": "✅", "in_progress": "🟡"}.get(status_val, "⚪")
     st.markdown(f"{icon} **Tuần {w['week']}** · {w['title']} · _{w.get('theme')}_")

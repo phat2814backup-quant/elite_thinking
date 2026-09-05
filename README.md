@@ -18,6 +18,7 @@ Huấn luyện tư duy tinh hoa (First Principles · Munger · Feynman) — mult
 elite_thinking_v2/
   app.py                          # Home: Hướng dẫn & Bản đồ
   pages/
+    0_lo_trinh_12_tuan.py
     1_the_cuoc_elite.py
     2_9_che_do_tu_duy.py
     3_88_mo_hinh.py
@@ -29,6 +30,7 @@ elite_thinking_v2/
     9_admin.py
   utils/
     app_common.py                 # login + sidebar + API keys (dùng chung mọi page)
+    curriculum.py                 # Lộ trình 12 tuần & persistence
     db.py                         # Supabase client
     auth.py / knowledge.py / ...
   data/                           # knowledge, lessons, models, users seed

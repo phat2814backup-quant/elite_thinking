@@ -112,8 +112,8 @@ def curriculum_summary(username: str) -> Dict[str, Any]:
     prog = get_user_curriculum_progress(username)
     done = 0
     for w in weeks:
-        st = prog.get("weeks", {}).get(str(w["week"]), {}).get("status")
-        if st == "completed":
+        status_val = prog.get("weeks", {}).get(str(w["week"]), {}).get("status")
+        if status_val == "completed":
             done += 1
     total = len(weeks) or 12
     return {
