@@ -318,3 +318,183 @@ def generate_dynamic_lesson(
 
     return {"error": f"Không thể tự động sinh bài tập (đã thử {len(keys)} key). Lỗi: {last_err}"}
 
+
+DECOMPOSE_NOTE_PROMPT = """Bạn là Elite Knowledge Architect & Cognitive Scientist (chuyên gia về Second Brain, Zettelkasten, First Principles và Munger Latticework).
+
+Nhiệm vụ: Tiếp nhận nội dung ghi chú thô của người học, phân rã sâu sắc thành các hạt tri thức nguyên tử (atomic knowledge) và kết nối chéo với mạng lưới tư duy đỉnh cao.
+
+BẮT BUỘC trả lời bằng JSON hợp lệ, không bọc code block markdown ngoài JSON.
+
+Cấu trúc JSON yêu cầu:
+{
+  "title": "Tiêu đề xúc tích, tinh hoa, chuẩn nhận thức (kèm từ khóa chính hoặc song ngữ nếu phù hợp)",
+  "essence": "Bản chất cốt lõi nhất được đúc kết trong 1-2 câu ngắn gọn, chuẩn xác, không dùng từ sáo rỗng",
+  "domain": "Lĩnh vực chính (chọn 1 trong: 🧠 Siêu nhận thức & Phương pháp học (Metacognition) | 📈 Đầu tư, Chứng khoán & Trading | 💼 Quản trị, Lãnh đạo & Ra quyết định | 🤖 Công nghệ AI & Khoa học Máy tính | 🧬 Khoa học Não bộ & Sinh học | 🧘 Triết học, Tâm thức & Nhân sinh | 🎲 Xác suất, Toán học & Hệ thống phức hợp | 🌱 Thói quen & Phát triển cá nhân | 📦 Khác (Tổng quát))",
+  "metaphor": "Hình tượng ẩn dụ hoặc ví dụ đời thường nổi bật được sử dụng trong ghi chú (nếu có, tóm tắt 1-2 câu)",
+  "atomic_concepts": [
+    "Khái niệm nguyên tử 1 (định nghĩa 1 dòng)",
+    "Khái niệm nguyên tử 2 (định nghĩa 1 dòng)",
+    "Khái niệm nguyên tử 3 (định nghĩa 1 dòng)"
+  ],
+  "mental_models_linked": [
+    "Tên mô hình tư duy liên quan mật thiết (Ví dụ: First Principles Thinking, Illusion of Explanatory Depth, Inversion, Feedback Loop, Power Law, Opportunity Cost...)"
+  ],
+  "first_principles_linked": [
+    "Tên nguyên lý đệ nhất liên quan (Ví dụ: Nguyên lý trừu tượng hóa, Nguyên lý phản hồi chủ động, Định luật bảo toàn...)"
+  ],
+  "actionable_steps": [
+    "Bước 1: ...",
+    "Bước 2: ...",
+    "Bước 3: ..."
+  ],
+  "traps_and_biases": "Bẫy tư duy, ảo tưởng hoặc sai lầm nhận thức phổ biến mà ghi chú này giúp khắc phục",
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+  "study_questions": [
+    {
+      "question": "Câu hỏi ôn tập / phản xạ nhận thức (Active Recall)",
+      "answer": "Gợi ý cốt lõi trả lời"
+    },
+    {
+      "question": "Câu hỏi đào sâu / phản biện tình huống",
+      "answer": "Gợi ý cốt lõi trả lời"
+    }
+  ],
+  "cross_topic_connections": "Gợi ý liên kết chéo: khái niệm này có thể ứng dụng chéo vào những bài toán hay lĩnh vực nào khác (ví dụ: trading, giao tiếp lãnh đạo, nuôi dạy con, đàm phán...)"
+}
+
+Quy tắc BẮT BUỘC:
+- 100% nội dung giải thích, câu hỏi, bước hành động phải viết bằng TIẾNG VIỆT tự nhiên, sâu sắc, chuẩn xác.
+- Ép định nghĩa mơ hồ về các khái niệm có thể kiểm chứng được.
+"""
+
+
+def decompose_knowledge_note(
+    api_keys: Union[str, List[str], tuple],
+    model_name: str,
+    raw_content: str,
+    title_hint: str = "",
+) -> Dict[str, Any]:
+    """Phân rã ghi chú thô bằng AI với cơ chế failover đa key an toàn."""
+    keys = _normalize_keys(api_keys)
+    if not keys or not raw_content.strip():
+        from utils.notes_manager import heuristic_decompose_note
+        return heuristic_decompose_note(raw_content, title_hint)
+
+    prompt = f"""Gợi ý tiêu đề từ người học (nếu có): {title_hint}
+
+Nội dung ghi chú thô cần phân rã:
+\"\"\"
+{raw_content}
+\"\"\"
+"""
+    candidates = [model_name or "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+    last_err = None
+
+    for idx, current_key in enumerate(keys, 1):
+        mask = _mask_key(current_key)
+        try:
+            genai.configure(api_key=current_key)
+        except Exception as e:
+            last_err = f"Lỗi cấu hình Key #{idx} ({mask}): {e}"
+            continue
+
+        for candidate in candidates:
+            try:
+                model = genai.GenerativeModel(
+                    model_name=candidate,
+                    system_instruction=DECOMPOSE_NOTE_PROMPT,
+                    generation_config={"response_mime_type": "application/json"},
+                )
+                resp = model.generate_content(
+                    prompt,
+                    request_options={"retry": None, "timeout": 30}
+                )
+                if resp and resp.text:
+                    cleaned = clean_json_response(resp.text)
+                    data = json.loads(cleaned)
+                    if isinstance(data, dict):
+                        data["_decomposed_by"] = f"Gemini ({candidate}) [Key {mask}]"
+                        return data
+            except Exception as e:
+                err_msg = str(e)
+                last_err = f"Key #{idx} ({mask}) lỗi [{candidate}]: {err_msg}"
+                if _is_quota_or_auth_error(err_msg):
+                    break
+                continue
+
+    # Fallback sang Heuristic nếu tất cả API keys đều lỗi
+    from utils.notes_manager import heuristic_decompose_note
+    data = heuristic_decompose_note(raw_content, title_hint)
+    data["_decomposed_by"] = f"Heuristic Fallback Engine (API tạm gián đoạn: {last_err})"
+    return data
+
+
+SYNTHESIZE_NOTES_PROMPT = """Bạn là Elite Knowledge Architect. 
+Nhiệm vụ: Phân tích sự giao thoa, mối liên hệ đa chiều và tổng hợp bài học liên ngành giữa các ghi chú tri thức mà người học đã tích lũy trong Second Brain.
+
+Yêu cầu đầu ra (viết bằng Markdown rõ ràng, sắc bén):
+1. **Điểm Giao Thoa Tri Thức (Core Intersection)**: Bản chất chung kết nối các ghi chú này là gì?
+2. **Hiệu Ứng Cộng Hưởng & Đòn Bẩy (Latticework Synergy)**: Khi kết hợp các khái niệm này lại, ta tạo ra lợi thế nhận thức gì mà từng khái niệm riêng lẻ không có?
+3. **Mâu Thuẫn / Điểm Nghẽn Cần Lưu Ý (Nuances & Traps)**: Có điều kiện biên hay mâu thuẫn biểu kiến nào giữa chúng cần dung hòa không?
+4. **Mô Hình Hành Động Tích Hợp (Integrated Action Playbook)**: 3-4 bước ứng dụng tổng hợp vào thực tế công việc, đầu tư hay học tập.
+"""
+
+
+def synthesize_cross_notes(
+    api_keys: Union[str, List[str], tuple],
+    model_name: str,
+    notes_list: List[Dict[str, Any]],
+    user_query: str = "",
+) -> str:
+    """Tổng hợp sự giao thoa giữa nhiều ghi chú tri thức."""
+    keys = _normalize_keys(api_keys)
+    if not keys:
+        return "⚠️ Cần cấu hình API Key để kích hoạt tính năng AI Tổng Hợp Giao Thoa Tri Thức."
+
+    notes_summary_parts = []
+    for i, n in enumerate(notes_list, 1):
+        notes_summary_parts.append(f"""### Ghi chú #{i}: {n.get('title')}
+- Lĩnh vực: {n.get('domain')}
+- Bản chất cốt lõi: {n.get('essence')}
+- Mô hình liên kết: {', '.join(n.get('mental_models_linked', []))}
+- Các bước: {' -> '.join(n.get('actionable_steps', []))}
+- Tóm lược gốc: {n.get('raw_content', '')[:600]}
+""")
+
+    prompt = f"""Dưới đây là {len(notes_list)} ghi chú tri thức trong kho Second Brain của người học:
+
+{chr(10).join(notes_summary_parts)}
+
+{f'Câu hỏi / Hướng tập trung của người học: {user_query}' if user_query else 'Hãy phân tích sự giao thoa, sức mạnh cộng hưởng và mô hình hành động tích hợp giữa các ghi chú này.'}
+"""
+    candidates = [model_name or "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+    last_err = None
+
+    for idx, current_key in enumerate(keys, 1):
+        mask = _mask_key(current_key)
+        try:
+            genai.configure(api_key=current_key)
+        except Exception as e:
+            last_err = f"Lỗi cấu hình Key #{idx} ({mask}): {e}"
+            continue
+
+        for candidate in candidates:
+            try:
+                model = genai.GenerativeModel(
+                    model_name=candidate,
+                    system_instruction=SYNTHESIZE_NOTES_PROMPT,
+                )
+                resp = model.generate_content(
+                    prompt,
+                    request_options={"retry": None, "timeout": 30}
+                )
+                if resp and resp.text:
+                    return resp.text.strip()
+            except Exception as e:
+                err_msg = str(e)
+                last_err = f"Key #{idx} ({mask}) lỗi [{candidate}]: {err_msg}"
+                if _is_quota_or_auth_error(err_msg):
+                    break
+                continue
+
+    return f"Lỗi khi tổng hợp giao thoa ghi chú: {last_err}"
