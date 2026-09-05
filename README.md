@@ -18,15 +18,15 @@ Huấn luyện tư duy tinh hoa (First Principles · Munger · Feynman) — mult
 elite_thinking_v2/
   app.py                          # Home: Hướng dẫn & Bản đồ
   pages/
-    1_🌐_Thế_cuộc_Elite.py
-    2_📖_9_Chế_độ_Tư_duy.py
-    3_🕸️_88_Mô_hình.py
-    4_📚_Thư_viện_Nguyên_lý.py
-    5_⚡_Đấu_trường.py
-    6_🎓_Đào_tạo.py
-    7_🚀_Phân_rã.py
-    8_📝_Lịch_sử.py
-    9_👑_Admin.py
+    1_the_cuoc_elite.py
+    2_9_che_do_tu_duy.py
+    3_88_mo_hinh.py
+    4_thu_vien_nguyen_ly.py
+    5_dau_truong.py
+    6_dao_tao.py
+    7_phan_ra.py
+    8_lich_su.py
+    9_admin.py
   utils/
     app_common.py                 # login + sidebar + API keys (dùng chung mọi page)
     db.py                         # Supabase client

@@ -199,14 +199,14 @@ if not st.session_state.get("authenticated") or not st.session_state.get("user")
 else:
     # ĐÃ ĐĂNG NHẬP: Hiển thị các trang theo phân quyền
     home_page = st.Page(render_home, title="Bản đồ Tư duy", icon="🧭", default=True)
-    p1 = st.Page("pages/1_🌐_Thế_cuộc_Elite.py", title="Thế cuộc & Elite", icon="🌐")
-    p2 = st.Page("pages/2_📖_9_Chế_độ_Tư_duy.py", title="9 Chế độ Tư duy", icon="📖")
-    p3 = st.Page("pages/3_🕸️_88_Mô_hình.py", title="88 Mô hình", icon="🕸️")
-    p4 = st.Page("pages/4_📚_Thư_viện_Nguyên_lý.py", title="Thư viện Nguyên lý", icon="📚")
-    p5 = st.Page("pages/5_⚡_Đấu_trường.py", title="Đấu trường & Bài tập", icon="⚡")
-    p6 = st.Page("pages/6_🎓_Đào_tạo.py", title="Đào tạo Gia đình", icon="🎓")
-    p7 = st.Page("pages/7_🚀_Phân_rã.py", title="Phân rã Vấn đề", icon="🚀")
-    p8 = st.Page("pages/8_📝_Lịch_sử.py", title="Lịch sử Học tập", icon="📝")
+    p1 = st.Page("pages/1_the_cuoc_elite.py", title="Thế cuộc & Elite", icon="🌐")
+    p2 = st.Page("pages/2_9_che_do_tu_duy.py", title="9 Chế độ Tư duy", icon="📖")
+    p3 = st.Page("pages/3_88_mo_hinh.py", title="88 Mô hình", icon="🕸️")
+    p4 = st.Page("pages/4_thu_vien_nguyen_ly.py", title="Thư viện Nguyên lý", icon="📚")
+    p5 = st.Page("pages/5_dau_truong.py", title="Đấu trường & Bài tập", icon="⚡")
+    p6 = st.Page("pages/6_dao_tao.py", title="Đào tạo Gia đình", icon="🎓")
+    p7 = st.Page("pages/7_phan_ra.py", title="Phân rã Vấn đề", icon="🚀")
+    p8 = st.Page("pages/8_lich_su.py", title="Lịch sử Học tập", icon="📝")
 
     nav_map = {
         "🧭 Định hướng": [home_page],
@@ -216,7 +216,7 @@ else:
 
     # Phân quyền Admin: Chỉ tài khoản Admin mới nhìn thấy mục Quản trị trong Menu
     if is_admin():
-        p9 = st.Page("pages/9_👑_Admin.py", title="Quản trị Hệ thống", icon="👑")
+        p9 = st.Page("pages/9_admin.py", title="Quản trị Hệ thống", icon="👑")
         nav_map["👑 Quản trị"] = [p9]
 
     router = st.navigation(nav_map, position="sidebar")
