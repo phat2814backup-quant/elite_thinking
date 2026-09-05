@@ -8,6 +8,7 @@ from utils.app_common import bootstrap
 
 ctx = bootstrap()
 username = ctx["username"]
+is_admin_user = ctx.get("is_admin", False)
 
 from utils.curriculum import (
     load_curriculum,
@@ -29,6 +30,9 @@ summary = curriculum_summary(username)
 
 st.title("📅 Lộ trình 12 tuần — Tư duy Tinh hoa Gia đình")
 st.caption(meta.get("subtitle") or "Curriculum · Systems/Uncertainty · AI Judgment")
+
+if is_admin_user:
+    st.info("👑 **Quyền Admin:** Bạn có đặc quyền mở khóa toàn bộ 12 tuần để duyệt nội dung và trải nghiệm tự do.")
 
 # --- Overview metrics ---
 c1, c2, c3, c4 = st.columns(4)
@@ -60,7 +64,8 @@ for w in weeks:
     wp = get_week_progress(username, w["week"])
     status = wp.get("status", "not_started")
     icon = {"completed": "✅", "in_progress": "🟡", "not_started": "⚪"}.get(status, "⚪")
-    lock = "" if is_week_unlocked(username, w["week"]) else " 🔒"
+    unlocked_w = is_week_unlocked(username, w["week"], is_admin=is_admin_user)
+    lock = "" if unlocked_w else " 🔒"
     theme = w.get("theme", "")
     labels.append(f"{icon} Tuần {w['week']}: {w['title']} ({theme}){lock}")
 
@@ -68,7 +73,7 @@ idx_default = max(0, min(len(weeks) - 1, int(summary["current_week"]) - 1))
 choice = st.selectbox("Chọn tuần", options=list(range(len(weeks))), format_func=lambda i: labels[i], index=idx_default)
 week = weeks[choice]
 wn = int(week["week"])
-unlocked = is_week_unlocked(username, wn)
+unlocked = is_week_unlocked(username, wn, is_admin=is_admin_user)
 wp = get_week_progress(username, wn)
 
 if not unlocked:
@@ -175,7 +180,7 @@ with col_a:
         st.caption(f"Quiz: {wp.get('quiz_score')}/{wp.get('quiz_total')}")
 with col_b:
     if st.button("🏁 Hoàn thành tuần này", type="primary", key=f"done_{wn}"):
-        ok, msg = complete_week(username, wn)
+        ok, msg = complete_week(username, wn, is_admin=is_admin_user)
         if ok:
             st.success(msg)
             st.balloons()

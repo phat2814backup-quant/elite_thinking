@@ -90,13 +90,22 @@ def save_week_quiz_score(username: str, week_num: int, score: int, total: int) -
     save_user_history(username, hist)
 
 
-def complete_week(username: str, week_num: int) -> tuple[bool, str]:
-    """Mark week complete if exercise present (quiz optional but recommended)."""
+def complete_week(username: str, week_num: int, is_admin: Optional[bool] = None) -> tuple[bool, str]:
+    """Mark week complete if exercise present (quiz optional but recommended). Admin can bypass answer requirement."""
+    if is_admin is None:
+        try:
+            from utils.auth import is_admin as _check_admin
+            is_admin = _check_admin()
+        except Exception:
+            is_admin = False
+
     hist = load_user_history(username)
     bucket = _progress_bucket(hist)
     w = bucket.setdefault("weeks", {}).setdefault(str(week_num), {})
-    if not (w.get("exercise_answer") or "").strip():
+    if not is_admin and not (w.get("exercise_answer") or "").strip():
         return False, "Cần nộp bài tập áp dụng trước khi hoàn thành tuần."
+    if is_admin and not (w.get("exercise_answer") or "").strip():
+        w["exercise_answer"] = "[Admin hoàn thành duyệt nội dung]"
     w["status"] = "completed"
     w["completed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # Unlock next week pointer
@@ -125,12 +134,19 @@ def curriculum_summary(username: str) -> Dict[str, Any]:
     }
 
 
-def is_week_unlocked(username: str, week_num: int) -> bool:
-    """Week 1 always open; week N open if N-1 completed OR N <= current_week."""
-    if week_num <= 1:
+def is_week_unlocked(username: str, week_num: int, is_admin: Optional[bool] = None) -> bool:
+    """Week 1 always open; admin has all weeks unlocked; week N open if N-1 completed OR N <= current_week."""
+    if is_admin is None:
+        try:
+            from utils.auth import is_admin as _check_admin
+            is_admin = _check_admin()
+        except Exception:
+            is_admin = False
+
+    if is_admin or int(week_num) <= 1:
         return True
     prog = get_user_curriculum_progress(username)
-    prev = prog.get("weeks", {}).get(str(week_num - 1), {})
+    prev = prog.get("weeks", {}).get(str(int(week_num) - 1), {})
     if prev.get("status") == "completed":
         return True
     # Soft unlock: allow browsing up to current_week pointer

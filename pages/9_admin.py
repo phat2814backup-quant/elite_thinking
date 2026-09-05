@@ -34,7 +34,19 @@ with admin_tabs[0]:
             uname = h.get("username", "?")
             n_ana = len(h.get("analyses", []))
             n_train = len(h.get("training", {}))
-            with st.expander(f"**{uname}** · {n_ana} phân rã · {n_train} bài học · cập nhật {h.get('updated_at', '—')}"):
+            c12 = h.get("curriculum_12w", {})
+            c12_weeks = c12.get("weeks", {})
+            c12_done = sum(1 for v in c12_weeks.values() if v.get("status") == "completed")
+            c12_curr = c12.get("current_week", 1)
+            with st.expander(f"**{uname}** · Lộ trình: {c12_done}/12 tuần (Tuần {c12_curr}) · {n_ana} phân rã · {n_train} bài tập"):
+                if c12_weeks:
+                    st.markdown(f"##### 📅 Lộ trình 12 tuần (Đang ở Tuần {c12_curr})")
+                    for w_k, w_v in sorted(c12_weeks.items(), key=lambda x: int(x[0])):
+                        st_icon = "✅" if w_v.get("status") == "completed" else "🟡"
+                        score_txt = f"Quiz: {w_v.get('quiz_score')}/{w_v.get('quiz_total')}" if w_v.get("quiz_score") is not None else "Chưa làm quiz"
+                        st.markdown(f"- {st_icon} **Tuần {w_k}**: {w_v.get('status')} · {score_txt}")
+                        if w_v.get("exercise_answer"):
+                            st.caption(f"Bài tập: {w_v.get('exercise_answer')[:180]}...")
                 st.markdown("##### Phân rã gần đây")
                 for a in h.get("analyses", [])[:10]:
                     st.markdown(f"- `{a.get('time')}` {a.get('problem', '')[:100]}")
