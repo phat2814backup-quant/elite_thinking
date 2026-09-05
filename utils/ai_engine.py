@@ -92,6 +92,12 @@ def _is_quota_or_auth_error(err_str: str) -> bool:
         "api key not valid",
         "permission_denied",
         "unauthenticated",
+        "503",
+        "504",
+        "deadline",
+        "unavailable",
+        "not found",
+        "no longer available",
     ]
     return any(sig in lower for sig in quota_signals)
 
@@ -132,7 +138,10 @@ def analyze_problem(
                     system_instruction=SYSTEM_PROMPT,
                     generation_config={"response_mime_type": "application/json"},
                 )
-                response = model.generate_content(problem_text)
+                response = model.generate_content(
+                    problem_text,
+                    request_options={"retry": None, "timeout": 30}
+                )
                 if response and response.text:
                     key_success = True
                     used_key_mask = mask
@@ -199,7 +208,10 @@ Câu trả lời của học sinh:
                     model_name=candidate,
                     system_instruction=TRAINING_FEEDBACK_PROMPT,
                 )
-                resp = model.generate_content(prompt)
+                resp = model.generate_content(
+                    prompt,
+                    request_options={"retry": None, "timeout": 20}
+                )
                 if resp and resp.text:
                     return resp.text.strip()
             except Exception as e:
@@ -282,7 +294,10 @@ def generate_dynamic_lesson(
                     system_instruction=DYNAMIC_LESSON_PROMPT,
                     generation_config={"response_mime_type": "application/json"},
                 )
-                resp = model.generate_content(user_request_prompt)
+                resp = model.generate_content(
+                    user_request_prompt,
+                    request_options={"retry": None, "timeout": 25}
+                )
                 if resp and resp.text:
                     cleaned = clean_json_response(resp.text)
                     data = json.loads(cleaned)
