@@ -24,7 +24,9 @@ from utils.training import (
     get_lesson,
     get_tracks_meta,
     get_lessons_by_track,
+    add_custom_lesson,
 )
+from utils.knowledge import load_user_history, save_training_answer
 from utils.ai_engine import feedback_on_answer, generate_dynamic_lesson
 
 st.title("🎓 Đào tạo tư duy theo lộ trình đa tầng")

@@ -2,6 +2,7 @@
 """Đấu trường Luyện nhớ"""
 from __future__ import annotations
 
+import random
 import streamlit as st
 from utils.app_common import bootstrap
 
@@ -19,6 +20,8 @@ from utils.diagnostic import (
     save_user_diagnostic_result,
     get_latest_diagnostic_result,
 )
+from utils.mental_models import get_pillars, get_all_models
+from utils.knowledge import get_domains
 
 _quiz = ensure_quiz_imports()
 QUIZ_IMPORT_ERROR = _quiz["error"]

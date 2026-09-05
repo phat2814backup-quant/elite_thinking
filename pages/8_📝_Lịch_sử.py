@@ -14,6 +14,9 @@ model_choice = ctx["model_choice"]
 from utils.knowledge import load_user_history
 from utils.training import get_lesson
 from utils.app_common import ensure_quiz_imports
+from utils.daily_workout import get_user_streak_info
+from utils.diagnostic import get_latest_diagnostic_result
+from utils.decision_journal import get_decision_summary_stats
 
 _quiz = ensure_quiz_imports()
 get_user_mastery_summary = _quiz["get_user_mastery_summary"]
