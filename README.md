@@ -101,3 +101,18 @@ Sidebar hiển thị trạng thái: 🟢 Supabase / 🟠 local JSON.
 - Knowledge / lessons / mental models vẫn là file trong repo → không cần DB.
 - `user_histories.data` là JSONB — giữ nguyên schema nội bộ cũ (analyses, training, quiz_stats, daily_workouts, diagnostics, decisions…) nên không phá các module hiện có.
 - Nếu Supabase lỗi tạm thời, app **fallback local JSON** tự động.
+
+## Lộ trình 12 tuần (v2.1)
+
+Trang **📅 Lộ trình 12 tuần** là xương sống học tập gia đình:
+
+| Tuần | Nội dung |
+|------|----------|
+| 1–4 | Nền tảng: First Principles, Inversion, Bayesian, Latticework |
+| 5–6 | **Systems**: stock/flow, feedback, leverage, emergence |
+| 7–8 | **Uncertainty**: scenario, premortem+, fat tail, optionality, antifragile |
+| 9–10 | **AI Judgment**: ủy thác có ranh giới, red-team / verify |
+| 11–12 | Integration: incentive, decision review, Personal OS + teach-back |
+
+Tiến độ lưu trong `user_histories` (Supabase hoặc local) dưới key `curriculum_12w`.
+Mỗi tuần: đọc gợi ý → concept/drill → bài tập đời thực (bắt buộc) → quiz → hoàn thành.

@@ -35,6 +35,12 @@ def render_home():
     nhằm giúp bạn giải phóng khỏi lối mòn suy nghĩ bắt chước (analogy), làm chủ các quy luật bất biến của tự nhiên và ra quyết định chính xác trong môi trường phức tạp.
     """)
 
+    # CTA lộ trình 12 tuần
+    st.success(
+        "**Bắt đầu từ đây:** mở trang **📅 Lộ trình 12 tuần** trên sidebar "
+        "(Curriculum + Systems/Uncertainty + AI Judgment gói trong một lộ trình)."
+    )
+
     # 3 Triết lý cốt lõi
     c_q1, c_q2, c_q3 = st.columns(3)
     with c_q1:
@@ -199,6 +205,7 @@ if not st.session_state.get("authenticated") or not st.session_state.get("user")
 else:
     # ĐÃ ĐĂNG NHẬP: Hiển thị các trang theo phân quyền
     home_page = st.Page(render_home, title="Bản đồ Tư duy", icon="🧭", default=True)
+    p0 = st.Page("pages/0_lo_trinh_12_tuan.py", title="Lộ trình 12 tuần", icon="📅")
     p1 = st.Page("pages/1_the_cuoc_elite.py", title="Thế cuộc & Elite", icon="🌐")
     p2 = st.Page("pages/2_9_che_do_tu_duy.py", title="9 Chế độ Tư duy", icon="📖")
     p3 = st.Page("pages/3_88_mo_hinh.py", title="88 Mô hình", icon="🕸️")
@@ -209,7 +216,7 @@ else:
     p8 = st.Page("pages/8_lich_su.py", title="Lịch sử Học tập", icon="📝")
 
     nav_map = {
-        "🧭 Định hướng": [home_page],
+        "🧭 Định hướng": [home_page, p0],
         "🧠 Lăng kính & Mô hình": [p1, p2, p3, p4],
         "⚔️ Rèn luyện & Thực chiến": [p5, p6, p7, p8],
     }

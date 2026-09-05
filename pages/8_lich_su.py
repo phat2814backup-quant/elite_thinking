@@ -24,6 +24,13 @@ get_user_mastery_summary = _quiz["get_user_mastery_summary"]
 st.title("📝 Lịch sử của tôi")
 hist = load_user_history(username)
 
+from utils.curriculum import curriculum_summary
+_cs = curriculum_summary(username)
+st.info(
+    f"📅 **Lộ trình 12 tuần:** {_cs['completed_weeks']}/{_cs['total_weeks']} tuần "
+    f"({_cs['pct']}%) · tuần hiện tại: {_cs['current_week']}"
+)
+
 # Thống kê Bộ 3 Động Lực Tinh Hoa (Elite Trinity)
 st.markdown("#### 🔥 Chỉ Số Rèn Luyện & Hiệu Chuẩn Tinh Hoa")
 trin_c1, trin_c2, trin_c3 = st.columns(3)

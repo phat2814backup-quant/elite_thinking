@@ -1,0 +1,581 @@
+{
+  "version": "1.0",
+  "title": "Lộ trình 12 tuần — Tư duy Tinh hoa Gia đình",
+  "subtitle": "Curriculum (xương) · Systems/Uncertainty (thịt tuần 5–8) · AI Judgment (thịt tuần 9–10)",
+  "principles": [
+    "Mỗi tuần 1 ý trung tâm — không nhồi",
+    "Bài tập đời thực bắt buộc để complete",
+    "Systems + Uncertainty + AI gắn đúng tuần, không tách app con",
+    "Hoàn thành đo bằng hành vi + review, không chỉ quiz"
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Bản đồ & First Principles",
+      "theme": "foundation",
+      "goal": "Hiểu app là hệ điều hành tư duy, không phải thư viện đọc chơi; nắm First Principles.",
+      "core_idea": "Mọi vấn đề phức tạp đều có thể bóc về chân lý cơ bản không thể suy diễn thêm — tách Fact khỏi Opinion.",
+      "read": [
+        {
+          "label": "Trang Home — Bản đồ 7 bước",
+          "page": "app"
+        },
+        {
+          "label": "9 Chế độ — First Principles",
+          "page": "2_9_che_do_tu_duy"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Chọn 1 vấn đề thật tuần này (học / tiền / gia đình). Viết: (1) Mục tiêu mơ hồ đang nói gì? (2) 3 sự thật cứng bạn biết chắc? (3) 2 ý kiến đang bị nhầm là sự thật?",
+        "success_criteria": "Có tách Fact vs Opinion rõ ràng."
+      },
+      "quiz": [
+        {
+          "q": "First Principles khác Reasoning by Analogy ở điểm nào?",
+          "options": [
+            "Bóc về chân lý cơ bản rồi dựng lại từ 0",
+            "Làm ngược lại đối thủ",
+            "Lấy trung bình ý kiến chuyên gia",
+            "Tin kinh nghiệm bản thân là đủ"
+          ],
+          "answer": 0,
+          "explain": "Analogy = bắt chước; First Principles = phân rã tới chân lý rồi thiết kế lại."
+        }
+      ],
+      "estimated_minutes": 35
+    },
+    {
+      "week": 2,
+      "title": "Inversion & Hậu quả bậc 2",
+      "theme": "foundation",
+      "goal": "Luyện nhìn thất bại trước thành công; thấy hệ quả dây chuyền.",
+      "core_idea": "Tránh stupidity dễ hơn tìm brilliance. Mọi hành động có hậu quả bậc 1, 2, 3.",
+      "read": [
+        {
+          "label": "9 Chế độ — Inversion",
+          "page": "2_9_che_do_tu_duy"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Lấy quyết định bạn sắp làm. Viết Premortem: 'Đã thất bại sau 6 tháng — liệt kê 5 nguyên nhân'. Với mỗi nguyên nhân, ghi hậu quả bậc 2.",
+        "success_criteria": "≥5 nguyên nhân thất bại + ít nhất 3 hậu quả bậc 2."
+      },
+      "quiz": [
+        {
+          "q": "Premortem là gì?",
+          "options": [
+            "Giả định dự án đã thất bại rồi tìm nguyên nhân",
+            "Tối ưu KPI sau khi thành công",
+            "Brainstorm ý tưởng mới",
+            "Bỏ qua rủi ro để giữ morale"
+          ],
+          "answer": 0,
+          "explain": "Premortem = inversion áp dụng vào kế hoạch trước khi triển khai."
+        }
+      ],
+      "estimated_minutes": 35
+    },
+    {
+      "week": 3,
+      "title": "Bayesian & Base Rate",
+      "theme": "foundation",
+      "goal": "Cập nhật niềm tin theo bằng chứng; không quên tỷ lệ nền.",
+      "core_idea": "Niềm tin là xác suất, không phải nhị phân đúng/sai. Base rate trước, câu chuyện sau.",
+      "read": [
+        {
+          "label": "9 Chế độ — Bayesian",
+          "page": "2_9_che_do_tu_duy"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Một niềm tin bạn đang giữ mạnh. Ghi: Prior (0–100%), bằng chứng mới tuần này, Posterior sau cập nhật, và base rate liên quan (nếu có).",
+        "success_criteria": "Có prior, evidence, posterior số hóa."
+      },
+      "quiz": [
+        {
+          "q": "Base rate fallacy là gì?",
+          "options": [
+            "Bỏ qua tỷ lệ nền, chỉ tin câu chuyện cụ thể",
+            "Tin quá nhiều vào thống kê",
+            "Luôn lấy trung bình",
+            "Không bao giờ đổi ý"
+          ],
+          "answer": 0,
+          "explain": "Bẫy phổ biến: case sinh động át tỷ lệ nền."
+        }
+      ],
+      "estimated_minutes": 40
+    },
+    {
+      "week": 4,
+      "title": "Latticework — nối model",
+      "theme": "foundation",
+      "goal": "Không học model rời; luyện kết lưới 2–3 model lên một vấn đề.",
+      "core_idea": "Hiểu biết đa ngành tạo lợi thế không sao chép được bằng một chuyên môn hẹp.",
+      "read": [
+        {
+          "label": "88 Mô hình Hạt nhân",
+          "page": "3_88_mo_hinh"
+        },
+        {
+          "label": "Thư viện nguyên lý",
+          "page": "4_thu_vien_nguyen_ly"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Chọn 1 vấn đề. Áp dụng đúng 3 model khác trụ (vd: Opportunity Cost + Feedback Loop + Margin of Safety). Viết mỗi model 3–5 câu.",
+        "success_criteria": "3 model khác domain, có kết luận hành động."
+      },
+      "quiz": [
+        {
+          "q": "Latticework of mental models nhấn mạnh điều gì?",
+          "options": [
+            "Nối nhiều model đa ngành thành lưới",
+            "Thuộc lòng 1 framework duy nhất",
+            "Chỉ dùng toán",
+            "Tránh mô hình để giữ trực giác"
+          ],
+          "answer": 0,
+          "explain": "Munger: đa model > một dual chuyên sâu mù."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 5,
+      "title": "Hệ thống: Stock, Flow, Feedback",
+      "theme": "systems",
+      "goal": "Nhìn đời sống/công việc như hệ: tồn kho, dòng chảy, vòng phản hồi.",
+      "core_idea": "Hành vi hệ thống bị chi phối bởi cấu trúc — không chỉ bởi nỗ lực cá nhân.",
+      "read": [
+        {
+          "label": "Ôn First Principles + Inversion",
+          "page": "2_9_che_do_tu_duy"
+        }
+      ],
+      "systems_concepts": [
+        {
+          "id": "stock_flow",
+          "name": "Stock & Flow",
+          "summary": "Stock = mức tích lũy (tiền tiết kiệm, kỹ năng, uy tín). Flow = dòng vào/ra theo thời gian.",
+          "boundary": "Áp dụng khi có tích lũy theo thời gian; kém hữu ích với sự kiện one-shot thuần.",
+          "trap": "Chỉ nhìn flow (thu nhập tháng) quên stock (tài sản ròng / nợ).",
+          "action": "Với 1 mục tiêu: gọi tên 1 stock và 2 flow (in/out) đang chi phối nó."
+        },
+        {
+          "id": "feedback",
+          "name": "Feedback Loop (+/−)",
+          "summary": "Vòng + khuếch đại; vòng − ổn định về mục tiêu. Trễ phản hồi gây dao động.",
+          "boundary": "Cần quan sát lặp lại theo thời gian.",
+          "trap": "Can thiệp mạnh vào hệ có delay → overshoot.",
+          "action": "Vẽ 1 vòng feedback trong gia đình hoặc công việc (ai/cái gì phản hồi cái gì)."
+        }
+      ],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Chọn 1 'stock' quan trọng (sức khỏe / kỹ năng / quan hệ / tiền). Mô tả flow vào, flow ra, 1 vòng feedback đang giữ hoặc phá stock đó.",
+        "success_criteria": "Có stock, 2 flow, 1 feedback rõ."
+      },
+      "quiz": [
+        {
+          "q": "Stock khác flow chỗ nào?",
+          "options": [
+            "Stock là mức tại một thời điểm; flow là tốc độ thay đổi theo thời gian",
+            "Stock là ý tưởng; flow là cảm xúc",
+            "Hai khái niệm giống nhau",
+            "Flow luôn quan trọng hơn stock"
+          ],
+          "answer": 0,
+          "explain": "Nhầm stock/flow là nguồn gốc nhiều quyết định ngắn hạn sai."
+        },
+        {
+          "q": "Phản hồi trễ (delayed feedback) thường dẫn tới?",
+          "options": [
+            "Dao động / overshoot khi can thiệp quá mạnh",
+            "Hệ luôn ổn định",
+            "Không ảnh hưởng",
+            "Chỉ xảy ra trong vật lý"
+          ],
+          "answer": 0,
+          "explain": "Delay + gain cao → dao động."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 6,
+      "title": "Leverage Points & Độ phức tạp",
+      "theme": "systems",
+      "goal": "Tìm điểm đòn bẩy trong hệ; phân biệt phức tạp vs rối.",
+      "core_idea": "Không phải mọi nút đều quan trọng như nhau — đòn bẩy nằm ở cấu trúc, mục tiêu, paradigm.",
+      "read": [
+        {
+          "label": "88 Mô hình — hệ thống / đòn bẩy",
+          "page": "3_88_mo_hinh"
+        }
+      ],
+      "systems_concepts": [
+        {
+          "id": "leverage",
+          "name": "Leverage Points (Meadows)",
+          "summary": "Đòn bẩy tăng dần: số liệu → buffer → feedback → rule → mục tiêu → paradigm.",
+          "boundary": "Đòn bẩy cao khó đẩy hơn nhưng bền hơn.",
+          "trap": "Chỉ tối ưu KPI (đòn bẩy thấp) rồi tưởng đã đổi hệ.",
+          "action": "Với 1 vấn đề lặp lại: liệt kê can thiệp đòn bẩy thấp vs cao."
+        },
+        {
+          "id": "emergence",
+          "name": "Emergence",
+          "summary": "Tính chất hệ không suy ra từ phần tử đơn lẻ (kẹt xe, văn hóa nhóm).",
+          "boundary": "Khi tương tác nhiều agent.",
+          "trap": "Đổ lỗi một cá nhân cho thất bại mang tính cấu trúc.",
+          "action": "Tìm 1 hiện tượng 'emergent' trong nhà hoặc team."
+        }
+      ],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Một vấn đề lặp lại 3 lần trở lên. Viết: can thiệp bạn từng thử (đòn bẩy thấp) và 1 can thiệp cấu trúc/rule/mục tiêu (đòn bẩy cao) chưa thử.",
+        "success_criteria": "Phân biệt can thiệp thấp vs cao cụ thể."
+      },
+      "quiz": [
+        {
+          "q": "Theo tư duy hệ thống, thay đổi paradigm thuộc nhóm đòn bẩy?",
+          "options": [
+            "Rất cao — khó nhưng thay đổi sâu",
+            "Thấp nhất — chỉ nên sửa số liệu",
+            "Không liên quan",
+            "Chỉ dành cho chính trị"
+          ],
+          "answer": 0,
+          "explain": "Meadows xếp paradigm/mục tiêu cao hơn parameter."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 7,
+      "title": "Bất định: Scenario & Premortem nâng cao",
+      "theme": "uncertainty",
+      "goal": "Sống với không biết chắc: nhiều kịch bản, không một forecast duy nhất.",
+      "core_idea": "Tương lai là phân phối, không phải điểm. Lập kế hoạch trên nhiều thế giới có thể.",
+      "read": [],
+      "systems_concepts": [],
+      "uncertainty_tools": [
+        {
+          "id": "scenarios",
+          "name": "Scenario Planning",
+          "summary": "Dự 3–4 kịch bản (cơ sở / tốt / xấu / đen) với trigger signs.",
+          "boundary": "Khi quyết định nhạy cảm với môi trường bên ngoài.",
+          "trap": "Chỉ có plan A; hoặc 20 kịch bản không hành động được.",
+          "action": "3 kịch bản + tín hiệu nhận diện sớm cho mỗi cái."
+        },
+        {
+          "id": "premortem_plus",
+          "name": "Premortem + Contingency",
+          "summary": "Không chỉ liệt kê thất bại — gắn sẵn hành động nếu trigger xuất hiện.",
+          "boundary": "Quyết định có thời gian chuẩn bị.",
+          "trap": "Premortem xong rồi quên, không có trigger.",
+          "action": "Mỗi rủi ro lớn ↔ 1 trigger ↔ 1 hành động dự phòng."
+        }
+      ],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Một quyết định 3–12 tháng tới. Viết 3 scenarios (base/upside/downside). Mỗi scenario: 2 dấu hiệu sớm + 1 việc bạn sẽ làm nếu nó hiện ra.",
+        "success_criteria": "3 scenarios, mỗi cái có trigger + action."
+      },
+      "quiz": [
+        {
+          "q": "Scenario planning khác forecast điểm ở chỗ?",
+          "options": [
+            "Chuẩn bị nhiều thế giới có thể xảy ra + tín hiệu",
+            "Chọn 1 con số tương lai duy nhất",
+            "Bỏ qua dữ liệu",
+            "Chỉ dùng trực giác"
+          ],
+          "answer": 0,
+          "explain": "Elite chuẩn bị phân phối, không tôn thờ một con số."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 8,
+      "title": "Đuôi phân phối, Optionality, Antifragile",
+      "theme": "uncertainty",
+      "goal": "Bảo vệ khỏi rủi ro đuôi; thiết kế để hưởng upside bất đối xứng.",
+      "core_idea": "Một số hệ vỡ khi sốc (fragile); một số sống sót (robust); một số *mạnh lên* nhờ biến động (antifragile).",
+      "read": [],
+      "systems_concepts": [],
+      "uncertainty_tools": [
+        {
+          "id": "fat_tail",
+          "name": "Fat tails & ruin",
+          "summary": "Rủi ro nhỏ xác suất nhưng phá hủy không bù được bằng lời trung bình.",
+          "boundary": "Khi có khả năng ruin (nợ xấu, sức khỏe, danh tiếng).",
+          "trap": "Tối ưu lợi nhuận trung bình, bỏ qua xác suất phá sản.",
+          "action": "Liệt kê 1 rủi ro 'ruin' trong đời bạn và cách cắt đuôi."
+        },
+        {
+          "id": "optionality",
+          "name": "Optionality",
+          "summary": "Giữ quyền làm / không làm với chi phí nhỏ; upside lớn, downside giới hạn.",
+          "boundary": "Khi tương lai mơ hồ và chi phí giữ option chấp nhận được.",
+          "trap": "Trả quá đắt cho option không bao giờ exercise; hoặc đóng mọi option sớm.",
+          "action": "1 option bạn đang giữ hoặc nên mở tuần này."
+        },
+        {
+          "id": "antifragile",
+          "name": "Antifragility (thực dụng)",
+          "summary": "Thiết kế thói quen/hệ để biến động nhỏ *có ích* (luyện tập, stress vừa).",
+          "boundary": "Không áp dụng cho rủi ro ruin.",
+          "trap": "Gọi 'antifragile' cho thứ chỉ là robust; hoặc tự hại bằng stress quá lớn.",
+          "action": "1 thói quen có stressor nhỏ có kiểm soát (học, tập, feedback)."
+        }
+      ],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Vẽ barbell cá nhân: (A) phần đời cần an toàn / tránh ruin, (B) phần nhỏ được phép thử nghiệm upside. Nêu 1 thay đổi tuần này để barbell rõ hơn.",
+        "success_criteria": "Có A, B và 1 thay đổi cụ thể."
+      },
+      "quiz": [
+        {
+          "q": "Ruin risk nên được xử lý thế nào?",
+          "options": [
+            "Ưu tiên cắt / tránh trước khi tối ưu lợi nhuận trung bình",
+            "Chấp nhận nếu expected value dương",
+            "Bỏ qua vì hiếm",
+            "Mua càng nhiều đòn bẩy càng tốt"
+          ],
+          "answer": 0,
+          "explain": "Không có expected value nào bù được khi đã ruin."
+        }
+      ],
+      "estimated_minutes": 50
+    },
+    {
+      "week": 9,
+      "title": "AI Judgment: Ủy thác có ranh giới",
+      "theme": "ai_judgment",
+      "goal": "Quyết định phần nào giao AI, phần nào giữ judgment người.",
+      "core_idea": "AI là đòn bẩy nhận thức — không phải người thay thế trách nhiệm.",
+      "read": [
+        {
+          "label": "Phân rã thực chiến (AI)",
+          "page": "7_phan_ra"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [
+        {
+          "id": "delegate_map",
+          "name": "Bản đồ ủy thác",
+          "summary": "Chia việc: (1) AI được làm tự động (2) AI nháp, người duyệt (3) Chỉ người.",
+          "steps": [
+            "Liệt kê quyết định/tuần",
+            "Gán 1 trong 3 mức",
+            "Viết 'cấm ủy thác' (giá trị, rủi ro ruin, quan hệ)"
+          ],
+          "trap": "Ủy thác cả phần accountability; hoặc không ủy thác gì vì sợ."
+        },
+        {
+          "id": "spec_quality",
+          "name": "Chất lượng đề bài cho AI",
+          "summary": "Output AI kém thường do đề bài mơ hồ — thiếu ràng buộc, mục tiêu, tiêu chí.",
+          "steps": [
+            "Mục tiêu đo được",
+            "Ràng buộc (thời gian, tiền, giá trị)",
+            "Định nghĩa 'xong'"
+          ],
+          "trap": "Hỏi AI 'nên làm gì?' không ngữ cảnh."
+        }
+      ],
+      "exercise": {
+        "prompt": "Liệt kê 5 việc tuần này. Phân loại: Auto / Nháp-AI-duyệt / Chỉ-người. Với 1 việc 'Chỉ-người', giải thích vì sao không được ủy thác.",
+        "success_criteria": "5 việc phân loại + 1 lý do cấm ủy thác rõ (ruin/giá trị/trách nhiệm)."
+      },
+      "quiz": [
+        {
+          "q": "Phần nào thường *không* nên ủy thác hoàn toàn cho AI?",
+          "options": [
+            "Quyết định có rủi ro ruin hoặc gắn accountability cá nhân",
+            "Tóm tắt tài liệu dài",
+            "Soạn nháp email",
+            "Liệt kê ý tưởng thô"
+          ],
+          "answer": 0,
+          "explain": "AI hỗ trợ phân tích; người chịu trách nhiệm đuôi rủi ro và giá trị."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 10,
+      "title": "AI Judgment: Kiểm chứng & bắt lỗi",
+      "theme": "ai_judgment",
+      "goal": "Luyện phản xạ verify: AI nghe hay ≠ AI đúng.",
+      "core_idea": "Verification là kỹ năng elite trong kỷ nguyên model sinh văn bản.",
+      "read": [
+        {
+          "label": "Phân rã / Đấu trường",
+          "page": "7_phan_ra"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [
+        {
+          "id": "red_team",
+          "name": "Red-team câu trả lời AI",
+          "summary": "Bắt buộc tìm: giả định ẩn, thiếu base rate, nhầm stock/flow, khuyến nghị không hành động được.",
+          "steps": [
+            "Yêu cầu AI trả lời 1 quyết định",
+            "Tự viết ≥3 lỗ hổng",
+            "Hỏi lại AI đúng lỗ hổng đó"
+          ],
+          "trap": "Accept câu văn trôi chảy."
+        },
+        {
+          "id": "two_model",
+          "name": "Đối chiếu 2 góc",
+          "summary": "Cùng câu hỏi, yêu cầu 2 frame (inversion vs first principles) rồi hợp nhất.",
+          "steps": [
+            "Prompt frame A",
+            "Prompt frame B",
+            "Người tổng hợp"
+          ],
+          "trap": "Trung bình hai câu trả lời sai."
+        }
+      ],
+      "exercise": {
+        "prompt": "Cho AI (hoặc tự giả lập) 1 lời khuyên quan trọng. Viết red-team: (1) giả định ẩn (2) dữ liệu thiếu (3) rủi ro đuôi bị bỏ qua (4) bạn sẽ verify bằng nguồn nào.",
+        "success_criteria": "≥3 lỗ hổng + 1 kế hoạch verify."
+      },
+      "quiz": [
+        {
+          "q": "Dấu hiệu nguy hiểm khi đọc output AI?",
+          "options": [
+            "Trôi chảy, tự tin, thiếu giả định/ràng buộc/rủi ro đuôi",
+            "Có nêu uncertainty",
+            "Có liệt kê nguồn",
+            "Có bảo 'tôi không chắc'"
+          ],
+          "answer": 0,
+          "explain": "Fluency ≠ truth; elite săn giả định và đuôi rủi ro."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 11,
+      "title": "Incentive, Decision Review, Goodhart",
+      "theme": "integration",
+      "goal": "Nhìn incentive làm méo hành vi; đóng vòng decision journal.",
+      "core_idea": "Show me the incentive and I will show you the outcome. Metric sai → hành vi sai.",
+      "read": [
+        {
+          "label": "Nhật ký quyết định (Phân rã)",
+          "page": "7_phan_ra"
+        },
+        {
+          "label": "Lịch sử của tôi",
+          "page": "8_lich_su"
+        }
+      ],
+      "systems_concepts": [
+        {
+          "id": "goodhart",
+          "name": "Goodhart's Law",
+          "summary": "Khi chỉ số trở thành mục tiêu, nó hết là chỉ số tốt.",
+          "boundary": "Mọi hệ KPI/KPI giả.",
+          "trap": "Tối ưu metric công khai, phá mục tiêu thật.",
+          "action": "Tìm 1 metric trong đời/team đang bị game."
+        }
+      ],
+      "uncertainty_tools": [],
+      "ai_drills": [],
+      "exercise": {
+        "prompt": "Mở decision journal (hoặc liệt kê 3 quyết định cũ). Với mỗi cái: outcome thực tế vs kỳ vọng; incentive nào đã đẩy bạn; bài học 1 câu.",
+        "success_criteria": "≥2 quyết định có review outcome + incentive."
+      },
+      "quiz": [
+        {
+          "q": "Goodhart's Law nói gì?",
+          "options": [
+            "Khi metric trở thành target thì metric hỏng",
+            "Metric càng nhiều càng tốt",
+            "Chỉ số tài chính luôn trung thực",
+            "Không liên quan incentive"
+          ],
+          "answer": 0,
+          "explain": "Incentive quanh metric làm méo hành vi."
+        }
+      ],
+      "estimated_minutes": 45
+    },
+    {
+      "week": 12,
+      "title": "Personal OS & Truyền tư duy trong gia đình",
+      "theme": "integration",
+      "goal": "Chốt hệ điều hành cá nhân 90 ngày tới; thiết kế cách truyền cho người nhà.",
+      "core_idea": "Tư duy tinh hoa chỉ bền khi thành nhịp — và có thể dạy lại.",
+      "read": [
+        {
+          "label": "Đấu trường / Diagnostic",
+          "page": "5_dau_truong"
+        },
+        {
+          "label": "Daily Workout",
+          "page": "6_dao_tao"
+        }
+      ],
+      "systems_concepts": [],
+      "uncertainty_tools": [],
+      "ai_drills": [
+        {
+          "id": "teach_back",
+          "name": "Teach-back 15 phút",
+          "summary": "Dạy lại 1 ý cho thành viên gia đình; nếu họ áp dụng được thì bạn đã hiểu.",
+          "steps": [
+            "Chọn 1 ý trong 12 tuần",
+            "Dạy không jargon",
+            "Họ nêu 1 áp dụng"
+          ],
+          "trap": "Thuyết trình dài; không có bài tập nhỏ."
+        }
+      ],
+      "exercise": {
+        "prompt": "Viết Personal OS 90 ngày: (1) 3 thói quen tư duy/tuần (2) 1 rủi ro ruin cần cắt (3) 1 option cần mở (4) quy tắc ủy thác AI (5) ai trong nhà bạn sẽ teach-back ý gì trong 15 phút.",
+        "success_criteria": "Đủ 5 mục, cụ thể lịch/nhịp."
+      },
+      "quiz": [
+        {
+          "q": "Dấu hiệu curriculum 12 tuần 'thành công' với gia đình?",
+          "options": [
+            "Có nhịp review quyết định + teach-back được 1 ý cho người khác",
+            "Thuộc 88 model",
+            "Chỉ hoàn thành quiz",
+            "Không cần áp dụng đời thực"
+          ],
+          "answer": 0,
+          "explain": "Elite transfer = hành vi + dạy lại, không phải điểm quiz."
+        }
+      ],
+      "estimated_minutes": 50
+    }
+  ]
+}
