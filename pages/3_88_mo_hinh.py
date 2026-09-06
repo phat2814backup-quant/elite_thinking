@@ -148,22 +148,22 @@ with subtab1:
 with subtab2:
     st.markdown("#### 🗂️ Thẻ Flashcard Bóc Tách Chuyên Sâu Từng Mô Hình")
 
-    # Callout Banner nổi bật: The Great Mental Models Hub (Volume 1 & 2)
+    # Callout Banner nổi bật: The Great Mental Models Hub (Volumes 1, 2 & 3)
     with st.container(border=True):
-        c_banner_info, c_banner_actions = st.columns([2.5, 3.5])
+        c_banner_info, c_banner_actions = st.columns([2.3, 3.7])
         with c_banner_info:
             st.markdown("""
-            ##### 💎 Trọn Bộ The Great Mental Models (Shane Parrish — Volumes 1 & 2)
-            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** cho **19 Siêu Mô Hình Tư Duy Cốt Lõi**:
+            ##### 💎 Trọn Bộ The Great Mental Models (Shane Parrish — Volumes 1, 2 & 3)
+            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** cho **29 Siêu Mô Hình Hạt Nhân**:
             * **🛠️ Quy trình thực thi 4 bước (Action Protocol)**
             * **⛔ Ranh giới áp dụng (Boundary Conditions — Khi nào KHÔNG dùng)**
             * **🌐 Tình huống thực chiến đa chiều (K12 & Gia đình, Phát triển sự nghiệp, Đầu tư VN-Index)**
             """)
-            st.caption("📘 **Vol 1:** Tư duy nền tảng (9 models) · 📗 **Vol 2:** Vật lý học & Sinh học thực chiến (10 models)")
+            st.caption("📘 **Vol 1:** Tư duy nền tảng (9) · 📗 **Vol 2:** Vật lý & Sinh học (10) · 📙 **Vol 3:** Hệ thống & Toán học (10)")
 
         with c_banner_actions:
             st.markdown("**⚡ Phím tắt mở nhanh từng mô hình GMM:**")
-            gmm_t1, gmm_t2 = st.tabs(["📘 Vol 1: Tư duy (9)", "📗 Vol 2: Vật lý & Sinh học (10)"])
+            gmm_t1, gmm_t2, gmm_t3 = st.tabs(["📘 Vol 1: Tư duy (9)", "📗 Vol 2: Tự nhiên (10)", "📙 Vol 3: Hệ thống (10)"])
 
             with gmm_t1:
                 # Row 1: Logic & Tinh giản
@@ -258,9 +258,58 @@ with subtab2:
                         st.session_state["_action_jump_mid"] = "BIO-05"
                         st.rerun()
 
+            with gmm_t3:
+                st.caption("📐 **Toán học & Xác suất (Mathematics):**")
+                m3_c1, m3_c2, m3_c3 = st.columns(3)
+                with m3_c1:
+                    if st.button("📈 MATH-01\nLãi kép", key="btn_gmm_math01", use_container_width=True, help="Lãi kép (Compounding — Kỳ quan thứ 8)"):
+                        st.session_state["_action_jump_mid"] = "MATH-01"
+                        st.rerun()
+                with m3_c2:
+                    if st.button("⚖️ MATH-02\nPareto 80/20", key="btn_gmm_math02", use_container_width=True, help="Định luật Lũy thừa & Pareto 80/20"):
+                        st.session_state["_action_jump_mid"] = "MATH-02"
+                        st.rerun()
+                with m3_c3:
+                    if st.button("🎯 MATH-04\nEV & Kelly", key="btn_gmm_math04", use_container_width=True, help="Giá trị Kỳ vọng & Tiêu chuẩn Kelly"):
+                        st.session_state["_action_jump_mid"] = "MATH-04"
+                        st.rerun()
+
+                m3_d1, m3_d2, m3_d3 = st.columns(3)
+                with m3_d1:
+                    if st.button("📉 MATH-06\nHồi quy TB", key="btn_gmm_math06", use_container_width=True, help="Hồi quy về Giá trị Trung bình (Regression to Mean)"):
+                        st.session_state["_action_jump_mid"] = "MATH-06"
+                        st.rerun()
+                with m3_d2:
+                    if st.button("🦢 MATH-07\nĐuôi béo", key="btn_gmm_math07", use_container_width=True, help="Phân phối Chuẩn vs Đuôi béo (Fat Tails / Extremistan)"):
+                        st.session_state["_action_jump_mid"] = "MATH-07"
+                        st.rerun()
+                with m3_d3:
+                    if st.button("⭕ MATH-10\nNhân số 0", key="btn_gmm_math10", use_container_width=True, help="Tính Phi công thái học & Nhân với số 0 (Non-Ergodicity)"):
+                        st.session_state["_action_jump_mid"] = "MATH-10"
+                        st.rerun()
+
+                st.caption("⚙️ **Kỹ thuật & Hệ thống (Systems Thinking):**")
+                s3_c1, s3_c2, s3_c3, s3_c4 = st.columns(4)
+                with s3_c1:
+                    if st.button("🔁 SYS-01\nPhản hồi", key="btn_gmm_sys01", use_container_width=True, help="Vòng Phản hồi Âm & Dương (Feedback Loops)"):
+                        st.session_state["_action_jump_mid"] = "SYS-01"
+                        st.rerun()
+                with s3_c2:
+                    if st.button("🛡️ SYS-02\nBiên an toàn", key="btn_gmm_sys02", use_container_width=True, help="Biên độ An toàn & Dự phòng (Margin of Safety)"):
+                        st.session_state["_action_jump_mid"] = "SYS-02"
+                        st.rerun()
+                with s3_c3:
+                    if st.button("🍾 SYS-03\nNút cổ chai", key="btn_gmm_sys03", use_container_width=True, help="Nút Cổ chai & Lý thuyết Điểm Hạn chế (TOC)"):
+                        st.session_state["_action_jump_mid"] = "SYS-03"
+                        st.rerun()
+                with s3_c4:
+                    if st.button("🏋️ SYS-04\nChống mong manh", key="btn_gmm_sys04", use_container_width=True, help="Tính Chống Mong manh (Antifragility & Barbell)"):
+                        st.session_state["_action_jump_mid"] = "SYS-04"
+                        st.rerun()
+
             btn_all_gmm, btn_reset = st.columns(2)
             with btn_all_gmm:
-                if st.button("✨ Lọc trọn bộ 19 mô hình GMM", type="primary", use_container_width=True):
+                if st.button("✨ Lọc trọn bộ 29 mô hình GMM", type="primary", use_container_width=True):
                     st.session_state["_action_filter_gmm"] = True
                     st.rerun()
             with btn_reset:

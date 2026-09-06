@@ -1774,7 +1774,7 @@ MODELS_QUIZ = [
     },
 
     # -------------------------------------------------------------------------
-    # TRỤ CỘT 5: TOÁN HỌC & XÁC SUẤT (6 CÂU: TIER 1 & TIER 2)
+    # TRỤ CỘT 5: TOÁN HỌC & XÁC SUẤT (8 CÂU: GMM VOL 1 & VOL 3 ENRICHED)
     # -------------------------------------------------------------------------
     {
         "id": "Q-MATH-01",
@@ -1842,6 +1842,27 @@ MODELS_QUIZ = [
         "trap_analysis": "Bẫy thờ ơ tỷ lệ nền (Base Rate Fallacy): Tin vào các lời hứa hẹn làm giàu siêu tốc mà quên rằng tỷ lệ thành công nền chỉ là 1 phần vạn."
     },
     {
+        "id": "Q-MATH-04",
+        "model_id": "MATH-04",
+        "pillar": "Toán học & Xác suất",
+        "tier": 1,
+        "model_name": "Giá Trị Kỳ Vọng & Tiêu Chuẩn Kelly (Expected Value & Kelly Criterion)",
+        "scenario": (
+            "Một nhà đầu tư phân tích một cơ hội: Xác suất cổ phiếu tăng giá 60% mang lại lợi nhuận 40% (p = 0.6, b = 0.4); xác suất giảm giá là 40% với mức lỗ 20% (q = 0.4). "
+            "Tính toán cho thấy giá trị kỳ vọng (EV) dương. Tuy nhiên, anh ta băn khoăn nên phân bổ bao nhiêu phần trăm danh mục để vừa tăng trưởng tối đa vừa không có nguy cơ cháy tài khoản."
+        ),
+        "question": "Công thức toán học nào giải quyết chính xác bài toán quy mô vị thế tối ưu này?",
+        "options": [
+            "A. Cược tất tay (All-in 100%) vì EV dương",
+            "B. Tiêu chuẩn Kelly (Kelly Criterion): Xác định tỷ lệ vốn tối ưu $f^* = \frac{bp - q}{b}$ để tối đa hóa tốc độ tăng trưởng logarit dài hạn",
+            "C. Chia đều tài sản thành 100 phần bằng nhau",
+            "D. Gấp đôi tiền cược sau mỗi lần thua (Martingale)"
+        ],
+        "correct_index": 1,
+        "explanation": "Tiêu chuẩn Kelly chứng minh rằng cược quá ít thì bỏ lỡ cơ hội, nhưng cược quá mức Kelly (Over-betting) chắc chắn sẽ dẫn đến phá sản dài hạn do chuỗi rủi ro liên tiếp.",
+        "trap_analysis": "Bẫy cược quá tay: Đánh đồng việc có EV dương với việc được phép cược toàn bộ tài sản; một cú sảy chân sẽ xóa sổ toàn bộ vốn liếng."
+    },
+    {
         "id": "Q-MATH-05",
         "model_id": "MATH-05",
         "pillar": "Toán học & Xác suất",
@@ -1864,19 +1885,40 @@ MODELS_QUIZ = [
         "trap_analysis": "Chỉ mải mê vẽ viễn cảnh thắng lợi (Upside) mà hoàn toàn mù tịt trước các cạm bẫy hủy diệt (Downside risk) có thể xóa sổ toàn bộ cơ đồ."
     },
     {
+        "id": "Q-MATH-06",
+        "model_id": "MATH-06",
+        "pillar": "Toán học & Xác suất",
+        "tier": 1,
+        "model_name": "Hồi Quy Về Giá Trị Trung Bình (Regression to the Mean)",
+        "scenario": (
+            "Một cầu thủ bóng đá vừa có một mùa giải thăng hoa rực rỡ với số bàn thắng gấp 3 lần mức trung bình sự nghiệp nhờ hàng loạt pha dứt điểm may mắn trúng cột dọc bay vào lưới. "
+            "Câu lạc bộ vội vàng ký hợp đồng 5 năm với mức lương kỷ lục. Mùa giải tiếp theo, số bàn thắng của anh ta quay trở lại đúng mức trung bình của 5 năm trước."
+        ),
+        "question": "Quy luật thống kê nào chi phối hiện tượng phong độ quay về mức nền tảng này?",
+        "options": [
+            "A. Quy luật triệt tiêu năng lượng",
+            "B. Hồi quy về giá trị trung bình (Regression to the Mean): Các biến cố cực đoan do yếu tố may mắn ngẫu nhiên đóng góp sẽ có xu hướng tự nhiên quay trở về gần giá trị trung bình tổng thể trong các lần quan sát tiếp theo",
+            "C. Hiệu ứng mỏ neo",
+            "D. Thuyết tương đối"
+        ],
+        "correct_index": 1,
+        "explanation": "Phong độ cực đoan là sự kết hợp của năng lực thực tế và may mắn đột biến. Theo thời gian, may mắn sẽ cân bằng lại và kết quả sẽ hội tụ về đường trung bình.",
+        "trap_analysis": "Nhầm lẫn giữa phong độ nhất thời do may mắn với đẳng cấp nội tại bền vững; mua đỉnh tài sản vì tưởng thành tích đột biến sẽ kéo dài mãi mãi."
+    },
+    {
         "id": "Q-MATH-07",
         "model_id": "MATH-07",
         "pillar": "Toán học & Xác suất",
-        "tier": 2,
-        "model_name": "Rủi Ro Đuôi Béo & Thiên Nga Đen (Fat-Tailed Risk & Black Swan)",
+        "tier": 1,
+        "model_name": "Phân Phối Chuẩn vs Đuôi Béo (Normal vs Fat-Tailed Distributions)",
         "scenario": (
-            "Một quỹ phòng hộ kiếm được lợi nhuận đều đặn 1.5% mỗi tháng suốt 5 năm bằng chiến lược bán quyền chọn (nhặt tiền lẻ trước đầu xe lu). "
+            "Một quỹ phòng hộ phố Wall kiếm được lợi nhuận đều đặn 1.5% mỗi tháng suốt 5 năm bằng chiến lược bán quyền chọn (nhặt tiền lẻ trước đầu xe lu). "
             "Đến năm thứ 6, một cuộc khủng hoảng tài chính bất ngờ xảy ra chỉ trong 3 ngày đã xóa sạch toàn bộ vốn liếng và đẩy quỹ vào cảnh phá sản nợ nần."
         ),
         "question": "Nassim Taleb dùng mô hình toán học nào để cảnh báo về các thảm họa này?",
         "options": [
             "A. Phân phối Chuẩn hình chuông Gauss",
-            "B. Phân phối Đuôi béo (Fat-Tailed Distribution): Các biến cố cực đoan hiếm gặp có tác động hủy diệt vượt ngoài mọi mô hình tính toán rủi ro truyền thống",
+            "B. Phân phối Đuôi béo (Fat-Tailed Distribution / Extremistan): Các biến cố cực đoan hiếm gặp có tác động hủy diệt vượt ngoài mọi mô hình tính toán rủi ro truyền thống",
             "C. Luật bù trừ số học",
             "D. Cực tiểu toàn cục"
         ],
@@ -1888,26 +1930,26 @@ MODELS_QUIZ = [
         "id": "Q-MATH-10",
         "model_id": "MATH-10",
         "pillar": "Toán học & Xác suất",
-        "tier": 2,
-        "model_name": "Kỳ Vọng Toán Học (Expected Value — EV)",
+        "tier": 1,
+        "model_name": "Tính Phi Công Thái Học & Nhân Với Số 0 (Non-Ergodicity & Multiplying by Zero)",
         "scenario": (
-            "Một quyết định kinh doanh có 70% xác suất thành công mang lại 200 triệu đồng, nhưng có 30% xác suất thất bại làm mất 500 triệu đồng. "
-            "Một người thiếu tư duy xác suất chỉ nhìn vào con số 70% thắng và cho rằng đây là kèo thơm nên làm."
+            "Một người chơi trò Cò quay Nga (Russian Roulette) với khẩu súng lục có 6 ổ đạn và 1 viên đạn. Mỗi lần bóp cò thoát chết, anh ta nhận được 10 tỷ đồng. "
+            "Xét theo trung bình nhóm 6 người chơi, kỳ vọng tiền thưởng là cực lớn. Nhưng nếu một cá nhân chơi liên tục 6 lần qua thời gian, xác suất sống sót rơi tự do về 0."
         ),
-        "question": "Công thức Kỳ vọng Toán học $EV = (P_{win} \times Win) - (P_{loss} \times Loss)$ cho ra kết quả gì về thương vụ này?",
+        "question": "Thuộc tính toán học sâu sắc nào giải thích tại sao mức trung bình nhóm không áp dụng được cho cuộc đời một cá nhân?",
         "options": [
-            "A. $EV = +140$ triệu (Kèo thắng lớn)",
-            "B. $EV = (0.7 \times 200) - (0.3 \times 500) = 140 - 150 = -10$ triệu (Kỳ vọng âm, càng làm càng nghèo)",
-            "C. $EV = 0$ (Hòa vốn)",
-            "D. $EV = +300$ triệu"
+            "A. Tính đối xứng hoàn hảo",
+            "B. Tính Phi công thái học (Non-Ergodicity): Xác suất trung bình của tập hợp không bằng xác suất của cá nhân theo chuỗi thời gian khi hệ thống có điểm chết/hấp thụ (Absorbing Barrier / Ruin)",
+            "C. Luật số lớn thuần nhất",
+            "D. Phân phối Poisson"
         ],
         "correct_index": 1,
-        "explanation": "Tỷ lệ thắng cao không có ý nghĩa nếu khoản lỗ khi thua quá lớn làm cho kỳ vọng toán học bị âm. Người thông minh chỉ xuống tiền khi EV dương.",
-        "trap_analysis": "Ảo tưởng tỷ lệ thắng (Winrate Illusion): Thích đúng 9 lần ăn nhỏ để rồi lần thứ 10 mất sạch toàn bộ cơ đồ."
+        "explanation": "Đời người là Non-ergodic. Mọi số lớn nhân với 0 đều bằng 0. Nếu bạn chết hoặc phá sản ở bước 10, bạn không bao giờ được tham gia tiếp bước 11 dù xác suất tương lai có đẹp đến đâu.",
+        "trap_analysis": "Đánh cược mạng sống, tự do hay danh dự vào những thương vụ có rủi ro tuyệt chủng chỉ vì bị mờ mắt bởi tỷ lệ lợi nhuận kỳ vọng cao."
     },
 
     # -------------------------------------------------------------------------
-    # TRỤ CỘT 6: KỸ THUẬT & HỆ THỐNG (6 CÂU: TIER 1 & TIER 2)
+    # TRỤ CỘT 6: KỸ THUẬT & HỆ THỐNG (9 CÂU: GMM VOL 1 & VOL 3 ENRICHED)
     # -------------------------------------------------------------------------
     {
         "id": "Q-SYS-01",
@@ -1935,7 +1977,7 @@ MODELS_QUIZ = [
         "model_id": "SYS-02",
         "pillar": "Kỹ thuật & Hệ thống",
         "tier": 1,
-        "model_name": "Biên Độ An Toàn (Margin of Safety)",
+        "model_name": "Biên Độ An Toàn & Dự Phòng (Margin of Safety & Redundancy)",
         "scenario": (
             "Khi thiết kế thang máy dự kiến chở tối đa 10 người (khoảng 700 kg), các kỹ sư sử dụng dây cáp và động cơ có sức chịu tải thực tế lên tới 3.500 kg (gấp 5 lần). "
             "Tương tự, khi nhà đầu tư định giá cổ phiếu đáng giá 100.000đ, họ kiên nhẫn đợi giá thị trường giảm xuống 65.000đ mới giải ngân."
@@ -1971,6 +2013,27 @@ MODELS_QUIZ = [
         "correct_index": 1,
         "explanation": "Sức mạnh của một sợi xích được quyết định bởi mắt xích yếu nhất. Tối ưu hóa bất kỳ bộ phận nào ngoài nút cổ chai đều là sự lãng phí vô ích.",
         "trap_analysis": "Bệnh tối ưu hóa cục bộ: Chi tiền và sức lực vào những mắt xích không phải là điểm thắt cổ chai của hệ thống."
+    },
+    {
+        "id": "Q-SYS-04",
+        "model_id": "SYS-04",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Tính Chống Mong Manh (Antifragility & Barbell Strategy)",
+        "scenario": (
+            "Cơ bắp con người sau khi bị rách vi mô do tập tạ nặng sẽ tự tái tạo sợi cơ dày hơn và khỏe hơn để chống chịu tải trọng lớn hơn lần sau. "
+            "Tương tự, một hệ thống tài chính áp dụng Chiến lược Quả tạ (Barbell Strategy): 90% để ở tài sản an toàn tuyệt đối và 10% đặt cược vào các thử nghiệm có tiềm năng x100 lần."
+        ),
+        "question": "Thuộc tính vượt trội hơn cả sự mạnh mẽ bền bỉ (Robustness) này được Nassim Taleb định nghĩa là gì?",
+        "options": [
+            "A. Tính Mong manh (Fragile)",
+            "B. Tính Chống Mong manh (Antifragile): Hệ thống hưởng lợi, học hỏi và trở nên mạnh mẽ hơn từ sự biến động, va đập và căng thẳng có kiểm soát",
+            "C. Trạng thái cân bằng bất động",
+            "D. Giảm chấn thụ động"
+        ],
+        "correct_index": 1,
+        "explanation": "Thứ mạnh mẽ chỉ chịu đựng được va đập; thứ chống mong manh cần va đập và biến động để tiến hóa và trở nên vượt trội.",
+        "trap_analysis": "Bao bọc trong lồng kính (Fragilizing): Loại bỏ mọi va chạm nhỏ khiến hệ thống mất hoàn toàn khả năng miễn dịch và sụp đổ trước biến cố lớn đầu tiên."
     },
     {
         "id": "Q-SYS-05",
@@ -2015,27 +2078,6 @@ MODELS_QUIZ = [
         "trap_analysis": "Chủ quan tin tưởng một cá nhân hoặc một nhà cung cấp duy nhất mà không có phương án thay thế sẵn sàng."
     },
     {
-        "id": "Q-SYS-11",
-        "model_id": "SYS-11",
-        "pillar": "Kỹ thuật & Hệ thống",
-        "tier": 1,
-        "model_name": "Bản Đồ Không Phải Lãnh Thổ (The Map is not the Territory — Korzybski)",
-        "scenario": (
-            "Một nhóm thám hiểm đi trong rừng rậm dựa vào tấm bản đồ địa hình vẽ cách đây 20 năm. Bản đồ ghi rõ phía trước là một cây cầu sắt kiên cố bắc qua sông lớn. "
-            "Khi đoàn đến nơi, cây cầu đã bị lũ cuốn trôi từ năm ngoái và dòng nước đang cuồn cuộn chảy xiết. Tuy nhiên, người đội trưởng vẫn ngoan cố ép đoàn vượt sông tại đúng vị trí đó vì: 'Bản đồ quân sự chính quy không bao giờ sai!', suýt nữa nhấn chìm toàn bộ đoàn thám hiểm."
-        ),
-        "question": "Chân lý nhận thức học và tư duy hệ thống nào vạch trần sai lầm chết người của người đội trưởng?",
-        "options": [
-            "A. Bản đồ không phải là Lãnh thổ (The Map is not the Territory): Mọi mô hình, biểu đồ, bảng tính Excel hay lý thuyết chỉ là sự giản lược hóa và luôn có sai số, thực tế khách quan bên ngoài mới là chân lý tối thượng",
-            "B. Bản đồ luôn luôn đúng hơn thực tế do có các chuyên gia đo đạc địa lý vẽ ra",
-            "C. Vận tốc dòng nước không ảnh hưởng đến cấu trúc cầu",
-            "D. Hiệu ứng mỏ neo số học"
-        ],
-        "correct_index": 0,
-        "explanation": "Bản đồ là công cụ hữu ích để định hướng, nhưng không bao giờ thay thế được thực địa sống động. Khi thực địa mâu thuẫn với bản đồ, luôn tin vào thực địa.",
-        "trap_analysis": "Đồng nhất mô hình với thực tại (Confusing the Model with Reality): Tin vào mô hình định giá tài chính trên Excel mà phớt lờ thực tế doanh nghiệp đang cạn kiệt tiền mặt và đối mặt phá sản."
-    },
-    {
         "id": "Q-SYS-10",
         "model_id": "SYS-10",
         "pillar": "Kỹ thuật & Hệ thống",
@@ -2055,6 +2097,27 @@ MODELS_QUIZ = [
         "correct_index": 1,
         "explanation": "Tư duy bậc một chỉ thấy cái lợi trước mắt. Tư duy bậc hai thấy phản ứng thích nghi của con người và cấu trúc động lực dài hạn của hệ thống.",
         "trap_analysis": "Bẫy giải pháp ngây thơ: Can thiệp thô bạo vào hệ thống phức hợp mà không lường trước các phản ứng bù trừ của thị trường."
+    },
+    {
+        "id": "Q-SYS-11",
+        "model_id": "SYS-11",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Bản Đồ Không Phải Lãnh Thổ (The Map is not the Territory — Korzybski)",
+        "scenario": (
+            "Một nhóm thám hiểm đi trong rừng rậm dựa vào tấm bản đồ địa hình vẽ cách đây 20 năm. Bản đồ ghi rõ phía trước là một cây cầu sắt kiên cố bắc qua sông lớn. "
+            "Khi đoàn đến nơi, cây cầu đã bị lũ cuốn trôi từ năm ngoái và dòng nước đang cuồn cuộn chảy xiết. Tuy nhiên, người đội trưởng vẫn ngoan cố ép đoàn vượt sông tại đúng vị trí đó vì: 'Bản đồ quân sự chính quy không bao giờ sai!', suýt nữa nhấn chìm toàn bộ đoàn thám hiểm."
+        ),
+        "question": "Chân lý nhận thức học và tư duy hệ thống nào vạch trần sai lầm chết người của người đội trưởng?",
+        "options": [
+            "A. Bản đồ không phải là Lãnh thổ (The Map is not the Territory): Mọi mô hình, biểu đồ, bảng tính Excel hay lý thuyết chỉ là sự giản lược hóa và luôn có sai số, thực tế khách quan bên ngoài mới là chân lý tối thượng",
+            "B. Bản đồ luôn luôn đúng hơn thực tế do có các chuyên gia đo đạc địa lý vẽ ra",
+            "C. Vận tốc dòng nước không ảnh hưởng đến cấu trúc cầu",
+            "D. Hiệu ứng mỏ neo số học"
+        ],
+        "correct_index": 0,
+        "explanation": "Bản đồ là công cụ hữu ích để định hướng, nhưng không bao giờ thay thế được thực địa sống động. Khi thực địa mâu thuẫn với bản đồ, luôn tin vào thực địa.",
+        "trap_analysis": "Đồng nhất mô hình với thực tại (Confusing the Model with Reality): Tin vào mô hình định giá tài chính trên Excel mà phớt lờ thực tế doanh nghiệp đang cạn kiệt tiền mặt và đối mặt phá sản."
     },
     {
         "id": "Q-SYS-13",
@@ -2078,6 +2141,7 @@ MODELS_QUIZ = [
         "explanation": "Đừng phức tạp hóa những gì có thể giải thích bằng nguyên nhân đơn giản và hiển nhiên nhất. Càng nhiều giả định 'nếu như', xác suất đúng càng tiến về 0.",
         "trap_analysis": "Bẫy thích thuyết âm mưu: Não người có xu hướng thích những câu chuyện ly kỳ bí hiểm hơn là chấp nhận những sự thật đơn giản nhưng trần trụi."
     },
+
 ]
 
 # =============================================================================

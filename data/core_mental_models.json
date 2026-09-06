@@ -1128,34 +1128,52 @@
     {
       "id": "MATH-01",
       "name_vi": "Lãi kép",
-      "name_en": "Compounding",
+      "name_en": "Compounding (The Eighth Wonder of the World)",
       "pillar": "Toán học & Xác suất",
       "tier": 1,
-      "first_principle": "Lợi nhuận tạo ra tiếp tục được gộp vào vốn gốc để sinh lợi nhuận trong chu kỳ sau, tạo tăng trưởng hàm mũ: A = P(1 + r)^t.",
-      "elite_leverage": "'Không bao giờ làm gián đoạn chu kỳ lãi kép một cách không cần thiết' (Munger). Kiên định duy trì thói quen đọc sách và đầu tư liên tục trong 10-20 năm.",
-      "trigger_question": "Hành động hôm nay của tôi có tính chất tích lũy lũy tiến để sau 5 năm nó tự nhân lên theo hàm mũ không?",
-      "inversion_trap": "Lãi kép tiêu cực: Những thói quen xấu nhỏ (thức khuya, nợ thẻ tín dụng lãi 30%) cũng sinh lãi kép và âm thầm tàn phá sau 10 năm.",
+      "first_principle": "Lợi nhuận hoặc giá trị tạo ra ở chu kỳ trước tiếp tục được tái đầu tư và gộp vào vốn gốc để sinh ra lợi nhuận lớn hơn trong chu kỳ sau. Công thức hàm mũ: A = P(1 + r)^t. Tốc độ tăng trưởng ban đầu chậm chạp và tuyến tính, nhưng theo thời gian sẽ bùng nổ dựng đứng theo cấp số nhân.",
+      "elite_leverage": "Quy tắc vàng của Charlie Munger: 'Quy tắc đầu tiên của lãi kép là không bao giờ làm gián đoạn nó một cách không cần thiết'. Giới tinh hoa không tìm kiếm lợi nhuận đột biến x2, x3 trong một đêm rồi mất sạch; họ tìm kiếm tỷ suất sinh lời hợp lý, ổn định và bảo vệ cỗ máy lãi kép vận hành liên tục qua 20-30 năm trong mọi khía cạnh: kiến thức, danh tiếng, sức khỏe và tài sản ròng.",
+      "trigger_question": "Hành động nhỏ hàng ngày này của tôi có tính chất tích lũy lũy tiến để sau 5-10 năm nó tự nhân lên theo hàm mũ không, hay chỉ là công việc nhật trình làm xong rồi biến mất?",
+      "inversion_trap": "Lãi kép tiêu cực (Negative Compounding): Bẫy chi phí nợ thẻ tín dụng lãi suất 30%/năm, hoặc các thói quen tiêu cực vi mô (hút thuốc, thức khuya, trì hoãn 1% mỗi ngày) cũng âm thầm sinh lãi kép và đến một ngày sẽ phá hủy hoàn toàn sức khỏe, sự nghiệp và danh dự.",
       "lollapalooza_pairs": [
         "Đa quy mô thời gian",
         "Đòn bẩy",
-        "Khối lượng tới hạn"
-      ]
+        "Khối lượng tới hạn",
+        "Quán tính"
+      ],
+      "action_steps": [
+        "Bắt đầu cực sớm và kiên định: Khởi động cỗ máy lãi kép ngay hôm nay với quy mô nhỏ nhất (đọc 10 trang sách/ngày, trích 10% thu nhập đầu tư), vì biến số thời gian (t) là số mũ quyền năng nhất trong công thức.",
+        "Tái đầu tư 100% thặng dư giai đoạn đầu: Không vội rút lợi nhuận hay 'ăn thịt gà đẻ trứng vàng' để tiêu dùng xa xỉ phẩm; bơm toàn bộ dòng tiền thu được trở lại vòng xoay gốc.",
+        "Triệt tiêu tối đa các gián đoạn: Thiết lập cơ chế tự động hóa (trích tiền tự động, khóa danh mục dài hạn) để ngăn chặn cảm xúc bốc đồng bán non hoặc dừng thói quen giữa chừng.",
+        "Kiểm soát ma sát chi phí và thuế: Giảm thiểu tối đa phí giao dịch, thuế và chi phí trung gian không cần thiết, vì một khoản phí 2-3% mỗi năm sẽ 'ăn cắp' mất 50% tổng thành quả lãi kép sau 30 năm."
+      ],
+      "boundary_conditions": "Lãi kép đòi hỏi môi trường có tính ổn định và sự tồn tại bền vững của vật chủ. Không áp dụng giả định lãi kép dài hạn vào các mô hình kinh doanh chộp giật, trào lưu ngắn hạn (Fad), hoặc tài sản rác có rủi ro bị xóa sổ về 0.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Cha mẹ duy trì '15 phút đọc sách cùng con trước khi ngủ' mỗi ngày từ năm con 2 tuổi. Ban đầu tưởng như không có gì đặc biệt, nhưng sau 10 năm, đứa trẻ tích lũy vốn từ vựng khổng lồ, tư duy ngôn ngữ vượt trội và thói quen tự học tự nhiên mà không cần ép học thêm.\n• Sự nghiệp & Quản lý: Đội ngũ kỹ thuật dành 30 phút mỗi sáng để học một công nghệ mới và viết tài liệu chia sẻ nội bộ. Sau 3 năm, năng lực công nghệ của công ty tăng theo cấp số nhân, trở thành tổ chức dẫn đầu mà đối thủ không thể sao chép trong ngày một ngày hai.\n• Đầu tư VN-Index: Warren Buffett tích lũy được hơn 99% tổng tài sản sau sinh nhật lần thứ 50 nhờ lãi kép. Tại TTCK Việt Nam, nhà đầu tư mua tích sản cổ phiếu đầu ngành có cổ tức tiền mặt đều đặn, dùng toàn bộ cổ tức để mua tiếp cổ phiếu trong 15 năm sẽ sở hữu khối tài sản khổng lồ từ dòng tiền tái đầu tư, vượt xa những người nhảy ra nhảy vào lướt sóng T+."
     },
     {
       "id": "MATH-02",
       "name_vi": "Định luật Lũy thừa & Pareto 80/20",
-      "name_en": "Power Law & Pareto Principle",
+      "name_en": "Power Law & Pareto Principle (80/20 Rule)",
       "pillar": "Toán học & Xác suất",
       "tier": 1,
-      "first_principle": "Trong phần lớn các hệ thống phức tạp, phần lớn kết quả (≈80%) được tạo ra bởi một số lượng rất nhỏ các nguyên nhân đầu vào (≈20%).",
-      "elite_leverage": "Tàn nhẫn cắt bỏ 80% việc râu ria; dồn 100% sự tập trung tinh hoa vào top 1-2 đòn bẩy trọng tử mang lại 80% thành quả sống còn.",
-      "trigger_question": "Đâu là 20% hoạt động hoặc khách hàng đang mang lại 80% hạnh phúc và dòng tiền thực tế cho tôi?",
-      "inversion_trap": "Dàn trải cào bằng: Chia đều thời gian 1 giờ cho mỗi việc như thể mọi việc đều có tầm quan trọng ngang nhau.",
+      "first_principle": "Trong hầu hết các hệ thống phức tạp và mạng lưới xã hội, kết quả không phân phối đồng đều theo đường thẳng mà tuân theo phân phối lũy thừa: Khoảng 80% kết quả đầu ra được tạo ra bởi khoảng 20% nguyên nhân đầu vào quan trọng nhất. Thậm chí trong top 20% đó, lại có 20% (tức 4% tổng thể) tạo ra 64% kết quả.",
+      "elite_leverage": "Tàn nhẫn cắt bỏ sự cào bằng bình quân. Người bình thường dàn trải năng lượng công bằng cho mọi tác vụ; người tinh hoa xác định chính xác top 1-2 đòn bẩy trọng tử (Lead Dominoes) mang lại 80% bước chuyển biến cuộc đời và dồn toàn bộ 90% sự tập trung vào đó.",
+      "trigger_question": "Đâu là 20% hoạt động, mối quan hệ hoặc tài sản đang mang lại 80% hạnh phúc, giá trị và dòng tiền ròng thực tế cho cuộc đời tôi?",
+      "inversion_trap": "Bẫy bận rộn giả tạo: Tiêu tốn 80% thời gian và sinh lực vào những việc vặt vãnh, bàn giấy, họp hành vô bổ (nhóm 80% đáy chỉ tạo ra 20% giá trị), tự an ủi rằng mình đang làm việc chăm chỉ trong khi kết quả cốt lõi vẫn dậm chân tại chỗ.",
       "lollapalooza_pairs": [
         "Chi phí cơ hội",
         "Đòn bẩy",
-        "Nút cổ chai"
-      ]
+        "Nút cổ chai",
+        "Tư duy nguyên bản"
+      ],
+      "action_steps": [
+        "Kiểm toán Pareto toàn diện: Liệt kê toàn bộ danh mục công việc, khách hàng, mối quan hệ và chi tiêu hàng tháng; xếp hạng theo thứ tự đóng góp giá trị thực.",
+        "Xác định nhóm 20% tinh hoa (Vital Few): Khoanh vùng 20% yếu tố tạo ra phần lớn thành quả và niềm vui sống.",
+        "Dọn dẹp tàn nhẫn nhóm 80% râu ria (Trivial Many): Ủy quyền, tự động hóa hoặc dũng cảm xóa bỏ hoàn toàn các tác vụ không tạo giá trị.",
+        "Đào sâu đệ quy (Áp dụng 80/20 của 80/20): Trong nhóm 20% tinh hoa, tiếp tục tìm ra 4% hạt nhân tạo ra 64% đột phá lớn nhất để biến nó thành siêu năng lực độc bản."
+      ],
+      "boundary_conditions": "Không áp dụng luật Pareto để cắt bỏ các mắt xích hỗ trợ hạ tầng bắt buộc (vệ sinh văn phòng, tuân thủ pháp lý, kiểm toán an toàn). Nhóm 80% hỗ trợ tuy không tạo trực tiếp doanh thu nhưng nếu bỏ đi thì toàn bộ hệ thống 20% sẽ sụp đổ.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Tủ quần áo và đồ chơi của trẻ thường xuyên bừa bộn. Cha mẹ cùng con lọc ra: 20% số đồ chơi con thực sự chơi mỗi ngày, 80% còn lại đóng thùng cất đi hoặc đem tặng từ thiện; không gian sống thoáng đãng giúp con tập trung chơi sâu và sáng tạo hơn.\n• Sự nghiệp & Quản lý: Steve Jobs khi quay lại Apple năm 1997 đã cắt bỏ 70% các dòng sản phẩm rườm rà, chỉ giữ lại ma trận 4 sản phẩm cốt lõi (Máy tính bàn / Xách tay cho Người dùng phổ thông / Dân chuyên nghiệp); sự tập trung lũy thừa này cứu Apple thoát bờ vực phá sản và trở thành tập đoàn nghìn tỷ USD.\n• Đầu tư VN-Index: Trong một danh mục 10-15 mã cổ phiếu, thường chỉ có 1-2 mã siêu cổ phiếu tăng 300-500% mang lại 80% tổng lợi nhuận cho cả danh mục. Nhà đầu tư tinh hoa biết 'để lãi chạy' ở những mã chiến thắng theo luật lũy thừa, thay vì chốt non mã tốt để gồng lỗ những mã yếu kém."
     },
     {
       "id": "MATH-03",
@@ -1188,15 +1206,24 @@
       "name_en": "Expected Value & Kelly Criterion",
       "pillar": "Toán học & Xác suất",
       "tier": 1,
-      "first_principle": "Giá trị kỳ vọng là trung bình trọng số của tất cả các kết quả: EV = ∑(P_i × V_i). Tiêu chuẩn Kelly chỉ ra tỷ lệ vốn tối ưu cần cược để tối đa hóa tăng trưởng.",
-      "elite_leverage": "Chỉ hành động khi EV dương lớn; và khi gặp cơ hội có xác suất thắng áp đảo với biên an toàn dày, hãy mạnh dạn cược tỷ trọng lớn theo Kelly.",
-      "trigger_question": "Nếu lặp lại ván bài này 1.000 lần, giá trị kỳ vọng bình quân của mỗi lần chơi là dương hay âm?",
-      "inversion_trap": "Đánh cược tất tay (All-in): Cược 100% tài sản vào ván bài có xác suất tử vong dù chỉ 1%; sau đủ số lần chơi, xác suất phá sản chắc chắn là 100%.",
+      "first_principle": "Giá trị Kỳ vọng (Expected Value - EV) là trung bình trọng số của tất cả các kịch bản tương lai: EV = ∑(Xác suất × Giá trị được/mất). Tiêu chuẩn Kelly (f* = (bp - q)/b) tính toán chính xác tỷ lệ vốn tối ưu cần giải ngân để tối đa hóa tốc độ tăng trưởng tài sản dài hạn mà không bao giờ bị phá sản.",
+      "elite_leverage": "Tách biệt giữa quy trình ra quyết định và kết quả ngắn hạn. Giới tinh hoa chỉ tham gia các thương vụ có EV dương rõ ràng; và khi xác suất thắng cao đi kèm biên an toàn dày, họ kiên quyết giải ngân tỷ trọng lớn theo công thức Kelly thay vì cược cào bằng hoặc đánh bạc may rủi.",
+      "trigger_question": "Nếu kịch bản này được lặp lại 1.000 lần trong tương lai, giá trị kỳ vọng bình quân của mỗi lần ra quyết định là dương hay âm, và quy mô vị thế hiện tại có an toàn tuyệt đối trước rủi ro chuỗi thua liên tiếp không?",
+      "inversion_trap": "Bẫy cược tất tay (All-in) & Cược quá mức Kelly (Over-betting): Dù tỷ lệ thắng là 90%, nếu cược vượt quá công thức Kelly hoặc cược 100% tài sản, chỉ cần một chuỗi rủi ro rơi vào nhóm 10% là bạn sẽ bị xóa sạch toàn bộ tài sản không thể hồi phục.",
       "lollapalooza_pairs": [
         "Tính phi công thái học",
-        "Tùy chọn",
-        "Biên độ an toàn"
-      ]
+        "Tư duy Xác suất",
+        "Biên độ an toàn",
+        "Thiên kiến kết quả"
+      ],
+      "action_steps": [
+        "Xác định các kịch bản tương lai: Phác thảo tối thiểu 3 kịch bản: Tốt nhất (Bull), Cơ sở (Base), và Tệ nhất (Bear).",
+        "Gán xác suất khách quan và mức lợi hại: Ước lượng xác suất xảy ra và số tiền/lợi ích tương ứng của từng kịch bản (đặc biệt tính kỹ kịch bản mất trắng).",
+        "Tính toán EV ròng: Đảm bảo tổng EV > 0 sau khi đã trừ đi chi phí cơ hội và các loại thuế phí.",
+        "Quy mô vị thế theo Fractional Kelly: Chỉ giải ngân ở mức 1/2 hoặc 1/4 Kelly (Half-Kelly) để tạo biên đệm an toàn tuyệt đối trước sự sai lệch trong ước lượng xác suất của con người."
+      ],
+      "boundary_conditions": "Tuyệt đối không dùng Kelly và EV trong các tình huống có nguy cơ tử vong, vào tù hoặc mất danh dự không thể hoàn nguyên (bất kể lợi nhuận kỳ vọng có cao đến mức nào). Trong các tình huống đó, rủi ro tuyệt đối là cấm kỵ.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Quyết định cho con đi du học hay học trường quốc tế trong nước: Cha mẹ tính toán EV dựa trên chi phí tài chính gia đình, khả năng thích nghi và cơ hội việc làm; không chi vượt quá khả năng chịu đựng của quỹ dự phòng gia đình để đảm bảo kinh tế gia đình luôn ổn định.\n• Sự nghiệp & Quản lý: Đổi việc hoặc khởi nghiệp: Đánh giá EV giữa việc ở lại công ty an toàn (lương cố định) vs nhảy ra khởi nghiệp (xác suất thành công 30% nhưng giá trị vốn hóa x10). Người có tư duy EV sẽ chỉ khởi nghiệp khi có quỹ sinh hoạt 12 tháng (áp dụng nguyên tắc Kelly bảo toàn vốn).\n• Đầu tư VN-Index: Nhà đầu tư chuyên nghiệp phát hiện cơ hội cổ phiếu bị định giá rẻ mạt sau khủng hoảng: Xác suất tăng 50% là 70%, rủi ro giảm 15% là 30%. Tính EV dương lớn, nhưng họ không 'all-in' mà dùng Half-Kelly phân bổ tối đa 20-25% tổng danh mục cho mã này, giữ an toàn tuyệt đối trước những cú sốc vĩ mô bất ngờ."
     },
     {
       "id": "MATH-05",
@@ -1226,34 +1253,52 @@
     {
       "id": "MATH-06",
       "name_vi": "Hồi quy về Giá trị Trung bình",
-      "name_en": "Regression to the Mean",
+      "name_en": "Regression to the Mean (Sir Francis Galton)",
       "pillar": "Toán học & Xác suất",
-      "tier": 2,
-      "first_principle": "Khi một biến ngẫu nhiên đạt giá trị cực đoan trong lần đo thứ nhất, lần đo tiếp theo sẽ có xu hướng quay trở về gần mức trung bình hơn.",
-      "elite_leverage": "Không quá hoảng loạn khi rơi vào chuỗi ngày đen đủi; không tự mãn khi vừa có chuỗi xuất thần ăn may. Phong độ là nhất thời, đẳng cấp trung bình mới bền vững.",
-      "trigger_question": "Thành tích đột biến này phản ánh bước nhảy vọt năng lực thật sự hay chỉ là cú vọt ngẫu nhiên sắp hồi quy về mức trung bình?",
-      "inversion_trap": "Khen phạt sai lầm: Mắng mỏ học sinh khi thi điểm thấp rồi thấy lần sau điểm tăng, người thầy nhầm tưởng lời mắng mỏ có tác dụng.",
+      "tier": 1,
+      "first_principle": "Khi một biến ngẫu nhiên đạt đến một giá trị cực đoan (rất cao hoặc rất thấp) trong lần đo thứ nhất do sự đóng góp ngẫu nhiên của yếu tố may mắn, các lần đo tiếp theo sẽ có xu hướng tự nhiên quay trở về gần mức trung bình của tổng thể.",
+      "elite_leverage": "Bình thản trước các biến động cực hạn. Người khôn ngoan không quá bi quan suy sụp khi rơi vào chuỗi ngày đen đủi chạm đáy, cũng không tự mãn ảo tưởng mình là thiên tài khi vừa có một chuỗi thành công may mắn đột biến. Họ tập trung nâng cao 'giá trị trung bình năng lực nội tại' thay vì bị cảm xúc chi phối bởi các ngoại lệ.",
+      "trigger_question": "Kết quả đột biến phi thường (hoặc tồi tệ bất thường) này phản ánh năng lực cốt lõi đã thay đổi thực chất, hay chỉ là cú dao động ngẫu nhiên sắp hồi quy về mức trung bình?",
+      "inversion_trap": "Bẫy trừng phạt và khen thưởng sai lầm (Kahneman): Khi nhân viên làm xuất sắc được khen, lần sau làm bình thường lại bị sếp trách là 'khen làm kiêu'; khi nhân viên làm quá tệ bị mắng té tát, lần sau làm khá hơn sếp lại tưởng 'mắng mỏ có hiệu quả'. Thực chất cả hai trường hợp đều chỉ là sự hồi quy thống kê tự nhiên.",
       "lollapalooza_pairs": [
         "Thiên kiến kết quả",
         "Tư duy Xác suất",
-        "Quy luật số lớn"
-      ]
+        "Quy luật số lớn",
+        "Cân bằng nội môi"
+      ],
+      "action_steps": [
+        "Xác định mức trung bình lịch sử: Thu thập dữ liệu dài hạn để biết mức hiệu suất trung bình thực tế của cá nhân, doanh nghiệp hoặc thị trường.",
+        "Tách bạch giữa Kỹ năng và May mắn: Khi có một kết quả cực đoan, tự hỏi: 'Bao nhiêu % kết quả này đến từ nỗ lực có thể lặp lại và bao nhiêu % đến từ hoàn cảnh ngẫu nhiên thuận lợi?'",
+        "Không ra quyết định hoảng loạn tại các điểm cực hạn: Tránh thay đổi toàn bộ chiến lược chỉ sau một quý làm ăn bết bát hoặc một tháng thắng đậm.",
+        "Nâng trần và sàn trung bình: Kiên trì rèn luyện năng lực nền tảng để đẩy đường trung bình đi lên; khi đường trung bình tăng, các điểm đáy sau này sẽ cao hơn các điểm đỉnh của quá khứ."
+      ],
+      "boundary_conditions": "Không nhầm lẫn hồi quy về trung bình với sự suy thoái vĩnh viễn (Structural Decline). Nếu một doanh nghiệp bị gián đoạn công nghệ hoàn toàn (như máy ảnh phim Kodak), hiệu suất của họ không hồi quy về mức cũ mà sẽ rơi tự do về 0.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Con đạt điểm 10 tuyệt đối trong kỳ thi thử do trúng tủ đề: Cha mẹ không tung hô con là thần đồng (vì bài sau điểm sẽ hồi quy về 7-8 điểm khiến con thất vọng); thay vào đó khen ngợi sự tập trung ôn bài và nhắc con giữ vững phong độ học đều các môn.\n• Sự nghiệp & Quản lý: Đánh giá nhân sự cuối năm: Một nhân viên bán hàng vừa chốt được hợp đồng khủng nhất lịch sử công ty nhờ đúng đợt thị trường sốt nóng. Lãnh đạo thưởng xứng đáng nhưng không giao chỉ tiêu năm sau gấp 3 lần, hiểu rằng kết quả năm tới sẽ hồi quy về mức trung bình bền vững hơn.\n• Đầu tư VN-Index: Lợi nhuận của các doanh nghiệp mang tính chu kỳ (Thép, Phân bón, Vận tải biển, Chứng khoán) luôn hồi quy về mức trung bình. Mua cổ phiếu thép khi P/E bằng 3 ở đỉnh chu kỳ lợi nhuận là tự sát vì năm sau lợi nhuận sụt giảm 80%; nhà đầu tư lão luyện mua khi doanh nghiệp lỗ chạm đáy chu kỳ và bán khi lợi nhuận đạt đỉnh đột biến."
     },
     {
       "id": "MATH-07",
       "name_vi": "Phân phối Chuẩn vs Đuôi béo",
-      "name_en": "Normal vs Fat-Tailed Distributions",
+      "name_en": "Normal vs Fat-Tailed Distributions (Mediocristan vs Extremistan)",
       "pillar": "Toán học & Xác suất",
-      "tier": 2,
-      "first_principle": "Trong thế giới Extremistan (tài chính, công nghệ), các sự kiện cực đoan ở phần đuôi dày (Fat Tails) chi phối toàn bộ kết quả.",
-      "elite_leverage": "Không bao giờ áp dụng mô hình rủi ro phân phối chuẩn vào thị trường tài chính; luôn dự phòng cho những sự kiện Thiên nga đen chưa từng có tiền lệ.",
-      "trigger_question": "Lĩnh vực này thuộc phân phối chuẩn êm đềm hay là vùng đất đuôi béo nơi một sự kiện duy nhất có thể xóa sổ tất cả?",
-      "inversion_trap": "Ngây thơ thống kê: Tin rằng nguy cơ sụp đổ là '1 trên 1 triệu năm' chỉ vì dùng sai mô hình phân phối hình chuông chuẩn.",
+      "tier": 1,
+      "first_principle": "Trong thế giới Mediocristan (chiều cao, cân nặng con người), dữ liệu tuân theo Phân phối Chuẩn hình chuông Gauss: các sự kiện cực đoan hầu như không thể xảy ra và không làm thay đổi tổng thể. Nhưng trong thế giới Extremistan (tài chính, chiến tranh, dịch bệnh, văn hóa), dữ liệu tuân theo Phân phối Đuôi béo (Fat Tails / Power Law): một sự kiện đơn lẻ cực đoan (Thiên nga đen) có thể chi phối và xóa sạch toàn bộ lịch sử tích lũy.",
+      "elite_leverage": "Không dùng công cụ đo lường của thế giới phẳng cho thế giới đuôi béo. Giới tinh hoa không bao giờ tin vào các mô hình rủi ro tài chính giả định biến động tối đa 3 độ lệch chuẩn (3-sigma); họ luôn xây dựng phương án phòng thủ cho các cú rơi 10-sigma và săn tìm các cơ hội đầu tư có 'Upside đuôi béo' không giới hạn.",
+      "trigger_question": "Lĩnh vực này thuộc thế giới phân phối chuẩn êm đềm hay là vùng đất đuôi béo nơi một sự kiện cực đoan duy nhất có thể xóa sổ toàn bộ thành quả?",
+      "inversion_trap": "Ngây thơ thống kê (Gaussian Fallacy): Quản trị rủi ro bằng mô hình VaR (Value at Risk) giả định thị trường là phân phối chuẩn, tuyên bố rằng 'Khủng hoảng như 2008 chỉ xảy ra 1 lần trong 10.000 năm'; kết quả là quỹ phòng hộ Long-Term Capital Management phá sản trong chớp mắt.",
       "lollapalooza_pairs": [
         "Tính chống mong manh",
         "Biên độ an toàn",
-        "Tính phi công thái học"
-      ]
+        "Tính phi công thái học",
+        "Tư duy Xác suất"
+      ],
+      "action_steps": [
+        "Phân loại thế giới bạn đang hoạt động: Xác định rõ mảng công việc của bạn là Mediocristan (lương văn phòng, chạy bộ) hay Extremistan (đầu tư chứng khoán, khởi nghiệp công nghệ, viết sách).",
+        "Loại bỏ hoàn toàn rủi ro đuôi béo tiêu cực (Negative Black Swan): Tuyệt đối không dùng đòn bẩy tài chính không có điểm dừng lỗ, luôn mua bảo hiểm sức khỏe và tài sản lớn.",
+        "Định vị bản thân đón nhận đuôi béo tích cực (Positive Black Swan): Đặt mình vào các vị thế mà khi có sự kiện bùng nổ, bạn sẽ hưởng lợi khổng lồ (sở hữu cổ phần công ty tăng trưởng, sáng tạo nội dung số).",
+        "Kiểm tra sức chịu tải cực hạn (Stress Testing): Thường xuyên đặt câu hỏi: 'Nếu thị trường giảm 50% trong 1 tuần hoặc doanh thu về 0 trong 6 tháng, tôi có sống sót không?'"
+      ],
+      "boundary_conditions": "Không áp dụng tư duy đuôi béo cực đoan vào các quy trình kiểm soát chất lượng sản xuất công nghiệp chuẩn hóa (Six Sigma), nơi các biến dị vật lý thực sự tuân theo phân phối chuẩn và cần được triệt tiêu để đảm bảo độ đồng đều.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Tai nạn y tế nghiêm trọng hoặc bệnh tật hiểm nghèo là sự kiện đuôi béo. Gia đình tinh hoa luôn mua bảo hiểm nhân thọ và y tế toàn diện cho người trụ cột tài chính; chi phí nhỏ hàng năm loại bỏ 100% rủi ro đuôi béo phá sản gia đình.\n• Sự nghiệp & Quản lý: Chiến lược đầu tư mạo hiểm (Venture Capital): Trong 100 khoản đầu tư, 70 khoản sẽ mất trắng, 20 khoản huề vốn, nhưng 1-2 khoản đuôi béo (như đầu tư sớm vào Google, Uber) sẽ tăng 10.000 lần và mang lại toàn bộ lợi nhuận cho cả quỹ.\n• Đầu tư VN-Index: Thị trường chứng khoán là môi trường đuôi béo kinh điển: Những phiên 'rơi tự do' 50-70 điểm hoặc chuỗi giảm sàn hàng loạt tắt thanh khoản do giải chấp chéo diễn ra thường xuyên hơn nhiều so với mô hình phân phối chuẩn. Nhà đầu tư khôn ngoan không bao giờ dùng full-margin qua đêm, luôn giữ tỷ trọng tiền mặt lớn để không bị giải chấp cưỡng bức."
     },
     {
       "id": "MATH-08",
@@ -1289,19 +1334,28 @@
     },
     {
       "id": "MATH-10",
-      "name_vi": "Tính Phi công thái học",
-      "name_en": "Non-Ergodicity (Taleb)",
+      "name_vi": "Tính Phi công thái học & Nhân với số 0",
+      "name_en": "Non-Ergodicity & Multiplying by Zero",
       "pillar": "Toán học & Xác suất",
-      "tier": 2,
-      "first_principle": "Đời người là Non-ergodic: nếu xác suất phá sản ở mỗi bước là 1%, bạn không thể sống sót qua 100 bước liên tiếp dù kỳ vọng trung bình nhóm là dương.",
-      "elite_leverage": "Quy tắc sinh tồn tối thượng: Tuyệt đối tránh xa bất kỳ hoạt động nào có rủi ro diệt vong (Ruin risk), dù phần thưởng tiềm năng có lớn đến đâu.",
-      "trigger_question": "Hành động này có tiềm ẩn nguy cơ khiến tôi bị xóa sổ hoàn toàn khỏi cuộc chơi nếu kịch bản tồi tệ nhất xảy ra không?",
-      "inversion_trap": "Chơi cò quay Nga: Nghĩ rằng 5/6 cơ hội trúng 10 triệu USD là kèo thơm, mà quên mất rằng 1/6 cơ hội còn lại là cái chết.",
+      "tier": 1,
+      "first_principle": "Hệ thống có tính Công thái học (Ergodic) khi mức trung bình của một tập hợp tại một thời điểm bằng mức trung bình của một cá nhân theo thời gian. Nhưng cuộc đời con người là Phi công thái học (Non-Ergodic): Nếu bạn tham gia một trò chơi mà xác suất bị loại bỏ (Ruin) ở mỗi bước là 1%, dù trung bình cả nhóm có lãi lớn, cá nhân bạn chắc chắn sẽ bị xóa sổ sau một khoảng thời gian đủ dài. Bất kỳ số lớn bao nhiêu nhân với số 0 cũng đều bằng 0.",
+      "elite_leverage": "Quy tắc sinh tồn tối cao của Nassim Taleb và Warren Buffett: Điều kiện tiên quyết để chiến thắng trong trò chơi dài hạn là không bao giờ bị loại khỏi cuộc chơi. Không bao giờ đánh đổi thứ bạn có và thực sự cần (sinh mạng, tự do, danh dự, vốn sinh tồn) để lấy thứ bạn không có và không thực sự cần (thêm vài phần trăm lợi nhuận).",
+      "trigger_question": "Hành động này có tiềm ẩn dù chỉ 0.1% xác suất khiến tôi bị xóa sổ vĩnh viễn (nhân với số 0) khỏi sự nghiệp, tài chính hay tự do cá nhân không?",
+      "inversion_trap": "Bẫy ngộ nhận xác suất trung bình nhóm: Thấy 6 người chơi trò Cò quay Nga (Russian Roulette) kiếm được 1 triệu USD mỗi người và bình quân nhóm kiếm được 833.000 USD, người thứ 7 nhảy vào chơi vì tưởng 'kỳ vọng sinh lời cực cao' mà quên mất rằng cá nhân anh ta có 1/6 cơ hội nhận một viên đạn vào đầu.",
       "lollapalooza_pairs": [
         "Biên độ an toàn",
         "Tính chống mong manh",
-        "Giá trị kỳ vọng"
-      ]
+        "Giá trị kỳ vọng",
+        "Tư duy Xác suất"
+      ],
+      "action_steps": [
+        "Xác định các điểm nhân với số 0 (Zero Multipliers): Nhận diện các yếu tố mà nếu chúng về 0, toàn bộ phương trình cuộc đời bạn sẽ về 0 (Sức khỏe, Danh dự / Đạo đức, Tự do pháp lý, Vốn sinh tồn).",
+        "Thiết lập quy tắc cấm tuyệt đối: Đưa ra danh sách các hành vi không bao giờ được phép vi phạm dưới bất kỳ áp lực nào (Không lái xe khi say rượu, không ký khống giấy tờ, không dùng margin quá ngưỡng).",
+        "Tách bạch rủi ro hệ thống và rủi ro cục bộ: Chấp nhận thất bại ở các dự án nhỏ (mất tiền có thể kiếm lại), nhưng kiên quyết bảo vệ chiếc khiên sinh thái cốt lõi.",
+        "Ưu tiên Sinh tồn trước Tối ưu hóa: Trong mọi quyết định chiến lược, câu hỏi đầu tiên phải là: 'Làm sao để đảm bảo chắc chắn sống sót?', sau đó mới hỏi: 'Làm sao để tối đa hóa lợi nhuận?'"
+      ],
+      "boundary_conditions": "Tư duy tránh số 0 không đồng nghĩa với việc sợ hãi rủi ro đến mức tê liệt không dám làm gì. Bạn phải dám chấp nhận các rủi ro cục bộ (bị từ chối, thử nghiệm sản phẩm thất bại) vì chúng không có rủi ro tuyệt chủng (Non-fatal mistakes).",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Sức khỏe và tính mạng của con là số 0 tuyệt đối. Cha mẹ tuyệt đối không thỏa hiệp về an toàn giao thông (luôn đội mũ bảo hiểm chuẩn, thắt dây an toàn, không vừa lái xe vừa nghe điện thoại); một giây bất cẩn có thể nhân toàn bộ tương lai của gia đình với số 0.\n• Sự nghiệp & Quản lý: Đạo đức và sự liêm chính nghề nghiệp: Một CEO có thể có tài năng xuất chúng (điểm 10), chiến lược hoàn hảo (điểm 10), quan hệ rộng (điểm 10), nhưng nếu đạo đức bằng 0 (lừa đảo sổ sách kế toán như Enron), toàn bộ công ty sẽ bị xóa sổ về 0 và lãnh đạo vào tù.\n• Đầu tư VN-Index: Sử dụng đòn bẩy tài chính quá đà: Một nhà đầu tư nhân tài khoản x5 lần trong 3 năm uptrend. Nhưng trong đợt sụp đổ bất ngờ, anh ta dùng margin 1:3 và gồng lỗ; tài khoản giảm 35% kích hoạt giải chấp cưỡng bức (Force Sell), tài sản ròng về 0. Ba năm thành công rực rỡ bị nhân với số 0 chỉ trong 2 tuần."
     },
     {
       "id": "MATH-11",
@@ -1354,18 +1408,27 @@
     {
       "id": "SYS-01",
       "name_vi": "Vòng Phản hồi Âm & Dương",
-      "name_en": "Feedback Loops (Balancing & Reinforcing)",
+      "name_en": "Feedback Loops (Balancing & Reinforcing Loops)",
       "pillar": "Kỹ thuật & Hệ thống",
       "tier": 1,
-      "first_principle": "Vòng dương khuếch đại sự thay đổi (Bùng nổ hoặc Sụp đổ); vòng âm kìm hãm sự thay đổi và kéo hệ thống về trạng thái cân bằng ổn định.",
-      "elite_leverage": "Cài đặt vòng phản hồi dương cho thói quen tốt và tăng trưởng kinh doanh (Flywheel); thiết lập các vòng phản hồi âm tự động ngắt để kiềm chế rủi ro tài chính.",
-      "trigger_question": "Hành động này đang kích hoạt một vòng lặp tự củng cố bùng nổ (dương) hay một cơ chế tự ghìm phanh ổn định (âm)?",
-      "inversion_trap": "Vòng xoáy tử thần: Để một sai lầm nhỏ kích hoạt vòng phản hồi dương tiêu cực (buồn chán -> ăn ngọt -> tăng cân -> tự ti -> buồn chán hơn).",
+      "first_principle": "Hệ thống vận hành thông qua các vòng truyền dẫn thông tin đầu ra quay ngược lại tác động lên đầu vào. Vòng phản hồi dương (Reinforcing Loop) khuếch đại sự thay đổi cùng chiều, dẫn đến tăng trưởng bùng nổ theo cấp số nhân hoặc sụp đổ dây chuyền. Vòng phản hồi âm (Balancing Loop) chống lại sự thay đổi, tự động điều chỉnh và kéo hệ thống quay trở về trạng thái cân bằng mục tiêu.",
+      "elite_leverage": "Kiến trúc sư hệ thống tinh hoa thiết kế đồng thời cả hai vòng phản hồi: Kích hoạt Vòng phản hồi dương cho bánh đà tăng trưởng kinh doanh và thói quen cá nhân (Flywheel effect); đồng thời cài đặt các Vòng phản hồi âm tự động ngắt (Circuit breakers) để triệt tiêu các mầm mống rủi ro ngay từ trong trứng nước.",
+      "trigger_question": "Hành động hoặc chính sách này đang vô tình kích hoạt một vòng lặp tự củng cố bùng nổ (vòng dương) hay một cơ chế tự ghìm phanh ổn định (vòng âm)?",
+      "inversion_trap": "Vòng xoáy tử thần (Doom Loop): Để một vòng phản hồi dương tiêu cực tự do vận hành mà không có van hãm (căng thẳng -> mất ngủ -> làm việc sai sót -> bị khiển trách -> căng thẳng hơn -> kiệt quệ hoàn toàn).",
       "lollapalooza_pairs": [
         "Lãi kép",
         "Cân bằng nội môi",
-        "Điểm bùng phát"
-      ]
+        "Điểm bùng phát",
+        "Phản xạ thị trường"
+      ],
+      "action_steps": [
+        "Vẽ sơ đồ luồng phản hồi: Xác định các biến số chính trong hệ thống và vẽ mũi tên thể hiện chiều tác động (+ hoặc -) của vòng lặp.",
+        "Xây dựng bánh đà tích cực (Virtuous Cycle): Thiết kế để thành quả của bước này tự động trở thành nhiên liệu đầu vào thúc đẩy bước tiếp theo (Khách hàng hài lòng -> Giới thiệu bạn bè -> Tăng doanh thu -> Tái đầu tư nâng cấp sản phẩm -> Khách hàng hài lòng hơn).",
+        "Cài đặt cảm biến và van ngắt cho vòng âm: Thiết lập các giới hạn cảnh báo sớm (nếu chi phí tăng vượt 15%, tự động dừng tuyển dụng mới để tái cân bằng dòng tiền).",
+        "Phá vỡ vòng xoáy tiêu cực bằng ngoại lực: Khi phát hiện hệ thống rơi vào vòng xoáy đi xuống, lập tức can thiệp bằng một ngoại lực dứt khoát để ngắt mạch vòng lặp."
+      ],
+      "boundary_conditions": "Vòng phản hồi dương không thể tăng trưởng vô hạn trong thế giới thực vì sớm muộn sẽ va vào các rào cản vật lý (Sức chứa môi trường, giới hạn thanh khoản). Ảo tưởng vòng dương vĩnh cửu sẽ tạo ra bong bóng đầu cơ.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Vòng phản hồi tích cực trong học tập: Khi con làm được bài toán khó, cha mẹ khen ngợi nỗ lực -> Con tự tin và hào hứng -> Con chủ động giải thêm bài tập -> Con đạt kết quả tốt -> Con yêu thích việc học. Ngược lại, chỉ trích gay gắt sẽ tạo vòng phản hồi tiêu cực làm thui chột sự tự tin.\n• Sự nghiệp & Quản lý: Bánh đà kinh doanh của Amazon (Bezos Flywheel): Giá thấp hơn -> Thu hút nhiều khách hàng hơn -> Thu hút người bán bên thứ ba -> Tăng quy mô kinh tế -> Giảm chi phí cố định trên mỗi đơn vị -> Tiếp tục giảm giá thấp hơn nữa.\n• Đầu tư VN-Index: Vòng phản hồi dương trong chu kỳ tín dụng chứng khoán: Giá cổ phiếu tăng -> Giá trị tài sản đảm bảo tăng -> Công ty chứng khoán cấp thêm hạn mức margin -> Nhà đầu tư dùng sức mua mới mua thêm cổ phiếu -> Giá cổ phiếu tăng mạnh hơn nữa. Nhưng khi giá đảo chiều, vòng xoáy này đảo ngược thành giải chấp chéo cuốn phăng tài khoản của đám đông."
     },
     {
       "id": "SYS-02",
@@ -1373,47 +1436,74 @@
       "name_en": "Margin of Safety & Redundancy",
       "pillar": "Kỹ thuật & Hệ thống",
       "tier": 1,
-      "first_principle": "Cây cầu chịu tải 30 tấn chỉ cho xe 10 tấn chạy qua; máy bay thương mại luôn có 2-3 hệ thống thủy lực dự phòng độc lập.",
-      "elite_leverage": "Chỉ mua tài sản khi giá thấp hơn rất nhiều so với giá trị thực; luôn giữ tiền mặt dự phòng khẩn cấp và không bao giờ vận hành ở 100% công suất chịu tải.",
-      "trigger_question": "Nếu mọi dự báo lạc quan nhất của tôi đều sai lệch 40%, tôi có còn sống sót bình yên qua cơn bão này không?",
-      "inversion_trap": "Tối ưu hóa quá mức: Cắt giảm toàn bộ chi phí dự phòng để đạt lợi nhuận tối đa ngắn hạn, khiến cỗ máy vỡ vụn ngay khi có biến cố nhỏ.",
+      "first_principle": "Kỹ sư xây cầu có trọng tải tối đa 30 tấn nhưng chỉ cấp phép cho xe 10 tấn chạy qua; máy bay thương mại luôn có 3 hệ thống thủy lực độc lập dự phòng. Biên độ an toàn là khoảng đệm dung sai chủ động được xây dựng để đối phó với sự sai lệch trong dự báo, sự thiếu hiểu biết của con người và các biến cố bất khả kháng của tương lai.",
+      "elite_leverage": "Ben Graham coi Biên độ An toàn là hòn đá tảng của mọi triết lý đầu tư lý trí. Người tinh hoa không bao giờ vận hành ở 100% công suất chịu tải; họ luôn duy trì lượng tiền mặt dự phòng lớn, để trống 20% thời gian trong ngày và chỉ hành động khi giá trị thực tế vượt xa mức giá phải trả.",
+      "trigger_question": "Nếu toàn bộ các dự báo lạc quan nhất của tôi đều sai lệch 30-50%, tôi có còn sống sót bình yên qua cơn bão này không?",
+      "inversion_trap": "Tối ưu hóa thiển cận (Over-optimization): Cắt giảm toàn bộ chi phí dự phòng, nhân sự dự bị và hàng tồn kho an toàn để đạt hiệu quả biên tối đa trong điều kiện thời tiết êm đềm; cỗ máy sẽ lập tức gãy vụn ngay khi có một cơn gió ngược nhỏ xuất hiện.",
       "lollapalooza_pairs": [
         "Tính phi công thái học",
         "Tính chống mong manh",
-        "Giảm chấn"
-      ]
+        "Giảm chấn",
+        "Tư duy Xác suất"
+      ],
+      "action_steps": [
+        "Lượng hóa biên độ an toàn: Luôn chiết khấu từ 20% đến 40% so với giá trị định giá lý thuyết trước khi cam kết nguồn vốn lớn.",
+        "Xây dựng hệ thống dự phòng song song (Redundancy): Thiết lập phương án B độc lập cho các mắt xích sinh tử (2 nguồn thu nhập độc lập, sao lưu dữ liệu sang ổ cứng rời, trạm phát điện dự phòng).",
+        "Duy trì vùng đệm năng lực: Chỉ cam kết tối đa 70-80% công suất làm việc của bản thân và đội ngũ để luôn có năng lượng dự trữ xử lý các khủng hoảng bất ngờ.",
+        "Kiểm tra độ chịu lực định kỳ: Giả định các kịch bản tồi tệ nhất (mất việc 6 tháng, khách hàng lớn nhất hủy hợp đồng) để rà soát xem biên độ an toàn có bị mỏng đi không."
+      ],
+      "boundary_conditions": "Biên độ an toàn quá dày sẽ dẫn đến chi phí cơ hội quá lớn và sự tê liệt hành động (giữ 100% tiền mặt suốt 10 năm vì sợ thị trường sập). Phải cân bằng giữa sự an toàn sinh tồn và hiệu quả sử dụng vốn.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Quỹ khẩn cấp gia đình: Duy trì tối thiểu 6-12 tháng chi phí sinh hoạt thiết yếu gửi tiết kiệm ngân hàng có thanh khoản cao. Khi xảy ra biến cố mất việc hoặc người thân ốm đau, gia đình không bị rơi vào cảnh túng quẫn hay phải vay nợ lãi cao.\n• Sự nghiệp & Quản lý: Quản lý dự án phần mềm: Nếu ước tính hoàn thành dự án trong 3 tháng, người quản lý chuyên nghiệp luôn báo cáo thời hạn 4.5 tháng (Biên độ an toàn 50% cho các lỗi phát sinh ngoài dự kiến), giúp dự án luôn về đích đúng hoặc trước hạn cam kết với khách hàng.\n• Đầu tư VN-Index: Nhà đầu tư giá trị chỉ mua cổ phiếu khi thị giá thấp hơn 30-40% so với giá trị nội tại ước tính thận trọng (mua tờ 10.000 đồng với giá 6.000 đồng). Khoảng đệm 4.000 đồng này chính là biên an toàn bảo vệ họ nếu ban lãnh đạo dự phóng sai kết quả kinh doanh hoặc thị trường vĩ mô xấu đi."
     },
     {
       "id": "SYS-03",
       "name_vi": "Nút Cổ chai & Lý thuyết Điểm Hạn chế",
-      "name_en": "Bottlenecks & Theory of Constraints",
+      "name_en": "Bottlenecks & Theory of Constraints (Goldratt)",
       "pillar": "Kỹ thuật & Hệ thống",
       "tier": 1,
-      "first_principle": "Lưu lượng của toàn bộ dây chuyền chỉ được quyết định bởi mắt xích yếu nhất; tối ưu hóa bất kỳ bộ phận nào khác ngoài nút cổ chai đều là ảo tưởng.",
-      "elite_leverage": "Tìm ra điểm nghẽn duy nhất đang kiềm hãm sự nghiệp (khâu tìm khách hàng, hay kỹ năng giao tiếp) và dồn toàn lực mở rộng nút cổ chai đó.",
-      "trigger_question": "Đâu là điểm nghẽn độc nhất mà nếu được khai thông, tốc độ chảy của toàn bộ hệ thống sẽ tăng vọt gấp đôi?",
-      "inversion_trap": "Tối ưu hóa nhầm chỗ: Mua máy móc đắt tiền ở khâu đóng gói trong khi khâu sản xuất cốt lõi vẫn đang tắc nghẽn nghiêm trọng.",
+      "first_principle": "Lưu lượng dòng chảy (Throughput) của toàn bộ một hệ thống phức tạp hoặc dây chuyền sản xuất chỉ được quyết định bởi mắt xích yếu nhất (nút cổ chai). Bất kỳ sự tối ưu hóa hay gia tăng tốc độ ở các bộ phận không phải nút cổ chai đều là ảo tưởng và chỉ làm gia tăng hàng tồn kho ứ đọng lãng phí.",
+      "elite_leverage": "Quy trình 5 bước của Eliyahu M. Goldratt trong tác phẩm 'The Goal': Thay vì nâng cấp dàn trải mọi khâu, người tinh hoa truy lùng điểm nghẽn độc nhất đang kiềm tỏa sự phát triển của bản thân hoặc tổ chức; dồn 80% nguồn lực khai thông nút cổ chai đó, rồi lập tức tìm kiếm nút cổ chai tiếp theo vừa mới xuất hiện.",
+      "trigger_question": "Đâu là điểm nghẽn độc nhất trong quy trình hiện tại mà nếu nó được mở rộng gấp đôi, toàn bộ dòng chảy kết quả sẽ tăng vọt theo?",
+      "inversion_trap": "Tối ưu hóa nhầm chỗ cục bộ (Local Optimization): Đầu tư hàng tỷ đồng mua máy móc hiện đại cho khâu dập vỏ hộp (vốn đã làm dư thừa công suất), trong khi khâu sơn thủ công ở giữa vẫn đang tắc nghẽn nghiêm trọng, khiến nhà máy ngập tràn vỏ hộp chờ sơn.",
       "lollapalooza_pairs": [
         "Định luật Pareto",
         "Đòn bẩy",
-        "Chi phí cơ hội"
-      ]
+        "Chi phí cơ hội",
+        "Ma sát"
+      ],
+      "action_steps": [
+        "Xác định nút cổ chai (Identify): Tìm kiếm nơi công việc bị ứ đọng nhiều nhất, nơi mọi người phải chờ đợi lâu nhất hoặc người luôn bị quá tải trong quy trình.",
+        "Khai thác tối đa nút cổ chai (Exploit): Đảm bảo nút cổ chai không bao giờ bị lãng phí dù chỉ 1 phút (không để chuyên gia lập trình phải làm việc nhập liệu bàn giấy).",
+        "Phục tùng nút cổ chai (Subordinate): Điều chỉnh tốc độ và lịch trình của toàn bộ các khâu khác ăn khớp với tốc độ xử lý của nút cổ chai, tránh tạo ứ đọng.",
+        "Nâng cấp mở rộng nút cổ chai (Elevate): Đầu tư thêm nguồn vốn, công nghệ hoặc nhân sự để tăng công suất cho mắt xích này."
+      ],
+      "boundary_conditions": "Khi một nút cổ chai được giải quyết thành công, điểm nghẽn sẽ ngay lập tức dịch chuyển sang một vị trí khác trong hệ thống. Nếu không tái đánh giá liên tục, bạn sẽ rơi vào thói quen quán tính tối ưu hóa một điểm không còn là nút cổ chai nữa.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Buổi sáng gia đình thường xuyên bị trễ giờ học và giờ làm. Phân tích nút cổ chai: Cả nhà 4 người cùng tranh nhau 1 nhà vệ sinh duy nhất lúc 6h45. Giải pháp: Lên lịch so le dậy trước 15 phút và chuẩn bị cặp sách, quần áo từ tối hôm trước; nút cổ chai được giải phóng, buổi sáng trở nên nhẹ nhàng thư thái.\n• Sự nghiệp & Quản lý: Một công ty dịch vụ B2B có đội ngũ bán hàng chốt hợp đồng cực tốt, nhưng doanh thu không tăng được vì chỉ có 2 kỹ sư triển khai dịch vụ (nút cổ chai). Ban giám đốc dừng tuyển thêm nhân viên bán hàng, tập trung chuẩn hóa quy trình triển khai và tuyển thêm kỹ sư, lập tức doanh thu tăng trưởng gấp đôi.\n• Đầu tư VN-Index: Nút cổ chai của nhà đầu tư cá nhân thường không phải là 'thiếu thông tin' (thực tế thông tin đang quá thừa thãi gây nhiễu), mà là 'kỷ luật quản trị tâm lý và quy trình cắt lỗ'. Mở rộng nút cổ chai bằng cách thiết lập lệnh dừng lỗ tự động (Stop-loss) trên hệ thống giao dịch sẽ giúp bảo vệ toàn bộ thành quả đầu tư."
     },
     {
       "id": "SYS-04",
       "name_vi": "Tính Chống Mong manh",
-      "name_en": "Antifragility (Taleb)",
+      "name_en": "Antifragility (Nassim Nicholas Taleb)",
       "pillar": "Kỹ thuật & Hệ thống",
       "tier": 1,
-      "first_principle": "Thứ mong manh ghét biến động; thứ mạnh mẽ chịu đựng được biến động; thứ Chống mong manh hưởng lợi, học hỏi và mạnh mẽ hơn sau mỗi lần va đập.",
-      "elite_leverage": "Cấu trúc cuộc sống để trở thành Chống mong manh: Tổn thất tối đa bị giới hạn rất nhỏ (Downside được bọc lót), nhưng tiềm năng bùng nổ là vô hạn (Upside không giới hạn).",
-      "trigger_question": "Cấu trúc hiện tại của tôi sẽ mạnh mẽ hơn hay gãy vụn khi thị trường xuất hiện sự hỗn loạn và biến động cực đoan?",
-      "inversion_trap": "Mỏng manh hóa: Tránh xa mọi va chạm khiến cơ thể hoặc tổ chức mất hoàn toàn khả năng thích nghi và đề kháng tự nhiên.",
+      "first_principle": "Tam giác phân loại của Taleb: Thứ Mong manh (Fragile) sợ hãi biến động và gãy đổ khi bị va đập; thứ Mạnh mẽ (Robust) chịu đựng được biến động nhưng không thay đổi; thứ Chống mong manh (Antifragile) hưởng lợi, học hỏi, tiến hóa và trở nên mạnh mẽ hơn sau mỗi lần va đập, căng thẳng và hỗn loạn.",
+      "elite_leverage": "Chiến lược Quả tạ (Barbell Strategy) của Taleb: Phân bổ 85-90% nguồn lực vào những tài sản cực kỳ an toàn, phòng thủ tuyệt đối (Downside được bọc lót hoàn toàn, không thể bị xóa sổ); và 10-15% nguồn lực vào hàng loạt các thử nghiệm mạo hiểm có tiềm năng bùng nổ vô hạn (Upside bất đối xứng khổng lồ). Hoàn toàn tránh xa khu vực 'ở giữa' mong manh.",
+      "trigger_question": "Cơ thể, sự nghiệp và danh mục tài chính của tôi sẽ trở nên mạnh mẽ hơn hay vỡ vụn khi thị trường xuất hiện sự hỗn loạn và biến động bất ngờ?",
+      "inversion_trap": "Bảo bọc quá mức dẫn đến mong manh hóa: Triệt tiêu mọi căng thẳng vi mô, uống thuốc kháng sinh ngay khi hắt hơi nhẹ hoặc bao bọc con trong lồng kính; làm suy yếu hệ miễn dịch tự nhiên khiến cơ thể gãy vỡ trước biến cố lớn đầu tiên.",
       "lollapalooza_pairs": [
         "Tiến hóa",
         "Tùy chọn",
-        "Biên độ an toàn"
-      ]
+        "Biên độ an toàn",
+        "Tính phi công thái học"
+      ],
+      "action_steps": [
+        "Xác định và cắt bỏ các điểm tổn thương mong manh: Rà soát nơi bạn có rủi ro mất mát bất đối xứng (nợ vay quá lớn, chỉ có 1 nguồn thu nhập duy nhất).",
+        "Áp dụng Chiến lược Quả tạ (Barbell): Kết hợp giữa cực kỳ an toàn (bảo toàn mạng sống) và cực kỳ mạo hiểm ở quy mô nhỏ (thử nghiệm dự án mới).",
+        "Tận dụng các biến động nhỏ để rèn luyện (Hormesis): Chủ động đưa vào cuộc sống các tác nhân gây căng thẳng có kiểm soát (tập thể dục cường độ cao, tắm nước lạnh, nhịn ăn gián đoạn, học kỹ năng khó).",
+        "Sưu tập quyền chọn bất đối xứng (Optionality): Đặt bản thân vào những cơ hội mà nếu sai chỉ mất chút ít công sức, nhưng nếu đúng sẽ đổi đời."
+      ],
+      "boundary_conditions": "Tính chống mong manh chỉ phát huy tác dụng khi các cú va đập nằm dưới ngưỡng giới hạn bền (dưới ngưỡng chết). Nếu một cú sốc vượt quá sức chịu đựng dẫn đến tử vong hoặc phá sản hoàn toàn, bạn là thứ mong manh đã chết chứ không thể trở nên mạnh mẽ hơn.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Thay vì làm 'cha mẹ trực thăng' giải quyết mọi va chạm và bảo vệ con khỏi mọi thất bại nhỏ, cha mẹ để con tự giải quyết mâu thuẫn với bạn bè, tự đối mặt với điểm kém khi lười học; các bài học thất bại nhỏ này tôi luyện tính chống mong manh tâm lý giúp con vững vàng trước sóng gió cuộc đời.\n• Sự nghiệp & Quản lý: Sự nghiệp theo chiến lược quả tạ: Ban ngày làm một công việc ổn định mang lại thu nhập đều đặn và bảo hiểm; buổi tối dành 2 giờ xây dựng kênh nội dung số hoặc phát triển ứng dụng AI cá nhân (rủi ro bằng 0, tiềm năng tự do tài chính vô hạn).\n• Đầu tư VN-Index: Chiến lược quả tạ tài chính: 85% tài sản phân bổ vào Trái phiếu chính phủ, Tiền gửi ngân hàng lớn và Cổ phiếu đầu ngành phòng thủ có cổ tức tiền mặt cao; 15% còn lại phân bổ vào rổ các cổ phiếu công nghệ / vốn hóa nhỏ giàu tiềm năng tăng trưởng đột phá hoặc các cơ hội tái cấu trúc doanh nghiệp đặc biệt."
     },
     {
       "id": "SYS-05",
