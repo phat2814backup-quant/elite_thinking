@@ -118,35 +118,30 @@ def translate_paragraphs_batch(
             seen.add(k)
             keys.append(k)
 
-    prompt = f"""Bạn là dịch giả phong cách Richard Feynman kiêm chuyên gia sư phạm ngôn ngữ.
-Nhiệm vụ của bạn là dịch nguyên bản 100% từng đoạn văn tiếng Anh sau đây sang tiếng Việt một cách mượt mà, sống động, chuẩn xác kỹ thuật và tự nhiên theo văn phong của Feynman.
+    prompt = f"""Dịch chính xác 100% từng đoạn văn tự truyện tiếng Anh sau đây của Richard Feynman sang tiếng Việt.
+Yêu cầu: Văn phong tự nhiên, giản dị, chuẩn xác và giữ đúng ngữ điệu của Feynman. Không giải thích thêm.
 
-Sách: {book_title}
-Chương: {chapter_title}
+Sách: {book_title} - Chương: {chapter_title}
 
-DANH SÁCH {len(paragraphs)} ĐOẠN VĂN GỐC (JSON Array):
+DANH SÁCH {len(paragraphs)} ĐOẠN VĂN GỐC:
 {json.dumps(paragraphs, ensure_ascii=False)}
 
-YÊU CẦU ĐẦU RA BẮT BUỘC:
-Trả về DUY NHẤT một JSON Array có đúng {len(paragraphs)} phần tử tương ứng theo thứ tự:
+TRẢ VỀ DUY NHẤT 1 MẢNG JSON CHỨA ĐÚNG {len(paragraphs)} BẢN DỊCH THEO THỨ TỰ:
 [
-  {{
-    "index": 0,
-    "vi": "Bản dịch tiếng Việt chuẩn xác 100% của đoạn này",
-    "key_vocab": [
-      {{
-        "word": "từ hoặc cụm từ hay/khó trong đoạn",
-        "vi": "nghĩa ngắn gọn",
-        "nuance": "sắc thái tự nhiên của từ"
-      }}
-    ]
-  }}
+  "Bản dịch tiếng Việt của đoạn 0",
+  "Bản dịch tiếng Việt của đoạn 1"
 ]
 """
 
-    candidates = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+    # Sort keys to prioritize verified working keys: BATN, Az3b, CCTn
+    fast_prefixes = ("AIzaSyBATN", "AIzaSyAz3b", "AIzaSyCCTn")
+    valid_keys = [k for k in keys if any(k.startswith(p) for p in fast_prefixes)]
+    other_keys = [k for k in keys if k not in valid_keys]
+    sorted_keys = valid_keys + other_keys
 
-    for key in keys:
+    candidates = ["gemini-2.5-flash"]
+
+    for key in sorted_keys:
         try:
             genai.configure(api_key=key)
             for cand in candidates:
@@ -155,14 +150,23 @@ Trả về DUY NHẤT một JSON Array có đúng {len(paragraphs)} phần tử 
                         model_name=cand,
                         generation_config={"response_mime_type": "application/json"}
                     )
-                    resp = model.generate_content(prompt, request_options={"timeout": 30})
+                    resp = model.generate_content(prompt, request_options={"timeout": 28})
                     if resp and resp.text:
                         raw_data = json.loads(clean_json_response(resp.text))
-                        if isinstance(raw_data, list) and len(raw_data) == len(paragraphs):
-                            return raw_data
-                        elif isinstance(raw_data, list):
-                            res_map = {item.get("index", idx): item for idx, item in enumerate(raw_data)}
-                            return [res_map.get(idx, {"vi": "", "key_vocab": []}) for idx in range(len(paragraphs))]
+                        if isinstance(raw_data, list):
+                            results = []
+                            for idx, item in enumerate(raw_data):
+                                if isinstance(item, str):
+                                    results.append({"vi": item, "key_vocab": []})
+                                elif isinstance(item, dict):
+                                    results.append({"vi": item.get("vi", str(item)), "key_vocab": []})
+                            if len(results) == len(paragraphs):
+                                return results
+                            elif len(results) > 0:
+                                # Pad or trim
+                                while len(results) < len(paragraphs):
+                                    results.append({"vi": "", "key_vocab": []})
+                                return results[:len(paragraphs)]
                 except Exception as ex:
                     print(f"Model {cand} on key {key[:8]} failed: {ex}")
                     continue
