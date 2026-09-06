@@ -10,18 +10,27 @@
     {
       "id": "PHYS-01",
       "name_vi": "Đòn bẩy",
-      "name_en": "Leverage",
+      "name_en": "Leverage (Archimedes & Naval Ravikant)",
       "pillar": "Vật lý học",
       "tier": 1,
-      "first_principle": "Một lực nhỏ tác động qua cánh tay đòn đủ dài quanh một điểm tựa vững chắc có thể nâng bổng một vật nặng gấp bội (M = F × d).",
-      "elite_leverage": "Không đổi sức lấy kết quả tuyến tính. Giới tinh hoa tìm kiếm 4 loại đòn bẩy tối thượng (Naval Ravikant): Lao động, Vốn, Mã nguồn (Code) và Nội dung (Media) - hai loại sau có chi phí biên bằng 0.",
-      "trigger_question": "Điểm tựa của tôi ở đâu và làm sao để 1 giờ làm việc hôm nay tạo ra giá trị lặp lại 1.000 lần trong tương lai?",
-      "inversion_trap": "Bẫy đòn bẩy hai chiều: Đòn bẩy tài chính (Margin) phóng đại lợi nhuận thì cũng phóng đại thua lỗ đến mức cháy tài khoản nếu thiếu biên độ an toàn.",
+      "first_principle": "Cho tôi một điểm tựa vững chắc và một cánh tay đòn đủ dài, tôi sẽ nhấc bổng cả Trái Đất (Archimedes). M = F × d: Tỷ lệ khuếch đại kết quả đầu ra vượt trội gấp nhiều lần so với lực đầu vào thông qua một cấu trúc chuyển giao lực.",
+      "elite_leverage": "Không đổi thời gian lấy tiền tuyến tính. Naval Ravikant phân loại 4 loại đòn bẩy: (1) Lao động (cần người khác theo), (2) Tư bản/Vốn (cần người cấp tiền), (3) Mã nguồn/Code, và (4) Truyền thông/Media. Hai loại sau là đòn bẩy không cần cấp phép (permissionless) với chi phí biên bằng 0, tạo ra tài sản tích lũy cả khi đang ngủ.",
+      "trigger_question": "Điểm tựa của tôi ở đâu và làm sao để 1 giờ nỗ lực hôm nay tạo ra giá trị lặp lại 1.000 lần trong tương lai mà không tốn thêm sức?",
+      "inversion_trap": "Bẫy đòn bẩy hai chiều: Đòn bẩy tài chính (Margin, nợ vay) phóng đại lợi nhuận khi thị trường tăng thì cũng nhân cấp số nhân khoản lỗ khi thị trường đảo chiều, dẫn đến cháy tài khoản nếu thiếu biên độ an toàn.",
       "lollapalooza_pairs": [
         "Biên độ an toàn",
         "Lãi kép",
-        "Chi phí cơ hội"
-      ]
+        "Chi phí cơ hội",
+        "Tính chống mong manh"
+      ],
+      "action_steps": [
+        "Xác định điểm nghẽn tuyến tính: Rà soát xem công việc hiện tại của bạn đang đổi thời gian 1:1 lấy thù lao ở đâu (chạy deadline thủ công, tư vấn 1-1, giao dịch tay).",
+        "Chọn loại đòn bẩy có chi phí biên thấp: Chuyển dịch từ đòn bẩy nhân sự (phức tạp quản lý) sang đòn bẩy tự động hóa (code, API, bot dữ liệu) hoặc đóng gói tri thức (bài viết, video, template).",
+        "Xây dựng điểm tựa vững chắc (Biên độ an toàn): Đòn bẩy càng lớn thì tải trọng lên điểm tựa càng cao; phải đảm bảo thanh khoản, vốn dự phòng và sức khỏe tinh thần không bao giờ chạm ngưỡng gãy.",
+        "Đo lường hệ số khuếch đại: Đánh giá tỷ lệ đầu ra / đầu vào hàng quý; kiên quyết dừng các tác vụ không có khả năng nhân bản tự động."
+      ],
+      "boundary_conditions": "Không dùng đòn bẩy cao (đặc biệt là Margin/nợ vay) trong môi trường có tính bất định cao, độ trễ hệ thống lớn, hoặc dòng tiền thiếu ổn định. Đòn bẩy áp vào một chiến lược sai chỉ làm bạn phá sản nhanh hơn gấp 10 lần.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Thay vì kè kè nhắc con làm bài mỗi tối (đổi thời gian lấy kết quả), cha mẹ xây dựng 'Hệ thống đòn bẩy thói quen': bàn học không thiết bị điện tử, bảng tích điểm tự giác và trao quyền tự chủ; 1 tháng rèn luyện tạo ra 12 năm tự học không cần quản thúc.\n• Sự nghiệp & Quản lý: Lãnh đạo cấp cao không đi làm thay nhân viên; họ đầu tư 40 giờ để viết tài liệu SOP chuẩn hóa và quay video đào tạo nhân bản, giúp 50 nhân sự mới tự onboard mỗi năm mà không tốn thêm 1 phút họp.\n• Đầu tư VN-Index: Nhà đầu tư cá nhân tuyệt đối không dùng margin 3:7 khi thị trường đang phân phối vùng đỉnh; ngược lại, họ sử dụng 'Đòn bẩy tri thức' (đọc báo cáo tài chính 5 năm của doanh nghiệp đầu ngành) để gom cổ phiếu định giá rẻ tại vùng hoảng loạn với 100% tiền mặt, hưởng siêu lợi nhuận kép mà không lo bị ép bán giải chấp."
     },
     {
       "id": "PHYS-02",
@@ -29,47 +38,74 @@
       "name_en": "Inertia (Newton's 1st Law)",
       "pillar": "Vật lý học",
       "tier": 1,
-      "first_principle": "Một vật thể sẽ giữ nguyên trạng thái đứng yên hoặc chuyển động thẳng đều trừ khi có ngoại lực tác động vào nó.",
-      "elite_leverage": "Sử dụng sức mạnh của đà (Momentum). Chi phí năng lượng lớn nhất luôn nằm ở lúc khởi động từ 0 lên 1; khi hệ thống đã chuyển động, chỉ cần duy trì lực rất nhỏ để giữ tốc độ cao.",
-      "trigger_question": "Dự án/thói quen này đang bị ì ở trạng thái đứng yên, hay nó đã có đà tự chạy mà tôi chỉ cần đẩy nhẹ?",
-      "inversion_trap": "Quán tính tổ chức: Các công ty lớn thường chết vì không thể bẻ lái kịp trước sự thay đổi công nghệ do cỗ máy cồng kềnh có quán tính quá lớn.",
+      "first_principle": "Định luật 1 Newton: Một vật thể sẽ giữ nguyên trạng thái đứng yên hoặc chuyển động thẳng đều nếu không chịu tác động của một ngoại lực ròng triệt tiêu. Hệ thống có xu hướng chống lại mọi sự thay đổi trạng thái hiện tại.",
+      "elite_leverage": "Tận dụng đà (Momentum). Năng lượng tiêu hao lớn nhất luôn nằm ở giai đoạn phá vỡ quán tính đứng yên từ 0 lên 1 (khởi động dự án, tập thể dục ngày đầu). Một khi đã đưa hệ thống vào quỹ đạo chuyển động, chỉ cần một lực duy trì rất nhỏ để đi tiếp với tốc độ cao.",
+      "trigger_question": "Dự án hoặc thói quen này đang bị kẹt trong quán tính đứng yên, hay nó đã có đà tự chạy mà tôi chỉ cần bơm thêm lực nhẹ?",
+      "inversion_trap": "Quán tính tổ chức (Corporate Inertia): Các tập đoàn khổng lồ (như Kodak, Nokia, Yahoo) bị nghiền nát không phải vì thiếu tiền, mà vì cỗ máy vận hành có khối lượng quán tính quá khổng lồ, không thể bẻ lái kịp trước sự thay đổi đột ngột của công nghệ.",
       "lollapalooza_pairs": [
         "Ma sát",
         "Năng lượng hoạt hóa",
-        "Phá hủy sáng tạo"
-      ]
+        "Phá hủy sáng tạo",
+        "Vận tốc thoát"
+      ],
+      "action_steps": [
+        "Xác định trạng thái quán tính hiện tại: Nhận diện xem cá nhân hay tổ chức đang bị mắc kẹt ở quán tính đứng yên (trì hoãn, sợ hãi) hay quán tính chuyển động sai hướng (thói quen độc hại, mô hình kinh doanh lỗi thời).",
+        "Hạ thấp năng lượng hoạt hóa ban đầu: Chia nhỏ bước đi đầu tiên xuống mức tối thiểu (Quy tắc 2 phút) để phá vỡ lực cản tĩnh mà không gây sốc tâm lý.",
+        "Tập trung xung lực ngoại lực đột phá: Tác động một lực dứt khoát, liên tục trong 21-30 ngày đầu để tạo gia tốc ban đầu cho đến khi guồng máy tự tích lũy được động lượng.",
+        "Chuyển từ ngoại lực sang lực quán tính nội tại: Thiết lập các chu kỳ lặp lại tự nhiên (nhịp sinh học, lịch trình cố định) để quán tính trở thành trợ lực đẩy bạn đi mà không tốn ý chí."
+      ],
+      "boundary_conditions": "Không cố duy trì quán tính chuyển động khi vector hướng đi đã sai lệch (ném tiền vào dự án đổ vỡ vì tiếc công sức). Lúc này quán tính biến thành Bẫy chi phí chìm, cần lực phanh khẩn cấp thay vì tiếp tục đẩy.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Trẻ nghiện game có quán tính ngồi lỳ trước màn hình. Thay vì quát mắng (tạo ma sát phản kháng), cha mẹ đặt quy tắc: muốn chơi game phải chạy bộ 15 phút. Sau 3 tuần, quán tính vận động hình thành, đứa trẻ chủ động rủ bạn đi đá bóng.\n• Sự nghiệp & Quản lý: Chuyển đổi số trong doanh nghiệp thường thất bại do quán tính thói quen giấy tờ của nhân sự kỳ cựu. Lãnh đạo khôn ngoan triển khai thí điểm ở một phòng ban tinh gọn, tạo kết quả vượt trội để tạo đà lan tỏa, sau đó mới dùng đà đó để lôi kéo toàn bộ tổ chức chuyển mình.\n• Đầu tư VN-Index: Xu hướng thị trường (Trend) mang quán tính dòng tiền khổng lồ. Trong sóng uptrend mạnh mẽ, đừng cố đoán đỉnh hay bán non vì quán tính dòng tiền FOMO sẽ đẩy giá vượt xa định giá lý thuyết; ngược lại trong downtrend, đừng vội bắt dao rơi vì quán tính giải chấp chéo sẽ kéo cổ phiếu giảm sâu hơn mọi dự báo."
     },
     {
       "id": "PHYS-03",
       "name_vi": "Entropy & Định luật 2 Nhiệt động học",
-      "name_en": "Entropy & Second Law",
+      "name_en": "Entropy & Second Law of Thermodynamics (Clausius & Boltzmann)",
       "pillar": "Vật lý học",
       "tier": 1,
-      "first_principle": "Trong một hệ kín, mức độ hỗn loạn (entropy) luôn có xu hướng tự nhiên tăng dần theo thời gian nếu không được nạp thêm năng lượng từ bên ngoài.",
-      "elite_leverage": "Sự suy thoái, bừa bộn hay sa sút là mặc định tự nhiên. Giới tinh hoa thiết lập các quy trình tự động bơm năng lượng có chủ đích (kỷ luật, bảo trì, review định kỳ) để giữ hệ thống trật tự.",
-      "trigger_question": "Nếu tôi không chủ động bảo trì hay bơm năng lượng vào mảng này trong 3 tháng tới, nó sẽ tự suy thoái theo hướng nào?",
-      "inversion_trap": "Ảo tưởng ổn định vĩnh cửu: Tin rằng một mô hình kinh doanh hay mối quan hệ một khi đã tốt đẹp thì sẽ tự duy trì mãi mãi mà không cần chăm sóc.",
+      "first_principle": "Trong một hệ cô lập, mức độ hỗn loạn (entropy) luôn có xu hướng tự nhiên tăng dần theo thời gian. Trật tự đòi hỏi năng lượng đầu vào có chủ đích; nếu bỏ mặc, mọi hệ thống đều tự động suy thoái về trạng thái mất trật tự cực đại.",
+      "elite_leverage": "Sa sút, bừa bộn, rạn nứt quan hệ hay lỗ hổng quy trình là trạng thái mặc định của tự nhiên, không phải là điều bất thường. Người tinh hoa không tức giận trước sự hỗn loạn mà chủ động thiết kế các 'van bơm năng lượng định kỳ' (Review tuần, dọn dẹp hệ thống, kiểm toán quy trình) để giữ entropy ở mức thấp.",
+      "trigger_question": "Nếu tôi bỏ mặc không can thiệp và không bơm năng lượng vào mảng này trong 3 tháng tới, entropy sẽ phá hủy nó theo kịch bản cụ thể nào?",
+      "inversion_trap": "Ảo tưởng tự duy trì vĩnh cửu: Tin rằng một mối quan hệ, một danh mục đầu tư hay một văn hóa doanh nghiệp một khi đã xây dựng tốt đẹp thì sẽ tự vận hành hoàn hảo mãi mãi mà không cần chăm sóc bảo trì.",
       "lollapalooza_pairs": [
-        "Vòng phản hồi âm",
         "Cân bằng nội môi",
+        "Vòng phản hồi âm",
+        "Tính chống mong manh",
         "Chi phí chuyển hóa"
-      ]
+      ],
+      "action_steps": [
+        "Thừa nhận định luật Entropy: Chấp nhận rằng mọi thứ xung quanh (sức khỏe, nhà cửa, quan hệ, code, tài chính) đều đang tự nhiên thoái hóa từng ngày.",
+        "Xác định các điểm rò rỉ trật tự: Rà soát định kỳ các khu vực có entropy cao nhất: email tồn đọng, công nợ xấu, thói quen sinh hoạt xáo trộn, tài liệu lộn xộn.",
+        "Thiết lập nghi thức bơm năng lượng có kỷ luật: Đặt lịch cố định hàng ngày/hàng tuần để xả bỏ rác và tái lập trật tự (dọn dẹp bàn làm việc 15 phút cuối ngày, họp rà soát danh mục đầu tư chiều chủ nhật).",
+        "Thiết kế hệ thống mở để tiêu tán entropy: Mở rộng tiếp nhận tri thức mới từ bên ngoài, chủ động cắt bỏ các mảng kinh doanh già cỗi để giải phóng năng lượng cho các nhánh tăng trưởng mới."
+      ],
+      "boundary_conditions": "Không áp đặt nỗ lực kiểm soát vi mô (Micromanagement) lên những hệ thống đòi hỏi tính sáng tạo và ngẫu nhiên. Trật tự cưỡng bức thái quá sẽ bóp nghẹt sự linh hoạt và biến tổ chức thành cỗ máy xơ cứng dễ gãy vỡ.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Tình cảm vợ chồng sau 10 năm chung sống tự nhiên nhạt nhòa do entropy cảm xúc. Cặp đôi tinh hoa không đổ lỗi cho số phận mà chủ động thiết lập 'Hẹn hò tối thứ Sáu' hàng tuần - hành động chủ đích bơm năng lượng để triệt tiêu entropy hôn nhân.\n• Sự nghiệp & Quản lý: Cơ sở mã nguồn (Codebase) của một công ty công nghệ tự nhiên trở thành mớ hỗn độn (Technical Debt) theo thời gian. Đội ngũ kỹ thuật dành 20% mỗi chu kỳ sprint để tái cấu trúc mã nguồn (Refactoring), giữ cho hệ thống luôn sạch sẽ và mở rộng được.\n• Đầu tư VN-Index: Danh mục đầu tư sau 6 tháng tăng trưởng sẽ bị lệch tỷ trọng do các mã tăng nhanh chiếm quá nhiều rủi ro. Nhà đầu tư chủ động tái cân bằng danh mục (Rebalancing) vào cuối mỗi quý: chốt lời mã đã vượt định giá và gom mã cơ bản bị lãng quên, đưa entropy rủi ro về mức kiểm soát."
     },
     {
       "id": "PHYS-04",
       "name_vi": "Khối lượng tới hạn",
-      "name_en": "Critical Mass",
+      "name_en": "Critical Mass & Chain Reactions",
       "pillar": "Vật lý học",
       "tier": 1,
-      "first_principle": "Lượng vật chất tối thiểu cần thiết để một phản ứng dây chuyền hạt nhân có thể tự duy trì và bùng nổ liên tục.",
-      "elite_leverage": "Tập trung toàn lực nguồn lực vào một điểm hẹp cho đến khi vượt ngưỡng tới hạn thay vì dàn trải tài nguyên. Một khi vượt ngưỡng, hệ thống sẽ tự nhân bản không cần trợ lực.",
-      "trigger_question": "Tôi đã tích lũy đủ mật độ nguồn lực để kích hoạt phản ứng dây chuyền tự vận hành chưa, hay đang dừng lại ngay trước ngưỡng?",
-      "inversion_trap": "Dàn trải tài nguyên: Đổ một chút công sức vào 10 dự án khác nhau khiến không có dự án nào đạt tới khối lượng tới hạn để cất cánh.",
+      "first_principle": "Khối lượng vật chất phân hạch tối thiểu cần thiết để các neutron sinh ra đủ sức kích hoạt các phân hạch tiếp theo với tốc độ tự duy trì, tạo ra phản ứng dây chuyền hạt nhân bùng nổ liên tục mà không cần nguồn kích hoạt bên ngoài.",
+      "elite_leverage": "Tập trung tuyệt đối nguồn lực vào một diện tích hẹp và thời gian ngắn để vượt qua ngưỡng tới hạn thay vì dàn trải tài nguyên. Trước ngưỡng tới hạn, kết quả gần như bằng 0; vượt ngưỡng tới hạn, hệ thống tự động bùng nổ theo cấp số nhân.",
+      "trigger_question": "Tôi đã dồn đủ mật độ nguồn lực để kích hoạt phản ứng dây chuyền tự vận hành chưa, hay đang dừng lại ngay trước ngưỡng cửa bùng nổ?",
+      "inversion_trap": "Bẫy dàn trải tài nguyên: Rải đều 10% công sức cho 10 dự án khác nhau; kết quả là cả 10 dự án đều nằm dưới ngưỡng tới hạn và chết yểu, lãng phí 100% tài nguyên đã bỏ ra.",
       "lollapalooza_pairs": [
         "Hiệu ứng Mạng lưới",
         "Điểm bùng phát",
-        "Lãi kép"
-      ]
+        "Lãi kép",
+        "Năng lượng hoạt hóa"
+      ],
+      "action_steps": [
+        "Xác định biến số ngưỡng: Định lượng chính xác con số ngưỡng cần đạt để phản ứng tự kích hoạt (số lượng người dùng ban đầu, số vốn tối thiểu, số giờ luyện tập chuyên sâu).",
+        "Cô lập trọng tâm và cắt bỏ rườm rà: Tạm dừng toàn bộ các dự án vệ tinh, tập trung 80% thời gian và ngân sách vào một thị trường ngách duy nhất.",
+        "Đẩy nhanh mật độ tương tác: Tạo ra mật độ hoạt động dày đặc trong thời gian ngắn để kích hoạt phản ứng dây chuyền (chiến dịch ra mắt tập trung thay vì truyền thông nhỏ giọt).",
+        "Khai thác phản ứng tự duy trì: Khi đã vượt khối lượng tới hạn, chuyển trọng tâm từ việc đẩy nguồn lực sang việc xây dựng hạ tầng tiếp nhận để tránh sập hệ thống vì quá tải."
+      ],
+      "boundary_conditions": "Không kích hoạt phản ứng dây chuyền khi cấu trúc chứa đựng chưa đủ bền vững (sản phẩm chưa hoàn thiện, văn hóa công ty yếu kém). Đạt khối lượng tới hạn trong một cấu trúc rỗng sẽ dẫn đến nổ tung thay vì tạo ra năng lượng có ích.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Việc học tiếng Anh của trẻ em: học 30 phút mỗi tuần trong 5 năm không bao giờ nói được trôi chảy vì chưa đạt khối lượng tới hạn. Cho con 'nhúng' hoàn toàn vào môi trường tiếng Anh 3 giờ mỗi ngày trong 3 tháng hè giúp con đạt ngưỡng tự phản xạ ngôn ngữ trọn đời.\n• Sự nghiệp & Quản lý: Nền tảng sàn thương mại điện tử (Shopee, Grab) chấp nhận đốt vốn tập trung vào một thành phố cụ thể để đạt mật độ người mua và tài xế tối thiểu (Critical Mass); một khi hai bên đủ đông, hiệu ứng mạng lưới tự động giữ chân khách mà không cần khuyến mãi khủng.\n• Đầu tư VN-Index: Tích lũy cổ phiếu của dòng tiền lớn (Tạo lập / Smart Money): Họ gom ròng cổ phiếu trong biên độ hẹp nhiều tháng trời cho đến khi lượng cổ phiếu trôi nổi cạn kiệt (đạt khối lượng tới hạn kiểm soát cung); chỉ cần một lực mua nhỏ kích hoạt, giá cổ phiếu lập tức bùng nổ vào sóng tăng phi mã kéo dài."
     },
     {
       "id": "PHYS-05",
@@ -121,19 +157,28 @@
     },
     {
       "id": "PHYS-08",
-      "name_vi": "Ma sát",
-      "name_en": "Friction",
+      "name_vi": "Ma sát & Độ nhớt",
+      "name_en": "Friction & Viscosity",
       "pillar": "Vật lý học",
-      "tier": 2,
-      "first_principle": "Lực cản trở chuyển động tương đối giữa hai bề mặt tiếp xúc, làm tiêu hao động năng thành nhiệt năng vô ích.",
-      "elite_leverage": "Tối ưu hóa hành vi bằng cách giảm ma sát đối với thói quen tốt (để sách ngay đầu giường) và tăng tối đa ma sát đối với thói quen xấu (đặt mật khẩu phức tạp cho mạng xã hội).",
-      "trigger_question": "Đâu là lực cản ma sát vi mô đang âm thầm làm nản lòng khách hàng hoặc làm hao tổn năng lượng làm việc của tôi?",
-      "inversion_trap": "Triệt tiêu ma sát cần thiết: Ma sát giúp bánh xe bám đường; loại bỏ hoàn toàn ma sát kiểm soát rủi ro sẽ dẫn đến trượt dốc không phanh.",
+      "tier": 1,
+      "first_principle": "Lực cản trở chuyển động tương đối giữa hai bề mặt tiếp xúc, chuyển hóa động năng hữu ích thành nhiệt năng tiêu tán vô ích. Độ nhớt đo lường nội ma sát của dòng chảy lưu chất.",
+      "elite_leverage": "Kiến trúc hành vi bằng cách thao túng ma sát: Triệt tiêu tối đa ma sát đối với các hành vi bạn muốn thúc đẩy (để sách ngay gối ngủ, tự động trích tiền đầu tư khi có lương) và nhân cấp số nhân ma sát đối với các cám dỗ độc hại (đặt mật khẩu 2 lớp cho game, rút phích cắm TV sau khi xem).",
+      "trigger_question": "Đâu là lực cản ma sát vi mô đang âm thầm làm nản lòng khách hàng, hay đâu là ma sát cần được thiết lập để ngăn tôi ra quyết định bốc đồng?",
+      "inversion_trap": "Triệt tiêu hoàn toàn ma sát kiểm soát rủi ro: Ma sát giúp lốp xe bám đường khi vào cua; việc gỡ bỏ mọi rào cản kiểm soát, phê duyệt rủi ro để chạy theo tốc độ ngắn hạn sẽ dẫn đến tai nạn thảm khốc.",
       "lollapalooza_pairs": [
         "Nút cổ chai",
         "Quán tính",
-        "Biên độ an toàn"
-      ]
+        "Biên độ an toàn",
+        "Năng lượng hoạt hóa"
+      ],
+      "action_steps": [
+        "Lập bản đồ các điểm chạm ma sát: Liệt kê chi tiết từng cú nhấp chuột, từng bước thủ tục hay từng rào cản tâm lý mà đối tượng phải trải qua.",
+        "Bôi trơn các hành vi tạo giá trị: Cắt giảm giấy tờ thừa, tối ưu hóa giao diện người dùng (One-click checkout), tự động hóa các khâu nhập liệu thủ công.",
+        "Cài đặt ma sát có chủ đích cho các quyết định nguy hiểm: Tạo ra 'Khoảng dừng 24 giờ' trước khi mua sắm xa xỉ phẩm, yêu cầu 2 người duyệt lệnh khi chuyển tiền lớn.",
+        "Định kỳ đo lường độ nhớt tổ chức: Đánh giá thời gian luân chuyển một văn bản từ khi đề xuất đến khi phê duyệt; phát hiện các phòng ban có độ nhớt quá cao gây ứ đọng dòng tiền."
+      ],
+      "boundary_conditions": "Không loại bỏ ma sát tại các chốt chặn an toàn sinh mệnh hoặc kiểm toán tài chính. Tốc độ cao không có ma sát hãm phanh chỉ mang lại sự hủy diệt nhanh hơn.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Muốn con đọc sách thay vì xem điện thoại, cha mẹ cất điện thoại vào tủ khóa có mật khẩu (tăng ma sát tiếp cận màn hình) và đặt các cuốn truyện tranh khoa học hấp dẫn ngay bàn ăn và đầu giường (giảm ma sát tiếp cận sách xuống 0 giây).\n• Sự nghiệp & Quản lý: Amazon tiên phong tính năng mua hàng bằng '1-Click Ordering' loại bỏ toàn bộ ma sát điền địa chỉ và thẻ ngân hàng, tăng tỷ lệ chuyển đổi đơn hàng lên 30%, biến ma sát thấp thành con hào kinh tế hàng chục tỷ USD.\n• Đầu tư VN-Index: Nhà đầu tư thường cháy tài khoản vì ma sát đặt lệnh quá thấp (chỉ cần bấm 1 nút trên app điện thoại là 'all-in'). Nhà đầu tư kỷ luật cố tình tạo ma sát: gỡ app giao dịch khỏi điện thoại, chỉ giao dịch trên máy tính bàn vào cuối phiên và bắt buộc phải viết lý do mua/bán vào sổ tay trước khi ấn enter."
     },
     {
       "id": "PHYS-09",
@@ -268,82 +313,127 @@
     {
       "id": "BIO-01",
       "name_vi": "Tiến hóa & Chọn lọc Tự nhiên",
-      "name_en": "Natural Selection & Evolution",
+      "name_en": "Natural Selection & Evolution (Charles Darwin)",
       "pillar": "Sinh học",
       "tier": 1,
-      "first_principle": "Các cá thể mang biến dị thích nghi tốt hơn với áp lực môi trường sẽ có cơ hội sống sót và sinh sản cao hơn, truyền lại tính trạng đó cho thế hệ sau.",
-      "elite_leverage": "Không phải kẻ mạnh nhất sống sót, mà là kẻ thích nghi nhanh nhất. Tạo ra nhiều thử nghiệm vi mô giá rẻ và để thị trường thực hiện việc chọn lọc tự nhiên.",
-      "trigger_question": "Áp lực chọn lọc thực tế của môi trường này là gì, và tôi đang thích nghi với thực tế hay đang chống đối nó?",
-      "inversion_trap": "Bảo thủ tự mãn: Tin rằng công thức thành công trong quá khứ sẽ tiếp tục đúng khi môi trường cạnh tranh đã thay đổi hoàn toàn.",
+      "first_principle": "Trong tự nhiên, các cá thể sinh ra nhiều hơn mức môi trường có thể nuôi sống; các biến dị di truyền ngẫu nhiên giúp cá thể thích nghi tốt hơn với áp lực chọn lọc sẽ có xác suất sống sót và sinh sản cao hơn, dần dần chiếm ưu thế áp đảo trong quần thể.",
+      "elite_leverage": "Không phải kẻ thông minh nhất hay mạnh nhất sống sót, mà là kẻ thích nghi nhanh nhất với sự thay đổi (Darwin). Chiến lược tinh hoa: Đưa ra hàng loạt thử nghiệm vi mô chi phí thấp (biến dị), quan sát phản hồi từ thị trường (áp lực chọn lọc), kiên quyết khai tử các nhánh thất bại và nhân rộng thần tốc nhánh thành công.",
+      "trigger_question": "Áp lực chọn lọc khốc liệt nhất của môi trường hiện tại là gì, và tôi đang chủ động thích nghi với nó hay đang ngoan cố chống đối thực tế?",
+      "inversion_trap": "Bảo thủ tự mãn (Bẫy khủng long): Giữ khư khư năng lực cốt lõi từng mang lại thành công rực rỡ trong quá khứ khi môi trường sinh thái đã thay đổi hoàn toàn (kỷ băng hà công nghệ mới ập đến).",
       "lollapalooza_pairs": [
-        "Thực nghiệm nhanh",
         "Phá hủy sáng tạo",
-        "Cập nhật Bayes"
-      ]
+        "Cập nhật Bayes",
+        "Hiệu ứng Nữ hoàng Đỏ",
+        "Tính chống mong manh"
+      ],
+      "action_steps": [
+        "Xác định áp lực chọn lọc của môi trường: Tìm hiểu điều kiện sinh tồn cốt lõi hiện nay (công nghệ AI, thói quen tiêu dùng mới, chính sách tiền tệ thắt chặt).",
+        "Tạo ra đa dạng biến dị vi mô: Liên tục thử nghiệm 3-5 ý tưởng sản phẩm hoặc phong cách làm việc mới với chi phí rủi ro tối thiểu, không đặt cược sinh mệnh vào một cửa.",
+        "Thiết lập cơ chế phản hồi tàn nhẫn: Lắng nghe số liệu thực tế từ khách hàng và thị trường; không yêu thương mù quáng bất kỳ ý tưởng thử nghiệm nào.",
+        "Nhân rộng tính trạng ưu việt: Khi một biến dị chứng minh được hiệu quả vượt trội, lập tức dồn toàn bộ nguồn lực để thể chế hóa và mở rộng nó thành lợi thế cốt lõi."
+      ],
+      "boundary_conditions": "Không áp dụng tư duy đột biến vô tội vạ vào các hệ thống đòi hỏi tính chuẩn mực và an toàn tuyệt đối (y tế, hàng không, quản trị rủi ro thanh khoản ngân hàng). Tại đó, sự ổn định đã được kiểm chứng quan trọng hơn biến dị.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Định hướng nghề nghiệp cho con không theo khuôn mẫu truyền thống đã lỗi thời (chỉ làm bác sĩ, kỹ sư). Cha mẹ khuyến khích con thử nghiệm nhiều môn học, kỹ năng mềm và dự án thực tế từ sớm, để đam mê và năng khiếu tự nhiên của con được 'chọn lọc' qua cọ xát thực tế.\n• Sự nghiệp & Quản lý: Netflix khởi đầu là dịch vụ cho thuê đĩa DVD qua bưu điện. Khi nhận thấy áp lực chọn lọc của băng thông internet, họ tự tay 'khai tử' mảng DVD để chuyển sang Streaming, rồi tiếp tục chuyển sang tự sản xuất nội dung gốc (Netflix Originals) để thích nghi sinh tồn.\n• Đầu tư VN-Index: Thị trường chứng khoán liên tục thay đổi chu kỳ dẫn dắt. Một nhà đầu tư sống sót 20 năm trên thị trường không phải là người tôn thờ một trường phái duy nhất, mà biết thích nghi: đánh theo tăng trưởng khi kinh tế mở rộng, chuyển sang phòng thủ cổ tức cao khi lãi suất tăng, và linh hoạt cắt lỗ khi cổ phiếu gãy nền."
     },
     {
       "id": "BIO-02",
       "name_vi": "Hốc sinh thái & Chuyên biệt hóa",
-      "name_en": "Ecological Niches & Specialization",
+      "name_en": "Ecological Niches & Competitive Exclusion (Gause's Law)",
       "pillar": "Sinh học",
       "tier": 1,
-      "first_principle": "Hai loài cạnh tranh cùng một nguồn thức ăn hạn chế không thể cùng tồn tại vĩnh viễn (Nguyên lý Gause); loài yếu hơn phải tìm hoặc tạo ra một hốc sinh thái riêng.",
-      "elite_leverage": "Tránh đối đầu trực diện với những gã khổng lồ. Chiếm lĩnh một hốc nhỏ nhưng có giá trị cao, trở thành số 1 tuyệt đối trong hốc đó trước khi mở rộng.",
-      "trigger_question": "Hốc sinh thái độc quyền mà ở đó tôi không có đối thủ cạnh tranh trực tiếp là gì?",
-      "inversion_trap": "Ảo tưởng đại trà: Cố gắng làm hài lòng tất cả mọi người, biến mình thành kẻ mờ nhạt không có bất kỳ vũ khí đặc trưng nào.",
+      "first_principle": "Nguyên lý Loại trừ Cạnh tranh của Gause: Hai loài sinh vật cùng sinh sống trong một môi trường và cạnh tranh chính xác một nguồn thức ăn hạn chế không thể cùng tồn tại vĩnh viễn; loài nào kém ưu thế dù chỉ 1% cũng sẽ bị diệt vong hoặc buộc phải chuyên biệt hóa để tìm một hốc sinh thái mới.",
+      "elite_leverage": "Đừng bao giờ thi đấu trên sân khách của kẻ mạnh nhất. Thay vì đối đầu trực diện với những gã khổng lồ đa năng, hãy thu hẹp phạm vi và đào sâu vào một hốc sinh thái hẹp đến mức bạn trở thành độc quyền tự nhiên và không ai có thể đánh bại bạn trong ngóc ngách đó.",
+      "trigger_question": "Hốc sinh thái độc quyền nào mà ở đó tôi là lựa chọn duy nhất và vượt trội, khiến các đối thủ lớn không muốn hoặc không thể nhảy vào cạnh tranh?",
+      "inversion_trap": "Ảo tưởng đại trà (Thợ cái gì cũng biết nhưng không giỏi cái gì): Cố gắng phục vụ tất cả mọi người với mọi tính năng, khiến bản thân trở nên mờ nhạt, định giá thấp và dễ dàng bị các chuyên gia hốc nuốt chửng.",
       "lollapalooza_pairs": [
         "Lợi thế so sánh",
         "Con hào kinh tế",
-        "Chi phí cơ hội"
-      ]
+        "Chi phí cơ hội",
+        "Vòng tròn năng lực"
+      ],
+      "action_steps": [
+        "Xác định vùng cạnh tranh đẫm máu: Rà soát xem lĩnh vực bạn đang làm có đang đụng độ trực diện với các đối thủ có vốn lớn và quy mô khổng lồ hay không.",
+        "Tìm kiếm tọa độ giao thoa độc bản: Kết hợp 2 đến 3 kỹ năng hoặc tập khách hàng khác nhau để tạo thành một hốc mới chưa ai phục vụ (ví dụ: Luật sư chuyên sâu về Luật Bản quyền Trí tuệ AI).",
+        "Thống trị hốc sinh thái: Dồn toàn bộ nguồn lực để chiếm trên 50% thị phần của hốc nhỏ đó, xây dựng uy tín không thể thay thế trước khi nghĩ đến việc bành trướng.",
+        "Phòng thủ hốc bằng con hào chuyên môn: Đào sâu chuyên môn và quan hệ khách hàng đến mức đối thủ mới nếu muốn nhảy vào sẽ phải chịu chi phí chuyển đổi quá lớn."
+      ],
+      "boundary_conditions": "Hốc sinh thái không được quá nhỏ đến mức không đủ dung dưỡng một mô hình kinh doanh sống sót (tổng quy mô thị trường - TAM quá bé), hoặc hốc nằm trong một ngành đang suy thoái hoàn toàn.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Con không cần phải là học sinh giỏi toàn diện tất cả các môn để cạnh tranh với hàng triệu bạn cùng lứa. Cha mẹ giúp con tìm ra 'hốc sinh thái năng khiếu': ví dụ con có tài vẽ tranh kết hợp với kể chuyện logic, hướng con trở thành họa sĩ thiết kế nhân vật hoạt hình xuất sắc.\n• Sự nghiệp & Quản lý: Thay vì làm một công ty phần mềm kế toán chung chung cạnh tranh với SAP hay Misa, một startup công nghệ tập trung duy nhất vào giải pháp quản lý doanh thu cho chuỗi phòng khám nha khoa tại Việt Nam; họ chiếm trọn 70% thị phần ngách này mà không gã khổng lồ nào thèm dòm ngó.\n• Đầu tư VN-Index: Nhà đầu tư cá nhân có nguồn vốn nhỏ không thể cạnh tranh về tốc độ thông tin hay quy mô tiền tệ với các quỹ ngoại ở nhóm VN30. Hốc sinh thái của cá nhân tinh hoa là 'Cổ phiếu vốn hóa vừa và nhỏ (Mid/Small cap)' bị các quỹ bỏ qua do hạn mức thanh khoản, nơi định giá P/E chỉ 5-6 lần và cổ tức tiền mặt đều đặn 15%/năm."
     },
     {
       "id": "BIO-03",
       "name_vi": "Cân bằng nội môi",
-      "name_en": "Homeostasis",
+      "name_en": "Homeostasis & Negative Feedback Regulation",
       "pillar": "Sinh học",
       "tier": 1,
-      "first_principle": "Cơ chế tự điều chỉnh của một sinh vật sống để duy trì trạng thái ổn định sinh lý bên trong bất chấp biến động dữ dội của môi trường ngoài.",
-      "elite_leverage": "Xây dựng các cơ chế tự cân bằng tài chính và tâm lý (quy tắc tái cân bằng danh mục đầu tư khi giá biến động, tự động trích tiết kiệm khi có thu nhập).",
-      "trigger_question": "Hệ thống quản trị của tôi có cơ chế tự động cân bằng lại khi bị sốc không, hay cần sự can thiệp thủ công đầy căng thẳng?",
-      "inversion_trap": "Cứng nhắc quá mức: Cố giữ nguyên trạng thái cũ đến mức ngăn cản mọi sự thay đổi và học hỏi cần thiết cho quá trình phát triển.",
+      "first_principle": "Khả năng sinh học tự điều chỉnh của một cơ thể sống nhằm duy trì các chỉ số nội môi (nhiệt độ cơ thể, đường huyết, nồng độ pH) ở trạng thái cân bằng động ổn định bất chấp mọi biến động khắc nghiệt của môi trường bên ngoài thông qua các vòng phản hồi âm.",
+      "elite_leverage": "Thiết kế các cơ chế tự động cân bằng cho cuộc sống và tổ chức: Khi căng thẳng tăng vọt, hệ thống tự động kích hoạt cơ chế giải tỏa; khi danh mục đầu tư tăng quá nóng, cơ chế tự động chốt lời và mua tài sản phòng thủ được kích hoạt mà không cần chờ cảm xúc con người.",
+      "trigger_question": "Hệ thống quản trị và tài chính của tôi có cơ chế tự động cân bằng lại khi gặp cú sốc bất ngờ không, hay hoàn toàn phụ thuộc vào sự can thiệp thủ công căng thẳng?",
+      "inversion_trap": "Cân bằng tĩnh cứng nhắc: Nhầm lẫn cân bằng nội môi (vốn là cân bằng động, dao động quanh một điểm tối ưu) với sự bất biến đông cứng; ngăn chặn mọi sự rung động nhỏ sẽ dẫn đến một sự sụp đổ dây chuyền thảm khốc khi có biến cố lớn.",
       "lollapalooza_pairs": [
         "Vòng phản hồi âm",
         "Biên độ an toàn",
-        "Entropy"
-      ]
+        "Entropy",
+        "Tính chống mong manh"
+      ],
+      "action_steps": [
+        "Xác định các chỉ số sinh tồn cốt lõi: Thiết lập các ngưỡng giới hạn tối ưu cho các thông số quan trọng (dòng tiền dự phòng tối thiểu 6 tháng, tỷ lệ nợ/tài sản dưới 30%, nhịp tim nghỉ ngơi).",
+        "Cài đặt cảm biến phát hiện sai lệch: Xây dựng hệ thống cảnh báo sớm ngay khi một chỉ số bị lệch khỏi biên độ an toàn cho phép.",
+        "Tự động hóa hành động điều chỉnh (Vòng phản hồi âm): Thiết lập quy tắc hành động không cảm xúc (nếu tài sản rủi ro vượt quá 70% tổng tài sản, lập tức bán ra đưa về 60% mà không cần suy nghĩ).",
+        "Bảo vệ năng lực tự phục hồi: Đảm bảo cơ thể và tổ chức luôn có thời gian 'nghỉ ngơi tái tạo' giữa các đợt căng thẳng để không làm hỏng tuyến nội tiết tự điều hòa."
+      ],
+      "boundary_conditions": "Không kích hoạt cơ chế cân bằng nội môi nhằm dập tắt các biến động cần thiết cho sự tiến hóa hoặc chuyển pha (ví dụ kìm hãm sự tăng trưởng đột phá của một mô hình kinh doanh mới để quay về mức trung bình cũ).",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Thiết lập cân bằng nội môi cho cảm xúc gia đình: Khi một thành viên bắt đầu to tiếng tức giận (thân nhiệt cảm xúc tăng cao), cả nhà có quy tắc 'Khoảng lặng 10 phút' uống nước và thở sâu trước khi thảo luận tiếp, ngăn chặn việc buông lời làm tổn thương nhau.\n• Sự nghiệp & Quản lý: Chính sách quản trị tiền mặt của doanh nghiệp: Doanh thu đột biến trong quý này không được đem đi chia thưởng hết mà tự động trích 40% vào quỹ dự phòng khủng hoảng; khi kinh tế suy thoái, quỹ này tự động bơm ra nuôi bộ máy mà không phải sa thải nhân viên.\n• Đầu tư VN-Index: Chiến lược tái cân bằng danh mục định kỳ (Portfolio Rebalancing): Quy định tỷ lệ cố định 70% Cổ phiếu / 30% Tiền gửi. Khi thị trường bùng nổ đẩy tỷ trọng cổ phiếu lên 85%, nhà đầu tư tự động bán bớt 15% cổ phiếu chuyển sang tiền; khi thị trường sụp đổ tỷ trọng cổ phiếu rơi về 50%, họ dùng tiền mua thêm cổ phiếu, tự động thực hiện hành vi 'bán đắt - mua rẻ' một cách hoàn hảo."
     },
     {
       "id": "BIO-04",
       "name_vi": "Hiệu ứng Nữ hoàng Đỏ",
-      "name_en": "The Red Queen Effect",
+      "name_en": "The Red Queen Effect (Van Valen & Lewis Carroll)",
       "pillar": "Sinh học",
-      "tier": 2,
-      "first_principle": "Trong Alice in Wonderland: 'Bạn phải chạy hết tốc lực chỉ để giữ nguyên vị trí cũ' - các loài phải liên tục tiến hóa chỉ để theo kịp các loài đồng tiến hóa xung quanh.",
-      "elite_leverage": "Đứng yên đồng nghĩa với đi lùi. Nâng cấp năng lực và ứng dụng công nghệ mới (như AI) không phải để vượt trội người khác, mà là điều kiện tiên quyết để không bị đào thải.",
-      "trigger_question": "Hôm nay tôi đã học hỏi và thích nghi đủ nhanh để ít nhất duy trì được vị thế cạnh tranh của mình trong thị trường chưa?",
-      "inversion_trap": "Chạy đua vũ trang kiệt sức: Bị cuốn vào cuộc đua tiêu hao vô nghĩa với đối thủ mà không hề xây dựng được bất kỳ con hào bền vững nào.",
+      "tier": 1,
+      "first_principle": "Trong tác phẩm Through the Looking-Glass của Lewis Carroll: 'Ở xứ sở này, bạn phải chạy hết tốc lực chỉ để giữ nguyên vị trí cũ. Nếu muốn đi tới đâu đó, bạn phải chạy nhanh gấp đôi!' Trong sinh học tiến hóa, mọi loài phải liên tục thích nghi và tiến hóa chỉ để duy trì trạng thái sinh tồn trước các loài đồng tiến hóa xung quanh.",
+      "elite_leverage": "Hiểu rằng đứng yên trong một môi trường vận động tương đối đồng nghĩa với việc đang thụt lùi với tốc độ cao. Học hỏi liên tục, nâng cấp tư duy và làm chủ các công cụ đòn bẩy mới (như AI) không phải là để trở nên vượt trội người khác, mà là điều kiện tối thiểu để không bị môi trường đào thải khỏi cuộc chơi.",
+      "trigger_question": "Tốc độ học hỏi và làm mới năng lực của tôi hôm nay có đang nhanh hơn tốc độ biến đổi và đồng tiến hóa của thị trường xung quanh không?",
+      "inversion_trap": "Bẫy chạy đua vũ trang kiệt sức: Bị cuốn vào cuộc đua tiêu hao vô nghĩa với các đối thủ trực tiếp (giảm giá sát ván, thức thâu đêm) mà không xây dựng được bất kỳ giá trị cốt lõi hay con hào kinh tế nào.",
       "lollapalooza_pairs": [
         "Tiến hóa",
         "Cân bằng Nash",
-        "Hốc sinh thái"
-      ]
+        "Hốc sinh thái",
+        "Quán tính"
+      ],
+      "action_steps": [
+        "Nhận diện tốc độ biến đổi của hệ sinh thái: Đánh giá tốc độ nâng cấp công nghệ và tiêu chuẩn nghề nghiệp trong ngành của bạn trong 2 năm qua.",
+        "Cài đặt ngân sách học tập bắt buộc: Dành tối thiểu 5-10 giờ mỗi tuần và 5% thu nhập để học các kỹ năng mới và thử nghiệm công cụ mới (đặc biệt là trí tuệ nhân tạo).",
+        "Thoát khỏi cuộc đua vũ trang cục bộ: Nếu thấy đối thủ đang kéo bạn vào cuộc đua giảm giá hoặc làm việc kiệt sức, hãy đổi luật chơi bằng cách nhảy sang hốc sinh thái mới.",
+        "Đồng tiến hóa cùng đối tác ưu tú: Hợp tác với những đồng nghiệp và đối tác có tốc độ tiến hóa nhanh nhất để được họ kéo bạn đi theo nhịp độ phát triển cao."
+      ],
+      "boundary_conditions": "Không chạy thục mạng theo các trào lưu ngắn hạn vô bổ (Fad). Phân biệt rõ giữa 'đồng tiến hóa thực chất' (kỹ năng giải quyết vấn đề cốt lõi) với 'tiếng ồn thị trường' (chạy theo xu hướng nhất thời rồi biến mất).",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Khi công nghệ AI có thể giải toán và viết văn trong vài giây, nếu cha mẹ vẫn bắt con luyện giải toán mẹo và học vẹt (chạy đua theo đề thi cũ), đứa trẻ sẽ bị tụt hậu nghiêm trọng. Cha mẹ rèn luyện cho con tư duy nguyên bản, năng lực đặt câu hỏi sâu sắc và khả năng thấu cảm - những năng lực tiến hóa vượt trội hơn máy móc.\n• Sự nghiệp & Quản lý: Ngành lập trình phần mềm: Một kỹ sư không học thêm công nghệ mới trong 3 năm sẽ thấy kiến thức của mình hoàn toàn lỗi thời trước các công cụ AI coding; người duy trì thói quen đọc tài liệu kỹ thuật mỗi sáng giữ vững giá trị thị trường và thăng tiến nhanh chóng.\n• Đầu tư VN-Index: Thị trường chứng khoán không ngừng tiến hóa: 15 năm trước chỉ cần nhìn bảng điện ba chữ cái là thắng; ngày nay các quỹ và cá nhân tinh hoa sử dụng mô hình định lượng (Quant), phân tích dữ liệu lớn và thuật toán. Nhà đầu tư không chịu nâng cấp phương pháp phân tích cơ bản và quản trị vốn sẽ dần bị thị trường bào mòn tài sản."
     },
     {
       "id": "BIO-05",
       "name_vi": "Đồng sinh & Cộng sinh",
-      "name_en": "Mutualism & Symbiosis",
+      "name_en": "Mutualism & Symbiosis (Cooperation in Nature)",
       "pillar": "Sinh học",
-      "tier": 2,
-      "first_principle": "Mối quan hệ tương tác mật thiết giữa hai sinh vật khác loài, trong đó cả hai bên đều hưởng lợi ích sinh tồn thiết yếu từ sự hiện diện của nhau.",
-      "elite_leverage": "Xây dựng các mối quan hệ cộng sinh cùng thắng (Win-Win) bền vững thay vì các giao dịch săn mồi ngắn hạn (Zero-sum). Trở thành đối tác không thể thiếu trong chuỗi giá trị của người khác.",
-      "trigger_question": "Mối quan hệ này có bản chất đôi bên cùng có lợi lâu dài, hay một bên đang vô thức bóc lột bên kia?",
-      "inversion_trap": "Nhầm lẫn ký sinh với cộng sinh: Nuôi dưỡng một mối quan hệ độc hại chỉ vì nghĩ rằng mình đang hợp tác giúp đỡ lẫn nhau.",
+      "tier": 1,
+      "first_principle": "Sự tương tác mật thiết, lâu dài giữa hai hoặc nhiều sinh vật khác loài mang lại lợi ích sinh tồn và sinh sản thiết yếu cho cả hai bên (như vi khuẩn đường ruột với con người, nấm rễ mycorrhiza với cây rừng). Sự hợp tác tạo ra tổng giá trị lớn hơn nhiều tổng số các phần tử riêng lẻ.",
+      "elite_leverage": "Từ bỏ tư duy trò chơi có tổng bằng không (Zero-sum - kẻ thắng người thua). Giới tinh hoa tìm kiếm và xây dựng các mạng lưới cộng sinh cùng thắng (Positive-sum / Win-Win), trở thành một mắt xích giá trị không thể thiếu trong hệ sinh thái của người khác, biến đối tác thành người bảo vệ lợi ích cho mình.",
+      "trigger_question": "Mối quan hệ hợp tác này có thực sự tạo ra giá trị thặng dư cộng hưởng cho cả hai bên, hay một bên đang vô thức bóc lột bên kia?",
+      "inversion_trap": "Nhầm lẫn ký sinh với cộng sinh: Tự lừa dối mình rằng đang hợp tác cùng phát triển, trong khi thực tế đối tác chỉ đang âm thầm hút cạn nguồn lực và uy tín của bạn mà không đem lại bất kỳ giá trị đối ứng nào.",
       "lollapalooza_pairs": [
         "Lý thuyết trò chơi",
         "Thiên kiến động lực",
-        "Hiệu ứng Mạng lưới"
-      ]
+        "Hiệu ứng Mạng lưới",
+        "Cân bằng nội môi"
+      ],
+      "action_steps": [
+        "Xác định tài nguyên bổ sung: Tìm kiếm những đối tác sở hữu thế mạnh mà bạn đang thiếu và ngược lại bạn có thứ họ đang khao khát.",
+        "Thiết kế cơ chế chia sẻ lợi ích minh bạch: Đảm bảo tỷ lệ phân chia thặng dư công bằng ngay từ ngày đầu, để đối tác có động lực tối đa cùng bạn bảo vệ thành quả.",
+        "Loại bỏ triệt để quan hệ ký sinh: Can đảm cắt đứt các mối quan hệ một chiều, chỉ biết đòi hỏi mà không bao giờ đóng góp công sức tương xứng.",
+        "Bồi dưỡng sự tin cậy dài hạn: Lặp lại các hành động trung thực qua nhiều chu kỳ (Trò chơi lặp lại vô hạn) để biến quan hệ giao dịch ngắn hạn thành liên minh sinh tử."
+      ],
+      "boundary_conditions": "Không duy trì quan hệ cộng sinh khi giá trị cốt lõi và đạo đức của hai bên không tương thích. Hợp tác với kẻ lừa đảo hoặc thiếu liêm chính thì dù điều khoản ban đầu có hấp dẫn đến đâu, bạn cũng sẽ trở thành nạn nhân cuối cùng.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Mối quan hệ giữa cha mẹ và con cái không phải là quan hệ áp đặt quyền lực gia trưởng (ký sinh kiểm soát), mà là quan hệ cộng sinh trưởng thành: cha mẹ trao cho con tình yêu vô điều kiện và sự nâng đỡ trí tuệ, con cái trao lại cho cha mẹ góc nhìn tươi mới về thế giới và sự thấu hiểu thế hệ.\n• Sự nghiệp & Quản lý: Apple và các nhà phát triển ứng dụng trên App Store: Apple cung cấp phần cứng, bảo mật và 1 tỷ khách hàng; các nhà phát triển cung cấp hàng triệu ứng dụng sáng tạo. Mối quan hệ cộng sinh này tạo ra nền kinh tế hàng trăm tỷ USD mà không một bên nào có thể tự làm một mình.\n• Đầu tư VN-Index: Nhà đầu tư cá nhân chọn đồng hành cùng các doanh nghiệp có ban lãnh đạo liêm chính và 'có da trong cuộc chơi' (Skin in the game - cổ đông lớn cũng là người điều hành): Lợi nhuận của doanh nghiệp được chia sẻ công bằng qua cổ tức tiền mặt cho cổ đông, thay vì bị rút ruột qua các công ty sân sau của ban lãnh đạo (bản chất ký sinh)."
     },
     {
       "id": "BIO-06",

@@ -1165,93 +1165,113 @@ MODES_QUIZ = [
 # =============================================================================
 MODELS_QUIZ = [
     # -------------------------------------------------------------------------
-    # TRỤ CỘT 1: VẬT LÝ HỌC (6 CÂU: TIER 1 & TIER 2)
+    # TRỤ CỘT 1: VẬT LÝ HỌC (8 CÂU: GMM VOL 1 & VOL 2 ENRICHED)
     # -------------------------------------------------------------------------
     {
         "id": "Q-PHYS-01",
         "model_id": "PHYS-01",
         "pillar": "Vật lý học",
         "tier": 1,
-        "model_name": "Đòn bẩy (Leverage)",
+        "model_name": "Đòn bẩy (Leverage — Archimedes & Naval Ravikant)",
         "scenario": (
-            "Một nhà sáng tạo nội dung tạo ra một cuốn Ebook và một chuỗi video bài giảng. Sau khi hoàn thành sản phẩm, "
-            "dù có 10 người mua hay 100.000 người mua, anh ta hầu như không tốn thêm bất kỳ giờ lao động nào để phục vụ. "
-            "Doanh thu tăng gấp vạn lần trong khi chi phí biên gần bằng 0."
+            "Một lập trình viên dành 3 tháng xây dựng công cụ AI tự động phân tích báo cáo tài chính và cung cấp dưới dạng SaaS. "
+            "Sau khi hoàn thiện, công cụ phục vụ đồng thời 5.000 nhà đầu tư mà anh ta không tốn thêm giờ làm việc nào, "
+            "doanh thu tăng trưởng lũy tiến trong khi chi phí biên gần bằng 0."
         ),
-        "question": "Mô hình hạt nhân nào từ Vật lý học được áp dụng ở đây?",
+        "question": "Loại đòn bẩy tối thượng nào của kỷ nguyên số (theo phân loại của Naval Ravikant) được khai thác ở đây?",
         "options": [
-            "A. Quán tính",
-            "B. Đòn bẩy không cần sự cho phép (Code & Media Leverage)",
-            "C. Khối lượng tới hạn",
-            "D. Entropy"
+            "A. Đòn bẩy nhân sự (Labor Leverage)",
+            "B. Đòn bẩy không cần cấp phép thông qua Mã nguồn & Công nghệ (Code & Software Leverage)",
+            "C. Đòn bẩy nợ vay tài chính (Margin)",
+            "D. Quán tính tĩnh"
         ],
         "correct_index": 1,
-        "explanation": "Đòn bẩy là khả năng khuếch đại nỗ lực nhỏ thành kết quả khổng lồ. Code và Media là hai loại đòn bẩy tối thượng của thế kỷ 21.",
-        "trap_analysis": "Đòn bẩy hai chiều: Nếu áp dụng đòn bẩy tài chính (Margin) mà không có biên độ an toàn, bạn sẽ bị khuếch đại sự phá sản."
+        "explanation": "Naval Ravikant nhấn mạnh: Code và Media là hai hình thức đòn bẩy thế hệ mới có chi phí biên bằng 0, không cần ai cấp phép và tạo ra tài sản ngay cả khi bạn đang ngủ.",
+        "trap_analysis": "Bẫy đòn bẩy tài chính: Lạm dụng margin vay nợ quá mức sẽ khuếch đại rủi ro đến mức cháy sạch tài khoản khi thị trường đảo chiều nếu thiếu biên độ an toàn."
     },
     {
         "id": "Q-PHYS-02",
         "model_id": "PHYS-02",
         "pillar": "Vật lý học",
         "tier": 1,
-        "model_name": "Quán tính & Định luật 1 Newton (Inertia)",
+        "model_name": "Quán tính (Inertia — Newton's 1st Law)",
         "scenario": (
-            "Một tập đoàn bán lẻ khổng lồ đã hoạt động 30 năm theo mô hình cửa hàng truyền thống. Khi làn sóng thương mại điện tử bùng nổ, "
-            "dù ban lãnh đạo thấy rõ nguy cơ, bộ máy 10.000 nhân viên và hệ thống quy trình cồng kềnh vẫn tiếp tục vận hành theo thói quen cũ, "
-            "khiến công ty dần bị đối thủ công nghệ mới đánh bại."
+            "Một tập đoàn bán lẻ truyền thống có 15.000 nhân sự và 500 cửa hàng vật lý. Dù ban giám đốc nhận thức rõ nguy cơ bị thương mại điện tử vượt mặt, "
+            "nhưng bộ máy cồng kềnh, thói quen tác nghiệp nhiều năm và hệ thống quy trình tầng tầng lớp lớp khiến tổ chức không thể xoay trục kịp thời, dần đánh mất thị phần."
         ),
-        "question": "Quy luật vật lý nào phản ánh sức ỳ nguy hiểm của bộ máy tổ chức này?",
+        "question": "Quy luật vật lý nào phản ánh sức cản thay đổi to lớn của cỗ máy tổ chức này?",
         "options": [
-            "A. Quán tính tổ chức (Organizational Inertia): Thực thể có khối lượng càng lớn thì càng khó đổi hướng chuyển động",
-            "B. Bảo toàn năng lượng",
-            "C. Nguyên lý Ác-si-mét",
-            "D. Hiện tượng cộng hưởng"
+            "A. Quán tính tổ chức (Corporate Inertia): Thực thể có khối lượng càng lớn thì lực cản chống lại sự thay đổi trạng thái chuyển động càng mạnh mẽ",
+            "B. Định luật bảo toàn năng lượng",
+            "C. Hiện tượng cộng hưởng tự do",
+            "D. Lực nâng Ác-si-mét"
         ],
         "correct_index": 0,
-        "explanation": "Vật có khối lượng càng lớn thì gia tốc đổi hướng càng nhỏ. Cỗ máy doanh nghiệp càng đồ sộ thì quán tính duy trì thói quen cũ càng mạnh mẽ.",
-        "trap_analysis": "Tin rằng khi có lệnh từ sếp thì cả bộ máy sẽ lập tức đổi hướng; thực tế lực ma sát và quán tính thói quen sẽ triệt tiêu mệnh lệnh."
+        "explanation": "Định luật 1 Newton: Vật thể có xu hướng giữ nguyên trạng thái đứng yên hoặc chuyển động thẳng đều trừ khi có ngoại lực tác động. Cỗ máy càng đồ sộ, quán tính duy trì lối mòn cũ càng áp đảo.",
+        "trap_analysis": "Ảo tưởng chỉ cần ra chỉ thị văn bản là toàn bộ tổ chức sẽ lập tức bẻ lái; thực tế cần ngoại lực tập trung cực lớn và bước chuyển thí điểm tinh gọn để phá vỡ quán tính cũ."
     },
     {
         "id": "Q-PHYS-03",
         "model_id": "PHYS-03",
         "pillar": "Vật lý học",
         "tier": 1,
-        "model_name": "Entropy & Định luật 2 Nhiệt động học",
+        "model_name": "Entropy & Định luật 2 Nhiệt động học (Entropy & Second Law)",
         "scenario": (
-            "Một nhóm làm việc chung sau 6 tháng không được rà soát quy trình và không có người kiểm tra tiêu chuẩn chất lượng. "
-            "Các thành viên bắt đầu đi muộn, tài liệu lưu trữ bừa bãi, thông tin trao đổi bị thất lạc dù không ai có chủ đích phá hoại."
+            "Một cơ sở mã nguồn (codebase) sau 6 tháng phát triển nhanh mà không dành thời gian tái cấu trúc (refactor) bắt đầu xuất hiện lỗi vặt tràn lan, "
+            "hiệu năng sụt giảm và các nhà phát triển mới không thể hiểu nổi logic code, dù không một lập trình viên nào cố tình viết ẩu."
         ),
-        "question": "Quy luật vật lý vũ trụ nào chi phối sự suy thoái tự nhiên này?",
+        "question": "Quy luật vũ trụ cơ bản nào chi phối sự suy thoái không thể tránh khỏi này?",
         "options": [
-            "A. Entropy: Trong một hệ kín, độ hỗn loạn luôn tự động tăng dần nếu không được nạp thêm năng lượng bảo trì",
-            "B. Bảo toàn động lượng",
-            "C. Thuyết tương đối",
-            "D. Hiện tượng chuyển pha"
-        ],
-        "correct_index": 0,
-        "explanation": "Entropy là trạng thái mặc định của tự nhiên: Mọi thứ sẽ tự động xuống cấp nếu bạn không liên tục bơm năng lượng và kỷ luật vào để duy trì trật tự.",
-        "trap_analysis": "Bẫy ảo tưởng tự ổn định: Tin rằng một hệ thống hay một mối quan hệ một khi đã tốt đẹp thì sẽ tự vận hành hoàn hảo mãi mãi."
-    },
-    {
-        "id": "Q-PHYS-05",
-        "model_id": "PHYS-05",
-        "pillar": "Vật lý học",
-        "tier": 1,
-        "model_name": "Khối lượng Tới hạn (Critical Mass)",
-        "scenario": (
-            "Một nền tảng mạng xã hội chi hàng triệu USD quảng cáo suốt 1 năm nhưng chỉ có 50.000 người dùng rời rạc, tỷ lệ tương tác rất thấp. "
-            "Nhưng khi lượng người dùng vượt qua cột mốc 1.000.000 người, nền tảng bất ngờ bùng nổ theo cấp số nhân mà không cần tốn thêm tiền quảng cáo."
-        ),
-        "question": "Hiện tượng vật lý hạt nhân nào mô tả phản ứng dây chuyền tự bùng nổ này?",
-        "options": [
-            "A. Năng lượng tiềm năng",
-            "B. Khối lượng Tới hạn (Critical Mass): Khi đạt đủ lượng vật chất tối thiểu, phản ứng dây chuyền tự duy trì sẽ được kích hoạt",
-            "C. Lực ma sát tĩnh",
-            "D. Định luật khúc xạ"
+            "A. Nguyên lý Bất định Heisenberg",
+            "B. Entropy & Định luật 2 Nhiệt động học: Trong một hệ kín, mức độ hỗn loạn luôn tự động tăng dần theo thời gian nếu không có năng lượng đầu vào có chủ đích để bảo trì trật tự",
+            "C. Bảo toàn động lượng",
+            "D. Chuyển pha đột ngột"
         ],
         "correct_index": 1,
-        "explanation": "Trước khi chạm khối lượng tới hạn, mọi nỗ lực đều có vẻ không hiệu quả. Khi vượt qua ngưỡng tới hạn, phản ứng dây chuyền bùng nổ tự thân.",
-        "trap_analysis": "Bỏ cuộc quá sớm ở giai đoạn 80% chỉ vì chưa nhìn thấy sự bùng nổ bề mặt."
+        "explanation": "Entropy là trạng thái mặc định của tự nhiên: Trật tự đòi hỏi năng lượng và kỷ luật duy trì liên tục; nếu bỏ mặc, mọi hệ thống (sức khỏe, quan hệ, code, tài chính) đều tự động thoái hóa về hỗn loạn.",
+        "trap_analysis": "Ảo tưởng ổn định vĩnh cửu: Tin rằng hệ thống đã chạy tốt một lần thì sẽ tự duy trì trật tự mãi mãi mà không cần các van bơm năng lượng định kỳ."
+    },
+    {
+        "id": "Q-PHYS-04",
+        "model_id": "PHYS-04",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Khối lượng Tới hạn & Phản ứng Dây chuyền (Critical Mass)",
+        "scenario": (
+            "Một ứng dụng gọi xe công nghệ khởi nghiệp tại một thành phố mới. Suốt 4 tháng đầu khi chỉ có 200 tài xế và 1.000 khách, hành khách phải chờ xe quá lâu và tài xế nản lòng bỏ cuộc. "
+            "Nhưng khi đội ngũ dồn toàn lực khuyến mại đạt ngưỡng 2.000 tài xế và 30.000 khách thường xuyên, thời gian chờ giảm xuống dưới 3 phút và ứng dụng tự động bùng nổ người dùng mới theo cấp số nhân mà không cần trợ cấp giá nữa."
+        ),
+        "question": "Hiện tượng vật lý nào mô tả chính xác ngưỡng chuyển biến bùng nổ tự thân này?",
+        "options": [
+            "A. Lực ma sát nhớt",
+            "B. Khối lượng tới hạn (Critical Mass): Mật độ tài nguyên tối thiểu cần tích lũy để kích hoạt phản ứng dây chuyền tự duy trì liên tục",
+            "C. Trọng lực tĩnh",
+            "D. Hiện tượng giao thoa sóng"
+        ],
+        "correct_index": 1,
+        "explanation": "Trước khi đạt khối lượng tới hạn, mọi nỗ lực đều có vẻ không hiệu quả vì phản ứng dây chuyền chưa tự nuôi được nó; vượt qua ngưỡng tới hạn, hệ thống tự cất cánh nhờ hiệu ứng vòng lặp tích cực.",
+        "trap_analysis": "Bẫy dàn trải tài nguyên: Phân bổ 10% công sức cho 10 thành phố cùng lúc khiến không thị trường nào đạt khối lượng tới hạn, dẫn đến thất bại toàn diện."
+    },
+    {
+        "id": "Q-PHYS-08",
+        "model_id": "PHYS-08",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Ma sát & Độ nhớt (Friction & Viscosity)",
+        "scenario": (
+            "Để giúp người dân tăng tỷ lệ tiết kiệm hưu trí, một chính phủ chuyển quy định từ 'Người lao động phải chủ động điền đơn xin tham gia' (Opt-in) "
+            "sang 'Mặc định tự động trích 5% lương vào quỹ hưu trí, ai không muốn thì điền đơn xin rút' (Opt-out). Tỷ lệ tham gia ngay lập tức tăng vọt từ 36% lên 86%."
+        ),
+        "question": "Đòn bẩy hành vi dựa trên mô hình vật lý nào đã được áp dụng tài tình ở đây?",
+        "options": [
+            "A. Thao túng Ma sát (Friction Architecture): Triệt tiêu ma sát vi mô (thủ tục điền đơn) đối với hành vi có lợi và đặt ma sát đối với hành vi thoái lui",
+            "B. Gia tốc trọng trường",
+            "C. Bức xạ nhiệt",
+            "D. Cân bằng tĩnh học"
+        ],
+        "correct_index": 0,
+        "explanation": "Ma sát là lực cản trở dòng chảy hành động. Giảm ma sát đối với thói quen tốt xuống 0 và tăng tối đa ma sát đối với cám dỗ xấu là bí quyết định hình hành vi con người hiệu quả nhất.",
+        "trap_analysis": "Triệt tiêu ma sát kiểm soát rủi ro: Loại bỏ hoàn toàn các chốt kiểm duyệt tài chính hay bảo mật để chạy theo tốc độ sẽ dẫn đến rủi ro sụp đổ hệ thống."
     },
     {
         "id": "Q-PHYS-07",
@@ -1275,6 +1295,27 @@ MODELS_QUIZ = [
         "trap_analysis": "Nhầm lẫn giữa việc 'chưa thấy kết quả' với 'không có tiến bộ gì đang diễn ra ngầm'."
     },
     {
+        "id": "Q-PHYS-10",
+        "model_id": "PHYS-10",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Thí Nghiệm Tư Duy (Thought Experiment — Einstein & Galileo)",
+        "scenario": (
+            "Năm 16 tuổi, Albert Einstein tự đặt cho mình câu hỏi: 'Chuyện gì sẽ xảy ra nếu tôi cưỡi trên một chùm ánh sáng và cầm một chiếc gương soi mặt mình?'. "
+            "Chỉ bằng việc chạy mô phỏng kịch bản cực hạn này trong tâm trí bằng suy luận logic chặt chẽ, ông đã phát minh ra Thuyết Tương đối làm đảo lộn toàn bộ vật lý cổ điển."
+        ),
+        "question": "Công cụ nhận thức quyền năng nào cho phép con người kiểm tra các giả thuyết cực hạn khi chưa thể thử nghiệm ngoài đời thực?",
+        "options": [
+            "A. Thí nghiệm tư duy (Thought Experiment): Mô phỏng các kịch bản cực hạn trong đầu bằng logic nghiêm ngặt để kiểm tra độ bền vững và phát hiện lỗ hổng của kế hoạch",
+            "B. Mơ mộng hão huyền không có cơ sở",
+            "C. Đo đạc thực địa bằng mắt thường",
+            "D. Thu thập ý kiến thăm dò số đông"
+        ],
+        "correct_index": 0,
+        "explanation": "Thí nghiệm tư duy (Gedankenexperiment) cho phép bạn phá vỡ rào cản chi phí và công nghệ, khám phá ra chân lý hoặc điểm chết của dự án trước khi tiêu tốn một đồng vốn nào.",
+        "trap_analysis": "Dựng kịch bản trong đầu nhưng ngầm thiên vị để hợp thức hóa ý kiến cá nhân, thay vì suy diễn khách quan không khoan nhượng."
+    },
+    {
         "id": "Q-PHYS-11",
         "model_id": "PHYS-11",
         "pillar": "Vật lý học",
@@ -1296,58 +1337,121 @@ MODELS_QUIZ = [
         "explanation": "Tư duy nguyên bản giúp bạn nhìn thấu bản chất vật lý của vấn đề, giải phóng bản thân khỏi các định kiến và giới hạn nhân tạo do con người tự đặt ra.",
         "trap_analysis": "Bẫy bắt chước (Analogy Trap): Coi cách người khác đang làm là giới hạn tối thượng của vũ trụ."
     },
-    {
-        "id": "Q-PHYS-10",
-        "model_id": "PHYS-10",
-        "pillar": "Vật lý học",
-        "tier": 1,
-        "model_name": "Thí Nghiệm Tư Duy (Thought Experiment — Einstein & Galileo)",
-        "scenario": (
-            "Năm 16 tuổi, Albert Einstein tự đặt cho mình câu hỏi: 'Chuyện gì sẽ xảy ra nếu tôi cưỡi trên một chùm ánh sáng và cầm một chiếc gương soi mặt mình?'. "
-            "Chỉ bằng việc chạy mô phỏng kịch bản cực hạn này trong tâm trí bằng suy luận logic chặt chẽ, ông đã phát minh ra Thuyết Tương đối làm đảo lộn toàn bộ vật lý cổ điển."
-        ),
-        "question": "Công cụ nhận thức quyền năng nào cho phép con người kiểm tra các giả thuyết cực hạn khi chưa thể thử nghiệm ngoài đời thực?",
-        "options": [
-            "A. Thí nghiệm tư duy (Thought Experiment): Mô phỏng các kịch bản cực hạn trong đầu bằng logic nghiêm ngặt để kiểm tra độ bền vững và phát hiện lỗ hổng của kế hoạch",
-            "B. Mơ mộng hão huyền không có cơ sở",
-            "C. Đo đạc thực địa bằng mắt thường",
-            "D. Thu thập ý kiến thăm dò số đông"
-        ],
-        "correct_index": 0,
-        "explanation": "Thí nghiệm tư duy (Gedankenexperiment) cho phép bạn phá vỡ rào cản chi phí và công nghệ, khám phá ra chân lý hoặc điểm chết của dự án trước khi tiêu tốn một đồng vốn nào.",
-        "trap_analysis": "Dựng kịch bản trong đầu nhưng ngầm thiên vị để hợp thức hóa ý kiến cá nhân, thay vì suy diễn khách quan không khoan nhượng."
-    },
 
     # -------------------------------------------------------------------------
-    # TRỤ CỘT 2: SINH HỌC (6 CÂU: TIER 1 & TIER 2)
+    # TRỤ CỘT 2: SINH HỌC (7 CÂU: GMM VOL 2 ENRICHED)
     # -------------------------------------------------------------------------
     {
         "id": "Q-BIO-01",
         "model_id": "BIO-01",
         "pillar": "Sinh học",
         "tier": 1,
-        "model_name": "Tiến hóa & Chọn lọc Tự nhiên (Natural Selection)",
+        "model_name": "Tiến hóa & Chọn lọc Tự nhiên (Natural Selection & Evolution — Charles Darwin)",
         "scenario": (
-            "Trong cuộc khủng hoảng thị trường năm 2008 và đại dịch 2020, hàng ngàn doanh nghiệp khổng lồ, hùng mạnh nhưng xơ cứng bị phá sản. "
-            "Ngược lại, các doanh nghiệp vừa và nhỏ có khả năng xoay trục linh hoạt sang kinh doanh số lại tồn tại và phát triển rực rỡ."
+            "Trong cuộc khủng hoảng chuỗi cung ứng toàn cầu và biến động lãi suất dồn dập, các doanh nghiệp duy trì mô hình sản xuất cứng nhắc theo kế hoạch 5 năm cũ bị tồn kho khổng lồ và vỡ nợ; "
+            "trong khi các công ty áp dụng mô hình sản xuất tinh gọn linh hoạt, liên tục tung thử nghiệm lô nhỏ và xoay trục theo thị trường lại gia tăng thị phần."
         ),
-        "question": "Chân lý sinh học nào của Charles Darwin được chứng thực ở đây?",
+        "question": "Chân lý cốt lõi nào của học thuyết chọn lọc tự nhiên Darwin giải thích sự phân hóa sinh tồn này?",
         "options": [
-            "A. Kẻ mạnh nhất hoặc thông minh nhất sẽ sống sót",
-            "B. Không phải kẻ mạnh nhất, mà chính kẻ thích nghi nhanh nhất với sự thay đổi của môi trường mới là kẻ sống sót",
-            "C. Cạnh tranh cùng loài luôn tiêu diệt hết mọi giống loài",
-            "D. Đồng sinh tuyệt đối"
+            "A. Kẻ có quy mô vốn to nhất luôn luôn áp đảo kẻ nhỏ",
+            "B. Không phải loài mạnh nhất hay thông minh nhất sống sót, mà là loài có khả năng thích nghi nhanh nhất với sự thay đổi của môi trường",
+            "C. Chọn lọc tự nhiên chỉ diễn ra khi có thảm họa tuyệt chủng",
+            "D. Sự cạnh tranh triệt tiêu hoàn toàn mọi liên minh"
         ],
         "correct_index": 1,
-        "explanation": "Chọn lọc tự nhiên đào thải những thực thể không khớp với môi trường mới. Sự linh hoạt và khả năng thích ứng là chìa khóa sinh tồn.",
-        "trap_analysis": "Bẫy tối ưu hóa quá mức cho quá khứ: Quá hoàn hảo trong môi trường cũ sẽ chết đầu tiên khi môi trường chuyển dịch."
+        "explanation": "Chọn lọc tự nhiên là bộ lọc tàn nhẫn đào thải những cấu trúc xơ cứng không ăn khớp với môi trường mới. Khả năng thích ứng qua thử nghiệm nhanh là vũ khí sinh tồn tối cao.",
+        "trap_analysis": "Bẫy bảo thủ tự mãn: Tin rằng con hào kinh tế quá khứ sẽ bảo vệ doanh nghiệp mãi mãi khi khí hậu thị trường đã thay đổi hoàn toàn."
     },
     {
         "id": "Q-BIO-02",
         "model_id": "BIO-02",
         "pillar": "Sinh học",
         "tier": 1,
-        "model_name": "Đột biến & Biến dị (Mutation & Variation)",
+        "model_name": "Hốc Sinh Thái & Chuyên Biệt Hóa (Ecological Niches & Specialization — Gause's Law)",
+        "scenario": (
+            "Một công ty công nghệ giáo dục quy mô nhỏ không thể cạnh tranh trực diện với các tập đoàn EdTech đa năng có ngân sách marketing hàng trăm triệu USD. "
+            "Thay vào đó, họ chỉ tập trung sản xuất giải pháp luyện thi chứng chỉ tài chính CFA chuyên sâu bằng tiếng Việt và chiếm trọn 80% thị phần ngách này với biên lợi nhuận ròng lên tới 45%."
+        ),
+        "question": "Nguyên lý sinh học nào phản ánh chiến lược định vị thông minh của công ty này?",
+        "options": [
+            "A. Hốc sinh thái & Nguyên lý Gause: Hai thực thể cạnh tranh trực diện cùng một nguồn thức ăn hạn chế không thể cùng tồn tại; kẻ yếu hơn phải tìm hoặc tạo ra một hốc riêng biệt để phát triển độc quyền",
+            "B. Tự sao chép vô tính",
+            "C. Di cư ngẫu nhiên không mục đích",
+            "D. Ký sinh bắt buộc"
+        ],
+        "correct_index": 0,
+        "explanation": "Nguyên lý loại trừ cạnh tranh của Gause khẳng định: Cạnh tranh trực diện với kẻ khổng lồ trên cùng một sân chơi là tự sát. Chiếm lĩnh một hốc hẹp và trở thành số 1 tuyệt đối trong hốc đó là con đường sinh tồn bền vững nhất.",
+        "trap_analysis": "Ảo tưởng đại trà: Cố gắng làm hài lòng tất cả mọi phân khúc khách hàng, khiến năng lực bị phân tán mỏng manh và dễ dàng bị đánh bại ở mọi mặt trận."
+    },
+    {
+        "id": "Q-BIO-03",
+        "model_id": "BIO-03",
+        "pillar": "Sinh học",
+        "tier": 1,
+        "model_name": "Cân bằng Nội môi (Homeostasis & Negative Feedback Regulation)",
+        "scenario": (
+            "Một nhà đầu tư cá nhân đặt quy tắc kỷ luật nghiêm ngặt: Tỷ trọng cổ phiếu trong tổng tài sản luôn được duy trì ở mức 70% và tiền mặt 30%. "
+            "Khi thị trường tăng nóng đẩy tỷ trọng cổ phiếu lên 85%, hệ thống tự động bán bớt 15% chuyển về tiền mặt; khi thị trường sụt giảm làm tỷ trọng cổ phiếu rơi về 55%, anh ta dùng tiền dự phòng mua gom cổ phiếu cơ bản, tự động mua đáy bán đỉnh không hề bị cảm xúc chi phối."
+        ),
+        "question": "Cơ chế sinh học kỳ diệu nào của cơ thể sống đã được áp dụng vào quản trị danh mục đầu tư ở đây?",
+        "options": [
+            "A. Đột biến gen ngẫu nhiên",
+            "B. Cân bằng nội môi (Homeostasis): Cơ chế tự động điều chỉnh thông qua các vòng phản hồi âm để duy trì các chỉ số sinh tồn ở trạng thái ổn định động bất chấp bão tố bên ngoài",
+            "C. Chọn lọc giới tính",
+            "D. Tháp dinh dưỡng một chiều"
+        ],
+        "correct_index": 1,
+        "explanation": "Cân bằng nội môi giúp cơ thể giữ thân nhiệt 37°C dù nhiệt độ ngoài trời là 0°C hay 40°C. Xây dựng các van phản hồi tự động cân bằng trong tài chính giúp nhà đầu tư miễn nhiễm trước tâm lý bầy đàn tham lam và sợ hãi.",
+        "trap_analysis": "Cân bằng cứng nhắc: Cố giữ nguyên trạng thái cũ đến mức ngăn cản mọi sự thay đổi và học hỏi cần thiết cho quá trình phát triển đột phá."
+    },
+    {
+        "id": "Q-BIO-04",
+        "model_id": "BIO-04",
+        "pillar": "Sinh học",
+        "tier": 1,
+        "model_name": "Hiệu ứng Nữ hoàng Đỏ (The Red Queen Effect — Van Valen & Lewis Carroll)",
+        "scenario": (
+            "Một lập trình viên kỳ cựu có 10 năm kinh nghiệm xuất sắc với các ngôn ngữ truyền thống. Trong 2 năm qua, anh ta từ chối tiếp cận các công cụ hỗ trợ AI coding vì cho rằng 'không thực chất'. "
+            "Kết quả là năng suất tạo sản phẩm của anh ta bị các kỹ sư trẻ mới ra trường thành thạo AI vượt qua gấp 3 lần, khiến vị thế chuyên gia của anh bị lung lay nghiêm trọng."
+        ),
+        "question": "Quy luật đồng tiến hóa sinh học nào mô tả tình cảnh trớ trêu của kỹ sư này?",
+        "options": [
+            "A. Hiệu ứng Nữ hoàng Đỏ (The Red Queen Effect): 'Bạn phải chạy hết tốc lực chỉ để giữ nguyên vị trí hiện tại' — trong một môi trường vận động tương đối, đứng yên đồng nghĩa với việc đang tụt hậu nhanh chóng",
+            "B. Đồng sinh cùng loài",
+            "C. Tiến hóa phân kỳ",
+            "D. Cân bằng chấm dứt"
+        ],
+        "correct_index": 0,
+        "explanation": "Trong tự nhiên, con mồi chạy nhanh hơn thì thú săn mồi cũng tiến hóa để chạy nhanh hơn. Nâng cấp năng lực liên tục không phải để trở nên siêu phàm, mà là điều kiện tối thiểu để duy trì vị thế sinh tồn trong thị trường.",
+        "trap_analysis": "Bị cuốn vào cuộc đua vũ trang tiêu hao vô nghĩa với đối thủ (chạy đua giảm giá hoặc làm việc kiệt sức) mà không hề xây dựng được con hào tri thức bền vững."
+    },
+    {
+        "id": "Q-BIO-05",
+        "model_id": "BIO-05",
+        "pillar": "Sinh học",
+        "tier": 1,
+        "model_name": "Đồng sinh & Cộng sinh (Mutualism & Symbiosis — Cooperation in Nature)",
+        "scenario": (
+            "Mối quan hệ giữa loài nấm Mycorrhiza và rễ cây rừng: Nấm len lỏi vào đất hấp thu khoáng chất và nước cung cấp cho cây, đổi lại cây quang hợp tạo ra đường nuôi sống nấm. "
+            "Khi một cây trong rừng bị sâu bệnh tấn công, mạng lưới sợi nấm thậm chí còn truyền tín hiệu cảnh báo hóa học giúp các cây xung quanh tự sản sinh độc tố phòng vệ."
+        ),
+        "question": "Bài học sâu sắc nào về tư duy hợp tác trong kinh doanh và lãnh đạo được phản ánh qua mô hình này?",
+        "options": [
+            "A. Trò chơi có tổng bằng không (Zero-sum): Phải triệt hạ đối tác để giành lấy toàn bộ tài nguyên",
+            "B. Tư duy Cộng sinh cùng thắng (Mutualism / Positive-sum): Tạo ra mạng lưới cộng sinh bền vững mà ở đó sự thành công của đối tác trực tiếp củng cố sức mạnh sinh tồn của chính mình",
+            "C. Ký sinh một chiều nhằm vắt kiệt vật chủ",
+            "D. Cô lập tự cung tự cấp"
+        ],
+        "correct_index": 1,
+        "explanation": "Trong tự nhiên và xã hội loài người, các cấu trúc vĩ đại nhất đều vận hành trên sự cộng sinh đôi bên cùng có lợi (Win-Win). Xây dựng hệ sinh thái mà ở đó mọi thành viên đều hưởng lợi là cách phòng thủ vững chắc nhất.",
+        "trap_analysis": "Nhầm lẫn quan hệ ký sinh với cộng sinh: Tự an ủi rằng mình đang hợp tác, trong khi thực tế đối tác chỉ đang âm thầm bòn rút tài nguyên và uy tín của bạn mà không trả lại giá trị tương xứng."
+    },
+    {
+        "id": "Q-BIO-08",
+        "model_id": "BIO-08",
+        "pillar": "Sinh học",
+        "tier": 2,
+        "model_name": "Đột biến & Đa dạng Di truyền (Mutation & Genetic Diversity)",
         "scenario": (
             "Tập đoàn công nghệ 3M áp dụng chính sách cho phép các kỹ sư dành 15% thời gian làm việc để theo đuổi các thử nghiệm cá nhân kỳ lạ. "
             "Từ một thử nghiệm tạo ra chất keo 'dính không chặt' tưởng chừng thất bại, một kỹ sư đã phát minh ra sản phẩm Giấy ghi chú Post-it mang lại hàng tỷ USD."
@@ -1362,69 +1466,6 @@ MODELS_QUIZ = [
         "correct_index": 1,
         "explanation": "Nếu không có đột biến ngẫu nhiên, sự sống không bao giờ tiến hóa. Doanh nghiệp muốn đổi mới phải chủ động tạo không gian cho các thử nghiệm sai số an toàn.",
         "trap_analysis": "Áp đặt quy trình kiểm soát 100% không tì vết, triệt tiêu mọi không gian thử nghiệm khiến tổ chức chết mòn vì thiếu đột biến sáng tạo."
-    },
-    {
-        "id": "Q-BIO-04",
-        "model_id": "BIO-04",
-        "pillar": "Sinh học",
-        "tier": 1,
-        "model_name": "Hiệu ứng Nữ hoàng Đỏ (Red Queen Effect)",
-        "scenario": (
-            "Trong ngành bán lẻ thương mại điện tử, hai sàn lớn liên tục chi tiền tỷ nâng cấp hệ thống giao hàng từ 2 ngày xuống 2 giờ, tung voucher giảm giá. "
-            "Nhưng sau 3 năm, thị phần của cả hai bên vẫn giữ nguyên 45% - 45% và biên lợi nhuận bị bào mòn kiệt quệ."
-        ),
-        "question": "Mô hình sinh học nào mô tả trạng thái 'phải chạy hết sức chỉ để đứng yên một chỗ' này?",
-        "options": [
-            "A. Hốc sinh thái",
-            "B. Hiệu ứng Nữ hoàng Đỏ (Red Queen Effect trong thuyết đồng tiến hóa kẻ săn mồi - con mồi)",
-            "C. Gen vị kỷ",
-            "D. Thắt cổ chai di truyền"
-        ],
-        "correct_index": 1,
-        "explanation": "Trong môi trường có đối thủ cùng chạy đua vũ trang, việc bạn nỗ lực chỉ giúp bạn không bị loại bỏ. Muốn chiến thắng thực chất phải đổi hốc sinh thái.",
-        "trap_analysis": "Chạy đua vũ trang tiêu hao cạn kiệt nguồn lực mà không nhận ra mình đang bị giam cầm trong cuộc đua chuột (Rat Race)."
-    },
-    {
-        "id": "Q-BIO-06",
-        "model_id": "BIO-06",
-        "pillar": "Sinh học",
-        "tier": 2,
-        "model_name": "Hốc Sinh Thái (Ecological Niche)",
-        "scenario": (
-            "Trên quần đảo Galapagos, các loài chim sẻ có hình dạng mỏ khác nhau: loài mỏ to ăn hạt cứng, loài mỏ dài hút mật hoa, loài mỏ mảnh bắt côn trùng trong vỏ cây. "
-            "Nhờ đó, hàng chục loài chim sẻ cùng chung sống hòa bình và phát triển thịnh vượng trên cùng một hòn đảo nhỏ mà không tàn sát lẫn nhau."
-        ),
-        "question": "Nguyên lý sinh học này mang lại bài học chiến lược định vị nào cho doanh nghiệp?",
-        "options": [
-            "A. Đối đầu trực diện với kẻ thống trị để giành giật con mồi lớn nhất",
-            "B. Định vị vào một Hốc Sinh Thái độc bản (Niche): Tìm kiếm thị trường ngách mà đối thủ khổng lồ bỏ qua hoặc không thể phục vụ hiệu quả",
-            "C. Mở rộng quy mô ra toàn bộ các phân khúc cùng lúc",
-            "D. Bán phá giá sản phẩm để độc chiếm thị trường"
-        ],
-        "correct_index": 1,
-        "explanation": "Nguyên lý loại trừ cạnh tranh của Gause: Hai loài cùng tranh giành một nguồn tài nguyên hệt nhau không thể cùng tồn tại lâu dài. Muốn sống tốt phải tìm hốc riêng.",
-        "trap_analysis": "Lao vào cạnh tranh trực diện với kẻ khổng lồ ở thị trường đại trà mà không có lợi thế bất đối xứng."
-    },
-    {
-        "id": "Q-BIO-08",
-        "model_id": "BIO-08",
-        "pillar": "Sinh học",
-        "tier": 2,
-        "model_name": "Gen Vị Kỷ & Hợp Tác Vị Tha (The Selfish Gene)",
-        "scenario": (
-            "Trong một đàn dơi quỷ, một con dơi kiếm được nhiều máu sẽ sẵn sàng nhả thức ăn cho một con dơi khác đang sắp chết đói. "
-            "Tuy nhiên, nếu con dơi được cứu sau này đi săn được mồi mà từ chối chia sẻ lại, cả đàn dơi sẽ tẩy chay và không bao giờ cứu nó lần thứ hai."
-        ),
-        "question": "Cơ chế sinh học tiến hóa nào giải thích nguồn gốc của sự hợp tác đạo đức trong xã hội loài người?",
-        "options": [
-            "A. Chủ nghĩa vị tha vô điều kiện không màng tới phản hồi",
-            "B. Lòng vị tha có đi có lại (Reciprocal Altruism): Sự hợp tác bền vững được xây dựng trên cơ chế trừng phạt kẻ gian lận và đền đáp người giúp đỡ",
-            "C. Thống trị bằng bạo lực",
-            "D. Chọn lọc nhóm ngẫu nhiên"
-        ],
-        "correct_index": 1,
-        "explanation": "Sinh vật hợp tác vì điều đó giúp tối đa hóa xác suất sinh tồn của nguồn gen. Lòng tin trong xã hội tồn tại dựa trên cơ chế phản hồi có đi có lại (Tit-for-Tat).",
-        "trap_analysis": "Ngây thơ tin rằng có thể duy trì sự hợp tác lâu dài mà không có cơ chế trừng phạt kẻ bội tín (Free-rider)."
     },
     {
         "id": "Q-BIO-10",
@@ -1447,7 +1488,6 @@ MODELS_QUIZ = [
         "explanation": "Bất kỳ hệ thống vật lý hay sinh thái nào cũng có trần tải giới hạn. Ép hệ thống vượt quá sức tải sẽ dẫn đến sự sụp đổ thảm họa phi tuyến tính.",
         "trap_analysis": "Cố ép doanh nghiệp tăng trưởng nóng vượt qua ngưỡng năng lực chịu đựng của đội ngũ vận hành và hạ tầng kỹ thuật."
     },
-
     # -------------------------------------------------------------------------
     # TRỤ CỘT 3: TÂM LÝ HỌC (6 CÂU: TIER 1 & TIER 2)
     # -------------------------------------------------------------------------

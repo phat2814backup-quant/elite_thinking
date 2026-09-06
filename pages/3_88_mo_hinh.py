@@ -148,70 +148,119 @@ with subtab1:
 with subtab2:
     st.markdown("#### 🗂️ Thẻ Flashcard Bóc Tách Chuyên Sâu Từng Mô Hình")
 
-    # Callout Banner nổi bật: The Great Mental Models Hub
+    # Callout Banner nổi bật: The Great Mental Models Hub (Volume 1 & 2)
     with st.container(border=True):
-        c_banner_info, c_banner_actions = st.columns([2.8, 3.2])
+        c_banner_info, c_banner_actions = st.columns([2.5, 3.5])
         with c_banner_info:
             st.markdown("""
-            ##### 💎 Trọn Bộ The Great Mental Models (Shane Parrish — Volume 1)
-            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** cho toàn bộ **9 Siêu Mô Hình Tư Duy Cốt Lõi**:
+            ##### 💎 Trọn Bộ The Great Mental Models (Shane Parrish — Volumes 1 & 2)
+            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** cho **19 Siêu Mô Hình Tư Duy Cốt Lõi**:
             * **🛠️ Quy trình thực thi 4 bước (Action Protocol)**
             * **⛔ Ranh giới áp dụng (Boundary Conditions — Khi nào KHÔNG dùng)**
             * **🌐 Tình huống thực chiến đa chiều (K12 & Gia đình, Phát triển sự nghiệp, Đầu tư VN-Index)**
             """)
-            st.caption("🏆 **9 Siêu mô hình:** First Principles · Map/Territory · Circle of Competence · Inversion · Second-Order · Bayes · Thought Experiment · Occam's Razor · Hanlon's Razor.")
+            st.caption("📘 **Vol 1:** Tư duy nền tảng (9 models) · 📗 **Vol 2:** Vật lý học & Sinh học thực chiến (10 models)")
 
         with c_banner_actions:
-            st.markdown("**⚡ Phím tắt mở nhanh từng mô hình GMM Vol 1:**")
-            
-            # Row 1: Logic & Tinh giản
-            r1_c1, r1_c2, r1_c3 = st.columns(3)
-            with r1_c1:
-                if st.button("🔬 PHYS-11\nNguyên bản", use_container_width=True, help="Tư duy Nguyên bản (First Principles)"):
-                    st.session_state["_action_jump_mid"] = "PHYS-11"
-                    st.rerun()
-            with r1_c2:
-                if st.button("🪒 SYS-13\nDao Occam", use_container_width=True, help="Dao cạo Occam (Occam's Razor)"):
-                    st.session_state["_action_jump_mid"] = "SYS-13"
-                    st.rerun()
-            with r1_c3:
-                if st.button("🕊️ PSY-18\nDao Hanlon", use_container_width=True, help="Dao cạo Hanlon (Hanlon's Razor)"):
-                    st.session_state["_action_jump_mid"] = "PSY-18"
-                    st.rerun()
+            st.markdown("**⚡ Phím tắt mở nhanh từng mô hình GMM:**")
+            gmm_t1, gmm_t2 = st.tabs(["📘 Vol 1: Tư duy (9)", "📗 Vol 2: Vật lý & Sinh học (10)"])
 
-            # Row 2: Nhận thức & Khám phá
-            r2_c1, r2_c2, r2_c3 = st.columns(3)
-            with r2_c1:
-                if st.button("🗺️ SYS-11\nBản đồ", use_container_width=True, help="Bản đồ không phải Lãnh thổ"):
-                    st.session_state["_action_jump_mid"] = "SYS-11"
-                    st.rerun()
-            with r2_c2:
-                if st.button("🎯 PSY-12\nVòng tròn", use_container_width=True, help="Vòng tròn Năng lực"):
-                    st.session_state["_action_jump_mid"] = "PSY-12"
-                    st.rerun()
-            with r2_c3:
-                if st.button("💡 PHYS-10\nThí nghiệm", use_container_width=True, help="Thí nghiệm Tư duy (Thought Experiment)"):
-                    st.session_state["_action_jump_mid"] = "PHYS-10"
-                    st.rerun()
+            with gmm_t1:
+                # Row 1: Logic & Tinh giản
+                r1_c1, r1_c2, r1_c3 = st.columns(3)
+                with r1_c1:
+                    if st.button("🔬 PHYS-11\nNguyên bản", key="btn_gmm_phys11", use_container_width=True, help="Tư duy Nguyên bản (First Principles)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-11"
+                        st.rerun()
+                with r1_c2:
+                    if st.button("🪒 SYS-13\nDao Occam", key="btn_gmm_sys13", use_container_width=True, help="Dao cạo Occam (Occam's Razor)"):
+                        st.session_state["_action_jump_mid"] = "SYS-13"
+                        st.rerun()
+                with r1_c3:
+                    if st.button("🕊️ PSY-18\nDao Hanlon", key="btn_gmm_psy18", use_container_width=True, help="Dao cạo Hanlon (Hanlon's Razor)"):
+                        st.session_state["_action_jump_mid"] = "PSY-18"
+                        st.rerun()
 
-            # Row 3: Dự phóng & Quyết định
-            r3_c1, r3_c2, r3_c3 = st.columns(3)
-            with r3_c1:
-                if st.button("🔄 MATH-05\nĐảo ngược", use_container_width=True, help="Tư duy Đảo ngược (Inversion)"):
-                    st.session_state["_action_jump_mid"] = "MATH-05"
-                    st.rerun()
-            with r3_c2:
-                if st.button("⏳ SYS-10\nBậc hai+", use_container_width=True, help="Hệ quả Bậc hai & Bậc cao (Second-Order Thinking)"):
-                    st.session_state["_action_jump_mid"] = "SYS-10"
-                    st.rerun()
-            with r3_c3:
-                if st.button("🎲 MATH-03\nXác suất Bayes", use_container_width=True, help="Tư duy Xác suất & Cập nhật Bayes"):
-                    st.session_state["_action_jump_mid"] = "MATH-03"
-                    st.rerun()
+                # Row 2: Nhận thức & Khám phá
+                r2_c1, r2_c2, r2_c3 = st.columns(3)
+                with r2_c1:
+                    if st.button("🗺️ SYS-11\nBản đồ", key="btn_gmm_sys11", use_container_width=True, help="Bản đồ không phải Lãnh thổ"):
+                        st.session_state["_action_jump_mid"] = "SYS-11"
+                        st.rerun()
+                with r2_c2:
+                    if st.button("🎯 PSY-12\nVòng tròn", key="btn_gmm_psy12", use_container_width=True, help="Vòng tròn Năng lực"):
+                        st.session_state["_action_jump_mid"] = "PSY-12"
+                        st.rerun()
+                with r2_c3:
+                    if st.button("💡 PHYS-10\nThí nghiệm", key="btn_gmm_phys10", use_container_width=True, help="Thí nghiệm Tư duy (Thought Experiment)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-10"
+                        st.rerun()
+
+                # Row 3: Dự phóng & Quyết định
+                r3_c1, r3_c2, r3_c3 = st.columns(3)
+                with r3_c1:
+                    if st.button("🔄 MATH-05\nĐảo ngược", key="btn_gmm_math05", use_container_width=True, help="Tư duy Đảo ngược (Inversion)"):
+                        st.session_state["_action_jump_mid"] = "MATH-05"
+                        st.rerun()
+                with r3_c2:
+                    if st.button("⏳ SYS-10\nBậc hai+", key="btn_gmm_sys10", use_container_width=True, help="Hệ quả Bậc hai & Bậc cao (Second-Order Thinking)"):
+                        st.session_state["_action_jump_mid"] = "SYS-10"
+                        st.rerun()
+                with r3_c3:
+                    if st.button("🎲 MATH-03\nXác suất Bayes", key="btn_gmm_math03", use_container_width=True, help="Tư duy Xác suất & Cập nhật Bayes"):
+                        st.session_state["_action_jump_mid"] = "MATH-03"
+                        st.rerun()
+
+            with gmm_t2:
+                st.caption("⚡ **Vật lý học (Physics):**")
+                p_c1, p_c2, p_c3, p_c4, p_c5 = st.columns(5)
+                with p_c1:
+                    if st.button("🚀 PHYS-01\nĐòn bẩy", key="btn_gmm_phys01", use_container_width=True, help="Đòn bẩy (Leverage — Archimedes & Naval Ravikant)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-01"
+                        st.rerun()
+                with p_c2:
+                    if st.button("🏎️ PHYS-02\nQuán tính", key="btn_gmm_phys02", use_container_width=True, help="Quán tính (Inertia — Newton's 1st Law)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-02"
+                        st.rerun()
+                with p_c3:
+                    if st.button("🔥 PHYS-03\nEntropy", key="btn_gmm_phys03", use_container_width=True, help="Entropy & Định luật 2 Nhiệt động học"):
+                        st.session_state["_action_jump_mid"] = "PHYS-03"
+                        st.rerun()
+                with p_c4:
+                    if st.button("💥 PHYS-04\nTới hạn", key="btn_gmm_phys04", use_container_width=True, help="Khối lượng Tới hạn (Critical Mass)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-04"
+                        st.rerun()
+                with p_c5:
+                    if st.button("🛑 PHYS-08\nMa sát", key="btn_gmm_phys08", use_container_width=True, help="Ma sát & Độ nhớt (Friction & Viscosity)"):
+                        st.session_state["_action_jump_mid"] = "PHYS-08"
+                        st.rerun()
+
+                st.caption("🌿 **Sinh học (Biology):**")
+                b_c1, b_c2, b_c3, b_c4, b_c5 = st.columns(5)
+                with b_c1:
+                    if st.button("🧬 BIO-01\nTiến hóa", key="btn_gmm_bio01", use_container_width=True, help="Tiến hóa & Chọn lọc Tự nhiên (Natural Selection)"):
+                        st.session_state["_action_jump_mid"] = "BIO-01"
+                        st.rerun()
+                with b_c2:
+                    if st.button("🪺 BIO-02\nHốc ST", key="btn_gmm_bio02", use_container_width=True, help="Hốc Sinh Thái & Chuyên Biệt Hóa (Gause's Law)"):
+                        st.session_state["_action_jump_mid"] = "BIO-02"
+                        st.rerun()
+                with b_c3:
+                    if st.button("⚖️ BIO-03\nNội môi", key="btn_gmm_bio03", use_container_width=True, help="Cân bằng Nội môi (Homeostasis)"):
+                        st.session_state["_action_jump_mid"] = "BIO-03"
+                        st.rerun()
+                with b_c4:
+                    if st.button("👑 BIO-04\nNữ hoàng Đỏ", key="btn_gmm_bio04", use_container_width=True, help="Hiệu ứng Nữ hoàng Đỏ (The Red Queen Effect)"):
+                        st.session_state["_action_jump_mid"] = "BIO-04"
+                        st.rerun()
+                with b_c5:
+                    if st.button("🤝 BIO-05\nCộng sinh", key="btn_gmm_bio05", use_container_width=True, help="Đồng sinh & Cộng sinh (Mutualism & Symbiosis)"):
+                        st.session_state["_action_jump_mid"] = "BIO-05"
+                        st.rerun()
 
             btn_all_gmm, btn_reset = st.columns(2)
             with btn_all_gmm:
-                if st.button("✨ Lọc trọn bộ 9 mô hình GMM", type="primary", use_container_width=True):
+                if st.button("✨ Lọc trọn bộ 19 mô hình GMM", type="primary", use_container_width=True):
                     st.session_state["_action_filter_gmm"] = True
                     st.rerun()
             with btn_reset:
