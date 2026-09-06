@@ -25,6 +25,7 @@ from utils.notes_manager import create_note
 
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "bilingual_books"
+CACHE_DIR = DATA_DIR / "cache"
 
 
 @st.cache_data(show_spinner=False)
@@ -36,6 +37,8 @@ def load_available_books() -> List[Dict[str, Any]]:
         return books
 
     for f in sorted(DATA_DIR.glob("*.json")):
+        if f.name.startswith("cache_"):
+            continue
         try:
             with open(f, "r", encoding="utf-8") as fp:
                 data = json.load(fp)
@@ -43,6 +46,110 @@ def load_available_books() -> List[Dict[str, Any]]:
         except Exception as e:
             print(f"Error loading book {f}: {e}")
     return books
+
+
+def _get_cache_file(book_id: str, chapter_id: Any) -> Path:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    return CACHE_DIR / f"jit_{book_id}_ch{chapter_id}.json"
+
+
+def load_chapter_jit_cache(book_id: str, chapter_id: Any) -> Dict[str, Any]:
+    """Loads cached translations for a chapter."""
+    c_path = _get_cache_file(book_id, chapter_id)
+    if c_path.exists():
+        try:
+            with open(c_path, "r", encoding="utf-8") as fp:
+                return json.load(fp)
+        except Exception:
+            return {}
+    return {}
+
+
+def save_chapter_jit_cache(book_id: str, chapter_id: Any, cache_data: Dict[str, Any]) -> None:
+    """Saves translations into persistent cache file."""
+    c_path = _get_cache_file(book_id, chapter_id)
+    try:
+        with open(c_path, "w", encoding="utf-8") as fp:
+            json.dump(cache_data, fp, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Error saving JIT cache: {e}")
+
+
+def translate_paragraphs_batch(
+    paragraphs: List[str],
+    book_title: str = "Surely You're Joking, Mr. Feynman!",
+    chapter_title: str = "",
+    api_keys: Optional[List[str]] = None,
+) -> List[Dict[str, Any]]:
+    """
+    Translates a batch of English paragraphs into Vietnamese using Gemini.
+    Follows Richard Feynman's vivid, precise, and conversational style.
+    Returns: List of {"vi": "...", "vocab": [{"word": "...", "vi": "...", "nuance": "..."}]}
+    """
+    import google.generativeai as genai
+
+    if not paragraphs:
+        return []
+
+    keys = _normalize_keys(api_keys or os.environ.get("GOOGLE_API_KEY", ""))
+    if not keys:
+        env_keys = [os.environ.get(f"GEMINI_API_KEY_{i}") for i in range(1, 9)]
+        keys = _normalize_keys([k for k in env_keys if k and not k.startswith("AQ.")])
+
+    prompt = f"""Bạn là dịch giả phong cách Richard Feynman kiêm chuyên gia sư phạm ngôn ngữ.
+Nhiệm vụ của bạn là dịch nguyên bản 100% từng đoạn văn tiếng Anh sau đây sang tiếng Việt một cách mượt mà, sống động, chuẩn xác kỹ thuật và tự nhiên theo văn phong của Feynman.
+
+Sách: {book_title}
+Chương: {chapter_title}
+
+DANH SÁCH {len(paragraphs)} ĐOẠN VĂN GỐC (JSON Array):
+{json.dumps(paragraphs, ensure_ascii=False)}
+
+YÊU CẦU ĐẦU RA BẮT BUỘC:
+Trả về DUY NHẤT một JSON Array có đúng {len(paragraphs)} phần tử tương ứng theo thứ tự:
+[
+  {{
+    "index": 0,
+    "vi": "Bản dịch tiếng Việt chuẩn xác 100% của đoạn này",
+    "key_vocab": [
+      {{
+        "word": "từ hoặc cụm từ hay/khó trong đoạn",
+        "vi": "nghĩa ngắn gọn",
+        "nuance": "sắc thái tự nhiên của từ"
+      }}
+    ]
+  }}
+]
+"""
+
+    candidates = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+
+    for key in keys:
+        try:
+            genai.configure(api_key=key)
+            for cand in candidates:
+                try:
+                    model = genai.GenerativeModel(
+                        model_name=cand,
+                        generation_config={"response_mime_type": "application/json"}
+                    )
+                    resp = model.generate_content(prompt, request_options={"timeout": 30})
+                    if resp and resp.text:
+                        raw_data = json.loads(clean_json_response(resp.text))
+                        if isinstance(raw_data, list) and len(raw_data) == len(paragraphs):
+                            return raw_data
+                        elif isinstance(raw_data, list):
+                            # Map by index if partial
+                            res_map = {item.get("index", idx): item for idx, item in enumerate(raw_data)}
+                            return [res_map.get(idx, {"vi": "", "key_vocab": []}) for idx in range(len(paragraphs))]
+                except Exception:
+                    continue
+        except Exception:
+            continue
+
+    # Fallback if offline/exhausted
+    return [{"vi": "(Đang chờ kết nối API hoặc vượt hạn ngạch ngày - bạn có thể bấm nút Dịch lại bên dưới)", "key_vocab": []} for _ in paragraphs]
+
 
 
 def get_book_by_id(book_id: str) -> Optional[Dict[str, Any]]:

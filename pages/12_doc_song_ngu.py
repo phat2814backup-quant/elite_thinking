@@ -25,6 +25,9 @@ from utils.bilingual_manager import (
     delete_word_from_vault,
     explain_phrase_feynman,
     export_feynman_to_second_brain,
+    load_chapter_jit_cache,
+    save_chapter_jit_cache,
+    translate_paragraphs_batch,
 )
 
 # -----------------------------------------------------------------------------
@@ -241,94 +244,247 @@ with tab1:
             st.info(current_chapter.get("summary_vi", "Không có tóm lược."))
 
         sections = current_chapter.get("sections", [])
-        st.write(f"**Tổng số cảnh truyện trong chương:** {len(sections)} cảnh đối xứng.")
+        book_id = current_book.get("book_id", "default_book")
+        chap_id = current_chapter.get("id", 1)
 
+        # Granularity Selector: Macro-Scenes vs. Fine-Grained JIT Paragraphs
+        view_mode = st.radio(
+            "📐 Chế độ chia đoạn:",
+            ["🎬 Theo cảnh truyện (Macro-Scenes)", "⚡ Cuốn chiếu theo từng đoạn văn (JIT 100% Khớp)"],
+            horizontal=True,
+            key=f"view_mode_{chap_id}"
+        )
 
-        # RENDER BILINGUAL SECTIONS
-        for sec in sections:
-            sec_id = sec.get("section_id", 1)
-            title = sec.get("title", f"Phần {sec_id}")
+        if "Cuốn chiếu" in view_mode:
+            # Flatten raw English text into individual paragraphs
+            full_en_text = "\n\n".join([s.get("en", "") for s in sections])
+            en_raw_paragraphs = [
+                p.strip() for p in full_en_text.split("\n\n")
+                if len(p.strip()) > 20 and not p.strip().startswith("He Fixes Radios by Thinking")
+            ]
 
-            st.markdown(f"#### 🏷️ Đoạn {sec_id}: {title}")
+            total_paras = len(en_raw_paragraphs)
+            batch_size = 4  # 3-5 paragraphs per page for optimal reading & API resilience
+            total_pages = max(1, (total_paras + batch_size - 1) // batch_size)
 
-            col_en, col_vi = st.columns([1.1, 0.9])
-
-            with col_en:
-                st.markdown("**🇺🇸 Bản gốc Tiếng Anh:**")
-                st.markdown(
-                    f'<div class="en-column-text" style="font-size: {cur_font_size};">'
-                    f'{sec.get("en", "").replace(chr(10), "<br><br>")}'
-                    f'</div>',
-                    unsafe_allow_html=True,
+            p_col1, p_col2, p_col3 = st.columns([1, 2, 1])
+            with p_col1:
+                cur_page = st.number_input(
+                    "Trang:",
+                    min_value=1,
+                    max_value=total_pages,
+                    value=1,
+                    step=1,
+                    key=f"jit_page_{chap_id}"
                 )
+            with p_col2:
+                st.caption(f"Trang {cur_page} / {total_pages} (Tổng cộng {total_paras} đoạn văn trong chương)")
+            with p_col3:
+                force_retranslate = st.button("🔄 Dịch lại trang này", key=f"retrans_{chap_id}_{cur_page}")
 
-            with col_vi:
-                st.markdown("**🇻🇳 Bản dịch Tiếng Việt:**")
-                is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
-                blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
-                st.markdown(
-                    f'{blur_note}'
-                    f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
-                    f'{sec.get("vi", "").replace(chr(10), "<br><br>")}'
-                    f'</div>',
-                    unsafe_allow_html=True,
-                )
+            start_idx = (cur_page - 1) * batch_size
+            end_idx = min(start_idx + batch_size, total_paras)
+            page_paragraphs = en_raw_paragraphs[start_idx:end_idx]
 
-            # Key Vocab Chips
-            if show_vocab_chips and sec.get("vocab"):
-                st.markdown("**🔑 Từ vựng & Điểm then chốt trong đoạn:**")
-                chip_cols = st.columns(min(len(sec["vocab"]), 4))
-                for v_idx, v in enumerate(sec["vocab"]):
-                    with chip_cols[v_idx % 4]:
-                        btn_label = f"📌 {v['word']} ({v['type']})"
-                        if st.button(btn_label, key=f"vchip_{sec_id}_{v_idx}", help=f"{v.get('vi')} — {v.get('feynman_context', '')}"):
-                            # Trigger Feynman analysis
-                            with st.spinner(f"Feynman đang phân tích '{v['word']}'..."):
-                                feynman_res = explain_phrase_feynman(
-                                    phrase=v["word"],
-                                    context=sec.get("en", ""),
-                                    model_choice=model_choice,
-                                    api_keys=active_keys,
-                                )
-                                st.session_state["last_feynman_result"] = feynman_res
-                                st.session_state["sidebar_word_input"] = v["word"]
-                                record_word_lookup(
-                                    username=username,
-                                    word=v["word"],
-                                    context_sentence=sec.get("en", "")[:150],
-                                    feynman_breakdown=v.get("feynman_context", ""),
-                                    vi_meaning=v.get("vi", ""),
-                                    source_chapter=current_chapter.get("title_vi", ""),
-                                )
-                                st.toast(f"Đã phân tích '{v['word']}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
-                                st.rerun()
+            # Load from JIT persistent cache
+            jit_cache = load_chapter_jit_cache(book_id, chap_id)
+            need_translate = []
+            page_results = []
 
-            # Inline Quick Lookup Popover
-            with st.popover(f"🔍 Tra cứu cụm từ khác trong Cảnh {sec_id}"):
-                inline_word = st.text_input("Gõ hoặc dán cụm từ trong đoạn này:", key=f"inline_inp_{sec_id}")
-                if st.button("🔬 Mổ xẻ với Feynman", key=f"inline_btn_{sec_id}") and inline_word.strip():
-                    with st.spinner(f"Đang phân tích '{inline_word}'..."):
-                        feynman_res = explain_phrase_feynman(
-                            phrase=inline_word.strip(),
-                            context=sec.get("en", "")[:200],
-                            model_choice=model_choice,
-                            api_keys=active_keys,
-                        )
-                        st.session_state["last_feynman_result"] = feynman_res
-                        st.session_state["sidebar_word_input"] = inline_word.strip()
-                        record_word_lookup(
-                            username=username,
-                            word=inline_word.strip(),
-                            context_sentence=sec.get("en", "")[:150],
-                            feynman_breakdown=feynman_res.get("root_nuance", ""),
-                            vi_meaning=feynman_res.get("vietnamese_meaning", ""),
-                            source_chapter=current_chapter.get("title_vi", ""),
-                        )
-                        st.toast(f"Đã phân tích '{inline_word}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
-                        st.rerun()
+            for p_offset, p_text in enumerate(page_paragraphs):
+                global_idx = start_idx + p_offset
+                idx_key = str(global_idx)
+                if force_retranslate or idx_key not in jit_cache:
+                    need_translate.append((global_idx, p_text))
+                else:
+                    page_results.append((global_idx, p_text, jit_cache[idx_key]))
 
+            if need_translate:
+                with st.spinner(f"⚡ Đang dịch cuốn chiếu {len(need_translate)} đoạn tiếp theo bằng Gemini..."):
+                    texts_to_trans = [item[1] for item in need_translate]
+                    translated_batch = translate_paragraphs_batch(
+                        paragraphs=texts_to_trans,
+                        book_title=current_book.get("title_en", ""),
+                        chapter_title=current_chapter.get("title_en", ""),
+                        api_keys=active_keys,
+                    )
+                    for item, trans in zip(need_translate, translated_batch):
+                        g_idx, p_text = item
+                        jit_cache[str(g_idx)] = trans
+                        page_results.append((g_idx, p_text, trans))
+                    save_chapter_jit_cache(book_id, chap_id, jit_cache)
 
-            st.markdown("<hr style='border: 1px dashed #334155;'>", unsafe_allow_html=True)
+            # Sort page results by global index
+            page_results.sort(key=lambda x: x[0])
+
+            st.markdown(f"**Hiển thị đoạn {start_idx + 1} đến {end_idx} / {total_paras} (Khớp chuẩn 100%):**")
+
+            for g_idx, p_en, trans_data in page_results:
+                p_vi = trans_data.get("vi", "")
+                p_vocab = trans_data.get("key_vocab", [])
+
+                st.markdown(f"##### 📌 Đoạn {g_idx + 1}")
+                col_en, col_vi = st.columns([1.1, 0.9])
+
+                with col_en:
+                    st.markdown("**🇺🇸 Bản gốc Tiếng Anh:**")
+                    st.markdown(
+                        f'<div class="en-column-text" style="font-size: {cur_font_size};">'
+                        f'{p_en}'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                with col_vi:
+                    st.markdown("**🇻🇳 Bản dịch Tiếng Việt (Tự động đối xứng 100%):**")
+                    is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
+                    blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
+                    st.markdown(
+                        f'{blur_note}'
+                        f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
+                        f'{p_vi}'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                if show_vocab_chips and p_vocab:
+                    st.markdown("**🔑 Từ vựng & Sắc thái trong đoạn:**")
+                    v_cols = st.columns(min(len(p_vocab), 4))
+                    for v_idx, v in enumerate(p_vocab):
+                        with v_cols[v_idx % 4]:
+                            v_word = v.get("word", "")
+                            if st.button(f"📌 {v_word}", key=f"jit_vchip_{g_idx}_{v_idx}", help=f"{v.get('vi')} — {v.get('nuance', '')}"):
+                                with st.spinner(f"Feynman đang phân tích '{v_word}'..."):
+                                    f_res = explain_phrase_feynman(
+                                        phrase=v_word,
+                                        context=p_en,
+                                        model_choice=model_choice,
+                                        api_keys=active_keys,
+                                    )
+                                    st.session_state["last_feynman_result"] = f_res
+                                    st.session_state["sidebar_word_input"] = v_word
+                                    record_word_lookup(
+                                        username=username,
+                                        word=v_word,
+                                        context_sentence=p_en[:150],
+                                        feynman_breakdown=v.get("nuance", ""),
+                                        vi_meaning=v.get("vi", ""),
+                                        source_chapter=current_chapter.get("title_vi", ""),
+                                    )
+                                    st.toast(f"Đã phân tích '{v_word}'! Xem chi tiết ở Sidebar.", icon="🔬")
+                                    st.rerun()
+
+                # Inline lookup popover
+                with st.popover(f"🔍 Tra cứu cụm từ khác trong Đoạn {g_idx + 1}"):
+                    inline_w = st.text_input("Gõ hoặc dán cụm từ trong đoạn này:", key=f"jit_inline_inp_{g_idx}")
+                    if st.button("🔬 Mổ xẻ với Feynman", key=f"jit_inline_btn_{g_idx}") and inline_w.strip():
+                        with st.spinner(f"Đang phân tích '{inline_w}'..."):
+                            f_res = explain_phrase_feynman(
+                                phrase=inline_w.strip(),
+                                context=p_en[:200],
+                                model_choice=model_choice,
+                                api_keys=active_keys,
+                            )
+                            st.session_state["last_feynman_result"] = f_res
+                            st.session_state["sidebar_word_input"] = inline_w.strip()
+                            record_word_lookup(
+                                username=username,
+                                word=inline_w.strip(),
+                                context_sentence=p_en[:150],
+                                feynman_breakdown=f_res.get("root_nuance", ""),
+                                vi_meaning=f_res.get("vietnamese_meaning", ""),
+                                source_chapter=current_chapter.get("title_vi", ""),
+                            )
+                            st.toast(f"Đã phân tích '{inline_w}'! Xem chi tiết ở Sidebar.", icon="🔬")
+                            st.rerun()
+
+                st.markdown("<hr style='border: 1px dashed #334155;'>", unsafe_allow_html=True)
+
+        else:
+            # RENDER BILINGUAL MACRO-SECTIONS
+            st.write(f"**Tổng số cảnh truyện trong chương:** {len(sections)} cảnh đối xứng.")
+            for sec in sections:
+                sec_id = sec.get("section_id", 1)
+                title = sec.get("title", f"Phần {sec_id}")
+
+                st.markdown(f"#### 🏷️ Đoạn {sec_id}: {title}")
+
+                col_en, col_vi = st.columns([1.1, 0.9])
+
+                with col_en:
+                    st.markdown("**🇺🇸 Bản gốc Tiếng Anh:**")
+                    st.markdown(
+                        f'<div class="en-column-text" style="font-size: {cur_font_size};">'
+                        f'{sec.get("en", "").replace(chr(10), "<br><br>")}'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                with col_vi:
+                    st.markdown("**🇻🇳 Bản dịch Tiếng Việt:**")
+                    is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
+                    blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
+                    st.markdown(
+                        f'{blur_note}'
+                        f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
+                        f'{sec.get("vi", "").replace(chr(10), "<br><br>")}'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                # Key Vocab Chips
+                if show_vocab_chips and sec.get("vocab"):
+                    st.markdown("**🔑 Từ vựng & Điểm then chốt trong đoạn:**")
+                    chip_cols = st.columns(min(len(sec["vocab"]), 4))
+                    for v_idx, v in enumerate(sec["vocab"]):
+                        with chip_cols[v_idx % 4]:
+                            btn_label = f"📌 {v['word']} ({v['type']})"
+                            if st.button(btn_label, key=f"vchip_{sec_id}_{v_idx}", help=f"{v.get('vi')} — {v.get('feynman_context', '')}"):
+                                with st.spinner(f"Feynman đang phân tích '{v['word']}'..."):
+                                    feynman_res = explain_phrase_feynman(
+                                        phrase=v["word"],
+                                        context=sec.get("en", ""),
+                                        model_choice=model_choice,
+                                        api_keys=active_keys,
+                                    )
+                                    st.session_state["last_feynman_result"] = feynman_res
+                                    st.session_state["sidebar_word_input"] = v["word"]
+                                    record_word_lookup(
+                                        username=username,
+                                        word=v["word"],
+                                        context_sentence=sec.get("en", "")[:150],
+                                        feynman_breakdown=v.get("feynman_context", ""),
+                                        vi_meaning=v.get("vi", ""),
+                                        source_chapter=current_chapter.get("title_vi", ""),
+                                    )
+                                    st.toast(f"Đã phân tích '{v['word']}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
+                                    st.rerun()
+
+                # Inline Quick Lookup Popover
+                with st.popover(f"🔍 Tra cứu cụm từ khác trong Cảnh {sec_id}"):
+                    inline_word = st.text_input("Gõ hoặc dán cụm từ trong đoạn này:", key=f"inline_inp_{sec_id}")
+                    if st.button("🔬 Mổ xẻ với Feynman", key=f"inline_btn_{sec_id}") and inline_word.strip():
+                        with st.spinner(f"Đang phân tích '{inline_word}'..."):
+                            feynman_res = explain_phrase_feynman(
+                                phrase=inline_word.strip(),
+                                context=sec.get("en", "")[:200],
+                                model_choice=model_choice,
+                                api_keys=active_keys,
+                            )
+                            st.session_state["last_feynman_result"] = feynman_res
+                            st.session_state["sidebar_word_input"] = inline_word.strip()
+                            record_word_lookup(
+                                username=username,
+                                word=inline_word.strip(),
+                                context_sentence=sec.get("en", "")[:150],
+                                feynman_breakdown=feynman_res.get("root_nuance", ""),
+                                vi_meaning=feynman_res.get("vietnamese_meaning", ""),
+                                source_chapter=current_chapter.get("title_vi", ""),
+                            )
+                            st.toast(f"Đã phân tích '{inline_word}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
+                            st.rerun()
+
+                st.markdown("<hr style='border: 1px dashed #334155;'>", unsafe_allow_html=True)
 
 
 # =============================================================================
