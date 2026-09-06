@@ -48,6 +48,7 @@ def create_decision_entry(
     second_order_consequences: str,
     review_days: int = 90,
     source_analysis: str = "",
+    feynman_honesty_check: str = "",
 ) -> Dict[str, Any]:
     """Tạo một bản ghi quyết định mới vào nhật ký của người dùng."""
     hist = load_user_history(username)
@@ -69,6 +70,7 @@ def create_decision_entry(
         "confidence_pct": confidence_pct,
         "inversion_traps": inversion_traps.strip(),
         "second_order_consequences": second_order_consequences.strip(),
+        "feynman_honesty_check": feynman_honesty_check.strip(),
         "source_analysis": source_analysis[:500] if source_analysis else "",
         "status": "pending",  # 'pending', 'due', 'reviewed'
         "reviewed_at": None,

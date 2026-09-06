@@ -129,6 +129,65 @@ Sau đó, bạn đóng sách lại, và thử giải thích lại đoạn đó m
 }
 
 
+# Mẫu ghi chú: Notebook of Things I Don't Know About (Richard Feynman - Sách Genius)
+DEFAULT_FEYNMAN_UNKNOWN_TEMPLATE: Dict[str, Any] = {
+    "title": "Sổ tay điều tôi chưa biết: Tại sao GPU tính toán AI nhanh gấp nhiều lần CPU?",
+    "domain": "🤖 Công nghệ AI & Khoa học Máy tính",
+    "note_type": "feynman_unknown",
+    "raw_content": """### 📓 NOTEBOOK OF THINGS I DON'T KNOW ABOUT (Richard Feynman)
+Chủ đề: Tại sao chip GPU lại tính toán mô hình AI (LLM) nhanh hơn CPU hàng chục lần, dù xung nhịp mỗi nhân của CPU cao hơn nhiều?
+
+---
+#### 1. Điều tôi đang thắc mắc / Hiện tượng gây lúng túng:
+- CPU có tốc độ xung nhịp 4-5 GHz rất mạnh, xử lý được mọi tác vụ phức tạp theo tuần tự.
+- GPU xung nhịp mỗi nhân chỉ 1.5-2 GHz, vậy tại sao khi huấn luyện AI hay sinh văn bản, người ta lại cần hàng ngàn GPU Nvidia H100 chứ không dùng cụm CPU?
+
+#### 2. Tôi tự giải thích từ Nguyên lý đầu tiên (Không tra cứu sách giải):
+- AI bản chất là một mạng nơ-ron nhân tạo khổng lồ, bao gồm hàng tỷ trọng số (weights).
+- Mỗi lần AI 'suy nghĩ' (forward pass), nó thực chất đang làm một phép toán đại số tuyến tính: Nhân hai ma trận số thực khổng lồ lại với nhau ($A \\times B$).
+- Nhân ma trận gồm hàng triệu phép nhân và cộng nhỏ độc lập: $C_{ij} = \\sum A_{ik} B_{kj}$. Phép tính ở hàng 1 cột 1 không hề phụ thuộc vào phép tính ở hàng 5 cột 8.
+
+#### 3. Bắt quả tang điểm nghẽn nhận thức (Chỗ tôi bắt đầu đoán mò):
+- Ờ... CPU có 8 đến 64 nhân cực khỏe (như 8 giáo sư toán học giải từng bài toán siêu khó tuần tự).
+- GPU có hàng ngàn nhân nhỏ yếu hơn (như 10.000 học sinh tiểu học chỉ biết làm phép nhân hai chữ số).
+- Phép nhân ma trận của AI không cần giáo sư tư duy sâu, mà cần 10.000 học sinh cùng lúc làm 10.000 phép nhân tí hon trong 1 phần triệu giây (Xử lý song song - Parallel Computing).
+- *Điểm tôi chưa rõ*: Băng thông bộ nhớ (HBM3 / Memory Bandwidth) giữa GPU và VRAM đóng vai trò nút cổ chai như thế nào trong suy luận LLM?
+
+#### 4. Câu hỏi truy vấn tiếp theo để lấp đầy lỗ hổng:
+- Tìm hiểu khái niệm 'Memory-bound vs Compute-bound' trong kiến trúc GPU.
+- Thử viết mã mô phỏng nhân 2 ma trận bằng CPU tuần tự vs GPU để đo thời gian thực tế."""
+}
+
+# Mẫu ghi chú: Bản đồ Siêu học (Scott H. Young - Sách Ultralearning)
+DEFAULT_METALEARNING_MAP_TEMPLATE: Dict[str, Any] = {
+    "title": "Bản đồ Siêu học (Ultralearning Metalearning Map): Phân tích Báo cáo Tài chính Doanh nghiệp",
+    "domain": "📈 Đầu tư, Chứng khoán & Trading",
+    "note_type": "metalearning",
+    "raw_content": """### ⚡ BẢN ĐỒ SIÊU HỌC (ULTRALEARNING METALEARNING MAP — Scott H. Young)
+Kỹ năng / Môn học mục tiêu: Đọc & Bóc tách Báo cáo Tài chính (BCTC) Doanh nghiệp Niêm yết trong 4 tuần.
+
+---
+#### CỘT 1: KHÁI NIỆM (CONCEPTS — Những điều cần HIỂU từ bản chất)
+1. **Dòng tiền vs Lợi nhuận kế toán (Cash Flow vs Accrual Accounting)**: Doanh nghiệp báo lãi 1.000 tỷ nhưng vẫn có thể phá sản nếu dòng tiền kinh doanh (OCF) âm nặng do bị chiếm dụng vốn.
+2. **Chi phí vốn & Lợi thế kinh tế (ROIC vs WACC)**: Tỷ suất sinh lời trên vốn đầu tư phải lớn hơn chi phí sử dụng vốn thì doanh nghiệp mới thực sự tạo ra giá trị thặng dư.
+3. **Chất lượng tài sản & Khoản phải thu**: Các khoản phải thu và hàng tồn kho tăng nhanh hơn doanh thu là dấu hiệu của việc bán chịu ép số hoặc 'xào nấu' doanh thu ảo.
+
+#### CỘT 2: DỮ KIỆN (FACTS — Những điều cần GHI NHỚ & ĐỐI CHIẾU)
+1. Cấu trúc 3 báo cáo tài chính cốt lõi: Bảng cân đối kế toán (Thời điểm), Báo cáo kết quả kinh doanh (Thời kỳ), Báo cáo lưu chuyển tiền tệ (Dòng tiền thực).
+2. Các chỉ số an toàn tài chính trọng yếu:
+   - Tỷ lệ Nợ vay ròng / Vốn chủ sở hữu ($D/E < 1.0$ là ngưỡng an toàn).
+   - Tỷ số thanh toán nhanh ($Quick Ratio > 1.0$).
+   - Biên lợi nhuận gộp (Gross Margin) so với các đối thủ cùng ngành.
+3. Các mùa nộp BCTC: Quý 1 (tháng 4), Bán niên soát xét (tháng 8), Quý 3 (tháng 10), Cả năm kiểm toán (tháng 3 năm sau).
+
+#### CỘT 3: QUY TRÌNH (PROCEDURES — Những điều cần THỰC HÀNH LÀM TRỰC DIỆN)
+- **Bước 1 (Học trực diện - Directness)**: Tải trực tiếp BCTC 3 năm gần nhất của 1 doanh nghiệp quen thuộc (ví dụ: HPG, VNM, FPT) từ trang cafef/vietstock.
+- **Bước 2 (Khoan sâu - Drill)**: So sánh dòng tiền thuần từ hoạt động kinh doanh (Mục I Lưu chuyển tiền tệ) với Lợi nhuận sau thuế trong 3 năm liên tiếp.
+- **Bước 3 (Thuyết minh BCTC)**: Đọc mục Thuyết minh: Giao dịch với các bên liên quan và Phải thu ngắn hạn khách hàng để tìm bẫy rút ruột.
+- **Bước 4 (Phản hồi thực tế - Feedback)**: Viết 1 trang tóm tắt sức khỏe tài chính và đối chiếu với nhận định của các chuyên gia phân tích độc lập."""
+}
+
+
 def heuristic_decompose_note(raw_content: str, title_hint: str = "") -> Dict[str, Any]:
     """
     Thuật toán Heuristic cục bộ bóc tách ghi chú khi offline hoặc không có API Key.
@@ -286,6 +345,7 @@ def create_note(
     raw_content: str,
     decomposed_data: Dict[str, Any],
     custom_title: str = "",
+    note_type: str = "standard",
 ) -> Dict[str, Any]:
     """Tạo một ghi chú mới và lưu vào Second Brain."""
     hist = load_user_history(username)
@@ -296,9 +356,19 @@ def create_note(
 
     title = custom_title.strip() or decomposed_data.get("title") or "Ghi chú Tri thức Mới"
 
+    # Tự động gán tags định danh theo loại ghi chú
+    custom_tags = [t.strip().lower() for t in decomposed_data.get("tags", []) if t.strip()]
+    if note_type == "feynman_unknown" and "feynman-unknown" not in custom_tags:
+        custom_tags.insert(0, "feynman-unknown")
+        custom_tags.append("richard-feynman")
+    elif note_type == "metalearning" and "metalearning" not in custom_tags:
+        custom_tags.insert(0, "metalearning")
+        custom_tags.append("ultralearning")
+
     new_note: Dict[str, Any] = {
         "id": note_id,
         "title": title,
+        "note_type": note_type,  # "standard" | "feynman_unknown" | "metalearning"
         "created_at": now_str,
         "updated_at": now_str,
         "domain": decomposed_data.get("domain", "📦 Khác (Tổng quát)"),
@@ -309,7 +379,7 @@ def create_note(
         "first_principles_linked": decomposed_data.get("first_principles_linked", []),
         "actionable_steps": decomposed_data.get("actionable_steps", []),
         "traps_and_biases": decomposed_data.get("traps_and_biases", ""),
-        "tags": [t.strip().lower() for t in decomposed_data.get("tags", []) if t.strip()],
+        "tags": custom_tags,
         "study_questions": decomposed_data.get("study_questions", []),
         "cross_topic_connections": decomposed_data.get("cross_topic_connections", ""),
         "favorite": False,
@@ -814,3 +884,142 @@ def synthesize_cross_notes(
 
     return f"Lỗi khi tổng hợp giao thoa ghi chú: {last_err}"
 
+
+
+# =============================================================================
+# FEYNMAN JARGON BUSTER (Richard Feynman — Surely You're Joking, Mr. Feynman!)
+# =============================================================================
+
+FEYNMAN_JARGON_BUSTER_PROMPT = """Bạn là Richard Feynman — nhà vật lý đoạt giải Nobel, bậc thầy về tư duy nguyên bản và là người căm ghét thói trí thức rởm, thích dùng biệt ngữ (jargon) hàn lâm để che giấu sự rỗng tuếch.
+
+Nhiệm vụ của bạn: Bóc trần đoạn văn bản người dùng cung cấp (có thể là báo cáo tài chính chứng khoán, lý thuyết quản trị doanh nghiệp, bài báo khoa học, hoặc một bài phát biểu đao to búa lớn).
+
+Yêu cầu BẮT BUỘC trả về định dạng JSON hợp lệ:
+{
+  "pretentious_jargons": [
+    {
+      "jargon": "Từ ngữ đao to búa lớn phát hiện trong văn bản",
+      "plain_meaning": "Bản chất đời thường đơn giản là gì (dịch sang tiếng Việt bình dân)",
+      "is_necessary": false,
+      "verdict": "Lời bình luận sắc sảo về từ này"
+    }
+  ],
+  "plain_summary_for_10yo": "Tóm tắt bản chất cốt lõi thực sự trong 2-3 câu ngắn gọn mà một đứa trẻ 10 tuổi cũng hiểu được.",
+  "substance_score": 6,
+  "bs_warning": "Cảnh báo nếu văn bản có dấu hiệu ngụy biện, lấp liếm hoặc thiếu dữ liệu chứng minh.",
+  "feynman_verdict": "Lời nhận xét trào phúng, thẳng thắn, hóm hỉnh theo đúng phong cách Feynman trong cuốn 'Surely You're Joking, Mr. Feynman!'."
+}
+
+Quy tắc BẮT BUỘC:
+- 100% tiếng Việt tự nhiên, sắc bén, trí tuệ.
+- Bóc trần không khoan nhượng những từ ngữ sáo rỗng.
+"""
+
+
+def heuristic_jargon_buster(raw_text: str) -> Dict[str, Any]:
+    """Phân tích bóc tách thuật ngữ rỗng tuếch cục bộ (Heuristic) khi không có API Key."""
+    common_jargons = {
+        "hiệp đồng": ("Làm việc cùng nhau để đỡ tốn tiền", False, "Từ hay dùng trong sáp nhập để hứa hẹn lợi nhuận ảo"),
+        "synergy": ("Làm việc cùng nhau", False, "Biệt ngữ kinh điển của dân tư vấn"),
+        "tối ưu hóa": ("Làm cho tốt hơn / cắt giảm chi phí", False, "Nói chung chung để né việc chỉ ra biện pháp cụ thể"),
+        "đột phá": ("Có tiến bộ mới", False, "Quảng cáo quá lời, thường chẳng có gì đột phá thật"),
+        "chuyển đổi số": ("Mua thêm máy tính và cài phần mềm", False, "Khẩu hiệu hay dùng để xin ngân sách"),
+        "tái cấu trúc": ("Sa thải bớt người hoặc đổi tên phòng ban", False, "Cách nói hoa mỹ để tránh gây hoảng loạn"),
+        "chiến lược vĩ mô": ("Kế hoạch dài hạn mơ hồ", False, "Khi không biết ngày mai làm gì thì bàn chuyện 10 năm nữa"),
+        "bội số định giá": ("Giá cổ phiếu đắt hay rẻ so với sổ sách", True, "Thuật ngữ tài chính, nhưng hay bị lạm dụng để thổi giá"),
+        "game đổi ngôi": ("Thay đổi ban lãnh đạo hoặc cơ cấu cổ đông", False, "Tiếng lóng đầu cơ tạo sóng"),
+        "đè gom": ("Mua từ từ lúc giá giảm", False, "Thuật ngữ ru ngủ nhà đầu tư kẹp hàng"),
+        "lái kéo": ("Giá cổ phiếu tăng do có người đẩy vốn", False, "Tâm lý đổ lỗi hoặc kỳ vọng ngoại lực"),
+    }
+
+    text_lower = raw_text.lower()
+    found_jargons = []
+    for j_word, (plain, is_nec, verd) in common_jargons.items():
+        if j_word in text_lower:
+            found_jargons.append({
+                "jargon": j_word.capitalize(),
+                "plain_meaning": plain,
+                "is_necessary": is_nec,
+                "verdict": verd
+            })
+
+    if not found_jargons:
+        found_jargons.append({
+            "jargon": "Các thuật ngữ chuyên môn trong văn bản",
+            "plain_meaning": "Các khái niệm chuyên ngành cần được minh họa bằng ví dụ thực tế",
+            "is_necessary": True,
+            "verdict": "Văn bản khá cô đọng hoặc sử dụng từ ngữ tương đối chuẩn xác."
+        })
+
+    score = 8 if len(found_jargons) <= 1 else max(3, 10 - len(found_jargons) * 2)
+    bs_warning = "Phát hiện nhiều từ ngữ hoa mỹ nhằm tăng cảm giác uy tín giả tạo (Prestige bias)." if score < 6 else "Văn bản có hàm lượng thông tin tương đối cụ thể."
+
+    first_few_words = raw_text.strip().split("\n")[0][:120]
+    plain_summary = f"Đoạn này đang nói về việc: {first_few_words}... Bản chất là người viết muốn đạt được kết quả tốt hơn nhưng đang dùng nhiều từ đao to búa lớn. Hãy hỏi họ: 'Cụ thể là ngày mai ai sẽ làm gì và tốn bao nhiêu tiền?'."
+
+    feynman_verdict = (
+        "Bác Feynman nhận xét: 'Nếu bạn không thể giải thích điều này cho sinh viên năm nhất mà không dùng các từ đao to búa lớn đó, thì chính bạn cũng chưa thực sự hiểu nó. Hãy vứt bỏ đống từ ngữ rườm rà đi và chỉ cho tôi xem thực tế chuyển động ra sao!'"
+    )
+
+    return {
+        "pretentious_jargons": found_jargons,
+        "plain_summary_for_10yo": plain_summary,
+        "substance_score": score,
+        "bs_warning": bs_warning,
+        "feynman_verdict": feynman_verdict,
+        "_analyzed_by": "Heuristic Feynman BS Detector (Offline)"
+    }
+
+
+def feynman_jargon_buster(
+    api_keys: Any,
+    model_name: str,
+    raw_text: str,
+) -> Dict[str, Any]:
+    """Bóc trần thuật ngữ hàn lâm & đo độ thực chất theo phong cách Richard Feynman."""
+    if not raw_text.strip():
+        return heuristic_jargon_buster(raw_text)
+
+    keys = _normalize_key_list(api_keys)
+    if not keys or genai is None:
+        return heuristic_jargon_buster(raw_text)
+
+    prompt = f"Văn bản cần bóc trần và kiểm định tính thực chất:\n\n{raw_text}\n"
+    candidates = [model_name or "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+    last_err = None
+
+    for idx, current_key in enumerate(keys, 1):
+        mask = _mask_api_key(current_key)
+        try:
+            genai.configure(api_key=current_key)
+        except Exception as e:
+            last_err = f"Lỗi cấu hình Key #{idx} ({mask}): {e}"
+            continue
+
+        for candidate in candidates:
+            try:
+                model = genai.GenerativeModel(
+                    model_name=candidate,
+                    system_instruction=FEYNMAN_JARGON_BUSTER_PROMPT,
+                    generation_config={"response_mime_type": "application/json"},
+                )
+                resp = model.generate_content(
+                    prompt,
+                    request_options={"retry": None, "timeout": 30}
+                )
+                if resp and resp.text:
+                    cleaned = _clean_json_str(resp.text)
+                    data = json.loads(cleaned)
+                    if isinstance(data, dict):
+                        data["_analyzed_by"] = f"Richard Feynman AI ({candidate}) [Key {mask}]"
+                        return data
+            except Exception as e:
+                err_msg = str(e)
+                last_err = f"Key #{idx} ({mask}) lỗi [{candidate}]: {err_msg}"
+                if _is_rate_limit_or_quota(err_msg):
+                    break
+                continue
+
+    data = heuristic_jargon_buster(raw_text)
+    data["_analyzed_by"] = f"Heuristic BS Detector (API tạm gián đoạn: {last_err})"
+    return data

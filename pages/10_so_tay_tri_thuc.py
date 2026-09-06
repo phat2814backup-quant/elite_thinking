@@ -14,6 +14,8 @@ from utils.app_common import bootstrap
 from utils.notes_manager import (
     NOTE_DOMAINS,
     DEFAULT_FEYNMAN_NOTE,
+    DEFAULT_FEYNMAN_UNKNOWN_TEMPLATE,
+    DEFAULT_METALEARNING_MAP_TEMPLATE,
     create_note,
     get_user_notes,
     get_note_by_id,
@@ -31,6 +33,7 @@ from utils.notes_manager import (
     heuristic_decompose_note,
     decompose_knowledge_note,
     synthesize_cross_notes,
+    feynman_jargon_buster,
 )
 
 # -----------------------------------------------------------------------------
@@ -70,14 +73,34 @@ with tab_capture:
         "tìm ẩn dụ, nhận diện bẫy tư duy và kết nối vào mạng lưới **88 Mô hình & 100 Nguyên lý**."
     )
 
+    # Bộ chọn 3 chế độ thu nạp tri thức
+    note_mode = st.radio(
+        "🎯 Chọn chế độ ghi chép tri thức:",
+        [
+            "📝 Ghi Chép Chuẩn (Standard Second Brain)",
+            "📓 Notebook of Unknowns (Những điều tôi chưa biết — Richard Feynman / Sách Genius)",
+            "⚡ Bản Đồ Siêu Học (Metalearning Map 3 Cột — Scott Young / Sách Ultralearning)",
+        ],
+        horizontal=True,
+        key="note_creation_mode",
+    )
+
     def _do_clear_note_inputs():
         st.session_state["note_custom_title_input"] = ""
         st.session_state["note_raw_text_area"] = ""
         st.session_state.pop("latest_decomposed_preview", None)
 
-    def _do_load_feynman_sample():
-        st.session_state["note_custom_title_input"] = "Kỹ thuật Feynman (Feynman Technique) — Giải thích bình dân"
-        st.session_state["note_raw_text_area"] = DEFAULT_FEYNMAN_NOTE["raw_content"]
+    def _do_load_active_sample():
+        mode = st.session_state.get("note_creation_mode", "")
+        if "Notebook of Unknowns" in mode:
+            st.session_state["note_custom_title_input"] = DEFAULT_FEYNMAN_UNKNOWN_TEMPLATE["title"]
+            st.session_state["note_raw_text_area"] = DEFAULT_FEYNMAN_UNKNOWN_TEMPLATE["raw_content"]
+        elif "Bản Đồ Siêu Học" in mode:
+            st.session_state["note_custom_title_input"] = DEFAULT_METALEARNING_MAP_TEMPLATE["title"]
+            st.session_state["note_raw_text_area"] = DEFAULT_METALEARNING_MAP_TEMPLATE["raw_content"]
+        else:
+            st.session_state["note_custom_title_input"] = "Kỹ thuật Feynman (Feynman Technique) — Giải thích bình dân"
+            st.session_state["note_raw_text_area"] = DEFAULT_FEYNMAN_NOTE["raw_content"]
         st.session_state.pop("latest_decomposed_preview", None)
 
     # Đảm bảo khởi tạo key trong session_state
@@ -90,8 +113,8 @@ with tab_capture:
     c_btn_sample, c_btn_clear = st.columns([3, 1])
     with c_btn_sample:
         st.button(
-            "💡 Nạp nội dung mẫu: Kỹ thuật Feynman (Trải nghiệm nhanh)",
-            on_click=_do_load_feynman_sample,
+            "💡 Nạp nội dung mẫu theo chế độ đang chọn (Trải nghiệm ngay)",
+            on_click=_do_load_active_sample,
             use_container_width=True,
             key="btn_load_sample_note",
         )
@@ -128,11 +151,21 @@ with tab_capture:
                     raw_content=raw_text,
                     title_hint=custom_title.strip(),
                 )
+                # Xác định note_type theo chế độ
+                n_mode = st.session_state.get("note_creation_mode", "")
+                if "Notebook of Unknowns" in n_mode:
+                    target_note_type = "feynman_unknown"
+                elif "Bản Đồ Siêu Học" in n_mode:
+                    target_note_type = "metalearning"
+                else:
+                    target_note_type = "standard"
+
                 new_note = create_note(
                     username=username,
                     raw_content=raw_text,
                     decomposed_data=decomposed,
                     custom_title=custom_title.strip(),
+                    note_type=target_note_type,
                 )
                 st.session_state["latest_decomposed_preview"] = new_note
                 st.success(f"✅ Đã phân rã và lưu thành công ghi chú: **{new_note['title']}** (Mã: `{new_note['id']}`)!")
@@ -229,6 +262,7 @@ with tab_vault:
         )
     with c_f4:
         fav_only = st.checkbox("⭐ Yêu thích", value=False, key="vault_filter_fav")
+        unknown_only = st.checkbox("📓 Chỉ Unknowns", value=False, key="vault_filter_unknowns", help="Chỉ hiển thị sổ tay điều chưa biết (Feynman's Unknowns)")
 
     # Thực thi truy vấn
     matched_notes = search_notes(
@@ -240,6 +274,11 @@ with tab_vault:
         only_favorites=fav_only,
         mastery_filter=sel_mastery,
     )
+    if unknown_only:
+        matched_notes = [
+            n for n in matched_notes 
+            if n.get("note_type") == "feynman_unknown" or "feynman-unknown" in n.get("tags", [])
+        ]
 
     st.caption(f"Tìm thấy **{len(matched_notes)}** ghi chú phù hợp với điều kiện tra cứu.")
     st.divider()
@@ -257,7 +296,14 @@ with tab_vault:
             with st.container():
                 c_title, c_actions = st.columns([4, 2])
                 with c_title:
-                    st.markdown(f"#### {fav_icon} {note.get('title')} `[{mastery_badges.get(mastery, '🌱')}]`")
+                    n_type = note.get("note_type", "standard")
+                    type_badge = ""
+                    if n_type == "feynman_unknown" or "feynman-unknown" in note.get("tags", []):
+                        type_badge = " · 📓 Feynman's Unknown"
+                    elif n_type == "metalearning" or "metalearning" in note.get("tags", []):
+                        type_badge = " · ⚡ Ultralearning Map"
+
+                    st.markdown(f"#### {fav_icon} {note.get('title')} `[{mastery_badges.get(mastery, '🌱')}{type_badge}]`")
                     st.caption(f"🏷️ **{note.get('domain')}** · 🕒 Cập nhật: `{note.get('updated_at', note.get('created_at'))}` · ID: `{n_id}`")
                 with c_actions:
                     col_act1, col_act2, col_act3 = st.columns([1, 1, 1])
@@ -363,7 +409,11 @@ with tab_recall:
     st.markdown("### 🎓 Rèn Luyện & Ôn Tập Chủ Động (Active Recall & Synthesis)")
     st.caption("Biến tri thức tích lũy thành phản xạ nhận thức tầng tiềm thức thay vì ảo tưởng ghi nhớ mặt chữ.")
 
-    sub_r1, sub_r2 = st.tabs(["🎯 Thẻ Phản Xạ Nhận Thức (Active Recall)", "✨ AI Tổng Hợp Giao Thoa Tri Thức"])
+    sub_r1, sub_r2, sub_r3 = st.tabs([
+        "🎯 Thẻ Phản Xạ Nhận Thức (Active Recall)",
+        "✨ AI Tổng Hợp Giao Thoa Tri Thức",
+        "🔍 Feynman Jargon Buster (Bóc Mẽ Thuật Ngữ Hàn Lâm)",
+    ])
 
     # SUB-TAB 1: Active Recall Flashcards
     with sub_r1:
@@ -441,6 +491,79 @@ with tab_recall:
                 st.divider()
                 st.markdown("### 🌐 Báo Cáo Giao Thoa Tri Thức Đa Chiều")
                 st.markdown(res)
+
+    # SUB-TAB 3: Feynman Jargon Buster
+    with sub_r3:
+        st.markdown("#### 🔍 Feynman Jargon Buster — Bộ Lọc Chống Bịp Bợm & Đao To Búa Lớn")
+        st.markdown("""
+        > *"Nguyên tắc đầu tiên là bạn không được tự lừa dối chính mình — và bạn chính là người dễ bị lừa nhất."*  
+        > — **Richard Feynman** (*Surely You're Joking, Mr. Feynman!*)
+        """)
+        st.info(
+            "💡 Dán bất kỳ đoạn văn bản nào bạn nghi ngờ là sáo rỗng hoặc 'lòe' thuật ngữ "
+            "(báo cáo phân tích khuyến nghị cổ phiếu, chiến lược quản trị doanh nghiệp, lý thuyết sách vở). "
+            "Richard Feynman AI sẽ bóc trần từng biệt ngữ, dịch sang bản chất trần trụi và cho điểm độ chân thực (BS Score)!"
+        )
+
+        sample_jargons = [
+            "— Tự nhập văn bản của bạn bên dưới —",
+            "Mẫu 1 (Báo cáo chứng khoán): Doanh nghiệp đang tái cấu trúc toàn diện chuỗi cung ứng nhằm tối ưu hóa chi phí vốn và tạo hiệu ứng hiệp đồng (synergy) đột phá. Bội số định giá P/E đang ở vùng chiết khấu sâu sau chu kỳ đè gom của dòng tiền thông minh, mở ra dư địa tăng trưởng vượt bậc trong kỷ nguyên chuyển đổi số.",
+            "Mẫu 2 (Quản trị doanh nghiệp): Chúng tôi định vị lại năng lực cốt lõi thông qua mô hình agile linh hoạt, tái thiết lập ma trận trách nhiệm đa chiều để thúc đẩy sự đột phá chuyển dịch văn hóa tổ chức, tối đa hóa giá trị cổ đông và dẫn dắt cuộc cách mạng chuyển đổi số bền vững.",
+        ]
+
+        sel_sample = st.selectbox("Gợi ý văn bản sáo rỗng thường gặp:", sample_jargons, key="sel_jargon_sample")
+        init_jargon_val = "" if sel_sample.startswith("—") else sel_sample.split(": ", 1)[-1]
+
+        jargon_input = st.text_area(
+            "Văn bản cần kiểm định tính thực chất:",
+            value=init_jargon_val,
+            height=130,
+            placeholder="Dán văn bản đầy thuật ngữ đao to búa lớn vào đây...",
+            key="jargon_buster_input_text",
+        )
+
+        if st.button("🚀 Bác Feynman Ơi, Bóc Trần Đoạn Này Đi!", type="primary", use_container_width=True):
+            if not jargon_input.strip():
+                st.warning("Vui lòng dán văn bản cần bóc trần.")
+            else:
+                with st.spinner("Richard Feynman AI đang cầm kính lúp soi từng thuật ngữ và đo độ thực chất..."):
+                    jargon_res = feynman_jargon_buster(
+                        api_keys=active_keys,
+                        model_name=model_choice,
+                        raw_text=jargon_input.strip(),
+                    )
+                    st.session_state["latest_jargon_result"] = jargon_res
+
+        j_res = st.session_state.get("latest_jargon_result")
+        if j_res:
+            st.divider()
+            c_sc1, c_sc2 = st.columns([1, 2])
+            with c_sc1:
+                score = j_res.get("substance_score", 5)
+                score_label = "💎 Rất thực chất" if score >= 8 else ("⚠️ Nhiều từ sáo rỗng" if score >= 5 else "🚨 Báo động BS / Rỗng tuếch")
+                st.metric("🎯 Điểm Độ Thực Chất (Substance Score)", f"{score} / 10", score_label)
+            with c_sc2:
+                st.warning(f"⚠️ **Cảnh báo nhận thức:** {j_res.get('bs_warning', '')}")
+
+            st.markdown("#### 👶 Tóm Tắt Bản Chất Cho Học Sinh Lớp 5:")
+            st.success(j_res.get("plain_summary_for_10yo", ""))
+
+            st.markdown("#### 🎭 Lời Nhận Xét Của Bác Feynman:")
+            fey_verd = j_res.get('feynman_verdict', '')
+            st.info(f"👉 *\"{fey_verd}\"*")
+
+            st.markdown("#### 🔬 Bóc Tách Từng Biệt Ngữ (Jargon Breakdown):")
+            j_list = j_res.get("pretentious_jargons", [])
+            if j_list:
+                for item in j_list:
+                    j_name = item.get("jargon", "")
+                    j_plain = item.get("plain_meaning", "")
+                    j_verd = item.get("verdict", "")
+                    st.markdown(f"- **`{j_name}`** ➔ **{j_plain}**")
+                    if j_verd:
+                        st.caption(f"  ↳ *Bình luận:* {j_verd}")
+            else:
+                st.caption("Không phát hiện biệt ngữ đáng kể.")
 
 
 # =============================================================================

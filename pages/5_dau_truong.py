@@ -657,6 +657,13 @@ with arena_tab3:
         st.markdown("""
         > *"Bạn không thực sự hiểu điều gì cho đến khi bạn có thể giải thích nó bằng ngôn ngữ đơn giản nhất cho một đứa trẻ 10 tuổi mà không dùng bất kỳ từ ngữ cao siêu nào."* — **Richard Feynman**
         """)
+        st.info("""
+        ⚡ **Giao thức Feynman 4 bước chuẩn Ultralearning (Scott H. Young):**
+        1. **Chọn khái niệm mục tiêu** cần thấu hiểu tận gốc.
+        2. **Dạy lại cho đứa trẻ 10 tuổi:** Dùng ngôn ngữ đời thường quán cà phê, cấm dùng từ ngữ chuyên môn.
+        3. **Bắt quả tang điểm nghẽn (Identify gaps):** Khúc nào ngập ngừng hoặc định lấp liếm bằng từ đao to búa lớn chính là điểm mù nhận thức!
+        4. **Tinh giản & Tạo phép ẩn dụ (Analogy):** Gắn hiện tượng trừu tượng vào một đồ vật hoặc câu chuyện gần gũi trong đời sống.
+        """)
 
         fey_col1, fey_col2 = st.columns([1, 2])
         with fey_col1:

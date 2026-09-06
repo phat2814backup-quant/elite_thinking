@@ -320,6 +320,17 @@ with tab7_subtabs[2]:
                     placeholder="Sau khi quyết định này được thực thi, phản ứng tiếp theo của hệ thống sẽ là gì?",
                 )
 
+            st.markdown("---")
+            st.markdown("##### 🎭 Feynman Honesty Gate: *'You must not fool yourself' — Richard Feynman*")
+            st.caption("Nguyên tắc đầu tiên là bạn không được tự lừa dối chính mình — và bạn chính là người dễ bị lừa nhất.")
+            dec_feynman_honesty = st.text_area(
+                "Tự vấn chống tự lừa dối (Điều gì tôi đang thầm hy vọng là đúng mà chưa có bằng chứng thực tế?):",
+                value="",
+                height=70,
+                placeholder="Ví dụ: Tôi có đang thầm hy vọng thị trường sẽ quay đầu chỉ vì không muốn thừa nhận mình đã chọn sai? Điều gì tôi đang né tránh nhìn thẳng vào?",
+                help="Bắt buộc bản thân đối diện với mong ước chủ quan (wishful thinking) và điểm mù nhận thức.",
+            )
+
             btn_save_dec = st.form_submit_button("💾 Lưu Quyết Định Vào Nhật Ký", type="primary", use_container_width=True)
 
         if btn_save_dec:
@@ -335,6 +346,7 @@ with tab7_subtabs[2]:
                     inversion_traps=dec_inv.strip(),
                     second_order_consequences=dec_sec.strip(),
                     review_days=dec_interval_days,
+                    feynman_honesty_check=dec_feynman_honesty.strip(),
                 )
                 st.session_state["open_new_decision_form"] = False
                 st.success(f"✅ Đã ghi nhận quyết định '{new_dec['title']}'! Hệ thống sẽ nhắc bạn kiểm định vào ngày {new_dec['review_date']}.")
@@ -378,6 +390,8 @@ with tab7_subtabs[2]:
                         st.markdown(f"**⚠️ Bẫy đảo ngược lường trước:**  \n{d.get('inversion_traps')}")
                     if d.get("second_order_consequences"):
                         st.markdown(f"**🌊 Hệ quả bậc hai dự kiến:**  \n{d.get('second_order_consequences')}")
+                    if d.get("feynman_honesty_check"):
+                        st.warning(f"🎭 **Feynman Honesty Check (Tự vấn chống tự lừa dối):**  \n*{d.get('feynman_honesty_check')}*")
 
                 st.markdown("---")
 
