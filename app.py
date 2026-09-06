@@ -216,13 +216,15 @@ else:
     p8 = st.Page("pages/8_lich_su.py", title="Lịch sử Học tập", icon="📝")
     p10 = st.Page("pages/10_so_tay_tri_thuc.py", title="Sổ tay Tri thức (Second Brain)", icon="💡")
     p11 = st.Page("pages/11_case_thuc_chien.py", title="Case Thực Chiến (150+)", icon="🎯")
+    p12 = st.Page("pages/12_doc_song_ngu.py", title="Đọc Song Ngữ (Siêu Học)", icon="📖")
 
     nav_map = {
         "🧭 Định hướng": [home_page, p0],
         "🧠 Lăng kính & Mô hình": [p1, p2, p3, p4],
         "⚔️ Rèn luyện & Thực chiến": [p5, p6, p7, p11, p8],
-        "💡 Sổ tay & Tri thức": [p10],
+        "💡 Sổ tay & Tri thức": [p10, p12],
     }
+
 
     # Phân quyền Admin: Chỉ tài khoản Admin mới nhìn thấy mục Quản trị trong Menu
     if is_admin():
