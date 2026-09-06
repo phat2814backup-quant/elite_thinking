@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Case Thực Chiến — Thư viện vấn đề áp dụng nguyên lý (nhóm A trước)"""
+"""Case Thực Chiến — Thư viện vấn đề áp dụng nguyên lý (A–F)"""
 from __future__ import annotations
 
 import json
@@ -17,7 +17,6 @@ try:
     active_keys = ctx["active_keys"]
     model_choice = ctx["model_choice"]
 except Exception:
-    # Cho phép chạy độc lập khi test trong thư mục extension
     st.set_page_config(page_title="Case Thực Chiến", page_icon="🎯", layout="wide")
     username = "guest"
     display_name = "Guest"
@@ -25,44 +24,84 @@ except Exception:
     model_choice = "gemini"
 
 # ---------------------------------------------------------------------------
-# Load data
+# Load all case files
 # ---------------------------------------------------------------------------
 CURRENT_DIR = Path(__file__).resolve().parent.parent
-DATA_PATH = CURRENT_DIR / "data" / "cases_toan_khoa_hoc.json"
+DATA_DIR = CURRENT_DIR / "data"
+
+CASE_FILES = {
+    "A": "cases_toan_khoa_hoc.json",
+    "B": "cases_hoc_tap_tu_duy.json",
+    "C": "cases_tai_chinh_ckvn.json",
+    "D": "cases_su_nghiep_quyet_dinh.json",
+    "E": "cases_tam_ly_he_thong.json",
+    "F": "cases_elite_future.json",
+}
+
+GROUP_LABELS = {
+    "A": "A · Toán & Khoa học (Trẻ em)",
+    "B": "B · Học tập & Siêu học",
+    "C": "C · Tài chính cá nhân & CKVN",
+    "D": "D · Sự nghiệp & Quyết định",
+    "E": "E · Tâm lý đám đông & Hệ thống",
+    "F": "F · Elite hiện tại & 10–20 năm tới",
+}
+
 
 @st.cache_data(show_spinner=False)
-def load_cases() -> Dict[str, Any]:
-    if not DATA_PATH.exists():
-        return {"metadata": {}, "cases": []}
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+def load_all_groups() -> Dict[str, Dict[str, Any]]:
+    groups: Dict[str, Dict[str, Any]] = {}
+    for g, fname in CASE_FILES.items():
+        path = DATA_DIR / fname
+        if path.exists():
+            with open(path, "r", encoding="utf-8") as f:
+                groups[g] = json.load(f)
+    return groups
 
-data = load_cases()
-meta = data.get("metadata", {})
-cases: List[Dict[str, Any]] = data.get("cases", [])
+
+all_data = load_all_groups()
+total_cases = sum(len(d.get("cases", [])) for d in all_data.values())
 
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
 st.title("🎯 Case Thực Chiến — Áp dụng Nguyên lý")
 st.caption(
-    f"Nhóm A: {meta.get('title', 'Toán & Khoa học')} · "
-    f"{meta.get('total_cases', len(cases))} case · "
-    f"Đối tượng: {meta.get('target_age', '11-15 tuổi')}"
+    f"Tổng **{total_cases}** case · 6 nhóm (A–F) · "
+    "Cầu nối lý thuyết → thực tế · First Principles · Interleaving"
 )
 
 st.markdown("""
-Tab này cầu nối **lý thuyết → thực tế**.  
-Mỗi case được phân rã về First Principles, gắn với nguyên lý cụ thể, có câu hỏi kích hoạt và biến thể để luyện interleaving.
+Mỗi case được phân rã về First Principles, gắn nguyên lý cụ thể, có câu hỏi kích hoạt và biến thể để luyện transfer.
 """)
 
 # ---------------------------------------------------------------------------
-# Filters
+# Group selector + filters
 # ---------------------------------------------------------------------------
-col_f1, col_f2, col_f3 = st.columns([1.2, 1.2, 1.5])
+available_groups = [g for g in "ABCDEF" if g in all_data]
+default_groups = available_groups[:]
 
-with col_f1:
-    difficulties = sorted({c.get("difficulty", "Cơ bản") for c in cases})
+col_g, col_d, col_p, col_s = st.columns([1.4, 1.1, 1.3, 1.4])
+
+with col_g:
+    sel_groups = st.multiselect(
+        "Nhóm",
+        options=available_groups,
+        default=default_groups,
+        format_func=lambda g: GROUP_LABELS.get(g, g),
+        key="case_filter_groups",
+    )
+
+# Collect cases from selected groups
+cases: List[Dict[str, Any]] = []
+for g in sel_groups:
+    for c in all_data[g].get("cases", []):
+        c = dict(c)
+        c["_group"] = g
+        cases.append(c)
+
+with col_d:
+    difficulties = sorted({c.get("difficulty", "Cơ bản") for c in cases}) or ["Cơ bản"]
     sel_diff = st.multiselect(
         "Độ khó",
         options=difficulties,
@@ -70,10 +109,8 @@ with col_f1:
         key="case_filter_diff",
     )
 
-with col_f2:
-    all_principles = sorted(
-        {p for c in cases for p in c.get("principles", [])}
-    )
+with col_p:
+    all_principles = sorted({p for c in cases for p in c.get("principles", [])})
     sel_prin = st.multiselect(
         "Nguyên lý",
         options=all_principles,
@@ -82,10 +119,10 @@ with col_f2:
         key="case_filter_prin",
     )
 
-with col_f3:
+with col_s:
     search_q = st.text_input(
         "Tìm kiếm",
-        placeholder="chu vi, entropy, đòn bẩy, xác suất...",
+        placeholder="AI, đòn bẩy, entropy, sự nghiệp...",
         key="case_search",
     )
 
@@ -95,13 +132,13 @@ with col_f3:
 def match_case(c: Dict[str, Any]) -> bool:
     if c.get("difficulty") not in sel_diff:
         return False
-    if sel_prin:
-        if not any(p in c.get("principles", []) for p in sel_prin):
-            return False
+    if sel_prin and not any(p in c.get("principles", []) for p in sel_prin):
+        return False
     if search_q.strip():
         q = search_q.strip().lower()
         blob = " ".join(
             [
+                c.get("id", ""),
                 c.get("title", ""),
                 c.get("problem", ""),
                 c.get("trigger_question", ""),
@@ -113,23 +150,24 @@ def match_case(c: Dict[str, Any]) -> bool:
             return False
     return True
 
-filtered = [c for c in cases if match_case(c)]
 
-st.caption(f"Hiển thị **{len(filtered)}** / {len(cases)} case")
+filtered = [c for c in cases if match_case(c)]
+st.caption(f"Hiển thị **{len(filtered)}** / {len(cases)} case (đã chọn nhóm)")
 
 # ---------------------------------------------------------------------------
 # Display cases
 # ---------------------------------------------------------------------------
 if not filtered:
-    st.info("Không có case nào khớp bộ lọc. Thử nới lỏng điều kiện.")
+    st.info("Không có case nào khớp bộ lọc. Thử nới lỏng điều kiện hoặc chọn thêm nhóm.")
 else:
     for c in filtered:
+        gid = c.get("_group", "?")
         with st.expander(
             f"**{c.get('id', '?')}** · {c.get('title', 'Không tiêu đề')}  "
-            f"· `{c.get('difficulty', '')}` · ⏱ {c.get('time_minutes', '?')} phút",
+            f"· `{GROUP_LABELS.get(gid, gid)}` · `{c.get('difficulty', '')}` · ⏱ {c.get('time_minutes', '?')} phút",
             expanded=False,
         ):
-            st.markdown(f"### Vấn đề")
+            st.markdown("### Vấn đề")
             st.write(c.get("problem", ""))
 
             st.markdown(f"**Câu hỏi kích hoạt:** *{c.get('trigger_question', '')}*")
@@ -140,7 +178,10 @@ else:
 
             prin = c.get("principles", [])
             if prin:
-                st.markdown("**Nguyên lý / Mô hình kích hoạt:** " + " · ".join(f"`{p}`" for p in prin))
+                st.markdown(
+                    "**Nguyên lý / Mô hình kích hoạt:** "
+                    + " · ".join(f"`{p}`" for p in prin)
+                )
 
             steps = c.get("solution_steps", [])
             if steps:
@@ -158,7 +199,6 @@ else:
             if insight:
                 st.success(f"**Elite Insight:** {insight}")
 
-            # Nút liên kết sang Phân Rã AI (nếu chạy trong app chính)
             st.markdown("---")
             col_a, col_b = st.columns(2)
             with col_a:
@@ -173,33 +213,35 @@ else:
                     )
                     st.info(
                         "Nội dung đã được chuẩn bị. "
-                        "Hãy chuyển sang tab **Phân Rã Thực Chiến** và dán (hoặc hệ thống sẽ tự điền nếu đã tích hợp)."
+                        "Chuyển sang tab **Phân Rã Thực Chiến** để chạy AI 9 Lenses."
                     )
             with col_b:
-                st.caption("Gợi ý: Làm case này trước, sau đó tự đặt biến thể mới và phân rã.")
+                st.caption("Gợi ý: Tự nghĩ trước → xem phân rã → làm biến thể → đưa sang AI nếu cần đào sâu.")
 
 # ---------------------------------------------------------------------------
-# Sidebar info / next steps
+# Sidebar
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    st.markdown("### 📌 Nhóm case hiện có")
-    st.markdown(f"- **A. Toán & Khoa học**: {len(cases)} case")
-    st.markdown("- B–E: sắp bổ sung")
-    st.markdown("- **F. Elite hiện tại & 10–20 năm tới**: ~50 case (sắp có)")
+    st.markdown("### 📌 Tổng quan nhóm case")
+    for g in "ABCDEF":
+        if g in all_data:
+            n = len(all_data[g].get("cases", []))
+            st.markdown(f"- **{GROUP_LABELS.get(g, g)}**: {n} case")
+    st.markdown(f"**Tổng: {total_cases} case**")
 
     st.divider()
     st.markdown("### Hướng dẫn dùng")
     st.markdown("""
-1. Chọn độ khó / nguyên lý hoặc tìm kiếm.
+1. Chọn nhóm / độ khó / nguyên lý hoặc tìm kiếm.
 2. Mở case → đọc vấn đề → tự nghĩ trước.
 3. Xem phân rã & nguyên lý.
-4. Thử biến thể.
-5. (Tuỳ chọn) Đưa sang tab Phân Rã AI để đào sâu hơn.
+4. Thử biến thể (interleaving).
+5. (Tuỳ chọn) Đưa sang tab Phân Rã AI.
     """)
 
 st.divider()
 st.caption(
-    "Extension page · Case Thực Chiến v1.0 · "
-    "Dữ liệu: data/cases_toan_khoa_hoc.json · "
-    "Có thể mở rộng thêm nhóm B–F bằng cách thêm file JSON và cập nhật loader."
+    "Extension · Case Thực Chiến v1.1 · "
+    "Data: extension/data/cases_*.json · "
+    "Tự động load 6 nhóm A–F."
 )

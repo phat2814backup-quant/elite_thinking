@@ -45,7 +45,7 @@ def load_all_cases() -> Dict[str, Any]:
     for d in search_dirs:
         if d.exists() and d.is_dir():
             for p in d.glob("cases_*.json"):
-                if p not in json_files:
+                if p.name not in [x.name for x in json_files]:
                     json_files.append(p)
 
     for f_path in json_files:
@@ -82,7 +82,7 @@ all_cases = loaded_data.get("cases", [])
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
-st.title("🎯 Thư Viện 100+ Case Thực Chiến — Cầu Nối Lý Thuyết ➔ Đời Sống")
+st.title("🎯 Thư Viện 150+ Case Thực Chiến — Cầu Nối Lý Thuyết ➔ Đời Sống")
 st.caption(
     "Giải quyết bài toán thực tế bằng First Principles · Dành cho Học sinh Sài Gòn (2011–2015) "
     "& Giới Đầu tư / Tinh hoa Thế hệ 8x (Hiện tại & Tầm nhìn 10–20 năm)."
@@ -249,14 +249,11 @@ else:
 # Sidebar Summary & Next Modules Roadmap
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    st.markdown("### 📊 Bản Đồ 100+ Case Thực Chiến")
-    st.markdown(f"Hiện có: **{len(all_cases)} case** đã chuẩn hóa")
-    st.markdown("- **Nhóm A (Toán & Khoa học):** 25 case (Trẻ 2011–2015)")
-    st.markdown("- **Nhóm B (Học tập & Siêu học):** ~20 case *(Sắp có)*")
-    st.markdown("- **Nhóm C (Tài chính & Đầu tư CKVN):** ~25 case *(Sắp có)*")
-    st.markdown("- **Nhóm D (Sự nghiệp & Ra quyết định):** ~15 case *(Sắp có)*")
-    st.markdown("- **Nhóm E (Tâm lý & Hệ thống):** ~15 case *(Sắp có)*")
-    st.markdown("- **Nhóm F (Elite 10–20 năm tới):** ~50 case *(Sắp có)*")
+    st.markdown("### 📊 Bản Đồ 150 Case Thực Chiến")
+    st.markdown(f"Tổng cộng: **{len(all_cases)} case** đã chuẩn hóa sẵn sàng!")
+    for g_code, g_info in sorted(groups_dict.items()):
+        cnt = sum(1 for c in all_cases if c.get("group_code") == g_code)
+        st.markdown(f"- **Nhóm {g_code} ({g_info['title']}):** {cnt} case")
 
     st.divider()
     st.markdown("### 💡 Khuyến Nghị Rèn Luyện")

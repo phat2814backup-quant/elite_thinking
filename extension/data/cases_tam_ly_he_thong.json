@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "group": "E",
+    "title": "Tâm lý đám đông & Hệ thống xã hội",
+    "version": "1.0",
+    "total_cases": 15,
+    "target_age": "Cả trẻ lớn và người lớn",
+    "description": "15 case về thiên kiến nhận thức, tâm lý đám đông, incentive, feedback loop và tư duy hệ thống trong đời sống, công việc và xã hội Việt Nam.",
+    "principles_focus": [
+      "Cognitive Biases",
+      "Social Proof",
+      "Incentive",
+      "Feedback Loop",
+      "Tragedy of the Commons",
+      "Second-Order Effect",
+      "Emergence",
+      "Skin in the Game",
+      "Authority Bias",
+      "Confirmation Bias"
+    ]
+  },
+  "cases": [
+    {
+      "id": "E01",
+      "title": "Social Proof – Tại sao mọi người làm theo đám đông dù biết có thể sai?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 9,
+      "problem": "Trong group chat hoặc ngoài đời, khi nhiều người cùng tin một điều (cổ phiếu nóng, cách dạy con, tin đồn), bạn cảm thấy khó chống lại dù logic bảo ngược lại.",
+      "trigger_question": "Số đông đang cung cấp thông tin thật hay chỉ đang phản chiếu lẫn nhau?",
+      "first_principles_breakdown": [
+        "Não bộ dùng hành vi của người khác như shortcut để quyết định (tiết kiệm năng lượng).",
+        "Khi thông tin mơ hồ, social proof càng mạnh."
+      ],
+      "principles": ["Social Proof", "Information Cascade", "Independence of Judgment"],
+      "solution_steps": [
+        "Tách biệt: 'Họ nghĩ gì?' và 'Bằng chứng độc lập là gì?'.",
+        "Chủ động tìm ý kiến trái chiều chất lượng.",
+        "Quyết định riêng trước khi xem đám đông nghĩ gì."
+      ],
+      "variants": [
+        "Fomo chứng khoán và crypto.",
+        "Áp lực chọn trường / nghề theo đám đông."
+      ],
+      "elite_insight": "Đám đông hữu ích khi bạn cần biết nhà hàng nào đông khách. Đám đông nguy hiểm khi bạn cần sự thật."
+    },
+    {
+      "id": "E02",
+      "title": "Confirmation Bias – Chỉ tìm thứ mình muốn nghe",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Khi đã thích một cổ phiếu, một ứng viên, hoặc một quan điểm giáo dục, bạn vô thức chỉ đọc bài ủng hộ và bỏ qua bài phản bác.",
+      "trigger_question": "Lần cuối bạn chủ động tìm bằng chứng có thể chứng minh mình sai là khi nào?",
+      "first_principles_breakdown": [
+        "Não ưu tiên bảo vệ bản ngã và sự nhất quán hơn là tìm sự thật.",
+        "Thuật toán mạng xã hội khuếch đại thiên kiến này."
+      ],
+      "principles": ["Confirmation Bias", "Motivated Reasoning", "Falsification"],
+      "solution_steps": [
+        "Trước khi quyết định lớn: buộc mình viết 3 lý do có thể sai.",
+        "Theo dõi một nguồn chất lượng có quan điểm đối lập.",
+        "Thưởng cho việc phát hiện lỗ hổng trong lập luận của chính mình."
+      ],
+      "variants": [
+        "Tin chính trị và tin tức.",
+        "Đánh giá nhân viên hoặc đối tác."
+      ],
+      "elite_insight": "Người thông minh vẫn bị confirmation bias. Họ chỉ giỏirationalize hơn."
+    },
+    {
+      "id": "E03",
+      "title": "Incentive – Thứ bạn thưởng là thứ bạn nhận",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Công ty thưởng doanh số ngắn hạn → nhân viên chốt đơn bằng mọi giá. Trường thưởng điểm số → dạy tủ. Làm sao nhìn thấy incentive đang bóp méo hành vi?",
+      "trigger_question": "Hệ thống đang thưởng cho hành vi nào, dù không nói ra?",
+      "first_principles_breakdown": [
+        "Con người phản ứng mạnh với incentive, kể cả khi không thừa nhận.",
+        "Incentive xấu tạo hành vi xấu một cách có thể dự đoán."
+      ],
+      "principles": ["Incentive", "Goodhart's Law", "Unintended Consequences"],
+      "solution_steps": [
+        "Với mọi chính sách: hỏi 'Nếu tôi muốn phá hệ thống này để tối đa hóa phần thưởng, tôi sẽ làm gì?'.",
+        "Thiết kế lại thước đo khi phát hiện méo mó.",
+        "Kết hợp nhiều thước đo và đánh giá định tính."
+      ],
+      "variants": [
+        "KPI trong ngân hàng và chứng khoán.",
+        "Cách chấm điểm và xếp hạng học sinh."
+      ],
+      "elite_insight": "Show me the incentive and I will show you the outcome. – Charlie Munger"
+    },
+    {
+      "id": "E04",
+      "title": "Tragedy of the Commons trong gia đình và chung cư",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Không gian chung (bếp, phòng khách, hành lang chung cư) luôn bẩn hoặc thiếu trách nhiệm. Mỗi người đều nghĩ 'chỉ một người thì không sao'.",
+      "trigger_question": "Khi lợi ích cá nhân ngắn hạn và lợi ích chung dài hạn xung đột, cái gì thắng nếu không có cơ chế?",
+      "first_principles_breakdown": [
+        "Tài nguyên chung bị khai thác quá mức khi chi phí được chia sẻ còn lợi ích thì riêng.",
+        "Cần sở hữu rõ ràng, quy tắc, hoặc incentive để bảo vệ cái chung."
+      ],
+      "principles": ["Tragedy of the Commons", "Externalities", "Governance"],
+      "solution_steps": [
+        "Làm rõ trách nhiệm và hậu quả.",
+        "Tạo quy tắc đơn giản + giám sát nhẹ.",
+        "Cân nhắc 'sở hữu hóa' một phần không gian chung nếu có thể."
+      ],
+      "variants": [
+        "Rác thải và môi trường chung.",
+        "Thời gian họp không hiệu quả trong team."
+      ],
+      "elite_insight": "Cái gì của chung thường trở thành của không ai nếu không được quản trị."
+    },
+    {
+      "id": "E05",
+      "title": "Feedback loop dương và âm trong thói quen & tổ chức",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Một thói quen xấu hoặc một vấn đề nhỏ trong team ngày càng nặng. Cơ chế nào đang khuếch đại nó?",
+      "trigger_question": "Kết quả hôm nay có đang trở thành nguyên nhân mạnh hơn cho ngày mai không?",
+      "first_principles_breakdown": [
+        "Feedback dương: càng nhiều càng tạo ra càng nhiều (leo thang).",
+        "Feedback âm: có cơ chế kéo về trạng thái cân bằng."
+      ],
+      "principles": ["Feedback Loop", "Reinforcing Loop", "Balancing Loop", "Systems Thinking"],
+      "solution_steps": [
+        "Vẽ vòng lặp đơn giản: hành vi → kết quả → ảnh hưởng lại hành vi.",
+        "Tìm điểm can thiệp sớm nhất để phá vòng xấu hoặc nuôi vòng tốt.",
+        "Thiết kế feedback âm (review định kỳ, giới hạn, cảnh báo)."
+      ],
+      "variants": [
+        "Vòng xoáy nợ nần.",
+        "Văn hóa đổ lỗi trong công ty."
+      ],
+      "elite_insight": "Người giải quyết triệu chứng. Người tinh hoa thiết kế lại vòng lặp."
+    },
+    {
+      "id": "E06",
+      "title": "Authority Bias – Tin sếp, tin chuyên gia quá mức",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Một người có chức danh hoặc bằng cấp nói điều gì đó, cả nhóm chấp nhận mà không kiểm chứng. Đôi khi đúng, đôi khi rất sai.",
+      "trigger_question": "Lời nói đó đúng vì bằng chứng hay vì người nói có quyền uy?",
+      "first_principles_breakdown": [
+        "Não tiết kiệm năng lượng bằng cách ủy thác suy nghĩ cho người có status.",
+        "Chuyên gia cũng có thiên kiến, incentive, và giới hạn vòng tròn năng lực."
+      ],
+      "principles": ["Authority Bias", "Circle of Competence", "Independent Thinking"],
+      "solution_steps": [
+        "Tách người nói khỏi nội dung.",
+        "Hỏi: bằng chứng là gì? Phản biện mạnh nhất là gì?",
+        "Đặc biệt cảnh giác khi chuyên gia nói ngoài lĩnh vực của họ."
+      ],
+      "variants": [
+        "Tin lời 'chuyên gia tài chính' trên mạng.",
+        "Không dám phản biện sếp trong họp."
+      ],
+      "elite_insight": "Tôn trọng chuyên môn. Không đầu hàng tư duy độc lập."
+    },
+    {
+      "id": "E07",
+      "title": "Survivorship Bias – Chỉ nhìn người thắng",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Đọc nhiều câu chuyện khởi nghiệp thành công, nhà đầu tư thắng lớn, phụ huynh nuôi con thành tài. Dễ rút ra bài học sai vì không thấy những người làm giống hệt nhưng thất bại.",
+      "trigger_question": "Mẫu quan sát của bạn có bao gồm những người đã biến mất khỏi cuộc chơi không?",
+      "first_principles_breakdown": [
+        "Ta chỉ thấy người sống sót để kể chuyện.",
+        "Tỷ lệ thành công thật = số thành công / (thành công + thất bại đã bị ẩn)."
+      ],
+      "principles": ["Survivorship Bias", "Base Rate", "Selection Bias"],
+      "solution_steps": [
+        "Luôn hỏi base rate: có bao nhiêu người thử và thất bại?",
+        "Tìm dữ liệu về người thua cuộc.",
+        "Cẩn thận với lời khuyên từ người chỉ có trải nghiệm thành công."
+      ],
+      "variants": [
+        "Sách 'tôi đã thành công như thế'.",
+        "Câu chuyện cổ phiếu tăng 10 lần."
+      ],
+      "elite_insight": "Ngôi mộ của người thất bại rất im lặng. Đó là lý do bài học dễ bị lệch."
+    },
+    {
+      "id": "E08",
+      "title": "Loss Aversion – Sợ lỗ mạnh hơn thích lãi",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Không chịu bán cổ phiếu lỗ, không chịu bỏ dự án thất bại, không chịu thay đổi vì sợ 'mất những gì đã có'.",
+      "trigger_question": "Nỗi đau của việc mất 10 triệu có lớn hơn niềm vui của việc được 10 triệu không? Và điều đó đang bóp méo quyết định nào?",
+      "first_principles_breakdown": [
+        "Theo Prospect Theory, mất mát mang cảm xúc mạnh gấp khoảng 2 lần so với mức lãi tương đương.",
+        "Dẫn đến giữ cái xấu quá lâu và từ chối thay đổi."
+      ],
+      "principles": ["Loss Aversion", "Sunk Cost", "Prospect Theory"],
+      "solution_steps": [
+        "Đánh giá lại từ điểm zero: nếu chưa có, mình có bắt đầu không?",
+        "Tách quyết định tương lai khỏi chi phí đã bỏ.",
+        "Đặt quy tắc cứng cho việc cắt lỗ hoặc dừng dự án."
+      ],
+      "variants": [
+        "Giữ nhân viên kém vì đã đầu tư đào tạo.",
+        "Không chuyển nhà hoặc việc vì sợ thay đổi."
+      ],
+      "elite_insight": "Thị trường và cuộc đời không quan tâm bạn sợ lỗ. Chúng chỉ quan tâm bạn có hành động đúng không."
+    },
+    {
+      "id": "E09",
+      "title": "Narrative Fallacy – Ham câu chuyện đẹp hơn dữ liệu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Một câu chuyện có nhân vật, có cao trào, có bài học rõ ràng luôn thuyết phục hơn bảng số liệu khô. Nhưng câu chuyện thường được dựng sau khi kết quả đã biết.",
+      "trigger_question": "Câu chuyện này được xây trước khi có kết quả hay được kể lại cho khớp với kết quả?",
+      "first_principles_breakdown": [
+        "Não người thích nhân quả đơn giản và câu chuyện có ý nghĩa.",
+        "Thế giới thực nhiều nhiễu và may rủi hơn câu chuyện."
+      ],
+      "principles": ["Narrative Fallacy", "Hindsight Bias", "Base Rate"],
+      "solution_steps": [
+        "Tách sự kiện khỏi lời giải thích.",
+        "Tìm các lời giải thích thay thế.",
+        "Ưu tiên dữ liệu và base rate trước khi tin vào câu chuyện."
+      ],
+      "variants": [
+        "Câu chuyện về 'tầm nhìn thiên tài' sau khi công ty thành công.",
+        "Giải thích thị trường tăng/giảm bằng tin tức trong ngày."
+      ],
+      "elite_insight": "Câu chuyện giúp nhớ. Dữ liệu giúp đúng. Đừng nhầm hai thứ."
+    },
+    {
+      "id": "E10",
+      "title": "Skin in the Game – Ai chịu hậu quả thì lời họ nặng ký hơn",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Chuyên gia, cố vấn, influencer đưa ra lời khuyên lớn nhưng không phải chịu thiệt nếu sai. Làm sao lọc?",
+      "trigger_question": "Người nói có mất gì nếu họ sai không?",
+      "first_principles_breakdown": [
+        "Khi không có skin in the game, incentive dễ lệch về phía nói điều nghe vui tai hoặc có lợi cho bản thân.",
+        "Người chịu hậu quả học nhanh hơn và nói thận trọng hơn."
+      ],
+      "principles": ["Skin in the Game", "Incentive", "Accountability"],
+      "solution_steps": [
+        "Ưu tiên lời khuyên từ người cùng chịu rủi ro.",
+        "Hỏi: họ đã đặt cược bằng tiền, thời gian, danh tiếng của chính họ chưa?",
+        "Giảm trọng số với lời khuyên không có hậu quả."
+      ],
+      "variants": [
+        "Tư vấn đầu tư trên mạng.",
+        "Chính sách được thiết kế bởi người không phải sống với hậu quả."
+      ],
+      "elite_insight": "Đừng tin lời khuyên từ người không bị ướt khi trời mưa."
+    },
+    {
+      "id": "E11",
+      "title": "Emergence – Hành vi hệ thống khác với tổng hành vi cá nhân",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Mỗi cá nhân trong tổ chức đều 'ổn' nhưng kết quả tập thể lại kém. Hoặc ngược lại: quy tắc đơn giản tạo ra trật tự phức tạp.",
+      "trigger_question": "Hành vi vĩ mô đang nổi lên từ tương tác nào ở cấp vi mô?",
+      "first_principles_breakdown": [
+        "Hệ thống phức tạp có tính nổi (emergence): tổng thể không chỉ là tổng các phần.",
+        "Thay đổi cấu trúc tương tác thường mạnh hơn thay đổi từng cá nhân."
+      ],
+      "principles": ["Emergence", "Systems Thinking", "Local vs Global"],
+      "solution_steps": [
+        "Quan sát quy tắc tương tác (họp, KPI, luồng thông tin).",
+        "Thay đổi cấu trúc thay vì chỉ 'đào tạo lại người'.",
+        "Thử nghiệm nhỏ để xem hành vi mới nổi lên thế nào."
+      ],
+      "variants": [
+        "Giao thông và kẹt xe.",
+        "Văn hóa công ty độc hại dù không ai muốn độc hại."
+      ],
+      "elite_insight": "Muốn thay đổi kết quả hệ thống, hãy thay đổi cấu trúc và incentive, không chỉ kêu gọi ý thức."
+    },
+    {
+      "id": "E12",
+      "title": "Availability Bias – Thứ dễ nhớ bị phóng đại",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Sau khi nghe một vụ tai nạn máy bay hoặc một vụ lừa đảo chứng khoán, bạn đánh giá rủi ro cao hơn thực tế rất nhiều.",
+      "trigger_question": "Bạn đang đánh giá tần suất dựa trên dữ liệu hay dựa trên mức độ dễ hình dung?",
+      "first_principles_breakdown": [
+        "Não dùng sự dễ dàng lấy ra khỏi trí nhớ như proxy cho xác suất.",
+        "Truyền thông và trải nghiệm gần làm lệch mạnh."
+      ],
+      "principles": ["Availability Bias", "Base Rate Neglect", "Media Effect"],
+      "solution_steps": [
+        "Tìm số liệu thực tế (base rate).",
+        "So sánh với các rủi ro ít được đưa tin hơn nhưng phổ biến hơn.",
+        "Giảm quyết định ngay sau sự kiện gây sốc."
+      ],
+      "variants": [
+        "Sợ để con đi xe máy sau một vụ tai nạn.",
+        "Sợ đầu tư sau một đợt crash."
+      ],
+      "elite_insight": "Tin tức là thứ bất thường. Cuộc sống phần lớn là thứ bình thường. Đừng để tin tức làm lệch bản đồ rủi ro của bạn."
+    },
+    {
+      "id": "E13",
+      "title": "Goodhart's Law trong KPI và chỉ tiêu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Khi một chỉ số trở thành mục tiêu, nó thường hết còn là chỉ số tốt. Ví dụ: thưởng theo số cuộc gọi → cuộc gọi ngắn và vô nghĩa.",
+      "trigger_question": "Chỉ số này còn đo đúng thứ bạn muốn không, hay mọi người đã tối ưu hóa chỉ số thay vì tối ưu hóa mục tiêu thật?",
+      "first_principles_breakdown": [
+        "Goodhart's Law: When a measure becomes a target, it ceases to be a good measure.",
+        "Con người thông minh sẽ game hệ thống."
+      ],
+      "principles": ["Goodhart's Law", "Incentive", "Metric Design"],
+      "solution_steps": [
+        "Dùng nhiều chỉ số bổ sung nhau.",
+        "Kết hợp đánh giá định tính.",
+        "Thay đổi chỉ số định kỳ khi phát hiện gaming."
+      ],
+      "variants": [
+        "Điểm số học sinh và dạy tủ.",
+        "Chỉ tiêu tín dụng và nợ xấu."
+      ],
+      "elite_insight": "Chỉ số là đèn pin. Khi bạn chỉ nhìn vào chỗ được chiếu sáng, bóng tối sẽ chứa ra ngoài tầm kiểm soát."
+    },
+    {
+      "id": "E14",
+      "title": "Polarization và echo chamber trong mạng xã hội & group chat",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Càng tham gia group cùng quan điểm, bạn càng chắc chắn mình đúng và đối phương ngu ngốc. Thực tế có thể phức tạp hơn nhiều.",
+      "trigger_question": "Môi trường thông tin của bạn có đang lọc bỏ sự phức tạp không?",
+      "first_principles_breakdown": [
+        "Echo chamber làm tăng sự tự tin và giảm khả năng thép hóa lập luận.",
+        "Thuật toán tối ưu engagement, không tối ưu sự thật."
+      ],
+      "principles": ["Echo Chamber", "Polarization", "Intellectual Humility"],
+      "solution_steps": [
+        "Chủ động theo dõi 1–2 nguồn đối lập có chất lượng.",
+        "Thực hành thép hóa lập luận đối phương trước khi phản bác.",
+        "Giảm thời gian ở môi trường chỉ có một chiều."
+      ],
+      "variants": [
+        "Group chứng khoán cùng phe.",
+        "Thảo luận giáo dục con cái."
+      ],
+      "elite_insight": "Nếu bạn chưa bao giờ cảm thấy khó chịu với thông tin mình tiêu thụ, khả năng cao bạn đang ở trong buồng dội âm."
+    },
+    {
+      "id": "E15",
+      "title": "Xây 'hệ miễn dịch' chống thao túng thông tin và cảm xúc",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Tin giả, headline câu view, video ngắn kích thích cảm xúc xuất hiện khắp nơi. Làm sao giữ được khả năng suy nghĩ rõ?",
+      "trigger_question": "Trước khi chia sẻ hoặc tin, bạn đã qua được những lớp lọc nào?",
+      "first_principles_breakdown": [
+        "Thao túng hoạt động tốt nhất khi cảm xúc cao và thời gian suy nghĩ thấp.",
+        "Cần quy trình chậm lại và kiểm chứng."
+      ],
+      "principles": ["Epistemic Hygiene", "Emotional Regulation", "Source Criticism"],
+      "solution_steps": [
+        "Quy tắc 24 giờ với tin gây sốc trước khi hành động hoặc chia sẻ.",
+        "Kiểm tra nguồn gốc và động cơ của người đưa tin.",
+        "Ưu tiên nguồn có track record và sẵn sàng sửa sai.",
+        "Giữ thói quen đọc dài và dữ liệu thay vì chỉ xem clip ngắn."
+      ],
+      "variants": [
+        "Tin đồn ảnh hưởng quyết định đầu tư.",
+        "Áp lực từ phụ huynh khác về cách nuôi con."
+      ],
+      "elite_insight": "Trong kỷ nguyên dư thừa thông tin, khả năng không bị nhiễu chính là lợi thế cạnh tranh."
+    }
+  ]
+}

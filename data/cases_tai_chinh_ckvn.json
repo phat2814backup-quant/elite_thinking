@@ -1,0 +1,598 @@
+{
+  "metadata": {
+    "group": "C",
+    "title": "Tài chính cá nhân, CKVN & Đòn bẩy vốn",
+    "version": "1.0",
+    "total_cases": 25,
+    "target_age": "Người lớn 8x – tầng lớp trung lưu Sài Gòn (chứng khoán, ngân hàng, đầu tư)",
+    "description": "25 case thực chiến về tài chính cá nhân, đầu tư chứng khoán Việt Nam, đòn bẩy, tâm lý thị trường và phân bổ tài sản dành cho người đi làm có thu nhập ổn định.",
+    "principles_focus": [
+      "Margin of Safety",
+      "Compound Interest",
+      "Opportunity Cost",
+      "Leverage (two-way)",
+      "Base Rate",
+      "Inversion",
+      "Second-Order Thinking",
+      "Kelly Criterion (basic)",
+      "Diversification",
+      "Mr. Market"
+    ]
+  },
+  "cases": [
+    {
+      "id": "C01",
+      "title": "Xây quỹ khẩn cấp trước khi đầu tư",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Thu nhập ổn định 30–50 triệu/tháng. Đang muốn giải ngân mạnh vào CKVN vì thấy cơ hội. Có nên giữ lại 6 tháng chi tiêu không?",
+      "trigger_question": "Nếu thị trường đóng băng 12–18 tháng và bạn mất việc, bạn sẽ buộc phải bán cổ phiếu lúc nào?",
+      "first_principles_breakdown": [
+        "Rủi ro thanh khoản và rủi ro mất việc là hai rủi ro độc lập với rủi ro thị trường.",
+        "Bán buộc (forced selling) là kẻ thù lớn nhất của nhà đầu tư cá nhân."
+      ],
+      "principles": ["Margin of Safety", "Liquidity", "Sequence of Returns Risk"],
+      "solution_steps": [
+        "Tính chi tiêu thiết yếu 6 tháng.",
+        "Giữ bằng tiền mặt / quỹ tiền tệ trước khi tăng tỷ trọng cổ phiếu.",
+        "Chỉ đầu tư số tiền có thể để yên 5–7 năm."
+      ],
+      "variants": [
+        "Người có thu nhập không ổn định cần quỹ lớn hơn.",
+        "Có nên dùng hạn mức tín dụng làm quỹ khẩn cấp không?"
+      ],
+      "elite_insight": "Không bao giờ để mình rơi vào tình thế buộc phải bán tài sản tốt với giá xấu."
+    },
+    {
+      "id": "C02",
+      "title": "Lãi kép – Con số ít người cảm nhận đủ",
+      "difficulty": "Cơ bản",
+      "time_minutes": 9,
+      "problem": "Người ta nói lãi kép là kỳ quan thứ 8. Nhưng với số tiền 200–500 triệu, cảm giác tăng trưởng rất chậm. Làm sao nhìn đúng?",
+      "trigger_question": "Tại sao 15 năm đầu của lãi kép trông nhàm chán còn 15 năm sau lại bùng nổ?",
+      "first_principles_breakdown": [
+        "Lãi kép là hàm mũ. Phần lớn giá trị được tạo ra ở giai đoạn cuối.",
+        "Thời gian > mức sinh lời trong hầu hết trường hợp thực tế của nhà đầu tư cá nhân."
+      ],
+      "principles": ["Compound Interest", "Time Preference", "Patience"],
+      "solution_steps": [
+        "Chạy thử bảng tính đơn giản: 300 triệu, 12%/năm, 20 năm.",
+        "So sánh với việc rút tiền sớm.",
+        "Tập trung vào việc duy trì chuỗi năm dương thay vì tối đa hóa từng năm."
+      ],
+      "variants": [
+        "So sánh gửi tiết kiệm vs đầu tư cổ phiếu dài hạn.",
+        "Ảnh hưởng của việc đóng góp thêm mỗi tháng."
+      ],
+      "elite_insight": "Lãi kép không thưởng cho người thông minh nhất. Nó thưởng cho người ở lại đủ lâu."
+    },
+    {
+      "id": "C03",
+      "title": "Chi phí cơ hội của việc giữ quá nhiều tiền mặt",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Sau đợt giảm mạnh, nhiều người giữ 70–80% tiền mặt 'chờ đáy'. Cơ hội bị bỏ lỡ được đo như thế nào?",
+      "trigger_question": "Chi phí của việc đúng nhưng quá muộn là gì?",
+      "first_principles_breakdown": [
+        "Tiền mặt có chi phí cơ hội = lợi nhuận kỳ vọng của tài sản rủi ro bị bỏ lỡ.",
+        "Timing hoàn hảo gần như không tồn tại đối với hầu hết nhà đầu tư."
+      ],
+      "principles": ["Opportunity Cost", "Base Rate", "Regret Minimization"],
+      "solution_steps": [
+        "Xác định tỷ trọng tiền mặt mục tiêu (ví dụ 10–25%).",
+        "Dùng DCA hoặc phân bổ dần thay vì chờ tín hiệu hoàn hảo.",
+        "Ghi nhật ký quyết định giữ tiền mặt để review sau 12 tháng."
+      ],
+      "variants": [
+        "Giữ tiền mặt chờ mua nhà vs đầu tư trước.",
+        "Tỷ trọng tiền mặt khi sắp có khoản chi lớn."
+      ],
+      "elite_insight": "Đúng quá sớm trong thị trường cũng giống như sai."
+    },
+    {
+      "id": "C04",
+      "title": "Đòn bẩy tài chính hai chiều – Margin",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Tài khoản 500 triệu, muốn dùng margin để tăng sức mua vì thấy cổ phiếu 'chắc chắn lên'. Rủi ro thực sự nằm ở đâu?",
+      "trigger_question": "Khi nào đòn bẩy biến từ công cụ thành vũ khí tự sát?",
+      "first_principles_breakdown": [
+        "Đòn bẩy phóng đại cả lãi và lỗ.",
+        "Margin call buộc bán đúng lúc giá thấp nhất → phá hủy khả năng phục hồi."
+      ],
+      "principles": ["Leverage", "Margin of Safety", "Ruin Probability", "Inversion"],
+      "solution_steps": [
+        "Tính kịch bản giảm 30–40%: tài khoản còn bao nhiêu và có bị call không?",
+        "Chỉ dùng đòn bẩy khi có biên độ an toàn rất lớn và kế hoạch thoát rõ.",
+        "Hầu hết nhà đầu tư cá nhân nên tránh margin hoặc dùng mức rất thấp."
+      ],
+      "variants": [
+        "Vay ngân hàng để mua cổ phiếu.",
+        "Dùng options hoặc hợp đồng tương lai."
+      ],
+      "elite_insight": "Có thể giàu chậm bằng không đòn bẩy. Rất khó giàu lại sau khi bị đòn bẩy giết một lần."
+    },
+    {
+      "id": "C05",
+      "title": "Mr. Market và cảm xúc đám đông CKVN",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Thị trường giảm mạnh, tin xấu bủa vây, group chat toàn bán tháo. Có nên bán theo hay giải ngân?",
+      "trigger_question": "Giá thị trường hôm nay phản ánh giá trị doanh nghiệp hay tâm trạng của đám đông?",
+      "first_principles_breakdown": [
+        "Mr. Market là người phục vụ, không phải người hướng dẫn.",
+        "Biến động giá ngắn hạn phần lớn là cảm xúc, dài hạn là giá trị."
+      ],
+      "principles": ["Mr. Market", "Contrarian", "Base Rate", "Emotional Discipline"],
+      "solution_steps": [
+        "Tách biệt: 'Giá đang bao nhiêu?' và 'Doanh nghiệp còn tạo ra bao nhiêu tiền?'",
+        "Chỉ hành động khi có sự lệch lớn giữa giá và giá trị ước tính.",
+        "Có sẵn kế hoạch trước khi cảm xúc lên cao."
+      ],
+      "variants": [
+        "Fomo khi thị trường tăng nóng.",
+        "Tin đồn và thông tin nội bộ giả."
+      ],
+      "elite_insight": "Thị trường chuyển từ máy tính trọng số sang máy kiểm tra cảm xúc rất nhanh."
+    },
+    {
+      "id": "C06",
+      "title": "Đa dạng hóa bao nhiêu là đủ với danh mục nhỏ?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Danh mục 300–800 triệu. Nên giữ 3–5 mã hay 15–20 mã?",
+      "trigger_question": "Đa dạng hóa giảm rủi ro gì và tạo ra rủi ro gì?",
+      "first_principles_breakdown": [
+        "Đa dạng hóa giảm rủi ro đặc thù (idiosyncratic).",
+        "Quá nhiều mã → trở thành index kém + phí cao + không thể theo dõi sâu."
+      ],
+      "principles": ["Diversification", "Circle of Competence", "Opportunity Cost"],
+      "solution_steps": [
+        "Với danh mục nhỏ: 5–10 mã đủ nếu hiểu rõ.",
+        "Ưu tiên hiểu sâu hơn là phủ rộng.",
+        "Đa dạng hóa theo ngành và yếu tố (factor) quan trọng hơn số lượng mã."
+      ],
+      "variants": [
+        "Có nên thêm quỹ ETF song song không?",
+        "Đa dạng hóa sang vàng, bất động sản, trái phiếu."
+      ],
+      "elite_insight": "Đa dạng hóa là biện pháp bảo vệ chống lại sự thiếu hiểu biết. Khi hiểu rõ, tập trung có biên độ an toàn lại mạnh hơn."
+    },
+    {
+      "id": "C07",
+      "title": "Định giá sơ bộ doanh nghiệp CKVN",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Nhìn thấy P/E 8 hoặc 25. Làm sao biết rẻ hay đắt mà không cần mô hình phức tạp?",
+      "trigger_question": "Bạn đang trả giá cho cái gì: lợi nhuận hiện tại, tăng trưởng, hay tài sản?",
+      "first_principles_breakdown": [
+        "Giá trị ≈ dòng tiền tương lai chiết khấu hoặc tài sản ròng.",
+        "P/E chỉ có ý nghĩa khi đặt trong ngữ cảnh tăng trưởng, ROE, chu kỳ."
+      ],
+      "principles": ["Intrinsic Value", "Margin of Safety", "Base Rate", "Cyclicality"],
+      "solution_steps": [
+        "Xem lợi nhuận có bền không (chu kỳ hay structural).",
+        "So sánh với trung bình ngành và lịch sử công ty.",
+        "Yêu cầu biên độ an toàn đủ lớn vì ước tính luôn sai."
+      ],
+      "variants": [
+        "Định giá ngân hàng (P/B, NIM, nợ xấu).",
+        "Định giá doanh nghiệp tăng trưởng cao."
+      ],
+      "elite_insight": "Tốt hơn là roughly right than precisely wrong. Biên độ an toàn cứu bạn khỏi sai số mô hình."
+    },
+    {
+      "id": "C08",
+      "title": "Khi nào nên bán – Kỷ luật thoát hàng",
+      "difficulty": "Trung cấp",
+      "time_minutes": 11,
+      "problem": "Cổ phiếu đã tăng 80%. Có nên chốt hết, chốt một phần, hay giữ dài hạn?",
+      "trigger_question": "Lý do mua ban đầu còn đúng không? Và phần vốn gốc đã được bảo vệ chưa?",
+      "first_principles_breakdown": [
+        "Quyết định bán nên dựa trên giá trị và luận điểm đầu tư, không phải trên % lãi.",
+        "Bảo vệ vốn gốc quan trọng hơn tối đa hóa mọi đồng lãi."
+      ],
+      "principles": ["Thesis-driven Selling", "Mental Accounting", "Opportunity Cost"],
+      "solution_steps": [
+        "Viết lại luận điểm đầu tư hiện tại.",
+        "Nếu luận điểm vẫn vững và định giá chưa quá cao → giữ.",
+        "Cân nhắc bán một phần để 'free roll' phần còn lại."
+      ],
+      "variants": [
+        "Bán vì cần tiền tiêu.",
+        "Bán vì sợ tụt."
+      ],
+      "elite_insight": "Người thắng cuộc chơi dài hạn bán vì luận điểm thay đổi, không phải vì cảm xúc."
+    },
+    {
+      "id": "C09",
+      "title": "Chi phí ẩn của giao dịch thường xuyên",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Phí môi giới + thuế + trượt giá + thời gian theo dõi. Làm sao đo được thiệt hại thật của việc mua bán nhiều?",
+      "trigger_question": "Sau phí và sai lầm hành vi, tỷ suất thực bạn nhận được là bao nhiêu?",
+      "first_principles_breakdown": [
+        "Mọi giao dịch đều có chi phí chắc chắn và lợi ích không chắc chắn.",
+        "Hoạt động quá mức thường phá hủy lợi nhuận."
+      ],
+      "principles": ["Transaction Cost", "Behavioral Drag", "Patience"],
+      "solution_steps": [
+        "Tính tổng phí + thuế trong 12 tháng gần nhất.",
+        "So sánh với lợi nhuận ròng.",
+        "Đặt quy tắc: chỉ giao dịch khi luận điểm thay đổi rõ."
+      ],
+      "variants": [
+        "Day trading vs swing vs dài hạn.",
+        "Chi phí của việc theo dõi chart cả ngày."
+      ],
+      "elite_insight": "Thị trường là máy chuyển của cải từ người hoạt động sang người kiên nhẫn."
+    },
+    {
+      "id": "C10",
+      "title": "Phân bổ tài sản theo giai đoạn cuộc đời (8x)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "U40, có con nhỏ, còn 20–25 năm đi làm. Tỷ trọng cổ phiếu / bất động sản / tiền mặt / bảo hiểm nên nghĩ thế nào?",
+      "trigger_question": "Khả năng chịu đựng biến động và nhu cầu thanh khoản thay đổi ra sao theo tuổi?",
+      "first_principles_breakdown": [
+        "Human capital (thu nhập tương lai) đang lớn → có thể chịu nhiều rủi ro tài chính hơn.",
+        "Khi human capital giảm, cần giảm rủi ro danh mục."
+      ],
+      "principles": ["Asset Allocation", "Human Capital", "Lifecycle Investing"],
+      "solution_steps": [
+        "Ước tính số năm còn kiếm được thu nhập cao.",
+        "Giữ đủ thanh khoản cho 1–2 năm chi tiêu + quỹ giáo dục con.",
+        "Phần còn lại phân bổ theo khẩu vị rủi ro thật (không phải khẩu vị khi thị trường tăng)."
+      ],
+      "variants": [
+        "Gần nghỉ hưu.",
+        "Mới có con vs con đã lớn."
+      ],
+      "elite_insight": "Phân bổ tài sản quan trọng hơn việc chọn đúng cổ phiếu gấp nhiều lần."
+    },
+    {
+      "id": "C11",
+      "title": "Bẫy giá rẻ – Value trap CKVN",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Cổ phiếu P/E 5–6, P/B dưới 1. Trông rất rẻ. Làm sao phân biệt giá trị thật và value trap?",
+      "trigger_question": "Rẻ vì thị trường sai hay rẻ vì doanh nghiệp đang hủy hoại giá trị?",
+      "first_principles_breakdown": [
+        "Giá thấp không đồng nghĩa với biên độ an toàn.",
+        "Cần xem chất lượng lợi nhuận, quản trị, và xu hướng dài hạn."
+      ],
+      "principles": ["Value Trap", "Quality", "Capital Allocation", "Incentive"],
+      "solution_steps": [
+        "Kiểm tra ROE, dòng tiền tự do, nợ, lịch sử hủy giá trị.",
+        "Xem ban lãnh đạo có hành xử vì cổ đông không.",
+        "Yêu cầu lý do rõ ràng tại sao thị trường định giá thấp."
+      ],
+      "variants": [
+        "Doanh nghiệp nhà nước giao dịch dưới giá trị sổ sách.",
+        "Ngành đang bị disrupt."
+      ],
+      "elite_insight": "Mua đồ rẻ không khó. Mua đồ rẻ mà tốt mới khó."
+    },
+    {
+      "id": "C12",
+      "title": "Tâm lý hòa vốn và bất đắc dĩ nắm giữ",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Cổ phiếu đang lỗ 25%. Không muốn bán vì 'chưa hòa vốn'. Đây có phải lý do hợp lý?",
+      "trigger_question": "Giá mua trong quá khứ có liên quan gì đến giá trị hiện tại và tương lai của doanh nghiệp?",
+      "first_principles_breakdown": [
+        "Sunk cost fallacy: chi phí đã bỏ ra không nên ảnh hưởng quyết định tương lai.",
+        "Mỗi ngày đều là một quyết định mới: giữ hay bán với thông tin hiện tại."
+      ],
+      "principles": ["Sunk Cost", "Mental Accounting", "Opportunity Cost"],
+      "solution_steps": [
+        "Hỏi ngược: nếu hôm nay được tặng số tiền mặt tương đương giá trị thị trường hiện tại, mình có dùng nó để mua đúng cổ phiếu này không?",
+        "Nếu không → xem xét bán."
+      ],
+      "variants": [
+        "Giữ bất động sản lỗ vì không muốn hiện thực hóa lỗ.",
+        "Tiếp tục dự án kinh doanh thua lỗ vì đã đầu tư nhiều."
+      ],
+      "elite_insight": "Thị trường không quan tâm bạn mua giá bao nhiêu. Chỉ có bạn quan tâm – và đó thường là điểm yếu."
+    },
+    {
+      "id": "C13",
+      "title": "Rủi ro tỷ giá và tài sản định danh VND",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Hầu hết tài sản và thu nhập đều bằng VND. Lạm phát và biến động tỷ giá ảnh hưởng thế nào đến sức mua dài hạn?",
+      "trigger_question": "Tài sản nào bảo vệ được sức mua thực trong 10–20 năm?",
+      "first_principles_breakdown": [
+        "Tiền mặt và trái phiếu danh nghĩa bị xói mòn bởi lạm phát.",
+        "Tài sản thực (doanh nghiệp tốt, bất động sản chọn lọc) có khả năng điều chỉnh theo lạm phát tốt hơn."
+      ],
+      "principles": ["Inflation", "Purchasing Power", "Real vs Nominal"],
+      "solution_steps": [
+        "Đo lường lợi nhuận thực (sau lạm phát).",
+        "Cân nhắc một phần tài sản có khả năng bảo vệ sức mua.",
+        "Không biến mọi thứ thành ngoại tệ chỉ vì sợ tỷ giá."
+      ],
+      "variants": [
+        "Giữ USD tiền mặt.",
+        "Đầu tư vào doanh nghiệp xuất khẩu."
+      ],
+      "elite_insight": "Rủi ro lớn nhất không phải biến động giá ngắn hạn mà là mất sức mua dài hạn."
+    },
+    {
+      "id": "C14",
+      "title": "Sử dụng bảo hiểm đúng chỗ",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Nên mua bảo hiểm nhân thọ, sức khỏe, rủi ro nghề nghiệp mức nào là hợp lý với gia đình trung lưu?",
+      "trigger_question": "Bảo hiểm để bảo vệ khỏi thảm họa tài chính, không phải để đầu tư.",
+      "first_principles_breakdown": [
+        "Bảo hiểm chuyển rủi ro lớn, xác suất thấp.",
+        "Tự bảo hiểm các rủi ro nhỏ bằng quỹ khẩn cấp."
+      ],
+      "principles": ["Insurance", "Expected Value", "Tail Risk"],
+      "solution_steps": [
+        "Ưu tiên bảo hiểm sức khỏe và rủi ro tử vong/ tàn tật khi còn người phụ thuộc.",
+        "Tránh sản phẩm kết hợp đầu tư phức tạp nếu không hiểu rõ.",
+        "Review định kỳ khi hoàn cảnh thay đổi."
+      ],
+      "variants": [
+        "Bảo hiểm xe và nhà.",
+        "Bảo hiểm trách nhiệm nghề nghiệp."
+      ],
+      "elite_insight": "Mua bảo hiểm cho những thứ bạn không thể tự chịu. Tự chịu những thứ bạn có thể."
+    },
+    {
+      "id": "C15",
+      "title": "Đầu tư theo vòng lặp tín dụng CKVN",
+      "difficulty": "Nâng cao",
+      "time_minutes": 13,
+      "problem": "Thanh khoản hệ thống ngân hàng, tăng trưởng tín dụng, và định giá cổ phiếu ngân hàng/BĐS có mối liên hệ thế nào?",
+      "trigger_question": "Khi nào dòng tiền rẻ tạo ra ảo giá và khi nào nó nuôi dưỡng tăng trưởng thật?",
+      "first_principles_breakdown": [
+        "Tín dụng là nhiên liệu của nhiều chu kỳ tài sản ở Việt Nam.",
+        "Khi tăng trưởng tín dụng quá nhanh, rủi ro chất lượng tài sản tăng theo."
+      ],
+      "principles": ["Credit Cycle", "Liquidity", "Second-Order Effect"],
+      "solution_steps": [
+        "Theo dõi tăng trưởng tín dụng, LDR, nợ xấu.",
+        "Nhận diện giai đoạn mở rộng vs thắt chặt.",
+        "Điều chỉnh khẩu vị rủi ro theo giai đoạn chu kỳ."
+      ],
+      "variants": [
+        "Ảnh hưởng của lãi suất điều hành.",
+        "Vòng lặp BĐS – ngân hàng."
+      ],
+      "elite_insight": "Ở thị trường mới nổi, hiểu chu kỳ tín dụng quan trọng gần bằng hiểu doanh nghiệp."
+    },
+    {
+      "id": "C16",
+      "title": "Xây quy tắc cá nhân trước khi thị trường mở",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Khi thị trường biến động mạnh, hầu hết quyết định bị cảm xúc chi phối. Làm sao giảm thiệt hại?",
+      "trigger_question": "Quy tắc nào bạn sẵn sàng tuân theo cả khi sợ hãi và cả khi tham lam?",
+      "first_principles_breakdown": [
+        "Quyết định tốt được đưa ra trước khi cảm xúc lên cao.",
+        "Pre-commitment giảm sai lầm hành vi."
+      ],
+      "principles": ["Pre-commitment", "Checklist", "Emotional Discipline"],
+      "solution_steps": [
+        "Viết quy tắc: điều kiện giải ngân, điều kiện bán, mức đòn bẩy tối đa, tỷ trọng tiền mặt tối thiểu.",
+        "Review quy tắc khi bình tĩnh, không phải lúc đang lỗ."
+      ],
+      "variants": [
+        "Quy tắc không xem giá quá nhiều lần trong ngày.",
+        "Quy tắc không giao dịch sau tin sốc."
+      ],
+      "elite_insight": "Kỷ luật là chiến lược đã được viết ra từ trước khi cần đến nó."
+    },
+    {
+      "id": "C17",
+      "title": "Đánh giá hiệu quả đầu tư sau phí và lạm phát",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Tài khoản tăng 18% trong năm. Có phải là thành công? Cần trừ những gì?",
+      "trigger_question": "Lợi nhuận danh nghĩa và lợi nhuận thực khác nhau ra sao?",
+      "first_principles_breakdown": [
+        "Lợi nhuận thực = lợi nhuận danh nghĩa – lạm phát – phí – thuế.",
+        "So sánh với benchmark phù hợp (VN-Index, quỹ chủ động, gửi tiết kiệm)."
+      ],
+      "principles": ["Real Return", "Benchmarking", "Cost Awareness"],
+      "solution_steps": [
+        "Tính lợi nhuận sau mọi chi phí.",
+        "Trừ lạm phát ước tính.",
+        "So với chỉ số và với mục tiêu dài hạn của mình."
+      ],
+      "variants": [
+        "Năm thị trường tăng mạnh vs năm giảm.",
+        "Hiệu quả của việc chọn cổ phiếu vs mua ETF."
+      ],
+      "elite_insight": "Bạn không thể ăn lợi nhuận danh nghĩa. Bạn chỉ tiêu được sức mua thực."
+    },
+    {
+      "id": "C18",
+      "title": "Rủi ro tập trung vào một ngành hoặc một câu chuyện",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Danh mục toàn cổ phiếu ngân hàng hoặc toàn nhóm 'hưởng lợi từ chính sách X'. Rủi ro nằm ở đâu?",
+      "trigger_question": "Nếu câu chuyện chung sai, bạn còn gì?",
+      "first_principles_breakdown": [
+        "Rủi ro hệ thống trong một ngành không bị đa dạng hóa bởi nhiều mã cùng ngành.",
+        "Correlation tăng mạnh khi khủng hoảng."
+      ],
+      "principles": ["Concentration Risk", "Correlation", "Narrative Fallacy"],
+      "solution_steps": [
+        "Đo tỷ trọng theo ngành và theo yếu tố chung.",
+        "Đặt trần cho mỗi câu chuyện lớn.",
+        "Luôn hỏi: kịch bản nào khiến cả nhóm cùng giảm mạnh?"
+      ],
+      "variants": [
+        "All-in vào một cổ phiếu.",
+        "All-in vào BĐS."
+      ],
+      "elite_insight": "Đa dạng hóa thật sự là đa dạng hóa nguồn rủi ro, không phải số lượng mã."
+    },
+    {
+      "id": "C19",
+      "title": "Sử dụng tiền nhàn rỗi từ lương – DCA đơn giản",
+      "difficulty": "Cơ bản",
+      "time_minutes": 7,
+      "problem": "Mỗi tháng dư 10–20 triệu. Nên chờ chỉnh rồi giải ngân một cục hay chia nhỏ?",
+      "trigger_question": "Bạn đang tối ưu hóa điều gì: cảm xúc hay kỳ vọng dài hạn?",
+      "first_principles_breakdown": [
+        "DCA giảm rủi ro timing và tạo kỷ luật.",
+        "Với dòng tiền đều đặn, DCA thường đủ tốt."
+      ],
+      "principles": ["Dollar Cost Averaging", "Discipline", "Time in Market"],
+      "solution_steps": [
+        "Quyết định tỷ trọng mục tiêu.",
+        "Chia đều hoặc theo lịch cố định.",
+        "Chỉ điều chỉnh khi phân bổ lệch quá xa mục tiêu."
+      ],
+      "variants": [
+        "Có khoản thưởng lớn bất ngờ.",
+        "Thị trường đang ở vùng định giá cao lịch sử."
+      ],
+      "elite_insight": "Thời gian ở trong thị trường quan trọng hơn việc chọn đúng thời điểm vào."
+    },
+    {
+      "id": "C20",
+      "title": "Hiểu và tránh FOMO trong sóng ngành",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Một nhóm cổ phiếu tăng 50–100% trong vài tháng. Bạn chưa có hàng. Có nên đuổi theo?",
+      "trigger_question": "Phần lớn tiền dễ được tạo ra ở giai đoạn nào của chu kỳ, và phần lớn tiền dễ mất ở giai đoạn nào?",
+      "first_principles_breakdown": [
+        "FOMO là cảm xúc muốn tránh hối tiếc khi người khác thắng.",
+        "Giá đã phản ánh một phần lớn câu chuyện tốt đẹp."
+      ],
+      "principles": ["FOMO", "Base Rate", "Regret", "Margin of Safety"],
+      "solution_steps": [
+        "Hỏi: nếu giảm 30% từ đây, mình vẫn muốn mua không?",
+        "Chỉ tham gia khi còn biên độ an toàn và hiểu rõ luận điểm.",
+        "Chấp nhận bỏ lỡ một số cơ hội để tránh những mất mát lớn."
+      ],
+      "variants": [
+        "Sóng crypto, sóng cổ phiếu nóng.",
+        "Bạn bè khoe lãi."
+      ],
+      "elite_insight": "Luôn có chuyến tàu khác. Không có chuyến tàu nào đáng để bạn phá sản vì đuổi theo."
+    },
+    {
+      "id": "C21",
+      "title": "Quản trị rủi ro khi dùng vốn vay mua nhà",
+      "difficulty": "Trung cấp",
+      "time_minutes": 11,
+      "problem": "Vay 60–70% mua nhà ở Sài Gòn. Lãi suất và khả năng trả nợ thay đổi thế nào nếu thu nhập gián đoạn 6–12 tháng?",
+      "trigger_question": "Kịch bản xấu nhất bạn vẫn chịu được là gì?",
+      "first_principles_breakdown": [
+        "Nhà ở vừa là nhu cầu vừa là tài sản có đòn bẩy cao.",
+        "Rủi ro lớn nhất là mất khả năng trả nợ đúng lúc giá nhà và thanh khoản kém."
+      ],
+      "principles": ["Leverage", "Liquidity", "Stress Test", "Margin of Safety"],
+      "solution_steps": [
+        "Tính tỷ lệ nợ / thu nhập và khả năng trả khi lãi suất tăng.",
+        "Giữ quỹ dự phòng riêng cho khoản vay.",
+        "Tránh dùng hết hạn mức chỉ vì được duyệt."
+      ],
+      "variants": [
+        "Mua nhà thứ hai để đầu tư.",
+        "Đảo nợ và tái cấp vốn."
+      ],
+      "elite_insight": "Ngôi nhà bạn không trả được nợ không phải là tài sản. Nó là nghĩa vụ."
+    },
+    {
+      "id": "C22",
+      "title": "Xây nhật ký quyết định đầu tư",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Sau 2–3 năm đầu tư, bạn không nhớ rõ tại sao mình mua/bán và bài học thật sự là gì. Làm sao cải thiện?",
+      "trigger_question": "Không đo lường thì không thể cải thiện. Quyết định đầu tư cần ghi lại những gì?",
+      "first_principles_breakdown": [
+        "Bộ nhớ con người bị thiên kiến mạnh (hindsight bias).",
+        "Nhật ký tạo dữ liệu khách quan để hiệu chuẩn."
+      ],
+      "principles": ["Decision Journal", "Feedback Loop", "Calibration"],
+      "solution_steps": [
+        "Với mỗi quyết định lớn: luận điểm, giả định, rủi ro, cảm xúc lúc đó.",
+        "Review sau 6–12 tháng: đúng/sai vì lý do gì?",
+        "Rút ra quy tắc mới nếu cần."
+      ],
+      "variants": [
+        "Nhật ký quyết định nghề nghiệp.",
+        "Nhật ký quyết định lớn trong đời sống."
+      ],
+      "elite_insight": "Nhà đầu tư giỏi nhất là nhà đầu tư biết mình sai ở đâu và sửa được."
+    },
+    {
+      "id": "C23",
+      "title": "Phân biệt đầu tư và đầu cơ trong thực tế CKVN",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Mua cổ phiếu vì 'sắp có tin', 'sắp lên sàn', 'team mạnh'. Đây là đầu tư hay đầu cơ?",
+      "trigger_question": "Bạn kiếm tiền từ dòng tiền doanh nghiệp tạo ra hay từ người mua sau trả giá cao hơn?",
+      "first_principles_breakdown": [
+        "Đầu tư: dựa trên giá trị kinh tế tạo ra.",
+        "Đầu cơ: dựa trên kỳ vọng người khác sẽ trả giá cao hơn."
+      ],
+      "principles": ["Investing vs Speculating", "Greater Fool Theory", "Circle of Competence"],
+      "solution_steps": [
+        "Viết rõ nguồn lợi nhuận kỳ vọng.",
+        "Nếu phụ thuộc chủ yếu vào dòng tiền người khác → nhận diện là đầu cơ và giới hạn tỷ trọng."
+      ],
+      "variants": [
+        "IPO nóng.",
+        "Cổ phiếu penny và tin đồn."
+      ],
+      "elite_insight": "Không có tội khi đầu cơ. Tội là khi đầu cơ mà tưởng mình đang đầu tư."
+    },
+    {
+      "id": "C24",
+      "title": "Xử lý năm thua lỗ lớn",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Năm nay danh mục -30% đến -40%. Cảm xúc và hành động tiếp theo nên như thế nào?",
+      "trigger_question": "Thua lỗ này đến từ rủi ro thị trường chung, từ đòn bẩy, hay từ lựa chọn kém?",
+      "first_principles_breakdown": [
+        "Phân biệt drawdown bình thường của chiến lược và lỗi quy trình.",
+        "Hành động cảm xúc thường biến drawdown thành permanent loss."
+      ],
+      "principles": ["Drawdown", "Process vs Outcome", "Emotional Regulation"],
+      "solution_steps": [
+        "Review quy trình, không chỉ kết quả.",
+        "Kiểm tra xem luận điểm dài hạn còn đứng vững không.",
+        "Chỉ thay đổi chiến lược khi có bằng chứng quy trình sai, không phải vì đau."
+      ],
+      "variants": [
+        "Thua lỗ do dùng đòn bẩy.",
+        "Thua lỗ do tập trung quá mức vào một mã."
+      ],
+      "elite_insight": "Thị trường sẽ kiểm tra bạn. Chỉ quy trình tốt mới giúp bạn sống đủ lâu để gặp lại ngày tốt."
+    },
+    {
+      "id": "C25",
+      "title": "Xây hệ thống tài chính cá nhân tối giản cho gia đình 8x",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Muốn một hệ thống đơn giản: thu nhập → chi tiêu → quỹ khẩn cấp → đầu tư dài hạn → bảo vệ rủi ro. Cấu trúc cụ thể ra sao?",
+      "trigger_question": "Hệ thống nào đủ đơn giản để duy trì 10–20 năm mà không cần tối ưu liên tục?",
+      "first_principles_breakdown": [
+        "Độ phức tạp là kẻ thù của việc thực thi lâu dài.",
+        "Tự động hóa và quy tắc rõ ràng thắng sự thông minh nhất thời."
+      ],
+      "principles": ["Simplicity", "Automation", "Systems Thinking", "Margin of Safety"],
+      "solution_steps": [
+        "1. Chi tiêu dưới mức thu nhập có chủ đích.",
+        "2. Quỹ khẩn cấp 6 tháng.",
+        "3. Đầu tư định kỳ vào danh mục đơn giản (cổ phiếu chất lượng / ETF + một phần tài sản thực).",
+        "4. Bảo hiểm đủ cho rủi ro thảm họa.",
+        "5. Review phân bổ 1–2 lần/năm."
+      ],
+      "variants": [
+        "Gia đình một nguồn thu vs hai nguồn thu.",
+        "Có kinh doanh nhỏ bên cạnh lương."
+      ],
+      "elite_insight": "Hệ thống đủ tốt và được tuân thủ mãi mãi đánh bại hệ thống hoàn hảo mà bỏ cuộc sau 6 tháng."
+    }
+  ]
+}

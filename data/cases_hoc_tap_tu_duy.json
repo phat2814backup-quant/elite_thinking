@@ -1,0 +1,487 @@
+{
+  "metadata": {
+    "group": "B",
+    "title": "Học tập & Siêu học (Ultralearning)",
+    "version": "1.0",
+    "total_cases": 20,
+    "target_age": "11-15 + người lớn tự học",
+    "description": "20 case giúp học sinh và người lớn áp dụng first principles, spaced practice, interleaving, Feynman, active recall vào việc học thật sự hiệu quả thay vì học thuộc lòng.",
+    "principles_focus": [
+      "Spaced Practice",
+      "Retrieval Practice",
+      "Interleaving",
+      "Feynman Technique",
+      "First Principles",
+      "Deliberate Practice",
+      "Metacognition",
+      "Growth Mindset",
+      "Leverage",
+      "Inversion"
+    ]
+  },
+  "cases": [
+    {
+      "id": "B01",
+      "title": "Học thuộc vs Hiểu sâu – Khi nào dùng cái nào?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Con phải thuộc bảng công thức Toán và định nghĩa Sinh. Có nên học thuộc lòng tất cả, hay chỉ cần hiểu? Làm sao phân biệt kiến thức cần thuộc và kiến thức cần hiểu?",
+      "trigger_question": "Kiến thức nào sẽ mất giá trị nếu chỉ nhớ mặt chữ mà không giải thích được cho người khác?",
+      "first_principles_breakdown": [
+        "Não bộ có hai chế độ: ghi nhớ bề mặt (recognition) và tái tạo (retrieval + understanding).",
+        "Kiến thức công cụ (công thức, thuật ngữ) cần thuộc để giải phóng working memory.",
+        "Kiến thức khái niệm cần hiểu để transfer sang bài mới."
+      ],
+      "principles": ["Metacognition", "Cognitive Load", "Transfer of Learning"],
+      "solution_steps": [
+        "Phân loại: công thức cơ bản → thuộc; khái niệm & mối liên hệ → hiểu + giải thích.",
+        "Dùng Feynman: giải thích lại bằng lời của mình không nhìn sách.",
+        "Kiểm tra bằng bài tập lạ."
+      ],
+      "variants": [
+        "Áp dụng vào học từ vựng tiếng Anh: thuộc vs dùng được trong câu.",
+        "Học lịch sử: nhớ năm tháng vs hiểu nguyên nhân – hệ quả."
+      ],
+      "elite_insight": "Người học kém cố nhớ tất cả. Người học giỏi biết cái gì cần thuộc để giải phóng não cho tư duy."
+    },
+    {
+      "id": "B02",
+      "title": "Spaced Practice – Tại sao học dồn đêm trước thi là thất bại dài hạn?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 9,
+      "problem": "Con thường học dồn vào đêm trước kiểm tra và vẫn được điểm khá. Nhưng một tháng sau quên gần hết. Làm sao để nhớ lâu hơn mà không tốn thêm nhiều thời gian?",
+      "trigger_question": "Não bộ ghi nhớ tốt nhất khi nào: khi thông tin còn mới hay khi nó sắp bị quên?",
+      "first_principles_breakdown": [
+        "Hiệu ứng khoảng cách (spacing effect): lặp lại có khoảng cách tạo ký ức bền hơn cramming.",
+        "Quên là một phần của học: mỗi lần nhớ lại khi sắp quên sẽ củng cố mạnh."
+      ],
+      "principles": ["Spaced Practice", "Forgetting Curve", "Retrieval Practice"],
+      "solution_steps": [
+        "Chia nhỏ kiến thức thành các phiên 20–30 phút.",
+        "Ôn lại sau 1 ngày, 3 ngày, 1 tuần, 1 tháng.",
+        "Dùng lịch hoặc Anki để nhắc."
+      ],
+      "variants": [
+        "Lên kế hoạch ôn 4 chương Toán trong 2 tuần thay vì 2 ngày.",
+        "Áp dụng vào việc học kỹ năng (đàn, vẽ, code)."
+      ],
+      "elite_insight": "Cramming thắng điểm ngắn hạn. Spaced practice thắng cuộc đời."
+    },
+    {
+      "id": "B03",
+      "title": "Active Recall – Đóng sách lại và tự hỏi",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Con đọc bài kỹ, gạch chân, highlight nhiều màu nhưng khi làm bài vẫn trống. Tại sao và làm sao khắc phục?",
+      "trigger_question": "Não bộ ghi nhớ mạnh nhất khi nào: khi nhìn thông tin hay khi cố gắng lấy thông tin ra?",
+      "first_principles_breakdown": [
+        "Recognition ≠ Recall. Nhìn lại thấy quen không có nghĩa là nhớ.",
+        "Nỗ lực lấy thông tin ra (desirable difficulty) tạo liên kết mạnh hơn."
+      ],
+      "principles": ["Retrieval Practice", "Desirable Difficulty", "Metacognition"],
+      "solution_steps": [
+        "Đọc xong một mục → đóng sách → viết hoặc nói lại những gì nhớ được.",
+        "Tự đặt câu hỏi và trả lời trước khi xem đáp án.",
+        "Dùng flashcard theo chiều hỏi → trả lời, không phải đọc lại."
+      ],
+      "variants": [
+        "Sau khi xem video bài giảng, tắt video và tóm tắt lại.",
+        "Trước khi kiểm tra, tự viết đề cương không nhìn tài liệu."
+      ],
+      "elite_insight": "Highlight tạo ảo tưởng học. Active recall tạo học thật."
+    },
+    {
+      "id": "B04",
+      "title": "Interleaving – Trộn bài tập thay vì làm theo từng dạng",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Sách giáo khoa thường cho 20 bài cùng một dạng rồi mới chuyển dạng khác. Con làm rất trôi nhưng khi thi trộn đề lại lúng túng. Tại sao?",
+      "trigger_question": "Làm nhiều bài giống nhau giúp não phân biệt dạng bài hay chỉ tạo thói quen máy móc?",
+      "first_principles_breakdown": [
+        "Blocked practice tạo ảo tưởng thành thạo.",
+        "Interleaving buộc não phải chọn chiến lược mỗi lần → tăng khả năng transfer."
+      ],
+      "principles": ["Interleaving", "Discrimination Learning", "Transfer"],
+      "solution_steps": [
+        "Sau khi hiểu một dạng, trộn với 2–3 dạng khác ngay.",
+        "Khi ôn, lấy đề tổng hợp thay vì làm lại từng chương riêng.",
+        "Tự tạo bộ đề trộn."
+      ],
+      "variants": [
+        "Học từ vựng: trộn nhiều chủ đề trong một phiên.",
+        "Luyện đề thi: không làm theo từng chuyên đề quá lâu."
+      ],
+      "elite_insight": "Não cần luyện 'chọn công cụ đúng', không chỉ luyện 'dùng công cụ'."
+    },
+    {
+      "id": "B05",
+      "title": "Kỹ thuật Feynman – Giải thích để hiểu thật",
+      "difficulty": "Cơ bản",
+      "time_minutes": 10,
+      "problem": "Con nghĩ mình đã hiểu bài nhưng khi bạn hỏi lại thì ấp úng. Làm sao biết mình thật sự hiểu?",
+      "trigger_question": "Nếu không giải thích được bằng ngôn ngữ đơn giản, mình đã hiểu chưa?",
+      "first_principles_breakdown": [
+        "Hiểu thật sự = có thể tái tạo và truyền đạt.",
+        "Lỗ hổng lộ ra khi buộc phải dùng từ ngữ của chính mình."
+      ],
+      "principles": ["Feynman Technique", "Metacognition", "Elaboration"],
+      "solution_steps": [
+        "Chọn khái niệm → giải thích như đang dạy cho bạn 10 tuổi.",
+        "Gặp chỗ bí → quay lại tài liệu học đúng chỗ đó.",
+        "Đơn giản hóa liên tục đến khi trôi chảy."
+      ],
+      "variants": [
+        "Giải thích định lý Pythagoras bằng hình vẽ và câu chuyện.",
+        "Giải thích lãi kép cho bố mẹ bằng ví dụ tiền tiêu vặt."
+      ],
+      "elite_insight": "Nếu không dạy được, bạn chưa học xong."
+    },
+    {
+      "id": "B06",
+      "title": "Quản lý năng lượng học tập theo nhịp sinh học",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Con học tốt nhất vào buổi sáng nhưng lại dành sáng xem điện thoại, tối mới ngồi vào bàn và rất mệt. Làm sao sắp xếp lại?",
+      "trigger_question": "Công việc đòi hỏi não nhiều nhất nên đặt vào khung giờ nào?",
+      "first_principles_breakdown": [
+        "Năng lượng tinh thần là tài nguyên khan hiếm và biến thiên trong ngày.",
+        "Deep work cần đặt vào peak energy, việc nhẹ đặt vào low energy."
+      ],
+      "principles": ["Energy Management", "Circadian Rhythm", "Opportunity Cost"],
+      "solution_steps": [
+        "Theo dõi 3–5 ngày: giờ nào tỉnh táo nhất?",
+        "Đặt môn khó / bài tập khó vào khung đó.",
+        "Bảo vệ khung giờ vàng khỏi điện thoại và việc linh tinh."
+      ],
+      "variants": [
+        "Người lớn làm việc: họp hành vs công việc sáng tạo sâu.",
+        "Lịch học thêm: chọn ca phù hợp năng lượng."
+      ],
+      "elite_insight": "Quản lý năng lượng quan trọng hơn quản lý thời gian."
+    },
+    {
+      "id": "B07",
+      "title": "Inversion trong học tập – Làm sao để chắc chắn học dốt?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Thay vì hỏi 'làm sao học giỏi', hãy hỏi ngược: làm sao để chắc chắn học kém và quên nhanh?",
+      "trigger_question": "Những thói quen nào đang âm thầm phá hủy kết quả học tập của con?",
+      "first_principles_breakdown": [
+        "Inversion giúp nhìn thấy các hành vi tự sát trí tuệ.",
+        "Tránh sai lầm lớn thường dễ hơn tìm cách tối ưu tuyệt đối."
+      ],
+      "principles": ["Inversion", "Via Negativa", "Not-to-do List"],
+      "solution_steps": [
+        "Liệt kê 7–10 cách chắc chắn học dốt (học dồn, không ngủ, multitask, chỉ đọc không làm bài...).",
+        "Cắt bỏ hoặc giảm mạnh những thứ đó trước.",
+        "Xây thói quen đối nghịch."
+      ],
+      "variants": [
+        "Làm sao để chắc chắn quên tiếng Anh sau 3 tháng?",
+        "Làm sao để chắc chắn burnout khi ôn thi?"
+      ],
+      "elite_insight": "Charlie Munger: 'Invert, always invert.' Tránh ngu xuẩn trước, thông minh sau."
+    },
+    {
+      "id": "B08",
+      "title": "Deliberate Practice – Luyện đúng chỗ yếu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 11,
+      "problem": "Con luyện đề rất nhiều nhưng điểm tăng chậm. Hóa ra toàn làm lại dạng đã biết. Làm sao luyện để tiến bộ thật?",
+      "trigger_question": "Phần nào trong kỹ năng đang là nút thắt cổ chai?",
+      "first_principles_breakdown": [
+        "Deliberate practice = tập trung vào vùng vừa sức (zone of proximal development) với feedback cụ thể.",
+        "Luyện cái đã biết tạo cảm giác tiến bộ giả."
+      ],
+      "principles": ["Deliberate Practice", "Feedback Loop", "Growth Edge"],
+      "solution_steps": [
+        "Xác định 2–3 dạng bài yếu nhất từ các bài kiểm tra gần đây.",
+        "Chỉ luyện đúng những dạng đó với sự tập trung cao.",
+        "Sau mỗi lần làm, phân tích lỗi cụ thể."
+      ],
+      "variants": [
+        "Luyện phát âm tiếng Anh: chỉ sửa 3 âm sai nhất.",
+        "Luyện viết văn: chỉ tập mở bài và kết bài trong 1 tuần."
+      ],
+      "elite_insight": "Số giờ luyện không quan trọng bằng số giờ luyện đúng chỗ đau."
+    },
+    {
+      "id": "B09",
+      "title": "Xây hệ thống ghi chú Second Brain đơn giản",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Con ghi chú nhiều nhưng khi cần tìm lại thì không thấy hoặc không hiểu mình đã viết gì. Làm sao xây hệ thống ghi chú hữu ích?",
+      "trigger_question": "Ghi chú để làm gì: để cảm thấy đã học, hay để dùng lại được sau này?",
+      "first_principles_breakdown": [
+        "Ghi chú tốt = có thể retrieval và kết nối với kiến thức khác.",
+        "Progressive summarization và linking quan trọng hơn ghi đầy đủ."
+      ],
+      "principles": ["External Memory", "Linking", "Retrieval", "Occam's Razor"],
+      "solution_steps": [
+        "Chỉ ghi ý chính + câu hỏi + ví dụ của riêng mình.",
+        "Dùng tiêu đề rõ và tag đơn giản.",
+        "Mỗi tuần dành 15 phút review và nối kiến thức."
+      ],
+      "variants": [
+        "Ghi chú khi xem video YouTube giáo dục.",
+        "Ghi chú sách phi hư cấu."
+      ],
+      "elite_insight": "Não để tư duy, không phải để chứa. Hệ thống ghi chú tốt giải phóng não."
+    },
+    {
+      "id": "B10",
+      "title": "Học khi mệt vs Nghỉ ngơi có chủ đích",
+      "difficulty": "Cơ bản",
+      "time_minutes": 7,
+      "problem": "Con cố ngồi học dù đã rất mệt vì sợ 'mất thời gian'. Kết quả vừa không hiểu bài vừa stress. Có nên dừng không?",
+      "trigger_question": "Khi nào nghỉ ngơi là đầu tư, khi nào là trì hoãn?",
+      "first_principles_breakdown": [
+        "Não cần thời gian củng cố ký ức (consolidation), đặc biệt khi ngủ.",
+        "Học trong trạng thái kiệt sức tạo liên kết yếu và thái độ tiêu cực."
+      ],
+      "principles": ["Recovery", "Sleep & Memory", "Diminishing Returns"],
+      "solution_steps": [
+        "Đặt ngưỡng: nếu đọc lại 2 lần vẫn không vào → dừng và ngủ hoặc đi bộ.",
+        "Ưu tiên ngủ đủ trước ngày học quan trọng.",
+        "Nghỉ ngắn (5–10 phút) giữa các phiên học sâu."
+      ],
+      "variants": [
+        "Có nên thức khuya hoàn thành bài tập không?",
+        "Làm sao phân biệt mệt thật và lười."
+      ],
+      "elite_insight": "Người giỏi biết khi nào dừng. Người trung bình cố gắng thêm 30 phút kém hiệu quả."
+    },
+    {
+      "id": "B11",
+      "title": "Đặt mục tiêu học tập theo đầu ra (Output-based)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Mục tiêu kiểu 'học 2 tiếng Toán mỗi ngày' thường thất bại. Làm sao đặt mục tiêu khiến con thật sự tiến bộ?",
+      "trigger_question": "Mục tiêu nên đo bằng thời gian ngồi bàn hay bằng khả năng làm được gì?",
+      "first_principles_breakdown": [
+        "Input goal dễ bị lừa (ngồi lâu ≠ học được).",
+        "Output goal buộc phải chứng minh năng lực."
+      ],
+      "principles": ["Output > Input", "Measurable Goals", "Feedback"],
+      "solution_steps": [
+        "Chuyển 'học chương 5' thành 'giải được 8/10 bài cuối chương không nhìn sách'.",
+        "Đặt tiêu chí rõ ràng và kiểm chứng được.",
+        "Review cuối tuần: đã làm được output nào?"
+      ],
+      "variants": [
+        "Học tiếng Anh: từ 'học 30 từ mới' thành 'dùng được 15 từ trong đoạn văn'.",
+        "Học code: từ 'xem 2 tiếng tutorial' thành 'viết được hàm giải quyết bài X'."
+      ],
+      "elite_insight": "Đo bằng đầu ra. Thời gian chỉ là phương tiện."
+    },
+    {
+      "id": "B12",
+      "title": "Xử lý nỗi sợ bài tập khó và hội chứng kẻ giả mạo",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Gặp bài khó con thường bỏ cuộc nhanh hoặc nói 'em không giỏi môn này'. Làm sao thay đổi cách tiếp cận?",
+      "trigger_question": "Khó khăn là tín hiệu của giới hạn cố định hay tín hiệu của vùng đang phát triển?",
+      "first_principles_breakdown": [
+        "Growth mindset: năng lực có thể phát triển qua nỗ lực đúng cách.",
+        "Struggle là điều kiện cần của học sâu, không phải bằng chứng của sự bất tài."
+      ],
+      "principles": ["Growth Mindset", "Desirable Difficulty", "Self-efficacy"],
+      "solution_steps": [
+        "Đổi lời nói: từ 'em không làm được' thành 'em chưa làm được cách này'.",
+        "Chia bài khó thành các bước nhỏ hơn.",
+        "Ghi nhận tiến bộ quá trình, không chỉ kết quả cuối."
+      ],
+      "variants": [
+        "Sợ nói tiếng Anh trước lớp.",
+        "Sợ làm bài kiểm tra vì sợ điểm thấp."
+      ],
+      "elite_insight": "Người giỏi cũng từng thấy bài khó. Khác biệt nằm ở chỗ họ ở lại với bài đó lâu hơn."
+    },
+    {
+      "id": "B13",
+      "title": "Học nhóm hiệu quả vs Học nhóm lãng phí",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Con hay rủ bạn học nhóm nhưng cuối cùng chủ yếu nói chuyện. Khi nào nên học một mình, khi nào nên học nhóm?",
+      "trigger_question": "Học nhóm mang lại giá trị gì mà học một mình không có?",
+      "first_principles_breakdown": [
+        "Học nhóm tốt khi dùng để giảng lại, tranh luận, và kiểm tra lỗ hổng.",
+        "Học nhóm tệ khi trở thành nơi trì hoãn tập thể."
+      ],
+      "principles": ["Social Learning", "Accountability", "Feynman via Teaching"],
+      "solution_steps": [
+        "Trước khi nhóm: mỗi người phải tự học trước.",
+        "Trong nhóm: mỗi người giảng một phần, người khác hỏi.",
+        "Giới hạn thời gian và có agenda rõ."
+      ],
+      "variants": [
+        "Học nhóm online.",
+        "Dạy kèm em nhỏ hơn như một hình thức học nhóm."
+      ],
+      "elite_insight": "Học nhóm chỉ mạnh khi mỗi cá nhân đã mang 'vốn' vào."
+    },
+    {
+      "id": "B14",
+      "title": "Xây thói quen học tập chống entropy",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Đầu năm con quyết tâm học đều, sau 3 tuần lại trở về thói quen cũ. Làm sao giữ được hệ thống?",
+      "trigger_question": "Làm sao để thói quen tốt trở thành mặc định thay vì phải dùng ý chí mỗi ngày?",
+      "first_principles_breakdown": [
+        "Entropy của hành vi: không có hệ thống duy trì thì thói quen tốt sẽ phân rã.",
+        "Thiết kế môi trường và trigger mạnh hơn ý chí."
+      ],
+      "principles": ["Habit Loop", "Entropy", "Environment Design", "Identity"],
+      "solution_steps": [
+        "Gắn thói quen học với trigger cố định (sau khi đánh răng sáng, sau khi ăn tối...).",
+        "Giảm ma sát: sách vở để sẵn, điện thoại để xa.",
+        "Bắt đầu cực nhỏ (2 phút) để không sợ."
+      ],
+      "variants": [
+        "Thói quen đọc sách trước khi ngủ.",
+        "Thói quen review flashcard mỗi sáng."
+      ],
+      "elite_insight": "Ý chí là tài nguyên khan hiếm. Hệ thống và môi trường mới bền."
+    },
+    {
+      "id": "B15",
+      "title": "Học từ sai lầm một cách hệ thống",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Con làm sai bài, xem đáp án, gật gù rồi quên. Lần sau vẫn sai tương tự. Làm sao để sai một lần là đủ?",
+      "trigger_question": "Sai lầm chứa thông tin gì về lỗ hổng tư duy của mình?",
+      "first_principles_breakdown": [
+        "Lỗi là dữ liệu quý về mô hình tư duy hiện tại.",
+        "Chỉ sửa đáp án mà không sửa quy trình suy nghĩ thì lỗi sẽ tái diễn."
+      ],
+      "principles": ["Error Analysis", "Metacognition", "Feedback Loop"],
+      "solution_steps": [
+        "Với mỗi lỗi: (1) Lỗi gì? (2) Tại sao mình nghĩ vậy? (3) Cách đúng là gì? (4) Dấu hiệu nào để nhận ra lần sau?",
+        "Ghi vào sổ lỗi cá nhân.",
+        "Ôn lại sổ lỗi theo spaced schedule."
+      ],
+      "variants": [
+        "Phân tích lỗi trong bài viết tiếng Anh.",
+        "Phân tích quyết định sai trong cuộc sống."
+      ],
+      "elite_insight": "Người trung bình giấu lỗi. Người tinh hoa mổ xẻ lỗi."
+    },
+    {
+      "id": "B16",
+      "title": "Chống lại ảo tưởng thành thạo (Illusion of Competence)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Sau khi đọc hoặc nghe giảng, con cảm thấy 'hiểu rồi' nhưng khi làm bài hoặc bị hỏi lại thì không làm được. Đây là hiện tượng gì?",
+      "trigger_question": "Cảm giác hiểu và khả năng biểu diễn hiểu biết khác nhau như thế nào?",
+      "first_principles_breakdown": [
+        "Fluency ảo: thông tin đang ở trước mắt tạo cảm giác dễ dàng.",
+        "Chỉ có kiểm tra retrieval mới đo được hiểu biết thật."
+      ],
+      "principles": ["Metacognition", "Illusion of Competence", "Retrieval Practice"],
+      "solution_steps": [
+        "Sau mỗi phần học, buộc mình làm bài hoặc giải thích ngay.",
+        "Tránh đọc lại nhiều lần như cách ôn chính.",
+        "Dùng bài kiểm tra nhỏ thường xuyên."
+      ],
+      "variants": [
+        "Xem tutorial code rồi tưởng mình code được.",
+        "Nghe podcast giáo dục rồi tưởng mình đã nắm."
+      ],
+      "elite_insight": "Cảm giác 'hiểu rồi' là kẻ thù của việc học thật."
+    },
+    {
+      "id": "B17",
+      "title": "Ưu tiên hóa nội dung học – 80/20 trong học tập",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Chương trình nhiều, thời gian ít. Làm sao biết phần nào đáng đầu tư nhiều nhất?",
+      "trigger_question": "20% kiến thức nào mang lại 80% khả năng giải quyết bài tập và điểm số?",
+      "first_principles_breakdown": [
+        "Không phải mọi phần kiến thức đều quan trọng như nhau.",
+        "Tìm khái niệm gốc và dạng bài tần suất cao."
+      ],
+      "principles": ["Pareto Principle", "Leverage", "First Principles"],
+      "solution_steps": [
+        "Xem đề thi các năm: dạng nào xuất hiện nhiều nhất?",
+        "Xác định 5–7 khái niệm gốc của môn học.",
+        "Đầu tư sâu vào chúng trước, phần còn lại học đủ dùng."
+      ],
+      "variants": [
+        "Học tiếng Anh: 1000 từ thông dụng trước.",
+        "Học lập trình: cấu trúc dữ liệu & thuật toán cơ bản trước framework."
+      ],
+      "elite_insight": "Người học kém cố học hết. Người học giỏi học đúng cái quan trọng nhất trước."
+    },
+    {
+      "id": "B18",
+      "title": "Dạy lại như một cách học (Learning by Teaching)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Con đã hiểu bài khá nhưng muốn nhớ lâu và sâu hơn. Có cách nào mạnh hơn chỉ làm thêm bài tập?",
+      "trigger_question": "Tại sao người dạy thường hiểu sâu hơn người chỉ học?",
+      "first_principles_breakdown": [
+        "Dạy buộc phải tổ chức lại kiến thức, lấp lỗ hổng, và dùng ngôn ngữ đơn giản.",
+        "Protégé effect: trách nhiệm truyền đạt tăng động lực và độ sâu."
+      ],
+      "principles": ["Protégé Effect", "Feynman Technique", "Elaboration"],
+      "solution_steps": [
+        "Chọn một khái niệm và dạy cho bạn, em, hoặc thậm chí nói với tường.",
+        "Ghi âm lại và nghe để phát hiện chỗ chưa rõ.",
+        "Trả lời câu hỏi của người được dạy."
+      ],
+      "variants": [
+        "Làm gia sư online ngắn hạn.",
+        "Viết blog giải thích kiến thức mình đang học."
+      ],
+      "elite_insight": "Cách học nhanh nhất là chuẩn bị để dạy."
+    },
+    {
+      "id": "B19",
+      "title": "Xây dựng danh tính người học (Identity-based habit)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 10,
+      "problem": "Con thường nói 'em phải học' thay vì 'em là người thích hiểu mọi thứ'. Làm sao để động lực bền hơn?",
+      "trigger_question": "Hành vi nào sẽ xuất hiện tự nhiên nếu con tin mình là 'người học giỏi và tò mò'?",
+      "first_principles_breakdown": [
+        "Hành vi lâu dài được dẫn dắt bởi danh tính hơn là mục tiêu.",
+        "Mỗi hành động nhỏ là một phiếu bầu cho danh tính đó."
+      ],
+      "principles": ["Identity", "Self-narrative", "Habit"],
+      "solution_steps": [
+        "Viết rõ: 'Mình là người kiên trì với bài khó và thích hiểu bản chất'.",
+        "Mỗi lần ngồi học là một phiếu bầu cho danh tính đó.",
+        "Tránh ngôn ngữ 'mình phải' thay bằng 'mình là người sẽ...'."
+      ],
+      "variants": [
+        "Danh tính 'người đọc sách mỗi ngày'.",
+        "Danh tính 'người không bỏ cuộc với bài toán khó'."
+      ],
+      "elite_insight": "Mục tiêu cho bạn hướng đi. Danh tính giữ bạn đi tiếp."
+    },
+    {
+      "id": "B20",
+      "title": "Thiết kế buổi học 90 phút tối ưu (Ultralearning session)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Con muốn có một khuôn mẫu buổi học hiệu quả có thể lặp lại mọi ngày. Cấu trúc như thế nào là hợp lý?",
+      "trigger_question": "Một buổi học lý tưởng gồm những thành phần nào theo khoa học nhận thức?",
+      "first_principles_breakdown": [
+        "Kết hợp retrieval, spaced, interleaving, feedback và recovery trong một phiên.",
+        "Bắt đầu bằng retrieval cái cũ, kết thúc bằng active recall cái mới."
+      ],
+      "principles": ["Ultralearning", "Spaced + Retrieval + Interleaving", "Session Design"],
+      "solution_steps": [
+        "0–10': Active recall kiến thức phiên trước.",
+        "10–50': Học cái mới + làm bài ngay (interleaving nhẹ).",
+        "50–70': Luyện đúng chỗ yếu (deliberate).",
+        "70–85': Tự kiểm tra / Feynman.",
+        "85–90': Ghi chú ngắn + lên kế hoạch phiên sau."
+      ],
+      "variants": [
+        "Phiên học 45 phút cho học sinh nhỏ hơn.",
+        "Phiên học kỹ năng (nhạc, thể thao, code)."
+      ],
+      "elite_insight": "Người học giỏi không chỉ học nhiều hơn. Họ thiết kế phiên học tốt hơn."
+    }
+  ]
+}

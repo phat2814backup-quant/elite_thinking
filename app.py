@@ -215,7 +215,7 @@ else:
     p7 = st.Page("pages/7_phan_ra.py", title="Phân rã Vấn đề", icon="🚀")
     p8 = st.Page("pages/8_lich_su.py", title="Lịch sử Học tập", icon="📝")
     p10 = st.Page("pages/10_so_tay_tri_thuc.py", title="Sổ tay Tri thức (Second Brain)", icon="💡")
-    p11 = st.Page("pages/11_case_thuc_chien.py", title="Case Thực Chiến (100+)", icon="🎯")
+    p11 = st.Page("pages/11_case_thuc_chien.py", title="Case Thực Chiến (150+)", icon="🎯")
 
     nav_map = {
         "🧭 Định hướng": [home_page, p0],

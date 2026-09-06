@@ -1,0 +1,371 @@
+{
+  "metadata": {
+    "group": "D",
+    "title": "Sự nghiệp & Quyết định cuộc đời",
+    "version": "1.0",
+    "total_cases": 15,
+    "target_age": "Người lớn 8x + thanh niên sắp chọn nghề",
+    "description": "15 case về lựa chọn nghề nghiệp, nhảy việc, khởi nghiệp, cân bằng công việc – gia đình và các quyết định lớn có hệ quả dài hạn.",
+    "principles_focus": [
+      "Opportunity Cost",
+      "Optionality",
+      "Second-Order Thinking",
+      "Inversion",
+      "Circle of Competence",
+      "Regret Minimization",
+      "Skin in the Game",
+      "Asymmetric Upside",
+      "Identity",
+      "Time Horizon"
+    ]
+  },
+  "cases": [
+    {
+      "id": "D01",
+      "title": "Ở lại công ty ổn định hay nhảy việc / khởi nghiệp?",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Công việc hiện tại ổn, thu nhập khá, nhưng tăng trưởng chậm. Có offer rủi ro cao hơn hoặc ý tưởng tự làm. Làm sao quyết định?",
+      "trigger_question": "Bạn đang tối ưu hóa sự an toàn ngắn hạn hay optionalilty dài hạn?",
+      "first_principles_breakdown": [
+        "Mọi lựa chọn đều có chi phí cơ hội.",
+        "Optionality có giá trị khi môi trường bất định.",
+        "Rủi ro của việc không hành động cũng cần được tính."
+      ],
+      "principles": ["Optionality", "Opportunity Cost", "Regret Minimization", "Second-Order"],
+      "solution_steps": [
+        "Viết rõ kịch bản tốt / trung bình / xấu của mỗi lựa chọn trong 3–5 năm.",
+        "Hỏi: 10 năm nữa mình sẽ hối tiếc điều gì hơn?",
+        "Kiểm tra xem có thể thử nhỏ (side project) trước khi đốt thuyền không."
+      ],
+      "variants": [
+        "Nhảy việc cùng ngành vs chuyển ngành.",
+        "Khởi nghiệp khi đã có gia đình và con nhỏ."
+      ],
+      "elite_insight": "Quyết định lớn nên được đưa ra bằng khung hối tiếc dài hạn, không chỉ bằng bảng tính năm nay."
+    },
+    {
+      "id": "D02",
+      "title": "Xây 'personal monopoly' thay vì chỉ giỏi chung chung",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Làm việc tốt nhưng dễ bị thay thế. Làm sao trở thành người khó thay thế hơn?",
+      "trigger_question": "Sự kết hợp độc đáo nào của kỹ năng + kinh nghiệm + mạng lưới chỉ bạn có?",
+      "first_principles_breakdown": [
+        "Giá trị thị trường đến từ sự khan hiếm có ích.",
+        "Giao điểm của vài kỹ năng khá tốt thường mạnh hơn một kỹ năng xuất sắc đơn lẻ."
+      ],
+      "principles": ["Personal Monopoly", "Comparative Advantage", "Leverage", "Circle of Competence"],
+      "solution_steps": [
+        "Liệt kê 3–5 thứ bạn làm khá tốt hoặc có kinh nghiệm thật.",
+        "Tìm giao điểm có nhu cầu thị trường.",
+        "Cố ý đầu tư sâu vào giao điểm đó trong 2–3 năm."
+      ],
+      "variants": [
+        "Chuyên gia kỹ thuật + hiểu kinh doanh.",
+        "Hiểu ngành + kỹ năng truyền thông."
+      ],
+      "elite_insight": "Đừng cố trở thành số 1 thế giới ở một thứ. Hãy trở thành người duy nhất ở giao điểm vài thứ."
+    },
+    {
+      "id": "D03",
+      "title": "Cân bằng công việc – gia đình theo first principles",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Công việc đòi hỏi nhiều thời gian, con cái đang lớn. Cảm giác luôn thiếu ở một bên. Làm sao thiết kế lại?",
+      "trigger_question": "Cái gì chỉ bạn mới làm được cho gia đình, và cái gì có thể ủy quyền hoặc cắt bỏ?",
+      "first_principles_breakdown": [
+        "Thời gian và năng lượng là tài nguyên không tái tạo trong giai đoạn con nhỏ.",
+        "Không phải mọi công việc đều có giá trị như nhau; không phải mọi hoạt động gia đình đều cần sự hiện diện như nhau."
+      ],
+      "principles": ["Opportunity Cost", "Energy Management", "Priority", "Second-Order"],
+      "solution_steps": [
+        "Xác định 2–3 khoảnh khắc gia đình không thể bỏ lỡ.",
+        "Bảo vệ chúng như cuộc họp quan trọng nhất.",
+        "Cắt hoặc ủy quyền các việc công sở có leverage thấp."
+      ],
+      "variants": [
+        "Vợ/chồng cũng đang ở giai đoạn sự nghiệp cao trào.",
+        "Làm việc từ xa vs đến văn phòng."
+      ],
+      "elite_insight": "Bạn có thể kiếm lại tiền. Bạn không thể quay lại năm con 5 tuổi."
+    },
+    {
+      "id": "D04",
+      "title": "Có nên học thêm bằng cấp / chứng chỉ khi đã đi làm?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Nhiều người khuyên học thêm MBA, chứng chỉ nghề. Chi phí thời gian và tiền bạc có đáng?",
+      "trigger_question": "Bằng cấp giải quyết được vấn đề tín hiệu, kỹ năng, hay mạng lưới – và bạn đang thiếu cái nào?",
+      "first_principles_breakdown": [
+        "Giáo dục có ba chức năng chính: kỹ năng, tín hiệu, và mạng lưới.",
+        "Chi phí cơ hội của 1–2 năm rất lớn ở tuổi 30–40."
+      ],
+      "principles": ["Signaling", "Opportunity Cost", "ROI of Education"],
+      "solution_steps": [
+        "Xác định mục tiêu nghề nghiệp cụ thể sau bằng cấp.",
+        "Kiểm tra xem có cách rẻ hơn để đạt cùng mục tiêu không (dự án thật, mạng lưới, portfolio).",
+        "Chỉ đầu tư nếu ROI rõ ràng và không có đường tắt tốt hơn."
+      ],
+      "variants": [
+        "Học online vs học full-time.",
+        "Chứng chỉ chuyên ngành vs bằng chung."
+      ],
+      "elite_insight": "Học vì tín hiệu khi bạn chưa có bằng chứng. Học vì kỹ năng khi bạn đã biết mình thiếu gì."
+    },
+    {
+      "id": "D05",
+      "title": "Quyết định chuyển thành phố hoặc quốc gia vì việc",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Có offer tốt hơn ở thành phố khác hoặc nước ngoài. Gia đình, mạng lưới, và chất lượng sống sẽ thay đổi mạnh.",
+      "trigger_question": "Bạn đang tối ưu hóa thu nhập, sự nghiệp, hay tổng thể cuộc sống trong 10 năm tới?",
+      "first_principles_breakdown": [
+        "Di chuyển địa lý thay đổi cả human capital và social capital.",
+        "Chi phí chuyển đổi thường bị đánh giá thấp."
+      ],
+      "principles": ["Second-Order Effect", "Optionality", "Regret Minimization", "Quality of Life"],
+      "solution_steps": [
+        "Liệt kê những thứ sẽ mất và những thứ sẽ được ở cả hai lựa chọn.",
+        "Thử sống thử hoặc nói chuyện với người đã đi trước.",
+        "Xem xét khả năng quay lại nếu sai."
+      ],
+      "variants": [
+        "Chuyển từ tỉnh về Sài Gòn / Hà Nội.",
+        "Đi nước ngoài theo diện việc hoặc du học."
+      ],
+      "elite_insight": "Môi trường định hình bạn mạnh hơn bạn tưởng. Chọn môi trường là quyết định đòn bẩy cao."
+    },
+    {
+      "id": "D06",
+      "title": "Khi nào nên nói 'không' với cơ hội trông có vẻ tốt?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 8,
+      "problem": "Liên tục nhận được đề nghị hợp tác, side project, lớp học thêm. Sợ bỏ lỡ nhưng cũng sợ phân tán.",
+      "trigger_question": "Cơ hội này có nằm trong vòng tròn năng lực và ưu tiên hiện tại không?",
+      "first_principles_breakdown": [
+        "Mọi 'có' đều là 'không' với thứ khác.",
+        "Tập trung là chiến lược, không phải chỉ là kỹ năng."
+      ],
+      "principles": ["Opportunity Cost", "Focus", "Circle of Competence", "Via Negativa"],
+      "solution_steps": [
+        "Viết rõ 1–2 ưu tiên hàng đầu của năm nay.",
+        "Mọi cơ hội không phục vụ chúng → mặc định từ chối.",
+        "Dành 'quota' nhỏ cho thí nghiệm."
+      ],
+      "variants": [
+        "Nói không với khách hàng không phù hợp.",
+        "Nói không với thăng chức nhưng lệch hướng."
+      ],
+      "elite_insight": "Người thành công nói không nhiều hơn người trung bình rất nhiều."
+    },
+    {
+      "id": "D07",
+      "title": "Xây đệm tài chính trước khi chấp nhận rủi ro sự nghiệp lớn",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Muốn nghỉ việc để học thêm hoặc khởi nghiệp nhưng chưa có đủ tiền dự phòng. Có nên mạo hiểm không?",
+      "trigger_question": "Rủi ro sự nghiệp và rủi ro tài chính đang cộng hưởng hay được tách ra?",
+      "first_principles_breakdown": [
+        "Runway tài chính quyết định khả năng chịu đựng thất bại tạm thời.",
+        "Áp lực tiền bạc làm suy giảm chất lượng quyết định."
+      ],
+      "principles": ["Margin of Safety", "Runway", "Optionality"],
+      "solution_steps": [
+        "Tính số tháng chi tiêu tối thiểu cần có.",
+        "Giảm chi tiêu cố định trước khi nhảy.",
+        "Cân nhắc chuyển tiếp dần (side income trước)."
+      ],
+      "variants": [
+        "Nghỉ sabbatical.",
+        "Chuyển sang công việc thu nhập thấp hơn nhưng học được nhiều."
+      ],
+      "elite_insight": "Tự do tài chính không phải là giàu. Nó là khả năng nói không mà không sợ."
+    },
+    {
+      "id": "D08",
+      "title": "Đánh giá sếp và văn hóa công ty trước khi nhận việc",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Offer lương tốt nhưng chưa rõ sếp trực tiếp và văn hóa thật. Làm sao tránh hố?",
+      "trigger_question": "Bạn sẽ học được gì và trở thành người như thế nào sau 2 năm ở đây?",
+      "first_principles_breakdown": [
+        "Sếp trực tiếp ảnh hưởng đến sự nghiệp nhiều hơn thương hiệu công ty trong ngắn và trung hạn.",
+        "Văn hóa thể hiện qua hành vi được thưởng và bị phạt."
+      ],
+      "principles": ["Incentive", "Environment", "Second-Order"],
+      "solution_steps": [
+        "Hỏi người đang hoặc đã làm việc về sếp cụ thể.",
+        "Quan sát cách họ nói về nhân viên cũ và thất bại.",
+        "Hỏi về ví dụ cụ thể của người được thăng tiến."
+      ],
+      "variants": [
+        "Startup vs công ty lớn.",
+        "Môi trường toxic tinh vi."
+      ],
+      "elite_insight": "Chọn sếp quan trọng gần bằng chọn ngành."
+    },
+    {
+      "id": "D09",
+      "title": "Có nên theo đuổi đam mê hay chọn thứ có thị trường?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Đam mê một lĩnh vực ít tiền, hoặc giỏi thứ có nhu cầu cao nhưng không 'thích'. Làm sao cân bằng?",
+      "trigger_question": "Đam mê có thể được nuôi dưỡng từ sự thành thạo không, hay phải có sẵn từ đầu?",
+      "first_principles_breakdown": [
+        "Nhiều nghiên cứu cho thấy đam mê thường đến sau khi thành thạo, không phải trước.",
+        "Thị trường trả tiền cho giá trị mang lại, không phải cho mức độ yêu thích."
+      ],
+      "principles": ["Market Reality", "Skill × Passion", "Craftsmanship"],
+      "solution_steps": [
+        "Tìm giao điểm: thứ bạn có thể trở nên xuất sắc + có người sẵn sàng trả tiền.",
+        "Cho phép đam mê phát triển từ việc làm tốt.",
+        "Giữ không gian nhỏ cho sở thích thuần túy."
+      ],
+      "variants": [
+        "Nghệ thuật vs công việc ổn định.",
+        "Chuyển từ ngành 'hot' sang ngành mình thích hơn."
+      ],
+      "elite_insight": "Đam mê không có kế hoạch kiếm sống chỉ là sở thích đắt đỏ."
+    },
+    {
+      "id": "D10",
+      "title": "Quyết định có thêm con khi sự nghiệp đang lên",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Sự nghiệp đang đà tốt. Việc có thêm con sẽ thay đổi quỹ đạo mạnh. Làm sao nghĩ rõ?",
+      "trigger_question": "Bạn đang nhìn quyết định này ở khung thời gian bao nhiêu năm?",
+      "first_principles_breakdown": [
+        "Con cái thay đổi ràng buộc thời gian và năng lượng vĩnh viễn.",
+        "Nhiều thành tựu sự nghiệp vẫn đạt được sau khi có con, nhưng cách thức khác."
+      ],
+      "principles": ["Time Horizon", "Second-Order", "Values", "Regret Minimization"],
+      "solution_steps": [
+        "Nói chuyện thẳng với người bạn đời về kỳ vọng và phân chia.",
+        "Xem xét hỗ trợ (gia đình, người giúp việc, chính sách công ty).",
+        "Hình dung cuộc sống 5 và 15 năm ở cả hai lựa chọn."
+      ],
+      "variants": [
+        "Trì hoãn thêm vài năm.",
+        "Chỉ có một con vs thêm."
+      ],
+      "elite_insight": "Không có lựa chọn nào không có chi phí. Chỉ có lựa chọn phù hợp với giá trị sâu nhất của bạn."
+    },
+    {
+      "id": "D11",
+      "title": "Xử lý việc bị bỏ lỡ thăng chức hoặc bị vượt mặt",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Người cùng cấp hoặc ít kinh nghiệm hơn được lên trước. Cảm xúc tiêu cực ảnh hưởng công việc.",
+      "trigger_question": "Thông tin này nói gì về hệ thống incentive của nơi bạn đang ở, và về chiến lược của bạn?",
+      "first_principles_breakdown": [
+        "Tổ chức thưởng cho những gì họ cần, không nhất thiết cho những gì công bằng tuyệt đối.",
+        "Phản ứng cảm xúc có thể đốt cháy vốn chính trị và năng lượng."
+      ],
+      "principles": ["Incentive", "Emotional Regulation", "Optionality", "Circle of Control"],
+      "solution_steps": [
+        "Tách: chuyện công bằng vs chuyện chiến lược cá nhân.",
+        "Hỏi sếp trực tiếp về tiêu chí và khoảng trống cần lấp.",
+        "Cập nhật kế hoạch sự nghiệp: ở lại xây tiếp hay tìm bàn chơi khác."
+      ],
+      "variants": [
+        "Bị giảm biên chế.",
+        "Dự án quan trọng bị giao cho người khác."
+      ],
+      "elite_insight": "Bạn không kiểm soát được ai được chọn. Bạn kiểm soát được việc mình có trở nên quá tốt để bị bỏ qua hay không, và việc mình có lựa chọn khác hay không."
+    },
+    {
+      "id": "D12",
+      "title": "Xây mạng lưới chất lượng thay vì số lượng",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Tham gia nhiều sự kiện, kết nối LinkedIn nhiều nhưng khi cần giúp đỡ thật thì ít người sẵn sàng. Làm sao khác đi?",
+      "trigger_question": "Mối quan hệ nào sẽ vẫn còn nếu bạn không còn chức danh hiện tại?",
+      "first_principles_breakdown": [
+        "Mạng lưới mạnh dựa trên giá trị qua lại và lòng tin, không phải trên số lượng contact.",
+        "Cho trước thường hiệu quả hơn xin trước."
+      ],
+      "principles": ["Reciprocity", "Trust", "Long-term Relationship"],
+      "solution_steps": [
+        "Chọn 10–20 người để duy trì quan hệ sâu.",
+        "Chủ động giúp họ trước khi cần.",
+        "Duy trì tiếp xúc định kỳ không vụ lợi."
+      ],
+      "variants": [
+        "Mạng lưới trong công ty.",
+        "Mạng lưới ngoài ngành."
+      ],
+      "elite_insight": "Mạng lưới thật được xây trong thời bình và được kiểm chứng trong thời chiến."
+    },
+    {
+      "id": "D13",
+      "title": "Có nên làm việc vì sứ mệnh hay vì tiền trước?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Công việc ý nghĩa nhưng lương thấp vs công việc nhàm chán nhưng đãi ngộ tốt. Giai đoạn nào nên ưu tiên cái nào?",
+      "trigger_question": "Bạn đang ở giai đoạn tích lũy vốn (tiền + kỹ năng + mạng lưới) hay đã có đủ tự do để tối ưu ý nghĩa?",
+      "first_principles_breakdown": [
+        "Ở giai đoạn sớm, tối ưu hóa tốc độ học và runway tài chính thường đúng hơn.",
+        "Ý nghĩa bền vững thường đến khi bạn có đủ năng lực và tự do lựa chọn."
+      ],
+      "principles": ["Stage of Life", "Optionality", "Values Alignment"],
+      "solution_steps": [
+        "Xác định giai đoạn hiện tại.",
+        "Nếu còn thiếu runway: ưu tiên học và kiếm.",
+        "Nếu đã đủ: dần dịch chuyển sang việc có ý nghĩa cao hơn."
+      ],
+      "variants": [
+        "NGO vs corporate.",
+        "Startup sứ mệnh vs công ty truyền thống."
+      ],
+      "elite_insight": "Đừng để lý tưởng làm bạn nghèo đến mức mất cả quyền được lý tưởng."
+    },
+    {
+      "id": "D14",
+      "title": "Quyết định nghỉ sabbatical hoặc gap year khi đã có gia đình",
+      "difficulty": "Nâng cao",
+      "time_minutes": 10,
+      "problem": "Muốn dừng lại 6–12 tháng để học, đi, hoặc suy nghĩ lại hướng đi. Rủi ro và cách giảm thiểu?",
+      "trigger_question": "Bạn sẽ dùng khoảng thời gian đó để tạo ra thứ gì không thể tạo ra khi đang làm việc full-time?",
+      "first_principles_breakdown": [
+        "Chi phí cơ hội rất cao nhưng đôi khi reset mang lại optionalilty lớn hơn.",
+        "Cần có mục tiêu rõ và kế hoạch quay lại."
+      ],
+      "principles": ["Optionality", "Opportunity Cost", "Experimentation"],
+      "solution_steps": [
+        "Viết mục tiêu cụ thể của sabbatical.",
+        "Chuẩn bị tài chính và trao đổi với gia đình.",
+        "Thiết kế cách duy trì kỹ năng và mạng lưới trong thời gian nghỉ."
+      ],
+      "variants": [
+        "Nghỉ để chăm con nhỏ.",
+        "Nghỉ để viết sách hoặc xây sản phẩm."
+      ],
+      "elite_insight": "Sabbatical không phải là trốn tránh. Nó là đầu tư có chủ đích nếu được thiết kế tốt."
+    },
+    {
+      "id": "D15",
+      "title": "Thiết kế 'kế hoạch B' sự nghiệp mà không sống trong sợ hãi",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Sợ mất việc hoặc ngành bị thay đổi nhưng không muốn phân tán năng lượng. Làm sao có kế hoạch B lành mạnh?",
+      "trigger_question": "Kế hoạch B nào vừa bảo vệ bạn vừa không phá hủy sự tập trung vào kế hoạch A?",
+      "first_principles_breakdown": [
+        "Antifragility đến từ việc có lựa chọn, không phải từ việc lo lắng liên tục.",
+        "Kỹ năng chuyển đổi được và mạng lưới là kế hoạch B tốt nhất."
+      ],
+      "principles": ["Antifragile", "Optionality", "Skill Transferability"],
+      "solution_steps": [
+        "Xác định 2–3 kỹ năng có thể mang sang ngành khác.",
+        "Duy trì mối quan hệ ngoài công ty hiện tại.",
+        "Giữ quỹ dự phòng và sức khỏe tốt.",
+        "Review kế hoạch B mỗi 6–12 tháng, không phải mỗi tuần."
+      ],
+      "variants": [
+        "Ngành đang bị AI đe dọa.",
+        "Công ty có dấu hiệu không ổn định."
+      ],
+      "elite_insight": "Kế hoạch B tốt nhất là trở thành người luôn có lựa chọn, không phải người luôn sẵn sàng bỏ chạy."
+    }
+  ]
+}

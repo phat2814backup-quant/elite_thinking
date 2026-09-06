@@ -1,0 +1,1456 @@
+{
+  "metadata": {
+    "group": "F",
+    "title": "Elite Hiện Tại & Tầm Nhìn 10–20 Năm Tới",
+    "version": "1.0",
+    "total_cases": 50,
+    "target_age": "Giới Tinh Hoa, Nhà Đầu Tư 8x & Thế Hệ Kế Cận (Next-Gen)",
+    "description": "50 case thực chiến hóc búa về kỷ nguyên AI, chuỗi cung ứng, tự chủ nhận thức, phân bổ tài sản vĩ mô, và xây dựng sự nghiệp chống mong manh trong 10-20 năm tới.",
+    "principles_focus": [
+      "First Principles",
+      "Antifragility",
+      "Barbell Strategy",
+      "Second-Order Thinking",
+      "Fat Tails",
+      "Margin of Safety",
+      "Creative Destruction",
+      "Bottlenecks (TOC)",
+      "Game Theory",
+      "Non-Ergodicity"
+    ]
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "title": "AI Agent & Sự suy giảm giá trị của kỹ năng trung bình (The Commoditization of Average)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Các tác vụ lập trình cơ bản, viết báo cáo tài chính, dịch thuật, soạn thảo hợp đồng pháp lý sơ bộ đang bị AI thực hiện trong vài giây với chi phí gần bằng 0. Những người làm công việc văn phòng bậc trung đối mặt nguy cơ bị đào thải hoặc giảm 50% thu nhập trong 5 năm tới. Làm sao để định vị năng lực cá nhân không thể bị thay thế?",
+      "trigger_question": "Nếu AI có thể làm tốt 80% công việc của bạn với giá 20$/tháng, 20% giá trị cốt lõi còn lại mà bạn bắt buộc phải sở hữu để khách hàng trả tiền triệu đô là gì?",
+      "first_principles_breakdown": [
+        "AI học từ dữ liệu quá khứ, xuất sắc trong nhận diện mẫu (Pattern Recognition) và tổng hợp thông tin đã có.",
+        "Giá trị của kỹ năng trung bình tiệm cận chi phí cận biên của điện toán (tiến về 0).",
+        "Nút thắt khan hiếm mới dịch chuyển sang: Năng lực đóng khung bài toán (Problem Framing), Phán đoán đạo đức và trách nhiệm pháp lý cuối cùng (Accountability), và Xây dựng niềm tin con người (High-trust Relationships)."
+      ],
+      "principles": [
+        "First Principles",
+        "Creative Destruction",
+        "Comparative Advantage",
+        "Permissionless Leverage"
+      ],
+      "solution_steps": [
+        "Từ bỏ việc cạnh tranh tốc độ làm việc với máy móc; chuyển sang vai trò Kiến trúc sư điều phối (Orchestrator) sử dụng đội ngũ AI Agents.",
+        "Tập trung sâu vào kỹ năng đàm phán cấp cao, chịu trách nhiệm pháp lý với nguồn vốn thực và quản trị rủi ro đuôi béo.",
+        "Tạo dựng thương hiệu cá nhân uy tín cao (High-reputation) nơi khách hàng tìm đến vì sự an tâm và bảo chứng nhân cách."
+      ],
+      "variants": [
+        "Áp dụng vào định hướng nghề nghiệp cho con học sinh lớp 9: Chọn học sâu khoa học cơ bản + giao tiếp hay học các kỹ năng lập trình thao tác bề mặt?",
+        "Tái cấu trúc phòng ban phân tích dữ liệu chứng khoán: Thay thế 5 chuyên viên tổng hợp bằng 1 chuyên gia định hướng kết hợp AI."
+      ],
+      "elite_insight": "Khi kiến thức trở thành hàng hóa rẻ mạt, năng lực đặt câu hỏi đúng và sự dũng cảm chịu trách nhiệm với quyết định trở thành tài sản vô giá."
+    },
+    {
+      "id": "F02",
+      "title": "Tự chủ nhận thức & Kháng cự thuật toán gây nghiện (Cognitive Sovereignty)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Các thuật toán mạng xã hội (TikTok, Reels, AI gợi ý) được tối ưu hóa bằng siêu máy tính để khai thác điểm yếu Dopamine của não bộ, làm phân mảnh khả năng tập trung sâu (Deep Work) và đồng hóa tư duy người dùng thành các buồng vang thông tin (Echo Chambers). Một người lớn 8x hay một đứa trẻ sinh năm 2011-2015 mất khả năng đọc một cuốn sách dày 300 trang.",
+      "trigger_question": "Bộ não của bạn đang là người điều khiển thiết bị hay đang là sản phẩm bị các kỹ sư thuật toán tại Thung lũng Silicon điều khiển để bán lượt quảng cáo?",
+      "first_principles_breakdown": [
+        "Hệ thần kinh con người tiến hóa trong môi trường khan hiếm thông tin, não bộ tự động phản ứng với kích thích nhanh, hình ảnh động và cảm xúc giận dữ.",
+        "Sự tập trung là tài nguyên hữu hạn và là điều kiện tiên quyết duy nhất để xây dựng tư duy bậc cao.",
+        "Ai kiểm soát được sự chú ý của bạn, người đó kiểm soát được nhận thức, niềm tin và quyết định chi tiêu của bạn."
+      ],
+      "principles": [
+        "Feedback Loops",
+        "Entropy",
+        "Activation Energy",
+        "Inversion"
+      ],
+      "solution_steps": [
+        "Thiết lập 'Bức tường lửa nhận thức': Tắt toàn bộ thông báo đẩy (Push notifications), chuyển màn hình điện thoại sang chế độ thang độ xám (Grayscale).",
+        "Quy tắc không gian thiêng liêng: Phòng ngủ và bàn làm việc không có sự hiện diện của điện thoại thông minh.",
+        "Tập luyện 'Khối tĩnh lặng' 90 phút mỗi sáng: Đọc sách giấy, viết tay sổ nhật ký tư duy trước khi kết nối internet."
+      ],
+      "variants": [
+        "Gia đình Wellspring: Quy tắc 'Hộp cất điện thoại' lúc 19h để cả nhà cùng đọc sách và trò chuyện.",
+        "Nhà đầu tư chứng khoán: Tắt bảng điện tử liên tục, chỉ kiểm tra danh mục vào cuối ngày để tránh bẫy tâm lý fomo."
+      ],
+      "elite_insight": "Trong tương lai, khả năng ngồi yên một mình trong phòng 2 tiếng và suy nghĩ sâu về một vấn đề phức tạp sẽ là siêu năng lực phân loại giai cấp."
+    },
+    {
+      "id": "F03",
+      "title": "Xây dựng 'Độc quyền cá nhân' (Personal Monopoly — Peter Thiel & Naval)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Thị trường lao động đại trà luôn diễn ra cuộc đua xuống đáy về lương và phí dịch vụ. Nếu bạn chỉ là một 'luật sư giỏi' hay một 'chuyên viên tài chính giỏi', bạn luôn có thể bị thay thế bởi hàng ngàn người khác rẻ hơn và trẻ hơn.",
+      "trigger_question": "Giao điểm độc nhất của 3 kỹ năng nào khiến bạn trở thành người duy nhất trên thị trường giải quyết được bài toán đó?",
+      "first_principles_breakdown": [
+        "Cạnh tranh hoàn hảo triệt tiêu biên lợi nhuận kinh tế (Peter Thiel - Zero to One).",
+        "Rất khó để trở thành top 1% thế giới ở một kỹ năng đơn lẻ (ví dụ chỉ giỏi toán hoặc chỉ giỏi viết).",
+        "Nhưng cực kỳ khả thi để lọt vào top 10% ở 3 lĩnh vực khác nhau, và điểm giao thoa của 3 lĩnh vực đó đưa bạn vào vị thế độc quyền 0.1% (Skill Stacking)."
+      ],
+      "principles": [
+        "Competitive Advantage",
+        "Economic Moats",
+        "Ecological Niche",
+        "Power Law"
+      ],
+      "solution_steps": [
+        "Liệt kê 3 vòng tròn thế mạnh: Kỹ năng kỹ thuật cứng + Hiểu biết sâu một ngành ngách + Năng lực truyền thông/kết nối con người.",
+        "Xác định bài toán ngách: Ví dụ: Chuyên gia thẩm định pháp lý công nghệ AI cho quỹ đầu tư mạo hiểm tại Đông Nam Á.",
+        "Xuất bản tri thức công khai (Proof-of-Work): Viết bài phân tích chuyên sâu, chia sẻ case study thực tế để đối tác tự tìm đến."
+      ],
+      "variants": [
+        "Học sinh cấp 3: Kết hợp tư duy Toán hình học + Năng khiếu thiết kế 3D + Tiếng Anh học thuật để trở thành nhà thiết kế kiến trúc thuật toán.",
+        "Môi giới chứng khoán: Chuyên biệt hóa thành chuyên gia duy nhất am hiểu chuỗi giá trị ngành hóa chất và xuất khẩu phân bón."
+      ],
+      "elite_insight": "Đừng cố gắng trở thành người giỏi nhất trong một cuộc đua đông đúc. Hãy trở thành người duy nhất trong cuộc đua của chính mình."
+    },
+    {
+      "id": "F04",
+      "title": "Chiến lược quả tạ (Barbell Strategy) trong phân bổ tài sản lạm phát dài hạn",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Lạm phát toàn cầu kéo dài do thâm hụt ngân sách chính phủ và in tiền, trong khi các cuộc khủng hoảng địa chính trị xuất hiện bất ngờ. Danh mục đầu tư truyền thống 60/40 (60% cổ phiếu, 40% trái phiếu) bị sụp đổ khi cả trái phiếu lẫn cổ phiếu cùng giảm mạnh.",
+      "trigger_question": "Làm thế nào để xây dựng danh mục vừa phòng thủ tuyệt đối trước nguy cơ mất trắng, vừa có tiềm năng tăng trưởng bùng nổ mà không bị bào mòn bởi lạm phát?",
+      "first_principles_breakdown": [
+        "Khu vực 'rủi ro trung bình' là bẫy chết người: nó mang lại lợi nhuận tầm thường nhưng vẫn có xác suất mất vốn lớn khi suy thoái.",
+        "Chiến lược quả tạ (Nassim Taleb): Kết hợp 85-90% tài sản siêu an toàn với 10-15% tài sản rủi ro cao nhưng tiềm năng tăng trưởng bất đối xứng.",
+        "Tài sản siêu an toàn bảo vệ mạng sống tài chính; phần bất đối xứng mang lại bước nhảy vọt tài sản."
+      ],
+      "principles": [
+        "Antifragility",
+        "Barbell Strategy",
+        "Fat Tails",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Đầu tạ an toàn (85%): Vàng miếng dự trữ, đất nền có pháp lý sạch tại vùng dân cư hiện hữu, trái phiếu chính phủ ngắn hạn, tiền gửi thanh khoản.",
+        "Đầu tạ tăng trưởng đột phá (15%): Cổ phiếu công nghệ dẫn đầu dòng tiền, tài sản kỹ thuật số cốt lõi (BTC), cổ phần startup công nghệ AI có dòng tiền thật.",
+        "Tuyệt đối tránh xa vùng giữa: Các dự án bất động sản nghỉ dưỡng cam kết lợi nhuận ảo, trái phiếu doanh nghiệp rác lãi suất 12-14%."
+      ],
+      "variants": [
+        "Sự nghiệp Barbell: Ban ngày làm công việc ổn định ít áp lực rủi ro; ban đêm xây dựng sản phẩm công nghệ độc lập có tiềm năng bùng nổ vô hạn.",
+        "Học tập Barbell: Nắm vững 90% kiến thức nền tảng sách giáo khoa trường công, dành 10% thời gian thử nghiệm các dự án AI tiên phong."
+      ],
+      "elite_insight": "Bí quyết của sự giàu có bền vững không phải là tối đa hóa lợi nhuận trong một năm thuận lợi, mà là sống sót qua mọi thảm họa tài chính."
+    },
+    {
+      "id": "F05",
+      "title": "Giáo dục con cái 2030+: Con không cần giỏi điều máy móc làm tốt hơn",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Nhiều phụ huynh trung lưu vẫn thúc ép con luyện thi học sinh giỏi các bài toán mẹo phức tạp, học thuộc lòng ngữ pháp ngoại ngữ và luyện chữ đẹp — những thứ mà phần mềm và AI đã làm hoàn hảo trong 0.1 giây.",
+      "trigger_question": "Sau 10 năm nữa khi con tốt nghiệp đại học, kỹ năng nào sẽ khiến con được xã hội trọng dụng thay vì trở thành một cỗ máy sao chép rẻ tiền?",
+      "first_principles_breakdown": [
+        "Máy móc giỏi ghi nhớ dữ liệu khổng lồ, tính toán thuật toán tuần tự và tối ưu hóa quy trình có sẵn.",
+        "Con người vượt trội ở: Sự thấu cảm (Empathy), Khả năng tổng hợp liên ngành (Polymath Synthesis), Tư duy phản biện lật ngược vấn đề (Inversion), và Thẩm mỹ nghệ thuật.",
+        "Học vẹt công thức là huấn luyện con người trở thành phiên bản lỗi của máy tính."
+      ],
+      "principles": [
+        "First Principles",
+        "Latticework",
+        "Comparative Advantage",
+        "Second-Order Thinking"
+      ],
+      "solution_steps": [
+        "Dạy con Kỹ thuật Feynman: Ép con giải thích bài học bằng lời văn đời thường và phép ẩn dụ thay vì đọc thuộc lòng định nghĩa.",
+        "Khuyến khích tranh biện: Đặt câu hỏi phản biện mỗi tối bên mâm cơm: 'Tại sao con nghĩ quyết định của nhân vật này là sai?'.",
+        "Cho con thực hành dự án thực tế: Tự lên kế hoạch chuyến đi chơi của gia đình, tự quản lý ngân sách nhỏ, làm đồ thủ công."
+      ],
+      "variants": [
+        "Học sinh lớp 7: Thay vì học thuộc bài Sử, yêu cầu con đóng vai Napoleon viết thư giải thích tại sao thất bại trong chiến dịch Nga.",
+        "Học tiếng Anh: Chuyển từ luyện bài tập ngữ pháp trên giấy sang tranh biện trực tiếp các đề tài xã hội."
+      ],
+      "elite_insight": "Đừng rèn con trở thành một thư viện lưu trữ dữ liệu. Hãy rèn con trở thành một bộ xử lý tư duy độc lập và có lương tri."
+    },
+    {
+      "id": "F06",
+      "title": "Địa chính trị bán dẫn & Làn sóng chuyển dịch chuỗi cung ứng tại Việt Nam",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Căng thẳng công nghệ Mỹ - Trung định hình lại dòng vốn FDI toàn cầu. Việt Nam trở thành tâm điểm của chiến lược 'China + 1', thu hút hàng chục tỷ USD từ Intel, Samsung, Foxconn, Amkor. Người làm tài chính và doanh nghiệp cần đọc vị dòng tiền này ra sao?",
+      "trigger_question": "Dòng vốn bán dẫn đổ vào Việt Nam là đòn bẩy nâng tầm quốc gia hay chỉ là sự tận dụng nhân công giá rẻ ngắn hạn ở khâu đóng gói gia công?",
+      "first_principles_breakdown": [
+        "Chuỗi giá trị bán dẫn chia thành 3 khâu: Thiết kế (Biên lợi nhuận 50%), Sản xuất wafer (Cực kỳ thâm dụng vốn và công nghệ), Đóng gói & Thử nghiệm (Biên lợi nhuận thấp nhất 10-15%, thâm dụng điện và lao động).",
+        "Việt Nam hiện chủ yếu đón nhận khâu đóng gói (OSAT) và thiết kế vi mạch sơ khởi.",
+        "Nút thắt hạ tầng: Nguồn điện sạch ổn định, nước siêu tinh khiết và nhân lực kỹ sư điện tử chất lượng cao."
+      ],
+      "principles": [
+        "Comparative Advantage",
+        "Bottlenecks (TOC)",
+        "Network Effects",
+        "Second-Order Thinking"
+      ],
+      "solution_steps": [
+        "Đầu tư tài chính: Hướng dòng tiền vào các doanh nghiệp bất động sản khu công nghiệp có quỹ đất sạch và hạ tầng điện năng lượng tái tạo ổn định.",
+        "Định hướng nghề nghiệp: Động viên con theo học ngành Thiết kế vi mạch (IC Design) hoặc Tự động hóa thay vì các ngành quản trị chung chung.",
+        "Theo dõi chính sách: Đánh giá rủi ro nguồn cung điện tại miền Bắc và quy hoạch điện VIII để dự phóng biên lợi nhuận nhà máy."
+      ],
+      "variants": [
+        "Đầu tư cổ phiếu: Phân tích mã BĐS khu công nghiệp (KBC, VGC, IDC) xem tỷ lệ lấp đầy của các tập đoàn công nghệ cao.",
+        "Doanh nghiệp phụ trợ: Nâng cấp tiêu chuẩn ESG để đủ điều kiện lọt vào danh sách nhà cung ứng cấp 2 của tập đoàn FDI."
+      ],
+      "elite_insight": "Cơ hội không nằm ở việc bàn tán về tin tức vĩ mô, mà nằm ở việc nhận diện mắt xích khan hiếm nhất trong chuỗi cung ứng để đứng vào đó đón dòng tiền."
+    },
+    {
+      "id": "F07",
+      "title": "Tuổi thọ kéo dài 90-100 tuổi (Longevity) & Bẫy suy thoái tài chính tuổi hưu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Tiến bộ y học và công nghệ sinh học giúp thế hệ 8x và con cái có xác suất cao sống thọ tới 90-100 tuổi. Tuy nhiên, mô hình nghỉ hưu truyền thống ở tuổi 60 dựa trên tích lũy 30 năm làm việc sẽ dẫn đến nguy cơ: Tiền hết trước khi người chết.",
+      "trigger_question": "Nếu bạn sống khỏe mạnh đến 95 tuổi, khối tài sản hiện tại và dòng tiền thụ động của bạn có đủ nuôi bạn suốt 35 năm nghỉ hưu trong môi trường lạm phát y tế 8%/năm không?",
+      "first_principles_breakdown": [
+        "Tuổi thọ tăng làm kéo dài thời gian tiêu thụ tài sản nhưng rút ngắn tỷ lệ thời gian tạo ra dòng tiền chủ động.",
+        "Lạm phát chi phí chăm sóc y tế và điều dưỡng tuổi già luôn cao hơn lạm phát CPI danh nghĩa gấp 2 lần.",
+        "Lương hưu bảo hiểm xã hội chỉ đủ mức sinh tồn tối thiểu, không thể duy trì mức sống trung lưu."
+      ],
+      "principles": [
+        "Compounding",
+        "Non-Ergodicity",
+        "Fat Tails",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Định nghĩa lại 'Nghỉ hưu': Chuyển từ trạng thái ngừng làm việc sang trạng thái 'Độc lập tài chính' — tiếp tục làm việc trí tuệ nhẹ nhàng tạo giá trị sau 60 tuổi.",
+        "Xây dựng cỗ máy dòng tiền cổ tức: Sở hữu cổ phiếu của các doanh nghiệp độc quyền thiết yếu có lịch sử trả cổ tức tiền mặt tăng trưởng liên tục suốt 20 năm.",
+        "Đầu tư vào sức khỏe dự phòng ngay từ tuổi 40: Giữ tỷ lệ mỡ nội tạng thấp, duy trì khối lượng cơ bắp để tránh chi phí nằm viện đắt đỏ."
+      ],
+      "variants": [
+        "Kế hoạch tài chính gia đình: Mua bảo hiểm sức khỏe hạn mức cao kết hợp quỹ ủy thác y tế riêng biệt cho cha mẹ già.",
+        "Tích sản dài hạn: Tái đầu tư 100% cổ tức nhận được trong 15 năm trước khi nghỉ hưu để kích hoạt lãi kép bùng nổ."
+      ],
+      "elite_insight": "Sống thọ là một phước lành về mặt sinh học, nhưng sẽ biến thành bi kịch tài chính nếu không có sự chuẩn bị về dòng tiền thực chất."
+    },
+    {
+      "id": "F08",
+      "title": "Khủng hoảng năng lượng & Đột phá trung tâm dữ liệu AI",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Mỗi truy vấn ChatGPT tiêu tốn điện năng gấp 10 lần tìm kiếm Google. Việc triển khai hàng triệu chip GPU trên toàn cầu đang gây áp lực tê liệt lưới điện tại Mỹ, châu Âu và châu Á. Năng lượng trở thành nút cổ chai tối thượng kìm hãm sự phát triển của AI.",
+      "trigger_question": "Trong cơn sốt vàng AI, ai là người bán xẻng thực sự? Có phải là công ty phần mềm, hay là các nhà máy điện hạt nhân và đơn vị truyền tải năng lượng?",
+      "first_principles_breakdown": [
+        "Mọi phép tính logic số học thực chất là sự chuyển hóa điện năng thành nhiệt năng (Định luật Landauer).",
+        "Năng lượng tái tạo (gió, mặt trời) mang tính chập chờn, không thể cung cấp nguồn điện tải nền (Baseload) 24/7 cho các trung tâm dữ liệu AI công suất hàng Gigawatt.",
+        "Điện hạt nhân (SMR) và khí tự nhiên hóa lỏng (LNG) là giải pháp thực tế duy nhất đáp ứng đồng thời tiêu chí phát thải thấp và độ ổn định liên tục."
+      ],
+      "principles": [
+        "Bottlenecks (TOC)",
+        "Conservation of Energy",
+        "Second-Order Thinking",
+        "Leverage"
+      ],
+      "solution_steps": [
+        "Soi chiếu danh mục đầu tư: Tìm kiếm các doanh nghiệp xây lắp điện, truyền tải lưới điện cao thế và phân phối khí tại Việt Nam và quốc tế.",
+        "Đánh giá rủi ro địa phương: Các dự án trung tâm dữ liệu (Data Center) đặt tại Việt Nam sẽ chịu sự kiểm toán gắt gao về hạn ngạch tiêu thụ điện.",
+        "Tư duy đầu tư hạ tầng: Năng lượng sạch và truyền tải điện là lớp nền móng không thể thay thế của toàn bộ nền kinh tế số."
+      ],
+      "variants": [
+        "Đầu tư CKVN: Phân tích cổ phiếu ngành điện (POW, PC1, REE) hưởng lợi từ Quy hoạch điện VIII và nhu cầu data center.",
+        "Doanh nghiệp công nghệ: Thiết kế thuật toán AI tinh gọn (Edge AI / SLM) chạy trực tiếp trên thiết bị đầu cuối thay vì gọi API đám mây tốn điện."
+      ],
+      "elite_insight": "Khi cả thế giới say mê nhìn vào phần mềm ảo trên màn hình, giới tinh hoa âm thầm sở hữu các đường dây tải điện và nhà máy năng lượng dưới lòng đất."
+    },
+    {
+      "id": "F09",
+      "title": "Bất đối xứng thông tin & Thuật toán thao túng tâm lý thị trường chứng khoán",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Tin tức tài chính trên mạng xã hội, các nhóm 'phím hàng' Zalo/Telegram và video TikTok được thiết kế bài bản để kích hoạt tâm lý hưng phấn (FOMO) ở vùng đỉnh và reo rắc hoảng loạn (FUD) ở vùng đáy nhằm gom hoặc phân phối hàng triệu cổ phiếu.",
+      "trigger_question": "Khi bạn đọc một bài báo khen ngợi nức nở một doanh nghiệp trên báo tài chính lớn, ai là người đã chi tiền mua bài viết đó và mục đích của họ là gì?",
+      "first_principles_breakdown": [
+        "Truyền thông đại chúng trong tài chính hiếm khi là nguồn thông tin trung lập; nó là công cụ tạo thanh khoản cho các dòng tiền lớn (Smart Money).",
+        "Tâm lý con người luôn bị chi phối bởi bằng chứng xã hội (Social Proof) và nỗi sợ bị bỏ lỡ.",
+        "Tại vùng đáy, tin tức luôn xấu nhất để ép nhỏ lẻ cắt lỗ; tại vùng đỉnh, triển vọng tương lai luôn vẽ ra màu hồng rực rỡ."
+      ],
+      "principles": [
+        "Inversion",
+        "Incentives",
+        "Game Theory",
+        "Second-Order Thinking"
+      ],
+      "solution_steps": [
+        "Nguyên tắc 'Truy tìm động lực': Luôn tự hỏi: 'Nếu tin này đúng, tại sao người ta lại chia sẻ miễn phí cho tôi trên mạng? Họ hưởng lợi gì nếu tôi bấm mua?'.",
+        "Tách rời giá và tin tức: Phân tích báo cáo tài chính gốc, dòng tiền kinh doanh thực và giao dịch của ban lãnh đạo thay vì đọc tin giật gân.",
+        "Thực hành đảo ngược: Khi đám đông đang bàn tán sôi nổi nhất về một cổ phiếu ở quán cà phê, đó là lúc chuẩn bị chốt lời."
+      ],
+      "variants": [
+        "Feynman Jargon Buster: Đưa một bài phân tích cổ phiếu đầy từ ngữ mỹ miều vào công cụ lọc rác tại Trang 10 để bóc trần sự thật.",
+        "Đầu tư bất động sản: Né tránh các cơn sốt đất ảo do các đội 'cò' tự mua bán sang tay tạo giao dịch giả."
+      ],
+      "elite_insight": "Thị trường tài chính là cỗ máy chuyển tiền từ người thiếu kiên nhẫn và cả tin sang người có kỷ luật và biết nghi ngờ lành mạnh."
+    },
+    {
+      "id": "F10",
+      "title": "Khủng hoảng niềm tin & Xác thực danh tính trong kỷ nguyên Deepfake",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Công nghệ tạo video và giọng nói giả mạo (Deepfake) đạt mức độ chân thực 99%. Kẻ gian có thể giả giọng con cái gọi điện cầu cứu xin tiền, giả mặt CEO họp trực tuyến yêu cầu kế toán chuyển tiền hàng chục tỷ đồng.",
+      "trigger_question": "Làm thế nào bạn biết chắc chắn người đang nói chuyện video với bạn trên màn hình chính là người thân của bạn chứ không phải là một mô hình AI giả mạo?",
+      "first_principles_breakdown": [
+        "Mọi tín hiệu kỹ thuật số truyền qua internet (hình ảnh, âm thanh, video) đều có thể bị tái tạo và thao túng bằng AI tổng hợp.",
+        "Kênh xác thực trực quan và thính giác không còn là bảo chứng đáng tin cậy của danh tính.",
+        "Bảo mật trong thế giới AI đòi hỏi giao thức xác thực ngoài băng tần (Out-of-band verification) và mật mã bí mật cá nhân."
+      ],
+      "principles": [
+        "Margin of Safety",
+        "Redundancy",
+        "Feedback Loops",
+        "Inversion"
+      ],
+      "solution_steps": [
+        "Quy ước 'Mật khẩu an toàn gia đình' (Family Safe Word): Một từ khóa bí mật chỉ có các thành viên trong nhà biết với nhau, không bao giờ nhắn qua tin nhắn hay mạng xã hội.",
+        "Giao thức chuyển tiền khẩn cấp: Bất kỳ yêu cầu chuyển tiền gấp nào qua điện thoại đều phải gọi lại bằng số điện thoại di động trực tiếp hoặc gặp mặt trực tiếp.",
+        "Giáo dục con cái: Dạy con không bao giờ bấm vào các đường link lạ yêu cầu quét khuôn mặt hoặc cấp quyền micro."
+      ],
+      "variants": [
+        "Doanh nghiệp: Thiết lập quy trình phê duyệt kép (Dual-authorization) bắt buộc có chữ ký số và xác nhận bằng văn bản giấy đối với giao dịch trên 100 triệu.",
+        "Bảo vệ danh tính cá nhân: Hạn chế đăng tải video chất lượng cao quay cận cảnh khuôn mặt và giọng nói của con cái lên các nền tảng công cộng."
+      ],
+      "elite_insight": "Khi công nghệ làm giả mọi thứ trở nên hoàn hảo, thứ đắt đỏ nhất trên thế giới sẽ là sự xác thực bằng xương bằng thịt ngoài đời thực."
+    },
+    {
+      "id": "F11",
+      "title": "Chuyển giao tài sản gia tộc đa thế hệ né bẫy 'Không ai giàu 3 họ'",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Làm thế nào để truyền thụ năng lực tư duy và văn hóa gìn giữ tài sản cho con cái thế hệ Alpha sinh ra trong nhung lụa?",
+      "trigger_question": "Gia tài lớn nhất để lại cho con là vốn tài chính hay là năng lực tự tạo ra dòng tiền?",
+      "first_principles_breakdown": [
+        "Tài sản tài chính tiêu hao theo hàm số mũ nếu người thừa kế không có năng lực quản trị.",
+        "Văn hóa gia đình và quy chuẩn đạo đức là con hào kinh tế bền vững nhất."
+      ],
+      "principles": [
+        "Compounding",
+        "Incentives",
+        "Entropy",
+        "Homeostasis"
+      ],
+      "solution_steps": [
+        "Lập hiến pháp gia đình (Family Constitution) và quỹ tín thác giáo dục.",
+        "Tập cho con tự kiếm tiền và quản lý tài chính cá nhân từ năm 12 tuổi."
+      ],
+      "variants": [
+        "Con cái học trường quốc tế nhưng giữ gốc văn hóa gia đình Việt."
+      ],
+      "elite_insight": "Tài sản không có trí tuệ đi kèm chỉ là chất xúc tác đẩy nhanh sự suy đồi của thế hệ sau."
+    },
+    {
+      "id": "F12",
+      "title": "Lợi thế của công ty '1 người + Đội quân AI Agents'",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Thay vì tuyển dụng bộ máy nhân sự cồng kềnh hàng chục người với chi phí cố định lớn, làm sao một cá nhân có thể vận hành doanh nghiệp triệu đô?",
+      "trigger_question": "Nút thắt chi phí cố định (Fixed Cost) đang được phần mềm và AI giải phóng ra sao?",
+      "first_principles_breakdown": [
+        "Mỗi AI agent đảm nhận một vai trò chuyên môn: viết code, chăm sóc khách hàng, marketing, kế toán.",
+        "Đòn bẩy không cần xin phép (Naval) đạt cực đại khi biên chi phí nhân bản bằng 0."
+      ],
+      "principles": [
+        "Economies of Scale",
+        "Leverage",
+        "Bottlenecks (TOC)"
+      ],
+      "solution_steps": [
+        "Xây dựng quy trình làm việc chuẩn hóa (SOP) trước khi bàn giao cho AI.",
+        "Tập trung vào khâu phân phối và quan hệ khách hàng cốt lõi."
+      ],
+      "variants": [
+        "Doanh nghiệp tư vấn tài chính 1 người phục vụ 500 khách hàng cao cấp."
+      ],
+      "elite_insight": "Tương lai không thuộc về công ty đông nhân viên nhất, mà thuộc về công ty có tỷ lệ thặng dư trên mỗi nhân sự cao nhất."
+    },
+    {
+      "id": "F13",
+      "title": "Biến đổi khí hậu & Tác động đến định giá Bất động sản Sài Gòn 2035",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Hiện tượng ngập lụt triều cường và sụt lún đất tại TP.HCM đang làm thay đổi bản đồ quy hoạch và định giá bất động sản trong 10-15 năm tới.",
+      "trigger_question": "Mua bất động sản theo thói quen vị trí trung tâm cũ có còn an toàn khi cốt nền bị chìm dưới mực nước biển?",
+      "first_principles_breakdown": [
+        "Quy luật vật lý về mực nước biển dâng và tải trọng xây dựng là bất biến.",
+        "Chi phí chống ngập và bảo trì hạ tầng sẽ bào mòn lợi suất cho thuê của các khu vực trũng thấp."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Khảo sát cao độ cốt nền tự nhiên (Digital Elevation Model) trước khi xuống tiền mua đất.",
+        "Ưu tiên các khu vực địa chất đồi cao, thoát nước tự nhiên tốt."
+      ],
+      "variants": [
+        "Chuyển dịch danh mục từ căn hộ ven sông trũng sang bất động sản vùng gò cao."
+      ],
+      "elite_insight": "Thiên nhiên luôn có tiếng nói cuối cùng; đừng đầu tư ngược lại quy luật địa chất và thủy văn."
+    },
+    {
+      "id": "F14",
+      "title": "Khủng hoảng nợ công toàn cầu & Rủi ro tiền tệ pháp định (Fiat Currency)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 15,
+      "problem": "Tỷ lệ nợ công trên GDP của các cường quốc vượt mức 120%. Chính phủ chỉ có thể giải quyết bằng cách in tiền âm thầm tạo lạm phát (Financial Repression).",
+      "trigger_question": "Giữ tiền mặt gửi tiết kiệm ngân hàng là bảo toàn vốn hay đang âm thầm bị tịch thu tài sản qua lạm phát?",
+      "first_principles_breakdown": [
+        "Tiền pháp định không có tài sản bảo chứng bản chất là một lời hứa chính trị.",
+        "Khi nợ quá lớn, con đường ít đau đớn nhất của chính trị gia là làm giảm giá trị đồng tiền."
+      ],
+      "principles": [
+        "Incentives",
+        "Compounding",
+        "Opportunity Cost",
+        "Barbell Strategy"
+      ],
+      "solution_steps": [
+        "Chuyển một phần tài sản thanh khoản sang các tài sản có nguồn cung hữu hạn tuyệt đối (Vàng, Đất sạch, BTC).",
+        "Sử dụng nợ thông minh: Vay nợ dài hạn lãi suất cố định thấp để mua tài sản sinh dòng tiền."
+      ],
+      "variants": [
+        "Chiến lược phòng hộ rủi ro mất giá tiền đồng Việt Nam."
+      ],
+      "elite_insight": "Tiền gửi ngân hàng mang lại cảm giác an toàn giả tạo trong ngắn hạn nhưng là sự bảo đảm chắc chắn cho sự suy giảm sức mua trong dài hạn."
+    },
+    {
+      "id": "F15",
+      "title": "Chiến lược Độc lập Nhận thức trong kỷ nguyên Thuật toán AI",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Các công cụ tìm kiếm và chatbot AI có xu hướng đưa ra câu trả lời đồng nhất, tạo ra ảo tưởng rằng chỉ có duy nhất một câu trả lời 'chuẩn' cho mọi bài toán.",
+      "trigger_question": "Làm sao giữ được tư duy phản biện độc lập khi cả xã hội đều dùng chung một câu trả lời của AI?",
+      "first_principles_breakdown": [
+        "AI tối ưu hóa câu trả lời theo xác suất xuất hiện cao nhất trong dữ liệu quá khứ (Consensus thinking).",
+        "Lợi nhuận siêu ngạch và đột phá luôn nằm ở những ý tưởng trái ngược đám đông nhưng đúng đắn (Contrarian Truths)."
+      ],
+      "principles": [
+        "Inversion",
+        "Fat Tails",
+        "First Principles"
+      ],
+      "solution_steps": [
+        "Sử dụng AI như một người phản biện (Devil's Advocate) thay vì một người đưa ra kết luận.",
+        "Luôn tìm kiếm dữ liệu sơ cấp và bằng chứng thực nghiệm ngoài đời thực."
+      ],
+      "variants": [
+        "Học sinh giải bài toán xã hội bằng góc nhìn thực tế địa phương thay vì tra mạng."
+      ],
+      "elite_insight": "Nếu bạn suy nghĩ giống như mọi người và dùng chung công cụ với mọi người, kết quả của bạn sẽ tầm thường như mọi người."
+    },
+    {
+      "id": "F16",
+      "title": "Y học chính xác & Bí mật dữ liệu bộ gen cá nhân",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Y học chính xác & Bí mật dữ liệu bộ gen cá nhân' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Y học chính xác & Bí mật dữ liệu bộ gen cá nhân', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F17",
+      "title": "Quản trị năng lượng sinh học: Tối ưu nhịp sinh học và giấc ngủ sâu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Quản trị năng lượng sinh học: Tối ưu nhịp sinh học và giấc ngủ sâu' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Quản trị năng lượng sinh học: Tối ưu nhịp sinh học và giấc ngủ sâu', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F18",
+      "title": "Bẫy 'Chuyên gia lỗi thời' khi chu kỳ tri thức rút ngắn còn 18 tháng",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Bẫy 'Chuyên gia lỗi thời' khi chu kỳ tri thức rút ngắn còn 18 tháng' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Bẫy 'Chuyên gia lỗi thời' khi chu kỳ tri thức rút ngắn còn 18 tháng', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F19",
+      "title": "Hệ quả bậc hai của trí tuệ nhân tạo tổng quát (AGI) đối với cấu trúc xã hội",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Hệ quả bậc hai của trí tuệ nhân tạo tổng quát (AGI) đối với cấu trúc xã hội' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Hệ quả bậc hai của trí tuệ nhân tạo tổng quát (AGI) đối với cấu trúc xã hội', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F20",
+      "title": "Tư duy mạng lưới Metcalfe trong xây dựng liên minh kinh doanh ngầm",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Tư duy mạng lưới Metcalfe trong xây dựng liên minh kinh doanh ngầm' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Tư duy mạng lưới Metcalfe trong xây dựng liên minh kinh doanh ngầm', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F21",
+      "title": "Bảo mật lượng tử (Quantum Computing) và sự sụp đổ của mã hóa RSA",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Bảo mật lượng tử (Quantum Computing) và sự sụp đổ của mã hóa RSA' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Bảo mật lượng tử (Quantum Computing) và sự sụp đổ của mã hóa RSA', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F22",
+      "title": "Thiết kế hệ sinh thái tự phục hồi (Self-Healing) cho doanh nghiệp gia đình",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Thiết kế hệ sinh thái tự phục hồi (Self-Healing) cho doanh nghiệp gia đình' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Thiết kế hệ sinh thái tự phục hồi (Self-Healing) cho doanh nghiệp gia đình', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F23",
+      "title": "Nghịch lý Jevons: Càng tối ưu thuật toán AI, năng lượng tiêu thụ càng bùng nổ",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Nghịch lý Jevons: Càng tối ưu thuật toán AI, năng lượng tiêu thụ càng bùng nổ' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Nghịch lý Jevons: Càng tối ưu thuật toán AI, năng lượng tiêu thụ càng bùng nổ', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F24",
+      "title": "An ninh lương thực và nguồn nước ngọt tại Đồng bằng Sông Cửu Long 2035",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'An ninh lương thực và nguồn nước ngọt tại Đồng bằng Sông Cửu Long 2035' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'An ninh lương thực và nguồn nước ngọt tại Đồng bằng Sông Cửu Long 2035', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F25",
+      "title": "Tư duy đa quy mô thời gian: Cân bằng mục tiêu quý và di sản 20 năm",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Tư duy đa quy mô thời gian: Cân bằng mục tiêu quý và di sản 20 năm' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Tư duy đa quy mô thời gian: Cân bằng mục tiêu quý và di sản 20 năm', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F26",
+      "title": "Né bẫy 'Người cầm búa AI': Khi nào dùng Excel và logic đơn giản tốt hơn LLM?",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Né bẫy 'Người cầm búa AI': Khi nào dùng Excel và logic đơn giản tốt hơn LLM?' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Né bẫy 'Người cầm búa AI': Khi nào dùng Excel và logic đơn giản tốt hơn LLM?', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F27",
+      "title": "Văn hóa quản trị gia tộc (Family Governance) học từ gia tộc Rockefeller",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Văn hóa quản trị gia tộc (Family Governance) học từ gia tộc Rockefeller' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Văn hóa quản trị gia tộc (Family Governance) học từ gia tộc Rockefeller', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F28",
+      "title": "Đầu tư trong môi trường lãi suất thực âm và biến động địa chính trị",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Đầu tư trong môi trường lãi suất thực âm và biến động địa chính trị' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Đầu tư trong môi trường lãi suất thực âm và biến động địa chính trị', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F29",
+      "title": "Kháng cự sự tẩy não của thuật toán mạng xã hội đối với trẻ vị thành niên",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Kháng cự sự tẩy não của thuật toán mạng xã hội đối với trẻ vị thành niên' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Kháng cự sự tẩy não của thuật toán mạng xã hội đối với trẻ vị thành niên', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F30",
+      "title": "Sức bền tim mạch (VO2 Max) & Khối cơ nạc như tài sản sinh lời cao nhất",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Sức bền tim mạch (VO2 Max) & Khối cơ nạc như tài sản sinh lời cao nhất' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Sức bền tim mạch (VO2 Max) & Khối cơ nạc như tài sản sinh lời cao nhất', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F31",
+      "title": "Kỹ năng lọc tín hiệu thực (Signal) trong đại dương thông tin rác (Noise)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Kỹ năng lọc tín hiệu thực (Signal) trong đại dương thông tin rác (Noise)' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Kỹ năng lọc tín hiệu thực (Signal) trong đại dương thông tin rác (Noise)', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F32",
+      "title": "Chiến lược thu hút và giữ chân nhân tài xuất chúng (Top 1% Performers)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Chiến lược thu hút và giữ chân nhân tài xuất chúng (Top 1% Performers)' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Chiến lược thu hút và giữ chân nhân tài xuất chúng (Top 1% Performers)', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F33",
+      "title": "Việt Nam trong chuỗi cung ứng bán dẫn: Định vị trung tâm thiết kế hay lắp ráp?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Việt Nam trong chuỗi cung ứng bán dẫn: Định vị trung tâm thiết kế hay lắp ráp?' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Việt Nam trong chuỗi cung ứng bán dẫn: Định vị trung tâm thiết kế hay lắp ráp?', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F34",
+      "title": "Quản trị sự bất định Knightian khi không thể tính toán được xác suất",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Quản trị sự bất định Knightian khi không thể tính toán được xác suất' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Quản trị sự bất định Knightian khi không thể tính toán được xác suất', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F35",
+      "title": "Sự sụp đổ của bằng cấp đại học truyền thống: Bằng cấp vs Bằng chứng năng lực",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Sự sụp đổ của bằng cấp đại học truyền thống: Bằng cấp vs Bằng chứng năng lực' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Sự sụp đổ của bằng cấp đại học truyền thống: Bằng cấp vs Bằng chứng năng lực', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F36",
+      "title": "Quyền sở hữu trí tuệ trong kỷ nguyên mã nguồn mở và AI sinh tạo",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Quyền sở hữu trí tuệ trong kỷ nguyên mã nguồn mở và AI sinh tạo' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Quyền sở hữu trí tuệ trong kỷ nguyên mã nguồn mở và AI sinh tạo', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F37",
+      "title": "Phòng vệ trước chiến tranh tâm lý và tấn công phi kỹ thuật (Social Engineering)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Phòng vệ trước chiến tranh tâm lý và tấn công phi kỹ thuật (Social Engineering)' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Phòng vệ trước chiến tranh tâm lý và tấn công phi kỹ thuật (Social Engineering)', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F38",
+      "title": "Đòn bẩy không cần xin phép: Lập trình, Truyền thông và Vốn tự thân",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Đòn bẩy không cần xin phép: Lập trình, Truyền thông và Vốn tự thân' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Đòn bẩy không cần xin phép: Lập trình, Truyền thông và Vốn tự thân', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F39",
+      "title": "Chiến lược rút lui (Exit Strategy) trước khi rơi vào bẫy leo thang cam kết",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Chiến lược rút lui (Exit Strategy) trước khi rơi vào bẫy leo thang cam kết' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Chiến lược rút lui (Exit Strategy) trước khi rơi vào bẫy leo thang cam kết', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F40",
+      "title": "Cai nghiện Dopamine kỹ thuật số: Khôi phục năng lực tập trung sâu (Deep Work)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Cai nghiện Dopamine kỹ thuật số: Khôi phục năng lực tập trung sâu (Deep Work)' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Cai nghiện Dopamine kỹ thuật số: Khôi phục năng lực tập trung sâu (Deep Work)', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F41",
+      "title": "Tận dụng khủng hoảng để thâu tóm tài sản giá trị chiết khấu sâu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Tận dụng khủng hoảng để thâu tóm tài sản giá trị chiết khấu sâu' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Tận dụng khủng hoảng để thâu tóm tài sản giá trị chiết khấu sâu', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F42",
+      "title": "Hệ thống tự chủ ngoại ô: Tự túc năng lượng mặt trời và nguồn thực phẩm sạch",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Hệ thống tự chủ ngoại ô: Tự túc năng lượng mặt trời và nguồn thực phẩm sạch' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Hệ thống tự chủ ngoại ô: Tự túc năng lượng mặt trời và nguồn thực phẩm sạch', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F43",
+      "title": "Thu hẹp khoảng cách thế hệ giữa cha mẹ 8x và con cái Gen Alpha",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Thu hẹp khoảng cách thế hệ giữa cha mẹ 8x và con cái Gen Alpha' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Thu hẹp khoảng cách thế hệ giữa cha mẹ 8x và con cái Gen Alpha', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F44",
+      "title": "Hiệu ứng Lindy: Chọn lọc tri thức trường tồn qua ngàn năm",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Hiệu ứng Lindy: Chọn lọc tri thức trường tồn qua ngàn năm' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Hiệu ứng Lindy: Chọn lọc tri thức trường tồn qua ngàn năm', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F45",
+      "title": "Nghịch lý của sự lựa chọn: Tối giản hóa để giải phóng năng lượng nhận thức",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Nghịch lý của sự lựa chọn: Tối giản hóa để giải phóng năng lượng nhận thức' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Nghịch lý của sự lựa chọn: Tối giản hóa để giải phóng năng lượng nhận thức', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F46",
+      "title": "Xử lý xung đột lợi ích (Principal-Agent) với môi giới và ngân hàng",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Xử lý xung đột lợi ích (Principal-Agent) với môi giới và ngân hàng' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Xử lý xung đột lợi ích (Principal-Agent) với môi giới và ngân hàng', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F47",
+      "title": "Nghệ thuật giữ im lặng chiến lược (Stealth Mode) trong kinh doanh",
+      "difficulty": "Trung cấp",
+      "time_minutes": 15,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Nghệ thuật giữ im lặng chiến lược (Stealth Mode) trong kinh doanh' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Nghệ thuật giữ im lặng chiến lược (Stealth Mode) trong kinh doanh', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F48",
+      "title": "Xây dựng hội đồng cố vấn cá nhân tinh hoa (Personal Board of Advisors)",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Xây dựng hội đồng cố vấn cá nhân tinh hoa (Personal Board of Advisors)' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Xây dựng hội đồng cố vấn cá nhân tinh hoa (Personal Board of Advisors)', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F49",
+      "title": "Định nghĩa sự thịnh vượng thực sự: Tự do thời gian và bình an tâm thức",
+      "difficulty": "Trung cấp",
+      "time_minutes": 13,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Định nghĩa sự thịnh vượng thực sự: Tự do thời gian và bình an tâm thức' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Định nghĩa sự thịnh vượng thực sự: Tự do thời gian và bình an tâm thức', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    },
+    {
+      "id": "F50",
+      "title": "Di sản vượt thời gian (Legacy Building): Đúc kết 50 năm cuộc đời",
+      "difficulty": "Nâng cao",
+      "time_minutes": 14,
+      "problem": "Phân tích chuyên sâu bài toán chiến lược 'Di sản vượt thời gian (Legacy Building): Đúc kết 50 năm cuộc đời' trong bối cảnh thay đổi nhanh chóng của kinh tế, công nghệ và xã hội tại Việt Nam và toàn cầu. Yêu cầu bóc tách các giả định ngầm, nhận diện rủi ro đuôi béo và thiết kế phương án hành động có tính chống mong manh cao.",
+      "trigger_question": "Quy luật tự nhiên bất biến nào đang âm thầm chi phối bài toán 'Di sản vượt thời gian (Legacy Building): Đúc kết 50 năm cuộc đời', và hành động đòn bẩy cao nhất của bạn là gì?",
+      "first_principles_breakdown": [
+        "Bóc tách bài toán về các định luật vật lý, tâm lý học hành vi và kinh tế học cơ bản.",
+        "Loại bỏ các thành kiến đám đông và áp lực ngắn hạn để nhìn vào cấu trúc dài hạn 10-20 năm.",
+        "Thiết kế cơ chế phản hồi vòng lặp kín để liên tục hiệu chỉnh sai số thực tế."
+      ],
+      "principles": [
+        "First Principles",
+        "Second-Order Thinking",
+        "Antifragility",
+        "Margin of Safety"
+      ],
+      "solution_steps": [
+        "Bước 1: Xác định rõ giới hạn an toàn và điểm chịu tải tối đa của hệ thống.",
+        "Bước 2: Xây dựng các lớp đệm dự phòng (Redundancy) chống lại cú sốc bất ngờ.",
+        "Bước 3: Thực thi thử nghiệm vi mô có kiểm soát rủi ro trước khi triển khai quy mô lớn."
+      ],
+      "variants": [
+        "Áp dụng vào quản trị danh mục tài sản cá nhân và gia đình.",
+        "Áp dụng vào định hướng phát triển năng lực cho con cái thế hệ kế cận."
+      ],
+      "elite_insight": "Giới tinh hoa không dự đoán tương lai một cách thụ động. Họ xây dựng năng lực thích ứng và khả năng sống sót để hưởng lợi từ mọi biến động của tương lai."
+    }
+  ]
+}
