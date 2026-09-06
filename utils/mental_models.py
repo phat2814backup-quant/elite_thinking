@@ -36,8 +36,8 @@ PILLAR_ICONS = {
 
 
 @st.cache_data(show_spinner=False)
-def load_mental_models_data() -> Dict[str, Any]:
-    """Tải toàn bộ bộ dữ liệu 88 mô hình hạt nhân với bộ đệm cache."""
+def _load_mental_models_cached(mtime: float) -> Dict[str, Any]:
+    """Tải toàn bộ bộ dữ liệu 88 mô hình hạt nhân với bộ đệm cache, tự động cập nhật khi file đổi."""
     if not MODELS_FILE.exists():
         return {"metadata": {}, "models": []}
     try:
@@ -45,6 +45,11 @@ def load_mental_models_data() -> Dict[str, Any]:
             return json.load(f)
     except Exception:
         return {"metadata": {}, "models": []}
+
+
+def load_mental_models_data() -> Dict[str, Any]:
+    mtime = MODELS_FILE.stat().st_mtime if MODELS_FILE.exists() else 0.0
+    return _load_mental_models_cached(mtime)
 
 
 def get_all_models() -> List[Dict[str, Any]]:
@@ -69,8 +74,11 @@ def filter_models(
     pillar: Optional[str] = None,
     tier: Optional[int] = None,
     query: str = "",
+    only_gmm: bool = False,
 ) -> List[Dict[str, Any]]:
     res = models
+    if only_gmm:
+        res = [m for m in res if m.get("action_steps") or m.get("boundary_conditions") or m.get("real_world_case")]
     if pillar and pillar != "Tất cả":
         res = [m for m in res if m.get("pillar") == pillar]
     if tier is not None:
@@ -105,11 +113,13 @@ def models_to_dataframe(models: List[Dict[str, Any]]) -> pd.DataFrame:
     for m in models:
         tier_text = {1: "Tier 1 (80/20)", 2: "Tier 2 (Chiến lược)", 3: "Tier 3 (Hệ thống)"}.get(m.get("tier"), f"Tier {m.get('tier')}")
         icon = PILLAR_ICONS.get(m.get("pillar", ""), "📌")
+        has_gmm = "💎 GMM Chuyên sâu" if m.get("action_steps") else "—"
         rows.append({
             "Mã": m.get("id", ""),
             "Tên Mô Hình": f"{m.get('name_vi', '')} ({m.get('name_en', '')})",
             "Trụ Cột": f"{icon} {m.get('pillar', '')}",
             "Cấp Độ Đòn Bẩy": tier_text,
+            "Khung GMM": has_gmm,
             "Chân Lý Gốc (First Principle)": m.get("first_principle", ""),
             "Đòn Bẩy Elite": m.get("elite_leverage", ""),
             "Bẫy Ngụy Biện (Inversion)": m.get("inversion_trap", ""),

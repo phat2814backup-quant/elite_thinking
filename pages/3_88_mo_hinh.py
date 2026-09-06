@@ -51,7 +51,7 @@ with st.expander("⚡ 5 NGUYÊN TẮC VÀNG LÀM CHỦ 88 MÔ HÌNH VỚI ÍT NG
 all_models = get_all_models()
 
 # Metric Row
-m_c1, m_c2, m_c3, m_c4 = st.columns(4)
+m_c1, m_c2, m_c3, m_c4, m_c5 = st.columns(5)
 with m_c1:
     st.metric("🌟 Tổng số mô hình", f"{len(all_models)} mô hình")
 with m_c2:
@@ -61,12 +61,15 @@ with m_c3:
     tier2_count = sum(1 for m in all_models if m.get("tier") == 2)
     st.metric("🎯 Tier 2 (Chiến lược)", f"{tier2_count} mô hình")
 with m_c4:
+    gmm_count = sum(1 for m in all_models if m.get("action_steps"))
+    st.metric("💎 GMM Chuyên sâu", f"{gmm_count} mô hình", "The Great Mental Models")
+with m_c5:
     st.metric("🔬 Trụ cột khoa học", "6 Trụ cột lớn")
 
 st.divider()
 
 # Filter Bar
-f_col1, f_col2, f_col3 = st.columns([1.5, 2, 2.5])
+f_col1, f_col2, f_col3, f_col4 = st.columns([1.5, 1.8, 2.2, 1.5])
 with f_col1:
     sel_pillar = st.selectbox("Lọc theo Trụ cột", get_pillars(), key="filter_model_pillar")
 with f_col2:
@@ -74,8 +77,11 @@ with f_col2:
     sel_tier_val = TIER_LABELS[sel_tier_label]
 with f_col3:
     sel_search = st.text_input("🔍 Tìm kiếm tức thì", placeholder="Tên mô hình, đòn bẩy, câu hỏi kích hoạt...", key="filter_model_search")
+with f_col4:
+    st.markdown("<div style='height: 28px'></div>", unsafe_allow_html=True)
+    sel_only_gmm = st.checkbox("💎 Chỉ xem GMM", value=False, key="filter_model_gmm", help="Chỉ hiển thị các mô hình đã có Khung GMM Chuyên sâu (Volume 1)")
 
-filtered_models = filter_models(all_models, pillar=sel_pillar, tier=sel_tier_val, query=sel_search)
+filtered_models = filter_models(all_models, pillar=sel_pillar, tier=sel_tier_val, query=sel_search, only_gmm=sel_only_gmm)
 
 st.caption(f"Tìm thấy **{len(filtered_models)} / {len(all_models)}** mô hình phù hợp")
 
@@ -99,6 +105,7 @@ with subtab1:
             "Tên Mô Hình": st.column_config.TextColumn("Tên Mô Hình", width="medium"),
             "Trụ Cột": st.column_config.TextColumn("Trụ Cột", width="small"),
             "Cấp Độ Đòn Bẩy": st.column_config.TextColumn("Cấp Độ", width="small"),
+            "Khung GMM": st.column_config.TextColumn("Khung GMM", width="small"),
             "Chân Lý Gốc (First Principle)": st.column_config.TextColumn("Chân Lý Gốc", width="large"),
             "Đòn Bẩy Elite": st.column_config.TextColumn("Đòn Bẩy Elite", width="large"),
             "Bẫy Ngụy Biện (Inversion)": st.column_config.TextColumn("Bẫy Sai Lầm", width="large"),
@@ -118,11 +125,67 @@ with subtab1:
 
 with subtab2:
     st.markdown("#### 🗂️ Thẻ Flashcard Bóc Tách Chuyên Sâu Từng Mô Hình")
+
+    # Callout Banner nổi bật: The Great Mental Models Hub
+    with st.container(border=True):
+        c_banner_info, c_banner_actions = st.columns([3, 2])
+        with c_banner_info:
+            st.markdown("""
+            ##### 💎 Tuyển Tập The Great Mental Models (Shane Parrish — Volume 1)
+            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** bao gồm:
+            * **🛠️ Quy trình thực thi 4 bước (Action Protocol)**
+            * **⛔ Ranh giới áp dụng (Boundary Conditions — Khi nào KHÔNG dùng)**
+            * **🌐 Tình huống thực chiến đa chiều (K12 & Gia đình, Phát triển sự nghiệp, Đầu tư VN-Index)**
+            """)
+            st.caption("📌 Hiện tại hệ thống đã tích hợp 3 siêu mô hình đầu tiên: **[SYS-11]**, **[PSY-12]**, **[MATH-05]**.")
+
+        with c_banner_actions:
+            st.markdown("**⚡ Phím tắt mở xem ngay:**")
+            col_b1, col_b2, col_b3 = st.columns(3)
+            with col_b1:
+                if st.button("🗺️ SYS-11\nBản đồ", use_container_width=True, help="Bản đồ không phải Lãnh thổ"):
+                    st.session_state["filter_model_search"] = "SYS-11"
+                    st.session_state["filter_model_gmm"] = False
+                    st.rerun()
+            with col_b2:
+                if st.button("🎯 PSY-12\nVòng tròn", use_container_width=True, help="Vòng tròn Năng lực"):
+                    st.session_state["filter_model_search"] = "PSY-12"
+                    st.session_state["filter_model_gmm"] = False
+                    st.rerun()
+            with col_b3:
+                if st.button("🔄 MATH-05\nĐảo ngược", use_container_width=True, help="Tư duy Đảo ngược"):
+                    st.session_state["filter_model_search"] = "MATH-05"
+                    st.session_state["filter_model_gmm"] = False
+                    st.rerun()
+
+            btn_all_gmm, btn_reset = st.columns(2)
+            with btn_all_gmm:
+                if st.button("✨ Lọc cả 3 mô hình GMM", type="primary", use_container_width=True):
+                    st.session_state["filter_model_gmm"] = True
+                    st.session_state["filter_model_search"] = ""
+                    st.session_state["filter_model_pillar"] = "Tất cả"
+                    st.session_state["filter_model_tier"] = "Tất cả"
+                    st.rerun()
+            with btn_reset:
+                if st.button("🔄 Hiện đủ 88 mô hình", use_container_width=True):
+                    st.session_state["filter_model_gmm"] = False
+                    st.session_state["filter_model_search"] = ""
+                    st.session_state["filter_model_pillar"] = "Tất cả"
+                    st.session_state["filter_model_tier"] = "Tất cả"
+                    st.rerun()
+
+    st.caption(f"Đang hiển thị **{len(filtered_models)} / {len(all_models)}** mô hình phù hợp")
+
     for m in filtered_models:
         tier_badge = {1: "⭐ Tier 1 (Siêu hạt nhân)", 2: "🎯 Tier 2 (Chiến lược)", 3: "🔬 Tier 3 (Hệ thống)"}.get(m.get("tier"), "")
-        deep_badge = " · 💎 GMM Chuyên sâu" if m.get("action_steps") else ""
+        has_gmm = bool(m.get("action_steps"))
+        deep_badge = " · 💎 GMM Chuyên sâu" if has_gmm else ""
         icon = PILLAR_ICONS.get(m.get("pillar", ""), "📌")
-        with st.expander(f"{icon} [{m.get('id')}] {m.get('name_vi')} — {m.get('name_en')} ({tier_badge}{deep_badge})"):
+
+        # Tự động mở rộng (expanded=True) nếu đang lọc GMM hoặc nếu kết quả hiển thị ít
+        is_expanded = True if (sel_only_gmm or len(filtered_models) <= 3) else False
+
+        with st.expander(f"{icon} [{m.get('id')}] {m.get('name_vi')} — {m.get('name_en')} ({tier_badge}{deep_badge})", expanded=is_expanded):
             c_left, c_right = st.columns([3, 2])
             with c_left:
                 st.markdown(f"**⚡ Chân lý gốc (First Principle):**")
