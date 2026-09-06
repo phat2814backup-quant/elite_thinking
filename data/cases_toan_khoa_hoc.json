@@ -1,0 +1,610 @@
+{
+  "metadata": {
+    "group": "A",
+    "title": "Toán & Khoa học (Trẻ em trọng tâm)",
+    "version": "1.0",
+    "total_cases": 25,
+    "target_age": "11-15 (sinh 2011-2015)",
+    "description": "25 case thực chiến giúp trẻ phân rã vấn đề toán-khoa học về first principles, quy chiếu về hình/khái niệm cơ bản, thay vì học thuộc công thức.",
+    "principles_focus": [
+      "Decomposition",
+      "First Principles",
+      "Abstraction",
+      "Approximation / Fermi",
+      "Conservation Laws",
+      "Entropy",
+      "Leverage",
+      "Inversion",
+      "Pattern Recognition",
+      "Dimensional Analysis"
+    ]
+  },
+  "cases": [
+    {
+      "id": "A01",
+      "title": "Tính chu vi và diện tích hình bất kỳ (không có công thức sẵn)",
+      "difficulty": "Cơ bản",
+      "time_minutes": 10,
+      "problem": "Con nhìn thấy một mảnh đất hoặc miếng bánh hình dạng kỳ quặc trên giấy (không phải hình vuông, chữ nhật, tròn, tam giác chuẩn). Làm sao tính được chu vi và diện tích gần đúng nhất mà không cần nhớ hàng chục công thức?",
+      "trigger_question": "Nếu chỉ được dùng thước đo độ dài và công thức diện tích hình chữ nhật + tam giác, con làm thế nào?",
+      "first_principles_breakdown": [
+        "Mọi hình phẳng đều được tạo thành từ điểm.",
+        "Hai điểm xác định một đoạn thẳng.",
+        "Nhiều đoạn thẳng nối lại thành đường gấp khúc → chu vi.",
+        "Diện tích = tổng diện tích các hình đơn giản hơn mà mình đã biết (tam giác, hình chữ nhật, hình thang).",
+        "Quy chiếu: chia hình phức tạp thành các hình cơ bản → tính từng cái → cộng lại.",
+        "Nếu hình cong: dùng nhiều đoạn thẳng nhỏ xấp xỉ (ý tưởng tích phân sơ khai)."
+      ],
+      "principles": ["Decomposition", "First Principles", "Abstraction", "Approximation"],
+      "solution_steps": [
+        "Đánh dấu các điểm góc chính trên hình.",
+        "Nối thành các đoạn thẳng, đo chiều dài từng đoạn → cộng lại = chu vi xấp xỉ.",
+        "Chia hình thành các tam giác và hình chữ nhật nhỏ bằng cách kẻ đường phụ.",
+        "Tính diện tích từng phần rồi cộng tổng.",
+        "Kiểm tra bằng cách so sánh với hình chữ nhật bao ngoài (upper bound) và hình chữ nhật bên trong (lower bound)."
+      ],
+      "variants": [
+        "Tính thể tích một vật thể bất kỳ bằng cách chia lát mỏng (nguyên lý Cavalieri).",
+        "Ước lượng diện tích một vũng nước loang trên sân trường bằng cách đếm ô gạch."
+      ],
+      "elite_insight": "Giới tinh hoa không nhớ công thức. Họ nhớ cách quy mọi thứ về thứ đã biết."
+    },
+    {
+      "id": "A02",
+      "title": "Bảo toàn năng lượng trong đời sống hàng ngày",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Tại sao chơi game 3 tiếng rồi ngồi học bài não lại rất mệt dù người không chạy nhảy? Hoặc: Tại sao đi xe máy 30 phút nắng nóng lại mệt hơn ngồi máy lạnh làm việc 3 tiếng?",
+      "trigger_question": "Nếu năng lượng tinh thần của con trong một ngày là 100 đơn vị, con sẽ phân bổ thế nào giữa học – chơi – nghỉ để tối ưu kết quả dài hạn?",
+      "first_principles_breakdown": [
+        "Năng lượng không tự sinh cũng không tự mất (Định luật Bảo toàn Năng lượng).",
+        "Não bộ tiêu thụ ~20% năng lượng cơ thể dù chỉ chiếm 2% trọng lượng → quyết định và tập trung cũng là lao động nặng.",
+        "Nhiệt lượng, ma sát, chuyển hóa hóa học đều là dạng năng lượng.",
+        "Entropy luôn tăng: muốn giữ trật tự (tập trung) phải liên tục bơm năng lượng có chủ đích."
+      ],
+      "principles": ["Conservation of Energy", "Entropy", "Opportunity Cost", "Systems Thinking"],
+      "solution_steps": [
+        "Nhận diện: tập trung trí óc = tiêu hao năng lượng thật.",
+        "Đo lường thô: sau hoạt động nào con cảm thấy 'hết pin' nhất?",
+        "Phân bổ có chủ đích: đặt việc cần não nhiều nhất vào khung giờ năng lượng cao.",
+        "Phục hồi: ngủ, vận động nhẹ, ăn uống cũng là 'nạp năng lượng' cho hệ thống."
+      ],
+      "variants": [
+        "Tại sao ngồi conditional learning (học thuộc lòng) lại mệt hơn giải một bài toán khó nhưng thú vị?",
+        "Áp dụng vào việc chọn học thêm môn nào."
+      ],
+      "elite_insight": "Năng lượng là tài nguyên khan hiếm nhất. Người giỏi quản lý năng lượng thắng người chỉ quản lý thời gian."
+    },
+    {
+      "id": "A03",
+      "title": "Tỷ lệ và quy tắc ba (từ nấu ăn đến pha chế hóa chất)",
+      "difficulty": "Cơ bản",
+      "time_minutes": 7,
+      "problem": "Công thức bánh cần 200g bột cho 4 người. Bây giờ chỉ còn 150g bột và muốn làm cho 3 người. Làm sao tính nhanh các nguyên liệu khác mà không sai tỷ lệ?",
+      "trigger_question": "Tại sao khi thay đổi một đại lượng, các đại lượng khác phải thay đổi theo cùng một tỷ lệ?",
+      "first_principles_breakdown": [
+        "Tỷ lệ là quan hệ không đổi giữa hai đại lượng.",
+        "Nếu A/B = hằng số, thì khi A thay đổi k lần, B cũng phải thay đổi k lần.",
+        "Quy tắc ba chỉ là ứng dụng của tỷ lệ thức."
+      ],
+      "principles": ["Proportionality", "Dimensional Consistency", "Abstraction"],
+      "solution_steps": [
+        "Xác định đại lượng gốc (bột) và tỷ lệ mới: 150/200 = 3/4.",
+        "Nhân tất cả nguyên liệu còn lại với 3/4.",
+        "Kiểm tra đơn vị và tính hợp lý (không thể có số âm hoặc quá lớn)."
+      ],
+      "variants": [
+        "Pha dung dịch hóa học: có 50ml dung dịch 20%, muốn được 100ml dung dịch 10%.",
+        "Tính số người ăn hết một nồi canh nếu biết định mức."
+      ],
+      "elite_insight": "Tỷ lệ là ngôn ngữ chung của khoa học. Hiểu tỷ lệ = hiểu được quy mô."
+    },
+    {
+      "id": "A04",
+      "title": "Xác suất cơ bản qua trò chơi xúc xắc và bài",
+      "difficulty": "Cơ bản",
+      "time_minutes": 12,
+      "problem": "Con tung một xúc xắc 6 mặt. Xác suất ra số chẵn là bao nhiêu? Nếu tung 2 xúc xắc, xác suất tổng bằng 7 là bao nhiêu? Tại sao nhiều người nghĩ 'số 7 may mắn'?",
+      "trigger_question": "Làm sao phân biệt được 'cảm giác may rủi' với xác suất thật sự đo đếm được?",
+      "first_principles_breakdown": [
+        "Xác suất = số kết quả thuận lợi / số kết quả có thể xảy ra (khi các kết quả đồng khả năng).",
+        "Không gian mẫu phải được liệt kê đầy đủ và không chồng chéo.",
+        "Các sự kiện độc lập: P(A và B) = P(A) × P(B)."
+      ],
+      "principles": ["Probability", "Sample Space", "Independence", "Base Rate"],
+      "solution_steps": [
+        "Liệt kê không gian mẫu: 1,2,3,4,5,6.",
+        "Số chẵn: 2,4,6 → 3/6 = 1/2.",
+        "Hai xúc xắc: 36 kết quả. Tổng 7: (1,6)(2,5)(3,4)(4,3)(5,2)(6,1) → 6/36 = 1/6.",
+        "Giải thích tại sao não bộ thích 'câu chuyện' hơn con số."
+      ],
+      "variants": [
+        "Xác suất rút được át trong bộ bài 52 lá.",
+        "Tại sao chơi tài xỉu lâu dài nhà cái luôn thắng?"
+      ],
+      "elite_insight": "Người không hiểu xác suất sẽ bị thế giới lấy tiền và lấy quyết định."
+    },
+    {
+      "id": "A05",
+      "title": "Entropy – Tại sao phòng luôn bừa bộn nếu không dọn?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Tại sao chỉ cần vài ngày không dọn, bàn học và phòng ngủ của con lại trở nên hỗn loạn? Tại sao 'để đó rồi tính' luôn dẫn đến tình trạng xấu hơn?",
+      "trigger_question": "Nếu không ai bơm năng lượng vào hệ thống, hệ thống sẽ đi về đâu?",
+      "first_principles_breakdown": [
+        "Entropy (độ hỗn loạn) của một hệ kín luôn có xu hướng tăng (Định luật 2 Nhiệt động lực học).",
+        "Trật tự là trạng thái đặc biệt, hỗn loạn là trạng thái mặc định.",
+        "Muốn duy trì trật tự phải liên tục đầu tư năng lượng (thời gian, chú ý, hành động)."
+      ],
+      "principles": ["Entropy", "Second Law", "Maintenance Energy", "Systems Thinking"],
+      "solution_steps": [
+        "Nhận diện: bừa bộn là mặc định, không phải tai nạn.",
+        "Thiết kế hệ thống chống entropy: quy tắc 'dùng xong để lại chỗ cũ' trong 30 giây.",
+        "Lịch bảo trì định kỳ (mỗi tối 5 phút) thay vì để đến lúc quá tải."
+      ],
+      "variants": [
+        "Tại sao kiến thức không ôn sẽ quên?",
+        "Tại sao mối quan hệ không chăm sóc sẽ nguội?"
+      ],
+      "elite_insight": "Người giỏi không chống entropy bằng ý chí một lần. Họ xây hệ thống bơm năng lượng tự động."
+    },
+    {
+      "id": "A06",
+      "title": "Đòn bẩy vật lý → Đòn bẩy học tập",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Tại sao dùng thanh dài có thể nâng vật nặng hơn sức mình? Làm sao áp dụng ý tưởng 'đòn bẩy' vào việc học để 1 giờ học mang lại kết quả của 3–4 giờ?",
+      "trigger_question": "Điểm tựa của việc học con nằm ở đâu? Làm sao để một hành động nhỏ tạo ra hiệu ứng lớn và lặp lại?",
+      "first_principles_breakdown": [
+        "Mô-men lực = Lực × Cánh tay đòn. Tăng cánh tay đòn → giảm lực cần thiết.",
+        "Đòn bẩy học tập: tìm điểm tựa (khái niệm gốc, phương pháp, công cụ) để nhân hiệu quả."
+      ],
+      "principles": ["Leverage", "Mechanical Advantage", "First Principles", "80/20"],
+      "solution_steps": [
+        "Xác định 'vật nặng': kiến thức cần học.",
+        "Tìm 'thanh đòn': phương pháp học hiệu quả (active recall, spaced, Feynman).",
+        "Tìm 'điểm tựa': khái niệm gốc của chương đó.",
+        "Thực hành: học 1 khái niệm gốc kỹ → giải được cả chùm bài."
+      ],
+      "variants": [
+        "Dùng Anki hoặc flashcard như đòn bẩy trí nhớ.",
+        "Dạy lại cho người khác (Feynman) như đòn bẩy hiểu sâu."
+      ],
+      "elite_insight": "Người trung bình tăng lực. Người tinh hoa tăng cánh tay đòn."
+    },
+    {
+      "id": "A07",
+      "title": "Đo lường gián tiếp – Làm sao biết chiều cao cây mà không trèo?",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Làm sao đo chiều cao một cái cây hoặc tòa nhà mà không cần trèo lên hay dùng flycam?",
+      "trigger_question": "Những đại lượng nào mình đo được dễ dàng, và làm sao dùng chúng để suy ra đại lượng khó đo?",
+      "first_principles_breakdown": [
+        "Tam giác đồng dạng: tỷ lệ các cạnh tương ứng bằng nhau.",
+        "Đo cái dễ (chiều dài bóng, góc) → suy ra cái khó (chiều cao)."
+      ],
+      "principles": ["Similar Triangles", "Indirect Measurement", "Proportionality", "Modeling"],
+      "solution_steps": [
+        "Đo chiều dài bóng cây và bóng của một vật có chiều cao biết trước (thước hoặc người).",
+        "Dùng tỷ lệ: chiều cao cây / bóng cây = chiều cao vật / bóng vật.",
+        "Hoặc dùng góc nâng và tan(góc)."
+      ],
+      "variants": [
+        "Ước lượng khoảng cách đến một tòa nhà bằng ngón tay và góc.",
+        "Đo chiều rộng sông bằng phương pháp tam giác."
+      ],
+      "elite_insight": "Khoa học hiện đại sống nhờ đo lường gián tiếp. Hiểu nguyên lý này = hiểu cách con người 'nhìn' được nguyên tử và thiên hà."
+    },
+    {
+      "id": "A08",
+      "title": "Fermi Estimation – Ước lượng số lượng nhanh",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Có bao nhiêu thợ cắt tóc ở TP.HCM? Có bao nhiêu quả bóng bay cần để nâng một người lên? Làm sao trả lời nhanh với sai số chấp nhận được?",
+      "trigger_question": "Làm sao chia một bài toán 'không thể đếm' thành các phần có thể ước lượng?",
+      "first_principles_breakdown": [
+        "Chia nhỏ vấn đề thành các giả định đơn giản.",
+        "Ước lượng từng phần theo thứ tự độ lớn (order of magnitude).",
+        "Nhân các ước lượng lại → kết quả thô nhưng hữu ích."
+      ],
+      "principles": ["Fermi Estimation", "Order of Magnitude", "Decomposition", "Approximation"],
+      "solution_steps": [
+        "Ví dụ thợ cắt tóc: Dân số HCM ~10 triệu. Giả sử mỗi người cắt 1 lần/tháng. Mỗi thợ phục vụ ~10 người/ngày × 25 ngày = 250 người/tháng. → Số thợ ≈ 10e6 / 250 ≈ 40.000."
+      ],
+      "variants": [
+        "Có bao nhiêu chiếc xe máy ở Sài Gòn?",
+        "Cần bao nhiêu viên gạch để xây một ngôi nhà 2 tầng?"
+      ],
+      "elite_insight": "Fermi estimation là vũ khí của nhà khoa học và nhà đầu tư. Sai số 2–3 lần vẫn tốt hơn không có con số nào."
+    },
+    {
+      "id": "A09",
+      "title": "Bảo toàn khối lượng – Từ hóa học đến nấu ăn",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Khi đốt một cây nến, tại sao khối lượng nến + khói + tro không mất đi mà chỉ chuyển dạng? Áp dụng vào việc nấu ăn hoặc thí nghiệm đơn giản.",
+      "trigger_question": "Vật chất có thể biến mất thật sự không, hay chỉ chuyển từ dạng này sang dạng khác?",
+      "first_principles_breakdown": [
+        "Trong phản ứng hóa học thông thường, tổng khối lượng chất trước = tổng khối lượng chất sau (Định luật Bảo toàn Khối lượng – Lavoisier).",
+        "Khói, hơi nước, khí CO2 vẫn có khối lượng."
+      ],
+      "principles": ["Conservation of Mass", "Closed System", "Observation Bias"],
+      "solution_steps": [
+        "Thí nghiệm tư duy: đốt nến trong hộp kính kín → cân trước và sau.",
+        "Giải thích tại sao cảm giác 'mất đi' là do ta không nhìn thấy khí."
+      ],
+      "variants": [
+        "Khi nấu canh, nước 'bay hơi' đi đâu?",
+        "Tại sao giảm cân không có nghĩa là khối lượng biến mất khỏi vũ trụ?"
+      ],
+      "elite_insight": "Niềm tin sai về 'biến mất' dẫn đến nhiều hiểu lầm về môi trường và cơ thể."
+    },
+    {
+      "id": "A10",
+      "title": "Tốc độ, vận tốc và gia tốc trong đời sống",
+      "difficulty": "Cơ bản",
+      "time_minutes": 9,
+      "problem": "Xe máy đi 40 km/h. Đi từ nhà đến trường 6 km mất bao lâu? Tại sao lúc đề-pa và lúc thắng con cảm thấy khác khi đi đều?",
+      "trigger_question": "Sự khác nhau giữa 'đi nhanh' và 'thay đổi tốc độ' là gì?",
+      "first_principles_breakdown": [
+        "Vận tốc = quãng đường / thời gian (có hướng).",
+        "Gia tốc = sự thay đổi vận tốc theo thời gian.",
+        "Lực liên quan đến gia tốc (F = ma), không phải vận tốc."
+      ],
+      "principles": ["Kinematics", "Newton's Laws", "Dimensional Analysis"],
+      "solution_steps": [
+        "t = s/v = 6/40 = 0,15 giờ = 9 phút.",
+        "Giải thích cảm giác bị đẩy về phía sau khi tăng tốc và về phía trước khi thắng."
+      ],
+      "variants": [
+        "Tại sao rơi từ tầng 2 nguy hiểm hơn từ tầng 1 nhiều lần (không phải gấp đôi)?",
+        "Ước lượng gia tốc khi nhảy dù."
+      ],
+      "elite_insight": "Hiểu gia tốc giúp hiểu tại sao phanh gấp nguy hiểm và tại sao tên lửa cần tăng tốc dần."
+    },
+    {
+      "id": "A11",
+      "title": "Tỷ lệ diện tích – thể tích (tại sao kiến khỏe hơn voi?)",
+      "difficulty": "Trung cấp",
+      "time_minutes": 12,
+      "problem": "Tại sao kiến có thể nâng vật nặng gấp nhiều lần trọng lượng cơ thể trong khi voi thì không? Tại sao động vật lớn hơn lại có xương dày hơn tỷ lệ?",
+      "trigger_question": "Khi kích thước tăng lên, diện tích và thể tích tăng khác nhau như thế nào?",
+      "first_principles_breakdown": [
+        "Diện tích tỷ lệ với cạnh², thể tích tỷ lệ với cạnh³.",
+        "Sức mạnh cơ/xương liên quan đến diện tích mặt cắt, trọng lượng liên quan đến thể tích.",
+        "Khi scale up, thể tích tăng nhanh hơn diện tích → giới hạn kích thước."
+      ],
+      "principles": ["Scaling Laws", "Square-Cube Law", "Biomechanics", "First Principles"],
+      "solution_steps": [
+        "Giả sử cạnh tăng gấp 2 → diện tích ×4, thể tích ×8.",
+        "Sức mạnh tăng 4 lần, trọng lượng tăng 8 lần → tỷ lệ sức mạnh/trọng lượng giảm một nửa."
+      ],
+      "variants": [
+        "Tại sao trẻ em dễ bị lạnh hơn người lớn?",
+        "Tại sao máy bay không thể chỉ phóng to mô hình đồ chơi?"
+      ],
+      "elite_insight": "Square-cube law là một trong những nguyên lý quan trọng nhất khi thiết kế bất kỳ thứ gì có kích thước thay đổi."
+    },
+    {
+      "id": "A12",
+      "title": "Nhiệt và truyền nhiệt – Tại sao kim loại nóng hơn gỗ?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Cùng một nhiệt độ phòng, tại sao chạm vào thanh kim loại lại thấy lạnh hơn chạm vào miếng gỗ?",
+      "trigger_question": "Cảm giác 'nóng' hay 'lạnh' của tay ta đo cái gì thật sự?",
+      "first_principles_breakdown": [
+        "Nhiệt truyền từ nơi nóng sang nơi lạnh.",
+        "Vật liệu dẫn nhiệt tốt (kim loại) sẽ hút nhiệt từ tay nhanh → tay cảm thấy lạnh.",
+        "Gỗ dẫn nhiệt kém → nhiệt truyền chậm → cảm giác ấm hơn."
+      ],
+      "principles": ["Heat Transfer", "Thermal Conductivity", "Perception vs Reality"],
+      "solution_steps": [
+        "Phân biệt nhiệt độ (trạng thái) và nhiệt lượng (năng lượng truyền).",
+        "Giải thích tại sao gạch men nhà tắm lạnh chân hơn thảm."
+      ],
+      "variants": [
+        "Tại sao mặc áo đen ngoài nắng nóng hơn áo trắng?",
+        "Cách giữ nóng/cold đồ uống hiệu quả."
+      ],
+      "elite_insight": "Não bộ dễ bị đánh lừa bởi tốc độ truyền nhiệt. Khoa học dạy ta phân biệt cảm giác và thực tại."
+    },
+    {
+      "id": "A13",
+      "title": "Áp suất – Tại sao giày cao gót dễ lún đất?",
+      "difficulty": "Cơ bản",
+      "time_minutes": 7,
+      "problem": "Người nặng 50kg đi giày thể thao không lún đất, nhưng đi giày cao gót lại lún. Tại sao?",
+      "trigger_question": "Áp suất phụ thuộc vào lực và diện tích như thế nào?",
+      "first_principles_breakdown": [
+        "Áp suất = Lực / Diện tích.",
+        "Cùng một lực (cân nặng), diện tích tiếp xúc càng nhỏ → áp suất càng lớn."
+      ],
+      "principles": ["Pressure", "Force Distribution", "Design Trade-off"],
+      "solution_steps": [
+        "So sánh diện tích đế giày thể thao và diện tích gót cao gót.",
+        "Tính gần đúng: nếu diện tích giảm 10 lần thì áp suất tăng 10 lần."
+      ],
+      "variants": [
+        "Tại sao dao sắc cắt dễ hơn dao cùn?",
+        "Tại sao xe tăng có xích rộng?"
+      ],
+      "elite_insight": "Nhiều phát minh vĩ đại chỉ là tối ưu hóa công thức P = F/A."
+    },
+    {
+      "id": "A14",
+      "title": "Trung bình, trung vị và sự đánh lừa của số liệu",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Lớp có 10 bạn. 9 bạn được 7 điểm, 1 bạn được 10 điểm. Điểm trung bình là bao nhiêu? Tại sao dùng trung bình có thể gây hiểu lầm?",
+      "trigger_question": "Khi nào nên dùng trung bình, khi nào nên dùng trung vị?",
+      "first_principles_breakdown": [
+        "Trung bình cộng nhạy cảm với giá trị cực đoan.",
+        "Trung vị kháng được outlier.",
+        "Phân phối lệch → trung bình không đại diện tốt."
+      ],
+      "principles": ["Statistics", "Outliers", "Base Rate", "Misleading Aggregation"],
+      "solution_steps": [
+        "Tính trung bình: (9×7 + 10)/10 = 7,3.",
+        "Trung vị vẫn là 7.",
+        "Thảo luận: thu nhập trung bình của một công ty có 1 sếp giàu và 99 nhân viên nghèo."
+      ],
+      "variants": [
+        "Tại sao 'mức lương trung bình ngành' thường cao hơn thực tế đa số người nhận?",
+        "Điểm trung bình lớp có phản ánh đúng năng lực không?"
+      ],
+      "elite_insight": "Người không hiểu thống kê dễ bị thao túng bởi số liệu được chọn lọc."
+    },
+    {
+      "id": "A15",
+      "title": "Phản xạ và khúc xạ ánh sáng – Ảo ảnh đường nóng",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Tại sao trên đường nhựa nắng nóng ta thấy 'vũng nước' ảo? Ánh sáng đi thẳng nhưng tại sao lại có hiện tượng này?",
+      "trigger_question": "Ánh sáng luôn đi theo đường nào khi môi trường thay đổi?",
+      "first_principles_breakdown": [
+        "Ánh sáng đi theo đường có thời gian ngắn nhất (Fermat).",
+        "Khi đi từ môi trường này sang môi trường khác, tốc độ thay đổi → hướng bị lệch (khúc xạ).",
+        "Không khí nóng gần mặt đường loãng hơn → tạo hiệu ứng gương."
+      ],
+      "principles": ["Refraction", "Fermat's Principle", "Gradient", "Optical Illusion"],
+      "solution_steps": [
+        "Giải thích lớp không khí nóng như một 'gương' tạm thời.",
+        "Liên hệ với cầu vồng và ảo ảnh sa mạc."
+      ],
+      "variants": [
+        "Tại sao ống hút trong cốc nước trông bị gãy?",
+        "Cách cá nhìn thấy người đứng trên bờ."
+      ],
+      "elite_insight": "Nhiều 'ảo ảnh' trong đời sống và thị trường tài chính cũng đến từ việc tín hiệu bị bẻ cong bởi môi trường."
+    },
+    {
+      "id": "A16",
+      "title": "Định luật Hooke – Lò xo và giới hạn đàn hồi",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Tại sao kéo lò xo nhẹ thì nó trở lại, nhưng kéo quá mạnh thì biến dạng vĩnh viễn? Áp dụng vào việc học và sức chịu đựng của con người.",
+      "trigger_question": "Mọi hệ thống đều có giới hạn đàn hồi. Làm sao nhận biết mình đang gần giới hạn?",
+      "first_principles_breakdown": [
+        "Trong giới hạn đàn hồi: F = kx (lực tỷ lệ với độ biến dạng).",
+        "Vượt quá giới hạn → biến dạng dẻo hoặc đứt."
+      ],
+      "principles": ["Hooke's Law", "Elastic Limit", "Stress-Strain", "Safety Margin"],
+      "solution_steps": [
+        "Thí nghiệm tư duy với dây cao su.",
+        "Áp dụng: học quá tải liên tục → burnout (biến dạng vĩnh viễn của động lực)."
+      ],
+      "variants": [
+        "Tại sao cầu và nhà cao tầng cần tính toán biên độ an toàn?",
+        "Làm sao biết mình đang 'kéo lò xo' tinh thần quá mức?"
+      ],
+      "elite_insight": "Biên độ an toàn (margin of safety) là khái niệm chung của kỹ thuật và cuộc sống."
+    },
+    {
+      "id": "A17",
+      "title": "Chu kỳ và dao động – Từ quả lắc đến thói quen",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Tại sao quả lắc dao động đều đặn? Làm sao dùng ý tưởng chu kỳ để xây thói quen học tập bền vững?",
+      "trigger_question": "Những thứ lặp lại có quy luật nào chung?",
+      "first_principles_breakdown": [
+        "Dao động điều hòa: lực kéo về tỷ lệ với độ lệch.",
+        "Chu kỳ phụ thuộc vào đặc tính hệ thống (chiều dài dây, gia tốc trọng trường), không phụ thuộc biên độ nhỏ."
+      ],
+      "principles": ["Oscillation", "Periodicity", "Resonance", "Habit Loop"],
+      "solution_steps": [
+        "Hiểu tại sao đồng hồ quả lắc chạy đều.",
+        "Áp dụng: thiết kế chu kỳ học – nghỉ (Pomodoro) phù hợp với 'chu kỳ tự nhiên' của não."
+      ],
+      "variants": [
+        "Tại sao một số bài hát hoặc nhịp điệu dễ nhớ hơn?",
+        "Cộng hưởng: tại sao đội quân không được bước đều trên cầu?"
+      ],
+      "elite_insight": "Người xây được chu kỳ tích cực sẽ thắng người chỉ dựa vào động lực nhất thời."
+    },
+    {
+      "id": "A18",
+      "title": "Mật độ và nổi – chìm",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Tại sao tàu sắt nặng lại nổi trên nước trong khi một chiếc đinh lại chìm? Tại sao con cảm thấy nhẹ hơn khi ngâm mình trong bể bơi?",
+      "trigger_question": "Lực đẩy Archimedes phụ thuộc vào cái gì?",
+      "first_principles_breakdown": [
+        "Lực đẩy = trọng lượng chất lỏng bị chiếm chỗ.",
+        "Vật nổi khi mật độ trung bình < mật độ chất lỏng.",
+        "Tàu sắt có phần rỗng lớn → mật độ trung bình thấp."
+      ],
+      "principles": ["Buoyancy", "Density", "Archimedes", "Average vs Local"],
+      "solution_steps": [
+        "So sánh mật độ.",
+        "Giải thích tại sao người biết bơi vẫn có thể chìm nếu phổi hết khí."
+      ],
+      "variants": [
+        "Tại sao nước đá nổi trên nước?",
+        "Làm sao ước lượng thể tích một vật thể hình dạng kỳ bằng cách đo thể tích nước bị chiếm chỗ?"
+      ],
+      "elite_insight": "Nhiều thứ 'nặng' vẫn nổi nếu cấu trúc phân bố đúng. Áp dụng cả cho tổ chức và ý tưởng."
+    },
+    {
+      "id": "A19",
+      "title": "Phân tích thứ nguyên – Kiểm tra công thức có đúng không",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Làm sao biết một công thức vật lý có khả năng đúng chỉ bằng cách nhìn đơn vị, mà không cần nhớ nguồn gốc?",
+      "trigger_question": "Hai vế của phương trình phải 'cùng loại' về đơn vị. Điều đó giúp ta phát hiện lỗi thế nào?",
+      "first_principles_breakdown": [
+        "Mọi đại lượng vật lý có thứ nguyên (khối lượng M, chiều dài L, thời gian T...).",
+        "Chỉ được cộng/trừ những đại lượng cùng thứ nguyên.",
+        "Hai vế phương trình phải có cùng thứ nguyên."
+      ],
+      "principles": ["Dimensional Analysis", "Consistency Check", "Error Detection"],
+      "solution_steps": [
+        "Ví dụ: kiểm tra công thức động năng ½mv² có đúng thứ nguyên năng lượng không.",
+        "Phát hiện công thức sai nếu đơn vị không khớp."
+      ],
+      "variants": [
+        "Tự suy ra dạng công thức chu kỳ quả lắc bằng phân tích thứ nguyên.",
+        "Kiểm tra công thức diện tích và thể tích."
+      ],
+      "elite_insight": "Dimensional analysis là công cụ kiểm tra nhanh cực mạnh mà ít học sinh được dạy kỹ."
+    },
+    {
+      "id": "A20",
+      "title": "Phản ứng dây chuyền và hiệu ứng domino",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Tại sao một quyết định nhỏ (như ngủ muộn một đêm) đôi khi dẫn đến cả tuần học kém? Cơ chế nào đang hoạt động?",
+      "trigger_question": "Những hệ thống nào có tính 'khuếch đại' hậu quả?",
+      "first_principles_breakdown": [
+        "Phản ứng dây chuyền: sản phẩm của bước trước là chất xúc tác hoặc nguyên liệu cho bước sau.",
+        "Feedback dương làm tăng biên độ theo thời gian."
+      ],
+      "principles": ["Chain Reaction", "Positive Feedback", "Cascade Failure", "Second-Order Effect"],
+      "solution_steps": [
+        "Vẽ chuỗi: ngủ muộn → dậy muộn → bỏ bữa sáng → mệt → mất tập trung → điểm kém → stress → ngủ muộn hơn.",
+        "Tìm điểm cắt chuỗi sớm nhất."
+      ],
+      "variants": [
+        "Tại sao một tin đồn nhỏ có thể lan thành khủng hoảng?",
+        "Phản ứng hạt nhân và ngưỡng tới hạn."
+      ],
+      "elite_insight": "Người giỏi nhìn thấy chuỗi trước khi nó chạy. Người kém chỉ thấy mắt xích cuối."
+    },
+    {
+      "id": "A21",
+      "title": "Đối xứng và bất biến",
+      "difficulty": "Nâng cao",
+      "time_minutes": 11,
+      "problem": "Tại sao nhiều công thức vật lý trông 'đẹp' và đối xứng? Đối xứng giúp ta giải bài toán thế nào?",
+      "trigger_question": "Cái gì không đổi khi hệ thống biến đổi?",
+      "first_principles_breakdown": [
+        "Đối xứng → định luật bảo toàn (định lý Noether ở mức cao hơn).",
+        "Tìm đại lượng bất biến để giảm độ phức tạp bài toán."
+      ],
+      "principles": ["Symmetry", "Invariance", "Conservation", "Pattern Recognition"],
+      "solution_steps": [
+        "Ví dụ: trong va chạm đàn hồi, động lượng và năng lượng được bảo toàn.",
+        "Dùng đối xứng để đoán kết quả trước khi tính."
+      ],
+      "variants": [
+        "Tại sao hình tròn xuất hiện nhiều trong tự nhiên?",
+        "Tìm điểm bất biến trong một bài toán hình học phức tạp."
+      ],
+      "elite_insight": "Tìm cái bất biến là cách mạnh nhất để hiểu hệ thống phức tạp."
+    },
+    {
+      "id": "A22",
+      "title": "Sai số và độ chính xác trong đo lường",
+      "difficulty": "Trung cấp",
+      "time_minutes": 9,
+      "problem": "Con đo chiều dài bàn học bằng thước. Mỗi lần đo ra một số hơi khác. Làm sao báo cáo kết quả trung thực?",
+      "trigger_question": "Không có phép đo nào là tuyệt đối chính xác. Ta xử lý sai số thế nào?",
+      "first_principles_breakdown": [
+        "Sai số ngẫu nhiên và sai số hệ thống.",
+        "Độ chính xác ≠ độ đúng.",
+        "Cách tốt: đo nhiều lần, lấy trung bình, báo cáo độ bất định."
+      ],
+      "principles": ["Measurement Error", "Uncertainty", "Statistics", "Scientific Honesty"],
+      "solution_steps": [
+        "Đo 5 lần, tính trung bình và độ lệch.",
+        "Viết kết quả dạng: 120,4 ± 0,3 cm."
+      ],
+      "variants": [
+        "Tại sao trong thí nghiệm cần lặp lại nhiều lần?",
+        "Phân biệt precision và accuracy bằng hình ảnh bia bắn."
+      ],
+      "elite_insight": "Người khoa học thật sự luôn nói kèm độ bất định. Người muốn thuyết phục thường giấu nó đi."
+    },
+    {
+      "id": "A23",
+      "title": "Tối ưu hóa đơn giản – Tìm đường ngắn nhất",
+      "difficulty": "Trung cấp",
+      "time_minutes": 10,
+      "problem": "Con cần đi từ nhà đến trường, nhưng muốn ghé tiệm tạp hóa. Đường nào là ngắn nhất? Làm sao suy nghĩ có hệ thống?",
+      "trigger_question": "Tối ưu nghĩa là gì khi có nhiều ràng buộc?",
+      "first_principles_breakdown": [
+        "Đường thẳng là ngắn nhất giữa hai điểm (trong mặt phẳng Euclid).",
+        "Khi có điểm trung gian, dùng phản xạ ánh sáng hoặc hình học để tìm.",
+        "Đôi khi 'ngắn nhất' không phải là tối ưu nếu tính đến thời gian hoặc an toàn."
+      ],
+      "principles": ["Optimization", "Constraints", "Geometry", "Trade-off"],
+      "solution_steps": [
+        "Vẽ sơ đồ.",
+        "Thử các đường khả dĩ và so sánh.",
+        "Nhận ra có thể dùng nguyên lý phản xạ để tìm đường tối ưu."
+      ],
+      "variants": [
+        "Sắp xếp thứ tự làm bài kiểm tra để tối ưu điểm.",
+        "Chọn tuyến đường tránh kẹt xe (tối ưu thời gian thay vì khoảng cách)."
+      ],
+      "elite_insight": "Tối ưu luôn đi kèm ràng buộc. Người giỏi là người nhìn rõ ràng buộc ẩn."
+    },
+    {
+      "id": "A24",
+      "title": "Mô hình hóa đơn giản – Từ thực tế sang toán",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Làm sao biến một tình huống đời thực (ví dụ: số học sinh đến lớp theo thời gian) thành phương trình hoặc đồ thị để dự đoán?",
+      "trigger_question": "Mô hình tốt là mô hình đơn giản nhất vẫn giữ được bản chất của hiện tượng.",
+      "first_principles_breakdown": [
+        "Loại bỏ chi tiết không quan trọng (abstraction).",
+        "Giữ lại biến số then chốt và quan hệ giữa chúng.",
+        "Kiểm tra mô hình bằng dữ liệu thực."
+      ],
+      "principles": ["Modeling", "Abstraction", "Occam's Razor", "Validation"],
+      "solution_steps": [
+        "Chọn biến: thời gian, số học sinh.",
+        "Giả định đơn giản (tăng đều, hoặc logistic).",
+        "Vẽ đồ thị và so với thực tế."
+      ],
+      "variants": [
+        "Mô hình hóa tốc độ học từ vựng mới.",
+        "Dự đoán số người nhiễm bệnh đơn giản (mô hình SIR sơ khai)."
+      ],
+      "elite_insight": "Mọi quyết định lớn của giới tinh hoa đều dựa trên mô hình (dù là mô hình trong đầu)."
+    },
+    {
+      "id": "A25",
+      "title": "Tư duy hệ thống qua mạch điện đơn giản",
+      "difficulty": "Trung cấp",
+      "time_minutes": 11,
+      "problem": "Trong một mạch đèn đơn giản, tại sao khi đứt một bóng thì cả dãy có thể tắt (nối tiếp) hoặc chỉ một bóng tắt (song song)? Bài học gì cho làm việc nhóm?",
+      "trigger_question": "Cấu trúc kết nối quyết định hành vi của toàn hệ thống như thế nào?",
+      "first_principles_breakdown": [
+        "Nối tiếp: cùng dòng điện, đứt một chỗ = đứt cả mạch.",
+        "Song song: mỗi nhánh độc lập.",
+        "Điện trở tương đương thay đổi theo cách nối."
+      ],
+      "principles": ["Systems Thinking", "Series vs Parallel", "Single Point of Failure", "Redundancy"],
+      "solution_steps": [
+        "Vẽ hai loại mạch.",
+        "So sánh ưu nhược điểm.",
+        "Áp dụng: nhóm học tập nên thiết kế kiểu nào để không phụ thuộc một người?"
+      ],
+      "variants": [
+        "Tại sao hệ thống giao thông có nút thắt cổ chai?",
+        "Thiết kế lịch học dự phòng khi một môn bị hủy."
+      ],
+      "elite_insight": "Hệ thống mạnh là hệ thống có dự phòng và không có điểm chết đơn lẻ. Áp dụng từ mạch điện đến tổ chức và cuộc đời."
+    }
+  ]
+}

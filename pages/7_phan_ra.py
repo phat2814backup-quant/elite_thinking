@@ -58,6 +58,8 @@ with tab7_subtabs[0]:
         key="tab7_sample_select",
     )
     initial = "" if sample.startswith("—") else sample
+    if "prefill_problem" in st.session_state and st.session_state["prefill_problem"]:
+        initial = st.session_state.pop("prefill_problem")
 
     problem = st.text_area("Nội dung vấn đề cần phân rã:", value=initial, height=120, placeholder="Mô tả cụ thể bối cảnh, mục tiêu, các ràng buộc và điều bạn đang băn khoăn...", key="tab7_problem_input")
 
