@@ -36,6 +36,76 @@ display_name = ctx.get("display_name", username)
 model_choice = ctx.get("model_choice", "gemini-2.5-flash")
 active_keys = ctx.get("active_keys", [])
 
+# -----------------------------------------------------------------------------
+# Sticky Sidebar: Trợ Lý Feynman Mổ Xẻ Cụm Từ
+# -----------------------------------------------------------------------------
+with st.sidebar:
+    st.markdown("### 🔬 Trợ Lý Feynman (Sticky)")
+    st.caption("Ghim cố định theo màn hình · Tra cứu mọi lúc mọi nơi")
+
+    sidebar_word_input = st.text_input(
+        "Gõ hoặc dán cụm từ cần mổ xẻ:",
+        placeholder="Ví dụ: trickle charger, fiddling...",
+        key="sidebar_word_input",
+    )
+    if st.button("🔬 Feynman Phân Tích", type="primary", use_container_width=True, key="sidebar_btn"):
+        if sidebar_word_input.strip():
+            with st.spinner("Feynman đang mổ xẻ..."):
+                feynman_res = explain_phrase_feynman(
+                    phrase=sidebar_word_input.strip(),
+                    context="Sách tự truyện Feynman",
+                    model_choice=model_choice,
+                    api_keys=active_keys,
+                )
+                st.session_state["last_feynman_result"] = feynman_res
+                record_word_lookup(
+                    username=username,
+                    word=sidebar_word_input.strip(),
+                    context_sentence="Đọc trực tiếp từ sách Feynman",
+                    feynman_breakdown=feynman_res.get("root_nuance", ""),
+                    vi_meaning=feynman_res.get("vietnamese_meaning", ""),
+                    source_chapter="",
+                )
+
+    if "last_feynman_result" in st.session_state and st.session_state["last_feynman_result"]:
+        res = st.session_state["last_feynman_result"]
+        st.markdown(f"""
+        <div class="feynman-box" style="margin-bottom:12px;">
+            <h4 style="margin-top:0;"><code>{res.get('phrase', '')}</code> {res.get('phonetic', '')}</h4>
+            <p><strong>Nghĩa:</strong> <span style="color:#38bdf8; font-weight:bold;">{res.get('vietnamese_meaning', '')}</span> ({res.get('part_of_speech', '')})</p>
+            <p><strong>💡 Nguyên lý gốc:</strong><br>{res.get('root_nuance', '')}</p>
+            <p><strong>🧩 Cú pháp:</strong><br>{res.get('grammar_breakdown', '')}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        if res.get("real_life_examples"):
+            st.markdown("**Ví dụ thực tế:**")
+            for ex in res.get("real_life_examples", [])[:2]:
+                st.markdown(f"- 🇺🇸 **{ex.get('en', '')}**\n  ➔ 🇻🇳 *{ex.get('vi', '')}*")
+
+        if res.get("feynman_tip"):
+            st.info(f"💡 **Mẹo nhớ:** {res.get('feynman_tip')}")
+
+        if st.button("⭐ Lưu vào Second Brain", use_container_width=True, key="sb_save_sidebar"):
+            export_feynman_to_second_brain(
+                username=username,
+                phrase=res.get("phrase", ""),
+                explanation=res,
+                source_info="Surely You're Joking, Mr. Feynman!",
+            )
+            st.toast(f"Đã lưu '{res.get('phrase')}' vào Sổ tay Tri thức!", icon="✅")
+
+    st.markdown("---")
+    user_vocab = get_user_vocab_vault(username)
+    if user_vocab:
+        st.markdown("**🕒 Từ đã tra gần đây:**")
+        recent = list(user_vocab.keys())[-5:]
+        recent.reverse()
+        for rw in recent:
+            cnt = user_vocab[rw].get("count", 1)
+            badge = "🔴" if cnt >= 2 else "🔵"
+            st.caption(f"{badge} **{rw}** ({cnt} lần) — {user_vocab[rw].get('vi_meaning', '')}")
+
+
 # Custom CSS for Dual Column Reader
 st.markdown("""
 <style>
@@ -171,74 +241,8 @@ with tab1:
             st.info(current_chapter.get("summary_vi", "Không có tóm lược."))
 
         sections = current_chapter.get("sections", [])
-        st.write(f"**Tổng số đoạn trong chương:** {len(sections)} phần đọc đối xứng.")
+        st.write(f"**Tổng số cảnh truyện trong chương:** {len(sections)} cảnh đối xứng.")
 
-        # Interactive Global Word Explainer Modal/Form in Sidebar or Top
-        st.markdown("### 🔬 Trợ Lý Feynman: Mổ Xẻ Cụm Từ Bất Kỳ")
-        with st.container():
-            c_input, c_btn = st.columns([4, 1])
-            with c_input:
-                user_phrase_input = st.text_input(
-                    "Gõ hoặc dán bất kỳ từ/cụm từ tiếng Anh khó hiểu trong bài:",
-                    placeholder="Ví dụ: trickle charger, helluva racket, in series, fiddling...",
-                    key="global_phrase_input",
-                )
-            with c_btn:
-                st.write("")
-                st.write("")
-                explain_btn = st.button("🔬 Feynman Phân Tích", type="primary", use_container_width=True)
-
-            if explain_btn and user_phrase_input.strip():
-                with st.spinner("Richard Feynman đang mổ xẻ nguyên lý ngôn ngữ..."):
-                    feynman_res = explain_phrase_feynman(
-                        phrase=user_phrase_input.strip(),
-                        context=f"Trích từ sách: {current_book.get('title_en')} - Chương {current_chapter.get('title_en')}",
-                        model_choice=model_choice,
-                        api_keys=active_keys,
-                    )
-                    st.session_state["last_feynman_result"] = feynman_res
-                    # Record lookup
-                    record_word_lookup(
-                        username=username,
-                        word=user_phrase_input.strip(),
-                        context_sentence=current_chapter.get("title_en", ""),
-                        feynman_breakdown=feynman_res.get("root_nuance", ""),
-                        vi_meaning=feynman_res.get("vietnamese_meaning", ""),
-                        source_chapter=current_chapter.get("title_vi", ""),
-                    )
-
-            if "last_feynman_result" in st.session_state and st.session_state["last_feynman_result"]:
-                res = st.session_state["last_feynman_result"]
-                with st.container():
-                    st.markdown(f"""
-                    <div class="feynman-box">
-                        <h4>🔬 Kỹ Thuật Feynman: <code>{res.get('phrase', '')}</code> {res.get('phonetic', '')}</h4>
-                        <p><strong>Nghĩa ngữ cảnh:</strong> <span style="color:#38bdf8; font-size:1.1rem; font-weight:bold;">{res.get('vietnamese_meaning', '')}</span> ({res.get('part_of_speech', '')})</p>
-                        <p><strong>💡 Bản chất nguyên lý gốc (Why this word?):</strong><br>{res.get('root_nuance', '')}</p>
-                        <p><strong>🧩 Giải phẫu cú pháp (Grammar Breakdown):</strong><br>{res.get('grammar_breakdown', '')}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                    st.markdown("**Ví dụ thực tế đời thường:**")
-                    for ex in res.get("real_life_examples", []):
-                        st.markdown(f"- 🇺🇸 **{ex.get('en', '')}**\n  ➔ 🇻🇳 *{ex.get('vi', '')}*")
-
-                    if res.get("feynman_tip"):
-                        st.success(f"**Mẹo siêu học nhớ lâu:** {res.get('feynman_tip')}")
-
-                    # Export to Second Brain Button
-                    col_sb, col_dummy = st.columns([1.5, 3])
-                    with col_sb:
-                        if st.button("⭐ Lưu vào Sổ tay Tri thức (Second Brain)", key=f"sb_save_{res.get('phrase')}"):
-                            note = export_feynman_to_second_brain(
-                                username=username,
-                                phrase=res.get("phrase", ""),
-                                explanation=res,
-                                source_info=f"{current_book.get('title_en')} — {current_chapter.get('title_vi')}",
-                            )
-                            st.toast(f"Đã lưu '{res.get('phrase')}' vào Second Brain!", icon="✅")
-
-        st.markdown("---")
 
         # RENDER BILINGUAL SECTIONS
         for sec in sections:
@@ -287,6 +291,7 @@ with tab1:
                                     api_keys=active_keys,
                                 )
                                 st.session_state["last_feynman_result"] = feynman_res
+                                st.session_state["sidebar_word_input"] = v["word"]
                                 record_word_lookup(
                                     username=username,
                                     word=v["word"],
@@ -295,7 +300,33 @@ with tab1:
                                     vi_meaning=v.get("vi", ""),
                                     source_chapter=current_chapter.get("title_vi", ""),
                                 )
+                                st.toast(f"Đã phân tích '{v['word']}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
                                 st.rerun()
+
+            # Inline Quick Lookup Popover
+            with st.popover(f"🔍 Tra cứu cụm từ khác trong Cảnh {sec_id}"):
+                inline_word = st.text_input("Gõ hoặc dán cụm từ trong đoạn này:", key=f"inline_inp_{sec_id}")
+                if st.button("🔬 Mổ xẻ với Feynman", key=f"inline_btn_{sec_id}") and inline_word.strip():
+                    with st.spinner(f"Đang phân tích '{inline_word}'..."):
+                        feynman_res = explain_phrase_feynman(
+                            phrase=inline_word.strip(),
+                            context=sec.get("en", "")[:200],
+                            model_choice=model_choice,
+                            api_keys=active_keys,
+                        )
+                        st.session_state["last_feynman_result"] = feynman_res
+                        st.session_state["sidebar_word_input"] = inline_word.strip()
+                        record_word_lookup(
+                            username=username,
+                            word=inline_word.strip(),
+                            context_sentence=sec.get("en", "")[:150],
+                            feynman_breakdown=feynman_res.get("root_nuance", ""),
+                            vi_meaning=feynman_res.get("vietnamese_meaning", ""),
+                            source_chapter=current_chapter.get("title_vi", ""),
+                        )
+                        st.toast(f"Đã phân tích '{inline_word}'! Xem chi tiết ở Sidebar bên trái.", icon="🔬")
+                        st.rerun()
+
 
             st.markdown("<hr style='border: 1px dashed #334155;'>", unsafe_allow_html=True)
 
