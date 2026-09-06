@@ -101,7 +101,7 @@ with f_col3:
     sel_search = st.text_input("🔍 Tìm kiếm tức thì", placeholder="Tên mô hình, đòn bẩy, câu hỏi kích hoạt...", key="filter_model_search")
 with f_col4:
     st.markdown("<div style='height: 28px'></div>", unsafe_allow_html=True)
-    sel_only_gmm = st.checkbox("💎 Chỉ xem GMM", value=False, key="filter_model_gmm", help="Chỉ hiển thị các mô hình đã có Khung GMM Chuyên sâu (Volume 1)")
+    sel_only_gmm = st.checkbox("💎 Chỉ xem GMM", value=False, key="filter_model_gmm", help="Chỉ hiển thị các mô hình đã có Khung GMM Chuyên sâu (Volume 1, 2, 3, 4)")
 
 filtered_models = filter_models(all_models, pillar=sel_pillar, tier=sel_tier_val, query=sel_search, only_gmm=sel_only_gmm)
 
@@ -159,11 +159,11 @@ with subtab2:
             * **⛔ Ranh giới áp dụng (Boundary Conditions — Khi nào KHÔNG dùng)**
             * **🌐 Tình huống thực chiến đa chiều (K12 & Gia đình, Phát triển sự nghiệp, Đầu tư VN-Index)**
             """)
-            st.caption("📘 **Vol 1:** Tư duy nền tảng (9) · 📗 **Vol 2:** Vật lý & Sinh học (10) · 📙 **Vol 3:** Hệ thống & Toán học (10)")
+            st.caption("📘 **Vol 1:** Tư duy (9) · 📗 **Vol 2:** Tự nhiên (10) · 📙 **Vol 3:** Hệ thống (10) · 📕 **Vol 4:** Kinh tế (10)")
 
         with c_banner_actions:
             st.markdown("**⚡ Phím tắt mở nhanh từng mô hình GMM:**")
-            gmm_t1, gmm_t2, gmm_t3 = st.tabs(["📘 Vol 1: Tư duy (9)", "📗 Vol 2: Tự nhiên (10)", "📙 Vol 3: Hệ thống (10)"])
+            gmm_t1, gmm_t2, gmm_t3, gmm_t4 = st.tabs(["📘 Vol 1: Tư duy (9)", "📗 Vol 2: Tự nhiên (10)", "📙 Vol 3: Hệ thống (10)", "📕 Vol 4: Kinh tế (10)"])
 
             with gmm_t1:
                 # Row 1: Logic & Tinh giản
@@ -307,9 +307,57 @@ with subtab2:
                         st.session_state["_action_jump_mid"] = "SYS-04"
                         st.rerun()
 
+            with gmm_t4:
+                st.caption("💰 **Kinh tế học & Thị trường (Economics):**")
+                # Row 1: 5 models
+                e_c1, e_c2, e_c3, e_c4, e_c5 = st.columns(5)
+                with e_c1:
+                    if st.button("⚖️ ECON-01\nCung - Cầu", key="btn_gmm_econ01", use_container_width=True, help="Quy luật Cung & Cầu (Supply and Demand)"):
+                        st.session_state["_action_jump_mid"] = "ECON-01"
+                        st.rerun()
+                with e_c2:
+                    if st.button("⏳ ECON-02\nCP Cơ hội", key="btn_gmm_econ02", use_container_width=True, help="Chi phí Cơ hội (Opportunity Cost)"):
+                        st.session_state["_action_jump_mid"] = "ECON-02"
+                        st.rerun()
+                with e_c3:
+                    if st.button("🏭 ECON-03\nQuy mô", key="btn_gmm_econ03", use_container_width=True, help="Lợi thế Quy mô (Economies of Scale)"):
+                        st.session_state["_action_jump_mid"] = "ECON-03"
+                        st.rerun()
+                with e_c4:
+                    if st.button("🌐 ECON-04\nMạng lưới", key="btn_gmm_econ04", use_container_width=True, help="Hiệu ứng Mạng lưới (Network Effects)"):
+                        st.session_state["_action_jump_mid"] = "ECON-04"
+                        st.rerun()
+                with e_c5:
+                    if st.button("🤝 ECON-05\nSo sánh", key="btn_gmm_econ05", use_container_width=True, help="Lợi thế So sánh (Comparative Advantage)"):
+                        st.session_state["_action_jump_mid"] = "ECON-05"
+                        st.rerun()
+
+                # Row 2: 5 models
+                e_d1, e_d2, e_d3, e_d4, e_d5 = st.columns(5)
+                with e_d1:
+                    if st.button("🌪️ ECON-06\nSáng tạo", key="btn_gmm_econ06", use_container_width=True, help="Phá hủy Sáng tạo (Creative Destruction)"):
+                        st.session_state["_action_jump_mid"] = "ECON-06"
+                        st.rerun()
+                with e_d2:
+                    if st.button("🏰 ECON-07\nCon hào", key="btn_gmm_econ07", use_container_width=True, help="Con hào Kinh tế (Economic Moats)"):
+                        st.session_state["_action_jump_mid"] = "ECON-07"
+                        st.rerun()
+                with e_d3:
+                    if st.button("📉 ECON-08\nBiên giảm", key="btn_gmm_econ08", use_container_width=True, help="Hiệu dụng Biên Giảm dần (Diminishing Marginal Utility)"):
+                        st.session_state["_action_jump_mid"] = "ECON-08"
+                        st.rerun()
+                with e_d4:
+                    if st.button("🐑 ECON-09\nCủa chung", key="btn_gmm_econ09", use_container_width=True, help="Bi kịch Của chung (Tragedy of the Commons)"):
+                        st.session_state["_action_jump_mid"] = "ECON-09"
+                        st.rerun()
+                with e_d5:
+                    if st.button("♟️ ECON-10\nGame Theory", key="btn_gmm_econ10", use_container_width=True, help="Lý thuyết Trò chơi & Cân bằng Nash (Game Theory & Nash Equilibrium)"):
+                        st.session_state["_action_jump_mid"] = "ECON-10"
+                        st.rerun()
+
             btn_all_gmm, btn_reset = st.columns(2)
             with btn_all_gmm:
-                if st.button("✨ Lọc trọn bộ 29 mô hình GMM", type="primary", use_container_width=True):
+                if st.button("✨ Lọc trọn bộ 39 mô hình GMM", type="primary", use_container_width=True):
                     st.session_state["_action_filter_gmm"] = True
                     st.rerun()
             with btn_reset:

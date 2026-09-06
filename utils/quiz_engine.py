@@ -1641,56 +1641,79 @@ MODELS_QUIZ = [
     },
 
     # -------------------------------------------------------------------------
-    # TRỤ CỘT 4: KINH TẾ HỌC (6 CÂU: TIER 1 & TIER 2)
+    # TRỤ CỘT 4: KINH TẾ HỌC (11 CÂU: GMM VOL 4 ENRICHED)
     # -------------------------------------------------------------------------
     {
         "id": "Q-ECON-01",
         "model_id": "ECON-01",
         "pillar": "Kinh tế học",
         "tier": 1,
-        "model_name": "Chi Phí Cơ Hội (Opportunity Cost)",
+        "model_name": "Quy Luật Cung & Cầu (Supply and Demand)",
         "scenario": (
-            "Một người dành 4 giờ mỗi tối để xem phim giải trí miễn phí trên mạng và nghĩ rằng: 'Mình xem phim miễn phí nên chẳng mất đồng nào'. "
-            "Một cố vấn tư duy chỉ ra: 'Bạn đang trả giá bằng 4 giờ có thể dùng để học kỹ năng mới, tập thể thao hoặc tạo thêm thu nhập'."
+            "Một thợ may thủ công mất 300 giờ để hoàn thành một chiếc áo choàng bằng lông chim quý hiếm với chi phí nguyên liệu đắt đỏ. "
+            "Anh ta định giá chiếc áo 500 triệu đồng. Tuy nhiên, khi rao bán suốt 2 năm, không có bất kỳ ai hỏi mua dù chỉ một lần "
+            "vì thị trường không có nhu cầu về loại áo choàng này."
         ),
-        "question": "Cố vấn tư duy đang áp dụng khái niệm kinh tế học căn bản nào?",
+        "question": "Quy luật kinh tế học thị trường nào đã phủ định quan điểm định giá theo công sức của người thợ may?",
         "options": [
-            "A. Chi phí cơ hội: Giá trị của phương án tốt nhất bị bỏ qua khi bạn đưa ra một lựa chọn",
-            "B. Chi phí cận biên",
-            "C. Quy luật Cung Cầu",
-            "D. Hiệu ứng Mạng lưới"
+            "A. Định luật bảo toàn giá trị",
+            "B. Quy luật Cung & Cầu (Supply & Demand): Giá cả thị trường chỉ được quyết định tại điểm cân bằng giữa lượng cung sẵn bán và lượng cầu sẵn sàng chi trả, không phụ thuộc vào chi phí công sức bỏ ra",
+            "C. Độc quyền cưỡng bức",
+            "D. Hiệu ứng mỏ neo"
         ],
-        "correct_index": 0,
-        "explanation": "Không có bữa trưa nào miễn phí. Chi phí thực sự của bất kỳ hành động nào chính là giá trị lớn nhất mà bạn ĐÃ KHÔNG THỂ LÀM trong thời gian đó.",
-        "trap_analysis": "Chỉ nhìn thấy tiền mặt chi ra mà hoàn toàn mù tịt trước chi phí thời gian và tiềm năng bị mất đi vĩnh viễn."
+        "correct_index": 1,
+        "explanation": "Thị trường chỉ trả tiền cho những gì nó cần (Cầu) và những gì khan hiếm (Cung thấp). Dành 1.000 giờ làm việc không có cầu thì giá trị kinh tế vẫn bằng 0.",
+        "trap_analysis": "Ngộ nhận chi phí công sức (Labor Fallacy): Tin rằng mình khổ cực làm việc thì xã hội bắt buộc phải đền đáp xứng đáng."
     },
     {
         "id": "Q-ECON-02",
         "model_id": "ECON-02",
         "pillar": "Kinh tế học",
         "tier": 1,
-        "model_name": "Bẫy Chi Phí Chìm (Sunk Cost Fallacy)",
+        "model_name": "Chi Phí Cơ Hội (Opportunity Cost)",
         "scenario": (
-            "Một công ty đã đầu tư 10 tỷ đồng vào một phần mềm nội bộ suốt 2 năm. Hiện tại trên thị trường xuất hiện một giải pháp SaaS mới "
-            "hiện đại hơn, giá chỉ 20 triệu/tháng. Giám đốc CNTT từ chối đổi sang SaaS vì: 'Đã bỏ 10 tỷ đồng vào phần mềm này rồi, bỏ đi thì mất trắng à?!'."
+            "Một người trẻ nhận được lời mời làm việc với mức lương 15 triệu/tháng tại một cơ quan nhà nước nhàn rỗi, không có cơ hội thăng tiến hay học kỹ năng mới. "
+            "Cùng lúc, anh có cơ hội làm trợ lý cho một CEO công nghệ xuất chúng với mức trợ cấp chỉ 8 triệu/tháng nhưng được trực tiếp học hỏi cách xây dựng doanh nghiệp toàn cầu. "
+            "Người trẻ quyết định chọn công việc 15 triệu vì 'lương cao hơn 7 triệu'."
         ),
-        "question": "Sai lầm nhận thức kinh tế học nào đang làm công ty tiếp tục chảy máu dòng tiền?",
+        "question": "Khái niệm kinh tế học nào vạch trần sai lầm tính toán thiển cận của người trẻ này?",
         "options": [
-            "A. Chi phí chìm (Sunk Cost): Cố gắng bám víu và đổ thêm tiền vào một dự án tồi chỉ vì tiếc nuối những nguồn lực đã mất trong quá khứ không thể lấy lại",
-            "B. Tối ưu hóa danh mục đầu tư",
-            "C. Bẫy thanh khoản",
-            "D. Quy luật giá trị thặng dư"
+            "A. Chi phí chìm",
+            "B. Chi phí Cơ hội (Opportunity Cost): Chi phí thực sự của việc chọn công việc nhàn rỗi chính là toàn bộ mạng lưới quan hệ, kỹ năng tinh hoa và tiềm năng thu nhập hàng trăm triệu trong tương lai bị đánh mất",
+            "C. Lợi thế kinh tế quy mô",
+            "D. Tỷ lệ đòn bẩy"
         ],
-        "correct_index": 0,
-        "explanation": "Tiền trong quá khứ đã mất vĩnh viễn (sunk cost = 0). Mọi quyết định lý trí chỉ được dựa trên chi phí và lợi ích biên từ ngày mai trở đi.",
-        "trap_analysis": "'Đã lỡ phóng lao thì phải theo lao' — Câu nói dân gian này chính là công thức hoàn hảo để tự sát tài chính."
+        "correct_index": 1,
+        "explanation": "Chi phí cơ hội đo lường giá trị của phương án tốt nhất bị bỏ qua. Nhận thêm 7 triệu ngắn hạn nhưng đánh mất cơ hội trưởng thành vượt bậc là thương vụ lỗ nặng nề nhất đời người.",
+        "trap_analysis": "Chỉ nhìn vào tiền mặt cầm tay trước mắt mà mù tịt trước những chi phí vô hình và tiềm năng tăng trưởng bị xóa sổ vĩnh viễn."
+    },
+    {
+        "id": "Q-ECON-03",
+        "model_id": "ECON-03",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Lợi Thế Kinh Tế Nhờ Quy Mô (Economies of Scale)",
+        "scenario": (
+            "Tập đoàn bán lẻ Costco mua hàng triệu sản phẩm trực tiếp từ nhà máy để hưởng chiết khấu số lượng tối đa, giúp giá thành đầu vào rẻ hơn 30% so với siêu thị nhỏ. "
+            "Thay vì tăng giá để kiếm lợi nhuận tức thì, Costco giới hạn biên lợi nhuận ròng dưới 14% và bán giá rẻ nhất thị trường cho hội viên, khiến đối thủ cạnh tranh hoàn toàn không thể bắt chước."
+        ),
+        "question": "Mô hình kinh tế học kết hợp chiến lược chia sẻ quy mô (Scale Economics Shared) này tạo ra lợi thế gì?",
+        "options": [
+            "A. Chi phí biên tiệm cận vô cùng",
+            "B. Lợi thế Kinh tế nhờ Quy mô (Economies of Scale): Chi phí cố định trên mỗi đơn vị giảm dần khi sản lượng bùng nổ, tạo thành bức tường phòng thủ chi phí thấp bất khả xâm phạm",
+            "C. Độc quyền cưỡng chế của nhà nước",
+            "D. Lạm phát chi phí đẩy"
+        ],
+        "correct_index": 1,
+        "explanation": "Quy mô càng lớn, giá thành càng rẻ; giá càng rẻ thu hút càng nhiều khách; nhiều khách lại làm quy mô to hơn nữa. Đây là con hào kinh tế bền vững nhất thời đại công nghiệp.",
+        "trap_analysis": "Nhầm lẫn giữa quy mô to và hiệu quả: Bộ máy phình to nếu sinh ra quan liêu và trì trệ sẽ rơi vào Bất lợi quy mô (Diseconomies of Scale)."
     },
     {
         "id": "Q-ECON-04",
         "model_id": "ECON-04",
         "pillar": "Kinh tế học",
         "tier": 1,
-        "model_name": "Hiệu Ứng Mạng Lưới (Network Effects)",
+        "model_name": "Hiệu Ứng Mạng Lưới (Network Effects — Metcalfe's Law)",
         "scenario": (
             "Một ứng dụng nhắn tin mới ra mắt có giao diện đẹp hơn và bảo mật cao hơn Zalo, nhưng người dùng cài thử rồi xóa ngay "
             "vì bạn bè, đối tác và gia đình của họ đều đang ở trên Zalo. Ứng dụng mới không thể lôi kéo được thị phần."
@@ -1698,7 +1721,7 @@ MODELS_QUIZ = [
         "question": "Con hào kinh tế bất khả xâm phạm nào đang bảo vệ vị thế của Zalo?",
         "options": [
             "A. Chi phí sản xuất rẻ hơn",
-            "B. Hiệu ứng Mạng lưới (Network Effects): Giá trị của mạng lưới tăng theo cấp số nhân với mỗi người dùng mới gia nhập (Định luật Metcalfe)",
+            "B. Hiệu ứng Mạng lưới (Network Effects): Giá trị của mạng lưới tăng theo cấp số nhân với mỗi người dùng mới gia nhập (Định luật Metcalfe: $V \\sim n^2$)",
             "C. Đòn bẩy vốn nhà nước",
             "D. Bản quyền sở hữu trí tuệ"
         ],
@@ -1707,48 +1730,131 @@ MODELS_QUIZ = [
         "trap_analysis": "Đầu tư vào sản phẩm chỉ chăm chăm làm tính năng mà không thiết kế cơ chế tạo ra hiệu ứng mạng lưới tự tích lũy."
     },
     {
+        "id": "Q-ECON-05",
+        "model_id": "ECON-05",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Lợi Thế So Sánh & Chuyên Môn Hóa (Comparative Advantage — David Ricardo)",
+        "scenario": (
+            "Một CEO công nghệ xuất chúng có khả năng gõ bàn phím và nhập liệu nhanh gấp đôi cô trợ lý, dọn dẹp văn phòng sạch hơn lao công. "
+            "Tuy nhiên, vị CEO không bao giờ tự gõ hợp đồng hay tự dọn văn phòng; anh ta ủy quyền toàn bộ để dành 100% thời gian nghiên cứu sản phẩm và gặp gỡ đối tác chiến lược."
+        ),
+        "question": "Định luật kinh tế học vĩ đại nào của David Ricardo chứng minh hành động của vị CEO là hoàn toàn tối ưu?",
+        "options": [
+            "A. Lợi thế Tuyệt đối (Absolute Advantage)",
+            "B. Lợi thế So sánh (Comparative Advantage): Tập trung vào công việc có chi phí cơ hội thấp nhất và tạo giá trị gia tăng tương đối cao nhất, ủy quyền các việc còn lại",
+            "C. Quy luật giá trị thặng dư",
+            "D. Cân bằng tiền tệ"
+        ],
+        "correct_index": 1,
+        "explanation": "Dù bạn giỏi hơn người khác ở mọi việc (lợi thế tuyệt đối), bạn vẫn phải ủy quyền việc bạn ít giỏi nhất để tối đa hóa tổng sản lượng thông qua chuyên môn hóa.",
+        "trap_analysis": "Bệnh ôm đồm của người giỏi: Nghĩ rằng 'mình làm tốt hơn người khác thì mình nên tự làm hết', tự giam cầm bản thân trong các tác vụ giá trị thấp."
+    },
+    {
         "id": "Q-ECON-06",
         "model_id": "ECON-06",
         "pillar": "Kinh tế học",
-        "tier": 2,
-        "model_name": "Lợi Thế So Sánh (Comparative Advantage — David Ricardo)",
+        "tier": 1,
+        "model_name": "Phá Hủy Sáng Tạo (Creative Destruction — Joseph Schumpeter)",
         "scenario": (
-            "Một luật sư hàng đầu có mức thu nhập 2.000.000đ/giờ. Cô ấy gõ bàn phím nhanh gấp đôi cô thư ký. "
-            "Nếu tự gõ văn bản hợp đồng, cô ấy chỉ mất 1 giờ thay vì 2 giờ của thư ký (lương thư ký 100.000đ/giờ). "
-            "Tuy nhiên, vị luật sư vẫn thuê thư ký gõ toàn bộ hợp đồng."
+            "Năm 2007, Steve Jobs ra mắt chiếc iPhone màn hình cảm ứng điện dung tích hợp máy nghe nhạc iPod và trình duyệt internet, "
+            "dù biết rõ hành động này sẽ tự 'ăn thịt' và khai tử dòng máy nghe nhạc iPod đang mang về hàng tỷ USD doanh thu cho Apple."
         ),
-        "question": "Định luật kinh tế học vĩ đại nào chứng minh quyết định của vị luật sư là hoàn toàn thông thái?",
+        "question": "Nguyên lý kinh tế học cốt lõi nào của Joseph Schumpeter giải thích hành động dũng cảm này của Apple?",
         "options": [
-            "A. Lợi thế Tuyệt đối",
-            "B. Lợi thế So sánh (Comparative Advantage): Dù giỏi hơn ở mọi việc, bạn vẫn nên tập trung vào việc có chi phí cơ hội thấp nhất và thuê ngoài việc khác",
-            "C. Cân bằng kinh tế vi mô",
-            "D. Quy luật giá trị lao động"
+            "A. Cạnh tranh độc quyền tĩnh",
+            "B. Phá hủy Sáng tạo (Creative Destruction): Chủ động tự phá hủy sản phẩm cũ của chính mình bằng một sản phẩm đột phá ưu việt hơn trước khi bị đối thủ tiêu diệt",
+            "C. Bẫy thanh khoản",
+            "D. Lợi thế người đi sau"
         ],
         "correct_index": 1,
-        "explanation": "Nếu luật sư tự gõ phím 1 giờ, cô ấy tiết kiệm được 200.000đ tiền thuê thư ký nhưng mất đi 2.000.000đ tiền tư vấn pháp lý. Chi phí cơ hội quá đắt.",
-        "trap_analysis": "Bệnh ôm đồm của người giỏi: Nghĩ rằng 'mình làm tốt hơn người khác thì mình nên tự làm hết', dẫn đến việc tự giam cầm bản thân trong việc giá trị thấp."
+        "explanation": "Chủ nghĩa tư bản vận động không ngừng bằng cách phá hủy các cấu trúc cũ để tạo ra trật tự mới. Nếu bạn không dám tự phá hủy mô hình của mình, thị trường sẽ làm điều đó cho bạn.",
+        "trap_analysis": "Thảm kịch bảo thủ của Kodak: Phát minh ra máy ảnh số đầu tiên nhưng giấu đi vì sợ mất doanh thu bán phim nhựa truyền thống, dẫn đến phá sản."
+    },
+    {
+        "id": "Q-ECON-07",
+        "model_id": "ECON-07",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Con Hào Kinh Tế & Rào Cản Gia Nhập (Economic Moats — Warren Buffett)",
+        "scenario": (
+            "Một công ty sản xuất phần mềm kế toán doanh nghiệp có hàng triệu công ty sử dụng. Dù có đối thủ mới ra mắt phần mềm rẻ hơn 50%, "
+            "hầu hết khách hàng vẫn kiên quyết không đổi phần mềm vì chi phí rủi ro sai sót dữ liệu, đào tạo lại toàn bộ nhân sự kế toán là quá khủng khiếp."
+        ),
+        "question": "Loại con hào kinh tế nào của Warren Buffett đang bảo vệ doanh nghiệp này?",
+        "options": [
+            "A. Chi phí Chuyển đổi cao (High Switching Costs): Khách hàng bị khóa chặt vào hệ sinh thái vì chi phí và rủi ro chuyển đổi sang đối thủ vượt xa lợi ích giảm giá",
+            "B. Độc quyền do nhà nước bảo hộ",
+            "C. Bán phá giá có trợ cấp",
+            "D. Rào cản địa lý tự nhiên"
+        ],
+        "correct_index": 0,
+        "explanation": "Con hào kinh tế là khả năng duy trì lợi nhuận cao dài hạn trước sự tấn công của đối thủ. Chi phí chuyển đổi cao là một trong những con hào bền vững nhất.",
+        "trap_analysis": "Nhầm lẫn doanh thu lớn với con hào kinh tế: Doanh nghiệp không có con hào phòng thủ sẽ bị đối thủ bào mòn lợi nhuận về 0 ngay khi thị trường bão hòa."
     },
     {
         "id": "Q-ECON-08",
         "model_id": "ECON-08",
         "pillar": "Kinh tế học",
-        "tier": 2,
-        "model_name": "Con Hào Kinh Tế (Economic Moat — Warren Buffett)",
+        "tier": 1,
+        "model_name": "Hiệu Dụng Biên Giảm Dần (Diminishing Marginal Utility)",
         "scenario": (
-            "Một công ty đồ uống giải khát không có công nghệ bí mật gì cao siêu ngoài công thức nước ngọt có gas và đường. "
-            "Tuy nhiên suốt 100 năm qua, dù hàng ngàn đối thủ tung sản phẩm rẻ hơn và ngon hơn, công ty này vẫn duy trì biên lợi nhuận ròng 25% "
-            "và thương hiệu biểu tượng ăn sâu vào văn hóa toàn cầu."
+            "Một người đi bộ khát khô cổ giữa sa mạc sẵn sàng trả 10 triệu đồng cho chai nước lọc đầu tiên (thỏa mãn cực hạn). "
+            "Khi uống đến chai thứ hai, anh ta chỉ sẵn lòng trả 50.000 đồng; đến chai thứ tư anh ta từ chối uống dù được cho miễn phí vì bụng đã căng tròn."
         ),
-        "question": "Warren Buffett gọi lợi thế cạnh tranh bền vững che chở doanh nghiệp khỏi sự tấn công của đối thủ là gì?",
+        "question": "Quy luật tâm lý và kinh tế học hành vi nào điều khiển sự sụt giảm mức độ thỏa mãn này?",
         "options": [
-            "A. Con hào kinh tế (Economic Moat): Lợi thế cấu trúc dài hạn (Thương hiệu vô hình, Chi phí chuyển đổi, Lợi thế chi phí hoặc Hiệu ứng mạng)",
-            "B. Độc quyền cưỡng bức",
-            "C. Bán phá giá có bảo trợ",
-            "D. Tối ưu hóa chuỗi cung ứng"
+            "A. Lạm phát tiền tệ",
+            "B. Hiệu dụng Biên Giảm dần (Diminishing Marginal Utility): Mức độ thỏa mãn tăng thêm thu được từ mỗi đơn vị tiêu thụ bổ sung sẽ giảm dần theo thời gian",
+            "C. Đòn bẩy tâm lý",
+            "D. Điểm uốn công nghệ"
+        ],
+        "correct_index": 1,
+        "explanation": "Quy luật này nhắc nhở con người về điểm bão hòa: Càng tiêu thụ nhiều cùng một thứ, giá trị cận biên càng tiến về 0. Biết đủ và đa dạng hóa trải nghiệm là chìa khóa hạnh phúc.",
+        "trap_analysis": "Bẫy cày cuốc kiệt quệ: Ngồi làm việc thêm từ tiếng thứ 12 đến tiếng thứ 15 khi não đã kiệt sức; hiệu dụng biên của 3 tiếng này bằng 0 hoặc gây ra lỗi sai tai hại."
+    },
+    {
+        "id": "Q-ECON-09",
+        "model_id": "ECON-09",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Bi Kịch Của Của Chung (Tragedy of the Commons — Hardin & Ostrom)",
+        "scenario": (
+            "Một đồng cỏ chung của làng mở cửa tự do cho tất cả các hộ dân thả bò. Mỗi hộ nông dân vì muốn tối đa hóa lợi nhuận riêng đã mua thêm nhiều bò về thả. "
+            "Chỉ sau 6 tháng, đồng cỏ bị giẫm đạp trơ trụi đất cát, cỏ không kịp mọc lại khiến toàn bộ đàn bò của cả làng cùng chết đói."
+        ),
+        "question": "Mô hình kinh tế học cảnh báo về sự hủy hoại tài nguyên tự do này có tên là gì?",
+        "options": [
+            "A. Bi kịch của Của chung (Tragedy of the Commons): Khi tài nguyên không có quyền sở hữu rõ ràng, hành vi duy lý cá nhân ngắn hạn sẽ dẫn đến thảm họa cho cả tập thể",
+            "B. Cân bằng tiền tệ mở",
+            "C. Lợi thế so sánh tập thể",
+            "D. Thị trường cạnh tranh hoàn hảo"
         ],
         "correct_index": 0,
-        "explanation": "Một doanh nghiệp tuyệt vời là một tòa lâu đài kiên cố được bao quanh bởi một con hào sâu và rộng chứa đầy cá sấu (Economic Moat).",
-        "trap_analysis": "Nhầm lẫn giữa lợi thế cạnh tranh tạm thời (ra sản phẩm mới trước 3 tháng) với Con hào kinh tế cấu trúc không thể sao chép."
+        "explanation": "Khi tài sản là của chung không ai sở hữu trực tiếp, không ai có động lực bảo trì mà chỉ có động lực bòn rút tối đa. Giải pháp là tư nhân hóa hoặc thiết lập quy chế chế tài minh bạch.",
+        "trap_analysis": "Cơ chế 'cha chung không ai khóc': Trong một tổ chức, nhiệm vụ nào được giao chung cho cả phòng mà không chỉ định một người chịu trách nhiệm duy nhất (DRI) thì chắc chắn bị bỏ bê."
+    },
+    {
+        "id": "Q-ECON-10",
+        "model_id": "ECON-10",
+        "pillar": "Kinh tế học",
+        "tier": 1,
+        "model_name": "Lý Thuyết Trò Chơi & Cân Bằng Nash (Game Theory & Nash Equilibrium)",
+        "scenario": (
+            "Hai hãng hàng không cùng bay trên một tuyến đường. Cả hai đều biết nếu cùng giữ giá vé 2 triệu đồng thì cả hai đều có lãi lớn. "
+            "Nhưng vì sợ đối thủ giảm giá cướp khách, hãng A hạ giá xuống 1.5 triệu; hãng B lập tức hạ giá xuống 1.2 triệu để trả đũa. "
+            "Kết quả là cả hai hãng cùng rơi vào thua lỗ nặng nề nhưng không bên nào dám đơn phương tăng giá trở lại."
+        ),
+        "question": "Trạng thái kẹt cứng chiến lược tồi tệ này trong Lý thuyết Trò chơi được gọi là gì?",
+        "options": [
+            "A. Tối ưu hóa Pareto",
+            "B. Cân bằng Nash trong Thế tiến thoái lưỡng nan của tù nhân (Prisoner's Dilemma): Không bên nào có động lực đơn phương thay đổi chiến lược vì sợ bị đối phương hạ gục",
+            "C. Độc quyền nhóm liên minh",
+            "D. Lợi thế người đi đầu"
+        ],
+        "correct_index": 1,
+        "explanation": "Cân bằng Nash giải thích tại sao hai bên hoàn toàn duy lý lại có thể đưa nhau đến một kết cục bi thảm. Muốn thoát bẫy phải thay đổi luật chơi hoặc xây dựng cam kết hợp tác lặp lại.",
+        "trap_analysis": "Bị cuốn vào trò chơi có tổng bằng không (Zero-sum) và cuộc đua xuống đáy (Race to the bottom) mà không nhận ra cả ngành đang cùng nhau tự sát."
     },
     {
         "id": "Q-ECON-11",
@@ -1772,7 +1878,6 @@ MODELS_QUIZ = [
         "explanation": "Khi một bên nắm nhiều thông tin hơn bên kia, hàng kém chất lượng sẽ đánh bạt hàng tốt ra khỏi thị trường nếu thiếu cơ chế bảo hành hoặc kiểm định độc lập.",
         "trap_analysis": "Trong bất kỳ cuộc đàm phán hay đầu tư nào: nếu bạn không biết đối phương đang nắm lợi thế thông tin gì, bạn chính là bên chịu lựa chọn bất lợi."
     },
-
     # -------------------------------------------------------------------------
     # TRỤ CỘT 5: TOÁN HỌC & XÁC SUẤT (8 CÂU: GMM VOL 1 & VOL 3 ENRICHED)
     # -------------------------------------------------------------------------

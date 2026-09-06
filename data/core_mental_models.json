@@ -888,34 +888,52 @@
     {
       "id": "ECON-01",
       "name_vi": "Quy luật Cung & Cầu",
-      "name_en": "Supply and Demand",
+      "name_en": "Supply and Demand (Market Equilibrium)",
       "pillar": "Kinh tế học",
       "tier": 1,
-      "first_principle": "Giá cả hàng hóa được xác định tại giao điểm giữa lượng cung (sẵn lòng bán) và lượng cầu (sẵn lòng mua) trên thị trường tự do.",
-      "elite_leverage": "Muốn thu nhập cao, đừng chỉ làm việc chăm chỉ mà hãy tạo ra các kỹ năng cực kỳ hiếm (Cung thấp) nhưng giải quyết nỗi đau lớn của xã hội (Cầu cao).",
-      "trigger_question": "Động thái này đang làm thay đổi đường cung hay đường cầu, và điểm cân bằng giá mới sẽ nằm ở đâu?",
-      "inversion_trap": "Định giá theo công sức bỏ ra: Nghĩ rằng món đồ làm mất 100 giờ công thì đương nhiên sẽ bán được giá cao, trong khi thị trường không có nhu cầu.",
+      "first_principle": "Giá cả thị trường tự do được xác định tại điểm cân bằng nơi đường cung (lượng hàng hóa người bán sẵn lòng cung ứng theo giá) cắt đường cầu (lượng hàng hóa người mua sẵn lòng chi trả). Khi cầu vượt cung, giá tăng thu hút thêm nguồn cung mới; khi cung vượt cầu, giá giảm đào thải bớt người bán kém hiệu quả.",
+      "elite_leverage": "Không định giá bản thân theo công sức bỏ ra, mà theo sự khan hiếm tương đối. Muốn có thu nhập cao và không thể thay thế, hãy phát triển những kỹ năng cực kỳ hiếm (Cung thấp) nhưng giải quyết những vấn đề đau đớn và tạo ra dòng tiền lớn cho xã hội (Cầu cao). Khi cung bằng 0 và cầu lớn, bạn nắm quyền định giá tuyệt đối.",
+      "trigger_question": "Thị trường này đang ở trạng thái dư cung hay khan hiếm cung, và hành động của tôi có đang làm dịch chuyển vị thế của tôi về phía nguồn cung độc bản không?",
+      "inversion_trap": "Định giá theo chi phí công sức (Labor Theory of Value): Ngây thơ tin rằng một sản phẩm bạn mất 1.000 giờ tỉ mẩn hoàn thành thì đương nhiên khách hàng phải trả giá cao, trong khi thị trường hoàn toàn không có nhu cầu thực tế.",
       "lollapalooza_pairs": [
         "Chi phí cơ hội",
         "Lợi thế quy mô",
-        "Hiệu ứng Mạng lưới"
-      ]
+        "Hiệu ứng Mạng lưới",
+        "Con hào kinh tế"
+      ],
+      "action_steps": [
+        "Đo lường cán cân cung cầu thực tế: Nghiên cứu thị trường để xác định xem ngành của bạn đang rơi vào tình trạng dư cung (hàng triệu cử nhân cùng bằng cấp) hay thiếu cung (khan hiếm chuyên gia AI thực chiến).",
+        "Tạo ra sự khan hiếm nhân tạo thông qua độc bản: Kết hợp 2-3 kỹ năng khác nhau để đưa bản thân vào nhóm cung 1% (ví dụ: Kỹ sư phần mềm hiểu sâu về kế toán kiểm toán).",
+        "Đón đầu làn sóng dịch chuyển cầu: Nhận diện các xu hướng vĩ mô đang tạo ra lực cầu bùng nổ (già hóa dân số, chuyển đổi xanh, tự động hóa) để chuẩn bị năng lực đón đầu.",
+        "Bảo vệ biên lợi nhuận trước làn sóng cung mới: Khi thấy một mảng đang siêu lợi nhuận, phải dự liệu việc hàng trăm đối thủ sẽ nhảy vào làm tăng cung; liên tục nâng cấp con hào để không bị kéo vào cuộc đua giảm giá."
+      ],
+      "boundary_conditions": "Quy luật cung cầu bị bóp méo trong các thị trường có sự can thiệp cưỡng chế giá trần/giá sàn của chính phủ, độc quyền nhà nước hoặc độc quyền cưỡng bức. Tại đó, các cơ chế phân bổ phi thị trường (hối lộ, tem phiếu, quan hệ thân hữu) sẽ lấn át.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Định hướng học tập cho con: Không chạy theo các ngành 'hot' đại trà đang có hàng trăm ngàn sinh viên theo học (nguy cơ dư cung sau 4 năm dẫn đến thất nghiệp). Cha mẹ hướng con xây dựng các kỹ năng nền tảng vững chắc (tư duy phản biện, ngoại ngữ, giao tiếp) kết hợp với năng khiếu cá nhân độc bản để con luôn là 'mặt hàng khan hiếm' trong mắt nhà tuyển dụng.\n• Sự nghiệp & Quản lý: Chiến lược giá của thương hiệu xa xỉ (Hermès): Cố tình hạn chế số lượng túi Birkin sản xuất mỗi năm (giữ cung luôn thấp hơn cầu nhiều lần); khách hàng phải chờ nhiều năm và mua thêm hàng trăm triệu phụ kiện mới được quyền mua túi, biến sự khan hiếm thành con hào giá trị hàng tỷ USD.\n• Đầu tư VN-Index: Quy luật cung cầu điều khiển giá cổ phiếu ngắn hạn: Tại vùng đáy hoảng loạn, khi lượng cung cắt lỗ của nhỏ lẻ bị các tổ chức gom sạch (cạn cung), chỉ cần một lượng cầu mua nhỏ cũng đủ đẩy cổ phiếu tăng trần liên tiếp; ngược lại ở vùng đỉnh, lượng cổ phiếu trôi nổi khổng lồ do phát hành thêm sẽ đè bẹp mọi nỗ lực tăng giá."
     },
     {
       "id": "ECON-02",
       "name_vi": "Chi phí Cơ hội",
-      "name_en": "Opportunity Cost",
+      "name_en": "Opportunity Cost (The True Cost of Everything)",
       "pillar": "Kinh tế học",
       "tier": 1,
-      "first_principle": "Chi phí thực sự của bất kỳ hành động nào chính là giá trị của sự lựa chọn thay thế tốt nhất bị bỏ qua.",
-      "elite_leverage": "'Nói CÓ với việc này đồng nghĩa với việc bạn đang nói KHÔNG với việc tốt nhất khác'. Luôn so sánh phương án hiện tại với phương án thay thế tốt nhất.",
-      "trigger_question": "Nếu dành 2 giờ hoặc 100 triệu này cho việc này, tôi đang vĩnh viễn đánh mất cơ hội làm việc xuất sắc nào khác?",
-      "inversion_trap": "Chỉ nhìn chi phí sổ sách: Bỏ 4 năm học một ngành nghề lỗi thời chỉ vì 'học phí rẻ', mà quên mất chi phí cơ hội của 4 năm tuổi trẻ.",
+      "first_principle": "Chi phí thực sự của bất kỳ hành động hoặc quyết định nào không phải là số tiền bạn bỏ ra trên hóa đơn, mà là giá trị của sự lựa chọn thay thế tốt nhất tiếp theo mà bạn vĩnh viễn đánh mất khi chọn hành động đó.",
+      "elite_leverage": "Charlie Munger luôn nhấn mạnh: 'Nói CÓ với việc này đồng nghĩa với việc bạn đang nói KHÔNG với phương án tốt nhất khác'. Giới tinh hoa không bao giờ so sánh một cơ hội với con số 0; họ luôn so sánh cơ hội mới với cơ hội tốt nhất hiện có trong tay để đảm bảo mọi giờ làm việc và mỗi đồng vốn đều sinh lời tối đa.",
+      "trigger_question": "Nếu dành 2 giờ hoặc 100 triệu này cho quyết định này, tôi đang vĩnh viễn từ bỏ cơ hội làm điều xuất sắc nào khác?",
+      "inversion_trap": "Bẫy chi phí kế toán sổ sách: Chỉ nhìn vào số tiền mặt chi ra mà mù tịt trước chi phí vô hình: Ngồi chôn chân 5 năm trong một công việc tẻ nhạt không học hỏi được gì chỉ vì 'lương ổn định', đánh mất hoàn toàn chi phí cơ hội của 5 năm tuổi trẻ bứt phá.",
       "lollapalooza_pairs": [
         "Giá trị kỳ vọng",
         "Lợi thế so sánh",
-        "Đa quy mô thời gian"
-      ]
+        "Đa quy mô thời gian",
+        "Tư duy đảo ngược"
+      ],
+      "action_steps": [
+        "Luôn lập danh mục phương án thay thế tốt nhất (Next Best Alternative): Trước khi quyết định, viết ra tối thiểu 1 phương án xuất sắc khác bạn sẽ làm nếu không chọn phương án này.",
+        "Lượng hóa chi phí cơ hội của thời gian: Gán một mức giá trị thời gian cho bản thân (ví dụ: 500.000đ/giờ); kiên quyết không tự làm những việc có thể thuê ngoài với giá 100.000đ/giờ.",
+        "Áp dụng rào cản tối thiểu (Hurdle Rate): Đặt ngưỡng sinh lời tối thiểu mà bất kỳ dự án hay thương vụ đầu tư mới nào cũng phải vượt qua để xứng đáng được rót vốn.",
+        "Dũng cảm từ bỏ việc tốt để chọn việc vĩ đại: Nhận thức rằng kẻ thù lớn nhất của sự xuất sắc không phải là sự tồi tệ, mà là sự 'tàm tạm/khá tốt' đang chiếm dụng sạch thời gian của bạn."
+      ],
+      "boundary_conditions": "Không áp dụng chi phí cơ hội vào các mối quan hệ tình cảm gia đình, tình bạn chân thành và nghĩa vụ đạo đức cơ bản. Tính toán chi phí cơ hội cho từng giờ chơi với con hay chăm sóc cha mẹ già sẽ biến bạn thành kẻ vô cảm và phá hủy hạnh phúc nền tảng.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Cha mẹ tự tay ngồi sửa bóng đèn, chắp vá đồ đạc cũ mất 3 tiếng cuối tuần để 'tiết kiệm 200.000đ': Chi phí cơ hội thực tế là 3 tiếng chơi thể thao cùng con hoặc nghỉ ngơi tái tạo năng lượng cho tuần làm việc mới; người khôn ngoan chi tiền thuê thợ để dành trọn vẹn thời gian kết nối với gia đình.\n• Sự nghiệp & Quản lý: Lãnh đạo doanh nghiệp tự mình đi sửa lỗi văn bản, duyệt chi từng khoản tiền nhỏ vài trăm ngàn: Chi phí cơ hội là không có thời gian hoạch định chiến lược kinh doanh và đàm phán hợp đồng lớn, khiến công ty mất đi hàng tỷ đồng tiềm năng.\n• Đầu tư VN-Index: Nhà đầu tư gồng lỗ một mã cổ phiếu yếu kém suốt 2 năm để 'đợi hòa vốn': Chi phí cơ hội không chỉ là khoản lỗ trên danh nghĩa, mà là việc bỏ lỡ cơ hội chuyển dòng tiền đó sang các cổ phiếu siêu tăng trưởng dẫn đầu thị trường trong cùng chu kỳ sóng lớn."
     },
     {
       "id": "ECON-03",
@@ -923,127 +941,199 @@
       "name_en": "Economies of Scale",
       "pillar": "Kinh tế học",
       "tier": 1,
-      "first_principle": "Khi sản lượng tăng lên, chi phí cố định được phân bổ cho nhiều đơn vị sản phẩm hơn, khiến chi phí trung bình trên mỗi đơn vị giảm dần.",
-      "elite_leverage": "Xây dựng các mô hình kinh doanh có chi phí cận biên tiệm cận 0 (Phần mềm, Khóa học số, Thuật toán). Quy mô càng lớn thì biên lợi nhuận càng bùng nổ.",
-      "trigger_question": "Mô hình này có càng làm càng rẻ trên mỗi đơn vị không, hay chi phí đang phình to theo quy mô?",
-      "inversion_trap": "Bất lợi quy mô: Bộ máy phình to sinh ra vô số tầng nấc quan liêu, khiến chi phí quản lý tăng nhanh hơn doanh thu.",
+      "first_principle": "Khi quy mô sản lượng tăng lên, chi phí cố định (nhà xưởng, R&D, máy móc) được dàn mỏng cho một số lượng đơn vị sản phẩm khổng lồ, khiến chi phí trung bình trên mỗi đơn vị sản phẩm giảm dần, tạo ra lợi thế cạnh tranh về giá mà các đối thủ nhỏ không thể cạnh tranh nổi.",
+      "elite_leverage": "Xây dựng các cỗ máy kinh doanh có chi phí biên (Marginal Cost) tiệm cận 0 trong kỷ nguyên số: Sản phẩm phần mềm, khóa học trực tuyến, thuật toán AI. Khi đã hoàn thành sản phẩm gốc, việc phục vụ thêm 1 triệu khách hàng hầu như không tốn thêm chi phí, khiến biên lợi nhuận ròng tăng vọt theo quy mô.",
+      "trigger_question": "Mô hình này có đặc tính càng làm lớn càng giảm chi phí trên mỗi đơn vị sản phẩm không, hay bộ máy đang phình to sinh ra chi phí quan liêu cản trở?",
+      "inversion_trap": "Bất lợi kinh tế nhờ quy mô (Diseconomies of Scale): Khi tổ chức phình to quá mức, các tầng nấc quản lý quan liêu, chi phí họp hành, chính trị công sở và độ trễ thông tin tăng vọt khiến chi phí vận hành tăng nhanh hơn tốc độ tăng doanh thu.",
       "lollapalooza_pairs": [
         "Đòn bẩy",
         "Con hào kinh tế",
-        "Khối lượng tới hạn"
-      ]
+        "Khối lượng tới hạn",
+        "Hiệu ứng Mạng lưới"
+      ],
+      "action_steps": [
+        "Tách bạch chi phí cố định và chi phí biến đổi: Nhận diện các khoản đầu tư lớn ban đầu có thể tái sử dụng vô tận cho nhiều khách hàng (phần mềm, khuôn mẫu, thương hiệu).",
+        "Đẩy mạnh sản lượng vượt điểm hòa vốn: Tập trung dồn nguồn lực để đạt công suất tối ưu, giảm giá thành đơn vị xuống mức thấp nhất trong ngành.",
+        "Chuyển hóa lợi thế quy mô thành rào cản giá: Chủ động chia sẻ một phần lợi thế chi phí thấp cho khách hàng (Scale Economics Shared — triết lý Costco và Amazon) để đối thủ mới không có cửa cạnh tranh.",
+        "Phòng ngừa căn bệnh quan liêu: Chia nhỏ tập đoàn lớn thành các đơn vị kinh doanh tự chủ (Autonomous Units) tinh gọn để duy trì sự linh hoạt của startup."
+      ],
+      "boundary_conditions": "Lợi thế quy mô không phát huy tác dụng trong các ngành đòi hỏi tính cá nhân hóa cực cao, dịch vụ thủ công mỹ nghệ hoặc chăm sóc chuyên sâu 1-1, nơi chất lượng phụ thuộc vào bàn tay con người và không thể nhân bản cơ học.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Nấu ăn cho gia đình 4 người chỉ tốn thời gian gấp rưỡi nhưng rẻ hơn và sạch hơn nhiều so với việc mỗi người ăn riêng một quán; chuẩn bị bữa ăn theo tuần (Meal Prep) tận dụng quy mô thời gian giúp tiết kiệm 10 giờ mỗi tuần cho cha mẹ.\n• Sự nghiệp & Quản lý: Costco mua hàng với số lượng khổng lồ trực tiếp từ nhà máy để hưởng chiết khấu tối đa, sau đó giới hạn mức biên lợi nhuận gộp không quá 14%, bán lại cho hội viên với giá rẻ nhất thị trường; quy mô khổng lồ tạo ra con hào phòng thủ bất khả xâm phạm.\n• Đầu tư VN-Index: Doanh nghiệp sản xuất thép đầu ngành (HPG): Sở hữu các khu liên hợp luyện thép khổng lồ khép kín từ quặng đến thành phẩm, giúp chi phí sản xuất 1 tấn thép rẻ hơn đối thủ từ 15-20%; khi ngành thép rơi vào khủng hoảng giá giảm sâu, các công ty nhỏ phá sản thì HPG vẫn có lãi và gia tăng thị phần."
     },
     {
       "id": "ECON-04",
       "name_vi": "Hiệu ứng Mạng lưới",
-      "name_en": "Network Effects",
+      "name_en": "Network Effects (Metcalfe's Law)",
       "pillar": "Kinh tế học",
       "tier": 1,
-      "first_principle": "Giá trị của một mạng lưới đối với mỗi người dùng tăng phi tuyến theo cấp số mũ khi có thêm người dùng mới gia nhập (Định luật Metcalfe: V ~ n²).",
-      "elite_leverage": "Xây dựng hiệu ứng mạng lưới hai chiều (chợ điện tử, nền tảng, mạng xã hội) để tạo ra sự độc quyền tự nhiên bền vững nhất thời đại số.",
-      "trigger_question": "Mỗi người dùng mới gia nhập có làm cho trải nghiệm của toàn bộ người dùng cũ tốt lên và gia tăng rào cản rời đi không?",
-      "inversion_trap": "Hiệu ứng mạng lưới tiêu cực: Nền tảng quá tải rác rưởi hoặc lừa đảo khi đông người, khiến người dùng chất lượng cao bỏ đi.",
+      "first_principle": "Giá trị của một sản phẩm hoặc dịch vụ đối với mỗi người dùng tăng lên theo cấp số nhân khi có thêm người dùng mới tham gia vào mạng lưới. Định luật Metcalfe chỉ ra: Giá trị của mạng lưới tỷ lệ thuận với bình phương số lượng người dùng ($V \\sim n^2$).",
+      "elite_leverage": "Tạo ra sự độc quyền tự nhiên bền vững nhất trong kinh tế hiện đại. Khi một nền tảng (Facebook, Uber, Visa, App Store) vượt qua khối lượng tới hạn, người dùng mới tự động bị hút về nơi có đông người dùng nhất; chi phí chuyển đổi của người dùng cũ tăng lên cực cao, biến mạng lưới thành con hào không thể bị phá vỡ.",
+      "trigger_question": "Mỗi người dùng hoặc đối tác mới gia nhập có làm cho trải nghiệm của toàn bộ người dùng hiện tại trở nên giá trị hơn không, và điều đó có làm tăng rào cản rời đi không?",
+      "inversion_trap": "Hiệu ứng mạng lưới tiêu cực (Negative Network Effects): Khi mạng lưới quá đông đúc dẫn đến nghẽn mạng, ngập tràn tin nhắn rác, lừa đảo hoặc nội dung độc hại; người dùng chất lượng cao dần rời bỏ mạng lưới để chuyển sang các cộng đồng nhỏ tinh hoa hơn.",
       "lollapalooza_pairs": [
         "Khối lượng tới hạn",
         "Con hào kinh tế",
-        "Lãi kép"
-      ]
+        "Lãi kép",
+        "Vòng phản hồi dương"
+      ],
+      "action_steps": [
+        "Xác định loại hiệu ứng mạng lưới: Phân biệt rõ mạng lưới 1 chiều (điện thoại, mạng xã hội) hay 2 chiều (sàn thương mại, gọi xe giữa người mua và người bán).",
+        "Giải quyết bài toán con gà - quả trứng: Cung cấp giá trị đơn lẻ hữu ích ngay từ ngày đầu (Single-player Mode) để thu hút tập người dùng cốt lõi trước khi mạng lưới hình thành.",
+        "Tập trung đạt mật độ cục bộ (Local Density): Đạt khối lượng tới hạn tại một khu vực địa lý hoặc một phân khúc hẹp trước khi bành trướng toàn quốc.",
+        "Xây dựng cơ chế giữ chân và tăng chi phí chuyển đổi: Giúp người dùng tích lũy dữ liệu, danh tiếng và mạng lưới quan hệ trên nền tảng để họ không thể rời đi."
+      ],
+      "boundary_conditions": "Không nhầm lẫn hiệu ứng mạng lưới với sự lan truyền tiếp thị (Virality). Một sản phẩm có thể lan truyền cực nhanh nhờ quảng cáo hoặc khuyến mại sốc nhưng nếu không có giá trị kết nối thực chất, người dùng sẽ ồ ạt rời đi ngay sau đó (hiện tượng Churn cao).",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Ngôn ngữ giao tiếp: Tiếng Anh trở thành ngôn ngữ toàn cầu không phải vì nó có cấu trúc hoàn hảo nhất, mà vì hiệu ứng mạng lưới: càng nhiều người học tiếng Anh, giá trị của việc biết tiếng Anh càng tăng vọt; rèn luyện tiếng Anh cho con từ sớm giúp con kết nối với kho tri thức của toàn cầu.\n• Sự nghiệp & Quản lý: Nền tảng tuyển dụng LinkedIn: Càng nhiều ứng viên tạo hồ sơ, các nhà tuyển dụng càng bắt buộc phải lên LinkedIn tìm người; càng nhiều công ty đăng tuyển, người tìm việc càng đổ về; tạo ra thế độc quyền tuyển dụng nhân sự chất lượng cao toàn cầu.\n• Đầu tư VN-Index: Các ngân hàng bán lẻ có hệ sinh thái số dẫn đầu (Techcombank, Vietcombank, MBBank): Sở hữu tệp hàng chục triệu khách hàng sử dụng dịch vụ thanh toán chuyển tiền miễn phí; hiệu ứng mạng lưới tiền gửi không kỳ hạn (CASA) dồi dào với chi phí vốn chỉ 0.5-1%, mang lại siêu lợi nhuận biên NIM vượt trội so với các ngân hàng nhỏ."
     },
     {
       "id": "ECON-05",
       "name_vi": "Lợi thế So sánh & Chuyên môn hóa",
-      "name_en": "Comparative Advantage",
+      "name_en": "Comparative Advantage & Specialization (David Ricardo)",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Một cá nhân nên chuyên môn hóa vào sản xuất thứ mà họ có chi phí cơ hội thấp hơn người khác, rồi trao đổi thương mại để cả hai cùng thịnh vượng.",
-      "elite_leverage": "Ủy quyền triệt để những việc bạn làm giỏi nhưng chi phí cơ hội của bạn quá cao (CEO không nên tự lau dọn nhà dù lau nhà giỏi hơn người giúp việc).",
-      "trigger_question": "Đâu là kỹ năng mà tôi có chi phí cơ hội thấp nhất và tạo ra giá trị tương đối cao nhất để tập trung 90% thời gian?",
-      "inversion_trap": "Tự làm lấy tất cả: Cố trở thành thợ sửa ống nước, kế toán, lập trình viên và shipper của chính công ty mình, khiến doanh nghiệp mãi tí hon.",
+      "tier": 1,
+      "first_principle": "Học thuyết của David Ricardo: Một cá nhân hoặc quốc gia nên chuyên môn hóa sản xuất vào mặt hàng mà họ có chi phí cơ hội thấp hơn người khác (kể cả khi họ không có lợi thế tuyệt đối về năng suất), sau đó trao đổi thương mại tự do để cả hai bên cùng đạt mức sống cao hơn.",
+      "elite_leverage": "Tàn nhẫn ủy quyền và hợp tác. Dù bạn có thể là người đánh máy nhanh nhất, dọn dẹp sạch nhất và lập trình giỏi nhất trong công ty, bạn tuyệt đối không được tự làm tất cả; hãy chỉ làm việc duy nhất tạo ra giá trị gia tăng cao nhất và thuê người khác làm các phần việc còn lại.",
+      "trigger_question": "Đâu là năng lực độc nhất mà tôi có chi phí cơ hội thấp nhất và tạo ra giá trị tương đối cao nhất để tập trung 80% thời gian, và đâu là những việc tôi phải ủy quyền ngay hôm nay?",
+      "inversion_trap": "Bẫy tự làm tất cả (Jack-of-all-trades): Ôm đồm toàn bộ việc từ lớn đến bé vì tiếc tiền thuê ngoài hoặc vì tự ái 'mình làm vẫn tốt hơn họ'; kết quả là kiệt sức và kìm hãm quy mô tổ chức mãi ở mức tí hon.",
       "lollapalooza_pairs": [
         "Chi phí cơ hội",
         "Hốc sinh thái",
-        "Đòn bẩy"
-      ]
+        "Đòn bẩy",
+        "Đồng sinh"
+      ],
+      "action_steps": [
+        "Xác định vùng lợi thế so sánh cá nhân: Tìm ra lĩnh vực mà ở đó bạn tạo ra kết quả vượt trội với mức hao tổn tâm lực ít nhất so với mặt bằng chung.",
+        "Tính toán chi phí cơ hội của từng tác vụ: So sánh chi phí thuê ngoài của một công việc với giá trị tạo ra nếu bạn dùng số giờ đó làm công việc cốt lõi.",
+        "Thiết lập hệ thống ủy quyền tin cậy: Chuẩn hóa quy trình và bàn giao các tác vụ không thuộc lợi thế so sánh cho các chuyên gia hoặc trợ lý.",
+        "Hợp tác thương mại đôi bên cùng có lợi: Xây dựng liên minh với những đối tác có lợi thế so sánh bù trừ hoàn hảo cho điểm yếu của bạn."
+      ],
+      "boundary_conditions": "Không ủy quyền những năng lực cốt lõi định hình nên linh hồn và sự sống còn của doanh nghiệp (tầm nhìn chiến lược, văn hóa, kiểm soát dòng tiền tối cao). Trao nhầm lợi thế so sánh cốt lõi cho bên ngoài sẽ biến bạn thành con tin.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Phân công công việc gia đình giữa hai vợ chồng: Thay vì tị nạnh cào bằng 50-50 mọi việc, vợ chồng ngồi lại phân chia theo lợi thế so sánh: Người có thế mạnh về dạy con và kiên nhẫn sẽ phụ trách kèm cặp con học; người có thế mạnh quản lý tài chính và kỹ thuật sẽ phụ trách đầu tư và bảo trì nhà cửa.\n• Sự nghiệp & Quản lý: Một bác sĩ phẫu thuật hàng đầu có thể gõ văn bản và làm sổ sách nhanh hơn cô thư ký (lợi thế tuyệt đối); nhưng chi phí cơ hội 1 giờ của bác sĩ là 5 triệu đồng, trong khi lương thư ký là 100.000đ/giờ. Bác sĩ thông minh thuê thư ký để tập trung 100% thời gian phẫu thuật cứu người.\n• Đầu tư VN-Index: Nhà đầu tư cá nhân không thể cạnh tranh về tốc độ thuật toán giao dịch theo mili-giây với các quỹ nước ngoài hay công ty chứng khoán tự doanh. Lợi thế so sánh của cá nhân là 'sự kiên nhẫn và quy mô vốn nhỏ linh hoạt': Họ có thể kiên nhẫn chờ đợi 2 năm cho một thương vụ lớn và gom/thoát hàng trong vài phút mà không làm biến động giá thị trường."
     },
     {
       "id": "ECON-06",
       "name_vi": "Phá hủy Sáng tạo",
-      "name_en": "Creative Destruction (Schumpeter)",
+      "name_en": "Creative Destruction (Joseph Schumpeter)",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Quá trình đột biến liên tục cách mạng hóa cấu trúc kinh tế từ bên trong, không ngừng phá hủy cấu trúc cũ và sáng tạo nên cấu trúc mới hiệu quả hơn.",
-      "elite_leverage": "Chủ động tự 'ăn thịt' sản phẩm cũ của chính mình trước khi đối thủ làm điều đó (Apple tạo ra iPhone dù biết nó sẽ giết chết iPod đang hái ra tiền).",
-      "trigger_question": "Công nghệ hoặc mô hình mới nào đang âm thầm làm cho toàn bộ ngành nghề của tôi trở nên lỗi thời?",
-      "inversion_trap": "Thảm kịch Kodak: Phát minh ra máy ảnh kỹ thuật số đầu tiên nhưng giấu nhẹm đi vì sợ mất doanh thu bán phim truyền thống.",
+      "tier": 1,
+      "first_principle": "Quy luật cốt lõi của chủ nghĩa tư bản do Joseph Schumpeter phát hiện: Sự tiến bộ kinh tế không diễn ra êm ả tĩnh tại, mà là một quá trình đột biến liên tục cách mạng hóa cấu trúc kinh tế từ bên trong — không ngừng phá hủy các mô hình, công nghệ già cỗi và sáng tạo nên các cấu trúc mới ưu việt hơn.",
+      "elite_leverage": "Tự phá hủy chính mình trước khi bị kẻ khác tiêu diệt. Người dẫn đầu tinh hoa không bao giờ ngủ quên trên chiến thắng; họ chủ động rót vốn nghiên cứu các công nghệ đột phá có nguy cơ 'ăn thịt' (cannibalize) chính sản phẩm chủ lực của mình (như Apple tự tạo ra iPhone giết chết máy nghe nhạc iPod đang bán rất chạy).",
+      "trigger_question": "Công nghệ, mô hình kinh doanh hoặc công cụ AI mới nào đang âm thầm làm cho toàn bộ năng lực cốt lõi hiện tại của tôi trở nên lỗi thời, và tôi đã chuẩn bị tự làm mới mình như thế nào?",
+      "inversion_trap": "Bẫy tự mãn bảo thủ (Thảm kịch Kodak & Blockbuster): Kodak phát minh ra máy ảnh kỹ thuật số đầu tiên vào năm 1975 nhưng giấu nhẹm đi vì sợ làm mất doanh thu bán phim nhựa truyền thống; cuối cùng họ bị chính máy ảnh kỹ thuật số và smartphone đẩy vào phá sản.",
       "lollapalooza_pairs": [
         "Tiến hóa",
         "Tính chống mong manh",
-        "Quán tính"
-      ]
+        "Quán tính",
+        "Hiệu ứng Nữ hoàng Đỏ"
+      ],
+      "action_steps": [
+        "Thường xuyên quét radar công nghệ mới: Theo dõi sát sao các công nghệ non trẻ ở rìa thị trường có khả năng làm đảo lộn luật chơi trong 3-5 năm tới.",
+        "Tạo ra không gian đổi mới độc lập: Thành lập các nhóm nghiên cứu thử nghiệm (Skunkworks) độc lập với bộ máy kinh doanh truyền thống để không bị cản trở bởi quán tính cũ.",
+        "Sẵn sàng tự khai tử sản phẩm cũ: Chủ động chuyển dịch nguồn lực sang mô hình mới ngay khi nhận thấy đường cong tăng trưởng của mô hình cũ bắt đầu bão hòa.",
+        "Liên tục tái đào tạo kỹ năng (Reskilling): Coi các kỹ năng nghề nghiệp là thứ có 'hạn sử dụng'; liên tục cập nhật công cụ mới (đặc biệt là AI) để không bị đào thải."
+      ],
+      "boundary_conditions": "Không phá hủy cấu trúc cũ khi cấu trúc mới chưa chứng minh được tính khả thi và dòng tiền tự nuôi sống. Phá hủy mù quáng mà không có sự sáng tạo thay thế tương xứng sẽ dẫn đến tự sát doanh nghiệp.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Sự xuất hiện của Trí tuệ Nhân tạo tạo sinh (GenAI): Nếu cha mẹ vẫn bắt con học vẹt ghi nhớ công thức và rèn chữ đẹp máy móc, đứa trẻ sẽ bị AI thay thế hoàn toàn; cha mẹ chủ động định hướng con học cách đặt câu hỏi, tư duy nguyên bản và sử dụng thành thạo các công cụ AI từ sớm.\n• Sự nghiệp & Quản lý: Netflix khởi đầu là dịch vụ gửi đĩa DVD qua bưu điện kiếm lời hàng trăm triệu USD; khi băng thông internet phát triển, Reed Hastings đã can đảm chuyển toàn bộ trọng tâm sang dịch vụ Streaming xem phim trực tuyến, tự tay xóa sổ dịch vụ DVD của chính mình để trở thành gã khổng lồ giải trí thế giới.\n• Đầu tư VN-Index: Làn sóng chuyển đổi số và tự động hóa trong ngành bán lẻ và tài chính: Các chuỗi cửa hàng bán lẻ truyền thống không chịu thích ứng bị các nền tảng thương mại điện tử (TikTok Shop, Shopee) lấy mất thị phần; nhà đầu tư thông minh thoái vốn khỏi các doanh nghiệp bảo thủ và cơ cấu sang các doanh nghiệp tiên phong ứng dụng công nghệ."
     },
     {
       "id": "ECON-07",
       "name_vi": "Con hào Kinh tế & Rào cản Gia nhập",
-      "name_en": "Economic Moats",
+      "name_en": "Economic Moats & Barriers to Entry (Warren Buffett)",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Khả năng duy trì lợi thế cạnh tranh khác biệt nhằm bảo vệ lợi nhuận và thị phần dài hạn trước sự xói mòn của các đối thủ cạnh tranh mới.",
-      "elite_leverage": "Đầu tư vào 4 loại hào nước của Buffett: Chi phí chuyển đổi cao, Tài sản vô hình (Thương hiệu/Bằng sáng chế), Lợi thế chi phí thấp và Hiệu ứng mạng lưới.",
-      "trigger_question": "Nếu một đối thủ có 1 tỷ USD nhảy vào ngành này, họ có thể sao chép và đánh bại tôi trong 2 năm tới không?",
-      "inversion_trap": "Lợi nhuận cao không có hào: Kinh doanh sản phẩm hot theo trào lưu, chỉ sau 6 tháng hàng trăm đối thủ nhảy vào kéo biên lợi nhuận về 0.",
+      "tier": 1,
+      "first_principle": "Khái niệm trứ danh của Warren Buffett: Con hào kinh tế là lợi thế cạnh tranh cấu trúc bền vững che chở cho một doanh nghiệp khỏi sự xâm lấn của các đối thủ cạnh tranh mới, cho phép doanh nghiệp duy trì tỷ suất sinh lời trên vốn (ROE/ROIC) cao vượt trội trong nhiều thập kỷ.",
+      "elite_leverage": "Charlie Munger và Warren Buffett phân loại 4 nguồn gốc con hào kinh tế vĩ đại: (1) Tài sản vô hình (Thương hiệu mạnh không thể thay thế, Bằng sáng chế, Giấy phép độc quyền), (2) Chi phí chuyển đổi cao (Switching Costs), (3) Lợi thế chi phí thấp do quy mô hoặc vị trí địa lý, và (4) Hiệu ứng mạng lưới. Giới tinh hoa chỉ xây dựng sự nghiệp và đầu tư vào những thực thể có con hào ngày càng sâu và rộng hơn theo thời gian.",
+      "trigger_question": "Nếu một đối thủ có 1 tỷ USD và những bộ óc thông minh nhất nhảy vào lĩnh vực này, họ có thể sao chép và đè bẹp tôi trong 3 năm tới không, và con hào phòng thủ của tôi thực sự là gì?",
+      "inversion_trap": "Nhầm lẫn giữa Con hào Kinh tế và Sự Lâu năm/Quy mô lớn: Một công ty có doanh thu hàng ngàn tỷ nhưng không có con hào (như chuỗi nhà hàng ăn theo trend, lắp ráp gia công thuần túy) sẽ lập tức bốc hơi lợi nhuận ngay khi có đối thủ cạnh tranh giảm giá.",
       "lollapalooza_pairs": [
-        "Hiệu ứng Mạng lưới",
         "Lợi thế quy mô",
-        "Lợi thế so sánh"
-      ]
+        "Hiệu ứng Mạng lưới",
+        "Lợi thế so sánh",
+        "Vòng tròn năng lực"
+      ],
+      "action_steps": [
+        "Xác định nguồn gốc con hào hiện tại: Định lượng xem lợi thế của bạn đến từ thương hiệu, dữ liệu độc quyền, chi phí chuyển đổi hay hiệu ứng mạng lưới.",
+        "Tập trung đào sâu con hào thay vì chỉ bành trướng doanh thu: Tái đầu tư lợi nhuận để củng cố rào cản phòng thủ (nâng cấp trải nghiệm khách hàng, đăng ký bản quyền, thắt chặt mối quan hệ khách hàng).",
+        "Đo lường năng lực định giá (Pricing Power): Thước đo tối thượng của con hào kinh tế: Nếu bạn tăng giá thêm 10% mà khách hàng vẫn ở lại và không bỏ sang đối thủ, bạn sở hữu một con hào vĩ đại.",
+        "Theo dõi nguy cơ xói mòn con hào: Liên tục cảnh giác trước các công nghệ mới hoặc thay đổi hành vi tiêu dùng có thể làm cho con hào của bạn bị bắc cầu đi vòng qua."
+      ],
+      "boundary_conditions": "Không có con hào nào là vĩnh cửu. Nếu không được bảo trì và đào sâu liên tục, dòng nước cạnh tranh và công nghệ mới sẽ bồi lấp con hào chỉ trong 5-10 năm.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: 'Con hào năng lực cá nhân' của con: Nuôi dạy con có tính kỷ luật tự giác cao, sự tử tế và uy tín cá nhân tuyệt đối; đây là con hào nhân cách vô hình giúp con luôn được tin tưởng và trọng dụng suốt cuộc đời mà không đối thủ nào có thể cướp mất.\n• Sự nghiệp & Quản lý: Hãng phần mềm kế toán hoặc ERP (như SAP, Misa): Doanh nghiệp một khi đã tích hợp toàn bộ dữ liệu kế toán và vận hành vào hệ thống thì chi phí chuyển đổi (Switching Cost) sang phần mềm khác là cực kỳ rủi ro và tốn kém; con hào chi phí chuyển đổi này đảm bảo dòng tiền gia hạn dịch vụ đều đặn 95% hàng năm.\n• Đầu tư VN-Index: Cổ phiếu Tổng công ty Cảng hàng không Việt Nam (ACV) hay Dược Hậu Giang (DHG): Sở hữu con hào tài sản vô hình và độc quyền địa lý hạ tầng tự nhiên (sở hữu toàn bộ sân bay quốc tế trọng điểm tại Việt Nam); dù có hàng tỷ USD cũng không ai có thể xây thêm một sân bay Tân Sơn Nhất thứ hai để cạnh tranh."
     },
     {
       "id": "ECON-08",
       "name_vi": "Hiệu dụng Biên Giảm dần",
       "name_en": "Diminishing Marginal Utility",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Khi tiêu thụ thêm liên tiếp các đơn vị của cùng một hàng hóa, mức độ thỏa mãn tăng thêm từ mỗi đơn vị sau sẽ giảm dần so với đơn vị trước.",
-      "elite_leverage": "Biết dừng lại ở điểm bão hòa; chiếc bánh thứ nhất mang lại hạnh phúc vô bờ, chiếc thứ tư ngán và chiếc thứ bảy ngộ độc.",
-      "trigger_question": "Đơn vị thời gian/tiền bạc tiếp theo tôi đầu tư vào đây đang mang lại giá trị gia tăng nhảy vọt hay chỉ còn lại những giọt hiệu quả tí hon?",
-      "inversion_trap": "Ép bản thân ngồi học thêm 3 tiếng vào đêm khuya khi não đã bão hòa, chỉ rước thêm mệt mỏi mà không nạp được kiến thức.",
+      "tier": 1,
+      "first_principle": "Quy luật tâm lý và kinh tế căn bản: Khi một cá nhân tiêu thụ thêm liên tiếp các đơn vị của cùng một hàng hóa hoặc dịch vụ trong một khoảng thời gian nhất định, mức độ thỏa mãn tăng thêm (hiệu dụng biên - Marginal Utility) thu được từ mỗi đơn vị bổ sung sẽ giảm dần so với đơn vị liền trước.",
+      "elite_leverage": "Biết dừng lại ở điểm bão hòa tối ưu. Chiếc bánh pizza thứ nhất mang lại niềm sung sướng tuyệt đỉnh; chiếc thứ ba chỉ bình thường; chiếc thứ năm gây ngấy; và chiếc thứ tám dẫn đến ngộ độc. Giới tinh hoa không mù quáng tối đa hóa số lượng mà tập trung tối ưu hóa chất lượng trải nghiệm và đa dạng hóa nguồn thỏa mãn cuộc sống.",
+      "trigger_question": "Đơn vị thời gian, tiền bạc hoặc năng lượng tiếp theo tôi bỏ vào đây có đang mang lại giá trị gia tăng nhảy vọt hay chỉ còn lại những giọt hiệu quả cận biên tí hon không đáng kể?",
+      "inversion_trap": "Bẫy cày cuốc kiệt quệ: Ngồi làm việc thêm từ tiếng thứ 12 đến tiếng thứ 15 trong ngày trong trạng thái não bộ bão hòa mệt mỏi; hiệu dụng biên của 3 tiếng này bằng 0 hoặc âm (tạo ra hàng loạt lỗi sai ngớ ngẩn phải mất cả tuần sau để sửa).",
       "lollapalooza_pairs": [
         "Định luật Pareto",
         "Chi phí cơ hội",
-        "Nút cổ chai"
-      ]
+        "Nút cổ chai",
+        "Cân bằng nội môi"
+      ],
+      "action_steps": [
+        "Xác định điểm uốn hiệu dụng biên: Nhận diện thời điểm mà mức tăng thêm của nỗ lực bắt đầu đem lại kết quả giảm sút rõ rệt (thường sau 4-5 tiếng làm việc sâu).",
+        "Đa dạng hóa rổ trải nghiệm: Chuyển đổi hoạt động khi đạt ngưỡng bão hòa (học tập -> vận động thể thao -> kết nối gia đình) để giữ mức hiệu dụng luôn ở mức cao.",
+        "Ứng dụng vào đàm phán và thuyết phục: Hiểu rằng điều người khác đang khao khát nhất chính là thứ họ đang thiếu nhất (hiệu dụng biên của nước uống giữa sa mạc cao gấp triệu lần khi ở nhà).",
+        "Kiểm soát lòng tham tài sản: Nhận thức rằng sau một ngưỡng tài chính đủ đầy nhất định, mỗi tỷ đồng kiếm thêm hầu như không làm tăng thêm hạnh phúc thực sự nếu phải trả giá bằng sức khỏe và tự do."
+      ],
+      "boundary_conditions": "Quy luật hiệu dụng biên giảm dần không áp dụng cho các trải nghiệm có tính chất học hỏi tích lũy lãi kép (đọc sách, rèn luyện kỹ năng cao cấp) hoặc tài sản có tính thanh khoản tối thượng (tiền mặt), nơi giá trị tùy chọn vẫn được duy trì.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Tặng quà cho con: Nếu ngày nào cha mẹ cũng mua đồ chơi mới cho con, đứa trẻ sẽ nhanh chóng thờ ơ và không còn biết trân trọng đồ vật (hiệu dụng biên bằng 0); chỉ tặng quà vào những dịp đặc biệt hoặc khi con nỗ lực đạt thành tích tốt giúp món quà giữ nguyên vẹn giá trị cảm xúc.\n• Sự nghiệp & Quản lý: Chính sách khen thưởng nhân viên: Thưởng thêm 10 triệu đồng tiền mặt cho nhân viên mới ra trường mang lại động lực cực lớn (hiệu dụng biên cao); nhưng với chuyên gia cấp cao lương 200 triệu, việc trao quyền tự chủ dự án và thời gian linh hoạt mang lại hiệu dụng biên lớn hơn nhiều so với thưởng thêm tiền.\n• Đầu tư VN-Index: Đa dạng hóa danh mục đầu tư: Mua thêm cổ phiếu thứ 2 đến thứ 5 giúp giảm thiểu rủi ro phi hệ thống rất mạnh; nhưng khi danh mục đã có 25 mã, việc mua thêm mã thứ 26 hầu như không làm giảm thêm rủi ro (hiệu dụng biên giảm dần về 0) mà chỉ làm phân tán sự theo dõi và phát sinh phí giao dịch."
     },
     {
       "id": "ECON-09",
       "name_vi": "Bi kịch của Của chung",
-      "name_en": "Tragedy of the Commons",
+      "name_en": "Tragedy of the Commons (Garrett Hardin & Elinor Ostrom)",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Khi một tài nguyên mở thuộc sở hữu chung của tất cả, mỗi cá nhân hành động vì lợi ích riêng sẽ khai thác tối đa cho đến khi tài nguyên cạn kiệt.",
-      "elite_leverage": "Giải quyết bi kịch bằng cách tư nhân hóa tài sản (gắn quyền sở hữu rõ ràng) hoặc thiết lập các quy chế chế tài minh bạch và công bằng (Elinor Ostrom).",
-      "trigger_question": "Tài nguyên chung này có đang bị các bên tự do bòn rút đến cạn kiệt vì không ai có trách nhiệm trực tiếp bảo dưỡng nó không?",
-      "inversion_trap": "Trách nhiệm chung là không ai chịu trách nhiệm: Trong nhóm, việc dùng chung tài khoản hay dọn phòng luôn bị bỏ bê nếu không phân công cụ thể.",
+      "tier": 1,
+      "first_principle": "Khi một nguồn tài nguyên quý giá thuộc sở hữu chung của tập thể và mọi người được tiếp cận tự do không giới hạn, mỗi cá nhân hành động hoàn toàn duy lý vì lợi ích cá nhân ngắn hạn sẽ khai thác tài nguyên đó tối đa, dẫn đến hậu quả tài nguyên chung bị tàn phá và sụp đổ hoàn toàn.",
+      "elite_leverage": "Giải pháp của nhà kinh tế học đoạt giải Nobel Elinor Ostrom: Giải quyết bi kịch không phải bằng hô hào đạo đức suông, mà bằng cách: (1) Rõ ràng hóa quyền sở hữu và trách nhiệm (Tư nhân hóa), hoặc (2) Thiết lập các quy chế tự quản cộng đồng với chế tài giám sát minh bạch và xử phạt bậc thang đối với kẻ trục lợi.",
+      "trigger_question": "Tài nguyên chung này (thời gian họp, quỹ chung, niềm tin tập thể) có đang bị các bên tự do bòn rút đến cạn kiệt vì cơ chế 'cha chung không ai khóc' không?",
+      "inversion_trap": "Trách nhiệm tập thể là không ai chịu trách nhiệm: Trong dự án chung, việc bảo trì hệ thống, dọn dẹp vệ sinh hay kiểm tra chất lượng bị bỏ bê hoàn toàn vì không ai được đo lường hay khen thưởng trực tiếp cho công việc đó.",
       "lollapalooza_pairs": [
-        "Lý thuyết Động lực",
+        "Thiên kiến động lực",
         "Lý thuyết trò chơi",
-        "Rủi ro đạo đức"
-      ]
+        "Rủi ro đạo đức",
+        "Ngoại tác"
+      ],
+      "action_steps": [
+        "Xác định tài nguyên chung đang bị khai thác: Nhận diện các khu vực có rủi ro bị bòn rút (băng thông mạng nội bộ, thời gian của nhân sự giỏi, quỹ bảo trì chung).",
+        "Gán quyền sở hữu và trách nhiệm trực tiếp (Single Ownership): Phân công đích danh một người chịu trách nhiệm tối cao cho từng tài sản (DRI - Directly Responsible Individual).",
+        "Đo lường và định giá việc sử dụng: Áp dụng cơ chế tính phí nội bộ đối với việc tiêu thụ tài nguyên chung (hạn mức họp hành, phí bảo trì).",
+        "Thiết lập chế tài minh bạch cho kẻ bội tín (Free-rider): Công khai dữ liệu sử dụng tài nguyên và có biện pháp loại bỏ những thành viên chỉ biết bòn rút mà không đóng góp."
+      ],
+      "boundary_conditions": "Không cố tình tư nhân hóa những tài nguyên công cộng thuần túy không thể phân chia (không khí thở, an ninh quốc phòng, pháp quyền), nơi chỉ có chính phủ và sự đồng thuận xã hội mới có thể bảo vệ.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Tủ lạnh và đồ ăn chung trong gia đình: Nếu không có quy tắc, con cái sẽ ăn hết những phần ngon nhất mà không để phần người về muộn; cha mẹ gắn nhãn tên rõ ràng cho các phần thức ăn và rèn luyện cho con thói quen hỏi người khác trước khi ăn hết đồ chung.\n• Sự nghiệp & Quản lý: Lịch họp chung của công ty: Thời gian làm việc của các kỹ sư là tài nguyên chung thường bị các nhà quản lý lạm dụng họp hành vô tội vạ. Công ty tinh hoa thiết lập quy tắc 'Thứ Tư không họp' và quy định người chủ trì họp phải trả chi phí thời gian của tất cả người tham dự.\n• Đầu tư VN-Index: Đánh bắt thủy hải sản cạn kiệt trên các vùng biển tự nhiên dẫn đến các công ty đánh bắt xa bờ lỗ nặng; ngược lại, các doanh nghiệp thủy sản chuyển đổi sang mô hình nuôi trồng khép kín tại các vùng nước có chủ quyền sở hữu rõ ràng (như VHC) kiểm soát được nguồn nguyên liệu và duy trì biên lợi nhuận cao bền vững."
     },
     {
       "id": "ECON-10",
       "name_vi": "Lý thuyết Trò chơi & Cân bằng Nash",
-      "name_en": "Game Theory & Nash Equilibrium",
+      "name_en": "Game Theory & Nash Equilibrium (John Nash)",
       "pillar": "Kinh tế học",
-      "tier": 2,
-      "first_principle": "Trạng thái cân bằng Nash đạt được khi không người chơi nào có động lực đơn phương thay đổi chiến lược nếu các đối thủ vẫn giữ nguyên chiến lược của họ.",
-      "elite_leverage": "Thay vì trách cứ đối phương, hãy nhìn vào luật chơi. Muốn thay đổi kết quả, phải thiết kế lại ma trận động lực để biến hợp tác thành lựa chọn tối ưu của họ.",
-      "trigger_question": "Chiến lược tối ưu của đối phương là gì khi biết tôi sẽ hành động như thế này?",
-      "inversion_trap": "Kẹt trong thế tiến thoái lưỡng nan của tù nhân: Cả hai bên đều chọn phương án phản bội để tự bảo vệ, dẫn đến kết cục thảm hại cho tất cả.",
+      "tier": 1,
+      "first_principle": "Nghiên cứu các quyết định chiến lược trong môi trường tương tác đa tác nhân: Kết quả của bạn không chỉ phụ thuộc vào lựa chọn của chính bạn mà còn phụ thuộc vào lựa chọn của các đối thủ. Trạng thái Cân bằng Nash đạt được khi không có bất kỳ người chơi nào có động lực đơn phương thay đổi chiến lược nếu các đối thủ khác vẫn giữ nguyên chiến lược của họ.",
+      "elite_leverage": "Đổi luật chơi thay vì trách cứ người chơi. Khi thấy đối tác hoặc nhân viên có hành vi không như ý, người tinh hoa không nổi giận mà nhìn vào ma trận thưởng/phạt của trò chơi; họ tái thiết kế lại ma trận động lực (Incentive Matrix) để biến hành vi hợp tác cùng thắng (Win-Win) trở thành lựa chọn tối ưu tự nhiên của đối phương.",
+      "trigger_question": "Chiến lược tối ưu nhất của đối thủ là gì khi biết tôi sẽ đi nước cờ này, và đây là trò chơi một lần (Zero-sum) hay trò chơi lặp lại vô hạn (Positive-sum)?",
+      "inversion_trap": "Mắc kẹt trong Thế tiến thoái lưỡng nan của tù nhân (Prisoner's Dilemma): Hai bên nghi ngờ lẫn nhau nên cùng chọn phương án phản bội để tự phòng vệ, dẫn đến cuộc đua hạ giá sát ván và cùng nhau phá sản dù cả hai đều biết nếu cùng hợp tác giữ giá thì cùng thắng lớn.",
       "lollapalooza_pairs": [
         "Thiên kiến động lực",
         "Đồng sinh",
-        "Second-order thinking"
-      ]
+        "Hệ quả bậc hai",
+        "Cân bằng nội môi"
+      ],
+      "action_steps": [
+        "Vẽ ma trận trò chơi (Payoff Matrix): Liệt kê các người chơi, các chiến lược có thể chọn và kết quả được/mất của từng kịch bản kết hợp.",
+        "Xác định bản chất trò chơi: Nhận diện xem bạn đang ở trong Trò chơi hữu hạn 1 lần (nơi đối phương có xu hướng lừa đảo ngắn hạn) hay Trò chơi lặp lại vô hạn (nơi sự uy tín và hợp tác có giá trị cao nhất).",
+        "Áp dụng chiến lược 'Có đi có lại' (Tit-for-Tat): Khởi đầu bằng sự hợp tác chân thành; nếu đối phương phản bội thì lập tức trả đũa tương xứng; và sẵn sàng tha thứ ngay khi họ quay lại hợp tác.",
+        "Tái cấu trúc luật chơi: Đưa thêm các cam kết ràng buộc pháp lý, đặt cọc uy tín hoặc chia sẻ lợi ích dài hạn để nâng chi phí phản bội lên mức không thể chịu đựng nổi."
+      ],
+      "boundary_conditions": "Lý thuyết trò chơi cổ điển giả định các tác nhân hoàn toàn duy lý và tính toán lạnh lùng. Trong thực tế đời sống, cảm xúc phi lý trí, lòng kiêu hãnh, tự ái cá nhân và sự thù hận có thể khiến con người chọn những nước cờ 'cùng chết' bất chấp thiệt hại kinh tế.",
+      "real_world_case": "• Gia đình & Nuôi dạy con: Giải quyết tranh giành đồ chơi giữa 2 đứa trẻ: Áp dụng trò chơi 'Một người cắt bánh - Một người chọn miếng': Đứa thứ nhất được quyền chia đôi đồ chơi hoặc phần bánh, nhưng đứa thứ hai được quyền chọn trước; luật chơi này buộc đứa thứ nhất phải chia công bằng tuyệt đối mà cha mẹ không cần phân xử.\n• Sự nghiệp & Quản lý: Cuộc chiến giảm giá giữa các hãng hàng không hoặc sàn thương mại điện tử: Nhận ra cuộc đua giảm giá chỉ làm béo khách hàng và triệt tiêu lợi nhuận của cả ngành (thế tiến thoái lưỡng nan của tù nhân); các doanh nghiệp tinh hoa chuyển dịch cạnh tranh sang dịch vụ khách hàng, chương trình khách hàng thân thiết và trải nghiệm cao cấp.\n• Đầu tư VN-Index: Mối quan hệ giữa Ban lãnh đạo doanh nghiệp và Cổ đông nhỏ lẻ: Nếu ban lãnh đạo coi đây là trò chơi 1 lần, họ sẽ phát hành cổ phiếu giá rẻ cho sân sau để rút ruột công ty. Nhà đầu tư thông minh chỉ chọn doanh nghiệp mà ban lãnh đạo cam kết trò chơi lặp lại vô hạn: Cổ đông lớn nắm giữ tỷ lệ cổ phần cao và nhận cổ tức tiền mặt đều đặn cùng nhỏ lẻ (đồng thuận động lực)."
     },
     {
       "id": "ECON-11",
