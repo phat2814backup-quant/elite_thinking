@@ -1278,22 +1278,44 @@ MODELS_QUIZ = [
         "id": "Q-PHYS-11",
         "model_id": "PHYS-11",
         "pillar": "Vật lý học",
-        "tier": 2,
-        "model_name": "Vận tốc Thoát (Escape Velocity)",
+        "tier": 1,
+        "model_name": "Tư Duy Nguyên Bản (First Principles Thinking — Aristotle & Elon Musk)",
         "scenario": (
-            "Một tên lửa muốn bay vào quỹ đạo không gian phải đốt 80% tổng nhiên liệu chỉ trong vài phút đầu tiên để đạt tốc độ 11.2 km/s nhằm thắng lực hút Trái Đất. "
-            "Nếu chỉ bay với tốc độ 9 km/s, dù tốn rất nhiều nhiên liệu thì tên lửa cuối cùng vẫn sẽ rơi ngược trở lại mặt đất."
+            "Khi Elon Musk bắt đầu dự án chế tạo tên lửa vũ trụ SpaceX, các chuyên gia hàng không vũ trụ khẳng định giá thành tên lửa tối thiểu phải là 65 triệu USD/quả. "
+            "Thay vì chấp nhận, Musk phân rã tên lửa về chi phí vật liệu thô trên sàn giao dịch kim loại (nhôm, titan, đồng, sợi carbon) và nhận ra chi phí vật liệu thực tế chỉ chiếm 2% giá chào bán, "
+            "98% còn lại là chi phí trung gian và quy trình gia công lỗi thời."
         ),
-        "question": "Bài học chiến lược nào được rút ra từ mô hình Vận tốc Thoát cho các dự án khởi nghiệp?",
+        "question": "Phương pháp tư duy bóc tách tận cùng chân lý khách quan này có tên là gì?",
         "options": [
-            "A. Làm việc từ từ túc tắc sẽ luôn tới đích",
-            "B. Cần phải tập trung nguồn lực cực đại trong giai đoạn đầu để vượt qua lực cản quán tính cũ, nửa vời đồng nghĩa với thất bại hoàn toàn",
-            "C. Tiết kiệm tối đa nhiên liệu ở giai đoạn phóng tên lửa",
-            "D. Trọng lực không ảnh hưởng đến các tập đoàn lớn"
+            "A. Suy luận bắt chước theo kinh nghiệm đám đông (Reasoning by Analogy)",
+            "B. Tư duy Nguyên bản (First Principles Thinking): Phân rã bài toán về những chân lý vật lý và sự thật cơ bản nhất không thể suy diễn thêm, từ đó tái thiết kế giải pháp đột phá từ số 0",
+            "C. Thỏa hiệp chi phí trung gian",
+            "D. Tối ưu hóa tiệm tiến cục bộ"
         ],
         "correct_index": 1,
-        "explanation": "Muốn thoát khỏi trọng lực của sự tầm thường và thói quen cũ, nỗ lực 90% cũng giống như nỗ lực 10%: đều rơi ngược lại mặt đất. Cần sự bứt phá vượt ngưỡng.",
-        "trap_analysis": "Ảo tưởng rằng duy trì một chút nỗ lực nhỏ giọt có thể giúp dự án cất cánh thoát khỏi vùng xoáy thất bại."
+        "explanation": "Tư duy nguyên bản giúp bạn nhìn thấu bản chất vật lý của vấn đề, giải phóng bản thân khỏi các định kiến và giới hạn nhân tạo do con người tự đặt ra.",
+        "trap_analysis": "Bẫy bắt chước (Analogy Trap): Coi cách người khác đang làm là giới hạn tối thượng của vũ trụ."
+    },
+    {
+        "id": "Q-PHYS-10",
+        "model_id": "PHYS-10",
+        "pillar": "Vật lý học",
+        "tier": 1,
+        "model_name": "Thí Nghiệm Tư Duy (Thought Experiment — Einstein & Galileo)",
+        "scenario": (
+            "Năm 16 tuổi, Albert Einstein tự đặt cho mình câu hỏi: 'Chuyện gì sẽ xảy ra nếu tôi cưỡi trên một chùm ánh sáng và cầm một chiếc gương soi mặt mình?'. "
+            "Chỉ bằng việc chạy mô phỏng kịch bản cực hạn này trong tâm trí bằng suy luận logic chặt chẽ, ông đã phát minh ra Thuyết Tương đối làm đảo lộn toàn bộ vật lý cổ điển."
+        ),
+        "question": "Công cụ nhận thức quyền năng nào cho phép con người kiểm tra các giả thuyết cực hạn khi chưa thể thử nghiệm ngoài đời thực?",
+        "options": [
+            "A. Thí nghiệm tư duy (Thought Experiment): Mô phỏng các kịch bản cực hạn trong đầu bằng logic nghiêm ngặt để kiểm tra độ bền vững và phát hiện lỗ hổng của kế hoạch",
+            "B. Mơ mộng hão huyền không có cơ sở",
+            "C. Đo đạc thực địa bằng mắt thường",
+            "D. Thu thập ý kiến thăm dò số đông"
+        ],
+        "correct_index": 0,
+        "explanation": "Thí nghiệm tư duy (Gedankenexperiment) cho phép bạn phá vỡ rào cản chi phí và công nghệ, khám phá ra chân lý hoặc điểm chết của dự án trước khi tiêu tốn một đồng vốn nào.",
+        "trap_analysis": "Dựng kịch bản trong đầu nhưng ngầm thiên vị để hợp thức hóa ý kiến cá nhân, thay vì suy diễn khách quan không khoan nhượng."
     },
 
     # -------------------------------------------------------------------------
@@ -1555,6 +1577,27 @@ MODELS_QUIZ = [
         "correct_index": 0,
         "explanation": "Biết những gì mình không biết quan trọng hơn việc tỏ ra thông minh. Kích thước vòng tròn năng lực không quan trọng bằng việc bạn biết chính xác chu vi ranh giới của nó.",
         "trap_analysis": "Bẫy ngạo mạn nhận thức & Kiến thức tài xế (Chauffeur Knowledge): Thành công rực rỡ trong một lĩnh vực hẹp rồi ảo tưởng mình có thể đầu tư thắng lợi ở mọi lĩnh vực khác."
+    },
+    {
+        "id": "Q-PSY-18",
+        "model_id": "PSY-18",
+        "pillar": "Tâm lý học",
+        "tier": 1,
+        "model_name": "Dao Cạo Hanlon (Hanlon's Razor — Robert J. Hanlon)",
+        "scenario": (
+            "Một đối tác làm ăn lâu năm gửi nhầm tài liệu báo giá cho một khách hàng khác khiến công ty bạn bị lỡ mất một hợp đồng lớn. "
+            "Người quản lý tức giận đập bàn tuyên bố: 'Hắn ta cố tình chơi xấu đâm sau lưng tôi!'. Nhưng khi điều tra thực tế, nhân viên đối tác chỉ vì phải thức trắng đêm chăm con ốm nên đã đính kèm nhầm file."
+        ),
+        "question": "Quy tắc nhận thức sâu sắc nào giúp chúng ta tránh được căn bệnh hoang tưởng và bảo vệ các mối quan hệ quý giá?",
+        "options": [
+            "A. Dao cạo Hanlon: Đừng bao giờ quy kết cho ác ý những gì có thể giải thích thỏa đáng bằng sự bất cẩn, thiếu hiểu biết, mệt mỏi hoặc sơ suất",
+            "B. Luôn luôn nghi ngờ người khác để tự bảo vệ",
+            "C. Cắt đứt quan hệ ngay lập tức khi đối phương mắc sai sót đầu tiên",
+            "D. Thiên kiến kết quả"
+        ],
+        "correct_index": 0,
+        "explanation": "Con người thường vụng về và bất toàn hơn là xấu xa. Áp dụng Dao cạo Hanlon giúp bạn giữ được sự bình tĩnh, giải phóng tâm trí khỏi sự hận thù và tập trung sửa chữa quy trình.",
+        "trap_analysis": "Mù quáng ngây thơ bỏ qua những kẻ lừa đảo hoặc có động cơ trục lợi thật sự khi hành vi ác ý đã lặp đi lặp lại nhiều lần."
     },
 
     # -------------------------------------------------------------------------
@@ -1951,6 +1994,49 @@ MODELS_QUIZ = [
         "correct_index": 0,
         "explanation": "Bản đồ là công cụ hữu ích để định hướng, nhưng không bao giờ thay thế được thực địa sống động. Khi thực địa mâu thuẫn với bản đồ, luôn tin vào thực địa.",
         "trap_analysis": "Đồng nhất mô hình với thực tại (Confusing the Model with Reality): Tin vào mô hình định giá tài chính trên Excel mà phớt lờ thực tế doanh nghiệp đang cạn kiệt tiền mặt và đối mặt phá sản."
+    },
+    {
+        "id": "Q-SYS-10",
+        "model_id": "SYS-10",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Hệ Quả Bậc Hai & Bậc Cao (Second-Order Thinking — Howard Marks)",
+        "scenario": (
+            "Chính quyền một thành phố quyết định áp đặt mức giá trần cho thuê nhà ở mức rất thấp nhằm giúp đỡ người nghèo (Bậc 1: Giá thuê rẻ tức thì). "
+            "Sau 2 năm, các chủ nhà ngừng đầu tư bảo trì chung cư, ngừng xây thêm nhà cho thuê vì không có lãi; nguồn cung nhà ở sụt giảm thê thảm khiến người nghèo hoàn toàn không còn nhà để thuê (Hệ quả Bậc 2 & 3)."
+        ),
+        "question": "Câu hỏi kích hoạt tư duy nào của Howard Marks giúp các nhà hoạch định tránh được thảm họa chính sách này?",
+        "options": [
+            "A. 'Làm sao để làm hài lòng cử tri ngay trong tuần này?'",
+            "B. 'Và sau đó điều gì sẽ xảy ra?' (And then what?) — Dự phóng phản ứng của các tác nhân và biến động cung cầu trong tương lai",
+            "C. 'Ai là người chịu trách nhiệm pháp lý?'",
+            "D. 'Mức giá này đã rẻ nhất khu vực chưa?'"
+        ],
+        "correct_index": 1,
+        "explanation": "Tư duy bậc một chỉ thấy cái lợi trước mắt. Tư duy bậc hai thấy phản ứng thích nghi của con người và cấu trúc động lực dài hạn của hệ thống.",
+        "trap_analysis": "Bẫy giải pháp ngây thơ: Can thiệp thô bạo vào hệ thống phức hợp mà không lường trước các phản ứng bù trừ của thị trường."
+    },
+    {
+        "id": "Q-SYS-13",
+        "model_id": "SYS-13",
+        "pillar": "Kỹ thuật & Hệ thống",
+        "tier": 1,
+        "model_name": "Dao Cạo Occam (Occam's Razor — William of Ockham)",
+        "scenario": (
+            "Một nhà đầu tư thấy một cổ phiếu đang có thanh khoản bình thường đột ngột sụt giảm 15% trong phiên. "
+            "Anh ta xây dựng thuyết âm mưu: 'Chắc chắn có một nhóm cá mập quốc tế đang câu kết với ban lãnh đạo rung lắc để cướp hàng của nhỏ lẻ!'. "
+            "Một người bạn kiểm tra thông báo và chỉ ra: 'Hôm nay là ngày công ty chốt danh sách chia cổ tức tiền mặt 1.500đ và giá bị điều chỉnh kỹ thuật'."
+        ),
+        "question": "Nguyên lý logic và nhận thức nào giúp người bạn loại bỏ ngay thuyết âm mưu hoang đường?",
+        "options": [
+            "A. Dao cạo Occam (Occam's Razor): Trong các giả thuyết cùng giải thích được hiện tượng, hãy ưu tiên giả thuyết đòi hỏi ít giả định ngầm nhất và trực tiếp nhất",
+            "B. Càng nhiều âm mưu phức tạp thì càng đúng",
+            "C. Đòn bẩy tài chính",
+            "D. Luật số lớn"
+        ],
+        "correct_index": 0,
+        "explanation": "Đừng phức tạp hóa những gì có thể giải thích bằng nguyên nhân đơn giản và hiển nhiên nhất. Càng nhiều giả định 'nếu như', xác suất đúng càng tiến về 0.",
+        "trap_analysis": "Bẫy thích thuyết âm mưu: Não người có xu hướng thích những câu chuyện ly kỳ bí hiểm hơn là chấp nhận những sự thật đơn giản nhưng trần trụi."
     },
 ]
 

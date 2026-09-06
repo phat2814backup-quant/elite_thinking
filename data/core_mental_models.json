@@ -153,35 +153,53 @@
     },
     {
       "id": "PHYS-10",
-      "name_vi": "Thuyết Tương đối & Hệ quy chiếu",
-      "name_en": "Relativity & Frames of Reference",
+      "name_vi": "Thí nghiệm Tư duy",
+      "name_en": "Thought Experiment (Einstein & Galileo)",
       "pillar": "Vật lý học",
-      "tier": 2,
-      "first_principle": "Trạng thái chuyển động và vận tốc của một vật thể chỉ có ý nghĩa khi so sánh với một hệ quy chiếu cụ thể được chọn làm mốc.",
-      "elite_leverage": "Thay đổi hoàn toàn bản chất một vấn đề bế tắc bằng cách đổi hệ quy chiếu (từ góc nhìn cá nhân sang góc nhìn đối tác, từ 1 ngày sang 10 năm).",
-      "trigger_question": "Nếu đổi hệ quy chiếu sang góc nhìn của đối thủ hoặc một người ngoài cuộc khách quan, sự việc này trông sẽ như thế nào?",
-      "inversion_trap": "Chủ nghĩa tương đối vô nguyên tắc: Lợi dụng hệ quy chiếu để bào chữa cho những hành vi phi đạo đức hoặc trốn tránh trách nhiệm.",
+      "tier": 1,
+      "first_principle": "Chạy mô phỏng các kịch bản cực hạn trong tâm trí (Gedankenexperiment) bằng suy luận logic chặt chẽ, đẩy các biến số về giới hạn để kiểm tra độ bền của giả thuyết khi chi phí thực nghiệm ngoài đời thực quá đắt đỏ, nguy hiểm hoặc bất khả thi về mặt kỹ thuật.",
+      "elite_leverage": "Albert Einstein khám phá ra Thuyết Tương đối hẹp bằng thí nghiệm tư duy lúc 16 tuổi: 'Chuyện gì sẽ xảy ra nếu tôi cưỡi trên một chùm ánh sáng và cầm một chiếc gương soi mặt mình?'. Galileo chứng minh mọi vật rơi cùng tốc độ bằng cách tưởng tượng buộc một hòn đá nặng với hòn đá nhẹ. Giới tinh hoa dùng thí nghiệm tư duy để phát hiện lỗ hổng chết người của kế hoạch trước khi tiêu tốn một đồng vốn nào.",
+      "trigger_question": "Nếu đẩy biến số này về cực hạn (bằng 0 hoặc vô cực, tăng x10 hoặc giảm 90%), chuyện gì bắt buộc phải xảy ra theo logic chặt chẽ?",
+      "inversion_trap": "Thí nghiệm Tư duy Giả mạo (Wishful Simulation): Tự xây dựng kịch bản trong đầu nhưng ngầm gài vào các giả định màu hồng để hợp thức hóa ý kiến thiên kiến của bản thân; hoặc nhầm lẫn thí nghiệm tưởng tượng với bằng chứng thực nghiệm khách quan.",
       "lollapalooza_pairs": [
-        "First Principles",
-        "Đa quy mô thời gian",
-        "Thiên kiến nhận thức"
-      ]
+        "Tư duy đảo ngược",
+        "Hệ quả bậc hai",
+        "Biên độ an toàn",
+        "Bản đồ không phải lãnh thổ"
+      ],
+      "action_steps": [
+        "Bước 1 - Đặt Giả định Cốt lõi: Chọn câu hỏi hóc búa cần kiểm tra ('Nếu đối thủ lớn nhất hạ giá 50% và chịu lỗ 2 năm, công ty ta sẽ thế nào?').",
+        "Bước 2 - Đẩy Biến số về Cực hạn: Tưởng tượng các điều kiện khắc nghiệt nhất (Doanh thu về 0 trong 6 tháng, tỷ giá tăng 20%, chi phí nguyên liệu nhân đôi).",
+        "Bước 3 - Suy diễn Logic Nghiêm ngặt: Đi từng bước nguyên nhân - kết quả mà không nhảy cóc hay che đậy điểm yếu.",
+        "Bước 4 - Trích xuất Lỗ hổng & Xây Đệm phòng thủ: Nhận diện mắt xích bị đứt trong tâm trí và vá lỗ hổng đó ngoài đời thực ngay hôm nay."
+      ],
+      "boundary_conditions": "Không dùng Thí nghiệm Tư duy để thay thế dữ liệu kiểm chứng khi chi phí thử nghiệm thực tế là rẻ và nhanh (Lean Validation). Nếu có thể A/B testing với 100 khách hàng trong 1 tuần, hãy làm thật thay vì chỉ ngồi tưởng tượng trong phòng họp.",
+      "real_world_case": "• Đạo đức & Gia đình: Thí nghiệm tư duy 'Bức màn vô tri' (Veil of Ignorance của John Rawls): Khi cha mẹ phân chia tài sản hoặc xây dựng quy tắc gia đình, hãy tưởng tượng bạn không biết mình sẽ sinh ra là đứa con lớn hay đứa con út, thông minh hay ốm yếu. Quy tắc nào bạn thấy công bằng trong mọi hoàn cảnh, đó mới là quy tắc chuẩn mực.\n• Quản trị Dự án: Kỹ thuật 'Khám nghiệm trước thất bại' (Premortem): Trước ngày bấm nút khởi động dự án, lãnh đạo yêu cầu cả nhóm nhắm mắt lại 5 phút: 'Hôm nay là 1 năm sau, dự án thất bại thảm hại, công ty mất 10 tỷ. Từng người hãy viết ra nguyên nhân chính xác gây nên cái chết đó'. Mọi người thành thật chỉ ra điểm yếu mà bình thường không ai dám nói.\n• Đầu tư Chứng khoán: Thí nghiệm tư duy của Warren Buffett: 'Nếu ngày mai Ủy ban Chứng khoán tuyên bố đóng cửa thị trường trong 5 năm tới và bạn không thể mua bán, bạn có dám thanh thản giữ cổ phiếu này qua 5 năm đó không?'. Thí nghiệm này lập tức loại bỏ 90% các mã cổ phiếu đầu cơ lướt sóng vô giá trị."
     },
     {
       "id": "PHYS-11",
-      "name_vi": "Nguyên lý Cực tiểu Tác dụng",
-      "name_en": "Principle of Least Action",
+      "name_vi": "Tư duy Nguyên bản",
+      "name_en": "First Principles Thinking (Aristotle & Elon Musk)",
       "pillar": "Vật lý học",
-      "tier": 3,
-      "first_principle": "Trong tự nhiên, một hệ vật lý luôn chuyển động theo quỹ đạo có độ tác dụng nhỏ nhất có thể.",
-      "elite_leverage": "Dòng nước luôn chọn con đường ít cản trở nhất. Thiết kế sản phẩm và chính sách sao cho hành vi đúng đắn nhất cũng chính là con đường tiện lợi và tốn ít công sức nhất của người dùng.",
-      "trigger_question": "Con đường tự nhiên nhất, ít sức cản nhất để dòng chảy sự việc tự động đi tới kết quả mong muốn là gì?",
-      "inversion_trap": "Lười biếng thiển cận: Nhầm lẫn giữa con đường tối ưu năng lượng với việc chọn lối tắt cẩu thả làm hỏng nền móng lâu dài.",
+      "tier": 1,
+      "first_principle": "Phân rã một vấn đề phức tạp về các chân lý vật lý và sự thật cơ bản nhất không thể suy diễn thêm, tách biệt hoàn toàn Sự thật (Fact) khỏi Ý kiến (Opinion) và thói quen bắt chước (Analogy), từ đó tái thiết kế giải pháp đột phá từ con số 0.",
+      "elite_leverage": "Elon Musk: 'Hầu hết mọi người tư duy bằng cách so sánh bắt chước (Reasoning by Analogy) — làm việc gì đó vì người khác đang làm. Tư duy nguyên bản ép bạn nhìn vào các định luật vật lý nền tảng: Vật liệu này giá bao nhiêu trên sàn kim loại Luân Đôn? Nếu tự lắp ráp thì chi phí tối thiểu theo định luật bảo toàn là bao nhiêu?'. Khi bóc tách đến tận cùng, bạn nhận ra 90% chi phí và giới hạn chỉ là ảo tưởng do quy ước xã hội tạo ra.",
+      "trigger_question": "Nếu tôi gạt bỏ toàn bộ cách làm truyền thống của ngành và những gì mọi người đang bảo nhau làm, sự thật vật lý và logic cơ bản không thể chối cãi của bài toán này là gì?",
+      "inversion_trap": "Ngụy biện 'Nguyên bản nửa vời' (Pseudo-First Principles): Tự nhận mình tư duy nguyên bản nhưng thực chất chỉ đang sao chép lại sản phẩm của đối thủ với một vài biến tấu nhỏ; hoặc bẫy 'Tê liệt phân rã' (Analysis Paralysis) khi bóc tách nguyên tử quá sâu mà không ráp lại thành hành động.",
       "lollapalooza_pairs": [
-        "Ma sát",
-        "Lý thuyết Động lực",
-        "Cân bằng Nash"
-      ]
+        "Bản đồ không phải lãnh thổ",
+        "Tư duy đảo ngược",
+        "Vòng tròn năng lực",
+        "Biên độ an toàn"
+      ],
+      "action_steps": [
+        "Bước 1 - Nhận diện & Chất vấn Giả định: Viết ra toàn bộ các giả định ngầm, quy ước ngành hoặc câu nói 'từ trước đến giờ ai cũng làm thế' đang chi phối quyết định của bạn.",
+        "Bước 2 - Phân rã về Chân lý Cốt lõi: Bóc tách bài toán thành các khối thành phần nguyên tử nhỏ nhất (Dữ liệu cứng, Định luật vật lý, Chi phí nguyên vật liệu cơ bản).",
+        "Bước 3 - Triệt tiêu Bẫy Bắt chước: Tự hỏi 'Nếu ngành này chưa từng tồn tại và hôm nay là ngày đầu tiên phát minh ra nó, mình sẽ thiết kế nó như thế nào?'.",
+        "Bước 4 - Tái cấu trúc Giải pháp từ Số 0: Tái tạo sản phẩm hoặc quy trình mới từ các chân lý cơ bản đã kiểm chứng, tối ưu hóa đòn bẩy và chi phí biên."
+      ],
+      "boundary_conditions": "Không dùng Tư duy Nguyên bản cho các quyết định thường nhật lặp đi lặp lại có chi phí sai số thấp và đòi hỏi tốc độ tức thì (chọn quần áo, nấu ăn theo công thức chuẩn). Ở các tình huống này, Reasoning by Analogy (bắt chước thói quen tốt) tiết kiệm 95% năng lượng nhận thức.",
+      "real_world_case": "• Giáo dục & Con cái: Thay vì bắt chước phụ huynh khác nhồi nhét con học thêm 5 lớp/tuần vì sợ thua kém (bẫy Analogy), cha mẹ tư duy nguyên bản tự hỏi: 'Cốt lõi để một đứa trẻ tự tin và thành công trong kỷ nguyên AI là gì?' ➔ Đó là khả năng tự học độc lập, tư duy phản biện và thể lực dẻo dai. Từ đó chỉ tập trung phát triển 3 trụ cột này từ số 0.\n• Khởi nghiệp & Công việc: Khi SpaceX chế tạo tên lửa, các chuyên gia nói chi phí 65 triệu USD/lần phóng. Elon Musk phân rã chi phí nguyên liệu thô (nhôm, titan, sợi carbon) chỉ chiếm 2% giá trị tên lửa. Sự chênh lệch 98% nằm ở quy trình gia công cồng kềnh. Bằng cách tự đúc và tái sử dụng động cơ, SpaceX hạ giá phóng xuống 1/10 thị trường.\n• Đầu tư Chứng khoán VN: Đám đông mua cổ phiếu vì thấy room hô 'Target 5x' hoặc thấy người bên cạnh lãi to (Analogy). Nhà đầu tư tư duy nguyên bản bóc tách doanh nghiệp về 3 sự thật cứng: Doanh thu đến từ đâu? Biên lợi nhuận thật sau khấu hao là bao nhiêu? Dòng tiền từ hoạt động kinh doanh (CFO) có thực sự dương và chảy về tài khoản ngân hàng không?"
     },
     {
       "id": "PHYS-12",
@@ -754,19 +772,28 @@
     },
     {
       "id": "PSY-18",
-      "name_vi": "Thiên kiến Nhóm trong - Nhóm ngoài",
-      "name_en": "In-Group / Out-Group Bias",
+      "name_vi": "Dao cạo Hanlon",
+      "name_en": "Hanlon's Razor (Robert J. Hanlon)",
       "pillar": "Tâm lý học",
-      "tier": 3,
-      "first_principle": "Bản năng bầy đàn khiến con người tự động ưu ái cho nhóm mình, đồng thời định kiến tiêu cực cho những người thuộc nhóm khác.",
-      "elite_leverage": "Tạo bản sắc nhóm mạnh mẽ để gắn kết đội ngũ; nhưng khi phân tích chiến lược, phải thoát khỏi định kiến phe phái để nhìn nhận đối thủ công bằng và học hỏi họ.",
-      "trigger_question": "Tôi đang chỉ trích ý kiến này vì nó vô lý hay chỉ vì nó được phát ngôn bởi một người thuộc phe đối lập?",
-      "inversion_trap": "Tẩy chay các ý tưởng đột phá chỉ vì người đề xuất không thuộc phe cánh quen thuộc của mình.",
+      "tier": 1,
+      "first_principle": "Đừng bao giờ quy kết cho ác ý những gì có thể giải thích thỏa đáng bằng sự bất cẩn, thiếu hiểu biết, mệt mỏi, hoặc cấu trúc động lực ngầm yếu kém. Nhận thức này giúp giải phóng tâm trí khỏi sự hoang tưởng và giữ năng lượng để giải quyết vấn đề thực tế.",
+      "elite_leverage": "Charlie Munger coi sự hoang tưởng về ác ý của người khác là một trong những nguồn cơn lớn nhất gây đau khổ và hủy hoại các mối quan hệ hợp tác. Khi áp dụng Dao cạo Hanlon, bạn ngừng coi mình là nạn nhân của những âm mưu cá nhân. Bạn nhìn thấy lỗi lầm xuất phát từ bản chất bất toàn của con người (thiếu ngủ, phân tâm, kém năng lực) và xử lý bằng việc cải tiến quy trình thay vì sinh lòng hận thù.",
+      "trigger_question": "Hành vi gây khó chịu này thực chất là do họ cố tình hãm hại tôi (ác ý), hay chỉ vì họ đang sơ suất, thiếu thông tin, quá tải hoặc năng lực có hạn?",
+      "inversion_trap": "Ngây thơ Mù quáng (Pollyanna Blindness): Áp dụng Hanlon một cách cực đoan đến mức phớt lờ các hành vi gian lận, lừa đảo hoặc phá hoại có chủ đích khi các bằng chứng ác ý đã lặp đi lặp lại nhiều lần.",
       "lollapalooza_pairs": [
-        "Bằng chứng xã hội",
-        "Thiên kiến xác nhận",
-        "Lý thuyết trò chơi"
-      ]
+        "Dao cạo Occam",
+        "Thiên kiến động lực",
+        "Hiệu ứng mỏ neo",
+        "Vòng tròn năng lực"
+      ],
+      "action_steps": [
+        "Bước 1 - Dừng lại 5 Giây (Pause the Ego): Khi bị người khác làm tổn hại hoặc khó chịu, ngăn chặn ngay phản xạ tức giận và ý nghĩ 'Họ đang cố tình chơi mình'.",
+        "Bước 2 - Giả định Sự Bất toàn thay vì Ác ý: Xem xét các lý do đời thường: Họ có đang quá tải, thiếu ngủ, hiểu nhầm yêu cầu, hay hệ thống công cụ làm việc bị lỗi không?",
+        "Bước 3 - Giao tiếp Làm rõ (Clarify without Accusation): Đặt câu hỏi trung lập để kiểm tra thông tin thay vì chỉ trích nhân phẩm đối phương.",
+        "Bước 4 - Tối ưu Quy trình Ngăn ngừa: Nếu lỗi do năng lực hoặc sơ suất, xây dựng checklist và quy trình kiểm soát để sự việc không tái diễn."
+      ],
+      "boundary_conditions": "Không dùng Dao cạo Hanlon khi đối tượng có lịch sử lừa dối lặp lại nhiều lần, có động lực tài chính rõ ràng để trục lợi từ sự thiệt hại của bạn, hoặc trong các cuộc đối đầu chiến lược có tính chất cạnh tranh mất còn (an ninh mạng, chiến tranh thương mại). Khi đó, bảo vệ lợi ích và cảnh giác cao độ là bắt buộc.",
+      "real_world_case": "• Gia đình & Con cái: Đứa trẻ làm rơi vỡ chiếc bình hoa quý. Cha mẹ thiếu Hanlon sẽ quát mắng: 'Tại sao con hư đốn cố tình phá hoại đồ của bố mẹ?'. Cha mẹ thông thái áp dụng Hanlon: Con chỉ vì hiếu động, tay cầm chưa vững hoặc với đồ chơi quá tầm với. Xử lý bằng cách hướng dẫn con dọn dẹp và cất đồ dễ vỡ lên cao.\n• Công sở & Hợp tác: Đối tác gửi tài liệu bị sai sót nghiêm trọng ngay trước giờ thuyết trình với khách hàng. Thay vì nghĩ đối tác đang muốn 'đâm sau lưng' để cướp dự án, bạn nhận ra họ vừa phải thức trắng đêm làm 3 dự án khác cùng lúc. Bình tĩnh cùng sửa lỗi giúp giữ gìn mối quan hệ đối tác bền chặt.\n• Doanh nghiệp & Cổ đông: Ban lãnh đạo công ty chậm nộp báo cáo kiểm toán khiến cổ phiếu bị đưa vào diện cảnh báo. Trước khi quy kết họ 'rút ruột công ty', nhà đầu tư tìm hiểu: Quá trình hợp nhất số liệu các công ty con mới mua lại gặp vướng mắc kỹ thuật phần mềm. Tuy nhiên, nếu sự việc tái diễn năm này qua năm khác, đó là tín hiệu rủi ro quản trị."
     },
     {
       "id": "ECON-01",
@@ -1042,19 +1069,28 @@
     },
     {
       "id": "MATH-03",
-      "name_vi": "Cập nhật Bayes",
-      "name_en": "Bayesian Updating",
+      "name_vi": "Tư duy Xác suất & Cập nhật Bayes",
+      "name_en": "Probabilistic Thinking & Bayesian Updating (Bayes & Laplace)",
       "pillar": "Toán học & Xác suất",
       "tier": 1,
-      "first_principle": "Xác suất hậu nghiệm được cập nhật dựa trên xác suất tiên nghiệm kết hợp với độ tin cậy của bằng chứng thực nghiệm mới: P(H|E) = P(E|H)×P(H) / P(E).",
-      "elite_leverage": "Khi sự thật thay đổi, tôi thay đổi suy nghĩ. Xuất phát từ tỷ lệ cơ sở thực tế (Base rate) và điều chỉnh niềm tin theo độ mạnh của bằng chứng mới.",
-      "trigger_question": "Bằng chứng mới này đáng tin cậy đến đâu và nó khiến xác suất xảy ra của kịch bản này tăng hay giảm bao nhiêu %?",
-      "inversion_trap": "Bỏ qua tỷ lệ cơ sở: Nghe một câu chuyện khởi nghiệp thành công rồi lao vào đầu tư mà quên rằng tỷ lệ phá sản cơ sở của ngành là 95%.",
+      "first_principle": "Thế giới vận hành theo các hàm phân phối xác suất liên tục, không phải nhị nguyên Đúng/Sai tuyệt đối. Niềm tin của một bộ óc lý trí luôn bắt đầu từ Tỷ lệ nền khách quan (Prior/Base Rate), sau đó được cập nhật tỷ lệ thuận với độ tin cậy của bằng chứng mới (Likelihood) để cho ra Niềm tin mới (Posterior).",
+      "elite_leverage": "Charlie Munger: 'Tư duy xác suất là một trong những siêu năng lực lớn nhất của con người. Nếu bạn không đưa toán học xác suất sơ cấp vào bộ công cụ của mình, bạn sẽ đi qua cuộc đời như một kẻ què quặt trong một cuộc thi chạy marathon'. Giới tinh hoa không bao giờ khẳng định chắc chắn 100%, họ nói: 'Tôi gán 75% khả năng kịch bản A xảy ra, và tôi đã chuẩn bị phương án dự phòng cho 25% kịch bản xấu'.",
+      "trigger_question": "Tỷ lệ nền (Base Rate) của việc này trong lịch sử là bao nhiêu, và bằng chứng mới này có đủ mạnh và khách quan để làm thay đổi đáng kể xác suất niềm tin của tôi không?",
+      "inversion_trap": "Bẫy Thờ ơ Tỷ lệ nền (Base Rate Neglect): Bị hớp hồn bởi một câu chuyện cá biệt hào nhoáng mà quên mất 95% số người làm việc đó đều thất bại; và Bẫy Cố chấp (Dogmatism): Không chịu giảm xác suất niềm tin ngay cả khi dữ kiện thực tế đã chứng minh mình sai.",
       "lollapalooza_pairs": [
-        "Tư duy Xác suất",
         "Thiên kiến xác nhận",
+        "Biên độ an toàn",
+        "Rủi ro đuôi béo",
         "Giá trị kỳ vọng"
-      ]
+      ],
+      "action_steps": [
+        "Bước 1 - Neo vào Tỷ lệ Nền (Establish the Base Rate): Tra cứu số liệu thống kê lịch sử khách quan của toàn ngành/tổng thể trước khi xét đến yếu tố cá nhân.",
+        "Bước 2 - Định lượng Niềm tin Tiên nghiệm (Set Prior Probability): Gán một con số xác suất ban đầu dựa trên tỷ lệ nền (ví dụ: Khởi nghiệp F&B có xác suất thành công nền chỉ 15%).",
+        "Bước 3 - Đánh giá Độ tin cậy Bằng chứng mới (Evaluate Likelihood of Evidence): Đo lường xem dữ kiện mới (địa điểm đẹp, đầu bếp giỏi) thực sự làm tăng xác suất lên bao nhiêu phần trăm.",
+        "Bước 4 - Cập nhật Xác suất Hậu nghiệm (Compute Posterior): Điều chỉnh niềm tin mới một cách từ tốn, khách quan và liên tục hiệu chỉnh khi thị trường trả về kết quả thực nghiệm."
+      ],
+      "boundary_conditions": "Không áp dụng Tư duy Xác suất kiểu Bayes cơ học cho các hệ thống có 'Rủi ro đuôi béo' (Fat-tailed / Extreme Extremistan) nơi một sự kiện duy nhất có thể xóa sạch mọi xác suất (cược Russian Roulette, dùng margin tối đa). Ở những cuộc chơi có rủi ro tuyệt chủng (Ruin), nguyên tắc sinh tồn tuyệt đối phải được kích hoạt.",
+      "real_world_case": "• Y tế & Sức khỏe: Xét nghiệm bệnh hiếm gặp có tỷ lệ mắc 1/1.000 (0.1%). Dù que test chính xác 99%, khi nhận kết quả Dương tính, xác suất bị bệnh thật chỉ khoảng 9% vì số ca dương tính giả từ 99.9% người khỏe mạnh vẫn áp đảo (Bỏ quên tỷ lệ nền).\n• Nghề nghiệp & Khởi nghiệp: Thấy một người bạn mở quán trà sữa kiếm 50 triệu/tháng, liền bỏ việc mở quán theo. Tư duy xác suất Bayes chỉ ra: Tỷ lệ nền phá sản của quán F&B trong năm đầu là 80%. Bạn cần có lợi thế cạnh tranh phi thường (Vị trí độc quyền, công thức bất đối xứng) mới đẩy được xác suất thắng từ 20% lên trên 50%.\n• Chứng khoán VN: Doanh nghiệp ra tin tức 'Ký hợp đồng nghìn tỷ'. Nhà đầu tư F0 tưởng chắc chắn cổ phiếu tăng trần 5 phiên. Nhà đầu tư Bayes xem xét tỷ lệ nền: Trong quá khứ có bao nhiêu hợp đồng dạng này thực sự tạo ra dòng tiền ròng cho cổ đông? Bằng chứng này làm tăng xác suất tăng giá lên bao nhiêu sau khi đã trừ đi kỳ vọng thị trường?"
     },
     {
       "id": "MATH-04",
@@ -1374,16 +1410,25 @@
       "name_vi": "Hệ quả Bậc hai & Bậc cao",
       "name_en": "Second-Order Thinking (Howard Marks)",
       "pillar": "Kỹ thuật & Hệ thống",
-      "tier": 2,
-      "first_principle": "Mọi hành động đều tạo ra kết quả tức thì (Bậc 1), nhưng kết quả đó kích hoạt các phản ứng dây chuyền tiếp theo tạo ra hệ quả Bậc 2, Bậc 3 phức tạp.",
-      "elite_leverage": "Luôn tự hỏi: 'And then what?' (Và sau đó điều gì xảy ra tiếp theo?). Sẵn sàng chịu thiệt hại ngắn hạn ở bậc 1 để gặt hái thành quả khổng lồ ở bậc 2 và bậc 3.",
-      "trigger_question": "Hành động này mang lại giải pháp êm ái trước mắt, nhưng sau 6 tháng và 2 năm nữa nó sẽ tạo ra những rắc rối dây chuyền nào?",
-      "inversion_trap": "Tư duy bậc 1 nông cạn: Cho thuốc giảm đau liên tục để cắt cơn đau dạ dày tức thì mà không chữa vết loét, dẫn đến thủng dạ dày tử vong.",
+      "tier": 1,
+      "first_principle": "Mọi hành động can thiệp vào một hệ thống phức hợp đều tạo ra hai lớp kết quả: Kết quả Bậc 1 (trực tiếp, hiển hiện, tức thì) và Hệ quả Bậc 2, Bậc 3 (phản ứng của các tác nhân, thay đổi động lực ngầm, tích lũy theo thời gian). Giới tinh hoa luôn ra quyết định dựa trên hệ quả bậc 2 trở lên.",
+      "elite_leverage": "Howard Marks (Oaktree Capital): 'Tư duy bậc một đơn giản và nông cạn: Công ty này tốt, hãy mua cổ phiếu; Kinh tế đang suy thoái, hãy bán hết. Tư duy bậc hai sâu sắc và phức tạp hơn: Công ty này tốt, nhưng mọi người đều nghĩ nó tuyệt vời nên giá bị thổi phồng quá mức; hãy bán. Hoặc: Kinh tế suy thoái, nhưng thị trường đã chiết khấu kịch bản tồi tệ nhất vào giá rồi; hãy mua'. Câu hỏi đòn bẩy tối thượng: 'Và sau đó điều gì sẽ xảy ra?' (And then what?).",
+      "trigger_question": "Và sau đó điều gì sẽ xảy ra? Các bên liên quan sẽ phản ứng thế nào với quy định/hành động này sau 6 đến 12 tháng?",
+      "inversion_trap": "Cạm bẫy Bậc một (First-Order Blindness): Bị mờ mắt bởi lợi ích dopamine ngọt ngào trước mắt (giảm giá xả hàng, phát tiền trợ cấp, cho con chơi điện thoại để yên tĩnh) mà phớt lờ cái giá đắt đỏ, sự tha hóa động lực và thảm họa ở bậc hai.",
       "lollapalooza_pairs": [
-        "Đa quy mô thời gian",
-        "Vòng phản hồi",
-        "Tùy chọn"
-      ]
+        "Vòng phản hồi âm & dương",
+        "Lý thuyết trò chơi",
+        "Chi phí cơ hội",
+        "Tư duy đảo ngược"
+      ],
+      "action_steps": [
+        "Bước 1 - Lập bản đồ Hệ quả Bậc 1: Ghi rõ tác động tức thì của hành động (Ví dụ: Giảm giá 20% giúp doanh số tháng này tăng vọt).",
+        "Bước 2 - Đặt câu hỏi 'And then what?' (Và sau đó thì sao?): Dự phóng phản ứng của đối thủ, nhân viên, khách hàng trong 3-6 tháng tới (Đối thủ giảm giá theo ➔ Chiến tranh giá ➔ Lợi nhuận ngành bốc hơi ➔ Khách hàng mất niềm tin vào thương hiệu).",
+        "Bước 3 - Phân tích Ma trận Động lực (Incentive Shifts): Xem xét hành động này có vô tình khuyến khích hành vi trục lợi hoặc lách luật trong tương lai không.",
+        "Bước 4 - Tối ưu hóa vì Lợi ích Dài hạn: Sẵn sàng chấp nhận nỗi đau ngắn hạn ở bậc 1 (tập gym đau cơ, kỷ luật nghiêm khắc, cắt lỗ danh mục) để gặt hái trái ngọt ở bậc 2 và 3."
+      ],
+      "boundary_conditions": "Không dùng Tư duy Bậc hai để suy diễn vô tận thành 'Paralysis by Analysis' (Liệt tư duy do vẽ ra kịch bản bậc 5, bậc 6 viển vông). Trong các tình huống cấp cứu sinh tử (cháy nhà, trụy tim), hành động bậc 1 ngay lập tức là ưu tiên số một.",
+      "real_world_case": "• Gia đình & Con cái: Cho con dùng iPad để con ngồi ngoan cho bố mẹ làm việc (Bậc 1: Yên tĩnh tức thì). Hệ quả bậc 2: Con suy giảm khả năng tập trung sâu, mất kết nối cảm xúc và cáu gắt khi bị thu lại máy. Bậc 3: Thói quen nghiện dopamine làm con chán ghét việc đọc sách và học tập.\n• Chính sách & Quản lý: Hiệu ứng rắn hổ mang (Cobra Effect) tại Ấn Độ thời thuộc địa: Chính quyền treo thưởng tiền mặt cho ai bắt được rắn hổ mang (Bậc 1: Dân tích cực bắt rắn). Bậc 2: Người dân mở trang trại nuôi rắn để kiếm tiền thưởng. Bậc 3: Khi chính quyền hủy tiền thưởng, người dân thả toàn bộ rắn nuôi ra đường khiến số lượng rắn tăng gấp bội.\n• Đầu tư Chứng khoán VN: Doanh nghiệp thông báo chia cổ tức bằng cổ phiếu 50% (Bậc 1: Nhà đầu tư F0 phấn khích tưởng được tặng thêm tiền). Bậc 2: Giá cổ phiếu bị điều chỉnh giảm tương ứng, lượng hàng trôi nổi tăng vọt, cổ phiếu bị 'pha loãng' làm giảm EPS tương lai. Bậc 3: Áp lực bán tháo cổ phiếu thưởng khi về tài khoản đẩy giá giảm sâu hơn."
     },
     {
       "id": "SYS-11",
@@ -1428,19 +1473,28 @@
     },
     {
       "id": "SYS-13",
-      "name_vi": "Bẫy Tối ưu hóa Cục bộ",
-      "name_en": "Local vs Global Optimum",
+      "name_vi": "Dao cạo Occam",
+      "name_en": "Occam's Razor (William of Ockham)",
       "pillar": "Kỹ thuật & Hệ thống",
-      "tier": 3,
-      "first_principle": "Trèo lên đỉnh của một ngọn đồi thấp (cực đại cục bộ) có thể khiến bạn bị mắc kẹt và không bao giờ tìm thấy đỉnh núi cao phía xa, trừ khi bạn chấp nhận đi xuống dốc trước.",
-      "elite_leverage": "Sẵn sàng chấp nhận tạm thời giảm thu nhập, giảm vị thế (đi xuống thung lũng) để chuyển hướng sang một đỉnh núi sự nghiệp cao hơn gấp 10 lần.",
-      "trigger_question": "Tôi có đang bận rộn leo lên đỉnh một ngọn đồi thấp và tự chặn đứng cơ hội chinh phục ngọn núi cao thực sự ở phía xa?",
-      "inversion_trap": "Mắc kẹt trong vùng an toàn: Bám chặt lấy một công việc văn phòng lương 20 triệu/tháng chỉ vì sợ cảm giác bấp bênh khi bắt đầu xây dựng sự nghiệp riêng.",
+      "tier": 1,
+      "first_principle": "Entia non sunt multiplicanda praeter necessitatem — Không nên nhân thêm các thực thể nếu không cần thiết. Trong số các giả thuyết cùng giải thích được trọn vẹn dữ kiện thực tế, giả thuyết nào đòi hỏi ít giả định ngầm nhất thường là giả thuyết đúng đắn nhất.",
+      "elite_leverage": "Đơn giản hóa là đỉnh cao của sự tinh tế. Giới tinh hoa dùng Dao cạo Occam như một lưỡi dao sắc bén để cắt phăng những lời ngụy biện vòng vo, các thuyết âm mưu phức tạp và những bản kế hoạch cồng kềnh. Càng thêm nhiều giả định 'nếu như', xác suất đồng thời xảy ra của toàn bộ chuỗi mắt xích càng suy giảm tiệm cận về 0.",
+      "trigger_question": "Trong số các cách giải thích này, phương án nào đòi hỏi ít giả định ngầm nhất và giải thích sự việc một cách trực tiếp nhất?",
+      "inversion_trap": "Bẫy 'Đơn giản hóa thô thiển' (Reductionism Trap): Nhầm lẫn giữa 'ít giả định' với 'dễ hiểu'. Einstein từng cảnh báo: 'Mọi thứ nên được làm đơn giản nhất có thể, nhưng không được đơn giản hơn thế'. Cắt bỏ những biến số phức tạp thực sự cần thiết sẽ dẫn đến kết luận ngây thơ.",
       "lollapalooza_pairs": [
-        "Chi phí cơ hội",
-        "Tùy chọn",
-        "Tiến hóa"
-      ]
+        "Dao cạo Hanlon",
+        "Tư duy nguyên bản",
+        "Xác suất Bayes",
+        "Nút cổ chai"
+      ],
+      "action_steps": [
+        "Bước 1 - Liệt kê Giả thuyết: Ghi ra tất cả các cách giải thích hoặc phương án giải quyết cho vấn đề.",
+        "Bước 2 - Đếm Giả định ngầm (Count Assumptions): Liệt kê từng điều kiện tiên quyết mà mỗi phương án phải thỏa mãn để trở thành sự thật.",
+        "Bước 3 - Cắt bỏ Giả thuyết Phức tạp: Áp dụng dao cạo để loại bỏ các phương án đòi hỏi quá nhiều điều kiện trùng hợp kỳ lạ hoặc âm mưu che giấu tinh vi.",
+        "Bước 4 - Ưu tiên Kiểm chứng Giả thuyết Đơn giản nhất: Bắt đầu hành động từ phương án trực tiếp và ít ma sát nhất."
+      ],
+      "boundary_conditions": "Không dùng Dao cạo Occam khi hiện tượng được quan sát là một hệ thống phi tuyến tính phức hợp có nhiều biến số ẩn tương tác lẫn nhau (chẩn đoán bệnh đa triệu chứng hiếm gặp, dự báo khủng hoảng kinh tế vĩ mô). Giả thuyết đơn giản nhất chưa chắc đúng nếu nó không bao quát được toàn bộ dữ kiện thực nghiệm.",
+      "real_world_case": "• Y khoa: Nguyên tắc lâm sàng kinh điển: 'Khi bạn nghe thấy tiếng vó ngựa gõ trên đường phố New York, hãy nghĩ đến ngựa trước tiên, đừng vội nghĩ đến ngựa vằn'. Các bác sĩ ưu tiên chẩn đoán bệnh phổ biến trước khi nghĩ đến những hội chứng di truyền hiếm gặp 1 phần triệu.\n• Quan hệ Công việc & Đời sống: Nhân viên không nộp báo cáo đúng hạn. Giả thuyết A (Phức tạp): Anh ta đang ngầm chống đối, bất mãn chế độ lương và câu kết với đối thủ để phá hoại dự án. Giả thuyết B (Dao cạo Occam): Anh ta bị quá tải việc, quản lý thời gian kém hoặc người nhà bị ốm. 95% trường hợp, giả thuyết B là sự thật.\n• Đầu tư Chứng khoán: Cổ phiếu rớt giá 30%. Nhà đầu tư F0 dựng lên thuyết âm mưu: 'Đội lái đang rung lắc cố tình dìm giá gom hàng để chuẩn bị đánh lên x3'. Dao cạo Occam chỉ ra: Giá giảm đơn giản vì kết quả kinh doanh quý này sụt giảm và các nhà đầu tư lớn đang bán tháo chốt lời."
     }
   ]
 }

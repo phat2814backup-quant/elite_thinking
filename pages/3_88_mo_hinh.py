@@ -150,36 +150,68 @@ with subtab2:
 
     # Callout Banner nổi bật: The Great Mental Models Hub
     with st.container(border=True):
-        c_banner_info, c_banner_actions = st.columns([3, 2])
+        c_banner_info, c_banner_actions = st.columns([2.8, 3.2])
         with c_banner_info:
             st.markdown("""
-            ##### 💎 Tuyển Tập The Great Mental Models (Shane Parrish — Volume 1)
-            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** bao gồm:
+            ##### 💎 Trọn Bộ The Great Mental Models (Shane Parrish — Volume 1)
+            Đã tích hợp đầy đủ **Khung phân tích 3 tầng** cho toàn bộ **9 Siêu Mô Hình Tư Duy Cốt Lõi**:
             * **🛠️ Quy trình thực thi 4 bước (Action Protocol)**
             * **⛔ Ranh giới áp dụng (Boundary Conditions — Khi nào KHÔNG dùng)**
             * **🌐 Tình huống thực chiến đa chiều (K12 & Gia đình, Phát triển sự nghiệp, Đầu tư VN-Index)**
             """)
-            st.caption("📌 Hiện tại hệ thống đã tích hợp 3 siêu mô hình đầu tiên: **[SYS-11]**, **[PSY-12]**, **[MATH-05]**.")
+            st.caption("🏆 **9 Siêu mô hình:** First Principles · Map/Territory · Circle of Competence · Inversion · Second-Order · Bayes · Thought Experiment · Occam's Razor · Hanlon's Razor.")
 
         with c_banner_actions:
-            st.markdown("**⚡ Phím tắt mở xem ngay:**")
-            col_b1, col_b2, col_b3 = st.columns(3)
-            with col_b1:
+            st.markdown("**⚡ Phím tắt mở nhanh từng mô hình GMM Vol 1:**")
+            
+            # Row 1: Logic & Tinh giản
+            r1_c1, r1_c2, r1_c3 = st.columns(3)
+            with r1_c1:
+                if st.button("🔬 PHYS-11\nNguyên bản", use_container_width=True, help="Tư duy Nguyên bản (First Principles)"):
+                    st.session_state["_action_jump_mid"] = "PHYS-11"
+                    st.rerun()
+            with r1_c2:
+                if st.button("🪒 SYS-13\nDao Occam", use_container_width=True, help="Dao cạo Occam (Occam's Razor)"):
+                    st.session_state["_action_jump_mid"] = "SYS-13"
+                    st.rerun()
+            with r1_c3:
+                if st.button("🕊️ PSY-18\nDao Hanlon", use_container_width=True, help="Dao cạo Hanlon (Hanlon's Razor)"):
+                    st.session_state["_action_jump_mid"] = "PSY-18"
+                    st.rerun()
+
+            # Row 2: Nhận thức & Khám phá
+            r2_c1, r2_c2, r2_c3 = st.columns(3)
+            with r2_c1:
                 if st.button("🗺️ SYS-11\nBản đồ", use_container_width=True, help="Bản đồ không phải Lãnh thổ"):
                     st.session_state["_action_jump_mid"] = "SYS-11"
                     st.rerun()
-            with col_b2:
+            with r2_c2:
                 if st.button("🎯 PSY-12\nVòng tròn", use_container_width=True, help="Vòng tròn Năng lực"):
                     st.session_state["_action_jump_mid"] = "PSY-12"
                     st.rerun()
-            with col_b3:
-                if st.button("🔄 MATH-05\nĐảo ngược", use_container_width=True, help="Tư duy Đảo ngược"):
+            with r2_c3:
+                if st.button("💡 PHYS-10\nThí nghiệm", use_container_width=True, help="Thí nghiệm Tư duy (Thought Experiment)"):
+                    st.session_state["_action_jump_mid"] = "PHYS-10"
+                    st.rerun()
+
+            # Row 3: Dự phóng & Quyết định
+            r3_c1, r3_c2, r3_c3 = st.columns(3)
+            with r3_c1:
+                if st.button("🔄 MATH-05\nĐảo ngược", use_container_width=True, help="Tư duy Đảo ngược (Inversion)"):
                     st.session_state["_action_jump_mid"] = "MATH-05"
+                    st.rerun()
+            with r3_c2:
+                if st.button("⏳ SYS-10\nBậc hai+", use_container_width=True, help="Hệ quả Bậc hai & Bậc cao (Second-Order Thinking)"):
+                    st.session_state["_action_jump_mid"] = "SYS-10"
+                    st.rerun()
+            with r3_c3:
+                if st.button("🎲 MATH-03\nXác suất Bayes", use_container_width=True, help="Tư duy Xác suất & Cập nhật Bayes"):
+                    st.session_state["_action_jump_mid"] = "MATH-03"
                     st.rerun()
 
             btn_all_gmm, btn_reset = st.columns(2)
             with btn_all_gmm:
-                if st.button("✨ Lọc cả 3 mô hình GMM", type="primary", use_container_width=True):
+                if st.button("✨ Lọc trọn bộ 9 mô hình GMM", type="primary", use_container_width=True):
                     st.session_state["_action_filter_gmm"] = True
                     st.rerun()
             with btn_reset:
