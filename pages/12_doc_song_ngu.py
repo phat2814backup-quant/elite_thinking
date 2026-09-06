@@ -113,29 +113,36 @@ tab1, tab2, tab3 = st.tabs([
 # TAB 1: BILINGUAL READER
 # =============================================================================
 with tab1:
-    col_book, col_chap = st.columns([1, 1.5])
+    col_book, col_part, col_chap = st.columns([1, 1.2, 1.5])
     with col_book:
         book_options = {b.get("title_vi", b.get("title_en")): b["book_id"] for b in books}
         selected_book_name = st.selectbox("Chọn sách:", list(book_options.keys()))
         current_book_id = book_options[selected_book_name]
         current_book = get_book_by_id(current_book_id)
 
-    # Flatten chapters for easy selection
-    all_chapters = []
-    if current_book:
-        for part in current_book.get("parts", []):
-            for ch in part.get("chapters", []):
-                all_chapters.append(ch)
+    parts = current_book.get("parts", []) if current_book else []
+    with col_part:
+        if parts:
+            part_options = {}
+            for p in parts:
+                p_title = p.get("title_vi") or f"Phần {p.get('part_id', 1)}"
+                part_options[p_title] = p
+            selected_part_label = st.selectbox("Chọn phần:", list(part_options.keys()))
+            current_part = part_options[selected_part_label]
+        else:
+            current_part = None
+
 
     with col_chap:
-        if all_chapters:
-            chap_options = {f"Chương {ch['id']}: {ch['title_vi']} ({ch['title_en']})": ch for ch in all_chapters}
-            selected_chap_label = st.selectbox("Chọn chương sách:", list(chap_options.keys()))
+        if current_part and current_part.get("chapters"):
+            chap_options = {f"Chương {ch['id']}: {ch['title_vi']}": ch for ch in current_part["chapters"]}
+            selected_chap_label = st.selectbox("Chọn chương:", list(chap_options.keys()))
             current_chapter = chap_options[selected_chap_label]
         else:
             current_chapter = None
 
     st.markdown("---")
+
 
     # Reader Controls Toolbar
     ctrl_col1, ctrl_col2, ctrl_col3 = st.columns([1.5, 1, 1])

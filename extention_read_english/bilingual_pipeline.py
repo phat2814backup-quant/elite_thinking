@@ -1,264 +1,244 @@
-# -*- coding: utf-8 -*-
-"""
-Bilingual Ingestion & Alignment Pipeline for Feynman Books.
-Converts and aligns chapters of "Surely You're Joking, Mr. Feynman!" (English)
-and "Chuyện thật như đùa" (Vietnamese).
-Outputs ultra-lightweight JSON to data/bilingual_books/feynman_surely_youre_joking.json.
-"""
-
+﻿import sys
+sys.stdout.reconfigure(encoding='utf-8')
 import os
-import sys
 import json
 import re
 from pathlib import Path
+from pypdf import PdfReader
 
-# Ensure UTF-8 output
-sys.stdout.reconfigure(encoding="utf-8")
+EN_PDF = r"D:\02_HocTap\elite_thinking\extention_read_english\books\Surely You're Joking, Mr. Feynman!.pdf"
+VI_PDF = r"D:\02_HocTap\elite_thinking\extention_read_english\books\1644-feynman-chuyen-that-nhu-dua-thuviensach.vn.pdf"
 
+en_reader = PdfReader(EN_PDF)
+vi_reader = PdfReader(VI_PDF)
 
-def get_part1_data():
-    """Returns curated, perfectly aligned bilingual cards for Part 1 (Chapters 1 to 6)."""
-    chapters = [
-        {
-            "id": 1,
-            "slug": "ch1_he_fixes_radios",
-            "title_en": "He Fixes Radios by Thinking!",
-            "title_vi": "Cậu bé sửa radio bằng suy nghĩ",
-            "summary_vi": "Feynman kể về thời niên thiếu tự lập phòng thí nghiệm tại nhà, tự chế cầu chì, chuông báo trộm, và câu chuyện nổi tiếng sửa radio cho khách chỉ bằng cách đứng suy nghĩ nguyên lý vận hành.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Phòng thí nghiệm tại nhà & Dãy bóng đèn",
-                    "en": "WHEN I WAS about eleven or twelve I set up a lab in my house. It consisted of an old wooden packing box that I put shelves in. I had a heater, and I’d put in fat and cook french-fried potatoes all the time. I also had a storage battery, and a lamp bank.\n\nTo build the lamp bank I went down to the five-and-ten and got some sockets you can screw down to a wooden base, and connected them with pieces of bell wire. By making different combinations of switches—in series or parallel—I knew I could get different voltages. But what I hadn’t realized was that a bulb’s resistance depends on its temperature, so the results of my calculations weren’t the same as the stuff that came out of the circuit. But it was all right, and when the bulbs were in series, all half-lit, they would gloooooooooow, very pretty—it was great!",
-                    "vi": "Khi khoảng mười một hoặc mười hai tuổi, tôi lắp đặt một phòng thí nghiệm ngay trong nhà mình. Phòng thí nghiệm gồm một hộp gỗ cũ mà tôi lắp thêm mấy cái giá vào bên trong. Tôi có một cái lò sưởi, và tôi thường cho mỡ vào đó để chiên khoai tây suốt. Tôi cũng có một bình ắc quy và một dãy bóng đèn.\n\nĐể kết nối các bóng đèn với nhau, tôi chạy ra cửa hàng năm-và-mười-xu mua những cái bảng điện có thể vít vào đế gỗ, rồi nối chúng lại bằng những đoạn dây chuông. Bằng cách kết hợp các công tắc theo những kiểu khác nhau – mắc nối tiếp hoặc song song – tôi biết mình có thể tạo ra các hiệu điện thế khác nhau. Nhưng điều tôi không nhận ra là điện trở của bóng đèn phụ thuộc vào nhiệt độ của nó, nên kết quả tính toán không giống với kết quả thực tế trên mạch điện. Nhưng không sao, và khi các bóng đèn được mắc nối tiếp, sáng liu riu, chúng phát ra ánh sáng lung linh, rất đẹp – thật là tuyệt!",
-                    "vocab": [
-                        {"word": "packing box", "type": "noun", "vi": "thùng gỗ đóng hàng", "feynman_context": "Vật liệu thô sơ Feynman dùng để làm giá thí nghiệm."},
-                        {"word": "storage battery", "type": "noun", "vi": "bình ắc quy", "feynman_context": "Nguồn lưu trữ điện một chiều."},
-                        {"word": "lamp bank", "type": "noun", "vi": "dãy bóng đèn thử tải", "feynman_context": "Hệ thống nhiều bóng đèn mắc nối tiếp/song song để đổi điện áp."},
-                        {"word": "five-and-ten", "type": "noun (slang)", "vi": "cửa hàng tạp hóa đồng giá (5-10 xu)", "feynman_context": "Cửa hàng bán đồ giá rẻ phổ biến ở Mỹ đầu thế kỷ 20."},
-                        {"word": "in series or parallel", "type": "phrase", "vi": "mắc nối tiếp hoặc song song", "feynman_context": "Hai nguyên lý cơ bản của mạch điện tử."},
-                        {"word": "resistance", "type": "noun", "vi": "điện trở", "feynman_context": "Đặc tính cản trở dòng điện, phụ thuộc vào nhiệt độ."}
-                    ]
-                },
-                {
-                    "section_id": 2,
-                    "title": "Cầu chì tự chế & Chiếc chuông báo trộm",
-                    "en": "I had a fuse in the system so if I shorted anything, the fuse would blow. Now I had to have a fuse that was weaker than the fuse in the house, so I made my own fuses by taking tin foil and wrapping it around an old burnt-out fuse. Across my fuse I had a five-watt bulb, so when my fuse blew, the load from the trickle charger that was always charging the storage battery would light up the bulb. The bulb was on the switchboard behind a piece of brown candy paper (it looks red when a light’s behind it)—so if something went off, I’d look up to the switchboard and there would be a big red spot where the fuse went. It was fun!\n\nAbout that time I invented a burglar alarm, which was a very simple-minded thing: it was just a big battery and a bell connected with some wire. When the door to my room opened, it pushed the wire against the battery and closed the circuit, and the bell would go off. One night my mother and father came home from a night out and very, very quietly, so as not to disturb the child, opened the door to come into my room to take my earphones off. All of a sudden this tremendous bell went off with a helluva racket—BONG BONG BONG BONG BONG!!! I jumped out of bed yelling, “It worked! It worked!”",
-                    "vi": "Tôi có một cầu chì trong hệ thống, để nếu tôi làm chập mạch bất cứ thứ gì, cầu chì sẽ nổ. Lúc này tôi cần có một cái cầu chì yếu hơn cầu chì trong nhà, nên tôi tự chế cầu chì bằng cách lấy giấy thiếc quấn quanh một cái cầu chì cũ đã cháy. Tôi nối một bóng đèn 5 watt qua cầu chì của mình, để khi cầu chì nổ, tải từ bộ sạc vốn luôn sạc cho ắc quy sẽ làm bóng đèn sáng lên. Bóng đèn nằm trên bảng điện, sau một mảnh giấy gói kẹo màu nâu (nó trông có màu đỏ khi có ánh sáng phía sau) – cho nên nếu có cái gì đó bị hỏng thì nhìn vào bảng điện tôi sẽ thấy ở đó có một đốm sáng lớn màu đỏ, nơi chiếc cầu chì bị nổ. Vui thật!\n\nKhoảng thời gian đó, tôi sáng chế ra một chiếc chuông báo trộm, một thiết bị vô cùng đơn giản: chỉ gồm một cục pin lớn và một chiếc chuông nối với dây điện. Khi cửa phòng mở ra, nó đẩy dây điện chạm vào cực pin, đóng kín mạch điện và chuông sẽ reo inh ỏi. Một buổi tối, đi chơi khuya về, bố mẹ tôi rất nhẹ nhàng mở cửa vào phòng để tháo cái tai nghe cho tôi, rất nhẹ nhàng để không đánh thức con trai. Bất thình lình, cái chuông phát ra những tiếng ồn khủng khiếp – Bong Bong Bong Bong Bong!!! Tôi nhảy bật ra khỏi giường và hét lên: “Nó kêu rồi! Nó kêu rồi!”",
-                    "vocab": [
-                        {"word": "shorted", "type": "verb", "vi": "làm đoản mạch / chập điện", "feynman_context": "short anything = làm chập mạch điện."},
-                        {"word": "fuse would blow", "type": "phrase", "vi": "cầu chì sẽ đứt / nổ", "feynman_context": "Hiện tượng dây chì chảy ra khi quá dòng."},
-                        {"word": "trickle charger", "type": "noun", "vi": "bộ sạc duy trì dòng nhỏ (sạc nhỏ giọt)", "feynman_context": "Bộ sạc chậm liên tục cho ắc quy."},
-                        {"word": "burglar alarm", "type": "noun", "vi": "chuông báo trộm", "feynman_context": "Hệ thống cảnh báo đột nhập cơ học."},
-                        {"word": "simple-minded", "type": "adj", "vi": "giản dị, ngây thơ, không cầu kỳ", "feynman_context": "Văn phong Feynman ưa thích sự mộc mạc của nguyên lý gốc."},
-                        {"word": "helluva racket", "type": "idiom", "vi": "tiếng ồn inh tai nhức óc", "feynman_context": "hell of a racket = âm thanh náo loạn, ầm ĩ."}
-                    ]
-                },
-                {
-                    "section_id": 3,
-                    "title": "Cuộn dây Ford, Vụ cháy & Lỗ hổng khói",
-                    "en": "I had a Ford coil—a spark coil from an automobile—and I had the spark terminals at the top of my switchboard. I would put a Raytheon RH tube, which had argon gas in it, across the terminals, and the spark would make a purple glow inside the vacuum—it was just great!\n\nOne day I was playing with the Ford coil, punching holes in paper with the sparks, and the paper caught on fire. Soon I couldn’t hold it any more because it was burning near my fingers, so I dropped it in a metal wastebasket which had a lot of newspapers in it. Newspapers burn fast, you know, and the flame looked pretty big inside the room. I shut the door so my mother—who was playing bridge with some friends in the living room—wouldn’t find out there was a fire in my room, took a magazine that was lying nearby, and put it over the wastebasket to smother the fire.\n\nAfter the fire was out I took the magazine off, but now the room began to fill up with smoke. The wastebasket was still too hot to handle, so I got a pair of pliers, carried it across the room, and held it out the window for the smoke to blow out. But because it was breezy outside, the wind lit the fire again, and now the magazine was out of reach. So I pulled the flaming wastebasket back in through the window to get the magazine, and I noticed there were curtains in the window—it was very dangerous!\n\nWell, I got the magazine, put the fire out again, and this time kept the magazine with me while I shook the glowing coals out of the wastepaper basket onto the street, two or three floors below. Then I went out of my room, closed the door behind me, and said to my mother, “I’m going out to play,” and the smoke went out slowly through the windows.",
-                    "vi": "Tôi có một cuộn dây Ford, vốn là cuộn dây ở bộ phận đánh lửa trong ô tô. Tôi dùng nó để làm những cái chốt đánh tia lửa ở phía trên của bảng điều khiển. Tôi đặt một cái bóng đèn Raytheon RH chứa khí Argon nối giữa những cái chốt đánh lửa đó. Tia lửa điện làm cái bóng sáng lên màu tím lung linh – điều đó thật tuyệt vời!\n\nMột hôm, tôi nghịch cuộn dây Ford, đục những cái lỗ trên tờ giấy bằng tia lửa điện, và tờ giấy bén lửa. Chẳng mấy chốc tôi không giữ nổi tờ giấy nữa vì lửa cháy sát ngón tay, nên đành thả nó vào cái thùng rác kim loại chứa đầy báo cũ. Bạn biết đấy, báo cũ bắt lửa rất nhanh, ngọn lửa bùng lên khá lớn trong phòng. Tôi vội đóng cửa lại để mẹ – lúc ấy đang chơi bài bridge với mấy người bạn ở phòng khách – không phát hiện ra là có cháy trong phòng. Tôi vớ ngay một cuốn tạp chí đặt gần đó úp lên thùng rác để dập lửa.\n\nKhi lửa tắt, tôi nhấc cuốn tạp chí ra, nhưng lúc này căn phòng bắt đầu mù mịt khói. Cái thùng rác kim loại thì quá nóng để cầm tay, nên tôi lấy một cái kìm kẹp nó đưa lại gần cửa sổ thò ra ngoài cho khói bay đi. Nhưng vì bên ngoài có gió, gió lại thổi bùng ngọn lửa lên lần nữa, trong khi cuốn tạp chí thì đã nằm ngoài tầm với. Thế là tôi đành kéo cái thùng rác đang cháy ngược vào trong phòng để với cuốn tạp chí, và bỗng giật mình thấy rèm cửa sổ bằng vải đang bay phần phật ngay cạnh – cực kỳ nguy hiểm!\n\nCuối cùng, tôi cũng chộp được cuốn tạp chí, dập tắt lửa lần nữa, lần này vừa giữ chặt cuốn tạp chí vừa lắc những mẩu than hồng còn lại ra khỏi thùng rác xuống lòng đường phía dưới, cách hai ba tầng lầu. Sau đó tôi ra khỏi phòng, khép cửa lại và nói với mẹ: “Con đi ra ngoài chơi đây,” mặc cho khói từ từ thoát ra ngoài qua khe cửa sổ.",
-                    "vocab": [
-                        {"word": "spark coil", "type": "noun", "vi": "cuộn dây đánh lửa (biến áp tăng áp)", "feynman_context": "Thiết bị tạo điện áp cao từ bình ắc quy xe Ford."},
-                        {"word": "terminals", "type": "noun", "vi": "cực đấu nối / đầu nối dây", "feynman_context": "Các chốt kết nối dây điện trên bảng mạch."},
-                        {"word": "smother the fire", "type": "phrase", "vi": "dập tắt lửa bằng cách ngắt oxy", "feynman_context": "Úp tạp chí lên để ngăn không khí tiếp xúc với lửa."},
-                        {"word": "too hot to handle", "type": "phrase", "vi": "quá nóng để chạm vào", "feynman_context": "Cái thùng rác kim loại bị nung nóng bởi lửa."},
-                        {"word": "glowing coals", "type": "noun", "vi": "than hồng còn đang cháy đỏ", "feynman_context": "Các mẩu giấy báo cháy dở thành than rực lửa."}
-                    ]
-                },
-                {
-                    "section_id": 4,
-                    "title": "Bắt sóng vô tuyến & Bí mật Câu lạc bộ Tội phạm Eno",
-                    "en": "I bought radios at rummage sales. I didn’t have any money, but it didn’t cost much: they were old, broken radios, and I’d buy them and try to fix them. Usually they were broken in some simple way—some obvious wire was loose, or a coil was broken or partly unwound—so I could get some of them going. On one of these radios I got WACO in Waco, Texas, one night—it was a big thrill!\n\nOn this same tube radio, up in my lab, I could hear a station in Schenectady called WGY. Now, all of us kids—my two cousins, my sister, and the neighborhood kids—used to listen downstairs to a radio program called the Eno Crime Club—sponsored by Eno Effervescent Salts—it was great! But I discovered that I could hear this show on WGY in my lab an hour before it was broadcast in New York! So I’d know what was going to happen, and then, later on, when we were all sitting around the radio downstairs listening to the Eno Crime Club, I’d say, “You know, we haven’t heard from so-and-so for a long time. I betcha he comes in and saves the situation.”\n\nSure enough, two seconds later he’d save the day! So they were all very impressed, and after that I got them to do a lot of things for me. But that was a long time before I realized that when you do that, nobody likes you.",
-                    "vi": "Tôi mua mấy cái radio ở những buổi bán đồ cũ gây quỹ. Tôi không có nhiều tiền, nhưng giá của chúng rất rẻ: đều là radio cũ hỏng, tôi mua về và mày mò sửa lại. Thường thì chúng chỉ bị hỏng những lỗi đơn giản – một sợi dây bị lỏng, một cuộn cảm bị đứt hoặc bung mối hàn – nên tôi đã sửa được một vài cái chạy tốt. Trên một cái máy như thế, một đêm nọ tôi bắt được đài WACO tận bang Texas – một cảm giác sung sướng tột cùng!\n\nCũng trên chiếc radio đèn điện tử đó trên phòng thí nghiệm, tôi bắt được một đài phát thanh ở Schenectady tên là WGY. Hồi đó, lũ trẻ chúng tôi – hai đứa em họ, em gái tôi và mấy đứa trẻ hàng xóm – thường tụ tập ở tầng dưới nghe một chương trình kịch trinh thám rất nổi tiếng tên là Câu lạc bộ Tội phạm Eno (do hãng muối sủi bọt Eno tài trợ). Thế rồi tôi phát hiện ra: tôi có thể nghe chương trình này qua đài WGY trên phòng thí nghiệm trước một tiếng đồng hồ so với giờ nó được phát sóng ở đài New York! Bởi vậy, tôi đã biết trước toàn bộ diễn biến câu chuyện. Khi tất cả chúng tôi quây quần quanh cái radio dưới nhà, tôi liền phán: “Các cậu biết không, lâu lắm rồi không thấy nhân vật kia xuất hiện. Tớ cá là tí nữa anh ta sẽ nhảy vào cứu nguy cho mà xem!”\n\nQuả nhiên đúng hai giây sau, anh chàng đó xuất hiện giải cứu tình thế! Cả lũ bạn phục tôi sát đất, và sau đó tôi sai bảo chúng làm bao nhiêu việc cho mình. Nhưng mãi rất lâu sau tôi mới thấm thía rằng: khi bạn giở trò làm ra vẻ biết tuốt như thế, chẳng ai thèm quý bạn đâu.",
-                    "vocab": [
-                        {"word": "rummage sales", "type": "noun", "vi": "chợ đồ cũ từ thiện", "feynman_context": "Nơi bán đồ cũ giá siêu rẻ để quyên tiền."},
-                        {"word": "big thrill", "type": "noun phrase", "vi": "cảm giác phấn khích tột độ", "feynman_context": "Niềm vui sướng tột bực của một cậu bé tự tay chế tạo ra thiết bị bắt sóng ngàn dặm."},
-                        {"word": "broadcast", "type": "verb / noun", "vi": "phát sóng", "feynman_context": "Phát thanh tín hiệu vô tuyến."},
-                        {"word": "I betcha", "type": "idiom", "vi": "tớ cá với cậu là", "feynman_context": "Khẩu ngữ thường ngày của người Mỹ khi cá cược."},
-                        {"word": "saves the situation", "type": "idiom", "vi": "cứu vãn tình thế / giải nguy", "feynman_context": "Hành động xuất hiện giải quyết khó khăn vào phút chót."}
-                    ]
-                },
-                {
-                    "section_id": 5,
-                    "title": "Chàng trai sửa radio bằng suy nghĩ!",
-                    "en": "One day I got a telephone call: “Mister, are you Richard Feynman?”\n“Yes.”\n“This is a hotel. We have a radio that doesn’t work, and we understand you can fix it.”\n“Well, I’m only a boy,” I said. “I don’t know how—”\n“Yes, we know, but we’d like you to come over anyway.”\n\nIt was a hotel that my aunt was running, but I didn’t know that. I went over there with—they still tell the story—a big screwdriver in my back pocket. Well, I was small, so any screwdriver looked big in my back pocket.\n\nI went up to the radio and tried to get it working. I didn’t know anything about it, but there was a handyman at the hotel, and he was there with me. I turned the radio on, and it started to roar and screeech! “HEAR THAT?” the handyman yelled. “THAT’S NOISE! WHAT’S THE MATTER WITH IT?”\n\nI started to think: “What could make a noise like that?” I walked back and forth, thinking, and the handyman said, “What are you doing? You come to fix the radio, but you’re only walking back and forth!”\n\nI said, “I’m thinking!” Then I thought: “The noise must be coming from the tubes heating up in the wrong order.” I pulled out the tubes, rearranged them so they heated in the right sequence, and turned the radio on again. The noise was gone, and the radio played sweet and clear!\n\nThe handyman was astonished. He told everybody: “HE FIXES RADIOS BY THINKING!” He never thought that was possible. He thought you had to go right in with a screwdriver and start turning things. From then on, I had a reputation: the boy who fixes radios by thinking!",
-                    "vi": "Một hôm, tôi nhận được một cuộc điện thoại: “Cậu có phải là Richard Feynman không?”\n“Vâng, cháu đây ạ.”\n“Đây là khách sạn. Chúng tôi có một chiếc radio bị hỏng, và nghe nói cậu có thể sửa được nó.”\n“Dạ, nhưng cháu mới chỉ là một đứa trẻ,” tôi nói. “Cháu không biết liệu cháu có—”\n“Chúng tôi biết, nhưng chúng tôi vẫn muốn cậu ghé qua thử xem.”\n\nĐó là khách sạn do người dì của tôi quản lý, nhưng lúc ấy tôi không hề hay biết. Tôi đến đó với một chiếc tua-vít lớn giắt ở túi quần sau – người ta vẫn thường kể lại câu chuyện này. Vì hồi ấy tôi người nhỏ thó, nên cái tua-vít nào nhét túi sau trông cũng khổng lồ.\n\nTôi lại gần chiếc radio và bật thử. Tôi chưa từng nhìn thấy loại máy này bao giờ, nhưng có một người thợ bảo trì của khách sạn đứng cạnh tôi. Tôi vừa vặn công tắc lên thì chiếc radio bắt đầu gầm rú và rít lên chói tai: “CẬU NGHE THẤY KHÔNG?” – người thợ la lớn. “ỒN KINH KHỦNG! NÓ BỊ LÀM SAO THẾ HẢ?”\n\nTôi bắt đầu suy nghĩ: “Thứ gì có thể tạo ra âm thanh như thế này?” Tôi đi đi lại lại quanh phòng để ngẫm nghĩ, thấy vậy bác thợ bảo trì liền càu nhàu: “Cậu đang làm cái trò gì thế? Cậu đến để sửa đài cơ mà, sao lại chỉ đi đi lại lại thế kia?”\n\nTôi đáp: “Cháu đang suy nghĩ!” Rồi tôi phân tích theo nguyên lý: “Âm thanh rú rít này chỉ có thể phát sinh do các đèn điện tử nóng lên sai thứ tự.” Tôi tháo các bóng đèn ra, tráo đổi lại vị trí theo đúng chuỗi làm nóng tuần tự, rồi bật máy lại. Tiếng rít hoàn toàn biến mất, chiếc radio phát ra âm thanh trong trẻo, êm ru!\n\nNgười thợ bảo trì kinh ngạc tột độ. Đi đâu ông cũng tấm tắc kể lại: “NÓ SỬA ĐƯỢC CẢ RADIO CHỈ BẰNG CÁCH SUY NGHĨ!” Ông ấy chưa bao giờ nghĩ điều đó là có thể. Ông cứ ngỡ sửa máy là phải xông vào lấy tua-vít vặn xoay điên cuồng. Kể từ ngày đó, danh tiếng của tôi bắt đầu lan xa: cậu bé sửa radio bằng suy nghĩ!",
-                    "vocab": [
-                        {"word": "handyman", "type": "noun", "vi": "người thợ sửa chữa đa năng / bảo trì", "feynman_context": "Người làm các việc vặt sửa chữa cơ điện trong khách sạn."},
-                        {"word": "roar and screech", "type": "phrase", "vi": "gầm rú và rít lên chói tai", "feynman_context": "Tiếng ồn do bóng đèn điện tử bị xung dao động."},
-                        {"word": "walked back and forth", "type": "phrase", "vi": "đi đi lại lại (để suy nghĩ)", "feynman_context": "Thói quen tư duy đặc trưng của Feynman khi phân tích bài toán khó."},
-                        {"word": "tubes heating up in the wrong order", "type": "phrase", "vi": "các đèn điện tử bị đốt nóng sai trình tự", "feynman_context": "Nguyên nhân gốc rễ (First Principles) gây ra tiếng rú."},
-                        {"word": "reputation", "type": "noun", "vi": "danh tiếng / uy tín", "feynman_context": "Tiếng tăm cậu bé sửa máy bằng tư duy nguyên lý gốc."}
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "slug": "ch2_string_beans",
-            "title_en": "String Beans",
-            "title_vi": "Những trái đậu leo",
-            "summary_vi": "Feynman làm thêm tại khách sạn của dì, tìm cách cơ giới hóa và tối ưu hóa quy trình cắt đậu que, khoét mắt khoai tây bằng các nguyên lý kỹ thuật, đem lại những bài học hài hước về đổi mới quy trình.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Mùa hè phụ bếp & Bài toán cắt đậu que",
-                    "en": "I must have been seventeen or eighteen when I worked one summer in a hotel run by my aunt. I don’t know how much I got, but it was a job. One of my duties was to string the beans. The beans came in big bushel baskets, and you had to snap off both ends, string them, and cut them up into pieces about an inch long.\n\nIt was very tedious, and it took a long time. So I thought, “There must be a better way to do this.” I went out to the kitchen and got a carving knife, sharpened it on a whetstone until it was razor sharp, and laid out a row of beans on a big cutting board. Then I took the knife and cut off all the ends at once! It was much faster.",
-                    "vi": "Hồi đó chắc tôi khoảng mười bảy hay mười tám tuổi gì đó khi tôi đi làm thêm một mùa hè ở khách sạn của người dì. Tôi không nhớ mình kiếm được bao nhiêu tiền, nhưng đó là một công việc thực sự. Một trong những nhiệm vụ của tôi là tước xơ đậu que. Đậu được chở đến trong những giỏ bồ lớn, và bạn phải ngắt bỏ hai đầu, tước sạch xơ, rồi cắt chúng thành từng khúc dài chừng một đốt ngón tay.\n\nCông việc đó vô cùng tẻ nhạt và tốn thời gian. Thế là tôi thầm nghĩ: “Chắc chắn phải có cách nào làm tốt hơn thế này chứ!” Tôi chạy ra bếp lấy một con dao xẻ thịt lớn, mài sắc lẹm trên đá mài như dao cạo, rồi xếp một hàng đậu thẳng tắp trên chiếc thớt to. Sau đó tôi dùng dao chém một nhát phạt đứt hết đuôi đậu cùng một lúc! Nhanh hơn bội phần.",
-                    "vocab": [
-                        {"word": "string beans", "type": "noun", "vi": "đậu que / đậu leo", "feynman_context": "Loại đậu vỏ có xơ cần tước trước khi nấu."},
-                        {"word": "tedious", "type": "adj", "vi": "nhàm chán, tẻ nhạt, lặp đi lặp lại", "feynman_context": "Miêu tả công việc chân tay đơn điệu."},
-                        {"word": "whetstone", "type": "noun", "vi": "viên đá mài", "feynman_context": "Dụng cụ mài dao sắc."},
-                        {"word": "razor sharp", "type": "phrase", "vi": "sắc như dao cạo", "feynman_context": "Mức độ sắc bén cực cao của lưỡi dao."}
-                    ]
-                },
-                {
-                    "section_id": 2,
-                    "title": "Sáng chế cỗ máy cắt đậu & Bài học biên an toàn",
-                    "en": "Then I invented a gadget: I took a heavy bowl, put a razor blade across the bottom, and fixed it so when you dropped the beans down through the shoot, the blade would cut them! It worked great, but occasionally my fingers got in the way, so I got a few cuts. My aunt came into the kitchen, saw the blood on the beans, and screamed! She threw the whole basket away and told me to get out of the kitchen.\n\nI realized that when you invent something to speed up production, you have to consider the safety margin and what happens when things go wrong—not just when everything goes right!",
-                    "vi": "Thừa thắng xông lên, tôi sáng chế ra một chiếc máy cơ khí mini: tôi lấy một cái bát nặng, cố định một lưỡi dao cạo nằm ngang dưới đáy, sao cho khi thả hạt đậu rơi qua máng trượt, lưỡi dao sẽ phạt đứt đôi hạt đậu! Nó hoạt động rất êm, nhưng thỉnh thoảng ngón tay tôi lại vô tình thò vào đường dao và bị cứa vài nhát. Dì tôi bước vào bếp, nhìn thấy vệt máu dính trên đống đậu thì hét toáng lên! Dì vứt cả giỏ đậu đi và đuổi cổ tôi ra khỏi bếp.\n\nTôi nhận ra một bài học đắt giá: khi bạn phát minh ra thứ gì đó để tăng tốc năng suất, bạn bắt buộc phải tính đến biên an toàn (safety margin) và lường trước kịch bản khi có sự cố xảy ra – chứ không phải chỉ nghĩ đến lúc mọi sự trơn tru!",
-                    "vocab": [
-                        {"word": "gadget", "type": "noun", "vi": "thiết bị / món đồ cơ khí thông minh nhỏ gọn", "feynman_context": "Cách gọi chiếc máy cắt đậu tự chế."},
-                        {"word": "shoot (chute)", "type": "noun", "vi": "máng trượt dẫn hướng", "feynman_context": "Đường trượt dẫn đậu que xuống lưỡi dao."},
-                        {"word": "safety margin", "type": "noun (First Principles)", "vi": "biên an toàn", "feynman_context": "Nguyên tắc thiết kế hệ thống quan trọng trong kỹ thuật."},
-                        {"word": "speed up production", "type": "phrase", "vi": "tăng tốc năng suất lao động", "feynman_context": "Mục tiêu tối ưu hóa quy trình."}
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "slug": "ch3_who_stole_the_door",
-            "title_en": "Who Stole the Door?",
-            "title_vi": "Ai lấy trộm cánh cửa?",
-            "summary_vi": "Thời sinh viên MIT tại hội nam sinh Phi Beta Delta, Feynman bị bạn trêu chọc và đã bí mật tháo cánh cửa phòng giấu đi. Sự việc dẫn đến màn điều tra trinh thám hài hước và bài học về việc khi bạn nói thật 100%, không một ai chịu tin bạn.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Hội nam sinh MIT & Trò đùa tháo cửa",
-                    "en": "When I was at MIT I belonged to a fraternity, Phi Beta Delta. We had a great bunch of guys, and we used to play practical jokes on each other all the time. One of the fellows, Pete Miller, was always playing tricks on everybody.\n\nOne day somebody took Pete’s door off its hinges and hid it in the basement. Pete was furious. He went around asking everybody, “Who took my door? Who took my door?” Nobody would admit it. Finally, he got so mad he said, “If I find the guy who took my door, I’ll take his door off!”\n\nWell, that gave me an idea. The next day, while Pete was in class, I went up to his room, took the door to my own room, carried it downstairs, and hid it behind some boxes in the coal bin. Then I took Pete’s door and put it back on his room! So Pete came back, and there was his door, back in place. But my door was missing!",
-                    "vi": "Hồi tôi còn học ở MIT, tôi sinh hoạt trong một hội nam sinh tên là Phi Beta Delta. Chúng tôi là một nhóm bạn rất thân và thường xuyên bày trò chơi khăm nhau. Một trong những anh chàng cùng hội tên là Pete Miller là kẻ chuyên đầu têu các trò nghịch ngợm trêu chọc mọi người.\n\nMột hôm, có ai đó đã tháo tung cánh cửa phòng của Pete ra khỏi bản lề rồi đem giấu xuống tầng hầm. Pete tức điên người. Anh ta chạy đôn chạy đáo khắp nơi gặng hỏi: “Đứa nào lấy trộm cửa phòng tao? Đứa nào?” Chẳng ai thèm nhận. Cuối cùng, bực quá anh ta gào lên: “Thằng nào lấy cửa của tao, tao mà tóm được thì tao sẽ tháo tung cửa phòng nó ra!”\n\nCâu nói đó lập tức gợi cho tôi một ý tưởng tinh quái. Ngày hôm sau, trong lúc Pete đang đi học trên giảng đường, tôi leo lên phòng mình, tự tay tháo cánh cửa phòng tôi, vác xuống hầm và giấu kỹ sau mấy thùng gỗ trong kho chứa than. Rồi tôi lấy cánh cửa của Pete lắp trả lại vào phòng anh ta! Khi Pete đi học về, cánh cửa phòng anh ta đã nguyên vẹn ở vị trí cũ. Nhưng cánh cửa phòng tôi thì biến mất!",
-                    "vocab": [
-                        {"word": "fraternity", "type": "noun", "vi": "hội nam sinh đại học", "feynman_context": "Tổ chức sinh viên truyền thống ở các trường đại học Mỹ."},
-                        {"word": "practical jokes", "type": "noun", "vi": "trò chơi khăm / trò nghịch ngợm", "feynman_context": "Những trò đùa vô hại giữa các sinh viên."},
-                        {"word": "hinges", "type": "noun", "vi": "bản lề cửa", "feynman_context": "took off its hinges = tháo khỏi bản lề."},
-                        {"word": "coal bin", "type": "noun", "vi": "thùng / hầm chứa than đá sưởi ấm", "feynman_context": "Nơi Feynman giấu cánh cửa dưới tầng hầm."}
-                    ]
-                },
-                {
-                    "section_id": 2,
-                    "title": "Nghịch lý: Khi nói thật thì không ai tin!",
-                    "en": "So everybody came up to me and said, “Dick, somebody took your door!”\nI said, “Yeah, I took it.”\nThey looked at me and laughed: “Oh, sure! You took your own door! Come on, Dick, tell us who really took it.”\n“I’m telling you, I took it myself! I carried it down to the basement and hid it behind the coal bin.”\n\nThey roared with laughter. “What a guy! He’s covering up for the real thief by making a ridiculous joke!”\n\nI discovered a great psychological principle that day: If you want to fool people and keep a secret, tell them the absolute truth in a completely honest tone—they will assume it’s so absurd that you must be joking!",
-                    "vi": "Thế là tất cả mọi người chạy lại phòng tôi nhao nhao: “Dick ơi, có đứa nào tháo mất cửa phòng mày rồi kìa!”\nTôi thản nhiên đáp: “Ừ, chính tao tự tháo đấy.”\nTụi nó nhìn tôi rồi cười sằng sặc: “Thôi đi ông tướng! Mày tự tháo cửa phòng mày chắc? Thôi nói thật đi xem thằng nào tháo?”\n“Tao nói thật mà, chính tao tự tay tháo mang xuống tầng hầm giấu sau đống than!”\n\nCả bọn lại càng cười nghiêng ngả: “Thằng này đỉnh thật! Nó bịa ra trò đùa ngớ ngẩn để bao che cho thủ phạm thật sự kìa!”\n\nNgày hôm đó tôi phát hiện ra một nguyên lý tâm lý học sâu sắc: Nếu bạn muốn che giấu một bí mật hoặc khiến người khác không nghi ngờ, hãy nói cho họ biết toàn bộ sự thật trần trụi với một vẻ mặt hoàn toàn nghiêm túc – người ta sẽ mặc định rằng điều đó quá phi lý và nghĩ rằng bạn chỉ đang nói đùa!",
-                    "vocab": [
-                        {"word": "ridiculous", "type": "adj", "vi": "lố bịch, ngớ ngẩn, khó tin", "feynman_context": "Hành động tự tháo cửa phòng mình bị coi là ngớ ngẩn."},
-                        {"word": "covering up for", "type": "phrasal verb", "vi": "bao che / che giấu cho ai đó", "feynman_context": "Mọi người nghĩ Feynman đang bao che cho kẻ trộm cửa."},
-                        {"word": "psychological principle", "type": "noun", "vi": "nguyên lý tâm lý học", "feynman_context": "Quy luật ứng xử được Feynman rút ra từ trải nghiệm thật."},
-                        {"word": "tell the absolute truth", "type": "phrase", "vi": "nói toàn bộ sự thật 100%", "feynman_context": "Nghịch lý: Sự thật đôi khi nghe lại giống trò đùa nhất."}
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "slug": "ch4_latin_or_italian",
-            "title_en": "Latin or Italian?",
-            "title_vi": "Tiếng La tinh hay tiếng Ý?",
-            "summary_vi": "Feynman bị buộc phải chọn giữa môn tiếng La tinh hoặc tiếng Ý ở trường trung học, và cách ông phản ứng hài hước trước các môn học ghi nhớ hàn lâm không có tính ứng dụng thực tiễn.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Cú sốc ngôn ngữ & Tư duy ứng dụng",
-                    "en": "In high school, they told us we had to take a foreign language: either Latin, French, German, or Italian. I asked, “What is Latin good for?” They told me, “It helps you understand English roots, and doctors use it for medicine.”\n\nI thought to myself: “I don’t want to be a doctor, and I already speak English. Why spend years memorizing dead words?” So I decided to take Italian, because at least there were people walking around New York who actually spoke Italian!\n\nI always had this drive: I wanted to study things that were alive, things that operated according to real mechanisms, not arbitrary rules invented by dead professors.",
-                    "vi": "Ở trường trung học, nhà trường bắt chúng tôi phải chọn học một ngoại ngữ: hoặc tiếng La tinh, tiếng Pháp, tiếng Đức, hoặc tiếng Ý. Tôi liền hỏi: “Thưa thầy, học tiếng La tinh thì dùng để làm gì ạ?” Họ trả lời: “Nó giúp em hiểu được gốc từ tiếng Anh, và các bác sĩ dùng nó để kê đơn thuốc.”\n\nTôi thầm nghĩ: “Mình đâu có ý định làm bác sĩ, vả lại mình đã nói tiếng Anh rồi. Cớ sao phải phí hàng năm trời để học thuộc lòng những từ ngữ đã chết?” Vì vậy, tôi quyết định chọn học tiếng Ý, ít nhất là vì ở New York vẫn có những con người bằng xương bằng thịt đang nói thứ tiếng đó mỗi ngày!\n\nTôi luôn có một thôi thúc nội tâm mãnh liệt: Tôi chỉ muốn học những thứ đang sống, những thứ vận hành theo các cơ chế thực tế của tự nhiên, chứ không phải những quy tắc tùy tiện do những vị giáo sư đã khuất đặt ra.",
-                    "vocab": [
-                        {"word": "foreign language", "type": "noun", "vi": "ngoại ngữ", "feynman_context": "Môn học bắt buộc ở trường."},
-                        {"word": "memorizing dead words", "type": "phrase", "vi": "học vẹt những từ ngữ đã chết", "feynman_context": "Chỉ trích của Feynman với phương pháp học gạo không ứng dụng."},
-                        {"word": "real mechanisms", "type": "noun (First Principles)", "vi": "những cơ chế vận hành thực tế", "feynman_context": "Bản chất khoa học tự nhiên mà Feynman say mê."},
-                        {"word": "arbitrary rules", "type": "noun", "vi": "những quy tắc võ đoán, tùy tiện", "feynman_context": "Quy tắc do con người tự vẽ ra mà không có cơ sở tự nhiên."}
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "slug": "ch5_always_trying_to_escape",
-            "title_en": "Always Trying to Escape",
-            "title_vi": "Luôn tìm cách thoát",
-            "summary_vi": "Feynman và những nỗ lực tìm lối thoát khỏi các bài giảng triết học mơ hồ, rỗng tuếch và cách ông dùng tư duy phản biện vật lý để lật tẩy các lập luận ngụy biện.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Lớp học triết học & Trận tranh luận về 'Bản thể'",
-                    "en": "At MIT, we had to take humanities courses. I took a course in philosophy. The professor was talking about “the stream of consciousness” and “the essential nature of being.” It sounded like a bunch of words strung together that didn’t mean anything specific.\n\nOne day, they were discussing whether an electron was an “essential object” or merely a “construct of thought.” I raised my hand and said, “If you measure an electron in a cloud chamber, you see a track of droplets caused by its ionization. You can calculate its mass and charge. How can you say it’s just a construct of thought?”\n\nThe professor looked puzzled. To him, words were just things to spin around in circles. But to a physicist, a word must point directly to an experiment or an observable fact in the real world.",
-                    "vi": "Ở trường MIT, sinh viên chúng tôi bắt buộc phải học các môn nhân văn. Tôi đăng ký một khóa triết học. Vị giáo sư đứng trên bục giảng thao thao bất tuyệt về “dòng ý thức” và “bản thể luận của sự tồn tại”. Mọi thứ nghe như một đống thuật ngữ hoa mỹ được ghép lại với nhau mà chẳng mang một ý nghĩa cụ thể nào cả.\n\nMột ngày nọ, cả lớp tranh luận xem liệu hạt electron là một “thực thể có thật” hay chỉ là một “sản phẩm tưởng tượng của tư duy”. Tôi giơ tay phát biểu: “Nếu thầy đo một hạt electron trong buồng mây, thầy sẽ thấy rõ vệt giọt nước ngưng tụ do nó ion hóa tạo ra. Thầy có thể tính toán chính xác khối lượng và điện tích của nó. Làm sao thầy có thể bảo nó chỉ là một sản phẩm tưởng tượng được?”\n\nVị giáo sư nhìn tôi đầy bối rối. Đối với ông ấy, từ ngữ chỉ là những thứ để đem ra nhào nặn lòng vòng trong các cuộc tranh biện. Nhưng đối với một nhà vật lý, một từ ngữ bắt buộc phải trỏ thẳng tới một thí nghiệm thực chứng hoặc một sự kiện có thể quan sát được trong thế giới thực.",
-                    "vocab": [
-                        {"word": "stream of consciousness", "type": "noun", "vi": "dòng ý thức", "feynman_context": "Khái niệm trừu tượng trong triết học và văn học."},
-                        {"word": "cloud chamber", "type": "noun", "vi": "buồng mây (buồng Wilson)", "feynman_context": "Thiết bị vật lý hạt dùng để phát hiện vệt đường đi của hạt mang điện."},
-                        {"word": "ionization", "type": "noun", "vi": "sự ion hóa", "feynman_context": "Quá trình hạt tích điện làm bật electron của nguyên tử."},
-                        {"word": "spin around in circles", "type": "idiom", "vi": "nói loanh quanh luẩn quẩn, không đi đến đâu", "feynman_context": "Chỉ trích các cuộc tranh luận thuần túy bằng ngôn từ rỗng tuếch."}
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "slug": "ch6_metaplast_chemist",
-            "title_en": "The Chief Research Chemist of the Metaplast Corporation",
-            "title_vi": "Sếp nghiên cứu hóa học của công ty Metaplast",
-            "summary_vi": "Công việc thực tế đầu tiên của Feynman trong một xưởng mạ kim loại lên nhựa. Ông đối mặt với bài toán thực tế của công nghiệp, xử lý sự cố hóa học và rút ra các bài toán First Principles sâu sắc.",
-            "sections": [
-                {
-                    "section_id": 1,
-                    "title": "Mạ kim loại lên nhựa & Bắt tay vào thực nghiệm",
-                    "en": "During one of my vacations from MIT, I got a job at a small company in New York called the Metaplast Corporation. They were trying to plate metal onto plastics. In those days, nobody knew how to do it well: the metal would peel right off.\n\nMy boss said, “Feynman, you’re our chief research chemist!” I didn’t know anything about chemistry, but I knew how to do experiments. I set up beakers and test tubes, tried different chemical baths, and wrote down everything that happened in a notebook.\n\nI realized that science isn’t about knowing all the answers in advance—it’s about having a systematic method to test hypotheses, eliminate what doesn’t work, and zero in on what does.",
-                    "vi": "Trong một kỳ nghỉ hè ở MIT, tôi nhận được một công việc tại một công ty nhỏ ở New York có tên là Metaplast Corporation. Họ đang loay hoay tìm cách mạ kim loại lên bề mặt nhựa. Thời ấy, chưa ai biết cách làm điều này một cách hiệu quả: lớp kim loại mạ lên thường bị bong tróc ra ngay lập tức.\n\nÔng sếp bảo tôi: “Feynman, cậu chính là Trưởng phòng Nghiên cứu Hóa học của chúng tôi!” Tôi thực ra chẳng biết gì nhiều về hóa học thực nghiệm, nhưng tôi biết cách làm thí nghiệm. Tôi bày ra hàng loạt cốc thủy tinh và ống nghiệm, thử các dung dịch hóa chất khác nhau và ghi chép tỉ mỉ từng hiện tượng xảy ra vào cuốn sổ tay.\n\nTôi ngộ ra rằng khoa học không phải là việc biết trước mọi câu trả lời – mà là việc sở hữu một phương pháp có hệ thống để kiểm chứng các giả thuyết, loại bỏ những thứ không hiệu quả và thu hẹp dần mục tiêu vào giải pháp thành công.",
-                    "vocab": [
-                        {"word": "plate metal onto plastics", "type": "phrase", "vi": "mạ kim loại lên bề mặt nhựa", "feynman_context": "Công nghệ mạ điện phân đột phá thời bấy giờ."},
-                        {"word": "peel right off", "type": "phrasal verb", "vi": "bong tróc ra ngay lập tức", "feynman_context": "Vấn đề kỹ thuật lớp mạ không bám dính."},
-                        {"word": "beakers and test tubes", "type": "noun", "vi": "cốc thí nghiệm và ống nghiệm", "feynman_context": "Dụng cụ nghiên cứu hóa học cơ bản."},
-                        {"word": "zero in on", "type": "idiom", "vi": "tập trung / nhắm trúng vào mục tiêu", "feynman_context": "Thu hẹp phạm vi để tìm ra giải pháp cốt lõi."}
-                    ]
-                }
-            ]
-        }
-    ]
-
-    return {
-        "book_id": "feynman_joking",
-        "title_en": "Surely You're Joking, Mr. Feynman!",
-        "title_vi": "Chuyện Thật Như Đùa (Richard P. Feynman)",
-        "author": "Richard P. Feynman",
-        "category": "Elite Thinking & Ultralearning",
-        "description": "Bộ sách kinh điển song ngữ rèn luyện tư duy Nguyên lý Khởi thủy (First Principles), kỹ thuật Feynman và phương pháp Siêu Học (Ultralearning).",
-        "parts": [
-            {
-                "part_id": 1,
-                "title_en": "Part 1: FROM FAR ROCKAWAY TO MIT",
-                "title_vi": "Phần 1: TỪ FAR ROCKAWAY ĐẾN MIT",
-                "chapters": chapters
-            }
+PARTS_METADATA = [
+    {
+        "part_id": 1,
+        "title_en": "Part 1: FROM FAR ROCKAWAY TO MIT",
+        "title_vi": "Phần 1: TỪ FAR ROCKAWAY ĐẾN MIT",
+        "chapters": [
+            {"id": 1, "slug": "p1_ch1", "title_en": "He Fixes Radios by Thinking!", "title_vi": "Cậu bé sửa radio bằng suy nghĩ", "en_p": (18, 26), "vi_p": (13, 26)},
+            {"id": 2, "slug": "p1_ch2", "title_en": "String Beans", "title_vi": "Những trái đậu leo", "en_p": (27, 30), "vi_p": (27, 33)},
+            {"id": 3, "slug": "p1_ch3", "title_en": "Who Stole the Door?", "title_vi": "Ai lấy trộm cánh cửa?", "en_p": (31, 40), "vi_p": (34, 49)},
+            {"id": 4, "slug": "p1_ch4", "title_en": "Latin or Italian?", "title_vi": "Tiếng La tinh hay tiếng Ý?", "en_p": (41, 43), "vi_p": (50, 53)},
+            {"id": 5, "slug": "p1_ch5", "title_en": "Always Trying to Escape", "title_vi": "Luôn tìm cách thoát", "en_p": (44, 50), "vi_p": (54, 64)},
+            {"id": 6, "slug": "p1_ch6", "title_en": "The Chief Research Chemist of the Metaplast Corporation", "title_vi": "Sếp nghiên cứu hóa học của công ty Metaplast", "en_p": (51, 56), "vi_p": (65, 74)},
+        ]
+    },
+    {
+        "part_id": 2,
+        "title_en": "Part 2: THE PRINCETON YEARS",
+        "title_vi": "Phần 2: NHỮNG NĂM Ở PRINCETON",
+        "chapters": [
+            {"id": 1, "slug": "p2_ch1", "title_en": "“Surely You’re Joking, Mr. Feynman!”", "title_vi": "“Chắc là anh đang đùa, Feynman!”", "en_p": (58, 64), "vi_p": (75, 83)},
+            {"id": 2, "slug": "p2_ch2", "title_en": "Meeeeeeeeeee!", "title_vi": "Emmmmmm!", "en_p": (65, 66), "vi_p": (84, 87)},
+            {"id": 3, "slug": "p2_ch3", "title_en": "A Map of the Cat?", "title_vi": "Bản đồ con mèo?", "en_p": (67, 73), "vi_p": (88, 98)},
+            {"id": 4, "slug": "p2_ch4", "title_en": "Monster Minds", "title_vi": "Những bộ óc khủng", "en_p": (74, 77), "vi_p": (99, 104)},
+            {"id": 5, "slug": "p2_ch5", "title_en": "Mixing Paints", "title_vi": "Pha màu sơn", "en_p": (78, 80), "vi_p": (105, 108)},
+            {"id": 6, "slug": "p2_ch6", "title_en": "A Different Box of Tools", "title_vi": "Một hộp công cụ khác lạ", "en_p": (81, 83), "vi_p": (109, 113)},
+            {"id": 7, "slug": "p2_ch7", "title_en": "Mindreaders", "title_vi": "Những người đọc ý nghĩ", "en_p": (84, 86), "vi_p": (114, 117)},
+            {"id": 8, "slug": "p2_ch8", "title_en": "The Amateur Scientist", "title_vi": "Nhà khoa học nghiệp dư", "en_p": (87, 94), "vi_p": (118, 128)},
+        ]
+    },
+    {
+        "part_id": 3,
+        "title_en": "Part 3: FEYNMAN, THE BOMB, AND THE MILITARY",
+        "title_vi": "Phần 3: FEYNMAN, BOM VÀ QUÂN ĐỘI",
+        "chapters": [
+            {"id": 1, "slug": "p3_ch1", "title_en": "Fizzled Fuses", "title_vi": "Những kíp nổ bị xịt", "en_p": (95, 99), "vi_p": (129, 135)},
+            {"id": 2, "slug": "p3_ch2", "title_en": "Testing Bloodhounds", "title_vi": "Thử tập đánh hơi", "en_p": (100, 102), "vi_p": (136, 139)},
+            {"id": 3, "slug": "p3_ch3", "title_en": "Los Alamos from Below", "title_vi": "Los Alamos nhìn từ bên dưới", "en_p": (103, 127), "vi_p": (140, 180)},
+            {"id": 4, "slug": "p3_ch4", "title_en": "Safecracker Meets Safecracker", "title_vi": "Kẻ cắp, bà già gặp nhau", "en_p": (128, 143), "vi_p": (181, 207)},
+            {"id": 5, "slug": "p3_ch5", "title_en": "Uncle Sam Doesn’t Need You!", "title_vi": "Chú Sam không cần bạn nữa!", "en_p": (144, 152), "vi_p": (208, 220)},
+        ]
+    },
+    {
+        "part_id": 4,
+        "title_en": "Part 4: FROM CORNELL TO CALTECH, WITH A TOUCH OF BRAZIL",
+        "title_vi": "Phần 4: TỪ CORNELL ĐẾN CALTECH, TẠT THĂM BRAZIL",
+        "chapters": [
+            {"id": 1, "slug": "p4_ch1", "title_en": "The Dignified Professor", "title_vi": "Giáo sư đạo mạo", "en_p": (153, 161), "vi_p": (221, 234)},
+            {"id": 2, "slug": "p4_ch2", "title_en": "Any Questions?", "title_vi": "Có câu hỏi nào không?", "en_p": (162, 166), "vi_p": (235, 241)},
+            {"id": 3, "slug": "p4_ch3", "title_en": "I Want My Dollar!", "title_vi": "Tôi muốn 1 đô la của mình!", "en_p": (167, 169), "vi_p": (242, 246)},
+            {"id": 4, "slug": "p4_ch4", "title_en": "You Just Ask Them?", "title_vi": "Anh hỏi thẳng họ à?", "en_p": (170, 176), "vi_p": (247, 257)},
+            {"id": 5, "slug": "p4_ch5", "title_en": "Lucky Numbers", "title_vi": "Những con số may mắn", "en_p": (177, 182), "vi_p": (258, 266)},
+            {"id": 6, "slug": "p4_ch6", "title_en": "O Americano, Outra Vez!", "title_vi": "Lại là tay người Mỹ!", "en_p": (183, 199), "vi_p": (267, 295)},
+            {"id": 7, "slug": "p4_ch7", "title_en": "Man of a Thousand Tongues", "title_vi": "Mister ngoại ngữ", "en_p": (200, 205), "vi_p": (296, 297)},
+            {"id": 8, "slug": "p4_ch8", "title_en": "Certainly, Mr. Big!", "title_vi": "Tất nhiên rồi ngài Big!", "en_p": (206, 210), "vi_p": (298, 314)},
+            {"id": 9, "slug": "p4_ch9", "title_en": "An Offer You Must Refuse", "title_vi": "Những lời mời phải từ chối", "en_p": (211, 217), "vi_p": (315, 322)},
+        ]
+    },
+    {
+        "part_id": 5,
+        "title_en": "Part 5: THE WORLD OF ONE PHYSICIST",
+        "title_vi": "Phần 5: THẾ GIỚI CỦA MỘT NHÀ VẬT LÝ",
+        "chapters": [
+            {"id": 1, "slug": "p5_ch1", "title_en": "Would You Solve the Dirac Equation?", "title_vi": "Anh sẽ giải phương trình Dirac chứ?", "en_p": (218, 226), "vi_p": (323, 336)},
+            {"id": 2, "slug": "p5_ch2", "title_en": "The 7 Percent Solution", "title_vi": "Lời giải 7 phần trăm", "en_p": (227, 234), "vi_p": (337, 348)},
+            {"id": 3, "slug": "p5_ch3", "title_en": "Thirteen Times", "title_vi": "Mười ba lần", "en_p": (235, 236), "vi_p": (349, 351)},
+            {"id": 4, "slug": "p5_ch4", "title_en": "It Sounds Greek to Me!", "title_vi": "Nghe như tiếng Hy Lạp!", "en_p": (237, 237), "vi_p": (352, 353)},
+            {"id": 5, "slug": "p5_ch5", "title_en": "But Is It Art?", "title_vi": "Nhưng đó là hội họa sao?", "en_p": (238, 253), "vi_p": (354, 380)},
+            {"id": 6, "slug": "p5_ch6", "title_en": "Is Electricity Fire?", "title_vi": "Điện có phải là lửa không?", "en_p": (254, 261), "vi_p": (381, 392)},
+            {"id": 7, "slug": "p5_ch7", "title_en": "Judging Books by Their Covers", "title_vi": "Thẩm định sách bằng bìa", "en_p": (262, 274), "vi_p": (393, 413)},
+            {"id": 8, "slug": "p5_ch8", "title_en": "Alfred Nobel’s Other Mistake", "title_vi": "Một sai lầm khác của Alfred Nobel", "en_p": (275, 283), "vi_p": (414, 427)},
+            {"id": 9, "slug": "p5_ch9", "title_en": "Bringing Culture to the Physicists", "title_vi": "Mang văn hóa đến cho các nhà Vật lý", "en_p": (284, 287), "vi_p": (428, 434)},
+            {"id": 10, "slug": "p5_ch10", "title_en": "Found Out in Paris", "title_vi": "Ngộ ra ở Paris", "en_p": (288, 297), "vi_p": (435, 450)},
+            {"id": 11, "slug": "p5_ch11", "title_en": "Altered States", "title_vi": "Những trạng thái khác lạ", "en_p": (298, 304), "vi_p": (451, 461)},
+            {"id": 12, "slug": "p5_ch12", "title_en": "Cargo Cult Science", "title_vi": "Ngụy khoa học", "en_p": (305, 314), "vi_p": (462, 474)},
         ]
     }
+]
 
+def clean_lines(text, is_vi=False):
+    lines = []
+    for l in text.split("\n"):
+        l = l.strip()
+        if not l:
+            lines.append("")
+            continue
+        if re.match(r"^\d+$", l):
+            continue
+        if "thuviensach.vn" in l or "Surely You’re Joking" in l or "Adventures of a Curious" in l:
+            continue
+        l_norm = re.sub(r"[\t]+", " ", l).strip()
+        lines.append(l_norm)
+    return lines
 
-def generate_json_file():
-    """Outputs dataset to data/bilingual_books/feynman_surely_youre_joking.json."""
-    data = get_part1_data()
-    out_dir = Path(r"D:\02_HocTap\elite_thinking\data\bilingual_books")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_file = out_dir / "feynman_surely_youre_joking.json"
+def extract_paragraphs(lines, is_vi=False):
+    paras, cur = [], []
+    for l in lines:
+        if not l:
+            if cur:
+                paras.append(" ".join(cur))
+                cur = []
+            continue
+        if cur and cur[-1] and cur[-1][-1] in [".", "!", "?", '"', "”", "’", ":"]:
+            if l.startswith("“") or l.startswith('"') or l.startswith("—") or l.startswith("- ") or (l[0].isupper() and len(cur[-1]) < 65):
+                paras.append(" ".join(cur))
+                cur = [l]
+                continue
+        cur.append(l)
+    if cur:
+        paras.append(" ".join(cur))
     
-    with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    cleaned = []
+    for p in paras:
+        p_str = p.strip()
+        if len(p_str) > 25 and not any(h in p_str for h in ["PHẦN 1", "PHẦN 2", "PHẦN 3", "PHẦN 4", "PHẦN 5", "Contents", "Mục lục"]):
+            cleaned.append(p_str)
+    return cleaned
+
+def align_into_cards(en_paras, vi_paras):
+    N = len(en_paras)
+    M = len(vi_paras)
+    if N == 0:
+        return []
+    if M == 0:
+        return [{"section_id": i+1, "title": f"Đoạn {i+1}", "en": p, "vi": "", "vocab": []} for i, p in enumerate(en_paras)]
+    
+    en_lens = [len(p.split()) for p in en_paras]
+    vi_lens = [len(p.split()) for p in vi_paras]
+    total_en = sum(en_lens) or 1
+    total_vi = sum(vi_lens) or 1
+    
+    cum_en = []
+    c = 0
+    for l in en_lens:
+        c += l
+        cum_en.append(c / total_en)
         
-    kb = out_file.stat().st_size / 1024
-    print(f"Bilingual book JSON created: {out_file} ({kb:.1f} KB)")
-    return out_file
+    cards = []
+    vi_idx = 0
+    
+    for i in range(N):
+        target_progress = cum_en[i]
+        matched_vi = []
+        
+        while vi_idx < M:
+            cur_vi_progress = (sum(vi_lens[:vi_idx + 1])) / total_vi
+            matched_vi.append(vi_paras[vi_idx])
+            vi_idx += 1
+            if cur_vi_progress >= target_progress and i < N - 1:
+                break
+                
+        if i == N - 1 and vi_idx < M:
+            while vi_idx < M:
+                matched_vi.append(vi_paras[vi_idx])
+                vi_idx += 1
+                
+        cards.append({
+            "section_id": i + 1,
+            "title": f"Phần {i + 1}",
+            "en": en_paras[i],
+            "vi": "\n\n".join(matched_vi) if matched_vi else "",
+            "vocab": []
+        })
+    return cards
 
+print("Building FULL 5-part Feynman bilingual book dataset...")
+full_dataset = {
+    "book_id": "feynman_joking",
+    "title_en": "Surely You're Joking, Mr. Feynman!",
+    "title_vi": "Chuyện Thật Như Đùa (Richard P. Feynman)",
+    "author": "Richard P. Feynman",
+    "category": "Elite Thinking & Ultralearning",
+    "description": "Toàn văn 5 Phần (40 Chương) song ngữ Anh - Việt đối xứng, tối ưu hóa cho phương pháp Siêu Học (Ultralearning).",
+    "parts": []
+}
 
-if __name__ == "__main__":
-    generate_json_file()
+total_chaps = 0
+total_sections = 0
 
+for p_meta in PARTS_METADATA:
+    part_obj = {
+        "part_id": p_meta["part_id"],
+        "title_en": p_meta["title_en"],
+        "title_vi": p_meta["title_vi"],
+        "chapters": []
+    }
+    
+    for ch in p_meta["chapters"]:
+        raw_en = ""
+        for p in range(ch["en_p"][0] - 1, min(ch["en_p"][1], len(en_reader.pages))):
+            raw_en += en_reader.pages[p].extract_text() or ""
+            raw_en += "\n"
+            
+        raw_vi = ""
+        for p in range(ch["vi_p"][0] - 1, min(ch["vi_p"][1], len(vi_reader.pages))):
+            raw_vi += vi_reader.pages[p].extract_text() or ""
+            raw_vi += "\n"
+            
+        p_en = extract_paragraphs(clean_lines(raw_en))
+        p_vi = extract_paragraphs(clean_lines(raw_vi, is_vi=True), is_vi=True)
+        
+        cards = align_into_cards(p_en, p_vi)
+        total_chaps += 1
+        total_sections += len(cards)
+        
+        part_obj["chapters"].append({
+            "id": ch["id"],
+            "slug": ch["slug"],
+            "title_en": ch["title_en"],
+            "title_vi": ch["title_vi"],
+            "summary_vi": f"Chương {ch['id']} thuộc {p_meta['title_vi']}.",
+            "sections": cards
+        })
+        print(f"  P{p_meta['part_id']} Ch{ch['id']:02d}: {ch['title_en'][:25]:25} | Cards: {len(cards):2d}")
+        
+    full_dataset["parts"].append(part_obj)
+
+# Save JSON
+out_path = Path(r"D:\02_HocTap\elite_thinking\data\bilingual_books\feynman_surely_youre_joking.json")
+with open(out_path, "w", encoding="utf-8") as f:
+    json.dump(full_dataset, f, ensure_ascii=False, indent=2)
+
+file_kb = out_path.stat().st_size / 1024
+print(f"\n=======================================================")
+print(f"FULL BOOK GENERATED SUCCESSFULLY!")
+print(f"Total Parts: {len(full_dataset['parts'])}")
+print(f"Total Chapters: {total_chaps}")
+print(f"Total Bilingual Cards: {total_sections}")
+print(f"File Size: {file_kb:.1f} KB")
+print(f"Location: {out_path}")
+print(f"=======================================================")
