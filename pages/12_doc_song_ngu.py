@@ -31,6 +31,59 @@ from utils.bilingual_manager import (
 )
 
 # -----------------------------------------------------------------------------
+# Formatting & Alignment Helpers
+# -----------------------------------------------------------------------------
+def format_paragraphs_html(text: str) -> str:
+    """Format multiline text into clean, tight HTML paragraphs without giant br gaps."""
+    if not text:
+        return ""
+    paras = [p.strip() for p in text.split("\n") if p.strip()]
+    if not paras:
+        return ""
+    html_parts = []
+    for p in paras:
+        clean_p = p.replace("<", "&lt;").replace(">", "&gt;")
+        html_parts.append(f'<p class="bilingual-p">{clean_p}</p>')
+    return "".join(html_parts)
+
+def align_scene_paragraphs(en_text: str, vi_text: str) -> list[tuple[str, str]]:
+    """
+    Pairs English and Vietnamese paragraphs into synchronized rows.
+    Guarantees every row has corresponding content and stays horizontally locked.
+    """
+    en_list = [p.strip() for p in en_text.split("\n\n") if p.strip()]
+    vi_list = [p.strip() for p in vi_text.split("\n\n") if p.strip()]
+
+    n_en = len(en_list)
+    n_vi = len(vi_list)
+
+    if n_en == 0 and n_vi == 0:
+        return []
+    if n_en == 0:
+        return [("", "\n\n".join(vi_list))]
+    if n_vi == 0:
+        return [("\n\n".join(en_list), "")]
+    if n_en == n_vi:
+        return list(zip(en_list, vi_list))
+
+    if n_en <= n_vi:
+        pairs = []
+        for i in range(n_en):
+            vi_start = round(i * n_vi / n_en)
+            vi_end = round((i + 1) * n_vi / n_en)
+            sub_vi = "\n\n".join(vi_list[vi_start:vi_end])
+            pairs.append((en_list[i], sub_vi))
+        return pairs
+    else:
+        pairs = []
+        for i in range(n_vi):
+            en_start = round(i * n_en / n_vi)
+            en_end = round((i + 1) * n_en / n_vi)
+            sub_en = "\n\n".join(en_list[en_start:en_end])
+            pairs.append((sub_en, vi_list[i]))
+        return pairs
+
+# -----------------------------------------------------------------------------
 # Bootstrap & Auth Context
 # -----------------------------------------------------------------------------
 ctx = bootstrap()
@@ -119,16 +172,48 @@ st.markdown("""
     padding: 16px;
     margin-bottom: 20px;
 }
+.column-header-en {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #93c5fd;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #3b82f6;
+    margin-bottom: 12px;
+}
+.column-header-vi {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #86efac;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #22c55e;
+    margin-bottom: 12px;
+}
 .en-column-text {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.62;
     color: #e2e8f0;
 }
 .vi-column-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 1.02rem;
-    line-height: 1.7;
+    line-height: 1.62;
     color: #cbd5e1;
+}
+.bilingual-p {
+    margin: 0 0 8px 0;
+    line-height: 1.62;
+}
+.bilingual-p:last-child {
+    margin-bottom: 0;
+}
+.bilingual-row-divider {
+    border-bottom: 1px dashed #334155;
+    margin: 14px 0 18px 0;
+}
+.bilingual-row-subdivider {
+    border-bottom: 1px solid rgba(51, 65, 85, 0.45);
+    margin: 10px 0 12px 0;
 }
 .focus-hidden {
     filter: blur(5px);
@@ -247,15 +332,20 @@ with tab1:
         book_id = current_book.get("book_id", "default_book")
         chap_id = current_chapter.get("id", 1)
 
-        # Granularity Selector: Macro-Scenes vs. Fine-Grained JIT Paragraphs
+        # Granularity Selector: Fine-Grained JIT Paragraphs (Default) vs. Macro-Scenes
         view_mode = st.radio(
-            "📐 Chế độ chia đoạn:",
-            ["🎬 Theo cảnh truyện (Macro-Scenes)", "⚡ Cuốn chiếu theo từng đoạn văn (JIT 100% Khớp)"],
+            "📐 Chế độ hiển thị song ngữ:",
+            [
+                "⚡ Song song từng đoạn (JIT Đối Xứng 100% - Khuyên dùng)",
+                "🎬 Song song theo cảnh truyện (Macro-Scenes Khóa Hàng)",
+            ],
+            index=0,
             horizontal=True,
-            key=f"view_mode_{chap_id}"
+            key=f"view_mode_{chap_id}",
+            help="Chế độ JIT dịch trực tiếp từ bản gốc tiếng Anh, đối xứng 100% từng dòng. Chế độ Macro-Scenes khóa hàng song song cho các cảnh truyện."
         )
 
-        if "Cuốn chiếu" in view_mode:
+        if "từng đoạn" in view_mode:
             # Flatten raw English text into individual paragraphs
             full_en_text = "\n\n".join([s.get("en", "") for s in sections])
             en_raw_paragraphs = [
@@ -324,32 +414,37 @@ with tab1:
             # Sort page results by global index
             page_results.sort(key=lambda x: x[0])
 
-            st.markdown(f"**Hiển thị đoạn {start_idx + 1} đến {end_idx} / {total_paras} (Khớp chuẩn 100%):**")
+            st.markdown(f"**Hiển thị đoạn {start_idx + 1} đến {end_idx} / {total_paras} (Khớp song song 100%):**")
+
+            # Column headers once per page
+            h_col1, h_col2 = st.columns([1.1, 0.9])
+            with h_col1:
+                st.markdown("<div class='column-header-en'>🇺🇸 Bản gốc Tiếng Anh</div>", unsafe_allow_html=True)
+            with h_col2:
+                st.markdown("<div class='column-header-vi'>🇻🇳 Bản dịch Tiếng Việt (Khớp 100%)</div>", unsafe_allow_html=True)
 
             for g_idx, p_en, trans_data in page_results:
                 p_vi = trans_data.get("vi", "")
                 p_vocab = trans_data.get("key_vocab", [])
 
-                st.markdown(f"##### 📌 Đoạn {g_idx + 1}")
+                st.caption(f"📌 **Đoạn {g_idx + 1}**")
                 col_en, col_vi = st.columns([1.1, 0.9])
 
                 with col_en:
-                    st.markdown("**🇺🇸 Bản gốc Tiếng Anh:**")
                     st.markdown(
                         f'<div class="en-column-text" style="font-size: {cur_font_size};">'
-                        f'{p_en}'
+                        f'{format_paragraphs_html(p_en)}'
                         f'</div>',
                         unsafe_allow_html=True,
                     )
 
                 with col_vi:
-                    st.markdown("**🇻🇳 Bản dịch Tiếng Việt (Tự động đối xứng 100%):**")
                     is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
                     blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
                     st.markdown(
                         f'{blur_note}'
                         f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
-                        f'{p_vi}'
+                        f'{format_paragraphs_html(p_vi)}'
                         f'</div>',
                         unsafe_allow_html=True,
                     )
@@ -405,39 +500,47 @@ with tab1:
                             st.toast(f"Đã phân tích '{inline_w}'! Xem chi tiết ở Sidebar.", icon="🔬")
                             st.rerun()
 
-                st.markdown("<hr style='border: 1px dashed #334155;'>", unsafe_allow_html=True)
+                st.markdown("<div class='bilingual-row-divider'></div>", unsafe_allow_html=True)
 
         else:
-            # RENDER BILINGUAL MACRO-SECTIONS
-            st.write(f"**Tổng số cảnh truyện trong chương:** {len(sections)} cảnh đối xứng.")
+            # RENDER BILINGUAL MACRO-SECTIONS (ROW-LOCKED PARALLEL ALIGNMENT)
+            st.write(f"**Tổng số cảnh truyện trong chương:** {len(sections)} cảnh (Đã căn chỉnh song song tương đối theo từng hàng).")
             for sec in sections:
                 sec_id = sec.get("section_id", 1)
-                title = sec.get("title", f"Phần {sec_id}")
+                title = sec.get("title", f"Cảnh {sec_id}")
 
-                st.markdown(f"#### 🏷️ Đoạn {sec_id}: {title}")
+                st.markdown(f"#### 🏷️ Cảnh {sec_id}: {title}")
 
-                col_en, col_vi = st.columns([1.1, 0.9])
+                # Column headers once per scene
+                h_col1, h_col2 = st.columns([1.1, 0.9])
+                with h_col1:
+                    st.markdown("<div class='column-header-en'>🇺🇸 Bản gốc Tiếng Anh</div>", unsafe_allow_html=True)
+                with h_col2:
+                    st.markdown("<div class='column-header-vi'>🇻🇳 Bản dịch Tiếng Việt</div>", unsafe_allow_html=True)
 
-                with col_en:
-                    st.markdown("**🇺🇸 Bản gốc Tiếng Anh:**")
-                    st.markdown(
-                        f'<div class="en-column-text" style="font-size: {cur_font_size};">'
-                        f'{sec.get("en", "").replace(chr(10), "<br><br>")}'
-                        f'</div>',
-                        unsafe_allow_html=True,
-                    )
+                aligned_rows = align_scene_paragraphs(sec.get("en", ""), sec.get("vi", ""))
+                is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
+                blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
 
-                with col_vi:
-                    st.markdown("**🇻🇳 Bản dịch Tiếng Việt:**")
-                    is_blur = "focus-hidden" if "Thử thách Siêu Học" in reader_mode else ""
-                    blur_note = "<small style='color:#94a3b8;'><i>(Rê chuột hoặc chạm vào để mở bản dịch)</i></small><br>" if is_blur else ""
-                    st.markdown(
-                        f'{blur_note}'
-                        f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
-                        f'{sec.get("vi", "").replace(chr(10), "<br><br>")}'
-                        f'</div>',
-                        unsafe_allow_html=True,
-                    )
+                for r_idx, (r_en, r_vi) in enumerate(aligned_rows):
+                    r_col1, r_col2 = st.columns([1.1, 0.9])
+                    with r_col1:
+                        st.markdown(
+                            f'<div class="en-column-text" style="font-size: {cur_font_size};">'
+                            f'{format_paragraphs_html(r_en)}'
+                            f'</div>',
+                            unsafe_allow_html=True,
+                        )
+                    with r_col2:
+                        st.markdown(
+                            f'{blur_note if r_idx == 0 else ""}'
+                            f'<div class="vi-column-text {is_blur}" style="font-size: {cur_font_size};">'
+                            f'{format_paragraphs_html(r_vi)}'
+                            f'</div>',
+                            unsafe_allow_html=True,
+                        )
+                    if r_idx < len(aligned_rows) - 1:
+                        st.markdown("<div class='bilingual-row-subdivider'></div>", unsafe_allow_html=True)
 
                 # Key Vocab Chips
                 if show_vocab_chips and sec.get("vocab"):
