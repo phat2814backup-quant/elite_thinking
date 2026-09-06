@@ -535,6 +535,17 @@ with arena_tab2:
                 if card.get("back_lollapalooza"):
                     st.caption(f"🔗 **Cặp cộng hưởng Lollapalooza:** {card.get('back_lollapalooza')}")
 
+                if card.get("action_steps") or card.get("boundary_conditions") or card.get("real_world_case"):
+                    with st.expander("💎 Bóc Tách Chuyên Sâu: Quy Trình 4 Bước & Case Thực Chiến (GMM)", expanded=False):
+                        if card.get("action_steps"):
+                            st.markdown("**🛠️ Quy trình thực thi 4 bước (Action Protocol):**")
+                            for s in card["action_steps"]:
+                                st.markdown(f"- {s}")
+                        if card.get("boundary_conditions"):
+                            st.markdown(f"**⛔ Ranh giới áp dụng:** {card['boundary_conditions']}")
+                        if card.get("real_world_case"):
+                            st.markdown(f"**🌐 Case thực chiến đa chiều:**\n\n{card['real_world_case']}")
+
                 st.markdown("#### Tự đánh giá mức độ ghi nhớ:")
                 btn_c1, btn_c2, btn_c3 = st.columns(3)
                 with btn_c1:

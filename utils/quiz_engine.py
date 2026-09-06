@@ -1539,23 +1539,22 @@ MODELS_QUIZ = [
         "id": "Q-PSY-12",
         "model_id": "PSY-12",
         "pillar": "Tâm lý học",
-        "tier": 2,
-        "model_name": "Hiệu Ứng Mỏ Neo (Anchoring Effect)",
+        "tier": 1,
+        "model_name": "Vòng Tròn Năng Lực (Circle of Competence — Buffett & Munger)",
         "scenario": (
-            "Một cửa hàng thời trang cao cấp treo một chiếc áo khoác với bảng giá 20.000.000đ ở ngay lối ra vào. "
-            "Khi khách bước vào trong và thấy các chiếc áo sơ mi có giá 2.500.000đ, họ cảm thấy mức giá 2.500.000đ này 'vô cùng hợp lý và rẻ', "
-            "dù giá vốn sản xuất thực tế chỉ là 300.000đ."
+            "Trong bong bóng Dot-com năm 1999, cả phố Wall chế giễu Warren Buffett là 'ông già lỗi thời' vì từ chối rót vốn vào các cổ phiếu công nghệ đang tăng giá phi mã hàng ngày. "
+            "Buffett bình thản trả lời: 'Tôi không đầu tư vào những thứ mình không hiểu rõ cách họ tạo ra dòng tiền bền vững sau 10 năm nữa'. Khi bong bóng vỡ năm 2000-2001, các quỹ đầu cơ công nghệ bốc hơi 80-90% trong khi Berkshire Hathaway bình yên tăng trưởng."
         ),
-        "question": "Kỹ thuật định giá tâm lý này khai thác mô hình nhận thức nào?",
+        "question": "Mô hình nhận thức cốt lõi nào đã bảo vệ gia tài của Buffett trước sự cám dỗ điên cuồng của thị trường?",
         "options": [
-            "A. Hiệu ứng Mỏ neo (Anchoring): Thông tin số liệu xuất hiện đầu tiên sẽ trở thành điểm tham chiếu vô thức để đánh giá toàn bộ thông tin phía sau",
-            "B. Chi phí cận biên giảm dần",
-            "C. Đòn bẩy tài chính",
-            "D. Cân bằng Nash"
+            "A. Vòng tròn Năng lực (Circle of Competence): Biết rõ ranh giới hiểu biết thực sự của mình, kiên định ở trong vòng tròn và dứt khoát nói 'Không' với những thứ bên ngoài ranh giới đó",
+            "B. Hiệu ứng bầy đàn và tâm lý FOMO",
+            "C. Đòn bẩy vốn vay tài chính tối đa",
+            "D. Thiên kiến xác nhận thông tin tích cực"
         ],
         "correct_index": 0,
-        "explanation": "Bộ não không thể định giá tài sản trong chân không. Nó luôn tìm kiếm một mỏ neo gần nhất để so sánh tương đối.",
-        "trap_analysis": "Trong đàm phán, nếu bạn để đối phương thả mỏ neo trước, bạn sẽ bị cuốn vào phạm vi mặc cả hoàn toàn có lợi cho họ."
+        "explanation": "Biết những gì mình không biết quan trọng hơn việc tỏ ra thông minh. Kích thước vòng tròn năng lực không quan trọng bằng việc bạn biết chính xác chu vi ranh giới của nó.",
+        "trap_analysis": "Bẫy ngạo mạn nhận thức & Kiến thức tài xế (Chauffeur Knowledge): Thành công rực rỡ trong một lĩnh vực hẹp rồi ảo tưởng mình có thể đầu tư thắng lợi ở mọi lĩnh vực khác."
     },
 
     # -------------------------------------------------------------------------
@@ -1763,22 +1762,23 @@ MODELS_QUIZ = [
         "id": "Q-MATH-05",
         "model_id": "MATH-05",
         "pillar": "Toán học & Xác suất",
-        "tier": 2,
-        "model_name": "Hồi Quy Về Trung Bình (Regression to the Mean)",
+        "tier": 1,
+        "model_name": "Tư Duy Đảo Ngược (Inversion Thinking — Jacobi & Munger)",
         "scenario": (
-            "Một vận động viên thể thao sau một mùa giải thi đấu thăng hoa xuất thần được lên bìa tạp chí danh tiếng. "
-            "Ở mùa giải tiếp theo, phong độ của anh ta tụt giảm về mức trung bình khá. Nhiều nhà phê bình quy cho 'Lời nguyền trang bìa tạp chí'."
+            "Nhà toán học Đức Carl Jacobi có câu châm ngôn kinh điển: 'Đảo ngược, luôn luôn đảo ngược' (Man muss immer umkehren). "
+            "Khi Charlie Munger được hỏi làm thế nào để có một cuộc đời thành công và hạnh phúc, ông không tìm kiếm những bí quyết phi thường, mà trả lời: "
+            "'Tất cả những gì tôi muốn biết là tôi sẽ chết ở đâu, để tôi không bao giờ đến đó. Hãy tìm xem điều gì chắc chắn sẽ làm cuộc đời bạn đau khổ, tàn tạ và thất bại thảm hại nhất — rồi sau đó kiên quyết né tránh chúng suốt đời'."
         ),
-        "question": "Quy luật thống kê toán học nào giải thích hiện tượng sụt giảm phong độ tự nhiên này?",
+        "question": "Bản chất toán học và tư duy đòn bẩy của phương pháp Tư duy Đảo ngược (Inversion) là gì?",
         "options": [
-            "A. Lời nguyền siêu nhiên có thật",
-            "B. Hồi quy về trung bình (Regression to the Mean): Một kết quả cực đoan bất thường (do kỹ năng kết hợp với may mắn lớn) sẽ có xu hướng quay về mức trung bình ở lần thử tiếp theo",
-            "C. Định luật phân rã sinh học",
-            "D. Thuyết hỗn loạn"
+            "A. Lập kế hoạch chi tiết từng bước theo chiều xuôi từ hiện tại đến tương lai",
+            "B. Tư duy Đảo ngược (Inversion): Thay vì chỉ tìm cách thành công, hãy xác định mọi nguyên nhân gây ra thất bại thảm khốc và thiết kế các chốt chặn triệt tiêu chúng trước tiên",
+            "C. Đợi chờ vận may ngẫu nhiên từ thị trường",
+            "D. Bắt chước hành vi của người giàu nhất"
         ],
         "correct_index": 1,
-        "explanation": "Khi ai đó đạt thành tích đỉnh cao bất thường, một phần lớn kết quả là nhờ may mắn ngẫu nhiên. Lần sau, khi may mắn trở lại mức bình thường, kết quả sẽ giảm xuống.",
-        "trap_analysis": "Tưởng nhầm một kết quả đột biến ngắn hạn là năng lực vĩnh viễn của cá nhân và đưa ra các cam kết vượt quá thực tế."
+        "explanation": "Tránh né sự ngu ngốc và các thảm họa chết người dễ dàng hơn và mang lại kết quả bền vững hơn nhiều so với việc cố gắng trở nên xuất chúng phi thường.",
+        "trap_analysis": "Chỉ mải mê vẽ viễn cảnh thắng lợi (Upside) mà hoàn toàn mù tịt trước các cạm bẫy hủy diệt (Downside risk) có thể xóa sổ toàn bộ cơ đồ."
     },
     {
         "id": "Q-MATH-07",
@@ -1935,22 +1935,22 @@ MODELS_QUIZ = [
         "id": "Q-SYS-11",
         "model_id": "SYS-11",
         "pillar": "Kỹ thuật & Hệ thống",
-        "tier": 2,
-        "model_name": "Độ Trễ Thời Gian Trong Hệ Thống (System Delay & Oscillation)",
+        "tier": 1,
+        "model_name": "Bản Đồ Không Phải Lãnh Thổ (The Map is not the Territory — Korzybski)",
         "scenario": (
-            "Bạn bước vào phòng tắm khách sạn và vặn vòi nước nóng. Vì đường ống dài nên nước mất 15 giây mới ấm lên. "
-            "Vì sốt ruột không thấy nóng ngay sau 3 giây, bạn vặn hết cỡ sang nấc tối đa. 15 giây sau, dòng nước sôi 80 độ C phụt ra làm bạn bỏng rát hoảng hốt vặn ngược về cực lạnh."
+            "Một nhóm thám hiểm đi trong rừng rậm dựa vào tấm bản đồ địa hình vẽ cách đây 20 năm. Bản đồ ghi rõ phía trước là một cây cầu sắt kiên cố bắc qua sông lớn. "
+            "Khi đoàn đến nơi, cây cầu đã bị lũ cuốn trôi từ năm ngoái và dòng nước đang cuồn cuộn chảy xiết. Tuy nhiên, người đội trưởng vẫn ngoan cố ép đoàn vượt sông tại đúng vị trí đó vì: 'Bản đồ quân sự chính quy không bao giờ sai!', suýt nữa nhấn chìm toàn bộ đoàn thám hiểm."
         ),
-        "question": "Quy luật vận hành hệ thống nào giải thích sự dao động cực đoan (Oscillation) này?",
+        "question": "Chân lý nhận thức học và tư duy hệ thống nào vạch trần sai lầm chết người của người đội trưởng?",
         "options": [
-            "A. Độ trễ thời gian (System Delay): Khoảng thời gian trễ giữa hành động can thiệp và phản hồi thực tế của hệ thống khiến người điều khiển phản ứng thái quá",
-            "B. Áp suất thủy lực không đổi",
-            "C. Hiện tượng tự cảm ứng",
-            "D. Cân bằng nhiệt động"
+            "A. Bản đồ không phải là Lãnh thổ (The Map is not the Territory): Mọi mô hình, biểu đồ, bảng tính Excel hay lý thuyết chỉ là sự giản lược hóa và luôn có sai số, thực tế khách quan bên ngoài mới là chân lý tối thượng",
+            "B. Bản đồ luôn luôn đúng hơn thực tế do có các chuyên gia đo đạc địa lý vẽ ra",
+            "C. Vận tốc dòng nước không ảnh hưởng đến cấu trúc cầu",
+            "D. Hiệu ứng mỏ neo số học"
         ],
         "correct_index": 0,
-        "explanation": "Trong kinh tế và chính sách tiền tệ (lãi suất), mỗi can thiệp phải mất 6-18 tháng mới thẩm thấu vào nền kinh tế. Thiếu kiên nhẫn với độ trễ sẽ gây ra khủng hoảng chu kỳ.",
-        "trap_analysis": "Can thiệp dồn dập khi chưa kịp nhìn thấy tác động của hành động trước, biến một biến động nhỏ thành cơn bão hỗn loạn."
+        "explanation": "Bản đồ là công cụ hữu ích để định hướng, nhưng không bao giờ thay thế được thực địa sống động. Khi thực địa mâu thuẫn với bản đồ, luôn tin vào thực địa.",
+        "trap_analysis": "Đồng nhất mô hình với thực tại (Confusing the Model with Reality): Tin vào mô hình định giá tài chính trên Excel mà phớt lờ thực tế doanh nghiệp đang cạn kiệt tiền mặt và đối mặt phá sản."
     },
 ]
 
@@ -2547,6 +2547,9 @@ def get_all_flashcards(filter_type: str = "models", pillar: Optional[str] = None
                 "back_leverage": m.get("elite_leverage"),
                 "back_trap": m.get("inversion_trap"),
                 "back_lollapalooza": ", ".join(m.get("lollapalooza_pairs", [])),
+                "action_steps": m.get("action_steps"),
+                "boundary_conditions": m.get("boundary_conditions"),
+                "real_world_case": m.get("real_world_case"),
             })
 
     if filter_type in ("modes", "all") and not pillar and not tier:

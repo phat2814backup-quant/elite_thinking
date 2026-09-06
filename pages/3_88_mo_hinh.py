@@ -120,8 +120,9 @@ with subtab2:
     st.markdown("#### 🗂️ Thẻ Flashcard Bóc Tách Chuyên Sâu Từng Mô Hình")
     for m in filtered_models:
         tier_badge = {1: "⭐ Tier 1 (Siêu hạt nhân)", 2: "🎯 Tier 2 (Chiến lược)", 3: "🔬 Tier 3 (Hệ thống)"}.get(m.get("tier"), "")
+        deep_badge = " · 💎 GMM Chuyên sâu" if m.get("action_steps") else ""
         icon = PILLAR_ICONS.get(m.get("pillar", ""), "📌")
-        with st.expander(f"{icon} [{m.get('id')}] {m.get('name_vi')} — {m.get('name_en')} ({tier_badge})"):
+        with st.expander(f"{icon} [{m.get('id')}] {m.get('name_vi')} — {m.get('name_en')} ({tier_badge}{deep_badge})"):
             c_left, c_right = st.columns([3, 2])
             with c_left:
                 st.markdown(f"**⚡ Chân lý gốc (First Principle):**")
@@ -133,8 +134,29 @@ with subtab2:
                 st.warning(m.get("inversion_trap", ""))
                 st.markdown(f"**⏱️ Câu hỏi kích hoạt 5 giây (Trigger Prompt):**")
                 st.caption(f"👉 *\"{m.get('trigger_question', '')}\"*")
+
             if m.get("lollapalooza_pairs"):
                 st.markdown(f"**🔗 Cặp cộng hưởng Lollapalooza đề xuất:** `{'` · `'.join(m['lollapalooza_pairs'])}`")
+
+            # GMM Deep Framework: Action Steps, Boundary Conditions & Real-World Case Studies
+            if m.get("action_steps") or m.get("boundary_conditions") or m.get("real_world_case"):
+                st.divider()
+                st.markdown("#### 💎 Khung Phân Tích Chuyên Sâu (The Great Mental Models Framework)")
+
+                col_proto, col_bound = st.columns([3, 2])
+                with col_proto:
+                    if m.get("action_steps"):
+                        st.markdown("**🛠️ Quy trình thực thi 4 bước (Action Protocol):**")
+                        for step in m["action_steps"]:
+                            st.markdown(f"- {step}")
+                with col_bound:
+                    if m.get("boundary_conditions"):
+                        st.markdown("**⛔ Ranh giới áp dụng (Khi nào KHÔNG dùng):**")
+                        st.error(m["boundary_conditions"])
+
+                if m.get("real_world_case"):
+                    st.markdown("**🌐 Tình huống thực chiến đa chiều (Case Studies Thực tế):**")
+                    st.markdown(m["real_world_case"])
 
 with subtab3:
     st.markdown("#### 🔬 Latticework Sandbox — Phòng Thí Nghiệm Đa Ngành")

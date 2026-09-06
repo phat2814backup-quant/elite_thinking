@@ -649,19 +649,28 @@
     },
     {
       "id": "PSY-12",
-      "name_vi": "Tự Phóng đại Bản thân & Tự ái",
-      "name_en": "Excessive Self-Regard Tendency",
+      "name_vi": "Vòng tròn Năng lực",
+      "name_en": "Circle of Competence (Buffett & Munger)",
       "pillar": "Tâm lý học",
-      "tier": 2,
-      "first_principle": "Xu hướng tự nhiên đánh giá quá cao năng lực và phẩm chất của bản thân so với thực tế khách quan.",
-      "elite_leverage": "Duy trì sự khiêm nhường trí tuệ tột độ; định kỳ mời những người phản biện sắc sảo chỉ ra những góc mù và sai sót trong suy nghĩ của mình.",
-      "trigger_question": "Tôi thực sự có năng lực vượt trội ở đây hay chỉ đang ngộ nhận do cái tôi tự phóng đại?",
-      "inversion_trap": "Bước ra khỏi vòng tròn năng lực thực sự để đầu tư vào các lĩnh vực phức tạp vì tự tin thái quá.",
+      "tier": 1,
+      "first_principle": "Hiểu rõ ranh giới những gì mình thực sự hiểu và những gì mình chỉ 'biết qua loa' quan trọng hơn kích thước của vòng tròn. Bạn không cần phải là chuyên gia trong mọi lĩnh vực, nhưng bắt buộc phải biết chính xác đâu là rìa ngoài của vòng tròn năng lực của mình.",
+      "elite_leverage": "Quyết định lớn và cược tiền lớn ở bên trong vòng tròn năng lực (nơi bạn có lợi thế vượt trội - Edge). Ở sát biên hoặc ngoài vòng: giữ thái độ khiêm nhường tột độ, hạ quy mô vị thế, tìm kiếm chuyên gia thật sự hoặc kiên quyết nói 'Tôi không biết'.",
+      "trigger_question": "Tôi có thực sự hiểu thấu đáo và giải thích được điều này bằng ngôn ngữ bình dân cho một đứa trẻ 10 tuổi (Feynman Test) không, hay tôi chỉ đang nhớ mặt chữ của nó?",
+      "inversion_trap": "Ảo tưởng tài xế của Max Planck (Chauffeur Knowledge): Nhầm lẫn giữa việc có vốn từ vựng chuyên ngành với việc thực sự hiểu cơ chế vận hành; tự tin thái quá bước sang lĩnh vực mới rồi trả giá đắt.",
       "lollapalooza_pairs": [
         "Hiệu ứng Dunning-Kruger",
         "Biên độ an toàn",
-        "Vòng tròn năng lực"
-      ]
+        "Tư duy nguyên bản",
+        "Bản đồ không phải lãnh thổ"
+      ],
+      "action_steps": [
+        "Bước 1 - Phân định 3 vùng: Liệt kê rõ những mảng bạn thực sự hiểu sâu (Trong vòng), mảng đang tìm hiểu (Biên), và mảng hoàn toàn mù mờ (Ngoài vòng).",
+        "Bước 2 - Kiểm tra bằng Kỹ thuật Feynman: Thử giải thích cơ chế sinh lời hoặc nguyên lý hoạt động cho một người ngoại đạo không dùng từ chuyên môn. Nếu ngắc ngứ, bạn đang ở ngoài vòng.",
+        "Bước 3 - Thiết lập quy tắc hành động: Bên trong vòng -> Tự tin ra quyết định dứt khoát. Ngoài vòng -> Thuê ngoài hoặc nói KHÔNG dứt khoát.",
+        "Bước 4 - Mở rộng có chủ đích: Chỉ mở rộng vòng tròn bằng thực hành có chủ đích (Deliberate Practice) trong nhiều năm, không mở rộng bằng sự bốc đồng."
+      ],
+      "boundary_conditions": "Không dùng vòng tròn năng lực làm lý do để lười biếng, sợ hãi và từ chối học hỏi điều mới. 'Nằm trong vòng' là quy tắc khi cược lớn/ra quyết định rủi ro cao, không phải là cái cớ để đóng cửa nhận thức trước tri thức mới.",
+      "real_world_case": "• Nghề nghiệp / Dự án: Một lập trình viên giỏi chuyển sang làm quản lý dự án nhưng tiếp tục dùng tư duy viết code để quản lý con người; việc thất bại là tất yếu vì quản trị nhân sự là một vòng tròn năng lực hoàn toàn khác.\n• Đầu tư: Thấy bạn bè khoe lãi tiền ảo hay cổ phiếu đầu cơ ngành thép, vội vàng dồn tiền tiết kiệm mua theo dù bản thân không hề hiểu chu kỳ ngành hay định giá; kết quả là cắt lỗ ngay đáy vì hoảng loạn khi giá giảm."
     },
     {
       "id": "PSY-13",
@@ -1066,18 +1075,27 @@
     {
       "id": "MATH-05",
       "name_vi": "Tư duy Đảo ngược",
-      "name_en": "Inversion Thinking (Munger)",
+      "name_en": "Inversion Thinking (Munger & Jacobi)",
       "pillar": "Toán học & Xác suất",
       "tier": 1,
-      "first_principle": "'Invert, always invert' - Nhiều bài toán hóc búa được giải quyết dễ dàng hơn rất nhiều khi tiếp cận từ chiều ngược lại.",
-      "elite_leverage": "Thay vì tìm cách làm sao để thành công rực rỡ, lập danh sách tất cả những cách chắc chắn dẫn đến thất bại, rồi kiên quyết loại bỏ từng điều một.",
-      "trigger_question": "Làm thế nào để chắc chắn phá hỏng hoàn toàn dự án này trong 3 tháng tới, và tôi đang làm điều gì trong số đó?",
-      "inversion_trap": "Bi quan thụ động: Chỉ ngồi nghĩ đến kịch bản tồi tệ mà không chuyển hóa thành danh sách hành động phòng ngừa cụ thể (Not-to-do list).",
+      "first_principle": "'Man muss immer umkehren' (Carl Jacobi) — Luôn luôn đảo ngược. Nhiều bài toán phức tạp không thể giải quyết bằng cách tiến thẳng về phía trước; việc tìm cách ngăn chặn thất bại dễ dàng và đáng tin cậy hơn nhiều so với việc cố gắng tạo ra sự xuất sắc rực rỡ.",
+      "elite_leverage": "Charlie Munger: 'Tất cả những gì tôi muốn biết là tôi sẽ chết ở đâu, để tôi không bao giờ đến đó'. Thay vì chỉ hỏi 'Làm sao để giàu có/hạnh phúc?', hãy lập danh sách 'Những điều chắc chắn khiến tôi phá sản/bất hạnh' rồi kiên quyết loại bỏ từng điều một.",
+      "trigger_question": "Nếu dự án/kế hoạch này thất bại thảm hại sau 1 năm nữa, nguyên nhân chí mạng lớn nhất chắc chắn là gì, và tôi đã làm gì hôm nay để triệt tiêu nó?",
+      "inversion_trap": "Đảo ngược thành bi quan tê liệt: Chỉ ngồi tưởng tượng ra đủ mọi kịch bản chết chóc rồi sợ hãi không dám hành động, mà quên mất rằng mục đích của Inversion là dọn sạch chướng ngại vật để tiến bước an toàn.",
       "lollapalooza_pairs": [
         "Biên độ an toàn",
-        "First Principles",
-        "Second-order thinking"
-      ]
+        "Hệ quả bậc hai",
+        "Thí nghiệm tư duy",
+        "Ác cảm mất mát"
+      ],
+      "action_steps": [
+        "Bước 1 - Định vị mục tiêu: Viết ra kết quả bạn mong muốn đạt được (Ví dụ: Dự án ra mắt thành công, tài chính gia đình vững mạnh).",
+        "Bước 2 - Đảo ngược 180 độ: Tự hỏi: 'Làm thế nào để chắc chắn phá hỏng hoàn toàn mục tiêu này một cách thảm họa nhất?'",
+        "Bước 3 - Thực hiện Premortem: Liệt kê 5-7 nguyên nhân cụ thể dẫn đến cái chết được dự báo đó (Vay nợ quá mức, bất hòa nội bộ, thiếu kiểm định thị trường...).",
+        "Bước 4 - Xây dựng hàng rào phòng thủ: Đưa ra hành động phòng ngừa cho từng nguyên nhân ngay từ hôm nay để đảm bảo kịch bản xấu không thể xảy ra."
+      ],
+      "boundary_conditions": "Không dùng khi cần sự bứt phá sáng tạo tự do ở giai đoạn ươm mầm ý tưởng (Brainstorming ban đầu). Inversion là công cụ kiểm định rủi ro và tôi luyện độ bền của kế hoạch, dùng quá sớm sẽ bóp nghẹt các ý tưởng đột phá non trẻ.",
+      "real_world_case": "• Gia đình / Nuôi dạy con: Thay vì đọc hàng chục cuốn sách dạy làm cha mẹ hoàn hảo, hãy đảo ngược: 'Những hành vi nào chắc chắn biến một đứa trẻ thành kẻ ỷ lại, dối trá và mất kết nối với cha mẹ?' (Bao bọc quá mức, cấm đoán vô lý, thất hứa, dán mắt vào điện thoại trước mặt con) -> Tránh triệt để các hành vi này, đứa trẻ sẽ tự khắc trưởng thành lành mạnh.\n• Đầu tư CKVN: Muốn không bị cháy tài khoản trên thị trường chứng khoán, chỉ cần đảo ngược: Tránh dùng margin kịch khung khi thị trường hưng phấn, không mua cổ phiếu 'rác' vì tin đồn hội nhóm, không gồng lỗ trung bình giá xuống -> Chỉ riêng việc tránh được 3 điều này đã giúp bạn chiến thắng 90% nhà đầu tư cá nhân."
     },
     {
       "id": "MATH-06",
@@ -1369,19 +1387,28 @@
     },
     {
       "id": "SYS-11",
-      "name_vi": "Tính Khép kín & Bảo toàn Hệ thống",
-      "name_en": "System Conservation & Leaks",
+      "name_vi": "Bản đồ không phải Lãnh thổ",
+      "name_en": "The Map is not the Territory (Alfred Korzybski)",
       "pillar": "Kỹ thuật & Hệ thống",
-      "tier": 3,
-      "first_principle": "Một hệ thống muốn duy trì áp suất và động năng thì đường ống dẫn phải kín; các lỗ rò rỉ vi mô nếu không được vá sẽ làm tụt áp toàn bộ hệ thống.",
-      "elite_leverage": "Trước khi tìm cách bơm thêm khách hàng hay tăng doanh thu (đổ nước vào xô), hãy kiểm tra và vá kín toàn bộ các lỗ thủng rò rỉ (khách rời bỏ, chi phí ẩn).",
-      "trigger_question": "Đâu là lỗ rò rỉ vi mô đang âm thầm làm thất thoát năng lượng, thời gian hoặc tiền bạc của hệ thống mỗi ngày?",
-      "inversion_trap": "Đổ nước vào xô thủng: Tăng ngân sách chạy quảng cáo gấp 5 lần trong khi sản phẩm kém khiến khách hàng mua một lần rồi biến mất vĩnh viễn.",
+      "tier": 1,
+      "first_principle": "Mọi mô hình, báo cáo tài chính, biểu đồ, KPI hay lý thuyết chiến lược chỉ là sự trừu tượng hóa giản lược của thực tại. Bản đồ hữu ích vì nó tinh gọn, nhưng thực tại luôn phức tạp, nhiều chiều và chuyển động liên tục vượt xa khỏi khuôn khổ của trang giấy.",
+      "elite_leverage": "Tách rời mô hình khỏi thực địa. Luôn kiểm định thực tế bằng phản hồi trực tiếp (Ground Truth) thay vì chỉ nhìn vào báo cáo slide. Nhận diện rõ bản đồ đang bỏ qua những biến số nào, cập nhật liên tục và chấp nhận rằng thực địa luôn là quan tòa tối thượng.",
+      "trigger_question": "Bản đồ/báo cáo này đang bỏ qua những biến số thực tế nào, nó được vẽ từ khi nào và nó sẽ bị sai lệch hoàn toàn ở ranh giới nào?",
+      "inversion_trap": "Yêu bản đồ hơn lãnh thổ: Tối ưu hóa chỉ số KPI hoặc mô hình định giá Excel trên giấy đến mức hoàn hảo, nhưng mù quáng phớt lờ việc hành vi khách hàng hay thị trường bên ngoài đã thay đổi 180 độ.",
       "lollapalooza_pairs": [
-        "Bảo toàn Năng lượng",
-        "Nút cổ chai",
-        "Entropy"
-      ]
+        "Vòng tròn năng lực",
+        "Tư duy nguyên bản",
+        "Thiên kiến xác nhận",
+        "Biên độ an toàn"
+      ],
+      "action_steps": [
+        "Bước 1 - Định vị loại bản đồ: Nhận diện xem bạn đang nhìn vào bản đồ nào (Báo cáo tài chính, KPI tháng, lời tư vấn của chuyên gia, hay bản mô tả tính cách).",
+        "Bước 2 - Vạch trần sự tinh giản: Tự hỏi 'Bản đồ này buộc phải cắt bỏ những chi tiết phức tạp nào để trở nên gọn gàng?'",
+        "Bước 3 - Kiểm tra thực địa: Đi xuống hiện trường (Gemba), nói chuyện trực tiếp với khách hàng/con cái/đối tác thay vì chỉ đọc báo cáo gián tiếp.",
+        "Bước 4 - Cập nhật và hiệu chỉnh: Vẽ lại bản đồ ngay khi xuất hiện sự chênh lệch giữa giả định và kết quả thực tế."
+      ],
+      "boundary_conditions": "Không dùng mô hình này để rơi vào chủ nghĩa hoài nghi hư vô ('bản đồ nào cũng sai nên khỏi cần lập kế hoạch hay học lý thuyết gì nữa'). Bản đồ đơn giản hóa là thiết yếu để định hướng; điểm cốt lõi là biết ranh giới của nó để không bị lạc.",
+      "real_world_case": "• Gia đình / Con cái: Bảng điểm 9.0 (bản đồ) không đồng nghĩa với năng lực tư duy độc lập hay khả năng chịu áp lực ngoài đời (lãnh thổ). Cha mẹ yêu bản đồ sẽ ép con cày điểm số ảo; cha mẹ hiểu lãnh thổ sẽ chú trọng xem con xử lý xung đột và giải quyết vấn đề thực tế ra sao.\n• Đầu tư CKVN: Bản báo cáo định giá PE/PB đẹp như mơ của công ty chứng khoán (bản đồ) không cứu được nhà đầu tư nếu lãnh thổ thực tế là ban lãnh đạo đang xào nấu doanh thu và dòng tiền kinh doanh âm nặng."
     },
     {
       "id": "SYS-12",

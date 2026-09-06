@@ -79,6 +79,7 @@ def filter_models(
         q = query.lower().strip()
         filtered = []
         for m in res:
+            steps_text = " ".join(m.get("action_steps", [])) if isinstance(m.get("action_steps"), list) else ""
             searchable = " ".join([
                 str(m.get("id", "")),
                 str(m.get("name_vi", "")),
@@ -88,6 +89,9 @@ def filter_models(
                 str(m.get("elite_leverage", "")),
                 str(m.get("trigger_question", "")),
                 str(m.get("inversion_trap", "")),
+                str(m.get("boundary_conditions", "")),
+                str(m.get("real_world_case", "")),
+                steps_text,
             ]).lower()
             if q in searchable:
                 filtered.append(m)
