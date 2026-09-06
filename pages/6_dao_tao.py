@@ -180,6 +180,13 @@ with tab6_subtabs[0]:
             with st.expander("💡 Xem Gợi Ý Tinh Hoa của Bậc Thầy (Elite Hint)", expanded=True):
                 st.write(today_workout.get("elite_hint", ""))
 
+            with st.expander("⚡ Ultralearning Reflex: Áp dụng trực diện (Directness)", expanded=False):
+                st.markdown("""
+                - **Nguyên tắc Học trực diện (Directness — Scott H. Young):** Đừng để bài học này chỉ dừng lại ở lý thuyết trên màn hình! Hãy tự vấn ngay:
+                  * Hôm nay trong công việc, gia đình hoặc danh mục đầu tư, có tình huống nào có cấu trúc tương tự bài toán này không?
+                  * Làm sao bạn có thể đưa nguyên lý này vào một hành động cụ thể trong vòng 24 giờ tới?
+                """)
+
     history_dw = u_streak.get("history", [])
     if history_dw:
         with st.expander(f"📜 Xem Lịch Sử {len(history_dw)} Bài Tập Daily Workout Đã Hoàn Thành"):

@@ -392,6 +392,11 @@ with subtab2:
             if m.get("lollapalooza_pairs"):
                 st.markdown(f"**🔗 Cặp cộng hưởng Lollapalooza đề xuất:** `{'` · `'.join(m['lollapalooza_pairs'])}`")
 
+            if m.get("id") == "PHYS-11":
+                st.success("⚡ **Gợi ý thực hành Tư duy Nguyên bản (First Principles):** Dùng kỹ thuật Feynman giải thích cho học sinh lớp 5 hoặc dùng công cụ **🔍 Feynman Jargon Buster** tại Trang 10 để bóc trần thuật ngữ sáo rỗng!")
+            elif m.get("id") == "PSY-12":
+                st.info("📓 **Gợi ý thực hành Vòng tròn Năng lực (Circle of Competence):** Sử dụng chế độ **📓 Notebook of Unknowns (Sách Genius — Richard Feynman)** tại Trang 10 để ghi nhận chính xác ranh giới những điều bạn chưa biết.")
+
             # GMM Deep Framework: Action Steps, Boundary Conditions & Real-World Case Studies
             if m.get("action_steps") or m.get("boundary_conditions") or m.get("real_world_case"):
                 st.divider()

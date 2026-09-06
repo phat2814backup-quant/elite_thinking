@@ -58,6 +58,11 @@ with st.expander("🎯 1. First Principles — Tư duy Nguyên bản (Elon Musk,
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Điều gì tôi đang tin là đúng chỉ vì mọi người xung quanh bảo thế?*")
         st.caption("• *Nếu loại bỏ hết công cụ hiện tại, nhu cầu căn bản nhất ở đây là gì?*")
+        st.warning("""
+        🎭 **Quy tắc Feynman (Surely You're Joking, Mr. Feynman!):**  
+        *"Nguyên tắc đầu tiên là bạn không được tự lừa dối chính mình — và bạn chính là người dễ bị lừa nhất."*  
+        Khi bóc tách nguyên lý, hãy kiểm tra: Bạn có đang dùng từ ngữ cao siêu để che giấu việc mình chưa hiểu? Nếu không thể giải thích bằng một ví dụ thực tế đơn giản, bạn vẫn đang ở trong bẫy học vẹt.
+        """)
 
 with st.expander("🎲 2. Tư duy Xác suất & Cập nhật Bayesian (Probabilistic & Bayesian Updating)", expanded=False):
     c_a, c_b = st.columns([3, 2])

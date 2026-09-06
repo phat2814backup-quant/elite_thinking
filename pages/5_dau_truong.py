@@ -451,6 +451,10 @@ with arena_tab1:
                     st.success("🎉 **CHÍNH XÁC TUYỆT ĐỐI!** Bạn đã nhìn xuyên qua bề mặt để chạm vào bản chất gốc.")
                 else:
                     st.error(f"❌ **CHƯA CHÍNH XÁC!** Đáp án đúng là: **{q['options'][q['correct_index']]}**")
+                    with st.expander("⚡ Ultralearning Drill: Bóc tách điểm mù & Khắc phục mắt xích đứt gãy", expanded=True):
+                        st.markdown(f"**1. Lựa chọn của bạn:** `{user_choice}`")
+                        st.markdown(f"**2. Nguyên nhân sập bẫy:** {q.get('trap_analysis')}")
+                        st.markdown(f"**3. Nguyên tắc Drill (Scott H. Young):** Đừng chỉ lướt qua đáp án! Hãy tự vấn: *'Biến số hay định kiến nào đã khiến mình chọn nhầm?'* và giải thích lại câu hỏi này bằng 1 câu văn của chính bạn.")
 
                 st.markdown(f"💡 **Chân lý gốc (First Principles):** {q.get('explanation')}")
                 st.markdown(f"⚠️ **Phân tích Bẫy ngụy biện:** {q.get('trap_analysis')}")

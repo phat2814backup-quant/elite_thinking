@@ -51,6 +51,19 @@ with st.expander("4 nguyên tắc lộ trình", expanded=False):
     for p in meta.get("principles", []):
         st.markdown(f"- {p}")
 
+with st.expander("⚡ 9 Nguyên Tắc Ultralearning (Scott H. Young) — Giao Thức Tăng Tốc Học Sâu", expanded=False):
+    st.markdown("""
+    1. **Bản đồ Siêu học (Metalearning):** Phân rã môn học thành 3 cột: *Khái niệm (cần hiểu)*, *Dữ kiện (cần nhớ)*, và *Quy trình (cần làm)*.
+    2. **Tập trung cao độ (Focus):** Dành các khối thời gian 50-90 phút không xao nhãng để tư duy sâu.
+    3. **Học trực diện (Directness):** Học kỹ năng nào thì lao thẳng vào tình huống thực chiến của kỹ năng đó, không học vòng vo qua lý thuyết thụ động.
+    4. **Khoan sâu điểm yếu (Drill):** Tách nhỏ mắt xích bị tắc nghẽn nhất để luyện đi luyện lại cho đến khi thông suốt.
+    5. **Truy hồi chủ động (Retrieval / Active Recall):** Đóng sách lại và tự giải thích / giải quyết vấn đề, không đọc thụ động.
+    6. **Phản hồi tức thì (Feedback):** Tìm kiếm phản hồi khách quan từ thực tế, không trốn tránh sai sót.
+    7. **Ghi nhớ bền vững (Retention):** Lặp lại ngắt quãng (Spaced Repetition) để cài đặt mô hình vào tiềm thức.
+    8. **Trực giác từ nguyên lý sâu (Intuition):** Sử dụng Kỹ thuật Feynman để giải thích bản chất từ Chân lý gốc (First Principles).
+    9. **Thực nghiệm liên tục (Experimentation):** Liên tục thử nghiệm các phương pháp mới ngoài vùng an toàn.
+    """)
+
 if st.button("🚀 Bắt đầu / tiếp tục lộ trình", type="primary"):
     start_curriculum(username)
     st.success("Đã ghi nhận bắt đầu. Chọn tuần bên dưới.")
