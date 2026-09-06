@@ -68,6 +68,28 @@ with m_c5:
 
 st.divider()
 
+# Handle pending navigation/filter actions before widgets are instantiated
+if "_action_jump_mid" in st.session_state:
+    target_mid = st.session_state.pop("_action_jump_mid")
+    st.session_state["filter_model_search"] = target_mid
+    st.session_state["filter_model_gmm"] = False
+    st.session_state["filter_model_pillar"] = "Tất cả"
+    st.session_state["filter_model_tier"] = "Tất cả"
+
+if "_action_filter_gmm" in st.session_state:
+    st.session_state.pop("_action_filter_gmm")
+    st.session_state["filter_model_gmm"] = True
+    st.session_state["filter_model_search"] = ""
+    st.session_state["filter_model_pillar"] = "Tất cả"
+    st.session_state["filter_model_tier"] = "Tất cả"
+
+if "_action_reset_all" in st.session_state:
+    st.session_state.pop("_action_reset_all")
+    st.session_state["filter_model_gmm"] = False
+    st.session_state["filter_model_search"] = ""
+    st.session_state["filter_model_pillar"] = "Tất cả"
+    st.session_state["filter_model_tier"] = "Tất cả"
+
 # Filter Bar
 f_col1, f_col2, f_col3, f_col4 = st.columns([1.5, 1.8, 2.2, 1.5])
 with f_col1:
@@ -144,34 +166,25 @@ with subtab2:
             col_b1, col_b2, col_b3 = st.columns(3)
             with col_b1:
                 if st.button("🗺️ SYS-11\nBản đồ", use_container_width=True, help="Bản đồ không phải Lãnh thổ"):
-                    st.session_state["filter_model_search"] = "SYS-11"
-                    st.session_state["filter_model_gmm"] = False
+                    st.session_state["_action_jump_mid"] = "SYS-11"
                     st.rerun()
             with col_b2:
                 if st.button("🎯 PSY-12\nVòng tròn", use_container_width=True, help="Vòng tròn Năng lực"):
-                    st.session_state["filter_model_search"] = "PSY-12"
-                    st.session_state["filter_model_gmm"] = False
+                    st.session_state["_action_jump_mid"] = "PSY-12"
                     st.rerun()
             with col_b3:
                 if st.button("🔄 MATH-05\nĐảo ngược", use_container_width=True, help="Tư duy Đảo ngược"):
-                    st.session_state["filter_model_search"] = "MATH-05"
-                    st.session_state["filter_model_gmm"] = False
+                    st.session_state["_action_jump_mid"] = "MATH-05"
                     st.rerun()
 
             btn_all_gmm, btn_reset = st.columns(2)
             with btn_all_gmm:
                 if st.button("✨ Lọc cả 3 mô hình GMM", type="primary", use_container_width=True):
-                    st.session_state["filter_model_gmm"] = True
-                    st.session_state["filter_model_search"] = ""
-                    st.session_state["filter_model_pillar"] = "Tất cả"
-                    st.session_state["filter_model_tier"] = "Tất cả"
+                    st.session_state["_action_filter_gmm"] = True
                     st.rerun()
             with btn_reset:
                 if st.button("🔄 Hiện đủ 88 mô hình", use_container_width=True):
-                    st.session_state["filter_model_gmm"] = False
-                    st.session_state["filter_model_search"] = ""
-                    st.session_state["filter_model_pillar"] = "Tất cả"
-                    st.session_state["filter_model_tier"] = "Tất cả"
+                    st.session_state["_action_reset_all"] = True
                     st.rerun()
 
     st.caption(f"Đang hiển thị **{len(filtered_models)} / {len(all_models)}** mô hình phù hợp")
