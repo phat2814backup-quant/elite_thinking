@@ -91,10 +91,32 @@ def translate_paragraphs_batch(
     if not paragraphs:
         return []
 
-    keys = _normalize_keys(api_keys or os.environ.get("GOOGLE_API_KEY", ""))
-    if not keys:
-        env_keys = [os.environ.get(f"GEMINI_API_KEY_{i}") for i in range(1, 9)]
-        keys = _normalize_keys([k for k in env_keys if k and not k.startswith("AQ.")])
+    # Comprehensive key collection with fallback to all environment and secrets
+    configured_keys = []
+    if api_keys:
+        configured_keys.extend(_normalize_keys(api_keys))
+
+    # Also check env and secrets directly
+    try:
+        from utils.app_common import get_configured_api_keys
+        configured_keys.extend(get_configured_api_keys())
+    except Exception:
+        pass
+
+    for i in range(1, 10):
+        v = os.environ.get(f"GEMINI_API_KEY_{i}") or os.environ.get(f"GEMINI_API_KEY")
+        if v and v.strip():
+            configured_keys.append(v.strip())
+    if os.environ.get("GOOGLE_API_KEY"):
+        configured_keys.append(os.environ.get("GOOGLE_API_KEY").strip())
+
+    # Filter out genai v1 keys (AQ.*) and deduplicate
+    keys = []
+    seen = set()
+    for k in configured_keys:
+        if k and not k.startswith("AQ.") and k not in seen:
+            seen.add(k)
+            keys.append(k)
 
     prompt = f"""Bạn là dịch giả phong cách Richard Feynman kiêm chuyên gia sư phạm ngôn ngữ.
 Nhiệm vụ của bạn là dịch nguyên bản 100% từng đoạn văn tiếng Anh sau đây sang tiếng Việt một cách mượt mà, sống động, chuẩn xác kỹ thuật và tự nhiên theo văn phong của Feynman.
@@ -139,12 +161,13 @@ Trả về DUY NHẤT một JSON Array có đúng {len(paragraphs)} phần tử 
                         if isinstance(raw_data, list) and len(raw_data) == len(paragraphs):
                             return raw_data
                         elif isinstance(raw_data, list):
-                            # Map by index if partial
                             res_map = {item.get("index", idx): item for idx, item in enumerate(raw_data)}
                             return [res_map.get(idx, {"vi": "", "key_vocab": []}) for idx in range(len(paragraphs))]
-                except Exception:
+                except Exception as ex:
+                    print(f"Model {cand} on key {key[:8]} failed: {ex}")
                     continue
-        except Exception:
+        except Exception as ex:
+            print(f"Configuring key {key[:8]} failed: {ex}")
             continue
 
     # Fallback if offline/exhausted

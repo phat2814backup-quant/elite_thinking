@@ -308,11 +308,18 @@ with tab1:
                         chapter_title=current_chapter.get("title_en", ""),
                         api_keys=active_keys,
                     )
+                    has_error = False
                     for item, trans in zip(need_translate, translated_batch):
                         g_idx, p_text = item
-                        jit_cache[str(g_idx)] = trans
                         page_results.append((g_idx, p_text, trans))
+                        # Only persist if it's a real translation (not fallback message)
+                        if trans.get("vi") and not trans["vi"].startswith("(Đang chờ kết nối API"):
+                            jit_cache[str(g_idx)] = trans
+                        else:
+                            has_error = True
                     save_chapter_jit_cache(book_id, chap_id, jit_cache)
+                    if has_error:
+                        st.warning("⚠️ Chưa thể kết nối Gemini API để dịch các đoạn mới. Vui lòng bấm '🔄 Dịch lại trang này' hoặc kiểm tra API Key ở Sidebar!")
 
             # Sort page results by global index
             page_results.sort(key=lambda x: x[0])
