@@ -11,10 +11,10 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 11:30:00`
+- **Thời điểm cập nhật**: `2026-09-07 12:38:14`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `72c561e - fix(vocab): bust stale 25-word cache with auto-refresh and safe cascaded selectbox state (2026-09-07 11:13:54 +0700)`
+- **Commit gần nhất**: `f70e10b - feat(vocab): mastercraft Pillar 1 (9 modes) with 54 deep first-principles words (2026-09-07 11:30:10 +0700)`
 - **Trạng thái Git**: `1 uncommitted file(s)`
 
 ---
@@ -143,7 +143,7 @@ Nếu không có `SUPABASE_URL` và `SUPABASE_KEY` trong môi trường:
   - `Khoa học Não bộ & Nhận thức`: **12 bài học**
   - `Phật giáo & Tâm thức Ra quyết định`: **12 bài học**
   - `Công nghệ AI & Tương lai`: **12 bài học**
-- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **406 từ vựng cốt lõi** phân bổ trên **3 Cột trụ lớn** và **76 Chủ đề / Mô hình tư duy** kết nối 1-1 với Tab 2 (9 Chế độ), Tab 3 (88 Munger), Tab 4 (100 Nguyên lý) (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).
+- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **340 từ vựng cốt lõi** phân bổ trên **3 Cột trụ lớn** và **76 Chủ đề / Mô hình tư duy** kết nối 1-1 với Tab 2 (9 Chế độ), Tab 3 (88 Munger), Tab 4 (100 Nguyên lý) (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).
 - **Sách Song Ngữ Siêu Học (`data/bilingual_books/`)**:
   - 📚 **Chuyện Thật Như Đùa (Richard P. Feynman)** (Tác giả: *Richard P. Feynman*): **40 chương**, **0 macro-scenes** căn chỉnh Anh - Việt (File: `feynman_surely_youre_joking.json`).
 
@@ -226,7 +226,7 @@ elite_thinking/
 │   ├── 📄 `cases_toan_khoa_hoc.json` *(36.5 KB)*
 │   ├── 📄 `core_mental_models.json` *(217.9 KB)*
 │   ├── 📄 `curriculum_12w.json` *(195.7 KB)*
-│   ├── 📄 `elite_vocab.json` *(877.9 KB)*
+│   ├── 📄 `elite_vocab.json` *(900.9 KB)*
 │   ├── 📄 `knowledge_base.json` *(127.1 KB)*
 │   ├── 📄 `lessons.json` *(163.6 KB)*
 │   └── 📄 `users.json` *(1.0 KB)*
