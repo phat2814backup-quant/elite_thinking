@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 10:16:42`
+- **Thời điểm cập nhật**: `2026-09-07 10:20:14`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `46b3dc8 - fix(reader): ensure parallel row-by-row alignment and remove excessive paragraph line breaks (2026-09-06 19:22:18 +0700)`
-- **Trạng thái Git**: `9 uncommitted file(s)`
+- **Commit gần nhất**: `1d56df6 - feat(vocab): archive reader, introduce zero-API elite vocab learning & export context system (2026-09-07 10:20:02 +0700)`
+- **Trạng thái Git**: `Clean (no uncommitted changes)`
 
 ---
 
@@ -287,7 +287,7 @@ elite_thinking/
 ├── 📄 `app.py` *(11.6 KB)*
 ├── 📄 `export_project_context.bat` *(1.6 KB)*
 ├── 📄 `export_project_context.py` *(41.4 KB)*
-├── 📄 `PROJECT_CONTEXT.md` *(28.8 KB)*
+├── 📄 `PROJECT_CONTEXT.md` *(29.7 KB)*
 ├── 📄 `push_to_github.bat` *(2.1 KB)*
 ├── 📄 `README.md` *(4.3 KB)*
 └── 📄 `requirements.txt` *(0.1 KB)*
