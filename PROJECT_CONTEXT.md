@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 14:20:08`
+- **Thời điểm cập nhật**: `2026-09-07 14:31:10`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `7509059 - feat(vocab): mastercraft Pillar 2 (Munger 88 Models) with 168 deep words across 42 topics (2026-09-07 12:38:22 +0700)`
-- **Trạng thái Git**: `12 uncommitted file(s)`
+- **Commit gần nhất**: `b4149d2 - feat(knowledge): add cloud-native doc converter and living knowledge ingestion gate (2026-09-07 14:20:22 +0700)`
+- **Trạng thái Git**: `2 uncommitted file(s)`
 
 ---
 
@@ -267,7 +267,7 @@ elite_thinking/
 │   ├── 📄 `6_dao_tao.py` *(25.2 KB)*
 │   ├── 📄 `7_phan_ra.py` *(23.9 KB)*
 │   ├── 📄 `8_lich_su.py` *(4.8 KB)*
-│   └── 📄 `9_admin.py` *(26.0 KB)*
+│   └── 📄 `9_admin.py` *(24.9 KB)*
 ├── 📂 **practice/**
 │   └── 📄 `antifragility and option - 20260907.pdf` *(273.9 KB)*
 ├── 📂 **supabase/**
@@ -286,7 +286,7 @@ elite_thinking/
 │   ├── 📄 `diagnostic.py` *(28.1 KB)*
 │   ├── 📄 `doc_converter.py` *(3.7 KB)*
 │   ├── 📄 `knowledge.py` *(8.0 KB)*
-│   ├── 📄 `knowledge_archive.py` *(9.7 KB)*
+│   ├── 📄 `knowledge_archive.py` *(14.9 KB)*
 │   ├── 📄 `macro_evolution.py` *(37.5 KB)*
 │   ├── 📄 `mental_models.py` *(9.2 KB)*
 │   ├── 📄 `notes_manager.py` *(52.1 KB)*

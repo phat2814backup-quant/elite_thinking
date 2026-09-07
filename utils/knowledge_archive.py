@@ -261,9 +261,118 @@ def save_socratic_reflection(item: Dict[str, Any]) -> bool:
 def delete_socratic_reflection(ref_id: str) -> bool:
     """Xóa một câu hỏi tự vấn Socratic."""
     items = load_socratic_reflections()
-    new_items = [r for r in items if r.get("id") != ref_id]
-    if len(new_items) != len(items):
+    items = [r for r in items if r.get("id") != ref_id]
+    if len(items) != len(load_socratic_reflections()):
         with open(SOCRATIC_FILE, "w", encoding="utf-8") as f:
-            json.dump(new_items, f, ensure_ascii=False, indent=2)
+            json.dump(items, f, ensure_ascii=False, indent=2)
         return True
     return False
+
+# =============================================================================
+# 5. AI ENGINE TỰ ĐỘNG BÓC TÁCH & PHÂN RÃ TRI THỨC (AUTO-INGESTION)
+# =============================================================================
+
+AUTO_INGEST_SYSTEM_PROMPT = """Bạn là Elite Knowledge Architect & Supreme Chief Mentor đại diện cho Hội đồng Trí tuệ Tối cao (Elon Musk, Charlie Munger, Richard Feynman, John von Neumann / Nassim Taleb).
+
+Nhiệm vụ của bạn: Đọc kỹ tài liệu / biên bản đối thoại được cung cấp, sau đó TỰ ĐỘNG BÓC TÁCH VÀ CHUYỂN HÓA nội dung thành 3 phần tinh hoa chuẩn mực:
+1. "deep_dive": Luận giải chuyên sâu 4 Tầng Tinh Hoa (xác định đúng 1 trong 9 Chế độ tư duy phù hợp nhất).
+2. "practice_cases": Danh sách 1 đến 3 tình huống thực chiến (Problem, Latticework, Elite Solution 4 bước, Key Takeaways).
+3. "socratic_reflections": Danh sách 1 đến 2 câu hỏi tự vấn trực diện Socratic và thử thách Feynman.
+
+BẮT BUỘC trả về định dạng JSON thuần túy (không markdown bao quanh, không giải thích ngoài JSON):
+{
+  "detected_mode_code": "MODE-01 đến MODE-09 (ví dụ: MODE-05)",
+  "mode_title": "Tên chế độ tư duy (ví dụ: Tư duy Tùy chọn & Bất đối xứng)",
+  "deep_dive": {
+    "title": "Tiêu đề luận giải chuyên sâu (ngắn gọn, uy lực)",
+    "quote": "1 câu châm ngôn cốt lõi phản ánh bản chất của tài liệu",
+    "layer_1_core": "Markdown Tầng 1: Bản chất cốt lõi & Cơ sở toán học/vật lý/quy luật bất biến",
+    "layer_2_latticework": "Markdown Tầng 2: Đa Lăng kính Mô hình (soi qua Quant, Sinh học, Tâm lý...)",
+    "layer_3_second_order": "Markdown Tầng 3: Hệ quả Bậc hai & Đòn bẩy Bất đối xứng / Chiến lược Quả tạ Barbell",
+    "layer_4_feynman_socratic": "Markdown Tầng 4: Thử thách Feynman & Bộ câu hỏi tự vấn Socratic"
+  },
+  "practice_cases": [
+    {
+      "id_suffix": "P01",
+      "title": "Tiêu đề case thực chiến (ngắn gọn, hấp dẫn)",
+      "category": "Lĩnh vực (ví dụ: Giao dịch Định lượng (Quant Trading), Giáo dục & Nuôi dạy con...)",
+      "target_audience": "Đối tượng mục tiêu",
+      "problem": "Mô tả bài toán / vấn đề thực tế ngắn gọn, sắc bén",
+      "core_principles": ["Nguyên tắc 1", "Nguyên tắc 2", "Nguyên tắc 3"],
+      "latticework_analysis": "Phân tích đa ngành (Vật lý, Sinh học, Tâm lý, Kinh tế...)",
+      "elite_solution": [
+        "Bước 1: ...",
+        "Bước 2: ...",
+        "Bước 3: ...",
+        "Bước 4: ..."
+      ],
+      "key_takeaways": "Bài học cốt tử rút ra"
+    }
+  ],
+  "socratic_reflections": [
+    {
+      "id_suffix": "SOC-01",
+      "title": "Tiêu đề gương soi",
+      "inquiry_prompt": "Câu hỏi truy vấn trực diện từ Hội đồng lột trần mâu thuẫn trong hành vi",
+      "feynman_challenge": "Thử thách Feynman: Điểm mù tự dối mình nằm ở đâu?",
+      "reflection_questions": [
+        "Câu hỏi tự vấn 1",
+        "Câu hỏi tự vấn 2",
+        "Câu hỏi tự vấn 3"
+      ]
+    }
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+- Toàn bộ bằng Tiếng Việt tinh hoa, chuẩn xác, không dùng từ ngữ sáo rỗng.
+- Bóc tách trung thực từ văn bản nguồn, giữ lại các luận điểm toán học, lăng kính và ví dụ hay nhất.
+- Đảm bảo JSON hoàn toàn hợp lệ.
+"""
+
+def auto_decompose_living_knowledge(
+    markdown_content: str,
+    api_keys: Any,
+    model_name: str = "gemini-2.5-flash"
+) -> Dict[str, Any]:
+    """Sử dụng AI Gemini tự động phân rã văn bản thành 3 khối tri thức: Deep-Dive, Case, Socratic."""
+    import google.generativeai as genai
+    from utils.ai_engine import _normalize_keys, clean_json_response
+
+    keys = _normalize_keys(api_keys)
+    if not keys or not markdown_content.strip():
+        raise ValueError("Thiếu API Key hoặc nội dung văn bản trống.")
+
+    prompt = f"""Dưới đây là toàn bộ nội dung tài liệu / biên bản tham vấn cần bóc tách:
+\"\"\"
+{markdown_content[:25000]}
+\"\"\"
+"""
+    candidates = [model_name, "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+    last_err = None
+
+    for current_key in keys:
+        try:
+            genai.configure(api_key=current_key)
+        except Exception as e:
+            last_err = e
+            continue
+
+        for cand in candidates:
+            try:
+                model = genai.GenerativeModel(
+                    model_name=cand,
+                    system_instruction=AUTO_INGEST_SYSTEM_PROMPT,
+                    generation_config={"response_mime_type": "application/json"}
+                )
+                resp = model.generate_content(prompt, request_options={"timeout": 60})
+                if resp and resp.text:
+                    clean_text = clean_json_response(resp.text)
+                    data = json.loads(clean_text)
+                    data["_model_used"] = cand
+                    return data
+            except Exception as e:
+                last_err = e
+                continue
+
+    raise RuntimeError(f"Không thể phân rã tài liệu bằng AI: {last_err}")

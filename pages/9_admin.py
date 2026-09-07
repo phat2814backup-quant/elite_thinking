@@ -29,7 +29,8 @@ from utils.knowledge_archive import (
     delete_practice_case,
     load_socratic_reflections,
     save_socratic_reflection,
-    delete_socratic_reflection
+    delete_socratic_reflection,
+    auto_decompose_living_knowledge
 )
 
 if not is_admin():
@@ -150,294 +151,298 @@ with admin_tabs[1]:
                 st.warning("Cần ID và tiêu đề.")
 
 with admin_tabs[2]:
-    st.subheader("📥 Cổng Nạp & Phê Duyệt Tri Thức Sống (Living Knowledge Ingestion Gate)")
+    st.subheader("📥 Cổng Tiếp Nhận & Tự Động Phân Rã Tri Thức (Living Knowledge Hub)")
     st.markdown("""
-    Cơ chế đám mây tinh gọn (**Cloud-Native & Zero-Bloat**): 
-    Admin tải file bất kỳ (PDF, Word, PowerPoint, Excel, TXT...) ➔ Engine AnyDoc (Rust) chuyển đổi sang Markdown GFM trong tích tắc (<5ms) ➔ 
-    File nhị phân gốc lập tức bị xóa khỏi hệ thống để giữ app siêu nhẹ ➔ Lưu bản Markdown vào kho tham khảo ➔ 
-    Admin phân loại và phê duyệt đẩy trực tiếp vào: **Lý thuyết 9 Chế độ**, **Case Thực chiến (Nhóm P)**, hoặc **Gương soi Socratic**.
+    💡 **Quy trình tự động hóa 100% — Không cần gõ tay hay copy paste**:
+    1. **Nạp tài liệu**: Tải file (`PDF`, `Word`, `PPTX`, `TXT`...) hoặc chọn từ kho lưu trữ. File nhị phân được chuyển sang Markdown và tự động xóa ngay lập tức.
+    2. **AI Bóc tách**: Bấm nút để **AI Gemini tự động phân rã** thành **Lý thuyết chuyên sâu 4 tầng**, **Case thực chiến** và **Gương soi Socratic**.
+    3. **1-Click Phê duyệt**: Admin xem trước kết quả bóc tách và bấm **Duyệt tất cả** để tự động cập nhật vào app.
     """)
 
-    sub_tabs = st.tabs([
-        "📤 1. Tải Lên & Chuyển Đổi",
-        "📚 2. Kho Tham Khảo",
-        "🔬 3. Lý Thuyết Chuyên Sâu",
-        "💼 4. Case Thực Chiến (Nhóm P)",
-        "🪞 5. Gương Soi Socratic"
-    ])
+    # -------------------------------------------------------------------------
+    # BƯỚC 1: CHỌN NGUỒN TÀI LIỆU
+    # -------------------------------------------------------------------------
+    st.markdown("### 1️⃣ Chọn Tài Liệu Nguồn Cần Bóc Tách")
     
-    # Sub-tab 1: Tải lên & Chuyển đổi
-    with sub_tabs[0]:
-        st.markdown("#### 📤 Tải Lên & Tự Động Chuyển Đổi Sang Markdown")
-        st.caption("Engine AnyDoc hỗ trợ PDF, DOCX, DOC, PPTX, XLSX, TXT, MD, EPUB, RTF, CSV. File nhị phân tải lên sẽ tự động bị xóa sau khi chuyển đổi.")
-        
+    arch_list = list_archives()
+    source_choice = st.radio(
+        "Nguồn tài liệu:",
+        ["📤 Tải lên file mới (PDF, Word, PPTX, TXT...)", f"📚 Chọn từ kho tài liệu đã có ({len(arch_list)} tài liệu)"],
+        horizontal=True
+    )
+    
+    selected_doc_id = None
+    selected_doc_title = ""
+    selected_doc_content = ""
+    selected_doc_filename = ""
+    
+    if "Tải lên file mới" in source_choice:
         up_file = st.file_uploader(
-            "Chọn tệp tài liệu cần nạp:",
+            "Kéo thả tệp tài liệu cần nạp:",
             type=["pdf", "docx", "doc", "pptx", "xlsx", "txt", "md", "epub", "rtf", "csv"],
-            key="admin_doc_uploader"
+            key="hub_doc_uploader"
         )
-        
         if up_file is not None:
-            col_u1, col_u2 = st.columns([3, 2])
-            with col_u1:
+            c_u1, c_u2 = st.columns([3, 1])
+            with c_u1:
                 default_title = up_file.name.rsplit(".", 1)[0].replace("_", " ").replace("-", " ").title()
-                doc_title = st.text_input("Tiêu đề tài liệu / Phiên tham vấn:", value=default_title)
-            with col_u2:
-                doc_tags = st.text_input("Thẻ phân loại (cách nhau bởi dấu phẩy):", value="Hội đồng Trí tuệ, Thực chiến")
-            
-            if st.button("🚀 Chuyển Đổi Sang Markdown & Lưu Vào Kho", type="primary", key="btn_convert_save"):
-                with st.spinner("Đang phân tích và chuyển đổi siêu tốc bằng AnyDoc engine..."):
+                custom_title = st.text_input("Tiêu đề phiên tham vấn / tài liệu:", value=default_title, key="hub_custom_title")
+            with c_u2:
+                st.write("")
+                st.write("")
+                btn_conv = st.button("🚀 Chuyển Đổi & Nạp Vào Kho", type="primary", key="hub_btn_conv")
+                
+            if btn_conv:
+                with st.spinner("AnyDoc engine đang chuyển đổi sang Markdown và dọn dẹp file nhị phân..."):
                     try:
-                        md_res = convert_document_to_markdown(up_file, up_file.name)
-                        tags_list = [t.strip() for t in doc_tags.split(",") if t.strip()]
-                        entry = save_to_archive(
-                            content=md_res,
+                        md_text = convert_document_to_markdown(up_file, up_file.name)
+                        new_entry = save_to_archive(
+                            content=md_text,
                             original_filename=up_file.name,
-                            title=doc_title,
+                            title=custom_title,
                             author=username,
-                            tags=tags_list
+                            tags=["Hội đồng Trí tuệ", "Tự động nạp"]
                         )
-                        st.success(f"🎉 Chuyển đổi thành công! Đã lưu vào kho tham khảo: `{entry['filename']}` ({entry['word_count']} từ · {entry['char_count']} ký tự). File nhị phân gốc đã được xóa hoàn toàn.")
-                        with st.expander("👁️ Xem trước nội dung Markdown vừa trích xuất", expanded=True):
-                            st.markdown(md_res[:3000] + ("\n\n*(Nội dung còn tiếp...)*" if len(md_res) > 3000 else ""))
+                        st.session_state["cur_selected_doc_id"] = new_entry["id"]
+                        st.success(f"✅ Đã chuyển đổi thành công sang Markdown! (File gốc đã tự động xóa để bảo toàn dung lượng).")
                         st.rerun()
-                    except Exception as err:
-                        st.error(f"Lỗi chuyển đổi: {err}")
-
-    # Sub-tab 2: Kho Tham khảo
-    with sub_tabs[1]:
-        st.markdown("#### 📚 Kho Tài Liệu Tham Khảo Nguyên Bản")
-        arch_items = list_archives()
-        if not arch_items:
-            st.info("Chưa có tài liệu nào trong kho tham khảo.")
+                    except Exception as ex:
+                        st.error(f"Lỗi chuyển đổi: {ex}")
+                        
+        if st.session_state.get("cur_selected_doc_id"):
+            selected_doc_id = st.session_state["cur_selected_doc_id"]
+    else:
+        if not arch_list:
+            st.info("Chưa có tài liệu nào trong kho. Vui lòng chọn 'Tải lên file mới'.")
         else:
-            st.caption(f"Tổng cộng: **{len(arch_items)}** tài liệu đối thoại / tham khảo Markdown.")
-            arch_sel_id = st.selectbox(
-                "Chọn tài liệu cần xem / quản lý:",
-                [item["id"] for item in arch_items],
-                format_func=lambda x: next((f"📄 {i['title']} ({i['created_at']})" for i in arch_items if i["id"] == x), x)
+            sel_idx = st.selectbox(
+                "Chọn tài liệu cần bóc tách:",
+                range(len(arch_list)),
+                format_func=lambda i: f"📄 {arch_list[i].get('title')} ({arch_list[i].get('created_at')} · {arch_list[i].get('word_count', 0)} từ)"
             )
-            cur_item = get_archive(arch_sel_id)
-            if cur_item:
-                c_meta1, c_meta2, c_meta3 = st.columns(3)
-                c_meta1.metric("Số từ", f"{cur_item.get('word_count', 0):,}")
-                c_meta2.metric("Số ký tự", f"{cur_item.get('char_count', 0):,}")
-                c_meta3.caption(f"File: `{cur_item.get('filename')}`\nNgày nạp: {cur_item.get('created_at')}\nTác giả: {cur_item.get('created_by')}")
-                
-                with st.expander("📖 Xem toàn bộ văn bản Markdown", expanded=False):
-                    st.text_area("Markdown text", value=cur_item.get("content", ""), height=350, key=f"preview_arch_{cur_item['id']}")
-                
-                col_del, col_down = st.columns([1, 1])
-                with col_down:
-                    st.download_button(
-                        "📥 Tải file Markdown (.md)",
-                        data=cur_item.get("content", ""),
-                        file_name=cur_item.get("filename", "document.md"),
-                        mime="text/markdown",
-                        key=f"dl_arch_{cur_item['id']}"
-                    )
-                with col_del:
-                    if st.button("🗑️ Xóa vĩnh viễn khỏi kho", type="secondary", key=f"del_arch_{cur_item['id']}"):
-                        delete_archive(cur_item["id"])
-                        st.warning("Đã xóa tài liệu khỏi kho.")
-                        st.rerun()
+            selected_doc_id = arch_list[sel_idx]["id"]
+            st.session_state["cur_selected_doc_id"] = selected_doc_id
 
-    # Sub-tab 3: Lý thuyết chuyên sâu
-    with sub_tabs[2]:
-        st.markdown("#### 🔬 Phê Duyệt Luận Giải Chuyên Sâu (Mode Deep-Dives)")
-        st.caption("Các luận giải 4 Tầng Tinh Hoa sẽ xuất hiện bên dưới Chế độ tư duy tương ứng tại trang '9 Chế độ tư duy'.")
-        
-        all_modes = [
-            ("MODE-01", "🎯 Chế độ 1: First Principles — Tư duy Nguyên bản"),
-            ("MODE-02", "🎲 Chế độ 2: Tư duy Xác suất & Cập nhật Bayesian"),
-            ("MODE-03", "🔄 Chế độ 3: Tư duy Đảo ngược (Inversion)"),
-            ("MODE-04", "🌊 Chế độ 4: Tư duy Bậc hai & Bậc cao"),
-            ("MODE-05", "⚖️ Chế độ 5: Tư duy Tùy chọn & Bất đối xứng"),
-            ("MODE-06", "🕸️ Chế độ 6: Mạng lưới Mô hình Đa ngành (Latticework)"),
-            ("MODE-07", "⚡ Chế độ 7: Tư duy Thực nghiệm Nhanh (Lean)"),
-            ("MODE-08", "♟️ Chế độ 8: Tư duy Chiến lược & Lý thuyết Trò chơi"),
-            ("MODE-09", "⏳ Chế độ 9: Tư duy Đa quy mô Thời gian")
-        ]
-        
-        existing_deep_dives = load_deep_dives()
-        
-        # Danh sách đã duyệt
-        st.markdown("##### 📌 Tình trạng luận giải đã duyệt:")
-        cols_dd = st.columns(3)
-        for idx, (m_code, m_name) in enumerate(all_modes):
-            col_target = cols_dd[idx % 3]
-            is_approved = m_code in existing_deep_dives
-            status_icon = "✅" if is_approved else "⚪"
-            col_target.markdown(f"- {status_icon} **{m_code}**: {'Đã có bài chuyên sâu' if is_approved else 'Chưa có'}")
+    # Đọc nội dung tài liệu đang chọn
+    if selected_doc_id:
+        doc_info = get_archive(selected_doc_id)
+        if doc_info:
+            selected_doc_title = doc_info.get("title", "")
+            selected_doc_content = doc_info.get("content", "")
+            selected_doc_filename = doc_info.get("filename", "")
             
-        st.divider()
-        sel_mode_code = st.selectbox(
-            "Chọn chế độ tư duy cần soạn / chỉnh sửa Luận giải chuyên sâu:",
-            [m[0] for m in all_modes],
-            format_func=lambda x: next((m[1] for m in all_modes if m[0] == x), x)
-        )
-        
-        cur_dd = existing_deep_dives.get(sel_mode_code, {})
-        cur_layers = cur_dd.get("layers", {})
-        
-        with st.form(f"form_deep_dive_{sel_mode_code}"):
-            dd_title = st.text_input("Tiêu đề luận giải chuyên sâu:", value=cur_dd.get("title", f"Luận Giải Chuyên Sâu: {sel_mode_code}"))
-            dd_quote = st.text_input("Châm ngôn cốt lõi (Quote):", value=cur_dd.get("quote", ""))
-            dd_source = st.text_input("Nguồn tham chiếu (Source reference):", value=cur_dd.get("source_ref", "Phiên tham vấn Hội đồng Trí tuệ Tối cao"))
-            
-            st.markdown("###### 🏛️ Tầng 1: Bản chất Cốt lõi (First Principles Core & Toán học)")
-            l1_val = st.text_area("Nội dung Tầng 1", value=cur_layers.get("layer_1_core", ""), height=150)
-            
-            st.markdown("###### 🕸️ Tầng 2: Đa Lăng kính Mô hình (Latticework Analysis)")
-            l2_val = st.text_area("Nội dung Tầng 2", value=cur_layers.get("layer_2_latticework", ""), height=150)
-            
-            st.markdown("###### ⚖️ Tầng 3: Hệ quả Bậc hai & Đòn bẩy Bất đối xứng / Barbell")
-            l3_val = st.text_area("Nội dung Tầng 3", value=cur_layers.get("layer_3_second_order", ""), height=150)
-            
-            st.markdown("###### 🪞 Tầng 4: Thử thách Feynman & Câu hỏi Socratic")
-            l4_val = st.text_area("Nội dung Tầng 4", value=cur_layers.get("layer_4_feynman_socratic", ""), height=150)
-            
-            col_save_dd, col_del_dd = st.columns([3, 1])
-            with col_save_dd:
-                submit_dd = st.form_submit_button("💾 Phê duyệt & Cập nhật Luận Giải Chuyên Sâu", type="primary")
-            
-            if submit_dd:
-                if dd_title.strip() and l1_val.strip():
-                    save_deep_dive(
-                        mode_code=sel_mode_code,
-                        title=dd_title.strip(),
-                        quote=dd_quote.strip(),
-                        layers={
-                            "layer_1_core": l1_val.strip(),
-                            "layer_2_latticework": l2_val.strip(),
-                            "layer_3_second_order": l3_val.strip(),
-                            "layer_4_feynman_socratic": l4_val.strip()
-                        },
-                        source_ref=dd_source.strip(),
-                        author=username
+            with st.expander(f"📖 Xem nội dung Markdown nguồn: **{selected_doc_title}** ({doc_info.get('word_count', 0)} từ)", expanded=False):
+                st.markdown(selected_doc_content[:3000] + ("\n\n*(Xem tiếp trong file...)*" if len(selected_doc_content) > 3000 else ""))
+
+    st.divider()
+
+    # -------------------------------------------------------------------------
+    # BƯỚC 2: KÍCH HOẠT AI BÓC TÁCH TỰ ĐỘNG
+    # -------------------------------------------------------------------------
+    st.markdown("### 2️⃣ Kích Hoạt AI Gemini Tự Động Phân Rã Toàn Diện")
+    st.caption("AI sẽ tự động đọc tài liệu, xác định Chế độ tư duy, bóc tách 4 Tầng Tinh Hoa, trích xuất Case Thực Chiến và tạo Gương Soi Socratic.")
+
+    if not selected_doc_content:
+        st.warning("Vui lòng chọn hoặc nạp một tài liệu ở Bước 1 trước khi kích hoạt AI.")
+    else:
+        c_ai1, c_ai2 = st.columns([3, 2])
+        with c_ai1:
+            st.write(f"Tài liệu mục tiêu: **{selected_doc_title}**")
+        with c_ai2:
+            trigger_ai = st.button("⚡ KÍCH HOẠT AI BÓC TÁCH TRI THỨC (AUTO-INGESTION)", type="primary", use_container_width=True)
+
+        if trigger_ai:
+            with st.spinner("🤖 Hội đồng Trí tuệ AI đang đọc sâu tài liệu, bóc tách cấu trúc 4 tầng, trích xuất case và gương soi... Vui lòng đợi trong giây lát..."):
+                try:
+                    ai_result = auto_decompose_living_knowledge(
+                        markdown_content=selected_doc_content,
+                        api_keys=active_keys,
+                        model_name=model_choice
                     )
-                    st.success(f"✅ Đã phê duyệt và lưu Luận giải chuyên sâu cho {sel_mode_code}!")
-                    st.rerun()
-                else:
-                    st.warning("Vui lòng nhập tiêu đề và ít nhất nội dung Tầng 1.")
+                    st.session_state["extracted_knowledge"] = ai_result
+                    st.session_state["extracted_source_filename"] = selected_doc_filename
+                    st.success(f"🎉 AI đã hoàn tất bóc tách bằng model `{ai_result.get('_model_used', 'Gemini')}`! Xem bản phân rã bên dưới.")
+                except Exception as ai_err:
+                    st.error(f"Lỗi khi AI phân rã: {ai_err}")
+
+    # -------------------------------------------------------------------------
+    # BƯỚC 3: XEM TRƯỚC KẾT QUẢ & PHÊ DUYỆT 1-CLICK
+    # -------------------------------------------------------------------------
+    if "extracted_knowledge" in st.session_state:
+        st.divider()
+        st.markdown("### 3️⃣ Xem Trước Kết Quả Phân Rã & Phê Duyệt Vào App")
         
-        if sel_mode_code in existing_deep_dives:
-            if st.button(f"🗑️ Gỡ bỏ Luận giải Chuyên sâu của {sel_mode_code}", type="secondary", key=f"del_dd_{sel_mode_code}"):
-                delete_deep_dive(sel_mode_code)
-                st.warning(f"Đã gỡ bỏ Luận giải chuyên sâu của {sel_mode_code}.")
+        ext = st.session_state["extracted_knowledge"]
+        m_code = ext.get("detected_mode_code", "MODE-05")
+        m_title = ext.get("mode_title", "Tư duy Tùy chọn & Bất đối xứng")
+        dd_data = ext.get("deep_dive", {})
+        cases_data = ext.get("practice_cases", [])
+        soc_data = ext.get("socratic_reflections", [])
+        src_file = st.session_state.get("extracted_source_filename", "tai_lieu.md")
+        
+        st.info(f"🎯 AI đã phát hiện tài liệu này tương ứng với: **{m_code}: {m_title}**")
+        
+        # 3 Tabs hiển thị kết quả
+        preview_tabs = st.tabs([
+            f"🔬 1. Lý Thuyết Chuyên Sâu ({m_code})",
+            f"💼 2. Case Thực Chiến ({len(cases_data)} cases)",
+            f"🪞 3. Gương Soi Socratic ({len(soc_data)} mục)"
+        ])
+        
+        with preview_tabs[0]:
+            st.markdown(f"#### {dd_data.get('title', 'Luận Giải Chuyên Sâu')}")
+            st.success(f"💬 *\"{dd_data.get('quote', '')}\"*")
+            p_t1, p_t2, p_t3, p_t4 = st.tabs(["Tầng 1 Core", "Tầng 2 Latticework", "Tầng 3 Barbell", "Tầng 4 Socratic"])
+            with p_t1:
+                st.markdown(dd_data.get("layer_1_core", ""))
+            with p_t2:
+                st.markdown(dd_data.get("layer_2_latticework", ""))
+            with p_t3:
+                st.markdown(dd_data.get("layer_3_second_order", ""))
+            with p_t4:
+                st.markdown(dd_data.get("layer_4_feynman_socratic", ""))
+                
+        with preview_tabs[1]:
+            for idx_c, c_item in enumerate(cases_data):
+                st.markdown(f"##### 💼 Case #{idx_c+1}: **{c_item.get('title')}** ({c_item.get('category')})")
+                st.caption(f"Đối tượng: {c_item.get('target_audience')}")
+                st.markdown(f"**Vấn đề:** {c_item.get('problem')}")
+                with st.expander("Xem chi tiết giải pháp & phân tích đa ngành", expanded=False):
+                    st.markdown(f"**Latticework:**\n{c_item.get('latticework_analysis')}")
+                    st.markdown("**Quy trình giải pháp:**")
+                    for s in c_item.get("elite_solution", []):
+                        st.markdown(f"- {s}")
+                    st.markdown(f"💡 **Bài học rút ra:** *{c_item.get('key_takeaways')}*")
+                st.divider()
+                
+        with preview_tabs[2]:
+            for idx_s, s_item in enumerate(soc_data):
+                st.markdown(f"##### 🪞 Gương soi #{idx_s+1}: **{s_item.get('title')}**")
+                st.info(f"🧠 **Truy vấn:** {s_item.get('inquiry_prompt')}")
+                if s_item.get("feynman_challenge"):
+                    st.warning(f"🎭 **Thử thách Feynman:** {s_item.get('feynman_challenge')}")
+                st.markdown("Bộ câu hỏi:")
+                for q in s_item.get("reflection_questions", []):
+                    st.markdown(f"- *{q}*")
+                st.divider()
+                
+        # NÚT PHÊ DUYỆT TỔNG LỰC 1-CLICK
+        st.markdown("#### 🚀 Hành Động Phê Duyệt:")
+        col_app_all, col_app_cancel = st.columns([3, 1])
+        
+        with col_app_all:
+            if st.button("🚀 PHÊ DUYỆT TẤT CẢ VÀ CẬP NHẬT VÀO HỆ THỐNG (1-CLICK SYNC)", type="primary", use_container_width=True):
+                # 1. Lưu deep-dive
+                save_deep_dive(
+                    mode_code=m_code,
+                    title=dd_data.get("title", f"Luận Giải Chuyên Sâu: {m_code}"),
+                    quote=dd_data.get("quote", ""),
+                    layers={
+                        "layer_1_core": dd_data.get("layer_1_core", ""),
+                        "layer_2_latticework": dd_data.get("layer_2_latticework", ""),
+                        "layer_3_second_order": dd_data.get("layer_3_second_order", ""),
+                        "layer_4_feynman_socratic": dd_data.get("layer_4_feynman_socratic", "")
+                    },
+                    source_ref=src_file,
+                    author=username
+                )
+                # 2. Lưu cases
+                cur_cases_count = len(load_practice_cases().get("cases", []))
+                for i_c, c_item in enumerate(cases_data):
+                    case_id = f"CASE-P{cur_cases_count + i_c + 1:02d}"
+                    save_practice_case({
+                        "id": case_id,
+                        "title": c_item.get("title", "Case Thực Chiến"),
+                        "category": c_item.get("category", "Thực chiến"),
+                        "target_audience": c_item.get("target_audience", "Giới Elite"),
+                        "problem": c_item.get("problem", ""),
+                        "core_principles": c_item.get("core_principles", []),
+                        "latticework_analysis": c_item.get("latticework_analysis", ""),
+                        "elite_solution": c_item.get("elite_solution", []),
+                        "key_takeaways": c_item.get("key_takeaways", "")
+                    })
+                # 3. Lưu socratic
+                cur_soc_count = len(load_socratic_reflections())
+                for i_s, s_item in enumerate(soc_data):
+                    soc_id = f"SOC-{cur_soc_count + i_s + 1:02d}"
+                    save_socratic_reflection({
+                        "id": soc_id,
+                        "mode_code": m_code,
+                        "mode_title": m_title,
+                        "title": s_item.get("title", "Tự vấn Socratic"),
+                        "source": src_file,
+                        "inquiry_prompt": s_item.get("inquiry_prompt", ""),
+                        "feynman_challenge": s_item.get("feynman_challenge", ""),
+                        "reflection_questions": s_item.get("reflection_questions", [])
+                    })
+                st.balloons()
+                st.success(f"🎉 ĐÃ PHÊ DUYỆT & ĐỒNG BỘ TOÀN DIỆN THÀNH CÔNG!\n- Đã cập nhật Lý thuyết {m_code} tại '9 Chế độ tư duy'.\n- Đã thêm {len(cases_data)} Case vào Nhóm P tại 'Case thực chiến'.\n- Đã thêm {len(soc_data)} Gương soi vào Tab 5 của 'Sổ tay tri thức'.")
+                del st.session_state["extracted_knowledge"]
                 st.rerun()
 
-    # Sub-tab 4: Case Thực chiến
-    with sub_tabs[3]:
-        st.markdown("#### 💼 Phê Duyệt Case Thực Chiến (Nhóm P)")
-        st.caption("Các case thực chiến do Hội đồng bóc tách từ các phiên thực tế, tự động hiển thị trong trang 'Case Thực Chiến' (Tab 11).")
-        
-        p_cases_data = load_practice_cases()
-        p_cases_list = p_cases_data.get("cases", [])
-        
-        st.markdown(f"Hiện có **{len(p_cases_list)}** Case trong Nhóm P:")
-        for c in p_cases_list:
-            with st.expander(f"💼 **{c.get('id')}**: {c.get('title')} ({c.get('category')})"):
-                st.markdown(f"**Vấn đề:** {c.get('problem')}")
-                st.markdown(f"**Bài học:** *{c.get('key_takeaways')}*")
-                if st.button(f"🗑️ Xóa Case {c.get('id')}", key=f"del_case_{c.get('id')}"):
-                    delete_practice_case(c.get("id"))
-                    st.warning(f"Đã xóa {c.get('id')}")
-                    st.rerun()
-                    
-        st.divider()
-        st.markdown("##### ➕ Soạn & Phê Duyệt Case Thực Chiến Mới:")
-        with st.form("form_add_practice_case"):
-            next_num = len(p_cases_list) + 1
-            case_id = st.text_input("Mã Case:", value=f"CASE-P{next_num:02d}")
-            case_title = st.text_input("Tiêu đề Case:")
-            case_category = st.selectbox("Lĩnh vực:", [
-                "Giao dịch Định lượng (Quant Trading)",
-                "Giáo dục & Nuôi dạy Tinh hoa",
-                "Kinh doanh & Khởi nghiệp",
-                "Quản trị Hệ thống & Công nghệ",
-                "Tâm lý & Ra quyết định"
-            ])
-            case_audience = st.text_input("Đối tượng mục tiêu:", value="Giới Elite, Nhà đầu tư & Cha mẹ")
-            case_problem = st.text_area("Mô tả Vấn đề thực tế (Problem):", height=100)
-            case_principles = st.text_area("Các nguyên tắc cốt lõi (mỗi dòng 1 nguyên tắc):", value="Optionality & Antifragility\nFirst Principles\nSecond-Order Thinking")
-            case_lattice = st.text_area("Phân tích đa ngành (Latticework Analysis):", height=120)
-            case_solution = st.text_area("Quy trình giải pháp của giới Elite (mỗi dòng 1 bước):", height=120)
-            case_takeaways = st.text_area("Bài học rút ra (Key Takeaways):", height=80)
-            
-            if st.form_submit_button("💾 Phê Duyệt & Thêm Vào Case Thực Chiến Nhóm P", type="primary"):
-                if case_id and case_title and case_problem:
-                    principle_list = [p.strip() for p in case_principles.split("\n") if p.strip()]
-                    sol_list = [s.strip() for s in case_solution.split("\n") if s.strip()]
-                    new_c = {
-                        "id": case_id.strip(),
-                        "title": case_title.strip(),
-                        "category": case_category,
-                        "target_audience": case_audience.strip(),
-                        "problem": case_problem.strip(),
-                        "core_principles": principle_list,
-                        "latticework_analysis": case_lattice.strip(),
-                        "elite_solution": sol_list,
-                        "key_takeaways": case_takeaways.strip()
-                    }
-                    save_practice_case(new_c)
-                    st.success(f"✅ Đã phê duyệt và lưu {case_id} vào Nhóm P!")
-                    st.rerun()
-                else:
-                    st.warning("Vui lòng nhập đầy đủ Mã, Tiêu đề và Vấn đề.")
+        with col_app_cancel:
+            if st.button("❌ Hủy kết quả phân rã này", use_container_width=True):
+                del st.session_state["extracted_knowledge"]
+                st.rerun()
 
-    # Sub-tab 5: Gương soi Socratic
-    with sub_tabs[4]:
-        st.markdown("#### 🪞 Phê Duyệt Gương Soi Socratic")
-        st.caption("Các câu hỏi tự vấn trực diện giúp người học tự soi chiếu, tích hợp vào Tab 5 của 'Sổ tay tri thức'.")
+    # -------------------------------------------------------------------------
+    # PHẦN 4: QUẢN LÝ CÁC NỘI DUNG ĐANG HOẠT ĐỘNG (XEM & GỠ GỌN GÀNG)
+    # -------------------------------------------------------------------------
+    st.divider()
+    with st.expander("📋 Quản lý & Gỡ bỏ các nội dung tri thức đang hoạt động trên App", expanded=False):
+        t_inv_dd, t_inv_c, t_inv_s, t_inv_arch = st.tabs([
+            "🔬 Lý thuyết Chuyên sâu",
+            "💼 Case Nhóm P",
+            "🪞 Gương soi Socratic",
+            "📚 Kho File Tham Khảo"
+        ])
         
-        soc_items = load_socratic_reflections()
-        st.markdown(f"Hiện có **{len(soc_items)}** câu hỏi tự vấn:")
-        for s in soc_items:
-            with st.expander(f"🪞 **{s.get('id')}**: {s.get('title')} [{s.get('mode_title')}]"):
-                st.info(s.get("inquiry_prompt"))
-                if s.get("feynman_challenge"):
-                    st.warning(s.get("feynman_challenge"))
-                if st.button(f"🗑️ Xóa Gương soi {s.get('id')}", key=f"del_soc_{s.get('id')}"):
-                    delete_socratic_reflection(s.get("id"))
-                    st.warning(f"Đã xóa {s.get('id')}")
-                    st.rerun()
-                    
-        st.divider()
-        st.markdown("##### ➕ Soạn & Phê Duyệt Gương Soi Socratic Mới:")
-        with st.form("form_add_socratic"):
-            next_soc_num = len(soc_items) + 1
-            soc_id = st.text_input("Mã Gương soi:", value=f"SOC-{next_soc_num:02d}")
-            soc_mode_choice = st.selectbox(
-                "Chế độ tư duy liên quan:",
-                [m[0] for m in all_modes],
-                format_func=lambda x: next((m[1] for m in all_modes if m[0] == x), x)
-            )
-            soc_mode_title = next((m[1] for m in all_modes if m[0] == soc_mode_choice), soc_mode_choice)
-            soc_title = st.text_input("Tiêu đề Gương soi:")
-            soc_source = st.text_input("Nguồn đối thoại / tài liệu:", value="antifragility_and_option_20260907.md")
-            soc_prompt = st.text_area("Câu hỏi truy vấn chính từ Hội đồng:", height=120)
-            soc_feynman = st.text_area("Thử thách Feynman (Đừng tự dối mình):", height=100)
-            soc_qlist = st.text_area("Các câu hỏi tự vấn chi tiết (mỗi dòng 1 câu hỏi):", height=100)
-            
-            if st.form_submit_button("💾 Phê Duyệt & Thêm Vào Gương Soi Socratic", type="primary"):
-                if soc_id and soc_title and soc_prompt:
-                    q_list = [q.strip() for q in soc_qlist.split("\n") if q.strip()]
-                    new_s = {
-                        "id": soc_id.strip(),
-                        "mode_code": soc_mode_choice,
-                        "mode_title": soc_mode_title,
-                        "title": soc_title.strip(),
-                        "source": soc_source.strip(),
-                        "inquiry_prompt": soc_prompt.strip(),
-                        "feynman_challenge": soc_feynman.strip(),
-                        "reflection_questions": q_list
-                    }
-                    save_socratic_reflection(new_s)
-                    st.success(f"✅ Đã phê duyệt và lưu {soc_id}!")
-                    st.rerun()
-                else:
-                    st.warning("Vui lòng nhập đầy đủ Mã, Tiêu đề và Câu hỏi truy vấn chính.")
+        with t_inv_dd:
+            live_dd = load_deep_dives()
+            if not live_dd:
+                st.info("Chưa có chế độ nào có bài luận giải chuyên sâu.")
+            else:
+                for m_k, m_v in live_dd.items():
+                    col_k1, col_k2 = st.columns([4, 1])
+                    col_k1.markdown(f"**{m_k}**: {m_v.get('title')} *(Cập nhật: {m_v.get('updated_at')})*")
+                    if col_k2.button("🗑️ Gỡ bỏ", key=f"inv_del_dd_{m_k}"):
+                        delete_deep_dive(m_k)
+                        st.rerun()
+                        
+        with t_inv_c:
+            live_cases = load_practice_cases().get("cases", [])
+            if not live_cases:
+                st.info("Chưa có case thực chiến nào trong Nhóm P.")
+            else:
+                for c in live_cases:
+                    col_c1, col_c2 = st.columns([4, 1])
+                    col_c1.markdown(f"**{c.get('id')}**: {c.get('title')} *({c.get('category')})*")
+                    if col_c2.button("🗑️ Xóa", key=f"inv_del_c_{c.get('id')}"):
+                        delete_practice_case(c.get("id"))
+                        st.rerun()
+                        
+        with t_inv_s:
+            live_soc = load_socratic_reflections()
+            if not live_soc:
+                st.info("Chưa có câu hỏi tự vấn Socratic nào.")
+            else:
+                for s in live_soc:
+                    col_s1, col_s2 = st.columns([4, 1])
+                    col_s1.markdown(f"**{s.get('id')}**: {s.get('title')} *[{s.get('mode_title')}]*")
+                    if col_s2.button("🗑️ Xóa", key=f"inv_del_s_{s.get('id')}"):
+                        delete_socratic_reflection(s.get("id"))
+                        st.rerun()
+                        
+        with t_inv_arch:
+            if not arch_list:
+                st.info("Kho tham khảo trống.")
+            else:
+                for a in arch_list:
+                    col_a1, col_a2 = st.columns([4, 1])
+                    col_a1.markdown(f"📄 **{a.get('title')}** (`{a.get('filename')}` · {a.get('word_count')} từ)")
+                    if col_a2.button("🗑️ Xóa file", key=f"inv_del_a_{a.get('id')}"):
+                        delete_archive(a.get("id"))
+                        st.rerun()
 
 with admin_tabs[3]:
     st.subheader("🔐 Reset mật khẩu thành viên")
