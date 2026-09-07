@@ -504,7 +504,9 @@ with tab_flashcard:
                     st.code(curr_card["elite_context"], language=None)
 
 
-                st.markdown(f"⚖️ **Đối kháng:** Tránh nhầm với *{con.get('opposite')}* — {con.get('distinction')}")
+                con = curr_card.get("contrast_pair", {})
+                if con and (con.get("opposite") or con.get("distinction")):
+                    st.markdown(f"⚖️ **Đối kháng:** Tránh nhầm với *{con.get('opposite', 'N/A')}* — {con.get('distinction', '')}")
 
                 st.markdown("---")
                 col_btn_l, col_btn_r = st.columns(2)
