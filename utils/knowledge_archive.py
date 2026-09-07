@@ -13,9 +13,24 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+# Múi giờ Việt Nam (UTC+7 / GMT+7) chuẩn xác cho cả máy local và Cloud server (UTC)
+VN_TZ = timezone(timedelta(hours=7))
+
+def get_vn_now() -> datetime:
+    """Trả về đối tượng datetime hiện tại theo múi giờ Việt Nam (GMT+7)."""
+    return datetime.now(VN_TZ)
+
+def get_vn_now_str(fmt: str = "%Y-%m-%d %H:%M:%S") -> str:
+    """Trả về chuỗi thời gian hiện tại định dạng theo múi giờ Việt Nam (GMT+7)."""
+    return get_vn_now().strftime(fmt)
+
+def get_vn_date_prefix() -> str:
+    """Trả về tiền tố ngày tháng YYYYMMDD_HHMMSS theo múi giờ Việt Nam (GMT+7)."""
+    return get_vn_now().strftime("%Y%m%d_%H%M%S")
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -80,8 +95,8 @@ def save_to_archive(
 ) -> Dict[str, Any]:
     """Lưu văn bản Markdown vào kho và cập nhật chỉ mục."""
     _ensure_dirs()
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    date_prefix = datetime.now().strftime("%Y%m%d_%H%M%S")
+    now_str = get_vn_now_str()
+    date_prefix = get_vn_date_prefix()
     
     base_name = Path(original_filename).stem if original_filename else "document"
     clean_slug = slugify(base_name)
@@ -163,7 +178,7 @@ def save_deep_dive(
         "quote": quote,
         "layers": layers,
         "source_ref": source_ref,
-        "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "updated_at": get_vn_now_str(),
         "updated_by": author
     }
     with open(DEEP_DIVES_FILE, "w", encoding="utf-8") as f:
@@ -192,7 +207,8 @@ def load_practice_cases() -> Dict[str, Any]:
                 "group": "P",
                 "title": "Tình Huống Thực Chiến Của Hội Đồng (User & Council Practice)",
                 "target_age": "Giới Elite, Nhà đầu tư & Cha mẹ",
-                "description": "Các bài toán thực chiến do Hội đồng Trí tuệ tối cao phân rã từ các phiên tham vấn thực tế."
+                "description": "Các bài toán thực chiến do Hội đồng Trí tuệ tối cao phân rã từ các phiên tham vấn thực tế.",
+                "total_cases": 0
             },
             "cases": []
         }
@@ -203,11 +219,49 @@ def load_practice_cases() -> Dict[str, Any]:
         return {"metadata": {}, "cases": []}
 
 def save_practice_case(case_item: Dict[str, Any]) -> bool:
-    """Thêm hoặc cập nhật một case thực chiến."""
+    """Thêm hoặc cập nhật một case thực chiến với đầy đủ thuộc tính chuẩn hóa."""
     data = load_practice_cases()
     cases = data.get("cases", [])
     case_id = case_item.get("id")
     
+    # 1. Chuẩn hóa độ khó và thời gian
+    if not case_item.get("difficulty"):
+        case_item["difficulty"] = "Nâng cao"
+    if not case_item.get("time_minutes"):
+        case_item["time_minutes"] = 15
+        
+    # 2. Đồng bộ song song các cặp alias để tương thích 100%
+    prins = case_item.get("principles") or case_item.get("core_principles") or []
+    case_item["principles"] = prins
+    case_item["core_principles"] = prins
+
+    raw_breakdown = case_item.get("first_principles_breakdown") or case_item.get("latticework_analysis") or []
+    if isinstance(raw_breakdown, str):
+        breakdown_list = [s.strip() for s in raw_breakdown.split("\n") if s.strip()]
+    elif isinstance(raw_breakdown, list):
+        breakdown_list = raw_breakdown
+    else:
+        breakdown_list = []
+    case_item["first_principles_breakdown"] = breakdown_list
+    case_item["latticework_analysis"] = raw_breakdown if isinstance(raw_breakdown, str) else "\n".join(breakdown_list)
+
+    raw_steps = case_item.get("solution_steps") or case_item.get("elite_solution") or []
+    if isinstance(raw_steps, str):
+        steps_list = [s.strip() for s in raw_steps.split("\n") if s.strip()]
+    elif isinstance(raw_steps, list):
+        steps_list = raw_steps
+    else:
+        steps_list = []
+    case_item["solution_steps"] = steps_list
+    case_item["elite_solution"] = steps_list
+
+    insight = case_item.get("elite_insight") or case_item.get("key_takeaways") or ""
+    case_item["elite_insight"] = insight
+    case_item["key_takeaways"] = insight
+
+    if not case_item.get("updated_at"):
+        case_item["updated_at"] = get_vn_now_str()
+
     idx = next((i for i, c in enumerate(cases) if c.get("id") == case_id), -1)
     if idx >= 0:
         cases[idx] = case_item
@@ -215,6 +269,8 @@ def save_practice_case(case_item: Dict[str, Any]) -> bool:
         cases.append(case_item)
         
     data["cases"] = cases
+    if "metadata" in data:
+        data["metadata"]["total_cases"] = len(cases)
     with open(CASES_PRACTICE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     return True
@@ -226,6 +282,8 @@ def delete_practice_case(case_id: str) -> bool:
     new_cases = [c for c in cases if c.get("id") != case_id]
     if len(new_cases) != len(cases):
         data["cases"] = new_cases
+        if "metadata" in data:
+            data["metadata"]["total_cases"] = len(new_cases)
         with open(CASES_PRACTICE_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         return True
@@ -249,6 +307,10 @@ def save_socratic_reflection(item: Dict[str, Any]) -> bool:
     """Thêm hoặc cập nhật câu hỏi tự vấn Socratic."""
     items = load_socratic_reflections()
     ref_id = item.get("id")
+    if not item.get("created_at"):
+        item["created_at"] = get_vn_now_str()
+    item["updated_at"] = get_vn_now_str()
+
     idx = next((i for i, r in enumerate(items) if r.get("id") == ref_id), -1)
     if idx >= 0:
         items[idx] = item

@@ -133,13 +133,14 @@ def filter_single_case(c: Dict[str, Any]) -> bool:
         if c.get("group_code") != g_code_selected:
             return False
 
-    # 2. Filter theo Difficulty
-    if c.get("difficulty") not in sel_diffs:
+    # 2. Filter theo Difficulty (mặc định Cơ bản nếu thiếu)
+    c_diff = c.get("difficulty") or "Cơ bản"
+    if c_diff not in sel_diffs:
         return False
 
     # 3. Filter theo Principles
+    c_prins = c.get("principles") or c.get("core_principles") or []
     if sel_principles:
-        c_prins = c.get("principles", [])
         if not any(p in c_prins for p in sel_principles):
             return False
 
@@ -150,9 +151,9 @@ def filter_single_case(c: Dict[str, Any]) -> bool:
             c.get("title", ""),
             c.get("problem", ""),
             c.get("trigger_question", ""),
-            c.get("elite_insight", ""),
-            " ".join(c.get("principles", [])),
-            " ".join(c.get("first_principles_breakdown", [])),
+            c.get("elite_insight", "") or c.get("key_takeaways", ""),
+            " ".join(c_prins),
+            " ".join(c.get("first_principles_breakdown", []) or [c.get("latticework_analysis", "")]),
         ]).lower()
         if q not in search_blob:
             return False
@@ -184,17 +185,34 @@ else:
             st.markdown("### 📌 Bài Toán Thực Tế")
             st.info(c.get("problem", ""))
 
-            st.markdown(f"**❓ Câu hỏi kích hoạt tư duy (Trigger Prompt):**  \n👉 *\"{c.get('trigger_question', '')}\"*")
+            trig_q = c.get("trigger_question") or c.get("problem", "")[:150]
+            st.markdown(f"**❓ Câu hỏi kích hoạt tư duy (Trigger Prompt):**  \n👉 *\"{trig_q}\"*")
 
-            st.markdown("#### 🔬 Phân Rã First Principles (Từng Bước Cốt Lõi):")
-            for step_idx, step in enumerate(c.get("first_principles_breakdown", []), 1):
-                st.markdown(f"{step_idx}. {step}")
+            raw_bd = c.get("first_principles_breakdown") or c.get("latticework_analysis") or []
+            if isinstance(raw_bd, str):
+                breakdown_steps = [s.strip() for s in raw_bd.split("\n") if s.strip()]
+            elif isinstance(raw_bd, list):
+                breakdown_steps = raw_bd
+            else:
+                breakdown_steps = []
 
-            prins = c.get("principles", [])
+            if breakdown_steps:
+                st.markdown("#### 🔬 Phân Rã First Principles (Từng Bước Cốt Lõi):")
+                for step_idx, step in enumerate(breakdown_steps, 1):
+                    st.markdown(f"{step_idx}. {step}")
+
+            prins = c.get("principles") or c.get("core_principles") or []
             if prins:
                 st.markdown("**🔗 Nguyên lý & Mô hình tư duy kích hoạt:**  \n" + " · ".join([f"`{p}`" for p in prins]))
 
-            steps = c.get("solution_steps", [])
+            raw_steps = c.get("solution_steps") or c.get("elite_solution") or []
+            if isinstance(raw_steps, str):
+                steps = [s.strip() for s in raw_steps.split("\n") if s.strip()]
+            elif isinstance(raw_steps, list):
+                steps = raw_steps
+            else:
+                steps = []
+
             if steps:
                 st.markdown("#### 🛠️ Gợi Ý Khung Giải Quyết Thực Chiến:")
                 for s_idx, s in enumerate(steps, 1):
@@ -206,7 +224,7 @@ else:
                 for v in variants:
                     st.markdown(f"- {v}")
 
-            insight = c.get("elite_insight")
+            insight = c.get("elite_insight") or c.get("key_takeaways")
             if insight:
                 st.success(f"💎 **Elite Insight (Bản Lĩnh Tinh Hoa):** {insight}")
 

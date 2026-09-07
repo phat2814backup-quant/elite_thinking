@@ -282,11 +282,17 @@ with admin_tabs[2]:
         
         st.info(f"🎯 AI đã phát hiện tài liệu này tương ứng với: **{m_code}: {m_title}**")
         
+        approved_parts = st.session_state.setdefault("approved_decomposition_parts", set())
+
+        status_dd = "✅ Đã duyệt" if "dd" in approved_parts else "⏳ Chờ duyệt"
+        status_c = "✅ Đã duyệt" if "cases" in approved_parts else "⏳ Chờ duyệt"
+        status_s = "✅ Đã duyệt" if "soc" in approved_parts else "⏳ Chờ duyệt"
+
         # 3 Tabs hiển thị kết quả
         preview_tabs = st.tabs([
-            f"🔬 1. Lý Thuyết Chuyên Sâu ({m_code})",
-            f"💼 2. Case Thực Chiến ({len(cases_data)} cases)",
-            f"🪞 3. Gương Soi Socratic ({len(soc_data)} mục)"
+            f"🔬 1. Lý Thuyết Chuyên Sâu [{status_dd}] ({m_code})",
+            f"💼 2. Case Thực Chiến [{status_c}] ({len(cases_data)} cases)",
+            f"🪞 3. Gương Soi Socratic [{status_s}] ({len(soc_data)} mục)"
         ])
         
         with preview_tabs[0]:
@@ -301,6 +307,29 @@ with admin_tabs[2]:
                 st.markdown(dd_data.get("layer_3_second_order", ""))
             with p_t4:
                 st.markdown(dd_data.get("layer_4_feynman_socratic", ""))
+
+            st.markdown("---")
+            if "dd" in approved_parts:
+                st.success(f"✅ Đã phê duyệt và đồng bộ Lý thuyết ({m_code}) vào App thành công!")
+            else:
+                if st.button(f"🔬 Phê Duyệt Chỉ Riêng Lý Thuyết ({m_code}) Này", key="btn_app_dd_only"):
+                    save_deep_dive(
+                        mode_code=m_code,
+                        title=dd_data.get("title", f"Luận Giải Chuyên Sâu: {m_code}"),
+                        quote=dd_data.get("quote", ""),
+                        layers={
+                            "layer_1_core": dd_data.get("layer_1_core", ""),
+                            "layer_2_latticework": dd_data.get("layer_2_latticework", ""),
+                            "layer_3_second_order": dd_data.get("layer_3_second_order", ""),
+                            "layer_4_feynman_socratic": dd_data.get("layer_4_feynman_socratic", "")
+                        },
+                        source_ref=src_file,
+                        author=username
+                    )
+                    approved_parts.add("dd")
+                    st.cache_data.clear()
+                    st.success(f"✅ Đã cập nhật Lý thuyết {m_code} vào '9 Chế độ tư duy'!")
+                    st.rerun()
                 
         with preview_tabs[1]:
             for idx_c, c_item in enumerate(cases_data):
@@ -314,6 +343,37 @@ with admin_tabs[2]:
                         st.markdown(f"- {s}")
                     st.markdown(f"💡 **Bài học rút ra:** *{c_item.get('key_takeaways')}*")
                 st.divider()
+
+            st.markdown("---")
+            if "cases" in approved_parts:
+                st.success(f"✅ Đã phê duyệt và thêm {len(cases_data)} Case vào Nhóm P thành công!")
+            else:
+                if st.button(f"💼 Phê Duyệt Chỉ Riêng {len(cases_data)} Case Thực Chiến Này", key="btn_app_cases_only"):
+                    cur_cases_count = len(load_practice_cases().get("cases", []))
+                    for i_c, c_item in enumerate(cases_data):
+                        case_id = f"P{cur_cases_count + i_c + 1:02d}"
+                        save_practice_case({
+                            "id": case_id,
+                            "title": c_item.get("title", "Case Thực Chiến"),
+                            "difficulty": "Nâng cao",
+                            "time_minutes": 15,
+                            "category": c_item.get("category", "Thực chiến"),
+                            "target_audience": c_item.get("target_audience", "Giới Elite"),
+                            "problem": c_item.get("problem", ""),
+                            "trigger_question": c_item.get("trigger_question") or f"Làm sao để áp dụng nguyên tắc này nhằm giải quyết triệt để vấn đề?",
+                            "principles": c_item.get("core_principles", []) or [m_title],
+                            "core_principles": c_item.get("core_principles", []) or [m_title],
+                            "first_principles_breakdown": c_item.get("latticework_analysis", ""),
+                            "latticework_analysis": c_item.get("latticework_analysis", ""),
+                            "solution_steps": c_item.get("elite_solution", []),
+                            "elite_solution": c_item.get("elite_solution", []),
+                            "elite_insight": c_item.get("key_takeaways", ""),
+                            "key_takeaways": c_item.get("key_takeaways", "")
+                        })
+                    approved_parts.add("cases")
+                    st.cache_data.clear()
+                    st.success(f"✅ Đã thêm {len(cases_data)} Case vào Nhóm P tại 'Case thực chiến'!")
+                    st.rerun()
                 
         with preview_tabs[2]:
             for idx_s, s_item in enumerate(soc_data):
@@ -325,65 +385,128 @@ with admin_tabs[2]:
                 for q in s_item.get("reflection_questions", []):
                     st.markdown(f"- *{q}*")
                 st.divider()
+
+            st.markdown("---")
+            if "soc" in approved_parts:
+                st.success(f"✅ Đã phê duyệt và thêm {len(soc_data)} Gương Soi Socratic thành công!")
+            else:
+                if st.button(f"🪞 Phê Duyệt Chỉ Riêng {len(soc_data)} Gương Soi Socratic Này", key="btn_app_soc_only"):
+                    cur_soc_count = len(load_socratic_reflections())
+                    for i_s, s_item in enumerate(soc_data):
+                        soc_id = f"SOC-{cur_soc_count + i_s + 1:02d}"
+                        save_socratic_reflection({
+                            "id": soc_id,
+                            "mode_code": m_code,
+                            "mode_title": m_title,
+                            "title": s_item.get("title", "Tự vấn Socratic"),
+                            "source": src_file,
+                            "inquiry_prompt": s_item.get("inquiry_prompt", ""),
+                            "feynman_challenge": s_item.get("feynman_challenge", ""),
+                            "reflection_questions": s_item.get("reflection_questions", [])
+                        })
+                    approved_parts.add("soc")
+                    st.cache_data.clear()
+                    st.success(f"✅ Đã thêm {len(soc_data)} Gương soi vào Tab 5 'Sổ tay tri thức'!")
+                    st.rerun()
                 
-        # NÚT PHÊ DUYỆT TỔNG LỰC 1-CLICK
-        st.markdown("#### 🚀 Hành Động Phê Duyệt:")
+        # NÚT PHÊ DUYỆT TỔNG LỰC / ĐỒNG BỘ
+        st.markdown("#### 🚀 Tùy Chọn Phê Duyệt & Đồng Bộ Hệ Thống:")
+        
+        c_chk1, c_chk2, c_chk3 = st.columns(3)
+        with c_chk1:
+            sel_dd = st.checkbox(f"🔬 1. Lý thuyết ({m_code})", value=("dd" not in approved_parts), disabled=("dd" in approved_parts))
+        with c_chk2:
+            sel_cases = st.checkbox(f"💼 2. Case Nhóm P ({len(cases_data)} cases)", value=("cases" not in approved_parts), disabled=("cases" in approved_parts))
+        with c_chk3:
+            sel_soc = st.checkbox(f"🪞 3. Gương soi Socratic ({len(soc_data)} mục)", value=("soc" not in approved_parts), disabled=("soc" in approved_parts))
+
         col_app_all, col_app_cancel = st.columns([3, 1])
         
         with col_app_all:
-            if st.button("🚀 PHÊ DUYỆT TẤT CẢ VÀ CẬP NHẬT VÀO HỆ THỐNG (1-CLICK SYNC)", type="primary", use_container_width=True):
-                # 1. Lưu deep-dive
-                save_deep_dive(
-                    mode_code=m_code,
-                    title=dd_data.get("title", f"Luận Giải Chuyên Sâu: {m_code}"),
-                    quote=dd_data.get("quote", ""),
-                    layers={
-                        "layer_1_core": dd_data.get("layer_1_core", ""),
-                        "layer_2_latticework": dd_data.get("layer_2_latticework", ""),
-                        "layer_3_second_order": dd_data.get("layer_3_second_order", ""),
-                        "layer_4_feynman_socratic": dd_data.get("layer_4_feynman_socratic", "")
-                    },
-                    source_ref=src_file,
-                    author=username
-                )
-                # 2. Lưu cases
-                cur_cases_count = len(load_practice_cases().get("cases", []))
-                for i_c, c_item in enumerate(cases_data):
-                    case_id = f"CASE-P{cur_cases_count + i_c + 1:02d}"
-                    save_practice_case({
-                        "id": case_id,
-                        "title": c_item.get("title", "Case Thực Chiến"),
-                        "category": c_item.get("category", "Thực chiến"),
-                        "target_audience": c_item.get("target_audience", "Giới Elite"),
-                        "problem": c_item.get("problem", ""),
-                        "core_principles": c_item.get("core_principles", []),
-                        "latticework_analysis": c_item.get("latticework_analysis", ""),
-                        "elite_solution": c_item.get("elite_solution", []),
-                        "key_takeaways": c_item.get("key_takeaways", "")
-                    })
-                # 3. Lưu socratic
-                cur_soc_count = len(load_socratic_reflections())
-                for i_s, s_item in enumerate(soc_data):
-                    soc_id = f"SOC-{cur_soc_count + i_s + 1:02d}"
-                    save_socratic_reflection({
-                        "id": soc_id,
-                        "mode_code": m_code,
-                        "mode_title": m_title,
-                        "title": s_item.get("title", "Tự vấn Socratic"),
-                        "source": src_file,
-                        "inquiry_prompt": s_item.get("inquiry_prompt", ""),
-                        "feynman_challenge": s_item.get("feynman_challenge", ""),
-                        "reflection_questions": s_item.get("reflection_questions", [])
-                    })
-                st.balloons()
-                st.success(f"🎉 ĐÃ PHÊ DUYỆT & ĐỒNG BỘ TOÀN DIỆN THÀNH CÔNG!\n- Đã cập nhật Lý thuyết {m_code} tại '9 Chế độ tư duy'.\n- Đã thêm {len(cases_data)} Case vào Nhóm P tại 'Case thực chiến'.\n- Đã thêm {len(soc_data)} Gương soi vào Tab 5 của 'Sổ tay tri thức'.")
-                del st.session_state["extracted_knowledge"]
+            if st.button("🚀 XÁC NHẬN PHÊ DUYỆT CÁC MỤC ĐÃ CHỌN VÀO APP", type="primary", use_container_width=True):
+                synced_msgs = []
+                # 1. Lưu deep-dive nếu chọn
+                if sel_dd and "dd" not in approved_parts:
+                    save_deep_dive(
+                        mode_code=m_code,
+                        title=dd_data.get("title", f"Luận Giải Chuyên Sâu: {m_code}"),
+                        quote=dd_data.get("quote", ""),
+                        layers={
+                            "layer_1_core": dd_data.get("layer_1_core", ""),
+                            "layer_2_latticework": dd_data.get("layer_2_latticework", ""),
+                            "layer_3_second_order": dd_data.get("layer_3_second_order", ""),
+                            "layer_4_feynman_socratic": dd_data.get("layer_4_feynman_socratic", "")
+                        },
+                        source_ref=src_file,
+                        author=username
+                    )
+                    approved_parts.add("dd")
+                    synced_msgs.append(f"Lý thuyết {m_code} tại '9 Chế độ tư duy'")
+
+                # 2. Lưu cases nếu chọn
+                if sel_cases and "cases" not in approved_parts:
+                    cur_cases_count = len(load_practice_cases().get("cases", []))
+                    for i_c, c_item in enumerate(cases_data):
+                        case_id = f"P{cur_cases_count + i_c + 1:02d}"
+                        save_practice_case({
+                            "id": case_id,
+                            "title": c_item.get("title", "Case Thực Chiến"),
+                            "difficulty": "Nâng cao",
+                            "time_minutes": 15,
+                            "category": c_item.get("category", "Thực chiến"),
+                            "target_audience": c_item.get("target_audience", "Giới Elite"),
+                            "problem": c_item.get("problem", ""),
+                            "trigger_question": c_item.get("trigger_question") or f"Làm sao để áp dụng nguyên tắc này nhằm giải quyết triệt để vấn đề?",
+                            "principles": c_item.get("core_principles", []) or [m_title],
+                            "core_principles": c_item.get("core_principles", []) or [m_title],
+                            "first_principles_breakdown": c_item.get("latticework_analysis", ""),
+                            "latticework_analysis": c_item.get("latticework_analysis", ""),
+                            "solution_steps": c_item.get("elite_solution", []),
+                            "elite_solution": c_item.get("elite_solution", []),
+                            "elite_insight": c_item.get("key_takeaways", ""),
+                            "key_takeaways": c_item.get("key_takeaways", "")
+                        })
+                    approved_parts.add("cases")
+                    synced_msgs.append(f"{len(cases_data)} Case vào Nhóm P tại 'Case thực chiến'")
+
+                # 3. Lưu socratic nếu chọn
+                if sel_soc and "soc" not in approved_parts:
+                    cur_soc_count = len(load_socratic_reflections())
+                    for i_s, s_item in enumerate(soc_data):
+                        soc_id = f"SOC-{cur_soc_count + i_s + 1:02d}"
+                        save_socratic_reflection({
+                            "id": soc_id,
+                            "mode_code": m_code,
+                            "mode_title": m_title,
+                            "title": s_item.get("title", "Tự vấn Socratic"),
+                            "source": src_file,
+                            "inquiry_prompt": s_item.get("inquiry_prompt", ""),
+                            "feynman_challenge": s_item.get("feynman_challenge", ""),
+                            "reflection_questions": s_item.get("reflection_questions", [])
+                        })
+                    approved_parts.add("soc")
+                    synced_msgs.append(f"{len(soc_data)} Gương soi vào Tab 5 của 'Sổ tay tri thức'")
+
+                st.cache_data.clear()
+                if synced_msgs:
+                    st.balloons()
+                    st.success(f"🎉 ĐÃ PHÊ DUYỆT & ĐỒNG BỘ THÀNH CÔNG:\n- " + "\n- ".join(synced_msgs))
+                else:
+                    st.info("Không có mục mới nào được chọn để đồng bộ.")
                 st.rerun()
 
         with col_app_cancel:
-            if st.button("❌ Hủy kết quả phân rã này", use_container_width=True):
-                del st.session_state["extracted_knowledge"]
-                st.rerun()
+            if approved_parts:
+                if st.button("🏁 Hoàn tất & Đóng bản phân rã", use_container_width=True, type="secondary"):
+                    st.session_state.pop("extracted_knowledge", None)
+                    st.session_state.pop("approved_decomposition_parts", None)
+                    st.cache_data.clear()
+                    st.rerun()
+            else:
+                if st.button("❌ Hủy kết quả phân rã này", use_container_width=True):
+                    st.session_state.pop("extracted_knowledge", None)
+                    st.session_state.pop("approved_decomposition_parts", None)
+                    st.rerun()
 
     # -------------------------------------------------------------------------
     # PHẦN 4: QUẢN LÝ CÁC NỘI DUNG ĐANG HOẠT ĐỘNG (XEM & GỠ GỌN GÀNG)
@@ -407,6 +530,7 @@ with admin_tabs[2]:
                     col_k1.markdown(f"**{m_k}**: {m_v.get('title')} *(Cập nhật: {m_v.get('updated_at')})*")
                     if col_k2.button("🗑️ Gỡ bỏ", key=f"inv_del_dd_{m_k}"):
                         delete_deep_dive(m_k)
+                        st.cache_data.clear()
                         st.rerun()
                         
         with t_inv_c:
@@ -419,6 +543,7 @@ with admin_tabs[2]:
                     col_c1.markdown(f"**{c.get('id')}**: {c.get('title')} *({c.get('category')})*")
                     if col_c2.button("🗑️ Xóa", key=f"inv_del_c_{c.get('id')}"):
                         delete_practice_case(c.get("id"))
+                        st.cache_data.clear()
                         st.rerun()
                         
         with t_inv_s:
@@ -431,6 +556,7 @@ with admin_tabs[2]:
                     col_s1.markdown(f"**{s.get('id')}**: {s.get('title')} *[{s.get('mode_title')}]*")
                     if col_s2.button("🗑️ Xóa", key=f"inv_del_s_{s.get('id')}"):
                         delete_socratic_reflection(s.get("id"))
+                        st.cache_data.clear()
                         st.rerun()
                         
         with t_inv_arch:
@@ -442,6 +568,7 @@ with admin_tabs[2]:
                     col_a1.markdown(f"📄 **{a.get('title')}** (`{a.get('filename')}` · {a.get('word_count')} từ)")
                     if col_a2.button("🗑️ Xóa file", key=f"inv_del_a_{a.get('id')}"):
                         delete_archive(a.get("id"))
+                        st.cache_data.clear()
                         st.rerun()
 
 with admin_tabs[3]:
