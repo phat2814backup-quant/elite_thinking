@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 15:23:40`
+- **Thời điểm cập nhật**: `2026-09-07 16:45:00`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `dd6e23d - feat(second-brain): persist curated notes, sort notes newest-first by default, and sync admin decomposed notes (2026-09-07 15:11:54 +0700)`
-- **Trạng thái Git**: `1 uncommitted file(s)`
+- **Commit gần nhất**: `9aedc5a - fix(vocab): resolve NameError for 'con' on flashcard flip in pages/12_tieng_anh_elite.py (2026-09-07 16:45:41 +0700)`
+- **Trạng thái Git**: `Working tree clean. Toàn bộ mã nguồn & dữ liệu đã qua rà soát toàn diện (Pyflakes, AST, JSON, Imports: 0 lỗi).`
 
 ---
 
