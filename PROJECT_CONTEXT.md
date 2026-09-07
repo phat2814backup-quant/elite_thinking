@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 10:20:14`
+- **Thời điểm cập nhật**: `2026-09-07 10:54:20`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `1d56df6 - feat(vocab): archive reader, introduce zero-API elite vocab learning & export context system (2026-09-07 10:20:02 +0700)`
-- **Trạng thái Git**: `Clean (no uncommitted changes)`
+- **Commit gần nhất**: `1dc8b3f - docs: update PROJECT_CONTEXT.md with latest git commit metadata (2026-09-07 10:20:20 +0700)`
+- **Trạng thái Git**: `4 uncommitted file(s)`
 
 ---
 
@@ -116,6 +116,7 @@ create table if not exists public.user_histories (
 - `daily_workouts`: Dữ liệu chuỗi rèn luyện ngày (Daily Streak).
 - `curriculum_progress`: Tiến độ đánh dấu hoàn thành các tuần trong lộ trình 12 tuần.
 - `notes`: Ghi chú cá nhân trong Sổ tay tri thức (Second Brain).
+- `elite_vocab_mastery`: Trạng thái học và làm chủ từ vựng tinh hoa (đã thông suốt, gắn sao, số lần ôn, kết quả quiz) (Tab 12).
 
 ### 3.2 Cơ chế Lưu trữ Fallback Local JSON
 Nếu không có `SUPABASE_URL` và `SUPABASE_KEY` trong môi trường:
@@ -142,7 +143,7 @@ Nếu không có `SUPABASE_URL` và `SUPABASE_KEY` trong môi trường:
   - `Khoa học Não bộ & Nhận thức`: **12 bài học**
   - `Phật giáo & Tâm thức Ra quyết định`: **12 bài học**
   - `Công nghệ AI & Tương lai`: **12 bài học**
-- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **25 từ vựng cốt lõi** (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).
+- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **417 từ vựng cốt lõi** phân bổ trên **3 Cột trụ lớn** và **76 Chủ đề / Mô hình tư duy** kết nối 1-1 với Tab 2 (9 Chế độ), Tab 3 (88 Munger), Tab 4 (100 Nguyên lý) (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).
 - **Sách Song Ngữ Siêu Học (`data/bilingual_books/`)**:
   - 📚 **Chuyện Thật Như Đùa (Richard P. Feynman)** (Tác giả: *Richard P. Feynman*): **40 chương**, **0 macro-scenes** căn chỉnh Anh - Việt (File: `feynman_surely_youre_joking.json`).
 
@@ -179,8 +180,7 @@ Bảng kiểm toán chi tiết tính năng giúp Agent nắm rõ: **Cái gì đ�
 | **Lịch Sử & Nhật Ký Quyết Định** | `pages/8_lich_su.py`, `utils/decision_journal.py` | ✅ Hoàn thành | Decision Journal ghi chép & đánh giá quyết định; biểu đồ theo dõi chuỗi luyện tập và bài nộp. |
 | **Trang Quản Trị Hệ Thống** | `pages/9_admin.py` | ✅ Hoàn thành | Chỉ admin thấy; tạo user mới, reset mật khẩu, xem thống kê hoạt động toàn hệ thống. |
 | **Sổ Tay Tri Thức (Second Brain)**| `pages/10_so_tay_tri_thuc.py`, `utils/notes_manager.py` | ✅ Hoàn thành | Ghi chú Markdown theo mô hình tư duy, phân loại, tìm kiếm toàn văn, lưu trên Supabase/local. |
-| **150+ Case Thực Chiến Đa Ngành** | `pages/11_case_thuc_chien.py`, `data/cases_*.json` | ✅ Hoàn thành | Đủ 6 nhóm (Toán, Học tập, CKVN, Sự nghiệp, Tâm lý, Tương lai); bóc tách First Principles; nút chuyển sang Tab 7 Phân rã. |
-| **Từ Vựng Tinh Hoa (Zero-API)** | `pages/12_tieng_anh_elite.py`, `utils/vocab_manager.py` | ✅ Hoàn thành | Bẻ khóa qua gốc từ Lego (Latin/Hy Lạp), mỏ neo thị giác, flashcard active recall, trắc nghiệm cloze test. 100% Zero-API. |
+| **Từ Vựng Tinh Hoa (Zero-API)** | `pages/12_tieng_anh_elite.py`, `utils/vocab_manager.py` | ✅ Hoàn thành | 417 từ vựng, 3 cột trụ (9 Chế độ, 88 Munger, 100 Nguyên lý), 76 chủ đề; bộ lọc 2 tầng liên kết 1-1; bẻ khóa qua gốc từ Lego, mỏ neo thị giác, flashcard active recall, trắc nghiệm cloze test. 100% Zero-API. |
 
 ### 4.2 Tính Năng Đang Phát Triển / Cần Hoàn Thiện Thêm (In Progress) 🔄
 
@@ -226,7 +226,7 @@ elite_thinking/
 │   ├── 📄 `cases_toan_khoa_hoc.json` *(36.5 KB)*
 │   ├── 📄 `core_mental_models.json` *(217.9 KB)*
 │   ├── 📄 `curriculum_12w.json` *(195.7 KB)*
-│   ├── 📄 `elite_vocab.json` *(57.3 KB)*
+│   ├── 📄 `elite_vocab.json` *(857.3 KB)*
 │   ├── 📄 `knowledge_base.json` *(127.1 KB)*
 │   ├── 📄 `lessons.json` *(163.6 KB)*
 │   └── 📄 `users.json` *(1.0 KB)*
@@ -251,7 +251,7 @@ elite_thinking/
 │   ├── 📄 `0_lo_trinh_12_tuan.py` *(11.5 KB)*
 │   ├── 📄 `10_so_tay_tri_thuc.py` *(32.7 KB)*
 │   ├── 📄 `11_case_thuc_chien.py` *(11.8 KB)*
-│   ├── 📄 `12_tieng_anh_elite.py` *(20.3 KB)*
+│   ├── 📄 `12_tieng_anh_elite.py` *(25.7 KB)*
 │   ├── 📄 `1_the_cuoc_elite.py` *(14.7 KB)*
 │   ├── 📄 `2_9_che_do_tu_duy.py` *(21.2 KB)*
 │   ├── 📄 `3_88_mo_hinh.py` *(32.4 KB)*
@@ -281,12 +281,12 @@ elite_thinking/
 │   ├── 📄 `notes_manager.py` *(52.1 KB)*
 │   ├── 📄 `quiz_engine.py` *(226.8 KB)*
 │   ├── 📄 `training.py` *(5.2 KB)*
-│   └── 📄 `vocab_manager.py` *(7.2 KB)*
+│   └── 📄 `vocab_manager.py` *(10.2 KB)*
 ├── 📄 `.env.example` *(0.5 KB)*
 ├── 📄 `.gitignore` *(0.2 KB)*
 ├── 📄 `app.py` *(11.6 KB)*
 ├── 📄 `export_project_context.bat` *(1.6 KB)*
-├── 📄 `export_project_context.py` *(41.4 KB)*
+├── 📄 `export_project_context.py` *(41.8 KB)*
 ├── 📄 `PROJECT_CONTEXT.md` *(29.7 KB)*
 ├── 📄 `push_to_github.bat` *(2.1 KB)*
 ├── 📄 `README.md` *(4.3 KB)*

@@ -51,12 +51,78 @@ def get_categories() -> List[str]:
     return cats
 
 
+def get_pillars() -> List[Dict[str, Any]]:
+    """Trả về danh sách 3 Cột trụ lớn (9 Chế độ, 88 Mô hình Munger, 100 Nguyên lý)."""
+    data = load_elite_vocab()
+    raw_pillars = data.get("pillars", [])
+    normalized_pillars = []
+    for p in raw_pillars:
+        pid = p.get("pillar_id") or p.get("id", "")
+        pname = p.get("pillar_name") or p.get("name", "")
+        raw_topics = p.get("topics", [])
+        norm_topics = []
+        for t in raw_topics:
+            tcode = t.get("topic_code") or t.get("code", "")
+            tname = t.get("topic_name") or t.get("name", "")
+            wcount = t.get("words_count", t.get("word_count", 0))
+            norm_topics.append({
+                "topic_code": tcode,
+                "code": tcode,
+                "topic_name": tname,
+                "name": tname,
+                "words_count": wcount,
+                "word_count": wcount,
+            })
+        normalized_pillars.append({
+            "pillar_id": pid,
+            "id": pid,
+            "pillar_name": pname,
+            "name": pname,
+            "topics": norm_topics,
+            "word_count": p.get("word_count", sum(t.get("words_count", 0) for t in norm_topics)),
+        })
+    return normalized_pillars
+
+
+def get_topics_by_pillar(pillar_id: str) -> List[Dict[str, Any]]:
+    """Trả về danh sách các chủ đề / mô hình cụ thể thuộc về 1 cột trụ."""
+    pillars = get_pillars()
+    if not pillar_id or pillar_id == "all":
+        all_topics: List[Dict[str, Any]] = []
+        for p in pillars:
+            all_topics.extend(p.get("topics", []))
+        return all_topics
+
+    for p in pillars:
+        if p.get("pillar_id") == pillar_id or p.get("id") == pillar_id:
+            return p.get("topics", [])
+    return []
+
+
+
+def get_vocab_by_pillar(pillar_id: str) -> List[Dict[str, Any]]:
+    """Lọc danh sách từ vựng theo cột trụ lớn."""
+    all_v = get_all_vocab()
+    if not pillar_id or pillar_id == "all":
+        return all_v
+    return [v for v in all_v if v.get("pillar_id") == pillar_id]
+
+
+def get_vocab_by_topic(topic_code: str) -> List[Dict[str, Any]]:
+    """Lọc danh sách từ vựng theo chủ đề / mô hình cụ thể (VD: MODE-01, PHYS-01)."""
+    all_v = get_all_vocab()
+    if not topic_code or topic_code == "all":
+        return all_v
+    return [v for v in all_v if v.get("topic_code") == topic_code]
+
+
 def get_vocab_by_id(vocab_id: str) -> Optional[Dict[str, Any]]:
     """Lấy chi tiết một từ vựng theo ID."""
     for item in get_all_vocab():
         if item.get("id") == vocab_id:
             return item
     return None
+
 
 
 # -----------------------------------------------------------------------------
@@ -178,7 +244,7 @@ def record_quiz_attempt(username: str, vocab_id: str, is_correct: bool) -> None:
 
 
 def get_vocab_stats(username: str) -> Dict[str, Any]:
-    """Tính toán tỷ lệ hoàn thành và thống kê theo từng nhóm."""
+    """Tính toán tỷ lệ hoàn thành và thống kê theo từng nhóm và từng cột trụ."""
     all_vocab = get_all_vocab()
     total_words = len(all_vocab)
     state = get_user_vocab_state(username)
@@ -195,6 +261,21 @@ def get_vocab_stats(username: str) -> Dict[str, Any]:
         if state.get(item["id"], {}).get("mastered"):
             categories_stats[cat]["mastered"] += 1
 
+    pillars_stats: Dict[str, Dict[str, Any]] = {}
+    pillars = get_pillars()
+    for p in pillars:
+        pid = p.get("id", "")
+        p_words = [v for v in all_vocab if v.get("pillar_id") == pid]
+        p_mastered = sum(1 for v in p_words if state.get(v["id"], {}).get("mastered"))
+        p_pct = int((p_mastered / len(p_words)) * 100) if p_words else 0
+        pillars_stats[pid] = {
+            "name": p.get("name", pid),
+            "total": len(p_words),
+            "mastered": p_mastered,
+            "progress_percent": p_pct,
+            "topics_count": len(p.get("topics", [])),
+        }
+
     progress_percent = int((mastered_count / total_words) * 100) if total_words > 0 else 0
 
     return {
@@ -203,4 +284,6 @@ def get_vocab_stats(username: str) -> Dict[str, Any]:
         "starred_count": starred_count,
         "progress_percent": progress_percent,
         "categories_stats": categories_stats,
+        "pillars_stats": pillars_stats,
     }
+

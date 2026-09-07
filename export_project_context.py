@@ -273,10 +273,13 @@ def parse_data_statistics() -> Dict[str, Any]:
             with open(vocab_file, "r", encoding="utf-8") as f:
                 vdata = json.load(f)
                 stats["elite_vocab_count"] = len(vdata.get("vocab_list", []))
+                stats["elite_vocab_pillars"] = len(vdata.get("pillars", []))
+                stats["elite_vocab_topics"] = sum(len(p.get("topics", [])) for p in vdata.get("pillars", []))
         except Exception:
             pass
 
     return stats
+
 
 
 def parse_pages_info() -> List[Dict[str, str]]:
@@ -449,6 +452,7 @@ def build_markdown_document() -> str:
     md.append("- `daily_workouts`: Dữ liệu chuỗi rèn luyện ngày (Daily Streak).")
     md.append("- `curriculum_progress`: Tiến độ đánh dấu hoàn thành các tuần trong lộ trình 12 tuần.")
     md.append("- `notes`: Ghi chú cá nhân trong Sổ tay tri thức (Second Brain).")
+    md.append("- `elite_vocab_mastery`: Trạng thái học và làm chủ từ vựng tinh hoa (đã thông suốt, gắn sao, số lần ôn, kết quả quiz) (Tab 12).")
     md.append("")
     md.append("### 3.2 Cơ chế Lưu trữ Fallback Local JSON")
     md.append("Nếu không có `SUPABASE_URL` và `SUPABASE_KEY` trong môi trường:")
@@ -469,7 +473,8 @@ def build_markdown_document() -> str:
     else:
         md.append(f"- **Bài học Đào tạo (`lessons.json`)**: **{data_stats['lessons_count']} bài học**.")
 
-    md.append(f"- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **{data_stats.get('elite_vocab_count', 0)} từ vựng cốt lõi** (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).")
+    md.append(f"- **Từ Vựng Tư Duy Tinh Hoa (`data/elite_vocab.json`)**: **{data_stats.get('elite_vocab_count', 0)} từ vựng cốt lõi** phân bổ trên **{data_stats.get('elite_vocab_pillars', 3)} Cột trụ lớn** và **{data_stats.get('elite_vocab_topics', 76)} Chủ đề / Mô hình tư duy** kết nối 1-1 với Tab 2 (9 Chế độ), Tab 3 (88 Munger), Tab 4 (100 Nguyên lý) (Bóc tách gốc Lego Latinh/Hy Lạp, Mỏ neo thị giác, Cặp đối kháng, 100% Zero-API).")
+
 
     if data_stats["bilingual_books"]:
         md.append("- **Sách Song Ngữ Siêu Học (`data/bilingual_books/`)**:")
@@ -513,8 +518,8 @@ def build_markdown_document() -> str:
     md.append("| **Lịch Sử & Nhật Ký Quyết Định** | `pages/8_lich_su.py`, `utils/decision_journal.py` | ✅ Hoàn thành | Decision Journal ghi chép & đánh giá quyết định; biểu đồ theo dõi chuỗi luyện tập và bài nộp. |")
     md.append("| **Trang Quản Trị Hệ Thống** | `pages/9_admin.py` | ✅ Hoàn thành | Chỉ admin thấy; tạo user mới, reset mật khẩu, xem thống kê hoạt động toàn hệ thống. |")
     md.append("| **Sổ Tay Tri Thức (Second Brain)**| `pages/10_so_tay_tri_thuc.py`, `utils/notes_manager.py` | ✅ Hoàn thành | Ghi chú Markdown theo mô hình tư duy, phân loại, tìm kiếm toàn văn, lưu trên Supabase/local. |")
-    md.append("| **150+ Case Thực Chiến Đa Ngành** | `pages/11_case_thuc_chien.py`, `data/cases_*.json` | ✅ Hoàn thành | Đủ 6 nhóm (Toán, Học tập, CKVN, Sự nghiệp, Tâm lý, Tương lai); bóc tách First Principles; nút chuyển sang Tab 7 Phân rã. |")
-    md.append("| **Từ Vựng Tinh Hoa (Zero-API)** | `pages/12_tieng_anh_elite.py`, `utils/vocab_manager.py` | ✅ Hoàn thành | Bẻ khóa qua gốc từ Lego (Latin/Hy Lạp), mỏ neo thị giác, flashcard active recall, trắc nghiệm cloze test. 100% Zero-API. |")
+    md.append("| **Từ Vựng Tinh Hoa (Zero-API)** | `pages/12_tieng_anh_elite.py`, `utils/vocab_manager.py` | ✅ Hoàn thành | 417 từ vựng, 3 cột trụ (9 Chế độ, 88 Munger, 100 Nguyên lý), 76 chủ đề; bộ lọc 2 tầng liên kết 1-1; bẻ khóa qua gốc từ Lego, mỏ neo thị giác, flashcard active recall, trắc nghiệm cloze test. 100% Zero-API. |")
+
     md.append("")
     md.append("### 4.2 Tính Năng Đang Phát Triển / Cần Hoàn Thiện Thêm (In Progress) 🔄")
     md.append("")

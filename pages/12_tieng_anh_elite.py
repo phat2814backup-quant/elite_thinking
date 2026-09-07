@@ -14,6 +14,10 @@ from utils.vocab_manager import (
     load_elite_vocab,
     get_all_vocab,
     get_categories,
+    get_pillars,
+    get_topics_by_pillar,
+    get_vocab_by_pillar,
+    get_vocab_by_topic,
     get_vocab_by_id,
     get_user_vocab_state,
     toggle_vocab_mastery,
@@ -21,6 +25,7 @@ from utils.vocab_manager import (
     record_quiz_attempt,
     get_vocab_stats,
 )
+
 
 # -----------------------------------------------------------------------------
 # Bootstrap & User Context
@@ -72,6 +77,7 @@ stats = get_vocab_stats(username)
 user_state = get_user_vocab_state(username)
 all_vocab = get_all_vocab()
 categories = get_categories()
+pillars = get_pillars()
 
 col_m1, col_m2, col_m3, col_m4 = st.columns(4)
 col_m1.metric("📚 Tổng số từ tinh hoa", f"{stats['total_words']} từ")
@@ -79,7 +85,23 @@ col_m2.metric("✅ Đã thông suốt", f"{stats['mastered_count']} từ", f"{st
 col_m3.metric("⭐ Đã gắn sao ưu tiên", f"{stats['starred_count']} từ")
 col_m4.metric("⚡ Trạng thái Engine", "100% Offline (0 API)")
 
-st.progress(stats["progress_percent"] / 100.0, text=f"Tiến độ làm chủ từ vựng tinh hoa: {stats['progress_percent']}%")
+st.progress(stats["progress_percent"] / 100.0, text=f"Tiến độ làm chủ từ vựng tinh hoa: {stats['progress_percent']}% ({stats['mastered_count']}/{stats['total_words']} từ)")
+
+# Phân bổ tiến độ theo 3 Cột Trụ
+p_stats = stats.get("pillars_stats", {})
+with st.expander("🏛️ Tiến độ theo 3 Cột Trụ Kiến Thức (Nhấp để mở rộng)", expanded=False):
+    p_cols = st.columns(3)
+    p_order = [
+        ("modes_9", "🏛️ 9 Chế Độ Tư Duy (Tab 2)"),
+        ("munger_88", "🧠 88 Mô Hình Munger (Tab 3)"),
+        ("principles_100", "🎯 100 Nguyên Lý Đỉnh Cao (Tab 4)"),
+    ]
+    for idx, (p_id, p_title) in enumerate(p_order):
+        ps = p_stats.get(p_id, {})
+        with p_cols[idx]:
+            st.markdown(f"**{p_title}**")
+            st.caption(f"{ps.get('topics_count', 0)} chủ đề · {ps.get('total', 0)} từ vựng")
+            st.progress(ps.get("progress_percent", 0) / 100.0, text=f"Đã thuộc: {ps.get('mastered', 0)}/{ps.get('total', 0)} từ ({ps.get('progress_percent', 0)}%)")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
@@ -99,29 +121,58 @@ tab_anatomy, tab_flashcard, tab_quiz, tab_vault = st.tabs([
 # =============================================================================
 with tab_anatomy:
     st.subheader("🧱 Bản Đồ Giải Phẫu Gốc Từ (Word Lego Anatomy)")
-    st.markdown("Chọn một từ vựng để bóc tách các mảnh ghép cấu thành và khám phá gia đình từ phái sinh.")
+    st.markdown("Chọn Cột trụ và Mô hình tư duy bạn đang học ở các Tab trước để học ngay các từ vựng tiếng Anh nguyên bản cấu thành nên tư duy đó.")
 
-    f_col1, f_col2 = st.columns([1, 2])
-    with f_col1:
-        sel_cat = st.selectbox("📂 Chọn nhóm danh mục:", ["Tất cả danh mục"] + categories, key="anatomy_cat_filter")
-    with f_col2:
-        search_query = st.text_input("🔍 Tìm kiếm từ tiếng Anh hoặc tiếng Việt:", "", key="anatomy_search")
+    # Bộ lọc 2 tầng: Cột Trụ -> Mô hình / Chủ đề cụ thể
+    f_c1, f_c2 = st.columns([1, 1.5])
 
+    pillar_choices = [("all", "🌐 Tất cả 3 Cột Trụ Kiến Thức")] + [
+        (p["id"], f"{p['name']} ({p.get('word_count', len([x for x in all_vocab if x.get('pillar_id') == p['id']]))} từ)")
+        for p in pillars
+    ]
+    pillar_map = {choice[1]: choice[0] for choice in pillar_choices}
+
+    with f_c1:
+        sel_p_label = st.selectbox("🏛️ Bước 1: Chọn Cột Trụ Kiến Thức:", [c[1] for c in pillar_choices], key="tab1_pillar_sel")
+        sel_pillar_id = pillar_map[sel_p_label]
+
+    # Danh sách chủ đề theo Cột trụ đã chọn
+    available_topics = get_topics_by_pillar(sel_pillar_id)
+    topic_choices = [("all", "📂 Tất cả chủ đề trong cột trụ này")] + [
+        (t["code"], f"[{t['code']}] {t['name']} ({t.get('word_count', 0)} từ)")
+        for t in available_topics
+    ]
+    topic_map = {choice[1]: choice[0] for choice in topic_choices}
+
+    with f_c2:
+        sel_t_label = st.selectbox("🎯 Bước 2: Chọn Chủ Đề / Mô Hình Cụ Thể:", [c[1] for c in topic_choices], key="tab1_topic_sel")
+        sel_topic_code = topic_map[sel_t_label]
+
+    # Thanh tìm kiếm nhanh
+    search_query = st.text_input("🔍 Tìm kiếm từ tiếng Anh hoặc nghĩa tiếng Việt:", "", key="tab1_search")
+
+    # Lọc danh sách từ vựng theo 2 tầng + tìm kiếm
     filtered_vocab = all_vocab
-    if sel_cat != "Tất cả danh mục":
-        filtered_vocab = [v for v in filtered_vocab if v.get("category") == sel_cat]
+    if sel_pillar_id != "all":
+        filtered_vocab = [v for v in filtered_vocab if v.get("pillar_id") == sel_pillar_id]
+    if sel_topic_code != "all":
+        filtered_vocab = [v for v in filtered_vocab if v.get("topic_code") == sel_topic_code]
     if search_query.strip():
         q = search_query.strip().lower()
         filtered_vocab = [
             v for v in filtered_vocab
-            if q in v.get("word", "").lower() or q in v.get("vietnamese", "").lower()
+            if q in v.get("word", "").lower() or q in v.get("vietnamese", "").lower() or q in v.get("topic_code", "").lower()
         ]
 
     if not filtered_vocab:
-        st.warning("Không tìm thấy từ vựng phù hợp với bộ lọc.")
+        st.warning("Không tìm thấy từ vựng phù hợp với bộ lọc đã chọn.")
     else:
-        word_labels = [f"{v['word']} — {v['vietnamese']} ({v['category']})" for v in filtered_vocab]
-        selected_label = st.selectbox("🎯 Chọn từ vựng cần giải phẫu:", word_labels, key="selected_word_anatomy")
+        st.caption(f"Tìm thấy **{len(filtered_vocab)}** từ vựng tinh hoa phù hợp:")
+        word_labels = [
+            f"{v['word']} — {v['vietnamese']}  [{v.get('topic_code', '')}: {v.get('topic_name', '')}]"
+            for v in filtered_vocab
+        ]
+        selected_label = st.selectbox("🎯 Bước 3: Chọn từ vựng cần giải phẫu gốc từ:", word_labels, key="selected_word_anatomy")
         selected_idx = word_labels.index(selected_label)
         v = filtered_vocab[selected_idx]
         v_id = v["id"]
@@ -133,7 +184,8 @@ with tab_anatomy:
         head_c1, head_c2 = st.columns([3, 1])
         with head_c1:
             st.markdown(f"## 🔤 **{v['word']}** `{v.get('ipa', '')}` *({v.get('part_of_speech', '')})*")
-            st.markdown(f"### 🇻🇳 **{v['vietnamese']}** · *[{v['category']}]*")
+            st.markdown(f"### 🇻🇳 **{v['vietnamese']}**")
+            st.info(f"🏛️ **Cột trụ:** {v.get('pillar_name', '')}  |  🎯 **Mô hình / Chủ đề:** `[{v.get('topic_code', '')}]` **{v.get('topic_name', '')}**")
         with head_c2:
             st.write("")
             btn_star_label = "⭐ Đã gắn sao" if is_starred else "☆ Gắn sao ưu tiên"
@@ -147,6 +199,7 @@ with tab_anatomy:
                 st.rerun()
 
         st.markdown("---")
+
 
         # Khối ghép Lego
         st.markdown("#### 🧩 1. Các Mảnh Ghép Lego (Prefix + Root + Suffix)")
@@ -200,12 +253,27 @@ with tab_anatomy:
 # =============================================================================
 with tab_flashcard:
     st.subheader("⚡ Flashcard Phản Xạ Nhận Diện (Active Recall)")
-    st.markdown("Luyện phản xạ nhận diện từ vựng tinh hoa qua cấu trúc Lego và ngữ cảnh mà không cần học thuộc vẹt.")
+    st.markdown("Luyện phản xạ nhận diện từ vựng tinh hoa qua cấu trúc Lego và mỏ neo thị giác mà không cần học thuộc vẹt.")
 
-    fc_cat = st.selectbox("Lọc flashcard theo nhóm:", ["Tất cả danh mục"] + categories, key="fc_cat_select")
+    fc_c1, fc_c2 = st.columns([1, 1.5])
+    with fc_c1:
+        fc_p_options = [("all", "🌐 Tất cả Cột Trụ")] + [(p["id"], p["name"]) for p in pillars]
+        fc_p_map = {c[1]: c[0] for c in fc_p_options}
+        fc_sel_p_lbl = st.selectbox("Lọc Cột Trụ:", [c[1] for c in fc_p_options], key="fc_pillar_select")
+        fc_sel_pid = fc_p_map[fc_sel_p_lbl]
+
+    with fc_c2:
+        fc_t_list = get_topics_by_pillar(fc_sel_pid)
+        fc_t_options = [("all", "📂 Tất cả Chủ Đề trong Cột Trụ")] + [(t["code"], f"[{t['code']}] {t['name']}") for t in fc_t_list]
+        fc_t_map = {c[1]: c[0] for c in fc_t_options}
+        fc_sel_t_lbl = st.selectbox("Lọc Chủ Đề:", [c[1] for c in fc_t_options], key="fc_topic_select")
+        fc_sel_tcode = fc_t_map[fc_sel_t_lbl]
+
     fc_list = all_vocab
-    if fc_cat != "Tất cả danh mục":
-        fc_list = [v for v in fc_list if v.get("category") == fc_cat]
+    if fc_sel_pid != "all":
+        fc_list = [v for v in fc_list if v.get("pillar_id") == fc_sel_pid]
+    if fc_sel_tcode != "all":
+        fc_list = [v for v in fc_list if v.get("topic_code") == fc_sel_tcode]
 
     if not fc_list:
         st.info("Không có từ vựng nào trong danh mục này.")
@@ -230,7 +298,7 @@ with tab_flashcard:
                 st.rerun()
         with col_nav2:
             st.markdown(
-                f"<div style='text-align:center;font-weight:bold;padding-top:8px;'>Thẻ {st.session_state['fc_index'] + 1} / {len(fc_list)} · [{curr_card.get('category')}]</div>",
+                f"<div style='text-align:center;font-weight:bold;padding-top:8px;'>Thẻ {st.session_state['fc_index'] + 1} / {len(fc_list)} · [{curr_card.get('topic_code', '')}: {curr_card.get('topic_name', '')}]</div>",
                 unsafe_allow_html=True,
             )
         with col_nav3:
@@ -265,6 +333,7 @@ with tab_flashcard:
             with st.container(border=True):
                 st.markdown(f"<h2 style='text-align:center;color:#2E7D32;'>🇻🇳 {curr_card['vietnamese']}</h2>", unsafe_allow_html=True)
                 st.markdown(f"<p style='text-align:center;font-size:22px;color:#1E88E5;'><b>{curr_card['word']}</b></p>", unsafe_allow_html=True)
+                st.markdown(f"<p style='text-align:center;color:#666;'><i>[{curr_card.get('pillar_name')}] · {curr_card.get('topic_name')}</i></p>", unsafe_allow_html=True)
                 st.markdown("---")
 
                 st.markdown(f"⚓ **Mỏ neo thị giác:** {curr_card.get('visual_anchor')}")
@@ -297,9 +366,28 @@ with tab_quiz:
     st.subheader("🎯 Thử Thách Giải Mã Gốc Từ & Cloze Test")
     st.markdown("Điền từ vựng tinh hoa đúng vào câu ngữ cảnh. Khi trả lời đúng, hệ thống tự động ghi nhận bạn đã thông suốt từ đó!")
 
+    qz_c1, qz_c2 = st.columns([1, 1.5])
+    with qz_c1:
+        qz_p_options = [("all", "🌐 Tất cả Cột Trụ")] + [(p["id"], p["name"]) for p in pillars]
+        qz_p_map = {c[1]: c[0] for c in qz_p_options}
+        qz_sel_p_lbl = st.selectbox("Lọc Cột Trụ Quiz:", [c[1] for c in qz_p_options], key="quiz_pillar_select")
+        qz_sel_pid = qz_p_map[qz_sel_p_lbl]
+
+    with qz_c2:
+        qz_t_list = get_topics_by_pillar(qz_sel_pid)
+        qz_t_options = [("all", "📂 Tất cả Chủ Đề")] + [(t["code"], f"[{t['code']}] {t['name']}") for t in qz_t_list]
+        qz_t_map = {c[1]: c[0] for c in qz_t_options}
+        qz_sel_t_lbl = st.selectbox("Lọc Chủ Đề Quiz:", [c[1] for c in qz_t_options], key="quiz_topic_select")
+        qz_sel_tcode = qz_t_map[qz_sel_t_lbl]
+
     quiz_vocab_pool = [v for v in all_vocab if v.get("recognition_quiz")]
+    if qz_sel_pid != "all":
+        quiz_vocab_pool = [v for v in quiz_vocab_pool if v.get("pillar_id") == qz_sel_pid]
+    if qz_sel_tcode != "all":
+        quiz_vocab_pool = [v for v in quiz_vocab_pool if v.get("topic_code") == qz_sel_tcode]
+
     if not quiz_vocab_pool:
-        st.info("Chưa có câu hỏi trắc nghiệm nào.")
+        st.info("Chưa có câu hỏi trắc nghiệm nào trong bộ lọc này.")
     else:
         if "quiz_idx" not in st.session_state:
             st.session_state["quiz_idx"] = 0
@@ -313,7 +401,7 @@ with tab_quiz:
         quiz_data = q_item["recognition_quiz"]
 
         with st.container(border=True):
-            st.markdown(f"**Câu hỏi {st.session_state['quiz_idx'] + 1} / {len(quiz_vocab_pool)}** · *Nhóm: {q_item.get('category')}*")
+            st.markdown(f"**Câu hỏi {st.session_state['quiz_idx'] + 1} / {len(quiz_vocab_pool)}** · *[{q_item.get('topic_code')}: {q_item.get('topic_name')}]*")
             st.markdown(f"### ❓ *\"{quiz_data['question']}\"*")
 
             user_choice = st.radio(
@@ -351,29 +439,38 @@ with tab_vault:
     st.subheader("📊 Tủ Từ Vựng Tinh Hoa Của Tôi (My Vocab Vault)")
     st.markdown("Theo dõi toàn bộ hành trình làm chủ từ vựng của bạn. Dữ liệu được đồng bộ bền vững với tài khoản của bạn.")
 
-    col_v1, col_v2 = st.columns(2)
+    col_v1, col_v2, col_v3 = st.columns([1, 1, 1.2])
     with col_v1:
-        vault_filter = st.selectbox(
-            "Lọc theo trạng thái:",
+        vault_status = st.selectbox(
+            "Trạng thái học tập:",
             ["Tất cả từ vựng", "✅ Đã thông suốt", "⏳ Chưa thông suốt", "⭐ Đã gắn sao"],
             key="vault_status_filter",
         )
     with col_v2:
-        vault_search = st.text_input("Tìm kiếm nhanh trong tủ từ vựng:", "", key="vault_search_box")
+        vault_p_choices = [("all", "🌐 Tất cả Cột Trụ")] + [(p["id"], p["name"]) for p in pillars]
+        vault_p_map = {c[1]: c[0] for c in vault_p_choices}
+        vault_p_lbl = st.selectbox("Cột Trụ:", [c[1] for c in vault_p_choices], key="vault_p_filter")
+        vault_pid = vault_p_map[vault_p_lbl]
+
+    with col_v3:
+        vault_search = st.text_input("🔍 Tìm kiếm nhanh:", "", key="vault_search_box")
 
     display_list = all_vocab
-    if vault_filter == "✅ Đã thông suốt":
+    if vault_status == "✅ Đã thông suốt":
         display_list = [v for v in display_list if user_state.get(v["id"], {}).get("mastered")]
-    elif vault_filter == "⏳ Chưa thông suốt":
+    elif vault_status == "⏳ Chưa thông suốt":
         display_list = [v for v in display_list if not user_state.get(v["id"], {}).get("mastered")]
-    elif vault_filter == "⭐ Đã gắn sao":
+    elif vault_status == "⭐ Đã gắn sao":
         display_list = [v for v in display_list if user_state.get(v["id"], {}).get("starred")]
+
+    if vault_pid != "all":
+        display_list = [v for v in display_list if v.get("pillar_id") == vault_pid]
 
     if vault_search.strip():
         qs = vault_search.strip().lower()
         display_list = [
             v for v in display_list
-            if qs in v.get("word", "").lower() or qs in v.get("vietnamese", "").lower()
+            if qs in v.get("word", "").lower() or qs in v.get("vietnamese", "").lower() or qs in v.get("topic_name", "").lower()
         ]
 
     st.markdown(f"**Tìm thấy {len(display_list)} từ vựng phù hợp:**")
@@ -385,12 +482,13 @@ with tab_vault:
         is_s = i_state.get("starred", False)
 
         badge_m = "🟢 Đã thuộc" if is_m else "⚪ Chưa thuộc"
-        badge_s = "⭐" if is_s else ""
+        badge_s = "⭐ " if is_s else ""
 
-        with st.expander(f"{badge_s} **{item['word']}** — {item['vietnamese']} *[{item['category']}]* | {badge_m}"):
+        with st.expander(f"{badge_s}**{item['word']}** — {item['vietnamese']}  [{item.get('topic_code', '')}: {item.get('topic_name', '')}] | {badge_m}"):
             c_left, c_right = st.columns([3, 1])
             with c_left:
                 st.markdown(f"**Phiên âm:** `{item.get('ipa')}` | **Từ loại:** *{item.get('part_of_speech')}*")
+                st.markdown(f"🏛️ **Cột trụ:** {item.get('pillar_name')}  |  🎯 **Mô hình:** {item.get('topic_name')}")
                 lego = item.get("lego_breakdown", {})
                 st.markdown(f"**🧱 Lego:** `{lego.get('prefix')}` + `{lego.get('root')}` + `{lego.get('suffix')}`")
                 st.markdown(f"**⚓ Mỏ neo:** {item.get('visual_anchor')}")
