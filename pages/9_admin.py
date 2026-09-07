@@ -32,6 +32,11 @@ from utils.knowledge_archive import (
     delete_socratic_reflection,
     auto_decompose_living_knowledge
 )
+from utils.notes_manager import (
+    load_curated_notes,
+    save_curated_note,
+    create_note
+)
 
 if not is_admin():
     st.warning("Chỉ admin mới truy cập được trang này.")
@@ -287,12 +292,44 @@ with admin_tabs[2]:
         status_dd = "✅ Đã duyệt" if "dd" in approved_parts else "⏳ Chờ duyệt"
         status_c = "✅ Đã duyệt" if "cases" in approved_parts else "⏳ Chờ duyệt"
         status_s = "✅ Đã duyệt" if "soc" in approved_parts else "⏳ Chờ duyệt"
+        status_n = "✅ Đã duyệt" if "note" in approved_parts else "⏳ Chờ duyệt"
 
-        # 3 Tabs hiển thị kết quả
+        # Chuẩn bị dữ liệu Atomic Note hoàn chỉnh cho Sổ Tay Tri Thức (Second Brain)
+        note_title = f"{m_title} ({m_code}) — {dd_data.get('title', 'Luận Giải Tinh Hoa')}"
+        note_domain = "📈 Đầu tư, Chứng khoán & Trading" if "05" in m_code else "🧠 Siêu nhận thức & Phương pháp học (Metacognition)"
+        note_essence = dd_data.get("quote", "") or dd_data.get("layer_1_core", "")[:250]
+        note_metaphor = "Cấu trúc Lồi, Quả tạ Barbell & Ngọn lửa gặp bão: Ngọn lửa nhỏ gặp bão sẽ tắt, ngọn lửa lớn gặp bão sẽ bùng thành đại hỏa hoạn."
+        note_concepts = [
+            f"Tầng 1 Core: {dd_data.get('title', m_title)}",
+            f"Tầng 2 Latticework: Soi chiếu đa chiều (Quant, Sinh học, Tâm lý)",
+            f"Tầng 3 Barbell: Cực 90% an toàn triệt tiêu Ruin Risk kết hợp 10% biên độ lớn",
+            f"Tầng 4 Socratic: Thử thách Feynman & Câu hỏi tự vấn trung thực"
+        ]
+        note_models = [m_title, "Tư duy nguyên bản (First Principles Thinking)", "Tư duy đảo ngược (Inversion)"]
+        note_steps = [s for c in cases_data for s in c.get("elite_solution", [])][:4] or [
+            "Bước 1: Xác định và cắt cụt rủi ro đuôi trái (Stop Loss cố định <= 1% NAV).",
+            "Bước 2: Triệt tiêu vùng trung gian giả tạo — cấu trúc lại theo Quả tạ Barbell.",
+            "Bước 3: Tích lũy các Tùy chọn rẻ (chi phí thử sai thấp, đòn bẩy lớn).",
+            "Bước 4: Trailing stop thu hoạch biên độ mở rộng khi có biến động."
+        ]
+        note_raw = f"""# {note_title}
+> *\"{dd_data.get('quote', '')}\"*
+
+{dd_data.get('layer_1_core', '')}
+
+{dd_data.get('layer_2_latticework', '')}
+
+{dd_data.get('layer_3_second_order', '')}
+
+{dd_data.get('layer_4_feynman_socratic', '')}
+"""
+
+        # 4 Tabs hiển thị kết quả
         preview_tabs = st.tabs([
             f"🔬 1. Lý Thuyết Chuyên Sâu [{status_dd}] ({m_code})",
             f"💼 2. Case Thực Chiến [{status_c}] ({len(cases_data)} cases)",
-            f"🪞 3. Gương Soi Socratic [{status_s}] ({len(soc_data)} mục)"
+            f"🪞 3. Gương Soi Socratic [{status_s}] ({len(soc_data)} mục)",
+            f"💡 4. Sổ Tay Tri Thức [{status_n}] (Atomic Note)"
         ])
         
         with preview_tabs[0]:
@@ -408,17 +445,69 @@ with admin_tabs[2]:
                     st.cache_data.clear()
                     st.success(f"✅ Đã thêm {len(soc_data)} Gương soi vào Tab 5 'Sổ tay tri thức'!")
                     st.rerun()
+
+        with preview_tabs[3]:
+            st.markdown(f"#### 💡 {note_title}")
+            st.caption(f"Lĩnh vực: **{note_domain}** · Thẻ: `[living-knowledge, {m_code.lower()}]`")
+            st.info(f"💡 **Bản chất cốt lõi:** {note_essence}")
+            st.markdown(f"🍲 **Ẩn dụ:** *{note_metaphor}*")
+            st.markdown("##### 🪜 Các bước hành động đúc kết:")
+            for stp in note_steps:
+                st.markdown(f"- {stp}")
+
+            st.markdown("---")
+            if "note" in approved_parts:
+                st.success("✅ Đã phê duyệt và lưu Ghi chú Atomic Note vào Kho Tri Thức của Sổ Tay thành công!")
+            else:
+                if st.button("💡 Phê Duyệt Chỉ Riêng Ghi Chú Sổ Tay Này", key="btn_app_note_only"):
+                    note_obj = {
+                        "id": f"NOTE-{m_code}-{datetime.now().strftime('%Y%m%d')}",
+                        "title": note_title,
+                        "note_type": "standard",
+                        "created_at": get_vn_now_str(),
+                        "updated_at": get_vn_now_str(),
+                        "domain": note_domain,
+                        "essence": note_essence,
+                        "metaphor": note_metaphor,
+                        "atomic_concepts": note_concepts,
+                        "mental_models_linked": note_models,
+                        "first_principles_linked": ["Nguyên lý Bất đối xứng lồi (Jensen's Inequality)", "Nguyên lý Triệt tiêu rủi ro diệt vong"],
+                        "actionable_steps": note_steps,
+                        "traps_and_biases": dd_data.get("quote", ""),
+                        "tags": ["living-knowledge", "council-approved", m_code.lower(), "second-brain"],
+                        "study_questions": [
+                            {"question": f"Làm sao ứng dụng {m_title} vào đời sống thực tế?", "answer": note_essence}
+                        ],
+                        "cross_topic_connections": f"Kết nối trực tiếp tới {len(cases_data)} Case Thực Chiến Nhóm P và {len(soc_data)} Gương Soi Socratic.",
+                        "favorite": True,
+                        "mastery_level": 3,
+                        "raw_content": note_raw
+                    }
+                    save_curated_note(note_obj)
+                    create_note(
+                        username=username,
+                        raw_content=note_raw,
+                        decomposed_data=note_obj,
+                        custom_title=note_title,
+                        note_type="standard"
+                    )
+                    approved_parts.add("note")
+                    st.cache_data.clear()
+                    st.success("✅ Đã thêm Ghi chú vào Sổ Tay Tri Thức (Kho Tri Thức)!")
+                    st.rerun()
                 
         # NÚT PHÊ DUYỆT TỔNG LỰC / ĐỒNG BỘ
         st.markdown("#### 🚀 Tùy Chọn Phê Duyệt & Đồng Bộ Hệ Thống:")
         
-        c_chk1, c_chk2, c_chk3 = st.columns(3)
+        c_chk1, c_chk2, c_chk3, c_chk4 = st.columns(4)
         with c_chk1:
             sel_dd = st.checkbox(f"🔬 1. Lý thuyết ({m_code})", value=("dd" not in approved_parts), disabled=("dd" in approved_parts))
         with c_chk2:
             sel_cases = st.checkbox(f"💼 2. Case Nhóm P ({len(cases_data)} cases)", value=("cases" not in approved_parts), disabled=("cases" in approved_parts))
         with c_chk3:
-            sel_soc = st.checkbox(f"🪞 3. Gương soi Socratic ({len(soc_data)} mục)", value=("soc" not in approved_parts), disabled=("soc" in approved_parts))
+            sel_soc = st.checkbox(f"🪞 3. Gương soi ({len(soc_data)} mục)", value=("soc" not in approved_parts), disabled=("soc" in approved_parts))
+        with c_chk4:
+            sel_note = st.checkbox("💡 4. Sổ tay tri thức", value=("note" not in approved_parts), disabled=("note" in approved_parts))
 
         col_app_all, col_app_cancel = st.columns([3, 1])
         
@@ -487,6 +576,42 @@ with admin_tabs[2]:
                     approved_parts.add("soc")
                     synced_msgs.append(f"{len(soc_data)} Gương soi vào Tab 5 của 'Sổ tay tri thức'")
 
+                # 4. Lưu note vào Sổ Tay Tri Thức nếu chọn
+                if sel_note and "note" not in approved_parts:
+                    note_obj = {
+                        "id": f"NOTE-{m_code}-{datetime.now().strftime('%Y%m%d')}",
+                        "title": note_title,
+                        "note_type": "standard",
+                        "created_at": get_vn_now_str(),
+                        "updated_at": get_vn_now_str(),
+                        "domain": note_domain,
+                        "essence": note_essence,
+                        "metaphor": note_metaphor,
+                        "atomic_concepts": note_concepts,
+                        "mental_models_linked": note_models,
+                        "first_principles_linked": ["Nguyên lý Bất đối xứng lồi (Jensen's Inequality)", "Nguyên lý Triệt tiêu rủi ro diệt vong"],
+                        "actionable_steps": note_steps,
+                        "traps_and_biases": dd_data.get("quote", ""),
+                        "tags": ["living-knowledge", "council-approved", m_code.lower(), "second-brain"],
+                        "study_questions": [
+                            {"question": f"Làm sao ứng dụng {m_title} vào đời sống thực tế?", "answer": note_essence}
+                        ],
+                        "cross_topic_connections": f"Kết nối trực tiếp tới {len(cases_data)} Case Thực Chiến Nhóm P và {len(soc_data)} Gương Soi Socratic.",
+                        "favorite": True,
+                        "mastery_level": 3,
+                        "raw_content": note_raw
+                    }
+                    save_curated_note(note_obj)
+                    create_note(
+                        username=username,
+                        raw_content=note_raw,
+                        decomposed_data=note_obj,
+                        custom_title=note_title,
+                        note_type="standard"
+                    )
+                    approved_parts.add("note")
+                    synced_msgs.append("Ghi chú Atomic Note vào Kho Tri Thức của 'Sổ tay tri thức'")
+
                 st.cache_data.clear()
                 if synced_msgs:
                     st.balloons()
@@ -513,10 +638,11 @@ with admin_tabs[2]:
     # -------------------------------------------------------------------------
     st.divider()
     with st.expander("📋 Quản lý & Gỡ bỏ các nội dung tri thức đang hoạt động trên App", expanded=False):
-        t_inv_dd, t_inv_c, t_inv_s, t_inv_arch = st.tabs([
+        t_inv_dd, t_inv_c, t_inv_s, t_inv_note, t_inv_arch = st.tabs([
             "🔬 Lý thuyết Chuyên sâu",
             "💼 Case Nhóm P",
             "🪞 Gương soi Socratic",
+            "💡 Ghi chú Sổ tay",
             "📚 Kho File Tham Khảo"
         ])
         
@@ -556,6 +682,22 @@ with admin_tabs[2]:
                     col_s1.markdown(f"**{s.get('id')}**: {s.get('title')} *[{s.get('mode_title')}]*")
                     if col_s2.button("🗑️ Xóa", key=f"inv_del_s_{s.get('id')}"):
                         delete_socratic_reflection(s.get("id"))
+                        st.cache_data.clear()
+                        st.rerun()
+
+        with t_inv_note:
+            live_curated = load_curated_notes()
+            if not live_curated:
+                st.info("Chưa có ghi chú tinh hoa chung nào trong Second Brain.")
+            else:
+                for cn in live_curated:
+                    col_n1, col_n2 = st.columns([4, 1])
+                    col_n1.markdown(f"**{cn.get('id')}**: {cn.get('title')} *({cn.get('domain')})*")
+                    if col_n2.button("🗑️ Xóa", key=f"inv_del_cn_{cn.get('id')}"):
+                        new_c = [x for x in live_curated if x.get("id") != cn.get("id")]
+                        from utils.notes_manager import CURATED_NOTES_FILE
+                        with open(CURATED_NOTES_FILE, "w", encoding="utf-8") as f:
+                            json.dump(new_c, f, ensure_ascii=False, indent=2)
                         st.cache_data.clear()
                         st.rerun()
                         

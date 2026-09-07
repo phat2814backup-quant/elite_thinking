@@ -255,7 +255,7 @@ with tab_vault:
     with c_s2:
         sel_domain = st.selectbox("Lĩnh vực tri thức:", domain_options, key="vault_filter_domain")
 
-    c_f1, c_f2, c_f3, c_f4 = st.columns([2, 2, 2, 1])
+    c_f1, c_f2, c_f3, c_f4, c_f5 = st.columns([1.8, 1.8, 1.6, 1.8, 1.0])
     with c_f1:
         sel_model = st.selectbox("Mô hình tư duy kết nối:", all_vault_models, key="vault_filter_model")
     with c_f2:
@@ -267,8 +267,15 @@ with tab_vault:
             key="vault_filter_mastery",
         )
     with c_f4:
+        sort_choice = st.selectbox(
+            "Thứ tự hiển thị:",
+            ["🕒 Mới nhất trước", "⏳ Cũ nhất trước", "⭐ Yêu thích ưu tiên", "👑 Nhuần nhuyễn cao nhất", "🔤 Tên A ➔ Z"],
+            index=0,
+            key="vault_sort_order",
+        )
+    with c_f5:
         fav_only = st.checkbox("⭐ Yêu thích", value=False, key="vault_filter_fav")
-        unknown_only = st.checkbox("📓 Chỉ Unknowns", value=False, key="vault_filter_unknowns", help="Chỉ hiển thị sổ tay điều chưa biết (Feynman's Unknowns)")
+        unknown_only = st.checkbox("📓 Unknowns", value=False, key="vault_filter_unknowns", help="Chỉ hiển thị sổ tay điều chưa biết (Feynman's Unknowns)")
 
     # Thực thi truy vấn
     matched_notes = search_notes(
@@ -279,6 +286,7 @@ with tab_vault:
         tag=sel_tag,
         only_favorites=fav_only,
         mastery_filter=sel_mastery,
+        sort_by=sort_choice,
     )
     if unknown_only:
         matched_notes = [
@@ -656,6 +664,7 @@ with tab_socratic:
 
     with sec_soc:
         soc_list = load_socratic_reflections()
+        soc_list = sorted(soc_list, key=lambda s: str(s.get("updated_at") or s.get("created_at") or s.get("id", "")), reverse=True)
         if not soc_list:
             st.info("Chưa có chủ đề tự vấn Socratic nào được nạp từ Hội đồng.")
         else:

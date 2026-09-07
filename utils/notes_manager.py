@@ -20,6 +20,7 @@ from utils.knowledge import (
     load_knowledge_base,
     get_principles,
 )
+from utils.knowledge_archive import get_vn_now_str
 
 try:
     import google.generativeai as genai
@@ -28,6 +29,7 @@ except Exception:
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 MODELS_FILE = DATA_DIR / "core_mental_models.json"
+CURATED_NOTES_FILE = DATA_DIR / "curated_notes.json"
 
 
 def get_all_models() -> List[Dict[str, Any]]:
@@ -314,21 +316,67 @@ def heuristic_decompose_note(raw_content: str, title_hint: str = "") -> Dict[str
     }
 
 
+def load_curated_notes() -> List[Dict[str, Any]]:
+    """Tải danh sách ghi chú tinh hoa chuẩn mực chung từ file json của hệ thống."""
+    if not CURATED_NOTES_FILE.exists():
+        return [dict(DEFAULT_FEYNMAN_NOTE)]
+    try:
+        with open(CURATED_NOTES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if isinstance(data, list):
+                return data
+            return data.get("notes", [dict(DEFAULT_FEYNMAN_NOTE)])
+    except Exception:
+        return [dict(DEFAULT_FEYNMAN_NOTE)]
+
+
+def save_curated_note(note_item: Dict[str, Any]) -> bool:
+    """Lưu hoặc cập nhật một ghi chú tinh hoa vào kho chuẩn mực chung."""
+    notes = load_curated_notes()
+    n_id = note_item.get("id")
+    idx = next((i for i, n in enumerate(notes) if n.get("id") == n_id), -1)
+    if idx >= 0:
+        notes[idx] = note_item
+    else:
+        notes.insert(0, note_item)
+    with open(CURATED_NOTES_FILE, "w", encoding="utf-8") as f:
+        json.dump(notes, f, ensure_ascii=False, indent=2)
+    return True
+
+
+def _note_sort_datetime_str(n: Dict[str, Any]) -> str:
+    """Hàm chuẩn hóa thời gian để sắp xếp: ưu tiên updated_at, nếu không có thì created_at."""
+    t = n.get("updated_at") or n.get("created_at") or ""
+    return str(t).strip()
+
+
 def ensure_user_notes_initialized(username: str) -> List[Dict[str, Any]]:
-    """Đảm bảo kho ghi chú của người dùng đã được khởi tạo, tự động nạp bài Feynman mẫu nếu kho còn trống."""
+    """Đảm bảo kho ghi chú của người dùng đồng bộ đầy đủ các bài tinh hoa hệ thống."""
+    curated = load_curated_notes()
     hist = load_user_history(username)
-    notes = hist.get("knowledge_notes")
-    if notes is None:
-        notes = [dict(DEFAULT_FEYNMAN_NOTE)]
-        hist["knowledge_notes"] = notes
+    user_notes = hist.get("knowledge_notes")
+    if user_notes is None:
+        user_notes = [dict(n) for n in curated]
+        hist["knowledge_notes"] = user_notes
         save_user_history(username, hist)
-    return notes
+    else:
+        # Tự động nạp các ghi chú tinh hoa hệ thống chưa có trong kho user
+        existing_ids = {n.get("id") for n in user_notes}
+        updated = False
+        for cn in curated:
+            if cn.get("id") not in existing_ids:
+                user_notes.insert(0, dict(cn))
+                updated = True
+        if updated:
+            hist["knowledge_notes"] = user_notes
+            save_user_history(username, hist)
+    return user_notes
 
 
 def get_user_notes(username: str) -> List[Dict[str, Any]]:
-    """Lấy danh sách ghi chú của người dùng, sắp xếp theo thời gian cập nhật mới nhất."""
+    """Lấy danh sách ghi chú của người dùng, sắp xếp chuẩn mực từ MỚI NHẤT đến CŨ NHẤT."""
     notes = ensure_user_notes_initialized(username)
-    return sorted(notes, key=lambda n: n.get("updated_at", n.get("created_at", "")), reverse=True)
+    return sorted(notes, key=_note_sort_datetime_str, reverse=True)
 
 
 def get_note_by_id(username: str, note_id: str) -> Optional[Dict[str, Any]]:
@@ -347,12 +395,13 @@ def create_note(
     custom_title: str = "",
     note_type: str = "standard",
 ) -> Dict[str, Any]:
-    """Tạo một ghi chú mới và lưu vào Second Brain."""
+    """Tạo một ghi chú mới và lưu vào Second Brain theo giờ Việt Nam."""
     hist = load_user_history(username)
     notes = hist.setdefault("knowledge_notes", [])
 
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    note_id = f"NOTE-{datetime.now().strftime('%Y%m%d')}-{uuid.uuid4().hex[:6].upper()}"
+    now_str = get_vn_now_str()
+    date_compact = now_str.replace("-", "").replace(":", "").replace(" ", "_")
+    note_id = f"NOTE-{date_compact[:13]}-{uuid.uuid4().hex[:6].upper()}"
 
     title = custom_title.strip() or decomposed_data.get("title") or "Ghi chú Tri thức Mới"
 
@@ -397,7 +446,7 @@ def update_note(
     note_id: str,
     updated_fields: Dict[str, Any],
 ) -> Optional[Dict[str, Any]]:
-    """Cập nhật các trường thông tin của một ghi chú."""
+    """Cập nhật các trường thông tin của một ghi chú theo giờ Việt Nam."""
     hist = load_user_history(username)
     notes = hist.setdefault("knowledge_notes", [])
 
@@ -414,7 +463,7 @@ def update_note(
         if k != "id":
             target[k] = v
 
-    target["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    target["updated_at"] = get_vn_now_str()
     save_user_history(username, hist)
     return target
 
@@ -457,8 +506,9 @@ def search_notes(
     tag: str = "Tất cả",
     only_favorites: bool = False,
     mastery_filter: str = "Tất cả",
+    sort_by: str = "🕒 Mới nhất trước",
 ) -> List[Dict[str, Any]]:
-    """Tìm kiếm và lọc ghi chú theo nhiều chiều kích."""
+    """Tìm kiếm, lọc và sắp xếp ghi chú — mặc định MỚI NHẤT TRƯỚC CŨ SAU."""
     notes = get_user_notes(username)
     results = []
 
@@ -508,6 +558,18 @@ def search_notes(
                 continue
 
         results.append(n)
+
+    # Sắp xếp kết quả (mặc định Mới nhất trước nếu không chọn khác)
+    if sort_by == "⏳ Cũ nhất trước":
+        results.sort(key=_note_sort_datetime_str, reverse=False)
+    elif sort_by == "⭐ Yêu thích ưu tiên":
+        results.sort(key=lambda n: (not n.get("favorite", False), _note_sort_datetime_str(n)), reverse=False)
+    elif sort_by == "👑 Nhuần nhuyễn cao nhất":
+        results.sort(key=lambda n: (n.get("mastery_level", 1), _note_sort_datetime_str(n)), reverse=True)
+    elif sort_by == "🔤 Tên A ➔ Z":
+        results.sort(key=lambda n: n.get("title", "").lower(), reverse=False)
+    else:  # Mặc định: "🕒 Mới nhất trước" (Mới ➔ Cũ)
+        results.sort(key=_note_sort_datetime_str, reverse=True)
 
     return results
 

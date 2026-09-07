@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 14:50:27`
+- **Thời điểm cập nhật**: `2026-09-07 15:11:43`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `61e7f18 - feat(admin): replace manual forms with 1-click AI living knowledge ingestion pipeline (2026-09-07 14:31:20 +0700)`
-- **Trạng thái Git**: `5 uncommitted file(s)`
+- **Commit gần nhất**: `7d044ab - fix(knowledge): fix living knowledge decomposition persistence, VN timezone GMT+7, and cache invalidation (2026-09-07 14:50:35 +0700)`
+- **Trạng thái Git**: `4 uncommitted file(s)`
 
 ---
 
@@ -230,6 +230,7 @@ elite_thinking/
 │   ├── 📄 `cases_tam_ly_he_thong.json` *(20.5 KB)*
 │   ├── 📄 `cases_toan_khoa_hoc.json` *(36.5 KB)*
 │   ├── 📄 `core_mental_models.json` *(217.9 KB)*
+│   ├── 📄 `curated_notes.json` *(10.9 KB)*
 │   ├── 📄 `curriculum_12w.json` *(195.7 KB)*
 │   ├── 📄 `elite_vocab.json` *(900.9 KB)*
 │   ├── 📄 `knowledge_base.json` *(127.1 KB)*
@@ -256,7 +257,7 @@ elite_thinking/
 │   └── 📄 `source.md` *(0.0 KB)*
 ├── 📂 **pages/**
 │   ├── 📄 `0_lo_trinh_12_tuan.py` *(11.5 KB)*
-│   ├── 📄 `10_so_tay_tri_thuc.py` *(37.5 KB)*
+│   ├── 📄 `10_so_tay_tri_thuc.py` *(38.0 KB)*
 │   ├── 📄 `11_case_thuc_chien.py` *(12.7 KB)*
 │   ├── 📄 `12_tieng_anh_elite.py` *(32.1 KB)*
 │   ├── 📄 `1_the_cuoc_elite.py` *(14.7 KB)*
@@ -267,7 +268,7 @@ elite_thinking/
 │   ├── 📄 `6_dao_tao.py` *(25.2 KB)*
 │   ├── 📄 `7_phan_ra.py` *(23.9 KB)*
 │   ├── 📄 `8_lich_su.py` *(4.8 KB)*
-│   └── 📄 `9_admin.py` *(32.7 KB)*
+│   └── 📄 `9_admin.py` *(40.9 KB)*
 ├── 📂 **practice/**
 │   └── 📄 `antifragility and option - 20260907.pdf` *(273.9 KB)*
 ├── 📂 **supabase/**
@@ -289,7 +290,7 @@ elite_thinking/
 │   ├── 📄 `knowledge_archive.py` *(17.5 KB)*
 │   ├── 📄 `macro_evolution.py` *(37.5 KB)*
 │   ├── 📄 `mental_models.py` *(9.2 KB)*
-│   ├── 📄 `notes_manager.py` *(52.1 KB)*
+│   ├── 📄 `notes_manager.py` *(54.9 KB)*
 │   ├── 📄 `quiz_engine.py` *(226.8 KB)*
 │   ├── 📄 `training.py` *(5.2 KB)*
 │   └── 📄 `vocab_manager.py` *(10.9 KB)*
