@@ -8,7 +8,9 @@ Trang 12: Từ Vựng Tiếng Anh Tư Duy Tinh Hoa (First-Principles English Voc
 
 from __future__ import annotations
 
+import urllib.parse
 import streamlit as st
+import streamlit.components.v1 as components
 from utils.app_common import bootstrap
 from utils.vocab_manager import (
     load_elite_vocab,
@@ -28,11 +30,144 @@ from utils.vocab_manager import (
 
 
 # -----------------------------------------------------------------------------
+# Tiện ích Nghe Đọc Audio & Liên kết NaturalReaders Online (Zero-API)
+# -----------------------------------------------------------------------------
+def render_audio_and_tts_tools(text: str, key_suffix: str = "") -> None:
+    """
+    Tiện ích Nghe đọc Phát âm & Mở NaturalReaders:
+    1. 🔊 Nghe đọc trực tiếp: Web Speech API giọng bản ngữ US, rate 0.88, 0 API tokens.
+    2. 📋 Copy nhanh: Tự động sao chép câu vào clipboard kèm thông báo.
+    3. 🎙️ Mở NaturalReader Online: Đường dẫn mở tab mới đến https://www.naturalreaders.com/online/
+    """
+    if not text:
+        return
+
+    enc_text = urllib.parse.quote(text)
+
+    html_widget = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body {{
+          margin: 0;
+          padding: 2px 0;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          overflow: hidden;
+          background: transparent;
+        }}
+        .tts-bar {{
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }}
+        .btn {{
+          border: none;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          text-decoration: none;
+          transition: all 0.15s ease-in-out;
+        }}
+        .btn:hover {{
+          transform: translateY(-1px);
+          filter: brightness(1.1);
+        }}
+        .btn-speak {{
+          background: linear-gradient(135deg, #1E88E5, #1565C0);
+          color: white;
+          box-shadow: 0 1px 3px rgba(30,136,229,0.3);
+        }}
+        .btn-copy {{
+          background: #2E7D32;
+          color: white;
+          box-shadow: 0 1px 3px rgba(46,125,50,0.3);
+        }}
+        .btn-natural {{
+          background: #E65100;
+          color: white;
+          box-shadow: 0 1px 3px rgba(230,81,0,0.3);
+        }}
+        .toast {{
+          color: #2E7D32;
+          font-size: 12px;
+          font-weight: bold;
+          display: none;
+        }}
+      </style>
+    </head>
+    <body>
+      <div class="tts-bar">
+        <button class="btn btn-speak" onclick="playSpeech()">
+          🔊 Nghe đọc trực tiếp
+        </button>
+        <button class="btn btn-copy" onclick="copyQuote()">
+          📋 Copy câu
+        </button>
+        <a class="btn btn-natural" href="https://www.naturalreaders.com/online/" target="_blank" rel="noopener noreferrer">
+          🎙️ Mở NaturalReaders ↗
+        </a>
+        <span id="toast-msg" class="toast">✓ Đã copy!</span>
+      </div>
+      <script>
+        function playSpeech() {{
+          if ('speechSynthesis' in window) {{
+            window.speechSynthesis.cancel();
+            var raw = decodeURIComponent("{enc_text}");
+            var u = new SpeechSynthesisUtterance(raw);
+            u.lang = 'en-US';
+            u.rate = 0.88;
+            window.speechSynthesis.speak(u);
+          }} else {{
+            alert('Trình duyệt chưa hỗ trợ Web Speech, bạn hãy bấm "Mở NaturalReaders"!');
+          }}
+        }}
+        function copyQuote() {{
+          var raw = decodeURIComponent("{enc_text}");
+          if (navigator.clipboard && navigator.clipboard.writeText) {{
+            navigator.clipboard.writeText(raw).then(showToast).catch(fallbackCopy);
+          }} else {{
+            fallbackCopy();
+          }}
+        }}
+        function fallbackCopy() {{
+          var raw = decodeURIComponent("{enc_text}");
+          var ta = document.createElement('textarea');
+          ta.value = raw;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast();
+        }}
+        function showToast() {{
+          var t = document.getElementById('toast-msg');
+          if (t) {{
+            t.style.display = 'inline';
+            setTimeout(function() {{ t.style.display = 'none'; }}, 2500);
+          }}
+        }}
+      </script>
+    </body>
+    </html>
+    """
+    components.html(html_widget, height=38)
+
+
+# -----------------------------------------------------------------------------
 # Bootstrap & User Context
 # -----------------------------------------------------------------------------
 ctx = bootstrap()
 username = ctx["username"]
 display_name = ctx["display_name"]
+
 
 # -----------------------------------------------------------------------------
 # Header & Triết lý Học Không Học Vẹt
@@ -185,6 +320,7 @@ with tab_anatomy:
         with head_c1:
             st.markdown(f"## 🔤 **{v['word']}** `{v.get('ipa', '')}` *({v.get('part_of_speech', '')})*")
             st.markdown(f"### 🇻🇳 **{v['vietnamese']}**")
+            render_audio_and_tts_tools(v['word'], key_suffix=f"word_pron_{v_id}")
             st.info(f"🏛️ **Cột trụ:** {v.get('pillar_name', '')}  |  🎯 **Mô hình / Chủ đề:** `[{v.get('topic_code', '')}]` **{v.get('topic_name', '')}**")
         with head_c2:
             st.write("")
@@ -220,8 +356,8 @@ with tab_anatomy:
         # Cây họ hàng từ vựng
         family = v.get("family_words", [])
         if family:
-            st.markdown("#### 🌳 2. Cây Họ Hàng Từ Vựng (Học 1 Gốc Từ — Biết 5 Từ Khác)")
-            f_cols = st.columns(len(family))
+            st.markdown("#### 🌳 2. Cây Họ Hàng Từ Vựng (Học 1 Gốc Từ — Hiểu Cả Gia Đình Từ)")
+            f_cols = st.columns(min(len(family), 4))
             for i, fw in enumerate(family):
                 with f_cols[i % len(f_cols)]:
                     st.markdown(f"**`{fw.get('word')}`**\n\n*{fw.get('meaning')}*")
@@ -236,7 +372,11 @@ with tab_anatomy:
             > **{v.get('visual_anchor', 'Chưa có mỏ neo.')}**
             """)
             if v.get("elite_context"):
-                st.info(f"💡 **Ngữ cảnh Tinh hoa:**\n\n*{v['elite_context']}*")
+                st.markdown("##### 💡 Ngữ cảnh Tinh hoa:")
+                st.info(f"*{v['elite_context']}*")
+                render_audio_and_tts_tools(v["elite_context"], key_suffix=f"anatomy_quote_{v_id}")
+                st.caption("📋 *Sao chép nhanh để nghe giọng đọc cao cấp trên NaturalReaders:*")
+                st.code(v["elite_context"], language=None)
 
         with col_con:
             st.markdown("#### ⚖️ 4. Cặp Đối Kháng Nhị Phân")
@@ -339,8 +479,10 @@ with tab_flashcard:
                 st.markdown(f"⚓ **Mỏ neo thị giác:** {curr_card.get('visual_anchor')}")
                 if curr_card.get("elite_context"):
                     st.info(f"💡 **Tư duy tinh hoa:** {curr_card.get('elite_context')}")
+                    render_audio_and_tts_tools(curr_card["elite_context"], key_suffix=f"fc_{c_id}")
+                    st.code(curr_card["elite_context"], language=None)
 
-                con = curr_card.get("contrast_pair", {})
+
                 st.markdown(f"⚖️ **Đối kháng:** Tránh nhầm với *{con.get('opposite')}* — {con.get('distinction')}")
 
                 st.markdown("---")

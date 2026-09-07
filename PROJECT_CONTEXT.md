@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 10:54:20`
+- **Thời điểm cập nhật**: `2026-09-07 10:56:43`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `1dc8b3f - docs: update PROJECT_CONTEXT.md with latest git commit metadata (2026-09-07 10:20:20 +0700)`
-- **Trạng thái Git**: `4 uncommitted file(s)`
+- **Commit gần nhất**: `9013332 - feat(vocab): scale to 417 words with 2-tier hierarchical learning linked to tabs 2, 3, 4 (2026-09-07 10:54:34 +0700)`
+- **Trạng thái Git**: `1 uncommitted file(s)`
 
 ---
 
@@ -251,7 +251,7 @@ elite_thinking/
 │   ├── 📄 `0_lo_trinh_12_tuan.py` *(11.5 KB)*
 │   ├── 📄 `10_so_tay_tri_thuc.py` *(32.7 KB)*
 │   ├── 📄 `11_case_thuc_chien.py` *(11.8 KB)*
-│   ├── 📄 `12_tieng_anh_elite.py` *(25.7 KB)*
+│   ├── 📄 `12_tieng_anh_elite.py` *(30.5 KB)*
 │   ├── 📄 `1_the_cuoc_elite.py` *(14.7 KB)*
 │   ├── 📄 `2_9_che_do_tu_duy.py` *(21.2 KB)*
 │   ├── 📄 `3_88_mo_hinh.py` *(32.4 KB)*
@@ -287,7 +287,7 @@ elite_thinking/
 ├── 📄 `app.py` *(11.6 KB)*
 ├── 📄 `export_project_context.bat` *(1.6 KB)*
 ├── 📄 `export_project_context.py` *(41.8 KB)*
-├── 📄 `PROJECT_CONTEXT.md` *(29.7 KB)*
+├── 📄 `PROJECT_CONTEXT.md` *(29.9 KB)*
 ├── 📄 `push_to_github.bat` *(2.1 KB)*
 ├── 📄 `README.md` *(4.3 KB)*
 └── 📄 `requirements.txt` *(0.1 KB)*
