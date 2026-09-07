@@ -19,16 +19,32 @@ VOCAB_FILE = DATA_DIR / "elite_vocab.json"
 HISTORIES_DIR = DATA_DIR / "histories"
 
 
-@st.cache_data(show_spinner=False)
 def load_elite_vocab() -> Dict[str, Any]:
-    """Tải ngân hàng từ vựng tinh hoa từ file static JSON."""
+    """Tải ngân hàng từ vựng tinh hoa từ file static JSON (tự động reload khi file thay đổi)."""
     if not VOCAB_FILE.exists():
-        return {"metadata": {}, "categories": [], "vocab_list": []}
+        return {"metadata": {}, "categories": [], "vocab_list": [], "pillars": []}
     try:
-        with open(VOCAB_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+        mtime = VOCAB_FILE.stat().st_mtime
+        fsize = VOCAB_FILE.stat().st_size
+        data = _load_elite_vocab_v3(mtime, fsize)
+        # Safety check: nếu cache cũ dính phiên bản cũ < 100 từ, tự động ép đọc file mới từ đĩa
+        if len(data.get("vocab_list", [])) < 100:
+            with open(VOCAB_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        return data
     except Exception as e:
-        return {"metadata": {"error": str(e)}, "categories": [], "vocab_list": []}
+        try:
+            with open(VOCAB_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as inner_e:
+            return {"metadata": {"error": str(inner_e)}, "categories": [], "vocab_list": [], "pillars": []}
+
+
+@st.cache_data(show_spinner=False)
+def _load_elite_vocab_v3(mtime: float, fsize: int) -> Dict[str, Any]:
+    with open(VOCAB_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 
 
 def get_all_vocab() -> List[Dict[str, Any]]:

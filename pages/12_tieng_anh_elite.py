@@ -208,9 +208,14 @@ st.markdown("---")
 # -----------------------------------------------------------------------------
 # Thống Kê Tiến Độ Người Học (Progress Bar)
 # -----------------------------------------------------------------------------
+all_vocab = get_all_vocab()
+if len(all_vocab) < 100:
+    st.cache_data.clear()
+    all_vocab = get_all_vocab()
+    st.rerun()
+
 stats = get_vocab_stats(username)
 user_state = get_user_vocab_state(username)
-all_vocab = get_all_vocab()
 categories = get_categories()
 pillars = get_pillars()
 
@@ -266,9 +271,12 @@ with tab_anatomy:
         for p in pillars
     ]
     pillar_map = {choice[1]: choice[0] for choice in pillar_choices}
+    pillar_labels = [c[1] for c in pillar_choices]
 
     with f_c1:
-        sel_p_label = st.selectbox("🏛️ Bước 1: Chọn Cột Trụ Kiến Thức:", [c[1] for c in pillar_choices], key="tab1_pillar_sel")
+        if "tab1_pillar_sel" in st.session_state and st.session_state["tab1_pillar_sel"] not in pillar_labels:
+            st.session_state["tab1_pillar_sel"] = pillar_labels[0]
+        sel_p_label = st.selectbox("🏛️ Bước 1: Chọn Cột Trụ Kiến Thức:", pillar_labels, key="tab1_pillar_sel")
         sel_pillar_id = pillar_map[sel_p_label]
 
     # Danh sách chủ đề theo Cột trụ đã chọn
@@ -278,10 +286,13 @@ with tab_anatomy:
         for t in available_topics
     ]
     topic_map = {choice[1]: choice[0] for choice in topic_choices}
+    topic_labels = [c[1] for c in topic_choices]
 
     with f_c2:
-        sel_t_label = st.selectbox("🎯 Bước 2: Chọn Chủ Đề / Mô Hình Cụ Thể:", [c[1] for c in topic_choices], key="tab1_topic_sel")
-        sel_topic_code = topic_map[sel_t_label]
+        if "tab1_topic_sel" in st.session_state and st.session_state["tab1_topic_sel"] not in topic_labels:
+            st.session_state["tab1_topic_sel"] = topic_labels[0]
+        sel_t_label = st.selectbox("🎯 Bước 2: Chọn Chủ Đề / Mô Hình Cụ Thể:", topic_labels, key="tab1_topic_sel")
+        sel_topic_code = topic_map.get(sel_t_label, "all")
 
     # Thanh tìm kiếm nhanh
     search_query = st.text_input("🔍 Tìm kiếm từ tiếng Anh hoặc nghĩa tiếng Việt:", "", key="tab1_search")
@@ -307,10 +318,13 @@ with tab_anatomy:
             f"{v['word']} — {v['vietnamese']}  [{v.get('topic_code', '')}: {v.get('topic_name', '')}]"
             for v in filtered_vocab
         ]
+        if "selected_word_anatomy" in st.session_state and st.session_state["selected_word_anatomy"] not in word_labels:
+            st.session_state["selected_word_anatomy"] = word_labels[0]
         selected_label = st.selectbox("🎯 Bước 3: Chọn từ vựng cần giải phẫu gốc từ:", word_labels, key="selected_word_anatomy")
-        selected_idx = word_labels.index(selected_label)
+        selected_idx = word_labels.index(selected_label) if selected_label in word_labels else 0
         v = filtered_vocab[selected_idx]
         v_id = v["id"]
+
 
         is_mastered = user_state.get(v_id, {}).get("mastered", False)
         is_starred = user_state.get(v_id, {}).get("starred", False)
@@ -399,15 +413,22 @@ with tab_flashcard:
     with fc_c1:
         fc_p_options = [("all", "🌐 Tất cả Cột Trụ")] + [(p["id"], p["name"]) for p in pillars]
         fc_p_map = {c[1]: c[0] for c in fc_p_options}
-        fc_sel_p_lbl = st.selectbox("Lọc Cột Trụ:", [c[1] for c in fc_p_options], key="fc_pillar_select")
+        fc_p_labels = [c[1] for c in fc_p_options]
+        if "fc_pillar_select" in st.session_state and st.session_state["fc_pillar_select"] not in fc_p_labels:
+            st.session_state["fc_pillar_select"] = fc_p_labels[0]
+        fc_sel_p_lbl = st.selectbox("Lọc Cột Trụ:", fc_p_labels, key="fc_pillar_select")
         fc_sel_pid = fc_p_map[fc_sel_p_lbl]
 
     with fc_c2:
         fc_t_list = get_topics_by_pillar(fc_sel_pid)
         fc_t_options = [("all", "📂 Tất cả Chủ Đề trong Cột Trụ")] + [(t["code"], f"[{t['code']}] {t['name']}") for t in fc_t_list]
         fc_t_map = {c[1]: c[0] for c in fc_t_options}
-        fc_sel_t_lbl = st.selectbox("Lọc Chủ Đề:", [c[1] for c in fc_t_options], key="fc_topic_select")
-        fc_sel_tcode = fc_t_map[fc_sel_t_lbl]
+        fc_t_labels = [c[1] for c in fc_t_options]
+        if "fc_topic_select" in st.session_state and st.session_state["fc_topic_select"] not in fc_t_labels:
+            st.session_state["fc_topic_select"] = fc_t_labels[0]
+        fc_sel_t_lbl = st.selectbox("Lọc Chủ Đề:", fc_t_labels, key="fc_topic_select")
+        fc_sel_tcode = fc_t_map.get(fc_sel_t_lbl, "all")
+
 
     fc_list = all_vocab
     if fc_sel_pid != "all":
@@ -512,15 +533,22 @@ with tab_quiz:
     with qz_c1:
         qz_p_options = [("all", "🌐 Tất cả Cột Trụ")] + [(p["id"], p["name"]) for p in pillars]
         qz_p_map = {c[1]: c[0] for c in qz_p_options}
-        qz_sel_p_lbl = st.selectbox("Lọc Cột Trụ Quiz:", [c[1] for c in qz_p_options], key="quiz_pillar_select")
+        qz_p_labels = [c[1] for c in qz_p_options]
+        if "quiz_pillar_select" in st.session_state and st.session_state["quiz_pillar_select"] not in qz_p_labels:
+            st.session_state["quiz_pillar_select"] = qz_p_labels[0]
+        qz_sel_p_lbl = st.selectbox("Lọc Cột Trụ Quiz:", qz_p_labels, key="quiz_pillar_select")
         qz_sel_pid = qz_p_map[qz_sel_p_lbl]
 
     with qz_c2:
         qz_t_list = get_topics_by_pillar(qz_sel_pid)
         qz_t_options = [("all", "📂 Tất cả Chủ Đề")] + [(t["code"], f"[{t['code']}] {t['name']}") for t in qz_t_list]
         qz_t_map = {c[1]: c[0] for c in qz_t_options}
-        qz_sel_t_lbl = st.selectbox("Lọc Chủ Đề Quiz:", [c[1] for c in qz_t_options], key="quiz_topic_select")
-        qz_sel_tcode = qz_t_map[qz_sel_t_lbl]
+        qz_t_labels = [c[1] for c in qz_t_options]
+        if "quiz_topic_select" in st.session_state and st.session_state["quiz_topic_select"] not in qz_t_labels:
+            st.session_state["quiz_topic_select"] = qz_t_labels[0]
+        qz_sel_t_lbl = st.selectbox("Lọc Chủ Đề Quiz:", qz_t_labels, key="quiz_topic_select")
+        qz_sel_tcode = qz_t_map.get(qz_sel_t_lbl, "all")
+
 
     quiz_vocab_pool = [v for v in all_vocab if v.get("recognition_quiz")]
     if qz_sel_pid != "all":
