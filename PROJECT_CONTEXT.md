@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 15:11:43`
+- **Thời điểm cập nhật**: `2026-09-07 15:23:40`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `7d044ab - fix(knowledge): fix living knowledge decomposition persistence, VN timezone GMT+7, and cache invalidation (2026-09-07 14:50:35 +0700)`
-- **Trạng thái Git**: `4 uncommitted file(s)`
+- **Commit gần nhất**: `dd6e23d - feat(second-brain): persist curated notes, sort notes newest-first by default, and sync admin decomposed notes (2026-09-07 15:11:54 +0700)`
+- **Trạng thái Git**: `1 uncommitted file(s)`
 
 ---
 
