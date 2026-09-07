@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "group": "P",
+    "title": "Tình Huống Thực Chiến Của Hội Đồng (User & Council Practice)",
+    "target_age": "Giới Elite, Nhà đầu tư & Cha mẹ",
+    "description": "Các bài toán thực chiến do Hội đồng Trí tuệ tối cao phân rã từ các phiên tham vấn thực tế."
+  },
+  "cases": [
+    {
+      "id": "CASE-P01",
+      "title": "Thiết Kế Hệ Thống Quant Trading Antifragile: Cắt Cụt Đuôi Trái & Hấp Thụ Biến Động Tin Tức",
+      "category": "Giao dịch Định lượng (Quant Trading)",
+      "target_audience": "Nhà đầu tư định lượng, Trader hệ thống",
+      "problem": "Một hệ thống giao dịch tự động hóa chỉ săn tìm các điểm mất cân bằng FVG hoặc Order Blocks thuần túy trên khung thời gian tĩnh có thể có Win Rate cao trong backtest, nhưng lại rất dễ vỡ vụn (Fragile) và sụt giảm tài khoản nặng nề khi đối mặt với các cú sốc tin tức vĩ mô hoặc hiện tượng trượt giá (Slippage).",
+      "core_principles": [
+        "First Principles (Cấu trúc thanh khoản vi mô)",
+        "Optionality & Antifragility (Cắt cụt rủi ro đuôi trái)",
+        "Tư duy Xác suất (Kỳ vọng toán EV dương thay vì tìm kiếm chén thánh)",
+        "Barbell Strategy (90% quản trị vốn an toàn + 10% bắt sóng biến động)"
+      ],
+      "latticework_analysis": "- **Vật lý & Nhiệt động lực học**: Thị trường là một hệ cân bằng động liên tục chịu tác động của dòng năng lượng (dòng tiền/Order Flow). Mọi cấu trúc tĩnh đều có xu hướng tăng entropy và vỡ vụn khi có cú sốc bên ngoài.\n- **Toán học Tùy chọn (Convexity)**: Thay vì cố gắng dự đoán tin tức (điều bất khả thi), hệ thống chấp nhận trả một khoản Option Premium nhỏ (mức Stop Loss cố định <= 1% NAV). Khi giá chạy đúng xu hướng, thuật toán chuyển sang trailing stop đa khung thời gian để biên độ lợi nhuận mở rộng tự do.\n- **Tâm lý học hành vi**: Khi hệ số $EV > 0$ và rủi ro mỗi lệnh được giới hạn tuyệt đối, trader thoát khỏi áp lực tâm lý được/mất ở từng lệnh riêng lẻ, đạt trạng thái bình thản trước biến động thị trường.",
+      "elite_solution": [
+        "Bước 1: Cố định mức rủi ro tối đa mỗi lệnh tại mức không thể gây tổn hại vốn (ví dụ <= 1% NAV). Đây là chi phí mua quyền chọn.",
+        "Bước 2: Sử dụng bộ lọc Sweep thanh khoản trên khung thời gian lớn (D/H4) tại các vùng VWAP/FVG trọng điểm trước khi tìm điểm vào lệnh ở khung nhỏ (M15/M5).",
+        "Bước 3: Chỉ kích hoạt lệnh khi tỷ lệ $R:R$ tiềm năng tối thiểu đạt 1:1.5 trở lên.",
+        "Bước 4: Sử dụng ATR Trailing Stop động để bám theo xu hướng khi có biến động mạnh từ tin tức, thay vì chốt lời non ở mức cố định."
+      ],
+      "key_takeaways": "Đừng cố dự đoán thị trường sẽ đi về đâu. Hãy xây dựng một hệ thống mà dù thị trường điên cuồng biến động về phía nào, tổn thất của bạn luôn bị chặn đứng ở mức nhỏ, còn lợi nhuận có không gian mở rộng vô hạn."
+    },
+    {
+      "id": "CASE-P02",
+      "title": "Chiến Lược Quả Tạ (Barbell) Trong Nuôi Dạy Con: Triệt Tiêu Ruin Risk & Khuyến Khích Micro-Failures",
+      "category": "Giáo dục & Nuôi dạy Tinh hoa",
+      "target_audience": "Cha mẹ Elite, Người định hướng thế hệ kế cận",
+      "problem": "Tư duy nuôi dạy bao bọc truyền thống phương Đông luôn cố gắng bảo vệ con cái khỏi mọi vấp ngã, lên sẵn một lộ trình học tập 'hoàn hảo không tì vết'. Điều này tạo ra những cá nhân có vẻ ngoài xuất sắc nhưng tâm lý lại cực kỳ mong manh (Fragile), dễ dàng gục ngã và mất phương hướng khi bước vào môi trường thực tế đầy cạnh tranh và biến số.",
+      "core_principles": [
+        "Optionality & Antifragility (Hấp thụ chấn thương nhỏ để tiến hóa)",
+        "Inversion (Charlie Munger: Muốn hủy hoại một đứa trẻ, hãy tước đoạt quyền vấp ngã của nó)",
+        "Second-Order Thinking (Hệ quả của sự bao bọc là sự suy yếu năng lực sinh tồn)",
+        "First Principles (Bản chất của học tập là thử và sai)"
+      ],
+      "latticework_analysis": "- **Sinh học tiến hóa & Hormesis**: Hệ cơ bắp và hệ miễn dịch của con người chỉ phát triển khi được kích hoạt bởi các 'liều lượng stress sinh học' phù hợp. Tước đoạt stress là tước đoạt cơ hội tăng trưởng.\n- **Chiến lược Quả tạ (Barbell) của Taleb**:\n  - Cực bảo vệ tuyệt đối (90%): Ngăn ngừa các rủi ro mang tính diệt vong (an toàn tính mạng, ma túy, suy đồi đạo đức).\n  - Cực tự do tối đa (10%): Khuyến khích và cho phép con phạm các 'thất bại vi mô' (Micro-failures) — điểm kém do tự quản lý thời gian sai, thử nghiệm phương pháp học mới thất bại, tự chịu trách nhiệm khi quyết định sai.\n- **Lý thuyết Trò chơi**: Khi cha mẹ luôn can thiệp sửa sai, con cái hình thành tâm lý ỷ lại (Moral Hazard) vì chúng không có 'Skin in the game' (không chịu hậu quả từ hành động của mình).",
+      "elite_solution": [
+        "Bước 1: Rạch ròi lằn ranh đỏ giữa 'Rủi ro diệt vong' (Ruin Risk) và 'Thất bại vi mô' (Micro-failure).",
+        "Bước 2: Tuyệt đối không can thiệp vào các thất bại vi mô của con; hãy để hậu quả tự nhiên dạy con bài học thực tế.",
+        "Bước 3: Chuyển vai trò từ 'Người giám sát áp đặt' sang 'Chief Mentor': Đặt câu hỏi Socratic để con tự phân rã nguyên nhân thất bại và tự thiết kế giải pháp mới.",
+        "Bước 4: Khuyến khích con tham gia các cuộc thử nghiệm có chi phí thất bại thấp nhưng tiềm năng đòn bẩy lớn (như tự làm dự án, học lập trình Agent AI, đọc sách tinh hoa)."
+      ],
+      "key_takeaways": "Tình yêu thương đích thực không phải là trải sẵn thảm đỏ dọn sạch chướng ngại vật cho con đi, mà là rèn luyện cho con một đôi chân vững chãi có khả năng bước đi kiêu hãnh trên mọi địa hình sỏi đá."
+    }
+  ]
+}

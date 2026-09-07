@@ -4,12 +4,42 @@ from __future__ import annotations
 
 import streamlit as st
 from utils.app_common import bootstrap
+from utils.knowledge_archive import load_deep_dives
 
 ctx = bootstrap()
 username = ctx["username"]
 display_name = ctx["display_name"]
 active_keys = ctx["active_keys"]
 model_choice = ctx["model_choice"]
+
+deep_dives_data = load_deep_dives()
+
+def render_deep_dive(mode_code: str):
+    dd = deep_dives_data.get(mode_code)
+    if not dd:
+        return
+    st.markdown("---")
+    st.markdown(f"#### 🔬 {dd.get('title', 'Luận Giải Chuyên Sâu Từ Hội Đồng Trí Tuệ')}")
+    st.caption(f"🛡️ Phê duyệt bởi: **{dd.get('updated_by', 'Admin')}** · Cập nhật: `{dd.get('updated_at', '')}` · Nguồn: `{dd.get('source_ref', 'Hội đồng')}`")
+    if dd.get("quote"):
+        st.success(f"💬 **Châm ngôn cốt lõi:** *\"{dd.get('quote')}\"*")
+    
+    layers = dd.get("layers", {})
+    t1, t2, t3, t4 = st.tabs([
+        "🏛️ Tầng 1: Bản chất & Toán học",
+        "🕸️ Tầng 2: Mạng lưới Latticework",
+        "⚖️ Tầng 3: Barbell & Bậc hai",
+        "🪞 Tầng 4: Socratic & Feynman"
+    ])
+    with t1:
+        st.markdown(layers.get("layer_1_core", ""))
+    with t2:
+        st.markdown(layers.get("layer_2_latticework", ""))
+    with t3:
+        st.markdown(layers.get("layer_3_second_order", ""))
+    with t4:
+        st.markdown(layers.get("layer_4_feynman_socratic", ""))
+
 
 
 st.title("📖 Cẩm Nang 9 Chế Độ Tư Duy Tinh Hoa (Elite Mental Modes)")
@@ -63,6 +93,7 @@ with st.expander("🎯 1. First Principles — Tư duy Nguyên bản (Elon Musk,
         *"Nguyên tắc đầu tiên là bạn không được tự lừa dối chính mình — và bạn chính là người dễ bị lừa nhất."*  
         Khi bóc tách nguyên lý, hãy kiểm tra: Bạn có đang dùng từ ngữ cao siêu để che giấu việc mình chưa hiểu? Nếu không thể giải thích bằng một ví dụ thực tế đơn giản, bạn vẫn đang ở trong bẫy học vẹt.
         """)
+    render_deep_dive("MODE-01")
 
 with st.expander("🎲 2. Tư duy Xác suất & Cập nhật Bayesian (Probabilistic & Bayesian Updating)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -87,6 +118,7 @@ with st.expander("🎲 2. Tư duy Xác suất & Cập nhật Bayesian (Probabili
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Xác suất khách quan điều này xảy ra là bao nhiêu %?*")
         st.caption("• *Dữ liệu mới này khiến tôi nên tăng hay giảm niềm tin bao nhiêu điểm?*")
+    render_deep_dive("MODE-02")
 
 with st.expander("🔄 3. Tư duy Đảo ngược (Inversion — Charlie Munger, Carl Jacobi)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -111,6 +143,7 @@ with st.expander("🔄 3. Tư duy Đảo ngược (Inversion — Charlie Munger,
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Nếu muốn dự án này thất bại thảm hại nhất có thể, tôi sẽ làm gì?*")
         st.caption("• *Tôi đang làm điều ngu ngốc nào mà nếu dừng lại sẽ tốt lên ngay lập tức?*")
+    render_deep_dive("MODE-03")
 
 with st.expander("🌊 4. Tư duy Bậc hai & Bậc cao (Second & Higher-Order Thinking — Howard Marks)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -135,6 +168,7 @@ with st.expander("🌊 4. Tư duy Bậc hai & Bậc cao (Second & Higher-Order T
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Và sau đó thì sao? Sau 1 tuần, 1 tháng, 1 năm nữa sẽ thế nào?*")
         st.caption("• *Hành động này mang lại lợi ích ngắn hạn nhưng rủi ro dài hạn ở đâu?*")
+    render_deep_dive("MODE-04")
 
 with st.expander("⚖️ 5. Tư duy Tùy chọn & Bất đối xứng (Optionality & Antifragility — Nassim Nicholas Taleb)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -159,6 +193,7 @@ with st.expander("⚖️ 5. Tư duy Tùy chọn & Bất đối xứng (Optionali
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Trường hợp xấu nhất xảy ra, tôi có bị phá sản/loại bỏ khỏi cuộc chơi không?*")
         st.caption("• *Nếu thành công, cơ hội này có thể nhân lên gấp bao nhiêu lần?*")
+    render_deep_dive("MODE-05")
 
 with st.expander("🕸️ 6. Mạng lưới Mô hình Tư duy Đa ngành (Latticework of Mental Models — Charlie Munger)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -183,6 +218,7 @@ with st.expander("🕸️ 6. Mạng lưới Mô hình Tư duy Đa ngành (Lattic
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Nhà sinh học / Nhà vật lý / Nhà kinh tế học sẽ nhìn bài toán này thế nào?*")
         st.caption("• *Có những lực vô hình nào từ các ngành khác đang chi phối hệ thống này?*")
+    render_deep_dive("MODE-06")
 
 with st.expander("⚡ 7. Tư duy Thực nghiệm Nhanh (Empirical / Iterative / Lean Thinking)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -207,6 +243,7 @@ with st.expander("⚡ 7. Tư duy Thực nghiệm Nhanh (Empirical / Iterative / 
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Cách nhanh nhất và rẻ nhất để tôi kiểm chứng giả thuyết này hôm nay là gì?*")
         st.caption("• *Dữ liệu thực tế đang nói điều gì trái ngược với niềm tin ban đầu của tôi?*")
+    render_deep_dive("MODE-07")
 
 with st.expander("♟️ 8. Tư duy Chiến lược & Lý thuyết Trò chơi (Strategic & Game Theory)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -231,6 +268,7 @@ with st.expander("♟️ 8. Tư duy Chiến lược & Lý thuyết Trò chơi (S
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Người này được thưởng hay bị phạt dựa trên chỉ số nào?*")
         st.caption("• *Nếu tôi đi nước cờ này, đối phương có động lực phản ứng lại như thế nào?*")
+    render_deep_dive("MODE-08")
 
 with st.expander("⏳ 9. Tư duy Đa quy mô Thời gian (Multi-timescale Thinking — Jeff Bezos)", expanded=False):
     c_a, c_b = st.columns([3, 2])
@@ -255,6 +293,7 @@ with st.expander("⏳ 9. Tư duy Đa quy mô Thời gian (Multi-timescale Thinki
         st.markdown("**Bộ câu hỏi tự vấn (Prompts):**")
         st.caption("• *Điều gì sẽ KHÔNG thay đổi trong lĩnh vực của tôi 10 năm nữa?*")
         st.caption("• *Hành động hôm nay của tôi đang phục vụ cho tầm nhìn 1 tuần hay tầm nhìn 10 năm?*")
+    render_deep_dive("MODE-09")
 
 st.divider()
 st.info("🎯 **Đã nắm vững 9 Lăng kính Tinh hoa?** Hãy chuyển sang **Tab [⚡ Đấu trường Luyện nhớ]** để kiểm tra phản xạ của bạn qua 9 tình huống thực chiến kinh điển hoặc lật thẻ Flashcard 5 giây!")

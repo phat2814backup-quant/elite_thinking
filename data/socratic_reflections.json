@@ -1,0 +1,16 @@
+[
+  {
+    "id": "SOC-01",
+    "mode_code": "MODE-05",
+    "mode_title": "Tư duy Tùy chọn & Bất đối xứng",
+    "title": "Gương Soi: Bạn Đang Cấp Tùy Chọn Hay Đang Ép Chạy Backtest?",
+    "source": "antifragility_and_option_20260907.md",
+    "inquiry_prompt": "Nhìn vào cấu trúc thuật toán/cách phân bổ vốn của bạn, và nhìn vào cách bạn phản ứng khi con cái/cộng sự đưa ra một quyết định sai lầm hôm qua:\n\nBạn đang thực sự cấp cho họ một 'Tùy chọn' (Optionality) để tự sửa sai và tiến hóa, hay bạn vẫn đang ngầm can thiệp để ép mọi thứ chạy theo một 'Backtest hoàn hảo' trong tâm trí bạn?",
+    "feynman_challenge": "Hãy thành thật với chính mình: Bạn có đang chấp nhận một chi phí nhỏ (1R, một lần điểm kém, một lần thử sai) để đổi lấy bài học nguyên bản vô giá, hay bạn đang sợ mất mát nhỏ đến mức tạo ra một quả bom rủi ro tích tụ trong tương lai?",
+    "reflection_questions": [
+      "Đâu là 1 việc tôi đang kiểm soát quá mức vì sợ sai lầm nhỏ?",
+      "Nếu buông tay cho việc đó thất bại ở mức vi mô, chi phí tối đa là bao nhiêu? Tiềm năng học tập của hệ thống là gì?",
+      "Làm thế nào để tôi thiết kế một 'lớp đệm an toàn' (Stoploss) cho việc đó mà không cần can thiệp vào quá trình thử nghiệm?"
+    ]
+  }
+]

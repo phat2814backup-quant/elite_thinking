@@ -11,11 +11,11 @@
 - **Tên Dự Án**: `Elite Thinking Family v2`
 - **Mục đích**: Nền tảng huấn luyện tư duy tinh hoa (First Principles, Charlie Munger Mental Models, Richard Feynman Technique, Elon Musk Reasoning) dành cho Gia đình (Học sinh Wellspring K12 & Người lớn/Chuyên gia Tài chính/CKVN).
 - **Công nghệ lõi**: Streamlit (Multipage Dynamic Router) + Google Gemini API (Multi-Key Failover) + Supabase PostgreSQL (Kèm Fallback Local JSON).
-- **Thời điểm cập nhật**: `2026-09-07 12:38:14`
+- **Thời điểm cập nhật**: `2026-09-07 14:20:08`
 - **Git Repository**: `https://github.com/phat2814backup-quant/elite_thinking.git`
 - **Git Branch**: `main`
-- **Commit gần nhất**: `f70e10b - feat(vocab): mastercraft Pillar 1 (9 modes) with 54 deep first-principles words (2026-09-07 11:30:10 +0700)`
-- **Trạng thái Git**: `1 uncommitted file(s)`
+- **Commit gần nhất**: `7509059 - feat(vocab): mastercraft Pillar 2 (Munger 88 Models) with 168 deep words across 42 topics (2026-09-07 12:38:22 +0700)`
+- **Trạng thái Git**: `12 uncommitted file(s)`
 
 ---
 
@@ -125,9 +125,10 @@ Nếu không có `SUPABASE_URL` và `SUPABASE_KEY` trong môi trường:
 - Thư viện điều phối: `utils/db.py`, `utils/auth.py`, `utils/app_common.py`.
 
 ### 3.3 Thống Kê Ngân Hàng Dữ Liệu Tĩnh (`data/`)
-- **Tổng số Case Thực Chiến**: **150 cases** (chia làm 6 nhóm chuyên sâu):
+- **Tổng số Case Thực Chiến**: **152 cases** (chia làm 6 nhóm chuyên sâu):
   - `Nhóm F - Elite Hiện Tại & Tầm Nhìn 10–20 Năm Tới`: **50 case** (File: `cases_elite_future.json`, Đối tượng: Giới Tinh Hoa, Nhà Đầu Tư 8x & Thế Hệ Kế Cận (Next-Gen))
   - `Nhóm B - Học tập & Siêu học (Ultralearning)`: **20 case** (File: `cases_hoc_tap_tu_duy.json`, Đối tượng: 11-15 + người lớn tự học)
+  - `Nhóm P - Tình Huống Thực Chiến Của Hội Đồng (User & Council Practice)`: **2 case** (File: `cases_practice_user.json`, Đối tượng: Giới Elite, Nhà đầu tư & Cha mẹ)
   - `Nhóm D - Sự nghiệp & Quyết định cuộc đời`: **15 case** (File: `cases_su_nghiep_quyet_dinh.json`, Đối tượng: Người lớn 8x + thanh niên sắp chọn nghề)
   - `Nhóm C - Tài chính cá nhân, CKVN & Đòn bẩy vốn`: **25 case** (File: `cases_tai_chinh_ckvn.json`, Đối tượng: Người lớn 8x – tầng lớp trung lưu Sài Gòn (chứng khoán, ngân hàng, đầu tư))
   - `Nhóm E - Tâm lý đám đông & Hệ thống xã hội`: **15 case** (File: `cases_tam_ly_he_thong.json`, Đối tượng: Cả trẻ lớn và người lớn)
@@ -218,8 +219,12 @@ elite_thinking/
 ├── 📂 **data/**
 │   ├── 📂 **bilingual_books/**
 │   │   └── 📄 `feynman_surely_youre_joking.json` *(1.78 MB)*
+│   ├── 📂 **practice_archive/**
+│   │   ├── 📄 `20260907_141631_antifragility_and_option_20260907.md` *(23.6 KB)*
+│   │   └── 📄 `archive_index.json` *(0.6 KB)*
 │   ├── 📄 `cases_elite_future.json` *(114.9 KB)*
 │   ├── 📄 `cases_hoc_tap_tu_duy.json` *(26.5 KB)*
+│   ├── 📄 `cases_practice_user.json` *(6.7 KB)*
 │   ├── 📄 `cases_su_nghiep_quyet_dinh.json` *(20.3 KB)*
 │   ├── 📄 `cases_tai_chinh_ckvn.json` *(32.0 KB)*
 │   ├── 📄 `cases_tam_ly_he_thong.json` *(20.5 KB)*
@@ -229,6 +234,8 @@ elite_thinking/
 │   ├── 📄 `elite_vocab.json` *(900.9 KB)*
 │   ├── 📄 `knowledge_base.json` *(127.1 KB)*
 │   ├── 📄 `lessons.json` *(163.6 KB)*
+│   ├── 📄 `mode_deep_dives.json` *(5.7 KB)*
+│   ├── 📄 `socratic_reflections.json` *(1.5 KB)*
 │   └── 📄 `users.json` *(1.0 KB)*
 ├── 📂 **extension/**
 │   ├── 📂 **data/**
@@ -249,18 +256,20 @@ elite_thinking/
 │   └── 📄 `source.md` *(0.0 KB)*
 ├── 📂 **pages/**
 │   ├── 📄 `0_lo_trinh_12_tuan.py` *(11.5 KB)*
-│   ├── 📄 `10_so_tay_tri_thuc.py` *(32.7 KB)*
+│   ├── 📄 `10_so_tay_tri_thuc.py` *(37.5 KB)*
 │   ├── 📄 `11_case_thuc_chien.py` *(11.8 KB)*
 │   ├── 📄 `12_tieng_anh_elite.py` *(32.1 KB)*
 │   ├── 📄 `1_the_cuoc_elite.py` *(14.7 KB)*
-│   ├── 📄 `2_9_che_do_tu_duy.py` *(21.2 KB)*
+│   ├── 📄 `2_9_che_do_tu_duy.py` *(22.6 KB)*
 │   ├── 📄 `3_88_mo_hinh.py` *(32.4 KB)*
 │   ├── 📄 `4_thu_vien_nguyen_ly.py` *(1.9 KB)*
 │   ├── 📄 `5_dau_truong.py` *(37.6 KB)*
 │   ├── 📄 `6_dao_tao.py` *(25.2 KB)*
 │   ├── 📄 `7_phan_ra.py` *(23.9 KB)*
 │   ├── 📄 `8_lich_su.py` *(4.8 KB)*
-│   └── 📄 `9_admin.py` *(8.3 KB)*
+│   └── 📄 `9_admin.py` *(26.0 KB)*
+├── 📂 **practice/**
+│   └── 📄 `antifragility and option - 20260907.pdf` *(273.9 KB)*
 ├── 📂 **supabase/**
 │   ├── 📄 `schema.sql` *(2.2 KB)*
 │   └── 📄 `seed_users.py` *(1.4 KB)*
@@ -275,7 +284,9 @@ elite_thinking/
 │   ├── 📄 `db.py` *(1.8 KB)*
 │   ├── 📄 `decision_journal.py` *(5.7 KB)*
 │   ├── 📄 `diagnostic.py` *(28.1 KB)*
+│   ├── 📄 `doc_converter.py` *(3.7 KB)*
 │   ├── 📄 `knowledge.py` *(8.0 KB)*
+│   ├── 📄 `knowledge_archive.py` *(9.7 KB)*
 │   ├── 📄 `macro_evolution.py` *(37.5 KB)*
 │   ├── 📄 `mental_models.py` *(9.2 KB)*
 │   ├── 📄 `notes_manager.py` *(52.1 KB)*
@@ -287,7 +298,7 @@ elite_thinking/
 ├── 📄 `app.py` *(11.6 KB)*
 ├── 📄 `export_project_context.bat` *(1.6 KB)*
 ├── 📄 `export_project_context.py` *(41.8 KB)*
-├── 📄 `PROJECT_CONTEXT.md` *(29.9 KB)*
+├── 📄 `PROJECT_CONTEXT.md` *(30.7 KB)*
 ├── 📄 `push_to_github.bat` *(2.1 KB)*
 ├── 📄 `README.md` *(4.3 KB)*
 └── 📄 `requirements.txt` *(0.1 KB)*

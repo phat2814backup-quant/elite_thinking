@@ -35,6 +35,11 @@ from utils.notes_manager import (
     synthesize_cross_notes,
     feynman_jargon_buster,
 )
+from utils.knowledge_archive import (
+    load_socratic_reflections,
+    list_archives,
+    get_archive
+)
 
 # -----------------------------------------------------------------------------
 # Bootstrap & Auth
@@ -51,15 +56,16 @@ st.caption(
 )
 
 # -----------------------------------------------------------------------------
-# 4 Main Tabs
+# 5 Main Tabs
 # -----------------------------------------------------------------------------
 tab_labels = [
     "✍️ Ghi Chép Nhanh & AI Phân Rã",
     "🗂️ Kho Tri Thức & Tra Cứu Đan Chéo",
     "🎓 Ôn Tập Phản Xạ & AI Tổng Hợp",
     "🕸️ Bản Đồ Tri Thức & Xuất Dữ Liệu",
+    "🪞 Gương Soi Socratic & Tham Khảo",
 ]
-tab_capture, tab_vault, tab_recall, tab_graph = st.tabs(tab_labels)
+tab_capture, tab_vault, tab_recall, tab_graph, tab_socratic = st.tabs(tab_labels)
 
 # =============================================================================
 # TAB 1: GHI CHÉP NHANH & AI PHÂN RÃ
@@ -638,3 +644,78 @@ with tab_graph:
             mime="application/json",
             use_container_width=True,
         )
+
+# =============================================================================
+# TAB 5: GƯƠNG SOI SOCRATIC & THAM KHẢO
+# =============================================================================
+with tab_socratic:
+    st.markdown("### 🪞 Gương Soi Socratic & Kho Tham Khảo Hội Đồng")
+    st.caption("Các câu hỏi tự vấn khắc nghiệt từ Hội đồng Trí tuệ Tối cao và kho tài liệu đối thoại nguyên bản.")
+
+    sec_soc, sec_ref = st.tabs(["🪞 Gương Soi Tự Vấn Socratic", "📚 Kho Tài Liệu Tham Khảo Nguyên Bản"])
+
+    with sec_soc:
+        soc_list = load_socratic_reflections()
+        if not soc_list:
+            st.info("Chưa có chủ đề tự vấn Socratic nào được nạp từ Hội đồng.")
+        else:
+            for s in soc_list:
+                s_id = s.get("id", "")
+                s_title = s.get("title", "Tự vấn Socratic")
+                s_mode = s.get("mode_title", "")
+                
+                with st.expander(f"🪞 **{s_title}** [{s_mode}]", expanded=True):
+                    st.info(f"🧠 **Truy vấn từ Hội đồng Trí tuệ:**\n\n{s.get('inquiry_prompt', '')}")
+                    
+                    if s.get("feynman_challenge"):
+                        st.warning(f"🎭 **Thử thách Feynman (Đừng tự dối mình):**\n\n{s.get('feynman_challenge')}")
+                    
+                    st.markdown("##### 📝 Bộ câu hỏi tự vấn chi tiết:")
+                    for q in s.get("reflection_questions", []):
+                        st.markdown(f"- ❓ *{q}*")
+                    
+                    st.markdown("---")
+                    st.markdown("##### ✍️ Viết nhật ký phản tư của bạn (Lưu vào Second Brain):")
+                    ans_key = f"soc_ans_{s_id}_{username}"
+                    user_journal = st.text_area(
+                        "Nhật ký tự soi chiếu trung thực của bạn:",
+                        height=150,
+                        placeholder="Hãy viết thật lòng: Điểm mù của bạn ở đâu? Bạn đang bảo bọc hay đang cấp tùy chọn? Quyết định tiếp theo là gì?...",
+                        key=f"input_{ans_key}"
+                    )
+                    if st.button(f"💾 Lưu Nhật Ký Vào Second Brain ({s_id})", key=f"btn_{ans_key}", type="primary"):
+                        if user_journal.strip():
+                            create_note(
+                                username=username,
+                                title=f"Phản tư Socratic: {s_title}",
+                                raw_content=f"**Chủ đề:** {s_title} ({s_mode})\n\n**Truy vấn:**\n{s.get('inquiry_prompt')}\n\n**Nhật ký phản tư cá nhân:**\n{user_journal.strip()}",
+                                domain="Tư duy & Đời sống",
+                                tags=["Socratic", "Phản tư", s_mode] if s_mode else ["Socratic", "Phản tư"],
+                                mental_models=[s_mode] if s_mode else []
+                            )
+                            st.success("✅ Đã lưu thành công vào Second Brain của bạn! Bạn có thể xem lại ở Tab 2 [🗂️ Kho Tri Thức].")
+                        else:
+                            st.warning("Vui lòng viết đôi dòng phản tư trước khi lưu.")
+
+    with sec_ref:
+        archives = list_archives()
+        if not archives:
+            st.info("Kho tài liệu tham khảo hiện đang trống.")
+        else:
+            st.markdown(f"Đang có **{len(archives)}** tài liệu đối thoại / tham khảo nguyên bản (được lưu dạng Markdown nhẹ).")
+            sel_arch_idx = st.selectbox(
+                "Chọn tài liệu muốn đọc:",
+                range(len(archives)),
+                format_func=lambda i: f"📄 {archives[i].get('title', 'Tài liệu')} ({archives[i].get('created_at', '')} · {archives[i].get('word_count', 0)} từ)"
+            )
+            sel_arch = archives[sel_arch_idx]
+            arch_data = get_archive(sel_arch.get("id"))
+            if arch_data:
+                st.markdown(f"### 📄 {arch_data.get('title')}")
+                st.caption(f"🗓️ Ngày nạp: `{arch_data.get('created_at')}` · Tác giả: `{arch_data.get('created_by')}` · File: `{arch_data.get('filename')}`")
+                tags_str = " · ".join([f"`{t}`" for t in arch_data.get("tags", [])])
+                st.markdown(f"Thẻ: {tags_str}")
+                
+                with st.expander("📖 Xem toàn bộ nội dung Markdown nguyên bản", expanded=True):
+                    st.markdown(arch_data.get("content", ""))
+
