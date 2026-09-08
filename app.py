@@ -217,12 +217,13 @@ else:
     p10 = st.Page("pages/10_so_tay_tri_thuc.py", title="Sổ tay Tri thức (Second Brain)", icon="💡")
     p11 = st.Page("pages/11_case_thuc_chien.py", title="Case Thực Chiến (150+)", icon="🎯")
     p12 = st.Page("pages/12_tieng_anh_elite.py", title="Từ vựng Tinh hoa (First Principles)", icon="🧬")
+    p13 = st.Page("pages/13_kho_sku_ghep_sach.py", title="Kho SKU & Ghép Sách", icon="📦")
 
     nav_map = {
         "🧭 Định hướng": [home_page, p0],
         "🧠 Lăng kính & Mô hình": [p1, p2, p3, p4],
         "⚔️ Rèn luyện & Thực chiến": [p5, p6, p7, p11, p8],
-        "💡 Sổ tay & Tri thức": [p10, p12],
+        "💡 Sổ tay & Tri thức": [p10, p13, p12],
     }
 
 
