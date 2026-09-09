@@ -734,3 +734,264 @@ def compile_book_manuscript(username: str, project_id: str) -> Dict[str, Any]:
         "total_chapters": len(outline),
         "project_title": book_title
     }
+
+
+# =============================================================================
+# AI Auto-Clustering & Living Book Synthesis (Từ Mảnh Ghép -> Mục Lục Sách)
+# =============================================================================
+
+BOOK_CLUSTERING_PROMPT = """Bạn là Tổng Biên Tập Xuất Bản Sách Chuyên Nghiệp.
+Tác giả đã thu thập nhiều mảnh ghép tri thức (trích đoạn, thẻ ghi chú) về một chủ đề cụ thể.
+Nhiệm vụ của bạn là đọc các trích đoạn này, phát hiện các cụm ngữ nghĩa tự nhiên, và thiết kế một CÂY MỤC LỤC SÁCH HOÀN CHỈNH (Chương -> Tiết), sau đó phân bổ từng trích đoạn (theo ID) vào đúng Tiết phù hợp nhất.
+
+QUY TẮC CỐT LÕI:
+1. Thứ tự logic sách: Đi từ Bản chất / Nguyên lý cơ bản -> Công cụ / Kỹ thuật phân tích -> Chiến lược / Quản trị rủi ro -> Ứng dụng thực chiến.
+2. Đặt tên Chương và Tiết thật cô đọng, sắc bén, mang phong thái chuyên gia.
+3. Mỗi trích đoạn BẮT BUỘC phải được gán vào ít nhất một Tiết.
+4. Trả về 1 JSON duy nhất theo schema sau (không kèm markdown ngoài JSON):
+{
+  "suggested_title": "Tựa đề cuốn sách đầy đủ",
+  "suggested_subtitle": "Phụ đề gợi ý",
+  "chapters": [
+    {
+      "chapter_id": "chap_1",
+      "chapter_title": "Chương 1: Tên chương",
+      "sections": [
+        {
+          "section_id": "sec_1_1",
+          "section_title": "1.1 Tên tiết",
+          "assigned_sku_ids": ["SKU-ID-1", "SKU-ID-2"]
+        }
+      ]
+    }
+  ]
+}
+"""
+
+
+def _heuristic_cluster_book(
+    skus_subset: List[Dict[str, Any]],
+    target_tag: str,
+    book_title: str
+) -> Dict[str, Any]:
+    """Phân cụm dự phòng dựa trên heuristic rule-based khi không có Gemini API key."""
+    title = book_title.strip() or f"Sổ Tay Chuyên Khảo: {target_tag.capitalize()}"
+    chap1_skus, chap2_skus, chap3_skus = [], [], []
+
+    for s in skus_subset:
+        txt = (s.get("raw_content", "") + " " + " ".join(s.get("tags", []))).lower()
+        if any(w in txt for w in ["định nghĩa", "khái niệm", "bản chất", "nguyên lý", "first principles", "tổng quan"]):
+            chap1_skus.append(s.get("sku_id"))
+        elif any(w in txt for w in ["rủi ro", "tâm lý", "stoploss", "kỷ luật", "quản trị", "asymmetric", "taleb"]):
+            chap3_skus.append(s.get("sku_id"))
+        else:
+            chap2_skus.append(s.get("sku_id"))
+
+    # Đảm bảo không chương nào rỗng nếu có thể
+    if not chap1_skus and skus_subset:
+        chap1_skus.append(skus_subset[0].get("sku_id"))
+    all_assigned = set(chap1_skus + chap2_skus + chap3_skus)
+    for s in skus_subset:
+        sid = s.get("sku_id")
+        if sid not in all_assigned:
+            chap2_skus.append(sid)
+
+    return {
+        "suggested_title": title,
+        "suggested_subtitle": f"Đúc kết từ các ghi chép và trích đoạn chuyên sâu về {target_tag}",
+        "chapters": [
+            {
+                "chapter_id": "chap_1",
+                "chapter_title": "Chương 1: Bản Chất Cốt Lõi & Nguyên Lý Nền Tảng",
+                "sections": [
+                    {
+                        "section_id": "sec_1_1",
+                        "section_title": "1.1 Định vị bản chất & Tiền đề quan trọng",
+                        "assigned_sku_ids": chap1_skus
+                    }
+                ]
+            },
+            {
+                "chapter_id": "chap_2",
+                "chapter_title": "Chương 2: Cấu Trúc, Cơ Chế & Kỹ Thuật Chi Tiết",
+                "sections": [
+                    {
+                        "section_id": "sec_2_1",
+                        "section_title": "2.1 Bóc tách cấu trúc và quy luật vận hành",
+                        "assigned_sku_ids": chap2_skus
+                    }
+                ]
+            },
+            {
+                "chapter_id": "chap_3",
+                "chapter_title": "Chương 3: Quản Trị Rủi Ro & Chiến Lược Thực Chiến",
+                "sections": [
+                    {
+                        "section_id": "sec_3_1",
+                        "section_title": "3.1 Tối ưu vị thế và kiểm soát rủi ro",
+                        "assigned_sku_ids": chap3_skus
+                    }
+                ]
+            }
+        ]
+    }
+
+
+def ai_auto_cluster_and_build_book(
+    username: str,
+    target_tag: str,
+    book_title: str = "",
+    api_keys: Optional[List[str]] = None,
+    model_name: str = "gemini-2.5-flash",
+    book_subtitle: str = "",
+    author: str = ""
+) -> Dict[str, Any]:
+    """
+    Tự động đọc tất cả mảnh ghép (SKU) có chứa target_tag (hoặc toàn bộ kho nếu target_tag rỗng),
+    dùng AI để phân cụm ngữ nghĩa, tự động kiến tạo mục lục sách logic và gán các mảnh ghép vào các chương.
+    """
+    all_skus = get_user_skus(username)
+    norm_tag = target_tag.strip().lower()
+
+    if norm_tag and norm_tag != "tất cả":
+        matched_skus = [
+            s for s in all_skus
+            if any(norm_tag in str(t).lower() for t in s.get("tags", []))
+            or (norm_tag in s.get("raw_content", "").lower())
+            or (norm_tag in s.get("title", "").lower())
+        ]
+    else:
+        matched_skus = list(all_skus)
+
+    if not matched_skus:
+        return {
+            "success": False,
+            "error": f"Không tìm thấy mảnh ghép nào phù hợp với thẻ '{target_tag}'!"
+        }
+
+    # Chuẩn bị dữ liệu tóm lược cho AI
+    snippet_data = []
+    for s in matched_skus:
+        snippet_data.append({
+            "sku_id": s.get("sku_id"),
+            "title": s.get("title", ""),
+            "tags": s.get("tags", []),
+            "content_preview": s.get("raw_content", "")[:350],
+            "user_note": s.get("user_note", "")
+        })
+
+    cluster_result = None
+    valid_keys = [k.strip() for k in (api_keys or []) if k and k.strip() and not k.startswith("AQ.")]
+
+    if valid_keys and genai is not None:
+        user_prompt = f"""Chủ đề trọng tâm của cuốn sách: {target_tag or 'Tri thức tinh hoa'}
+Tựa đề dự kiến (nếu có): {book_title or 'Chưa đặt'}
+
+Dưới đây là danh sách {len(snippet_data)} mảnh ghép tri thức cần phân bổ vào các chương:
+{json.dumps(snippet_data, ensure_ascii=False, indent=2)}
+"""
+        candidates = [model_name, "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+        for key in valid_keys:
+            try:
+                genai.configure(api_key=key)
+                for cand in candidates:
+                    try:
+                        model = genai.GenerativeModel(
+                            model_name=cand,
+                            system_instruction=BOOK_CLUSTERING_PROMPT,
+                            generation_config={"response_mime_type": "application/json"}
+                        )
+                        resp = model.generate_content(user_prompt, request_options={"timeout": 45})
+                        if resp and resp.text:
+                            text = resp.text.strip()
+                            if text.startswith("```"):
+                                lines = text.splitlines()
+                                if len(lines) >= 2 and lines[-1].startswith("```"):
+                                    text = "\n".join(lines[1:-1]).strip()
+                            data = json.loads(text)
+                            if isinstance(data, dict) and "chapters" in data:
+                                cluster_result = data
+                                break
+                    except Exception:
+                        continue
+                if cluster_result:
+                    break
+            except Exception:
+                continue
+
+    if not cluster_result:
+        cluster_result = _heuristic_cluster_book(matched_skus, target_tag, book_title)
+
+    # Khởi tạo dự án sách mới
+    final_title = book_title.strip() or cluster_result.get("suggested_title", f"Sách Chuyên Đề: {target_tag}")
+    final_subtitle = book_subtitle.strip() or cluster_result.get("suggested_subtitle", "")
+
+    # Chuẩn hóa cấu trúc outline cho project
+    outline_for_project = []
+    sku_assignment_map = {}  # sku_id -> (chap_id, chap_title, sec_id, sec_title, order)
+
+    for idx_c, chap in enumerate(cluster_result.get("chapters", []), 1):
+        c_id = chap.get("chapter_id") or f"chap_{idx_c}"
+        c_title = chap.get("chapter_title", f"Chương {idx_c}")
+        sec_list = []
+        for idx_s, sec in enumerate(chap.get("sections", []), 1):
+            s_id = sec.get("section_id") or f"{c_id}_sec_{idx_s}"
+            s_title = sec.get("section_title", f"{idx_c}.{idx_s} Tiểu mục")
+            sec_list.append({
+                "section_id": s_id,
+                "section_title": s_title
+            })
+            for ord_idx, sku_id in enumerate(sec.get("assigned_sku_ids", []), 1):
+                sku_assignment_map[sku_id] = (c_id, c_title, s_id, s_title, ord_idx)
+        outline_for_project.append({
+            "chapter_id": c_id,
+            "chapter_title": c_title,
+            "sections": sec_list
+        })
+
+    # Tạo Book Project
+    new_proj = create_book_project(
+        username=username,
+        title=final_title,
+        subtitle=final_subtitle,
+        author=author or username,
+        description=f"Cuốn sách được tổng hợp tự động từ {len(matched_skus)} mảnh ghép tri thức về '{target_tag}'.",
+        outline=outline_for_project
+    )
+    new_pid = new_proj.get("project_id")
+
+    # Cập nhật vị trí cho từng SKU
+    assigned_count = 0
+    all_user_skus = get_user_skus(username)
+    for s in all_user_skus:
+        sid = s.get("sku_id")
+        if sid in sku_assignment_map:
+            c_id, c_title, s_id, s_title, ord_num = sku_assignment_map[sid]
+            s["book_project_id"] = new_pid
+            s["target_chapter_id"] = c_id
+            s["target_chapter"] = c_title
+            s["target_section_id"] = s_id
+            s["target_section"] = s_title
+            s["sort_order"] = ord_num
+            assigned_count += 1
+        elif sid in [m.get("sku_id") for m in matched_skus]:
+            # SKU thuộc tag nhưng AI chưa gán -> đưa vào chương 1 tiết 1
+            first_c = outline_for_project[0] if outline_for_project else {}
+            first_s = (first_c.get("sections") or [{}])[0]
+            s["book_project_id"] = new_pid
+            s["target_chapter_id"] = first_c.get("chapter_id", "")
+            s["target_chapter"] = first_c.get("chapter_title", "")
+            s["target_section_id"] = first_s.get("section_id", "")
+            s["target_section"] = first_s.get("section_title", "")
+            s["sort_order"] = 99
+            assigned_count += 1
+
+    save_user_skus(username, all_user_skus)
+
+    return {
+        "success": True,
+        "project": new_proj,
+        "assigned_count": assigned_count,
+        "total_chapters": len(outline_for_project)
+    }
+
