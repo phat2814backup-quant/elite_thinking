@@ -130,7 +130,20 @@ with tab_capture:
             src_page_url = st.text_input("Trang hoặc Link URL:", placeholder="VD: Trang 15 hoặc https://...", key="qc_url")
 
     st.write("")
-    if st.button("💾 LƯU MẢNH GHÉP VÀO KHO", type="primary", use_container_width=True):
+    col_btn1, col_btn2 = st.columns([3, 1.2])
+    with col_btn1:
+        btn_save = st.button("💾 LƯU MẢNH GHÉP VÀO KHO", type="primary", use_container_width=True)
+    with col_btn2:
+        btn_clear = st.button("🧹 XÓA TRẮNG (CLEAR)", use_container_width=True, help="Xóa sạch nội dung đang nhập để paste đoạn mới")
+
+    if btn_clear:
+        for k in ["qc_raw_text", "qc_tags_input", "qc_user_note", "qc_author", "qc_book", "qc_url"]:
+            if k in st.session_state:
+                st.session_state[k] = ""
+        st.toast("🧹 Đã xóa trắng nội dung!")
+        st.rerun()
+
+    if btn_save:
         if not raw_text.strip():
             st.error("Vui lòng dán nội dung trích đoạn trước khi lưu!")
         else:
@@ -161,8 +174,13 @@ with tab_capture:
                 user_note=user_personal_note
             )
 
+            # Tự động dọn sạch form cho lượt nhập tiếp theo
+            for k in ["qc_raw_text", "qc_tags_input", "qc_user_note", "qc_author", "qc_book", "qc_url"]:
+                if k in st.session_state:
+                    st.session_state[k] = ""
+
             st.success(f"🎉 Đã lưu mảnh ghép: **{new_sku['sku_id']}** với các thẻ `#{' #'.join(raw_tags)}`")
-            st.toast("✅ Đã lưu thành công vào kho tri thức!")
+            st.toast("✅ Đã lưu và làm sạch form!")
             st.rerun()
 
     # Hiển thị 3 mảnh ghép vừa nạp gần nhất
