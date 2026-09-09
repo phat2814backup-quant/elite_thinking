@@ -82,11 +82,27 @@ with tab_capture:
     st.markdown("### 📥 Thu Nạp Mảnh Ghép Tri Thức")
     st.caption("Dán đoạn văn bạn tâm đắc. Chỉ cần 1 đến 3 từ khóa phân loại ngắn gọn.")
 
-    # Form nhập tối giản
+    # CSS tối ưu cho khung nhập văn bản dài không bị nhảy giật
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stTextArea"] textarea {
+            min-height: 420px !important;
+            font-size: 1.02rem !important;
+            line-height: 1.65 !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+            resize: vertical !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Form nhập rộng rãi, thoải mái cho văn bản dài
     raw_text = st.text_area(
         "📄 Nội dung trích dẫn (Bảo toàn 100% nguyên văn):",
-        height=220,
-        placeholder="Dán đoạn văn bản nguyên gốc vào đây... (Ví dụ: Một trích đoạn về CVD râu nến, quy luật quét thanh khoản XAU, bài học quản trị rủi ro...)",
+        height=420,
+        placeholder="Dán đoạn văn bản nguyên gốc vào đây... (Ví dụ: Một trích đoạn dài về CVD râu nến, quy luật quét thanh khoản XAU, bài học quản trị rủi ro... Khung nhập đã được bung rộng để bạn thoải mái đọc và chỉnh sửa mà không bị cuộn nhảy).",
         key="qc_raw_text"
     )
 
