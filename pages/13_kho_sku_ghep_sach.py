@@ -109,14 +109,44 @@ with tab_capture:
         key=f"qc_raw_text_{qc_v}"
     )
 
-    col_tag, col_save = st.columns([3, 1])
+    # Lấy toàn bộ thẻ đã có trong kho để gợi ý thông minh
+    user_skus_all = get_user_skus(username)
+    all_vault_tags = [t for t in get_all_sku_tags(user_skus_all) if t != "Tất cả"]
+    default_seeds = ["vàng", "định nghĩa", "nến", "marubozu", "râu nến", "cvd", "thanh khoản", "rủi ro", "stoploss", "tâm lý"]
+    combined_tags = sorted(list(set(all_vault_tags + default_seeds)))
 
-    with col_tag:
-        tags_input = st.text_input(
-            "🏷️ Thẻ phân loại nhanh (1–3 từ khóa, cách nhau bằng dấu phẩy):",
-            placeholder="VD: vàng, nến, marubozu  |  hoặc: vàng, định nghĩa  |  hoặc: rủi ro, stoploss",
-            key=f"qc_tags_input_{qc_v}"
+    import inspect
+    has_accept_new = "accept_new_options" in inspect.signature(st.multiselect).parameters
+
+    if has_accept_new:
+        selected_tags = st.multiselect(
+            "🏷️ Thẻ phân loại nhanh (Gõ thông minh tự gợi ý thẻ cũ, hoặc gõ từ mới rồi nhấn Enter):",
+            options=combined_tags,
+            default=[],
+            accept_new_options=True,
+            placeholder="Gõ 1 từ (VD: vàng, nến, rủi ro...) để chọn thẻ có sẵn, hoặc gõ thẻ mới rồi nhấn Enter...",
+            key=f"qc_tags_multi_{qc_v}"
         )
+    else:
+        col_t1, col_t2 = st.columns([1.6, 1])
+        with col_t1:
+            sel_exist = st.multiselect(
+                "🏷️ Chọn thẻ có sẵn:",
+                options=combined_tags,
+                key=f"qc_tags_sel_{qc_v}",
+                placeholder="Gõ để chọn thẻ có sẵn..."
+            )
+        with col_t2:
+            new_text_tags = st.text_input(
+                "➕ Nhập thẻ mới (nếu chưa có):",
+                placeholder="VD: tag1, tag2...",
+                key=f"qc_tags_new_{qc_v}"
+            )
+        selected_tags = sel_exist + [t.strip().lower() for t in new_text_tags.split(",") if t.strip()]
+
+    # Gợi ý các thẻ hay dùng nhất
+    top_popular_tags = combined_tags[:10]
+    st.caption("💡 **Thẻ phổ biến:** " + " · ".join([f"`#{t}`" for t in top_popular_tags]))
 
     # Phần mở rộng tùy chọn (không bắt buộc)
     with st.expander("➕ Ghi chú cá nhân & Nguồn gốc (Tùy chọn - có thể bỏ qua)", expanded=False):
@@ -148,8 +178,8 @@ with tab_capture:
         if not raw_text.strip():
             st.error("Vui lòng dán nội dung trích đoạn trước khi lưu!")
         else:
-            # Xử lý tags
-            raw_tags = [t.strip().lower() for t in tags_input.split(",") if t.strip()]
+            # Xử lý tags từ multiselect
+            raw_tags = [t.strip().lower() for t in selected_tags if t and t.strip()]
             if not raw_tags:
                 raw_tags = ["tri-thuc-chung"]
 
