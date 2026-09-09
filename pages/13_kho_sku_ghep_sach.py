@@ -98,12 +98,15 @@ with tab_capture:
         unsafe_allow_html=True
     )
 
+    # Versioning key để reset form an toàn, tránh lỗi StreamlitWidgetAlreadyInstantiatedError
+    qc_v = st.session_state.setdefault("qc_form_version", 0)
+
     # Form nhập rộng rãi, thoải mái cho văn bản dài
     raw_text = st.text_area(
         "📄 Nội dung trích dẫn (Bảo toàn 100% nguyên văn):",
         height=420,
         placeholder="Dán đoạn văn bản nguyên gốc vào đây... (Ví dụ: Một trích đoạn dài về CVD râu nến, quy luật quét thanh khoản XAU, bài học quản trị rủi ro... Khung nhập đã được bung rộng để bạn thoải mái đọc và chỉnh sửa mà không bị cuộn nhảy).",
-        key="qc_raw_text"
+        key=f"qc_raw_text_{qc_v}"
     )
 
     col_tag, col_save = st.columns([3, 1])
@@ -112,7 +115,7 @@ with tab_capture:
         tags_input = st.text_input(
             "🏷️ Thẻ phân loại nhanh (1–3 từ khóa, cách nhau bằng dấu phẩy):",
             placeholder="VD: vàng, nến, marubozu  |  hoặc: vàng, định nghĩa  |  hoặc: rủi ro, stoploss",
-            key="qc_tags_input"
+            key=f"qc_tags_input_{qc_v}"
         )
 
     # Phần mở rộng tùy chọn (không bắt buộc)
@@ -122,12 +125,12 @@ with tab_capture:
             user_personal_note = st.text_input(
                 "💡 Ghi chú / Trải nghiệm cá nhân của bạn:",
                 placeholder="VD: Áp dụng rất tốt ở khung H1 phiên Mỹ, kiểm chứng ngày 08/09...",
-                key="qc_user_note"
+                key=f"qc_user_note_{qc_v}"
             )
-            src_author = st.text_input("Tác giả / Diễn giả:", placeholder="VD: Nassim Taleb, Elite Mentor...", key="qc_author")
+            src_author = st.text_input("Tác giả / Diễn giả:", placeholder="VD: Nassim Taleb, Elite Mentor...", key=f"qc_author_{qc_v}")
         with c_opt2:
-            src_book = st.text_input("Tên sách / Tài liệu:", placeholder="VD: XAU.pdf, Poor Charlie's Almanack...", key="qc_book")
-            src_page_url = st.text_input("Trang hoặc Link URL:", placeholder="VD: Trang 15 hoặc https://...", key="qc_url")
+            src_book = st.text_input("Tên sách / Tài liệu:", placeholder="VD: XAU.pdf, Poor Charlie's Almanack...", key=f"qc_book_{qc_v}")
+            src_page_url = st.text_input("Trang hoặc Link URL:", placeholder="VD: Trang 15 hoặc https://...", key=f"qc_url_{qc_v}")
 
     st.write("")
     col_btn1, col_btn2 = st.columns([3, 1.2])
@@ -137,9 +140,7 @@ with tab_capture:
         btn_clear = st.button("🧹 XÓA TRẮNG (CLEAR)", use_container_width=True, help="Xóa sạch nội dung đang nhập để paste đoạn mới")
 
     if btn_clear:
-        for k in ["qc_raw_text", "qc_tags_input", "qc_user_note", "qc_author", "qc_book", "qc_url"]:
-            if k in st.session_state:
-                st.session_state[k] = ""
+        st.session_state["qc_form_version"] = qc_v + 1
         st.toast("🧹 Đã xóa trắng nội dung!")
         st.rerun()
 
@@ -174,11 +175,8 @@ with tab_capture:
                 user_note=user_personal_note
             )
 
-            # Tự động dọn sạch form cho lượt nhập tiếp theo
-            for k in ["qc_raw_text", "qc_tags_input", "qc_user_note", "qc_author", "qc_book", "qc_url"]:
-                if k in st.session_state:
-                    st.session_state[k] = ""
-
+            # Tăng version để tự động làm mới form an toàn
+            st.session_state["qc_form_version"] = qc_v + 1
             st.success(f"🎉 Đã lưu mảnh ghép: **{new_sku['sku_id']}** với các thẻ `#{' #'.join(raw_tags)}`")
             st.toast("✅ Đã lưu và làm sạch form!")
             st.rerun()
