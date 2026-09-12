@@ -1,120 +1,96 @@
-# Elite Thinking Family v2
+# ⚡ ELITE THINKING: FARROW EDITION (v2.5)
 
-Huấn luyện tư duy tinh hoa (First Principles · Munger · Feynman) — multipage Streamlit + **Supabase persistence**.
+> **Hệ thống Nén Tri Thức, Thế Cuộc & Phản Xạ 10 Phút theo Phương pháp Kỷ lục gia Guinness Dave Farrow.**  
+> *Đơn giản hóa tuyệt đối: Loại bỏ 90% chữ thừa, nén tri thức thành 3 mỏ neo trực quan, chạy nước rút 10 phút.*
 
-## Điểm mới so với v1
+---
 
-| Hạng mục | v1 | v2 |
-|----------|----|----|
-| Cấu trúc | 1 file `app.py` ~2700 dòng | Multipage: `app.py` + `pages/*` |
-| Password | Plain-text | PBKDF2 hash |
-| API key | Hardcode trong source | Chỉ Secrets / Env |
-| Histories / users trên Cloud | Mất khi reboot | **Supabase** (bền) |
-| Đổi / reset mật khẩu | Không | Sidebar + Admin |
+## 📖 HƯỚNG DẪN SỬ DỤNG NHANH TRÊN WEB (DÀNH CHO NGƯỜI MỚI)
 
-## Cấu trúc
+Ứng dụng được chia thành **6 phòng chức năng** trên thanh điều hướng bên trái (Sidebar). Tùy theo nhu cầu thực tế của bạn, hãy chọn đúng phòng:
 
 ```
-elite_thinking_v2/
-  app.py                          # Home: Hướng dẫn & Bản đồ
-  pages/
-    0_lo_trinh_12_tuan.py
-    1_the_cuoc_elite.py
-    2_9_che_do_tu_duy.py
-    3_88_mo_hinh.py
-    4_thu_vien_nguyen_ly.py
-    5_dau_truong.py
-    6_dao_tao.py
-    7_phan_ra.py
-    8_lich_su.py
-    9_admin.py
-  utils/
-    app_common.py                 # login + sidebar + API keys (dùng chung mọi page)
-    curriculum.py                 # Lộ trình 12 tuần & persistence
-    db.py                         # Supabase client
-    auth.py / knowledge.py / ...
-  data/                           # knowledge, lessons, models, users seed
-  supabase/
-    schema.sql                    # chạy 1 lần trên Supabase
-    seed_users.py                 # đẩy users.json → app_users
+                              [ BẠN ĐANG CẦN GÌ? ]
+                                       |
+    +-----------------+----------------+-----------------+-----------------+
+    |                 |                |                 |                 |
+[Học bài mới]   [Xem kho có sẵn]  [Đọc thời cuộc]  [Nan đề cá nhân]  [Mệt não/Stress]
+    |                 |                |                 |                 |
+    v                 v                v                 v                 v
+⚡ Máy Ép Farrow   🏛️ Lâu Đài Ký Ức  📡 Máy Quét Radar  🎯 Phân Rã Nan Đề  🫁 Trạm Thở Bụng
 ```
 
-## 1. Setup Supabase (bắt buộc nếu muốn data không mất)
+---
 
-1. Tạo project tại [supabase.com](https://supabase.com)
-2. **SQL Editor** → dán & Run toàn bộ `supabase/schema.sql`
-3. **Project Settings → API** lấy:
-   - Project URL → `SUPABASE_URL`
-   - `service_role` key (secret) → `SUPABASE_SERVICE_KEY`  
-     *(hoặc anon key nếu dùng policy permissive trong schema)*
-4. (Tuỳ chọn local) seed users:
+### 1. ⚡ Máy Ép Farrow 1-Click (Universal AI Compressor)
+* **Khi nào dùng:** Khi bạn có một cuốn sách, bài báo, tài liệu chuyên ngành, hoặc bài nghiên cứu dài dằng dặc và muốn nạp nhanh vào não.
+* **Cách dùng:**
+  1. Dán văn bản vào ô nhập liệu (hoặc chọn văn bản mẫu).
+  2. Bấm **`⚡ Ép Nén Siêu Tốc 1-Click`**.
+  3. AI sẽ tự động cô đọng về **3 Mỏ Neo Đồ Vật** + **Hình ảnh dị biệt kỳ quặc** (để kích thích não bộ nhớ lâu) + **1 Khẩu quyết phản xạ**.
+  4. Bản nén sẽ tự động lưu vào **Kho Lưu Trữ**; bạn có thể bấm **`📥 Xuất Báo Cáo (.md)`** để tải về Obsidian/Notion.
 
-```bash
-cp .env.example .env   # điền SUPABASE_* + GEMINI_*
-pip install -r requirements.txt
-python supabase/seed_users.py
-```
+---
 
-Trên Cloud: lần login đầu với user trong `data/users.json` vẫn chạy được (fallback local).  
-Muốn users cũng nằm trên Supabase: chạy seed 1 lần, hoặc admin tạo/reset qua app rồi data sẽ upsert lên Supabase.
+### 2. 🏛️ Lâu Đài Ký Ức (The 3 Trinity)
+* **Khi nào dùng:** Khi bạn muốn học các chủ đề kinh điển đã được nén sẵn.
+* **Cách dùng:**
+  1. Chọn nhóm ngành (Kinh tế, Tâm lý, Hệ thống, Tư duy Munger...).
+  2. Chọn chủ đề (VD: *Bản chất Vàng XAU/USD, Nghệ thuật Đảo ngược sinh tử, Hệ thống phức hợp...*).
+  3. Quan sát **3 Mỏ Neo Không Gian** (🚪 Cửa phòng -> 🖥️ Màn hình -> 🪑 Bàn làm việc).
+  4. Mở rộng phần **💎 Khung Phân Tích Chuyên Sâu (GMM)** để đọc bóc tách 9 mô hình hạt nhân cấu thành nên chủ đề đó.
 
-## 2. Secrets trên Streamlit Cloud
+---
 
-```toml
-GEMINI_API_KEY_1 = "AIzaSy..."
-GEMINI_API_KEY_2 = "AIzaSy..."
+### 3. ⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)
+* **Khi nào dùng:** Khi muốn thử thách não bộ và rèn luyện phản xạ tư duy nhanh trong 10 phút.
+* **Cách dùng:**
+  * **Chế độ 1 - Chọn chủ đề:** Chọn một bài học trong Lâu Đài Ký Ức, bấm **Bắt đầu Sprint 10 Phút**, đồng hồ sẽ đếm ngược để bạn tập trung 100% không xao nhãng.
+  * **Chế độ 2 - 🎲 Rút 3 Thẻ Farrow Tarot:** Hệ thống tự động rút ngẫu nhiên 1 thẻ *Soi Gốc* + 1 thẻ *Đọc Dòng* + 1 thẻ *Ra Đòn*. Nhiệm vụ của bạn là kết hợp 3 mô hình này để giải quyết một tình huống giả định!
 
-SUPABASE_URL = "https://xxxx.supabase.co"
-SUPABASE_SERVICE_KEY = "eyJhbGciOi..."
-```
+---
 
-**Main file path:** `app.py`
+### 4. 📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)
+* **Khi nào dùng:** Khi bạn muốn hiểu dòng tiền, công nghệ, chính sách và cơ hội lớn của thời đại (VD: *"AI tác động thế nào đến ngành lập trình?"*, *"Xu hướng xe điện & pin năng lượng"*).
+* **Cách dùng:**
+  1. Nhập sự kiện / xu hướng vĩ mô cần phân tích (hoặc chọn xu hướng mẫu).
+  2. Bấm **`📡 Bắt Đầu Quét Vĩ Mô`**.
+  3. AI sẽ phân tích theo các mật mã ngầm của giới tinh hoa:
+     - 📉 **Chi phí giao dịch & Cái gì đang rẻ đi (Hàng hóa đại trà)**.
+     - 💎 **Cái gì trở nên khan hiếm bổ trợ (Cơ hội làm giàu)**.
+     - ♟️ **Nước cờ của giới Tinh hoa & Kịch bản hành động cho cá nhân**.
+  4. Tự động lưu vào **Kho Quét Vĩ Mô**.
+  5. Bấm **`⚡ Ép Nén Farrow`** nếu muốn chuyển kết quả thành 3 mỏ neo trí nhớ, hoặc **`📥 Xuất Báo Cáo (.md)`** để in ra PDF/Notion.
 
-## 3. Chạy local
+---
 
-```bash
-cd elite_thinking_v2
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # điền key
-streamlit run app.py
-```
+### 5. 🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định (Problem Decomposition)
+* **Khi nào dùng:** Khi bạn đang đứng trước một ngã rẽ khó, nan đề kinh doanh, hoặc quyết định cá nhân quan trọng (VD: *"Có nên thôi việc mở startup?"*, *"Có nên đầu tư bất động sản lúc này?"*).
+* **Cách dùng:**
+  1. Nhập vấn đề bạn đang đối mặt vào ô văn bản.
+  2. Bấm **`🎯 Phân Rã Vấn Đề Bằng AI`**.
+  3. AI sẽ soi chiếu vấn đề qua:
+     - ⚡ **Chân lý gốc (First Principles)**.
+     - 🔬 **5 Lăng kính Tinh hoa:** Đảo ngược (Inversion), Hệ quả bậc hai, Đa khung thời gian, Cập nhật Bayes, Đòn bẩy bất đối xứng.
+     - 🧠 **Cảnh báo điểm mù tâm lý** (Thiên kiến xác nhận, Bẫy chi phí chìm...).
+  4. Trả lời các câu hỏi mấu chốt để lưu vào **Nhật Ký Quyết Định** (hệ thống sẽ nhắc bạn đối chiếu kiểm chứng sau 30–90 ngày).
+  5. Có sẵn nút **`⚡ Ép Nén Farrow`** và **`📥 Xuất Báo Cáo (.md)`**.
 
-## Tài khoản mặc định
+---
 
-| User | Password | Role |
-|------|----------|------|
-| Phat | Phat@12345 | admin |
-| Ha / xuka / bong / A1 / A2 | `<Tên>@12345` | user |
+### 6. 🫁 Trạm Thở Bụng Sạc Pin (Box Breathing)
+* **Khi nào dùng:** Sau mỗi phiên học 10 phút, hoặc khi vừa đưa ra một quyết định căng thẳng.
+* **Cách dùng:**
+  - Nhìn theo vòng tròn nhịp thở: **Hít vào (4s) -> Giữ (4s) -> Thở ra (4s) -> Giữ (4s)**.
+  - Chỉ cần 2 phút để hạ cortisol, đưa não về sóng Alpha và khóa chặt trí nhớ vào hồi hải mã.
 
-Đổi mật khẩu không bắt buộc — chỉ nên đổi nếu muốn.
+---
 
-## Hành vi persistence
+## 💡 MẸO SỬ DỤNG TINH HOA (WORKFLOW VÒNG LẶP KHÉP KÍN)
 
-| Có Supabase secrets? | Users | Histories (quiz, streak, diagnostic…) |
-|----------------------|-------|----------------------------------------|
-| Có + schema đã chạy | Supabase `app_users` | Supabase `user_histories` (JSONB) |
-| Không | `data/users.json` | `data/histories/<user>.json` (mất khi Cloud reboot) |
-
-Sidebar hiển thị trạng thái: 🟢 Supabase / 🟠 local JSON.
-
-## Ghi chú kỹ thuật
-
-- Knowledge / lessons / mental models vẫn là file trong repo → không cần DB.
-- `user_histories.data` là JSONB — giữ nguyên schema nội bộ cũ (analyses, training, quiz_stats, daily_workouts, diagnostics, decisions…) nên không phá các module hiện có.
-- Nếu Supabase lỗi tạm thời, app **fallback local JSON** tự động.
-
-## Lộ trình 12 tuần (v2.1)
-
-Trang **📅 Lộ trình 12 tuần** là xương sống học tập gia đình:
-
-| Tuần | Nội dung |
-|------|----------|
-| 1–4 | Nền tảng: First Principles, Inversion, Bayesian, Latticework |
-| 5–6 | **Systems**: stock/flow, feedback, leverage, emergence |
-| 7–8 | **Uncertainty**: scenario, premortem+, fat tail, optionality, antifragile |
-| 9–10 | **AI Judgment**: ủy thác có ranh giới, red-team / verify |
-| 11–12 | Integration: incentive, decision review, Personal OS + teach-back |
-
-Tiến độ lưu trong `user_histories` (Supabase hoặc local) dưới key `curriculum_12w`.
-Mỗi tuần: đọc gợi ý → concept/drill → bài tập đời thực (bắt buộc) → quiz → hoàn thành.
+* **Học mới:** Dán vào **Máy Ép Farrow** -> Nắm 3 mỏ neo.
+* **Đọc thế cuộc:** Chạy **Máy Quét Vĩ Mô** -> Nhận diện cái khan hiếm.
+* **Thực thi:** Dùng **Phân Rã Nan Đề** -> Ra quyết định, lưu nhật ký.
+* **Khắc ghi:** Bấm **`⚡ Ép Nén Farrow`** ngay dưới bản phân tích để biến thành mỏ neo nhớ vĩnh viễn.
+* **Xoay tua API tự động:** Ứng dụng đã được nạp sẵn 8 chìa khóa Google Gemini API, tự động luân chuyển khi nghẽn mạng nên bạn không cần cài đặt gì thêm.
+* **In PDF:** Mở bất kỳ file `.md` nào vừa xuất trong trình duyệt, bấm `Ctrl + P` -> chọn *Save as PDF*.

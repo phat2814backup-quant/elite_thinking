@@ -230,6 +230,26 @@ with st.sidebar:
         mode_options,
         key="app_mode_radio"
     )
+
+    with st.expander("📖 Hướng Dẫn Nhanh (1 Phút)", expanded=False):
+        st.markdown("""
+        **⚡ Triết lý Dave Farrow:** Não chỉ có pin nhỏ. Đừng học dồn 2 tiếng, hãy tập trung 10 phút!
+
+        * **1. Muốn nạp kiến thức mới:** 
+          👉 Vào **⚡ Máy Ép Farrow 1-Click** (Dán bài dài/sách -> AI nén thành 3 Mỏ Neo + Hình ảnh dị biệt để nhớ vĩnh viễn).
+        * **2. Muốn học các mô hình có sẵn:** 
+          👉 Vào **🏛️ Lâu Đài Ký Ức** (13 chủ đề nén sẵn & 152 mô hình tinh hoa Munger/Khoa học).
+        * **3. Muốn rèn phản xạ tư duy:** 
+          👉 Vào **⏱️ Phòng Ép Xung 10 Phút** (Chạy nước rút 10 phút hoặc rút 3 lá Tarot ngẫu nhiên).
+        * **4. Muốn đọc vị thời cuộc, vĩ mô:** 
+          👉 Vào **📡 Máy Quét Thế Cuộc** (Bóc tách xu hướng, cái gì rẻ đi, cái gì khan hiếm, nước đi tinh hoa).
+        * **5. Muốn giải quyết nan đề cá nhân:** 
+          👉 Vào **🎯 Phân Rã Thực Chiến** (Phân rã nguyên lý gốc, soi 5 lăng kính, lưu Nhật ký quyết định).
+        * **6. Khi não căng thẳng, kiệt pin:** 
+          👉 Vào **🫁 Trạm Thở Bụng** (Thở Box Breathing 2 phút để phục hồi trạng thái não Alpha).
+
+        💡 **Mẹo tinh hoa:** Sau khi quét hoặc phân rã, luôn có nút **`⚡ Ép Nén Farrow`** để chuyển thành mỏ neo trí nhớ, và nút **`📥 Xuất Báo Cáo (.md)`** để lưu về máy.
+        """)
     
     st.divider()
     st.markdown("#### 🔑 Kết Nối Trí Tuệ Nhân Tạo (Gemini AI)")
