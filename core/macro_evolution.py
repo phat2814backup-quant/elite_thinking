@@ -314,8 +314,170 @@ SAMPLE_MACRO_TRENDS: List[Dict[str, str]] = [
 ]
 
 # -----------------------------------------------------------------------------
-# 4. BỘ MÁY AI MACRO RADAR
+# 4. BỘ MÁY AI MACRO RADAR & LIVE TREND SCOUT (TRINH SÁT THẾ CUỘC)
 # -----------------------------------------------------------------------------
+TREND_SCOUT_SYSTEM_PROMPT = """Bạn là Elite Frontier Trend Scout & Macro Intelligence Specialist (Chuyên gia Trinh sát Thế cuộc & Bắt mạch Xu hướng Tiên phong).
+Nhiệm vụ: Khi người dùng đưa ra một lĩnh vực hoặc từ khóa (ví dụ: "công nghệ", "tài chính", "xe điện", "năng lượng", "bán dẫn"...), bạn phải phân tích dòng chảy thế giới mới nhất (bối cảnh 2024-2026+), lọc bỏ các xu hướng đã bão hòa/cũ kỹ, và trích xuất TOP 10 BIẾN ĐỘNG / NÚT THẮT HẠT NHÂN NỔI BẬT NHẤT theo thứ tự ưu tiên tác động.
+
+QUY TẮC CỐT TỬ:
+1. ĐỘNG THÁI TIÊN PHONG: Không đề xuất những thứ đã thành hàng hóa đại trà (ví dụ: nếu gõ "xe điện", đừng đưa việc lắp ráp xe điện EV thông thường vốn đang dư thừa và đẫm máu về giá, mà phải đưa: Nút thắt hạ tầng sạc & pin thể rắn, Robotaxi tự hành Level 4, Chip AI xử lý biên trên xe, Tái chế khoáng sản hiếm).
+2. PHÂN LOẠI TRẠNG THÁI (badge):
+   - "🔥 Sóng Thần Tiên Phong": Đang ở điểm uốn tăng trưởng hàm mũ, thu hút dòng vốn khổng lồ.
+   - "⚡ Nút Thắt Hạ Tầng": Điểm nghẽn then chốt (Bottleneck) - ai giải quyết được sẽ thâu tóm giá trị.
+   - "💎 Biên Lợi Nhuận Cao": Ngách phòng thủ mạnh hoặc độc quyền tri thức.
+   - "⚠️ Cảnh Báo Bão Hòa": Xu hướng đang bị biến thành hàng hóa giá rẻ (Commoditized), cảnh báo người dùng tránh lao vào sai hướng.
+3. SUGGESTED_QUERY: Câu tóm tắt sắc bén nhất (khoảng 20-35 từ) mô tả biến động vĩ mô để sẵn sàng nạp thẳng vào bộ máy phân tích First Principles.
+
+BẮT BUỘC trả về định dạng JSON hợp lệ duy nhất, không thêm markdown bao bọc ngoài JSON:
+{
+  "domain": "Tên lĩnh vực đã quét",
+  "scout_overview": "Tóm tắt cục diện chuyển dịch hiện nay trong 2 câu ngắn gọn",
+  "trends": [
+    {
+      "rank": 1,
+      "title": "Tên biến động / xu hướng nổi bật",
+      "badge": "🔥 Sóng Thần Tiên Phong",
+      "status": "Bùng nổ",
+      "one_liner": "Vì sao xu hướng này mang tính bước ngoặt và định hình lại cuộc chơi?",
+      "suggested_query": "Mô tả chi tiết 1-2 câu về biến động này để nạp vào First-Principles Radar"
+    }
+  ]
+}
+"""
+
+DRILL_DOWN_SYSTEM_PROMPT = """Bạn là Elite Deep-Dive Strategist (Chuyên gia Soi Sâu Phân Tầng Thế Cuộc).
+Nhiệm vụ: Nhận một xu hướng vĩ mô cấp cao và bóc tách thành 3 đến 5 VI XU HƯỚNG / NÚT THẮT CÔNG NGHỆ & KINH TẾ ĐỘT PHÁ (Layer 2 / Layer 3) bên trong đó.
+
+BẮT BUỘC trả về định dạng JSON hợp lệ duy nhất, không thêm markdown bao bọc ngoài JSON:
+{
+  "parent_trend": "Tên xu hướng gốc",
+  "drill_down_insight": "Phân tích 1 câu về điểm nghẽn thực sự của xu hướng này",
+  "sub_trends": [
+    {
+      "sub_rank": 1,
+      "title": "Tên vi xu hướng / nút thắt ngầm",
+      "why_crucial": "Tại sao đây mới là nơi tiền bạc và quyền lực hội tụ?",
+      "suggested_query": "Mô tả sâu sắc để nạp vào First Principles Radar"
+    }
+  ]
+}
+"""
+
+
+def scout_macro_trends(
+    domain_or_keyword: str,
+    api_key: Optional[str] = None,
+    model_name: str = "gemini-2.5-flash"
+) -> Optional[Dict[str, Any]]:
+    """Trinh sát thời cuộc: Quét Top 10 xu hướng/nút thắt nóng nhất theo lĩnh vực người dùng quan tâm."""
+    cleaned = domain_or_keyword.strip()
+    if not cleaned:
+        return None
+
+    candidate_keys = []
+    if api_key and api_key.strip():
+        candidate_keys.append(api_key.strip())
+    for k in get_all_gemini_api_keys():
+        if k not in candidate_keys:
+            candidate_keys.append(k)
+
+    if not candidate_keys or genai is None:
+        return {"error": "Chưa cấu hình API Key hoặc thiếu thư viện genai."}
+
+    candidate_models = [model_name, "gemini-2.5-pro", "gemini-flash-latest"]
+
+    prompt_text = (
+        f"Hãy trinh sát và bóc tách TOP 10 biến động / xu hướng tiên phong nóng nhất hiện nay "
+        f"thuộc lĩnh vực hoặc từ khóa: '{cleaned}'. "
+        f"Lọc bỏ triệt để những thứ cũ kỹ hoặc đã bão hòa để giúp người dùng đi đúng dòng chảy thời đại."
+    )
+
+    for current_key in candidate_keys:
+        try:
+            genai.configure(api_key=current_key)
+            for m_name in candidate_models:
+                try:
+                    model = genai.GenerativeModel(
+                        model_name=m_name,
+                        system_instruction=TREND_SCOUT_SYSTEM_PROMPT,
+                        generation_config={"response_mime_type": "application/json"}
+                    )
+                    resp = model.generate_content(prompt_text)
+                    if resp and resp.text:
+                        txt = resp.text.strip()
+                        if txt.startswith("```"):
+                            lines = txt.splitlines()
+                            if len(lines) >= 2 and lines[-1].startswith("```"):
+                                txt = "\n".join(lines[1:-1]).strip()
+                        data = json.loads(txt)
+                        if isinstance(data, dict) and "trends" in data:
+                            return data
+                except Exception:
+                    continue
+        except Exception:
+            continue
+
+    return {"error": "Không thể kết nối AI trinh sát qua các API Keys. Vui lòng kiểm tra kết nối mạng."}
+
+
+def drill_down_macro_trend(
+    trend_title: str,
+    context: str = "",
+    api_key: Optional[str] = None,
+    model_name: str = "gemini-2.5-flash"
+) -> Optional[Dict[str, Any]]:
+    """Soi sâu lần 2/lần 3: Phân rã một xu hướng thành 3-5 vi xu hướng / nút thắt ngầm."""
+    cleaned = trend_title.strip()
+    if not cleaned:
+        return None
+
+    candidate_keys = []
+    if api_key and api_key.strip():
+        candidate_keys.append(api_key.strip())
+    for k in get_all_gemini_api_keys():
+        if k not in candidate_keys:
+            candidate_keys.append(k)
+
+    if not candidate_keys or genai is None:
+        return {"error": "Chưa cấu hình API Key hoặc thiếu thư viện genai."}
+
+    candidate_models = [model_name, "gemini-2.5-pro", "gemini-flash-latest"]
+
+    prompt_text = (
+        f"Bóc tách sâu lớp 2 và lớp 3 (Drill-down) cho xu hướng sau:\n"
+        f"- Xu hướng: {cleaned}\n"
+        f"- Ngữ cảnh bổ trợ: {context}\n\n"
+        f"Chỉ ra 3 đến 5 nút thắt then chốt, vi xu hướng ngầm hoặc cơ hội ngách có đòn bẩy cao nhất."
+    )
+
+    for current_key in candidate_keys:
+        try:
+            genai.configure(api_key=current_key)
+            for m_name in candidate_models:
+                try:
+                    model = genai.GenerativeModel(
+                        model_name=m_name,
+                        system_instruction=DRILL_DOWN_SYSTEM_PROMPT,
+                        generation_config={"response_mime_type": "application/json"}
+                    )
+                    resp = model.generate_content(prompt_text)
+                    if resp and resp.text:
+                        txt = resp.text.strip()
+                        if txt.startswith("```"):
+                            lines = txt.splitlines()
+                            if len(lines) >= 2 and lines[-1].startswith("```"):
+                                txt = "\n".join(lines[1:-1]).strip()
+                        data = json.loads(txt)
+                        if isinstance(data, dict) and "sub_trends" in data:
+                            return data
+                except Exception:
+                    continue
+        except Exception:
+            continue
+
+    return {"error": "Không thể soi sâu xu hướng qua các API Keys."}
+
+
 MACRO_RADAR_SYSTEM_PROMPT = """Bạn là Elite Macro Strategist & First-Principles Master (Chuyên gia Phân tích Thế cuộc & Cố vấn Chiến lược Tinh hoa).
 
 Nhiệm vụ của bạn: Tiếp nhận một xu hướng công nghệ, kinh tế hoặc biến động xã hội vĩ mô, sau đó bóc tách tận gốc rễ cơ chế chuyển dịch quyền lực và tài sản theo First Principles.

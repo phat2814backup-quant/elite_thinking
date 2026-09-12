@@ -13,6 +13,8 @@ from datetime import datetime
 from core.macro_evolution import (
     SAMPLE_MACRO_TRENDS,
     analyze_macro_radar,
+    scout_macro_trends,
+    drill_down_macro_trend,
 )
 from core.problem_decomposition import (
     decompose_problem_with_ai,
@@ -280,7 +282,112 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
     # TAB 1: MÁY QUÉT ĐỌC VỊ THẾ CUỘC
     # -------------------------------------------------------------------------
     with m_tab1:
-        st.markdown("#### 💡 Bấm chọn xu hướng mẫu kinh điển để nạp nhanh:")
+        # ---------------------------------------------------------------------
+        # TẦNG 1 & 2: RA-ĐA TRINH SÁT THỜI CUỘC (LIVE TREND SCOUT & DRILL-DOWN)
+        # ---------------------------------------------------------------------
+        with st.expander("🛰️ Ra-đa Trinh Sát Thời Cuộc (Bắt Mạch Xu Hướng Nóng Hiện Nay)", expanded=True):
+            st.markdown(
+                "Đừng để bị lạc hậu hay đi ngược thời đại (như bỏ công nghiên cứu thứ đã bão hòa)! "
+                "Hãy trinh sát dòng chảy thế giới gần đây để lấy **Top 10 biến động hạt nhân**, "
+                "soi sâu các nút thắt ngầm trước khi nạp vào máy bóc tách First Principles."
+            )
+            
+            scout_chips = [
+                ("🤖 Công nghệ & AI", "Công nghệ & AI"),
+                ("💰 Tài chính & Tiền tệ", "Tài chính & Dòng tiền"),
+                ("⚡ Năng lượng & Hạ tầng", "Năng lượng & Điện lưới"),
+                ("🧬 Y sinh & Gene", "Y sinh & Công nghệ gene"),
+                ("🌐 Chuỗi cung ứng toàn cầu", "Chuỗi cung ứng & Địa chính trị"),
+                ("🏭 Robotics & Tự động hóa", "Robotics & Tự động hóa")
+            ]
+            
+            c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6 = st.columns(6)
+            chip_cols = [c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6]
+            for col_i, (chip_label, chip_query) in zip(chip_cols, scout_chips):
+                with col_i:
+                    if st.button(chip_label, key=f"chip_scout_{chip_label}", use_container_width=True):
+                        st.session_state["scout_kw_input"] = chip_query
+                        st.session_state["trigger_auto_scout"] = True
+                        st.rerun()
+
+            col_kw, col_sbtn = st.columns([3, 1])
+            with col_kw:
+                scout_query = st.text_input(
+                    "Nhập lĩnh vực hoặc từ khóa muốn trinh sát:",
+                    value=st.session_state.get("scout_kw_input", "Công nghệ & AI"),
+                    key="input_scout_kw",
+                    placeholder="vd: công nghệ, xe điện, bán dẫn, fintech, năng lượng xanh, việc làm..."
+                )
+            with col_sbtn:
+                st.write("")
+                run_scout = st.button("🛰️ Bắt Mạch Top 10", type="secondary", use_container_width=True, key="btn_run_scout")
+
+            if st.session_state.pop("trigger_auto_scout", False):
+                run_scout = True
+
+            if run_scout:
+                if not scout_query.strip():
+                    st.warning("Vui lòng nhập từ khóa hoặc lĩnh vực muốn trinh sát!")
+                else:
+                    with st.spinner(f"🛰️ Đang quét bắt mạch xu hướng mới nhất cho '{scout_query.strip()}'..."):
+                        scout_data = scout_macro_trends(scout_query.strip(), api_key=active_api_key)
+                    if scout_data and "trends" in scout_data:
+                        st.session_state["active_scout_result"] = scout_data
+                        st.session_state["active_scout_domain"] = scout_query.strip()
+                    elif scout_data and scout_data.get("error"):
+                        st.error(scout_data["error"])
+
+            # Hiển thị Top 10 kết quả trinh sát
+            if "active_scout_result" in st.session_state:
+                s_res = st.session_state["active_scout_result"]
+                trends = s_res.get("trends", [])
+                st.markdown(f"#### 🌐 Top 10 Biến Động Hạt Nhân: `{st.session_state.get('active_scout_domain', '')}`")
+                if s_res.get("scout_overview"):
+                    st.info(f"🧭 **Cục diện hiện nay:** {s_res['scout_overview']}")
+
+                for t_item in trends:
+                    t_rank = t_item.get("rank", 0)
+                    t_title = t_item.get("title", "")
+                    t_badge = t_item.get("badge", "🔥 Sóng Thần Tiên Phong")
+                    t_status = t_item.get("status", "Bùng nổ")
+                    t_one = t_item.get("one_liner", "")
+                    t_sug = t_item.get("suggested_query", t_title)
+
+                    st.markdown(f"**#{t_rank}. {t_title}** &nbsp; `{t_badge}` &nbsp; `Trạng thái: {t_status}`")
+                    st.caption(f"👉 *{t_one}*")
+                    
+                    c_act1, c_act2 = st.columns([1, 1])
+                    with c_act1:
+                        # Nút chọn để nạp vào máy quét First Principles
+                        if st.button(f"🎯 Chọn bóc tách xu hướng #{t_rank}", key=f"btn_pick_trend_{t_rank}", use_container_width=True):
+                            st.session_state["room_macro_radar_input"] = t_sug
+                            st.rerun()
+                    with c_act2:
+                        # Nút soi sâu lần 2/lần 3
+                        with st.popover(f"🔍 Soi sâu vi xu hướng #{t_rank}", use_container_width=True):
+                            st.markdown(f"**Soi sâu các nút thắt ngầm của:**  \n*{t_title}*")
+                            if st.button("⚡ Bóc tách lớp 2 & 3", key=f"btn_sub_drill_{t_rank}"):
+                                with st.spinner("Đang bóc tách ngách đột phá..."):
+                                    drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
+                                    if drill_res and "sub_trends" in drill_res:
+                                        st.session_state[f"drill_data_{t_rank}"] = drill_res
+                            
+                            if f"drill_data_{t_rank}" in st.session_state:
+                                d_data = st.session_state[f"drill_data_{t_rank}"]
+                                if d_data.get("drill_down_insight"):
+                                    st.info(f"💡 {d_data.get('drill_down_insight')}")
+                                for sub in d_data.get("sub_trends", []):
+                                    st.markdown(f"- **{sub.get('title', '')}**: {sub.get('why_crucial', '')}")
+                                    sub_sug = sub.get("suggested_query", sub.get("title", ""))
+                                    if st.button(f"👉 Chọn ngách này: {sub.get('title', '')[:30]}...", key=f"btn_pick_sub_{t_rank}_{sub.get('sub_rank', 0)}"):
+                                        st.session_state["room_macro_radar_input"] = sub_sug
+                                        st.rerun()
+                    st.divider()
+
+        # ---------------------------------------------------------------------
+        # TẦNG 3: BÓC TÁCH THẾ CUỘC THEO FIRST PRINCIPLES
+        # ---------------------------------------------------------------------
+        st.markdown("#### 💡 Hoặc chọn nhanh các xu hướng vĩ mô kinh điển:")
         s_cols = st.columns(len(SAMPLE_MACRO_TRENDS))
         for s_idx, sample in enumerate(SAMPLE_MACRO_TRENDS):
             with s_cols[s_idx]:
