@@ -68,19 +68,32 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                     st.session_state["room_macro_radar_input"] = sample["query"]
                     st.rerun()
 
-        default_q = st.session_state.get(
-            "room_macro_radar_input",
-            "Sự xuất hiện của các AI Agents tự hành có khả năng lập trình, viết báo cáo, xử lý dữ liệu và vận hành quy trình kinh doanh 24/7 với chi phí tiệm cận 0."
-        )
+        if "room_macro_radar_input" not in st.session_state:
+            st.session_state["room_macro_radar_input"] = (
+                "Sự xuất hiện của các AI Agents tự hành có khả năng lập trình, viết báo cáo, xử lý dữ liệu và vận hành quy trình kinh doanh 24/7 với chi phí tiệm cận 0."
+            )
+        default_q = st.session_state["room_macro_radar_input"]
         trend_text = st.text_area(
             "Nhập mô tả biến động vĩ mô, công nghệ hoặc sự kiện cần bóc tách:",
             value=default_q,
             height=110,
             key="room_macro_trend_text_area"
         )
-        if st.button("📡 Quét Đọc Vị Theo First Principles", type="primary", use_container_width=True, key="room_btn_radar"):
-            with st.spinner("🤖 Đang kích hoạt Bộ máy Phân tích Thế cuộc & First Principles Engine..."):
-                res_radar = analyze_macro_radar(trend_text.strip(), api_key=active_api_key)
+
+        col_m_run, col_m_reset = st.columns([3, 1])
+        with col_m_run:
+            run_macro_btn = st.button("📡 Quét Đọc Vị Theo First Principles", type="primary", use_container_width=True, key="room_btn_radar")
+        with col_m_reset:
+            if st.button("🔄 Làm mới ô nhập", use_container_width=True, key="room_btn_clear_radar"):
+                st.session_state["room_macro_radar_input"] = ""
+                st.rerun()
+
+        if run_macro_btn:
+            if not trend_text.strip():
+                st.warning("Vui lòng nhập nội dung biến động vĩ mô cần bóc tách!")
+            else:
+                with st.spinner("🤖 Đang kích hoạt Bộ máy Phân tích Thế cuộc & First Principles Engine..."):
+                    res_radar = analyze_macro_radar(trend_text.strip(), api_key=active_api_key)
             if not res_radar:
                 st.error("Không nhận được phản hồi từ AI Engine.")
             elif "error" in res_radar and not res_radar.get("trend_summary"):
