@@ -19,6 +19,12 @@ from core.problem_decomposition import (
     SAMPLE_DECOMPOSITION_CASES,
 )
 from core.farrow_engine import compress_with_farrow_ai
+from core.export_utils import (
+    sanitize_filename,
+    export_macro_radar_to_markdown,
+    export_problem_decomposition_to_markdown,
+    export_farrow_compression_to_markdown,
+)
 from core.db_storage import (
     load_macro_scans,
     save_macro_scan,
@@ -41,8 +47,13 @@ from core.db_storage import (
 )
 
 
-def render_macro_radar_result_cards(res_radar: Dict[str, Any]):
-    """Hiển thị toàn diện kết quả quét vĩ mô với đầy đủ thông tin và định dạng trực quan 100%."""
+def render_macro_radar_result_cards(
+    res_radar: Dict[str, Any],
+    query: str = "",
+    record_id: str = "latest",
+    created_at: str = ""
+):
+    """Hiển thị toàn diện kết quả quét vĩ mô với đầy đủ thông tin, xuất file và chuyển tiếp Farrow."""
     if not res_radar or not isinstance(res_radar, dict):
         st.info("Không có dữ liệu chi tiết bản quét.")
         return
@@ -105,14 +116,46 @@ def render_macro_radar_result_cards(res_radar: Dict[str, Any]):
         else:
             st.caption("Không có dữ liệu.")
 
+    # Thanh công cụ: Xuất Markdown & Chuyển sang Máy Ép Farrow
+    st.divider()
+    col_act1, col_act2 = st.columns(2)
+    with col_act1:
+        md_data = export_macro_radar_to_markdown(query=query, res=res_radar, created_at=created_at)
+        file_slug = sanitize_filename(query if query else "the_cuoc")
+        st.download_button(
+            label="📥 Xuất Bản Bóc Tách (.md)",
+            data=md_data,
+            file_name=f"MacroRadar_{file_slug}.md",
+            mime="text/markdown",
+            key=f"dl_macro_{record_id}",
+            use_container_width=True
+        )
+    with col_act2:
+        if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo & Nhớ Lâu)", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
+            comm_list = [c.get("asset", "") if isinstance(c, dict) else str(c) for c in res_radar.get("commoditized_assets", [])]
+            scarce_list = [s.get("asset", "") if isinstance(s, dict) else str(s) for s in res_radar.get("complementary_scarcities", [])]
+            synth_text = f"""[XU HƯỚNG VĨ MÔ]: {query}
+- Bản chất cốt lõi: {res_radar.get('trend_summary', '')}
+- Chi phí giao dịch bị kéo tụt: {res_radar.get('transaction_costs_impact', '')}
+- Nguồn lực rớt giá về 0: {', '.join(comm_list)}
+- Nút thắt khan hiếm mới: {', '.join(scarce_list)}
+- Nước cờ chiến lược Elite: {'; '.join(res_radar.get('elite_strategic_moves', []))}
+- Hành động khuyến nghị: {'; '.join(res_radar.get('action_playbook_for_individual', []))}
+"""
+            st.session_state["comp_raw_input"] = synth_text
+            st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
+            st.session_state["auto_run_compress"] = True
+            st.rerun()
+
 
 def render_problem_decomposition_result_cards(
     res: Dict[str, Any],
     prob: str = "",
     record_id: str = "latest",
-    show_decision_transfer: bool = True
+    show_decision_transfer: bool = True,
+    created_at: str = ""
 ):
-    """Hiển thị toàn diện kết quả phân rã 9 Lăng Kính & First Principles với đầy đủ thông tin và định dạng 100%."""
+    """Hiển thị toàn diện kết quả phân rã 9 Lăng Kính & First Principles với xuất file và chuyển tiếp Farrow."""
     if not res or not isinstance(res, dict):
         st.info("Không có dữ liệu chi tiết bản phân rã.")
         return
@@ -170,12 +213,43 @@ def render_problem_decomposition_result_cards(
         else:
             st.caption("Không có dữ liệu.")
 
+    # Thanh công cụ: Xuất Markdown & Chuyển sang Máy Ép Farrow
+    st.divider()
+    col_p1, col_p2 = st.columns(2)
+    with col_p1:
+        md_decomp = export_problem_decomposition_to_markdown(prob=prob, res=res, created_at=created_at)
+        file_slug = sanitize_filename(prob if prob else "phan_ra")
+        st.download_button(
+            label="📥 Xuất Bản Phân Rã (.md)",
+            data=md_decomp,
+            file_name=f"Decomposition_{file_slug}.md",
+            mime="text/markdown",
+            key=f"dl_decomp_{record_id}",
+            use_container_width=True
+        )
+    with col_p2:
+        if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo & Nhớ Lâu)", key=f"btn_to_farrow_decomp_{record_id}", use_container_width=True):
+            pr_list = [p.get("name", "") if isinstance(p, dict) else str(p) for p in res.get("core_principles_found", [])]
+            synth_text = f"""[BÀI TOÁN THỰC CHIẾN]: {prob}
+- Chân lý nguyên bản: {res.get('first_principles_breakdown', '')}
+- Nguyên lý chi phối: {', '.join(pr_list)}
+- Lật ngược vấn đề (Inversion): {lenses.get('inversion', '')}
+- Hệ quả bậc hai (Second-Order): {lenses.get('second_order', '')}
+- Đa khung thời gian: {lenses.get('multi_timescale', '')}
+- Xác suất Bayes: {lenses.get('bayesian', '')}
+- Đòn bẩy & Nút thắt: {lenses.get('leverage', '')}
+- Hành động đòn bẩy: {'; '.join(res.get('actionable_insights', []))}
+"""
+            st.session_state["comp_raw_input"] = synth_text
+            st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
+            st.session_state["auto_run_compress"] = True
+            st.rerun()
+
     # 5. Chuyển sang Decision Journal
     if show_decision_transfer:
-        st.divider()
-        st.markdown("#### 📝 Bạn đã sẵn sàng đưa ra quyết định?")
+        st.write("")
         btn_key = f"btn_transfer_dj_{record_id}"
-        if st.button("📓 Chuyển phân rã này thành Bản ghi Quyết định để kiểm chứng sau 30-90 ngày", type="primary", key=btn_key):
+        if st.button("📓 Chuyển phân rã này thành Bản ghi Quyết định để kiểm chứng sau 30-90 ngày", type="primary", key=btn_key, use_container_width=True):
             st.session_state["dj_prefill_title"] = prob[:70]
             st.session_state["dj_prefill_hypo"] = res.get("first_principles_breakdown", "")[:300]
             st.session_state["dj_prefill_inv"] = lenses.get("inversion", "")[:250]
@@ -258,7 +332,11 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
         if "latest_macro_radar_result" in st.session_state:
             res_radar = st.session_state["latest_macro_radar_result"]
             st.success("✅ Đã hoàn tất bóc tách thế cuộc & Lưu trữ bền vững!")
-            render_macro_radar_result_cards(res_radar)
+            render_macro_radar_result_cards(
+                res_radar,
+                query=st.session_state.get("latest_macro_radar_trend", ""),
+                record_id="latest"
+            )
 
     # -------------------------------------------------------------------------
     # TAB 2: KHO LƯU TRỮ BẢN QUÉT THẾ CUỘC
@@ -300,7 +378,12 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                             st.rerun()
 
                     st.divider()
-                    render_macro_radar_result_cards(sc_res)
+                    render_macro_radar_result_cards(
+                        sc_res,
+                        query=sc_query,
+                        record_id=sc_id,
+                        created_at=sc_time
+                    )
         else:
             st.info("💡 Chưa có bản quét nào được lưu. Hãy quét một xu hướng ở Tab 1 để tự động lưu vào đây!")
 
@@ -435,7 +518,8 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
                             a_res,
                             prob=a_problem,
                             record_id=a_id,
-                            show_decision_transfer=True
+                            show_decision_transfer=True,
+                            created_at=a_time
                         )
 
         else:
@@ -651,8 +735,14 @@ SAMPLE_COMPRESSIONS = [
 ]
 
 
-def render_farrow_compression_cards(res: Dict[str, Any]):
-    """Hiển thị bộ 3 thẻ nén Dave Farrow với đầy đủ thông tin và định dạng trực quan 100%."""
+def render_farrow_compression_cards(
+    res: Dict[str, Any],
+    title: str = "",
+    raw_text: str = "",
+    record_id: str = "latest",
+    created_at: str = ""
+):
+    """Hiển thị bộ 3 thẻ nén Dave Farrow với đầy đủ thông tin, định dạng trực quan 100% và xuất file."""
     if not res or not isinstance(res, dict):
         st.info("Không có dữ liệu chi tiết bản nén.")
         return
@@ -700,6 +790,20 @@ def render_farrow_compression_cards(res: Dict[str, Any]):
     if res.get('asymmetric_action'):
         st.success(f"🎯 **Đòn bẩy Bất đối xứng (Actionable Strike):** {res.get('asymmetric_action', '')}")
 
+    # Nút Xuất File Markdown
+    st.divider()
+    t_name = title if title else res.get("title", "Bản Nén Farrow")
+    md_farrow = export_farrow_compression_to_markdown(title=t_name, raw_text=raw_text, res=res, created_at=created_at)
+    file_slug = sanitize_filename(t_name)
+    st.download_button(
+        label="📥 Xuất Bản Nén (.md)",
+        data=md_farrow,
+        file_name=f"Farrow_{file_slug}.md",
+        mime="text/markdown",
+        key=f"dl_farrow_{record_id}",
+        use_container_width=True
+    )
+
 
 def render_ai_compressor_room(active_api_key: str | None = None):
     """Render phòng chức năng Máy Ép Farrow 1-Click: 2 Tab (Máy Ép & Kho Lưu Trữ Bản Nén)."""
@@ -708,6 +812,18 @@ def render_ai_compressor_room(active_api_key: str | None = None):
         "Dán bất kỳ tài liệu dài, bài luận, case study hoặc báo cáo nào vào đây. "
         "AI sẽ tự động nghiền nát về đúng 3 khối hạt nhân theo chuẩn Dave Farrow Memory Palace."
     )
+
+    # Tự động nén nếu được chuyển tiếp từ Radar hoặc Decomposition
+    if st.session_state.get("auto_run_compress") and st.session_state.get("comp_raw_input"):
+        st.session_state["auto_run_compress"] = False
+        raw_to_run = st.session_state["comp_raw_input"]
+        with st.spinner("🤖 Đang kích hoạt Máy Ép Farrow 1-Click để chuyển hóa dữ liệu thành 3 Mỏ Neo..."):
+            auto_res = compress_with_farrow_ai(raw_to_run, api_key=active_api_key)
+            if auto_res and not auto_res.get("error"):
+                st.session_state["latest_compress_result"] = auto_res
+                st.session_state["latest_compress_raw"] = raw_to_run
+                save_compression_record(raw_to_run, auto_res)
+                st.toast("⚡ Đã tự động nén Farrow & Lưu trữ vĩnh viễn!", icon="💾")
 
     sb_client = get_supabase_client()
     sync_badge = "☁️ Supabase Cloud (Đồng bộ vĩnh viễn)" if sb_client is not None else "💾 Cục bộ (Local JSON)"
@@ -775,7 +891,12 @@ def render_ai_compressor_room(active_api_key: str | None = None):
         if "latest_compress_result" in st.session_state:
             res = st.session_state["latest_compress_result"]
             st.success("🎉 Nén thành công & Lưu trữ bền vững! Dưới đây là bộ 3 hạt nhân đã được giải mã:")
-            render_farrow_compression_cards(res)
+            render_farrow_compression_cards(
+                res,
+                title=res.get("title", "Bản Nén Farrow"),
+                raw_text=st.session_state.get("latest_compress_raw", ""),
+                record_id="latest"
+            )
 
     # -------------------------------------------------------------------------
     # TAB 2: KHO LƯU TRỮ BẢN NÉN
@@ -822,5 +943,11 @@ def render_ai_compressor_room(active_api_key: str | None = None):
                             st.rerun()
 
                     st.divider()
-                    render_farrow_compression_cards(h_res)
+                    render_farrow_compression_cards(
+                        h_res,
+                        title=h_title,
+                        raw_text=h_raw,
+                        record_id=h_id,
+                        created_at=h_time
+                    )
 

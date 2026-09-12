@@ -214,17 +214,21 @@ render_html("""
 # -----------------------------------------------------------------------------
 with st.sidebar:
     st.markdown("### 🧭 ĐIỀU HƯỚNG FARROW")
+    mode_options = [
+        "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
+        "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
+        "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
+        "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
+        "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
+        "🫁 Trạm Thở Bụng Sạc Pin"
+    ]
+    if "app_mode_redirect" in st.session_state and st.session_state["app_mode_redirect"] in mode_options:
+        st.session_state["app_mode_radio"] = st.session_state.pop("app_mode_redirect")
+
     app_mode = st.radio(
         "Chọn phòng chức năng:",
-        [
-            "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
-            "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
-            "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
-            "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
-            "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
-            "🫁 Trạm Thở Bụng Sạc Pin"
-        ],
-        index=0
+        mode_options,
+        key="app_mode_radio"
     )
     
     st.divider()
