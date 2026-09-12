@@ -38,6 +38,7 @@ DATA_DIR = os.path.join(
 LOCAL_MACRO_FILE = os.path.join(DATA_DIR, "macro_scans_history.json")
 LOCAL_ANALYSES_FILE = os.path.join(DATA_DIR, "analyses_history.json")
 LOCAL_DECISIONS_FILE = os.path.join(DATA_DIR, "decision_journal.json")
+LOCAL_COMPRESSIONS_FILE = os.path.join(DATA_DIR, "compressions_history.json")
 
 _DEFAULT_URL = "https://szprfjzeauzstvmvgjrw.supabase.co"
 
@@ -414,3 +415,53 @@ def get_decision_summary_stats(username: str = "Phat") -> Dict[str, Any]:
         "calibration_accuracy": calibration_accuracy,
         "decisions": decisions,
     }
+
+
+# =============================================================================
+# 4. QUẢN TRỊ MÁY ÉP FARROW 1-CLICK (COMPRESSIONS HISTORY)
+# =============================================================================
+def load_compression_history(username: str = "Phat") -> List[Dict[str, Any]]:
+    """Tải lịch sử các bản nén từ Supabase Cloud hoặc local JSON."""
+    blob = _fetch_user_blob(username)
+    if "compressions" in blob and isinstance(blob["compressions"], list):
+        comps = blob["compressions"]
+        _save_json_file(LOCAL_COMPRESSIONS_FILE, comps)
+        return comps
+    return _load_json_file(LOCAL_COMPRESSIONS_FILE)
+
+
+def save_compression_record(
+    raw_text: str,
+    result_data: Dict[str, Any],
+    username: str = "Phat"
+) -> bool:
+    """Lưu một bản nén mới vào Supabase Cloud và local JSON."""
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    title = result_data.get("title", "Bản Nén Farrow")
+    record = {
+        "id": f"comp_{int(datetime.now().timestamp() * 1000)}",
+        "created_at": now_str,
+        "time": now_str,
+        "title": title,
+        "raw_text": raw_text.strip(),
+        "summary": result_data.get("tagline", "")[:250],
+        "result": result_data
+    }
+
+    current = load_compression_history(username)
+    updated = [c for c in current if c.get("raw_text") != record["raw_text"]]
+    updated.insert(0, record)
+    if len(updated) > 50:
+        updated = updated[:50]
+
+    _save_json_file(LOCAL_COMPRESSIONS_FILE, updated)
+    return _update_user_blob_field(username, "compressions", updated)
+
+
+def delete_compression_record(record_id: str, username: str = "Phat") -> bool:
+    """Xóa một bản nén theo ID khỏi Supabase Cloud và local JSON."""
+    current = load_compression_history(username)
+    updated = [c for c in current if c.get("id") != record_id]
+    _save_json_file(LOCAL_COMPRESSIONS_FILE, updated)
+    return _update_user_blob_field(username, "compressions", updated)
+

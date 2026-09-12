@@ -75,6 +75,7 @@ from core.problem_decomposition import (
 from core.ui_rooms import (
     render_macro_radar_room,
     render_problem_decomposition_room,
+    render_ai_compressor_room,
 )
 
 
@@ -612,56 +613,7 @@ elif app_mode == "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định":
 # PHÒNG 5: MÁY ÉP FARROW 1-CLICK (AI COMPRESSOR)
 # -----------------------------------------------------------------------------
 elif app_mode == "⚡ Máy Ép Farrow 1-Click (AI Compressor)":
-    st.markdown("### ⚡ Máy Ép Farrow 1-Click (Universal AI Compressor)")
-    st.caption("Dán bất kỳ tài liệu dài, bài luận, case study hoặc báo cáo nào vào đây. AI sẽ tự động ép nát về đúng 3 khối hạt nhân.")
-
-    user_raw_text = st.text_area(
-        "Dán văn bản thô vào đây (tối đa 8.000 ký tự):",
-        placeholder="Ví dụ: Dán một bài phân tích dài về kinh tế vĩ mô, một chiến lược kinh doanh 10 trang, hoặc một bài giảng khó hiểu của trường học...",
-        height=200
-    )
-
-    if st.button("💥 ÉP NÉN THEO CHUẨN DAVE FARROW (RULE OF 3)", type="primary"):
-        if not user_raw_text.strip():
-            st.warning("Vui lòng dán nội dung văn bản cần nén!")
-        else:
-            with st.spinner("🤖 Đang nghiền nát câu chữ rườm rà, bóc tách 3 hạt nhân và tạo hình ảnh kỳ quặc..."):
-                result = compress_with_farrow_ai(user_raw_text, api_key=active_api_key)
-                st.session_state.compress_result = result
-                st.success("🎉 Nén thành công! Dưới đây là bộ 3 hạt nhân đã được giải mã:")
-
-    if "compress_result" in st.session_state:
-        res = st.session_state.compress_result
-        st.markdown(f"### 📦 Kết quả: {res.get('title', 'Bản Nén Farrow')}")
-        st.info(f"🎯 **Khẩu quyết cốt lõi:** *\"{res.get('tagline', '')}\"*")
-
-        c1, c2, c3 = st.columns(3)
-        cols = [c1, c2, c3]
-        chunks = res.get("chunks", [])
-
-        icons = ["🚪", "🖥️", "🪑"]
-        for idx, (col, chunk) in enumerate(zip(cols, chunks)):
-            with col:
-                card_html = f"""
-                <div class="trinity-card">
-                    <div class="anchor-badge">{icons[idx]} MỎ NEO: {chunk.get('anchor', '')}</div>
-                    <h3 style="color: #f8fafc; font-size: 1.2rem;">{chunk.get('label', '')}</h3>
-                    <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 12px 0;">
-                        <b>Nguyên lý gốc:</b><br>{chunk.get('principle', '')}
-                    </div>
-                    <div class="crazy-image-box">
-                        🧠 <b>HÌNH ẢNH DỊ BIỆT:</b><br>
-                        {chunk.get('crazy_image', '')}
-                    </div>
-                    <div class="trigger-box">
-                        ⚡ <b>PHẢN XẠ 5S:</b><br>
-                        <i>"{chunk.get('trigger_question', '')}"</i>
-                    </div>
-                </div>
-                """
-                render_html(card_html)
-
-        st.success(f"🎯 **Đòn bẩy Bất đối xứng (Actionable Strike):** {res.get('asymmetric_action', '')}")
+    render_ai_compressor_room(active_api_key=active_api_key)
 
 # -----------------------------------------------------------------------------
 # PHÒNG 6: TRẠM THỞ BỤNG SẠC PIN

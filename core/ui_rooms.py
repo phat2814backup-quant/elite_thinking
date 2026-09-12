@@ -18,6 +18,7 @@ from core.problem_decomposition import (
     decompose_problem_with_ai,
     SAMPLE_DECOMPOSITION_CASES,
 )
+from core.farrow_engine import compress_with_farrow_ai
 from core.db_storage import (
     load_macro_scans,
     save_macro_scan,
@@ -25,6 +26,9 @@ from core.db_storage import (
     load_problem_analyses,
     save_problem_analysis,
     delete_problem_analysis,
+    load_compression_history,
+    save_compression_record,
+    delete_compression_record,
     get_user_decisions,
     create_decision_entry,
     resolve_decision_review,
@@ -609,3 +613,214 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
                             delete_decision_entry(decision_id=d_id)
                             st.success("Đã xóa quyết định!")
                             st.rerun()
+
+
+# =============================================================================
+# 3. MÁY ÉP FARROW 1-CLICK (UNIVERSAL AI COMPRESSOR)
+# =============================================================================
+SAMPLE_COMPRESSIONS = [
+    {
+        "title": "📈 Chiến Lược Cạnh Tranh (Michael Porter)",
+        "text": (
+            "Trong kinh tế học và quản trị chiến lược của Michael Porter, một doanh nghiệp chỉ có thể đạt được lợi nhuận vượt trội bền vững thông qua hai con đường cơ bản: "
+            "Chi phí thấp (Cost Leadership) hoặc Khác biệt hóa (Differentiation). Cả hai chiến lược này đều nhằm mục tiêu tự vệ trước 5 lực lượng cạnh tranh: "
+            "Áp lực từ nhà cung cấp, Áp lực từ khách hàng, Nguy cơ từ sản phẩm thay thế, Rào cản gia nhập ngành của đối thủ tiềm năng và Mức độ khốc liệt của các đối thủ hiện hữu. "
+            "Nếu một công ty cố gắng làm tất cả để làm hài lòng mọi đối tượng khách hàng mà không chọn rõ ràng một trong hai con đường, công ty đó sẽ rơi vào trạng thái 'mắc kẹt ở giữa' "
+            "(stuck in the middle) và chắc chắn sẽ bị các đối thủ tập trung chuyên biệt tiêu diệt."
+        )
+    },
+    {
+        "title": "🧬 Điểm Tựa Năng Lượng & Sự Sống (Nick Lane)",
+        "text": (
+            "Theo nghiên cứu của nhà sinh học Nick Lane, nguồn gốc của mọi sự sống phức tạp (sinh vật nhân thực Eukaryote) bắt nguồn từ một sự kiện cộng sinh ngẫu nhiên cực kỳ hiếm hoi "
+            "cách đây 2 tỷ năm: một vi khuẩn cổ nuốt chửng một vi khuẩn khác và biến nó thành ti thể (mitochondria). Ti thể đóng vai trò như nhà máy phát điện mini, giải phóng năng lượng "
+            "gấp hàng nghìn lần trên mỗi gen so với vi khuẩn đơn bào thông thường. Nhờ có nguồn năng lượng dư thừa khổng lồ này, tế bào mới có thể nuôi dưỡng một bộ gen khổng lồ, "
+            "tạo tiền đề cho sự xuất hiện của các sinh vật đa bào, động thực vật và trí thông minh con người. Năng lượng chính là giới hạn vật lý cứng quyết định độ phức tạp của mọi cấu trúc sống."
+        )
+    },
+    {
+        "title": "🧠 Chiến Lược Barbell & Chống Mong Manh (Nassim Taleb)",
+        "text": (
+            "Nassim Taleb đề xuất Chiến lược Barbell (Quả tạ hai đầu) như một cơ chế thực chiến để tồn tại và phát triển trong một thế giới đầy biến động và Thiên Nga Đen. "
+            "Thay vì chọn phương án trung bình rủi ro vừa phải (vốn là nơi dễ chết nhất khi xảy ra khủng hoảng), nhà đầu tư nên chia vốn làm 2 cực đối nghịch tuyệt đối: "
+            "85-90% tài sản được giữ ở nơi an toàn tối đa (trái phiếu chính phủ ngắn hạn, tiền mặt, vàng) để không bao giờ bị phá sản; 10-15% còn lại được phân bổ vào các canh bạc có rủi ro cao "
+            "nhưng tiềm năng lợi nhuận lũy thừa bất đối xứng (như quyền chọn mua, khởi nghiệp mạo hiểm, công nghệ đột phá). Bằng cách này, tổn thất tối đa bị khóa cứng ở mức 10-15%, "
+            "trong khi tiềm năng tăng trưởng là vô hạn."
+        )
+    }
+]
+
+
+def render_farrow_compression_cards(res: Dict[str, Any]):
+    """Hiển thị bộ 3 thẻ nén Dave Farrow với đầy đủ thông tin và định dạng trực quan 100%."""
+    if not res or not isinstance(res, dict):
+        st.info("Không có dữ liệu chi tiết bản nén.")
+        return
+
+    st.markdown(f"### 📦 Kết quả: {res.get('title', 'Bản Nén Farrow')}")
+    if res.get('tagline'):
+        st.info(f"🎯 **Khẩu quyết cốt lõi:** *\"{res.get('tagline', '')}\"*")
+
+    chunks = res.get("chunks", [])
+    if chunks:
+        cols = st.columns(min(len(chunks), 3))
+        icons = ["🚪", "🖥️", "🪑"]
+        for idx, chunk in enumerate(chunks[:3]):
+            col = cols[idx % len(cols)]
+            with col:
+                anchor_name = chunk.get('anchor', f'Mỏ neo #{idx+1}')
+                label = chunk.get('label', f'TRỤ {idx+1}')
+                principle = chunk.get('principle', '')
+                crazy_image = chunk.get('crazy_image', '')
+                trigger_q = chunk.get('trigger_question', '')
+
+                card_html = f"""
+                <div class="trinity-card" style="margin-bottom: 1rem;">
+                    <div class="anchor-badge">{icons[idx]} MỎ NEO: {anchor_name}</div>
+                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 8px;">{label}</h3>
+                    <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 12px 0;">
+                        <b>Nguyên lý gốc:</b><br>{principle}
+                    </div>
+                    <div class="crazy-image-box" style="margin: 10px 0;">
+                        🧠 <b>HÌNH ẢNH DỊ BIỆT:</b><br>
+                        {crazy_image}
+                    </div>
+                    <div class="trigger-box" style="margin-top: 10px;">
+                        ⚡ <b>PHẢN XẠ 5S:</b><br>
+                        <i>"{trigger_q}"</i>
+                    </div>
+                </div>
+                """
+                if hasattr(st, "html"):
+                    st.html(card_html)
+                else:
+                    stripped = "\n".join(line.lstrip() for line in card_html.strip().splitlines())
+                    st.markdown(stripped, unsafe_allow_html=True)
+
+    if res.get('asymmetric_action'):
+        st.success(f"🎯 **Đòn bẩy Bất đối xứng (Actionable Strike):** {res.get('asymmetric_action', '')}")
+
+
+def render_ai_compressor_room(active_api_key: str | None = None):
+    """Render phòng chức năng Máy Ép Farrow 1-Click: 2 Tab (Máy Ép & Kho Lưu Trữ Bản Nén)."""
+    st.markdown("## ⚡ Máy Ép Farrow 1-Click (Universal AI Compressor)")
+    st.caption(
+        "Dán bất kỳ tài liệu dài, bài luận, case study hoặc báo cáo nào vào đây. "
+        "AI sẽ tự động nghiền nát về đúng 3 khối hạt nhân theo chuẩn Dave Farrow Memory Palace."
+    )
+
+    sb_client = get_supabase_client()
+    sync_badge = "☁️ Supabase Cloud (Đồng bộ vĩnh viễn)" if sb_client is not None else "💾 Cục bộ (Local JSON)"
+    all_comp = load_compression_history()
+
+    c_tab1, c_tab2 = st.tabs([
+        "⚡ Máy Ép 1-Click",
+        f"📚 Kho Lưu Trữ Bản Nén ({len(all_comp)})"
+    ])
+
+    # -------------------------------------------------------------------------
+    # TAB 1: MÁY ÉP 1-CLICK
+    # -------------------------------------------------------------------------
+    with c_tab1:
+        st.markdown("#### 💡 Bấm chọn tình huống mẫu để nạp nhanh:")
+        s_cols = st.columns(len(SAMPLE_COMPRESSIONS))
+        for s_idx, sample in enumerate(SAMPLE_COMPRESSIONS):
+            with s_cols[s_idx]:
+                short_title = sample["title"].split()[0] + " " + " ".join(sample["title"].split()[1:3])
+                if st.button(short_title, key=f"comp_sample_{s_idx}", help=sample["title"]):
+                    st.session_state["comp_raw_input"] = sample["text"]
+                    st.rerun()
+
+        default_input = st.session_state.get(
+            "comp_raw_input",
+            ""
+        )
+        user_raw_text = st.text_area(
+            "Dán văn bản thô vào đây (tối đa 8.000 ký tự):",
+            value=default_input,
+            placeholder="Ví dụ: Dán một bài phân tích dài về kinh tế vĩ mô, một chiến lược kinh doanh 10 trang, hoặc một bài giảng khó hiểu của trường học...",
+            height=160,
+            key="comp_text_area"
+        )
+
+        col_c_run, col_c_reset = st.columns([3, 1])
+        with col_c_run:
+            run_comp_btn = st.button("💥 ÉP NÉN THEO CHUẨN DAVE FARROW (RULE OF 3)", type="primary", use_container_width=True, key="btn_run_compress")
+        with col_c_reset:
+            if st.button("🔄 Làm mới ô nhập", use_container_width=True, key="btn_clear_compress"):
+                st.session_state["comp_raw_input"] = ""
+                st.session_state.pop("latest_compress_result", None)
+                st.session_state.pop("latest_compress_raw", None)
+                st.rerun()
+
+        if run_comp_btn:
+            if not user_raw_text.strip():
+                st.warning("Vui lòng dán nội dung văn bản cần nén!")
+            else:
+                with st.spinner("🤖 Đang nghiền nát câu chữ rườm rà, bóc tách 3 hạt nhân và tạo hình ảnh kỳ quặc..."):
+                    comp_res = compress_with_farrow_ai(user_raw_text.strip(), api_key=active_api_key)
+                if not comp_res:
+                    st.error("Không nhận được phản hồi từ AI Engine.")
+                elif comp_res.get("error"):
+                    st.error(f"Lỗi: {comp_res['error']}")
+                else:
+                    st.session_state["latest_compress_result"] = comp_res
+                    st.session_state["latest_compress_raw"] = user_raw_text.strip()
+                    # Lưu vào Supabase Cloud & Local JSON
+                    saved_ok = save_compression_record(user_raw_text.strip(), comp_res)
+                    if saved_ok:
+                        st.toast("☁️ Đã tự động lưu bản nén vào Supabase Cloud!", icon="💾")
+
+        # Hiển thị kết quả nén mới nhất
+        if "latest_compress_result" in st.session_state:
+            res = st.session_state["latest_compress_result"]
+            st.success("🎉 Nén thành công & Lưu trữ bền vững! Dưới đây là bộ 3 hạt nhân đã được giải mã:")
+            render_farrow_compression_cards(res)
+
+    # -------------------------------------------------------------------------
+    # TAB 2: KHO LƯU TRỮ BẢN NÉN
+    # -------------------------------------------------------------------------
+    with c_tab2:
+        st.markdown(f"#### 📚 Kho Lưu Trữ Lịch Sử Bản Nén Farrow")
+        st.caption(f"Trạng thái đồng bộ: **{sync_badge}**. Toàn bộ các bản nén được lưu trữ vĩnh viễn trên Supabase Cloud.")
+
+        history = load_compression_history()
+        if not history:
+            st.info("💡 Chưa có bản nén nào được lưu. Hãy dán tài liệu vào Tab 1 và bấm ép nén để tự động lưu vào đây!")
+        else:
+            s_kw = st.text_input("🔍 Tìm kiếm trong kho bản nén:", placeholder="Nhập từ khóa (vd: Porter, năng lượng, Barbell, đầu tư...)", key="search_comp_history")
+            filtered_h = history
+            if s_kw.strip():
+                kw_low = s_kw.strip().lower()
+                filtered_h = [
+                    h for h in history
+                    if kw_low in h.get("title", "").lower()
+                    or kw_low in h.get("raw_text", "").lower()
+                    or kw_low in h.get("summary", "").lower()
+                    or kw_low in str(h.get("result", {})).lower()
+                ]
+
+            if not filtered_h:
+                st.info("Không tìm thấy bản nén nào khớp với từ khóa tìm kiếm.")
+
+            for h_idx, h_item in enumerate(filtered_h):
+                h_id = h_item.get("id", f"comp_{h_idx}")
+                h_time = h_item.get("created_at") or h_item.get("time", "Gần đây")
+                h_title = h_item.get("title") or "Bản Nén Farrow"
+                h_raw = h_item.get("raw_text", "")
+                h_res = h_item.get("result", {})
+
+                with st.expander(f"📑 [{h_time}] {h_title}", expanded=(h_idx == 0 and len(filtered_h) == 1)):
+                    col_hl, col_hr = st.columns([4, 1])
+                    with col_hl:
+                        with st.expander("📄 Xem văn bản thô gốc ban đầu", expanded=False):
+                            st.write(h_raw if h_raw else "(Không có nội dung văn bản thô)")
+                    with col_hr:
+                        if st.button("🗑️ Xóa", key=f"btn_del_comp_{h_id}"):
+                            delete_compression_record(h_id)
+                            st.success("Đã xóa bản nén!")
+                            st.rerun()
+
+                    st.divider()
+                    render_farrow_compression_cards(h_res)
+
