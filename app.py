@@ -331,55 +331,164 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
 
     # Expander bóc tách chi tiết 9 mô hình gốc của chủ đề hiện tại
     st.markdown("---")
-    with st.expander(f"📚 Bóc Tách Chi Tiết Mô Hình & Nguyên Lý Gốc Của Chủ Đề: {topic['title']} (9 Mô Hình Tinh Hoa)", expanded=True):
-        st.markdown(f"Trực tiếp bóc tách 9 mô hình cấu thành nên 3 Trụ Cột của **{topic['title']}** theo chuẩn Charlie Munger & The Great Mental Models Framework:")
-        
-        tab_t1, tab_t2, tab_t3 = st.tabs([
-            f"🚪 {chunks[0]['label']}",
-            f"🖥️ {chunks[1]['label']}",
-            f"🪑 {chunks[2]['label']}"
-        ])
-        
-        for tab_obj, chunk in zip([tab_t1, tab_t2, tab_t3], chunks):
-            with tab_obj:
-                st.caption(f"📍 **Mỏ neo không gian:** {chunk['anchor_icon']} {chunk['anchor_name']}  |  ⚙️ **Cơ chế nén:** `{chunk.get('sub_modes', '')}`")
-                models_in_chunk = get_models_for_topic_chunk(chunk)
-                for m_idx, m in enumerate(models_in_chunk):
-                    # Mở rộng thẻ đầu tiên mặc định trong mỗi Trụ
-                    render_gmm_detailed_model(m, is_expanded=(m_idx == 0))
+    if topic["id"] == "macro_elite_laws":
+        with st.expander("📚 Bóc Tách Chi Tiết: 8 Mật Mã Vận Hành Ngầm Của Giới Elite (The Elite Playbook)", expanded=True):
+            st.markdown("""
+            Trực tiếp bóc tách **8 Mật Mã Chiến Lược Vận Hành Ngầm** được 1% tinh hoa thấu hiểu và áp dụng triệt để nhằm định vị dòng chảy tài sản và quyền lực:
+            """)
+            search_law = st.text_input("🔍 Tìm kiếm mật mã ngầm hoặc mô hình liên kết:", "", placeholder="Ví dụ: Cantillon, Bất đối xứng, Khan hiếm, Coase, Đòn bẩy...", key="vault_law_search")
+            for law in ELITE_HIDDEN_LAWS:
+                if search_law.strip():
+                    match = (
+                        search_law.lower() in law["title"].lower()
+                        or search_law.lower() in law["axiom"].lower()
+                        or any(search_law.lower() in m.lower() for m in law.get("linked_models", []))
+                    )
+                    if not match:
+                        continue
+                with st.expander(f"{law['icon']} #{law['number']}. {law['title']}", expanded=(law['number'] <= 2 and not search_law.strip())):
+                    st.markdown(f"> *\"{law['axiom']}\"*")
+                    c_l1, c_l2 = st.columns(2)
+                    with c_l1:
+                        st.error(f"👥 **Góc Nhìn Đám Đông (Bẫy Nhận Thức):**  \n{law['mass_perception']}")
+                        st.success(f"👁️ **Hành Động Của Giới Elite:**  \n{law['elite_execution']}")
+                    with c_l2:
+                        st.info(f"🔬 **Cơ Sở Toán Học / Vật Lý / Kinh Tế:**  \n{law['physics_math_basis']}")
+                        st.warning(f"💡 **Ví Dụ Thực Chiến & Lịch Sử:**  \n{law['real_world_case']}")
 
-        # Tùy chọn mở rộng: tra cứu thêm trong toàn bộ 152 mô hình nếu cần
-        st.markdown("---")
-        with st.expander("🔍 Mở rộng: Tra cứu tìm kiếm trong toàn bộ 152 Mô hình & Nguyên lý gốc khác", expanded=False):
-            all_items = load_unified_farrow_catalog()
-            metrics = get_farrow_metrics()
-            st.caption(f"Tổng hợp {metrics['total']} mô hình & nguyên lý sạch (gồm {metrics['tier1_count']} siêu hạt nhân Tier 1).")
+                    st.markdown("---")
+                    c_sub1, c_sub2, c_sub3 = st.columns([1, 1, 1])
+                    with c_sub1:
+                        st.markdown("**🕸️ Mô hình hạt nhân liên kết:**")
+                        st.caption(" · ".join([f"`{m}`" for m in law['linked_models']]))
+                    with c_sub2:
+                        st.markdown("**🧠 Chế độ tư duy tương ứng:**")
+                        st.caption(" · ".join([f"**{mode}**" for mode in law['linked_modes']]))
+                    with c_sub3:
+                        st.markdown("**🎯 Câu hỏi tự vấn vị thế bản thân:**")
+                        st.caption(f"*{law['self_inquiry']}*")
+
+    elif topic["id"] == "macro_civilization_eras":
+        with st.expander("📚 Bóc Tách Chi Tiết: Trục Tiến Hóa 5 Kỷ Nguyên & Định Luật Chuyển Pha", expanded=True):
+            st.markdown("""
+            ### 🧬 Bản Chất Chuyển Dịch Kinh Tế Qua Các Thời Đại
+            Bản chất của mọi nền kinh tế đều xoay quanh: **Phân bổ nguồn lực khan hiếm để tối đa hóa sự sinh tồn và phát triển.**
+            """)
+            st.info("""
+            💥 **Định luật Chuyển Pha Kinh Tế (The Phase-Transition Law):**  
+            Khi một rào cản về **Năng lượng** hoặc **Công nghệ** bị phá vỡ ➔ **Nguồn lực cốt lõi cũ bị bình dân hóa (tiến về giá trị 0đ)** ➔ **Một nguồn lực mới lên ngôi** ➔ Dẫn đến sự tổ chức lại toàn bộ cấu trúc quyền lực, nhà nước và xã hội.
+            """)
+
+            st.markdown("#### 📐 Công Thức 3 Biến Số Đọc Vị Mọi Biến Động Vĩ Mô:")
+            c_m1, c_m2, c_m3 = st.columns(3)
+            with c_m1:
+                st.markdown("""
+                **1. Chi Phí Giao Dịch (Transaction Costs)**  
+                Mô hình mới luôn thắng mô hình cũ vì kéo tụt chi phí giao dịch (tìm kiếm, niềm tin, đàm phán, thực thi).
+                """)
+            with c_m2:
+                st.markdown("""
+                **2. Sự Trượt Giá Của Nguồn Lực Cũ**  
+                Khi thời đại mới đến, nguồn lực cũ không biến mất nhưng bị *bình dân hóa (commoditized)*.
+                """)
+            with c_m3:
+                st.markdown("""
+                **3. Công Cụ Đòn Bẩy (Leverage Shift)**  
+                - Nông nghiệp: Sức người & Tá điền  
+                - Công nghiệp: Vốn & Động cơ nhiệt  
+                - AI: Code, Media & AI Compute.
+                """)
+
+            st.divider()
+            st.markdown("### 🗺️ Khám Phá Chi Tiết 5 Kỷ Nguyên Tiến Hóa Văn Minh")
+            era_titles = [f"{e['icon']} {e['name']}" for e in CIVILIZATIONAL_ERAS]
+            selected_era_idx = st.radio(
+                "Chọn thời đại để mổ xẻ cấu trúc kinh tế:",
+                range(len(CIVILIZATIONAL_ERAS)),
+                format_func=lambda i: era_titles[i],
+                horizontal=True,
+                key="vault_era_selector"
+            )
+            era_data = CIVILIZATIONAL_ERAS[selected_era_idx]
+            st.markdown(f"#### {era_data['icon']} {era_data['name']} — *{era_data['subtitle']}*")
+            st.caption(f"⏱️ Khung thời gian: **{era_data['timeframe']}**")
+
+            c_e_left, c_e_right = st.columns([1, 1])
+            with c_e_left:
+                st.markdown(f"**📌 Nguồn Lực Cốt Lõi:**  \n{era_data['core_resource']}")
+                st.markdown(f"**⚡ Năng Lượng & Công Nghệ:**  \n{era_data['energy_tech']}")
+                st.markdown(f"**🛑 Giới Hạn / Điểm Nghẽn:**  \n{era_data['constraint']}")
+                st.markdown(f"**💼 Mô Hình Kinh Tế:**  \n{era_data['economic_model']}")
+            with c_e_right:
+                st.error(f"**📉 Bị Bình Dân Hóa (Rớt Giá Về 0đ):**  \n{era_data['commoditized']}")
+                st.success(f"**💎 Nút Thắt Khan Hiếm Mới Lên Ngôi:**  \n{era_data['new_scarce_asset']}")
+                st.markdown(f"**🚀 Đòn Bẩy Của Giới Tinh Hoa:**  \n{era_data['elite_leverage']}")
+                st.warning(f"**💥 Tại Sao Chuyển Giao? (Turning Point):**  \n{era_data['turning_point']}")
+
+            with st.expander("🔬 Phân tích bản chất sâu sắc & Bài học lịch sử", expanded=True):
+                st.markdown(era_data['deep_dive'])
+                st.markdown("**Mô hình hạt nhân kích hoạt:** " + " · ".join([f"`{m['name']}`" for m in era_data.get('associated_models', [])]))
+                st.markdown("**Chế độ tư duy tương ứng:** " + " · ".join([f"**[{mode}]**" for mode in era_data.get('associated_modes', [])]))
+
+            st.divider()
+            st.markdown("### 📊 Ma Trận So Sánh Tổng Hợp 5 Kỷ Nguyên")
+            comparison_rows = []
+            for e in CIVILIZATIONAL_ERAS:
+                comparison_rows.append({
+                    "Kỷ Nguyên": f"{e['icon']} {e['name']}",
+                    "Nguồn Lực Cốt Lõi": e['core_resource'][:32] + "...",
+                    "Giới Hạn Vật Lý": e['constraint'][:32] + "...",
+                    "Thứ Rớt Giá Về 0": e['commoditized'][:28] + "...",
+                    "Nút Thắt Khan Hiếm Mới": e['new_scarce_asset'].replace('\n', ' ')[:35] + "...",
+                    "Đòn Bẩy Elite": e['elite_leverage'][:32] + "...",
+                })
+            st.dataframe(comparison_rows, use_container_width=True)
+
+    else:
+        with st.expander(f"📚 Bóc Tách Chi Tiết Mô Hình & Nguyên Lý Gốc Của Chủ Đề: {topic['title']} (9 Mô Hình Tinh Hoa)", expanded=True):
+            st.markdown(f"Trực tiếp bóc tách 9 mô hình cấu thành nên 3 Trụ Cột của **{topic['title']}** theo chuẩn Charlie Munger & The Great Mental Models Framework:")
             
-            c_f1, c_f2 = st.columns([1, 2])
-            with c_f1:
-                t_filter = st.selectbox("Lọc cấp độ:", ["Tất cả", "⭐ Tier 1 (Pareto)", "Cấp 2 & 3"], key="exp_tier")
-            with c_f2:
-                s_kw = st.text_input("Tìm kiếm:", placeholder="Nhập tên mô hình hoặc nguyên lý...", key="exp_search")
-                
-            display_items = all_items
-            if t_filter == "⭐ Tier 1 (Pareto)":
-                display_items = [x for x in display_items if x.get("tier") == 1]
-            elif t_filter == "Cấp 2 & 3":
-                display_items = [x for x in display_items if x.get("tier") in [2, 3]]
-                
-            if s_kw.strip():
-                kw_low = s_kw.strip().lower()
-                display_items = [x for x in display_items if kw_low in str(x.get("name_vi", "")).lower() or kw_low in str(x.get("name_en", "")).lower() or kw_low in str(x.get("first_principle", "")).lower()]
-                
-            st.caption(f"Tìm thấy {len(display_items)} kết quả:")
-            for sub_item in display_items[:10]:
-                render_gmm_detailed_model(sub_item, is_expanded=False)
+            tab_t1, tab_t2, tab_t3 = st.tabs([
+                f"🚪 {chunks[0]['label']}",
+                f"🖥️ {chunks[1]['label']}",
+                f"🪑 {chunks[2]['label']}"
+            ])
+            
+            for tab_obj, chunk in zip([tab_t1, tab_t2, tab_t3], chunks):
+                with tab_obj:
+                    st.caption(f"📍 **Mỏ neo không gian:** {chunk['anchor_icon']} {chunk['anchor_name']}  |  ⚙️ **Cơ chế nén:** `{chunk.get('sub_modes', '')}`")
+                    models_in_chunk = get_models_for_topic_chunk(chunk)
+                    for m_idx, m in enumerate(models_in_chunk):
+                        # Mở rộng thẻ đầu tiên mặc định trong mỗi Trụ
+                        render_gmm_detailed_model(m, is_expanded=(m_idx == 0))
 
-    if topic.get("category") == "🌐 Thế Cuộc & Giới Elite":
-        st.markdown("---")
-        st.markdown("### 🌐 Lăng Kính Thế Cuộc & Quy Luật Vận Hành Ngầm Của Giới Elite (Bản Bổ Trợ Chuyên Sâu)")
-        st.caption("Bóc tách toàn cảnh dòng chảy chuyển dịch các thời đại kinh tế và giải mã 8 mật mã chiến lược của tầng lớp tinh hoa dưới lăng kính First Principles.")
-        render_macro_radar_room(active_api_key=active_api_key, is_embedded=True)
+            # Tùy chọn mở rộng: tra cứu thêm trong toàn bộ 152 mô hình nếu cần
+            st.markdown("---")
+            with st.expander("🔍 Mở rộng: Tra cứu tìm kiếm trong toàn bộ 152 Mô hình & Nguyên lý gốc khác", expanded=False):
+                all_items = load_unified_farrow_catalog()
+                metrics = get_farrow_metrics()
+                st.caption(f"Tổng hợp {metrics['total']} mô hình & nguyên lý sạch (gồm {metrics['tier1_count']} siêu hạt nhân Tier 1).")
+                
+                c_f1, c_f2 = st.columns([1, 2])
+                with c_f1:
+                    t_filter = st.selectbox("Lọc cấp độ:", ["Tất cả", "⭐ Tier 1 (Pareto)", "Cấp 2 & 3"], key="exp_tier")
+                with c_f2:
+                    s_kw = st.text_input("Tìm kiếm:", placeholder="Nhập tên mô hình hoặc nguyên lý...", key="exp_search")
+                    
+                display_items = all_items
+                if t_filter == "⭐ Tier 1 (Pareto)":
+                    display_items = [x for x in display_items if x.get("tier") == 1]
+                elif t_filter == "Cấp 2 & 3":
+                    display_items = [x for x in display_items if x.get("tier") in [2, 3]]
+                    
+                if s_kw.strip():
+                    kw_low = s_kw.strip().lower()
+                    display_items = [x for x in display_items if kw_low in str(x.get("name_vi", "")).lower() or kw_low in str(x.get("name_en", "")).lower() or kw_low in str(x.get("first_principle", "")).lower()]
+                    
+                st.caption(f"Tìm thấy {len(display_items)} kết quả:")
+                for sub_item in display_items[:10]:
+                    render_gmm_detailed_model(sub_item, is_expanded=False)
+
 
 
 
