@@ -37,6 +37,149 @@ from core.db_storage import (
 )
 
 
+def render_macro_radar_result_cards(res_radar: Dict[str, Any]):
+    """Hiển thị toàn diện kết quả quét vĩ mô với đầy đủ thông tin và định dạng trực quan 100%."""
+    if not res_radar or not isinstance(res_radar, dict):
+        st.info("Không có dữ liệu chi tiết bản quét.")
+        return
+
+    st.markdown(f"#### 🎯 Bản Chất Cốt Lõi: {res_radar.get('trend_summary', '')}")
+    st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {res_radar.get('transaction_costs_impact', '')}")
+    
+    c_r1, c_r2 = st.columns(2)
+    with c_r1:
+        st.error("#### 📉 Nguồn Lực Bị Trượt Giá Về 0")
+        comm_assets = res_radar.get("commoditized_assets", [])
+        if comm_assets:
+            for item in comm_assets:
+                if isinstance(item, dict):
+                    st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+                else:
+                    st.markdown(f"- {item}")
+        else:
+            st.caption("Không có dữ liệu.")
+            
+    with c_r2:
+        st.success("#### 💎 Nút Thắt Khan Hiếm Mới")
+        comp_scarcities = res_radar.get("complementary_scarcities", [])
+        if comp_scarcities:
+            for item in comp_scarcities:
+                if isinstance(item, dict):
+                    st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+                else:
+                    st.markdown(f"- {item}")
+        else:
+            st.caption("Không có dữ liệu.")
+
+    st.markdown("#### 👁️ Nước Cờ Chiến Lược Của Giới Elite")
+    elite_moves = res_radar.get("elite_strategic_moves", [])
+    if elite_moves:
+        for move in elite_moves:
+            st.markdown(f"- ♟️ {move}")
+    else:
+        st.caption("Không có dữ liệu.")
+
+    c_b1, c_b2 = st.columns(2)
+    with c_b1:
+        st.markdown("#### 🕸️ Mô Hình Hạt Nhân Kích Hoạt")
+        act_models = res_radar.get("activated_mental_models", [])
+        if act_models:
+            for m_item in act_models:
+                if isinstance(m_item, dict):
+                    st.markdown(f"- `{m_item.get('model_name', '')}`: {m_item.get('mechanism', '')}")
+                else:
+                    st.markdown(f"- `{m_item}`")
+        else:
+            st.caption("Không có dữ liệu.")
+            
+    with c_b2:
+        st.markdown("#### 🧭 Playbook Hành Động")
+        playbook = res_radar.get("action_playbook_for_individual", [])
+        if playbook:
+            for act in playbook:
+                st.markdown(f"- 🚀 {act}")
+        else:
+            st.caption("Không có dữ liệu.")
+
+
+def render_problem_decomposition_result_cards(
+    res: Dict[str, Any],
+    prob: str = "",
+    record_id: str = "latest",
+    show_decision_transfer: bool = True
+):
+    """Hiển thị toàn diện kết quả phân rã 9 Lăng Kính & First Principles với đầy đủ thông tin và định dạng 100%."""
+    if not res or not isinstance(res, dict):
+        st.info("Không có dữ liệu chi tiết bản phân rã.")
+        return
+
+    # 1. First principles breakdown
+    st.markdown("### ⚡ Chân Lý Nguyên Bản (First Principles)")
+    st.info(res.get("first_principles_breakdown", ""))
+
+    # 2. Core principles found (Nguyên lý hạt nhân chi phối)
+    core_principles = res.get("core_principles_found", [])
+    if core_principles:
+        st.markdown("#### 🧬 Các Nguyên Lý Hạt Nhân Chi Phối:")
+        c_pr = st.columns(min(len(core_principles), 3))
+        for pr_idx, pr in enumerate(core_principles):
+            with c_pr[pr_idx % len(c_pr)]:
+                if isinstance(pr, dict):
+                    st.markdown(f"**📌 {pr.get('name', '')}**")
+                    if pr.get("domain"):
+                        st.caption(f"Lĩnh vực: *{pr.get('domain', '')}*")
+                    if pr.get("description"):
+                        st.write(pr.get("description", ""))
+                else:
+                    st.markdown(f"**📌 {pr}**")
+
+    # 3. 5 Elite Lenses cards (Đủ 5 lăng kính gồm cả Đa Khung Thời Gian)
+    lenses = res.get("elite_lenses", {})
+    st.markdown("### 👁️ Phân Tích Đa Chiều Qua 5 Lăng Kính Lớn")
+
+    c_l1, c_l2 = st.columns(2)
+    with c_l1:
+        st.warning(f"🔄 **Lật Ngược Vấn Đề (Inversion - Munger):**  \n{lenses.get('inversion', '')}")
+        st.error(f"🎯 **Hệ Quả Bậc Hai & Bậc Cao (Second-Order):**  \n{lenses.get('second_order', '')}")
+        st.info(f"⏳ **Đa Khung Thời Gian (Multi-Timescale):**  \n{lenses.get('multi_timescale', '')}")
+    with c_l2:
+        st.info(f"🎲 **Xác Suất Bayes & Tỷ Lệ Nền (Bayesian Base Rate):**  \n{lenses.get('bayesian', '')}")
+        st.success(f"⚖️ **Đòn Bẩy & Điểm Nghẽn (Leverage & Bottlenecks):**  \n{lenses.get('leverage', '')}")
+
+    # 4. Actionable insights & Human decision questions (Câu hỏi quyết định chỉ bạn mới trả lời được)
+    c_act1, c_act2 = st.columns(2)
+    with c_act1:
+        st.markdown("#### 🚀 Hành Động Đòn Bẩy Cao (Actionable Insights):")
+        act_insights = res.get("actionable_insights", [])
+        if act_insights:
+            for insight in act_insights:
+                st.markdown(f"- 💡 {insight}")
+        else:
+            st.caption("Không có dữ liệu.")
+            
+    with c_act2:
+        st.markdown("#### ❓ Câu Hỏi Quyết Định Chỉ Bạn Mới Trả Lời Được:")
+        decisions = res.get("human_decision_needed", [])
+        if decisions:
+            for q_item in decisions:
+                st.markdown(f"- 👉 *{q_item}*")
+        else:
+            st.caption("Không có dữ liệu.")
+
+    # 5. Chuyển sang Decision Journal
+    if show_decision_transfer:
+        st.divider()
+        st.markdown("#### 📝 Bạn đã sẵn sàng đưa ra quyết định?")
+        btn_key = f"btn_transfer_dj_{record_id}"
+        if st.button("📓 Chuyển phân rã này thành Bản ghi Quyết định để kiểm chứng sau 30-90 ngày", type="primary", key=btn_key):
+            st.session_state["dj_prefill_title"] = prob[:70]
+            st.session_state["dj_prefill_hypo"] = res.get("first_principles_breakdown", "")[:300]
+            st.session_state["dj_prefill_inv"] = lenses.get("inversion", "")[:250]
+            st.session_state["dj_prefill_sec"] = lenses.get("second_order", "")[:250]
+            st.session_state["dj_prefill_source"] = prob[:400]
+            st.info("👉 Đã nạp dữ liệu vào form! Vui lòng chuyển sang chế độ **'📓 Elite Decision Journal'** phía trên để lưu!")
+
+
 def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool = False):
     """Render phòng chức năng Máy Quét Đọc Vị Thế Cuộc: Chỉ 2 Tab (Quét & Kho Lưu Trữ)."""
     if not is_embedded:
@@ -86,6 +229,8 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
         with col_m_reset:
             if st.button("🔄 Làm mới ô nhập", use_container_width=True, key="room_btn_clear_radar"):
                 st.session_state["room_macro_radar_input"] = ""
+                st.session_state.pop("latest_macro_radar_result", None)
+                st.session_state.pop("latest_macro_radar_trend", None)
                 st.rerun()
 
         if run_macro_btn:
@@ -94,38 +239,22 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
             else:
                 with st.spinner("🤖 Đang kích hoạt Bộ máy Phân tích Thế cuộc & First Principles Engine..."):
                     res_radar = analyze_macro_radar(trend_text.strip(), api_key=active_api_key)
-            if not res_radar:
-                st.error("Không nhận được phản hồi từ AI Engine.")
-            elif "error" in res_radar and not res_radar.get("trend_summary"):
-                st.error(f"Lỗi: {res_radar['error']}")
-            else:
-                saved_ok = save_macro_scan(trend_text.strip(), res_radar)
-                if saved_ok:
-                    st.toast("☁️ Đã tự động lưu kết quả quét vào Supabase Cloud!", icon="💾")
-                st.success("✅ Đã hoàn tất bóc tách thế cuộc & Lưu trữ bền vững!")
-                st.markdown(f"#### 🎯 Bản Chất Cốt Lõi: {res_radar.get('trend_summary', '')}")
-                st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {res_radar.get('transaction_costs_impact', '')}")
-                c_r1, c_r2 = st.columns(2)
-                with c_r1:
-                    st.error("#### 📉 Nguồn Lực Bị Trượt Giá Về 0")
-                    for item in res_radar.get("commoditized_assets", []):
-                        st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
-                with c_r2:
-                    st.success("#### 💎 Nút Thắt Khan Hiếm Mới")
-                    for item in res_radar.get("complementary_scarcities", []):
-                        st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
-                st.markdown("#### 👁️ Nước Cờ Chiến Lược Của Giới Elite")
-                for move in res_radar.get("elite_strategic_moves", []):
-                    st.markdown(f"- ♟️ {move}")
-                c_b1, c_b2 = st.columns(2)
-                with c_b1:
-                    st.markdown("#### 🕸️ Mô Hình Hạt Nhân Kích Hoạt")
-                    for m_item in res_radar.get("activated_mental_models", []):
-                        st.markdown(f"- `{m_item.get('model_name', '')}`: {m_item.get('mechanism', '')}")
-                with c_b2:
-                    st.markdown("#### 🧭 Playbook Hành Động")
-                    for act in res_radar.get("action_playbook_for_individual", []):
-                        st.markdown(f"- 🚀 {act}")
+                if not res_radar:
+                    st.error("Không nhận được phản hồi từ AI Engine.")
+                elif "error" in res_radar and not res_radar.get("trend_summary"):
+                    st.error(f"Lỗi: {res_radar['error']}")
+                else:
+                    st.session_state["latest_macro_radar_result"] = res_radar
+                    st.session_state["latest_macro_radar_trend"] = trend_text.strip()
+                    saved_ok = save_macro_scan(trend_text.strip(), res_radar)
+                    if saved_ok:
+                        st.toast("☁️ Đã tự động lưu kết quả quét vào Supabase Cloud!", icon="💾")
+
+        # Hiển thị kết quả quét mới nhất
+        if "latest_macro_radar_result" in st.session_state:
+            res_radar = st.session_state["latest_macro_radar_result"]
+            st.success("✅ Đã hoàn tất bóc tách thế cuộc & Lưu trữ bền vững!")
+            render_macro_radar_result_cards(res_radar)
 
     # -------------------------------------------------------------------------
     # TAB 2: KHO LƯU TRỮ BẢN QUÉT THẾ CUỘC
@@ -166,29 +295,8 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                             st.success("Đã xóa bản ghi!")
                             st.rerun()
 
-                    st.markdown(f"**🎯 Bản Chất Cốt Lõi:** {sc_res.get('trend_summary', '')}")
-                    st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {sc_res.get('transaction_costs_impact', '')}")
-                    c_s1, c_s2 = st.columns(2)
-                    with c_s1:
-                        st.error("📉 **Nguồn Lực Trượt Giá Về 0:**")
-                        for item in sc_res.get("commoditized_assets", []):
-                            st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
-                    with c_s2:
-                        st.success("💎 **Nút Thắt Khan Hiếm Mới:**")
-                        for item in sc_res.get("complementary_scarcities", []):
-                            st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
-                    st.markdown("👁️ **Nước Cờ Giới Elite:**")
-                    for move in sc_res.get("elite_strategic_moves", []):
-                        st.markdown(f"- ♟️ {move}")
-                    c_sb1, c_sb2 = st.columns(2)
-                    with c_sb1:
-                        st.markdown("🕸️ **Mô Hình Kích Hoạt:**")
-                        for m_item in sc_res.get("activated_mental_models", []):
-                            st.markdown(f"- `{m_item.get('model_name', '')}`: {m_item.get('mechanism', '')}")
-                    with c_sb2:
-                        st.markdown("🧭 **Playbook Hành Động:**")
-                        for act in sc_res.get("action_playbook_for_individual", []):
-                            st.markdown(f"- 🚀 {act}")
+                    st.divider()
+                    render_macro_radar_result_cards(sc_res)
         else:
             st.info("💡 Chưa có bản quét nào được lưu. Hãy quét một xu hướng ở Tab 1 để tự động lưu vào đây!")
 
@@ -266,54 +374,12 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
             prob = st.session_state.get("latest_decomposition_problem", "")
 
             st.success("✅ Đã hoàn tất bóc tách 9 Lăng kính & Lưu trữ an toàn!")
-
-            # First principles card
-            st.markdown("### ⚡ Chân Lý Nguyên Bản (First Principles)")
-            st.info(res.get("first_principles_breakdown", ""))
-
-            # Core principles found
-            if res.get("core_principles_found"):
-                st.markdown("#### 🧬 Các Nguyên Lý Hạt Nhân Chi Phối:")
-                c_pr = st.columns(len(res["core_principles_found"]))
-                for pr_idx, pr in enumerate(res["core_principles_found"]):
-                    with c_pr[pr_idx % len(c_pr)]:
-                        st.markdown(f"**📌 {pr.get('name', '')}**")
-                        st.caption(f"Lĩnh vực: *{pr.get('domain', '')}*")
-                        st.write(pr.get('description', ''))
-
-            # 5 Elite Lenses cards
-            lenses = res.get("elite_lenses", {})
-            st.markdown("### 👁️ Phân Tích Đa Chiều Qua 5 Lăng Kính Lớn")
-
-            c_l1, c_l2 = st.columns(2)
-            with c_l1:
-                st.warning(f"🔄 **Lật Ngược Vấn Đề (Inversion - Munger):**  \n{lenses.get('inversion', '')}")
-                st.error(f"🎯 **Hệ Quả Bậc Hai & Bậc Cao (Second-Order):**  \n{lenses.get('second_order', '')}")
-                st.info(f"⏳ **Đa Khung Thời Gian (Multi-Timescale):**  \n{lenses.get('multi_timescale', '')}")
-            with c_l2:
-                st.info(f"🎲 **Xác Suất Bayes & Tỷ Lệ Nền (Bayesian Base Rate):**  \n{lenses.get('bayesian', '')}")
-                st.success(f"⚖️ **Đòn Bẩy & Điểm Nghẽn (Leverage & Bottlenecks):**  \n{lenses.get('leverage', '')}")
-
-            c_act1, c_act2 = st.columns(2)
-            with c_act1:
-                st.markdown("#### 🚀 Hành Động Đòn Bẩy Cao (Actionable Insights):")
-                for insight in res.get("actionable_insights", []):
-                    st.markdown(f"- 💡 {insight}")
-            with c_act2:
-                st.markdown("#### ❓ Câu Hỏi Quyết Định Chỉ Bạn Mới Trả Lời Được:")
-                for q_item in res.get("human_decision_needed", []):
-                    st.markdown(f"- 👉 *{q_item}*")
-
-            st.divider()
-            # Nút chuyển nhanh sang Decision Journal
-            st.markdown("#### 📝 Bạn đã sẵn sàng đưa ra quyết định?")
-            if st.button("📓 Chuyển phân rã này thành Bản ghi Quyết định để kiểm chứng sau 30-90 ngày", type="primary"):
-                st.session_state["dj_prefill_title"] = prob[:70]
-                st.session_state["dj_prefill_hypo"] = res.get("first_principles_breakdown", "")[:300]
-                st.session_state["dj_prefill_inv"] = lenses.get("inversion", "")[:250]
-                st.session_state["dj_prefill_sec"] = lenses.get("second_order", "")[:250]
-                st.session_state["dj_prefill_source"] = prob[:400]
-                st.info("👉 Đã nạp dữ liệu vào form! Vui lòng chuyển sang tab **'📓 Kho Lưu Trữ & Nhật Ký Quyết Định'** phía trên để lưu!")
+            render_problem_decomposition_result_cards(
+                res,
+                prob=prob,
+                record_id="latest",
+                show_decision_transfer=True
+            )
 
     # -------------------------------------------------------------------------
     # TAB 2: KHO LƯU TRỮ BẢN PHÂN RÃ & NHẬT KÝ QUYẾT ĐỊNH
@@ -360,20 +426,13 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
                                 st.success("Đã xóa bản phân rã!")
                                 st.rerun()
 
-                        st.markdown(f"**⚡ Chân Lý Nguyên Bản:** {a_res.get('first_principles_breakdown', '')}")
-
-                        lenses_a = a_res.get("elite_lenses", {})
-                        col_la1, col_la2 = st.columns(2)
-                        with col_la1:
-                            st.warning(f"🔄 **Inversion:** {lenses_a.get('inversion', '')}")
-                            st.error(f"🎯 **Second-Order:** {lenses_a.get('second_order', '')}")
-                        with col_la2:
-                            st.info(f"🎲 **Bayesian:** {lenses_a.get('bayesian', '')}")
-                            st.success(f"⚖️ **Leverage:** {lenses_a.get('leverage', '')}")
-
-                        st.markdown("🚀 **Hành động đòn bẩy đề xuất:**")
-                        for act in a_res.get("actionable_insights", []):
-                            st.markdown(f"- {act}")
+                        st.divider()
+                        render_problem_decomposition_result_cards(
+                            a_res,
+                            prob=a_problem,
+                            record_id=a_id,
+                            show_decision_transfer=True
+                        )
 
         else:
             # Elite Decision Journal
