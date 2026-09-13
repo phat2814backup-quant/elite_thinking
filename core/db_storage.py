@@ -39,6 +39,7 @@ LOCAL_MACRO_FILE = os.path.join(DATA_DIR, "macro_scans_history.json")
 LOCAL_ANALYSES_FILE = os.path.join(DATA_DIR, "analyses_history.json")
 LOCAL_DECISIONS_FILE = os.path.join(DATA_DIR, "decision_journal.json")
 LOCAL_COMPRESSIONS_FILE = os.path.join(DATA_DIR, "compressions_history.json")
+LOCAL_SCOUT_TREES_FILE = os.path.join(DATA_DIR, "macro_scout_trees.json")
 
 _DEFAULT_URL = "https://szprfjzeauzstvmvgjrw.supabase.co"
 
@@ -236,6 +237,93 @@ def delete_macro_scan(scan_id: str, username: str = "Phat") -> bool:
     updated_scans = [s for s in current_scans if s.get("id") != scan_id]
     _save_json_file(LOCAL_MACRO_FILE, updated_scans)
     return _update_user_blob_field(username, "macro_radar_scans", updated_scans)
+
+
+# =============================================================================
+# 1B. QUẢN TRỊ CÂY TRINH SÁT THỜI CUỘC (MACRO SCOUT TREES & MULTI-TIER CACHE)
+# =============================================================================
+def load_macro_scout_trees(username: str = "Phat") -> List[Dict[str, Any]]:
+    """Tải toàn bộ cây trinh sát xu hướng F1 & F2 đã bóc tách từ Cloud hoặc local."""
+    blob = _fetch_user_blob(username)
+    if "macro_scout_trees" in blob and isinstance(blob["macro_scout_trees"], list):
+        trees = blob["macro_scout_trees"]
+        _save_json_file(LOCAL_SCOUT_TREES_FILE, trees)
+        return trees
+    return _load_json_file(LOCAL_SCOUT_TREES_FILE)
+
+
+def save_macro_scout_tree(
+    domain_name: str,
+    scout_overview: str,
+    trends: List[Dict[str, Any]],
+    tree_id: Optional[str] = None,
+    username: str = "Phat"
+) -> Dict[str, Any]:
+    """Lưu hoặc cập nhật một cây trinh sát thế cuộc (F0 -> F1 -> F2), bảo toàn các F2 đã soi sâu."""
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    tid = tree_id if tree_id else f"tree_{int(datetime.now().timestamp() * 1000)}"
+
+    current_trees = load_macro_scout_trees(username)
+    existing = next((t for t in current_trees if t.get("id") == tid or t.get("domain", "").lower() == domain_name.strip().lower()), None)
+
+    if existing:
+        existing["updated_at"] = now_str
+        existing["scout_overview"] = scout_overview
+        # Giữ lại các nhánh F2 (drill_down) đã bóc tách trước đó nếu có
+        existing_drill = {t.get("title"): t.get("drill_down") for t in existing.get("trends", []) if "drill_down" in t}
+        for t in trends:
+            if t.get("title") in existing_drill and "drill_down" not in t:
+                t["drill_down"] = existing_drill[t.get("title")]
+        existing["trends"] = trends
+        record = existing
+        updated_trees = [t if t.get("id") != existing.get("id") else existing for t in current_trees]
+    else:
+        record = {
+            "id": tid,
+            "created_at": now_str,
+            "updated_at": now_str,
+            "domain": domain_name.strip(),
+            "scout_overview": scout_overview,
+            "trends": trends
+        }
+        updated_trees = [t for t in current_trees if t.get("domain", "").lower() != domain_name.strip().lower()]
+        updated_trees.insert(0, record)
+
+    if len(updated_trees) > 30:
+        updated_trees = updated_trees[:30]
+
+    _save_json_file(LOCAL_SCOUT_TREES_FILE, updated_trees)
+    _update_user_blob_field(username, "macro_scout_trees", updated_trees)
+    return record
+
+
+def update_tree_drilldown(
+    tree_id: str,
+    trend_rank: int,
+    drill_down_data: Dict[str, Any],
+    username: str = "Phat"
+) -> bool:
+    """Lưu trữ đệm kết quả bóc tách lớp 2/3 (F2) trực tiếp vào nhánh F1 tương ứng trong cây."""
+    trees = load_macro_scout_trees(username)
+    for t in trees:
+        if t.get("id") == tree_id:
+            for trend in t.get("trends", []):
+                if trend.get("rank") == trend_rank:
+                    trend["drill_down"] = drill_down_data
+                    t["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    _save_json_file(LOCAL_SCOUT_TREES_FILE, trees)
+                    _update_user_blob_field(username, "macro_scout_trees", trees)
+                    return True
+    return False
+
+
+def delete_macro_scout_tree(tree_id: str, username: str = "Phat") -> bool:
+    """Xóa một cây trinh sát theo ID."""
+    trees = load_macro_scout_trees(username)
+    updated = [t for t in trees if t.get("id") != tree_id]
+    _save_json_file(LOCAL_SCOUT_TREES_FILE, updated)
+    return _update_user_blob_field(username, "macro_scout_trees", updated)
+
 
 
 # =============================================================================

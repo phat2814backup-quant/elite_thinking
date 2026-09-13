@@ -31,6 +31,10 @@ from core.db_storage import (
     load_macro_scans,
     save_macro_scan,
     delete_macro_scan,
+    load_macro_scout_trees,
+    save_macro_scout_tree,
+    update_tree_drilldown,
+    delete_macro_scout_tree,
     load_problem_analyses,
     save_problem_analysis,
     delete_problem_analysis,
@@ -283,67 +287,143 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
     # -------------------------------------------------------------------------
     with m_tab1:
         # ---------------------------------------------------------------------
-        # TẦNG 1 & 2: RA-ĐA TRINH SÁT THỜI CUỘC (LIVE TREND SCOUT & DRILL-DOWN)
+        # TẦNG 1 & 2: RA-ĐA TRINH SÁT THỜI CUỘC (CÂY PHÂN CẤP F1 & F2 + LƯU TRỮ VĨNH VIỄN)
         # ---------------------------------------------------------------------
-        with st.expander("🛰️ Ra-đa Trinh Sát Thời Cuộc (Bắt Mạch Xu Hướng Nóng Hiện Nay)", expanded=True):
+        with st.expander("🛰️ Ra-đa Trinh Sát Thời Cuộc (Cây Phân Nhánh F1 & F2 Đã Lưu Trữ)", expanded=True):
             st.markdown(
                 "Đừng để bị lạc hậu hay đi ngược thời đại (như bỏ công nghiên cứu thứ đã bão hòa)! "
-                "Hãy trinh sát dòng chảy thế giới gần đây để lấy **Top 10 biến động hạt nhân**, "
-                "soi sâu các nút thắt ngầm trước khi nạp vào máy bóc tách First Principles."
+                "Hệ thống trinh sát **Cây Thế Cuộc Đa Tầng (F0 ➔ F1 ➔ F2)** tự động lưu trữ từng nhánh đã bóc tách. "
+                "Bạn có thể chuyển đổi qua lại giữa các F1 và F2 mà không tốn API, đồng thời theo dõi sự biến chuyển sau 30–90 ngày."
             )
-            
-            scout_chips = [
-                ("🤖 Công nghệ & AI", "Công nghệ & AI"),
-                ("💰 Tài chính & Tiền tệ", "Tài chính & Dòng tiền"),
-                ("⚡ Năng lượng & Hạ tầng", "Năng lượng & Điện lưới"),
-                ("🧬 Y sinh & Gene", "Y sinh & Công nghệ gene"),
-                ("🌐 Chuỗi cung ứng toàn cầu", "Chuỗi cung ứng & Địa chính trị"),
-                ("🏭 Robotics & Tự động hóa", "Robotics & Tự động hóa")
+
+            all_saved_trees = load_macro_scout_trees()
+
+            # Quản lý phiên cây trinh sát
+            col_tree_sel, col_tree_act = st.columns([3, 1])
+            tree_options = ["➕ Bắt mạch lĩnh vực mới"] + [
+                f"🌲 [{t.get('domain', 'Chưa đặt tên')}] ({t.get('updated_at', '')[:10]})"
+                for t in all_saved_trees
             ]
             
-            c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6 = st.columns(6)
-            chip_cols = [c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6]
-            for col_i, (chip_label, chip_query) in zip(chip_cols, scout_chips):
-                with col_i:
-                    if st.button(chip_label, key=f"chip_scout_{chip_label}", use_container_width=True):
-                        st.session_state["scout_kw_input"] = chip_query
-                        st.session_state["trigger_auto_scout"] = True
+            with col_tree_sel:
+                selected_tree_idx = st.selectbox(
+                    "Chọn Bản Đồ Cây Đã Lưu (Hoặc tạo mới):",
+                    range(len(tree_options)),
+                    format_func=lambda i: tree_options[i],
+                    key="sb_tree_selector"
+                )
+
+            active_tree = None
+            if selected_tree_idx > 0 and len(all_saved_trees) >= selected_tree_idx:
+                active_tree = all_saved_trees[selected_tree_idx - 1]
+                st.session_state["active_tree_id"] = active_tree["id"]
+                st.session_state["active_scout_domain"] = active_tree.get("domain", "")
+
+            # Nút xóa cây hiện tại nếu đang xem cây cũ
+            with col_tree_act:
+                if active_tree:
+                    st.write("")
+                    if st.button("🗑️ Xóa cây này", key=f"btn_del_tree_{active_tree['id']}", use_container_width=True):
+                        delete_macro_scout_tree(active_tree["id"])
+                        st.session_state.pop("active_tree_id", None)
+                        st.success("Đã xóa cây trinh sát!")
                         st.rerun()
 
-            col_kw, col_sbtn = st.columns([3, 1])
-            with col_kw:
-                scout_query = st.text_input(
-                    "Nhập lĩnh vực hoặc từ khóa muốn trinh sát:",
-                    value=st.session_state.get("scout_kw_input", "Công nghệ & AI"),
-                    key="input_scout_kw",
-                    placeholder="vd: công nghệ, xe điện, bán dẫn, fintech, năng lượng xanh, việc làm..."
-                )
-            with col_sbtn:
-                st.write("")
-                run_scout = st.button("🛰️ Bắt Mạch Top 10", type="secondary", use_container_width=True, key="btn_run_scout")
+            # Form nhập hoặc quét mới
+            if not active_tree:
+                scout_chips = [
+                    ("🤖 Công nghệ & AI", "Công nghệ & AI"),
+                    ("🧠 Não bộ & BCI", "Công nghệ não bộ & Giao diện não-máy tính BCI"),
+                    ("💰 Tài chính & Tiền tệ", "Tài chính & Dòng tiền"),
+                    ("⚡ Năng lượng & Hạ tầng", "Năng lượng & Điện lưới"),
+                    ("🧬 Y sinh & Gene", "Y sinh & Công nghệ gene"),
+                    ("🏭 Robotics & Tự hành", "Robotics & Xe tự hành")
+                ]
+                
+                c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6 = st.columns(6)
+                chip_cols = [c_ch1, c_ch2, c_ch3, c_ch4, c_ch5, c_ch6]
+                for col_i, (chip_label, chip_query) in zip(chip_cols, scout_chips):
+                    with col_i:
+                        if st.button(chip_label, key=f"chip_scout_{chip_label}", use_container_width=True):
+                            st.session_state["scout_kw_input"] = chip_query
+                            st.session_state["trigger_auto_scout"] = True
+                            st.rerun()
 
-            if st.session_state.pop("trigger_auto_scout", False):
-                run_scout = True
+                col_kw, col_sbtn = st.columns([3, 1])
+                with col_kw:
+                    scout_query = st.text_input(
+                        "Nhập lĩnh vực hoặc từ khóa muốn trinh sát:",
+                        value=st.session_state.get("scout_kw_input", "Công nghệ não bộ & BCI"),
+                        key="input_scout_kw",
+                        placeholder="vd: não bộ, công nghệ, xe điện, bán dẫn, fintech, năng lượng xanh, việc làm..."
+                    )
+                with col_sbtn:
+                    st.write("")
+                    run_scout = st.button("🛰️ Bắt Mạch Top 10", type="secondary", use_container_width=True, key="btn_run_scout")
 
-            if run_scout:
-                if not scout_query.strip():
-                    st.warning("Vui lòng nhập từ khóa hoặc lĩnh vực muốn trinh sát!")
-                else:
-                    with st.spinner(f"🛰️ Đang quét bắt mạch xu hướng mới nhất cho '{scout_query.strip()}'..."):
-                        scout_data = scout_macro_trends(scout_query.strip(), api_key=active_api_key)
-                    if scout_data and "trends" in scout_data:
-                        st.session_state["active_scout_result"] = scout_data
-                        st.session_state["active_scout_domain"] = scout_query.strip()
-                    elif scout_data and scout_data.get("error"):
-                        st.error(scout_data["error"])
+                if st.session_state.pop("trigger_auto_scout", False):
+                    run_scout = True
 
-            # Hiển thị Top 10 kết quả trinh sát
-            if "active_scout_result" in st.session_state:
-                s_res = st.session_state["active_scout_result"]
-                trends = s_res.get("trends", [])
-                st.markdown(f"#### 🌐 Top 10 Biến Động Hạt Nhân: `{st.session_state.get('active_scout_domain', '')}`")
-                if s_res.get("scout_overview"):
-                    st.info(f"🧭 **Cục diện hiện nay:** {s_res['scout_overview']}")
+                if run_scout:
+                    if not scout_query.strip():
+                        st.warning("Vui lòng nhập từ khóa hoặc lĩnh vực muốn trinh sát!")
+                    else:
+                        with st.spinner(f"🛰️ Đang quét bắt mạch xu hướng mới nhất cho '{scout_query.strip()}'..."):
+                            scout_data = scout_macro_trends(scout_query.strip(), api_key=active_api_key)
+                        if scout_data and "trends" in scout_data:
+                            saved_tree_obj = save_macro_scout_tree(
+                                domain_name=scout_query.strip(),
+                                scout_overview=scout_data.get("scout_overview", ""),
+                                trends=scout_data.get("trends", [])
+                            )
+                            st.session_state["active_tree_id"] = saved_tree_obj["id"]
+                            st.session_state["active_scout_domain"] = scout_query.strip()
+                            st.rerun()
+                        elif scout_data and scout_data.get("error"):
+                            st.error(scout_data["error"])
+
+            else:
+                # HIỂN THỊ CÂY TRINH SÁT ĐANG HOẠT ĐỘNG
+                upd_time = active_tree.get("updated_at", active_tree.get("created_at", "Gần đây"))
+                # Tính độ tươi (Freshness Gauge)
+                try:
+                    dt_upd = datetime.strptime(upd_time, "%Y-%m-%d %H:%M:%S")
+                    diff_days = (datetime.now() - dt_upd).days
+                    if diff_days == 0:
+                        freshness_label = "🟢 Hôm nay (Dữ liệu mới nhất)"
+                    elif diff_days < 7:
+                        freshness_label = f"🟢 {diff_days} ngày trước (Dữ liệu tươi)"
+                    elif diff_days < 30:
+                        freshness_label = f"🟡 {diff_days} ngày trước (Dữ liệu ổn định)"
+                    else:
+                        freshness_label = f"🔴 {diff_days} ngày trước (>30 ngày - Khuyến nghị bấm Quét Cập Nhật)"
+                except Exception:
+                    freshness_label = "⏱️ Gần đây"
+
+                col_inf1, col_inf2 = st.columns([3, 1])
+                with col_inf1:
+                    st.markdown(f"#### 🌐 Bản Đồ Cây: `{active_tree.get('domain', '')}`")
+                    st.caption(f"📅 Cập nhật lần cuối: **{upd_time}** &nbsp; | &nbsp; Trạng thái: **{freshness_label}**")
+                with col_inf2:
+                    if st.button("🔄 Quét Cập Nhật (So sánh mới)", key=f"btn_rescan_{active_tree['id']}", use_container_width=True, help="Bắt mạch lại để cập nhật xu hướng mới nhất và so sánh sự chuyển dịch"):
+                        with st.spinner(f"🛰️ Đang cập nhật dữ liệu mới nhất cho '{active_tree.get('domain')}'..."):
+                            new_scout = scout_macro_trends(active_tree.get("domain", ""), api_key=active_api_key)
+                            if new_scout and "trends" in new_scout:
+                                save_macro_scout_tree(
+                                    domain_name=active_tree.get("domain", ""),
+                                    scout_overview=new_scout.get("scout_overview", ""),
+                                    trends=new_scout.get("trends", []),
+                                    tree_id=active_tree["id"]
+                                )
+                                st.toast("Đã cập nhật bản đồ cây!", icon="✅")
+                                st.rerun()
+
+                if active_tree.get("scout_overview"):
+                    st.info(f"🧭 **Cục diện hiện nay:** {active_tree['scout_overview']}")
+
+                # Render Top 10 F1 & Màn hình F2 ngay bên dưới F1 được chọn
+                trends = active_tree.get("trends", [])
+                selected_f1_rank = st.session_state.get("selected_f1_rank", 1)
 
                 for t_item in trends:
                     t_rank = t_item.get("rank", 0)
@@ -352,36 +432,90 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                     t_status = t_item.get("status", "Bùng nổ")
                     t_one = t_item.get("one_liner", "")
                     t_sug = t_item.get("suggested_query", t_title)
+                    has_f2 = bool(t_item.get("drill_down"))
 
-                    st.markdown(f"**#{t_rank}. {t_title}** &nbsp; `{t_badge}` &nbsp; `Trạng thái: {t_status}`")
-                    st.caption(f"👉 *{t_one}*")
-                    
+                    # Kiểm tra xem F1 này đã từng được bóc tách First Principles chưa
+                    f1_scanned = any(t_title.lower() in s.get("query", "").lower() for s in saved_scans)
+                    badge_f1_scanned = " &nbsp; `✅ Đã có bản bóc tách trong Kho`" if f1_scanned else ""
+
+                    is_active_f1 = (selected_f1_rank == t_rank)
+                    border_style = "border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.08);" if is_active_f1 else "border: 1px solid rgba(255,255,255,0.1);"
+
+                    st.markdown(f"""
+                    <div style="padding: 12px 14px; border-radius: 8px; {border_style} margin-bottom: 8px;">
+                        <span style="font-weight: 700; font-size: 1.05rem;">#{t_rank}. {t_title}</span> 
+                        &nbsp; <code style="background: rgba(99, 102, 241, 0.2);">{t_badge}</code>
+                        &nbsp; <code style="background: rgba(16, 185, 129, 0.2);">Trạng thái: {t_status}</code>
+                        {badge_f1_scanned}
+                        <p style="margin: 6px 0 2px 0; color: #cbd5e1; font-size: 0.95rem;">👉 <i>{t_one}</i></p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
                     c_act1, c_act2 = st.columns([1, 1])
                     with c_act1:
-                        # Nút chọn để nạp vào máy quét First Principles
-                        if st.button(f"🎯 Chọn bóc tách xu hướng #{t_rank}", key=f"btn_pick_trend_{t_rank}", use_container_width=True):
+                        # Nút chọn bóc tách First Principles
+                        if st.button(f"🎯 Chọn bóc tách F1-#{t_rank}", key=f"btn_pick_f1_{active_tree['id']}_{t_rank}", use_container_width=True):
                             st.session_state["room_macro_radar_input"] = t_sug
                             st.rerun()
+
                     with c_act2:
-                        # Nút soi sâu lần 2/lần 3
-                        with st.popover(f"🔍 Soi sâu vi xu hướng #{t_rank}", use_container_width=True):
-                            st.markdown(f"**Soi sâu các nút thắt ngầm của:**  \n*{t_title}*")
-                            if st.button("⚡ Bóc tách lớp 2 & 3", key=f"btn_sub_drill_{t_rank}"):
-                                with st.spinner("Đang bóc tách ngách đột phá..."):
-                                    drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
-                                    if drill_res and "sub_trends" in drill_res:
-                                        st.session_state[f"drill_data_{t_rank}"] = drill_res
-                            
-                            if f"drill_data_{t_rank}" in st.session_state:
-                                d_data = st.session_state[f"drill_data_{t_rank}"]
+                        # Nút mở màn hình F2 bên dưới
+                        label_f2_btn = f"🌿 Xem Lớp 2 ({len(t_item['drill_down'].get('sub_trends', []))} nhánh đã lưu)" if has_f2 else f"🔍 Soi Sâu Lớp 2 & 3 (F1-#{t_rank})"
+                        btn_type = "primary" if is_active_f1 else "secondary"
+                        if st.button(label_f2_btn, key=f"btn_toggle_f2_{active_tree['id']}_{t_rank}", type=btn_type, use_container_width=True):
+                            st.session_state["selected_f1_rank"] = t_rank
+                            st.rerun()
+
+                    # ---------------------------------------------------------
+                    # MÀN HÌNH F2: HIỆN NGAY PHÍA DƯỚI F1 ĐANG CHỌN
+                    # ---------------------------------------------------------
+                    if is_active_f1:
+                        with st.container():
+                            st.markdown(f"""
+                            <div style="background: rgba(15, 23, 42, 0.85); border: 2px dashed #6366f1; border-radius: 10px; padding: 16px; margin: 10px 0 18px 0;">
+                                <h4 style="color: #a5b4fc; margin-top: 0;">🌿 MÀN HÌNH SOI SÂU LỚP 2 & 3: [F1-#{t_rank}: {t_title}]</h4>
+                            </div>
+                            """, unsafe_allow_html=True)
+
+                            if not has_f2:
+                                st.info(f"Chưa có dữ liệu bóc tách vi xu hướng F2 cho nhánh **#{t_rank}: {t_title}**.")
+                                if st.button(f"⚡ Bóc Tách 3–5 Nút Thắt Ngầm (F2) Bằng AI", key=f"btn_run_drill_{active_tree['id']}_{t_rank}", type="primary", use_container_width=True):
+                                    with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
+                                        drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
+                                        if drill_res and "sub_trends" in drill_res:
+                                            update_tree_drilldown(active_tree["id"], t_rank, drill_res)
+                                            st.toast("Đã bóc tách và lưu trữ các nhánh F2 vào cây!", icon="💾")
+                                            st.rerun()
+                                        elif drill_res and drill_res.get("error"):
+                                            st.error(drill_res["error"])
+                            else:
+                                d_data = t_item["drill_down"]
                                 if d_data.get("drill_down_insight"):
-                                    st.info(f"💡 {d_data.get('drill_down_insight')}")
+                                    st.info(f"💡 **Điểm nghẽn cốt lõi:** {d_data.get('drill_down_insight')}")
+
+                                st.markdown(f"**Danh sách các nút thắt & vi xu hướng ngầm ({len(d_data.get('sub_trends', []))} nhánh đã lưu):**")
                                 for sub in d_data.get("sub_trends", []):
-                                    st.markdown(f"- **{sub.get('title', '')}**: {sub.get('why_crucial', '')}")
-                                    sub_sug = sub.get("suggested_query", sub.get("title", ""))
-                                    if st.button(f"👉 Chọn ngách này: {sub.get('title', '')[:30]}...", key=f"btn_pick_sub_{t_rank}_{sub.get('sub_rank', 0)}"):
-                                        st.session_state["room_macro_radar_input"] = sub_sug
-                                        st.rerun()
+                                    sub_rank = sub.get("sub_rank", 1)
+                                    sub_title = sub.get("title", "")
+                                    sub_why = sub.get("why_crucial", "")
+                                    sub_sug = sub.get("suggested_query", sub_title)
+
+                                    sub_scanned = any(sub_title.lower() in s.get("query", "").lower() for s in saved_scans)
+                                    badge_sub = " &nbsp; `✅ Đã có bản bóc tách trong Kho`" if sub_scanned else ""
+
+                                    with st.container():
+                                        st.markdown(f"**[F2-{sub_rank}] {sub_title}**{badge_sub}")
+                                        st.caption(f"💎 *Tại sao quan trọng:* {sub_why}")
+
+                                        c_sub1, c_sub2 = st.columns([1, 1])
+                                        with c_sub1:
+                                            if st.button(f"🎯 Chọn bóc tách F2-{sub_rank} theo First Principles", key=f"btn_pick_sub_{active_tree['id']}_{t_rank}_{sub_rank}", use_container_width=True):
+                                                st.session_state["room_macro_radar_input"] = sub_sug
+                                                st.rerun()
+                                        with c_sub2:
+                                            if sub_scanned:
+                                                st.caption("👉 Bạn đã có bài bóc tách trong Kho Lưu Trữ (Tab 2).")
+
                     st.divider()
 
         # ---------------------------------------------------------------------
