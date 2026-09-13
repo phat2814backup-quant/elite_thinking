@@ -124,14 +124,32 @@ def render_macro_radar_result_cards(
         else:
             st.caption("Không có dữ liệu.")
 
-    # Thanh công cụ: Xuất Markdown & Chuyển sang Máy Ép Farrow
+    # Mũi giáo Socrates khảo nghiệm thế cuộc nếu có
+    macro_spears = res_radar.get("socratic_spears", [])
+    if macro_spears:
+        st.markdown("---")
+        st.markdown("### 🗡️ Mũi Giáo Socrates Khảo Nghiệm Thế Cuộc")
+        st.caption("Truy bức tính bền vững của xu hướng này, bóc trần bong bóng kỳ vọng và cái giá tiềm ẩn nếu lao vào thiếu phòng thủ.")
+        c_ms1, c_ms2, c_ms3 = st.columns(3)
+        cols_m = [c_ms1, c_ms2, c_ms3]
+        for m_idx, ms in enumerate(macro_spears[:3]):
+            with cols_m[m_idx]:
+                with st.container(border=True):
+                    st.markdown(f"**{ms.get('spear_title', f'Mũi Giáo {m_idx+1}')}**")
+                    if ms.get("targeted_vulnerability"):
+                        st.caption(f"🎯 *Điểm mù:* {ms.get('targeted_vulnerability')}")
+                    st.warning(f"👉 **\"{ms.get('ruthless_question', '')}\"**")
+                    if ms.get("guidance"):
+                        st.caption(f"💡 {ms.get('guidance')}")
+
+    # Thanh công cụ: Xuất Markdown, Chuyển sang Phân Rã Socrates & Máy Ép Farrow
     st.divider()
-    col_act1, col_act2 = st.columns(2)
+    col_act1, col_act2, col_act3 = st.columns(3)
     with col_act1:
         md_data = export_macro_radar_to_markdown(query=query, res=res_radar, created_at=created_at)
         file_slug = sanitize_filename(query if query else "the_cuoc")
         st.download_button(
-            label="📥 Xuất Bản Bóc Tách (.md)",
+            label="📥 Xuất Bản Đọc Vị Thế Cuộc (.md)",
             data=md_data,
             file_name=f"MacroRadar_{file_slug}.md",
             mime="text/markdown",
@@ -139,7 +157,12 @@ def render_macro_radar_result_cards(
             use_container_width=True
         )
     with col_act2:
-        if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo & Nhớ Lâu)", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
+        if st.button("🎯 Phân Rã 3 Trụ Cột & Võ Đài Socrates", key=f"btn_to_decomp_macro_{record_id}", use_container_width=True, type="primary"):
+            st.session_state["p_problem_input"] = query
+            st.session_state["app_mode_redirect"] = "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định"
+            st.rerun()
+    with col_act3:
+        if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo)", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
             comm_list = [c.get("asset", "") if isinstance(c, dict) else str(c) for c in res_radar.get("commoditized_assets", [])]
             scarce_list = [s.get("asset", "") if isinstance(s, dict) else str(s) for s in res_radar.get("complementary_scarcities", [])]
             synth_text = f"""[XU HƯỚNG VĨ MÔ]: {query}

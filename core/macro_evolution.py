@@ -517,6 +517,29 @@ BẮT BUỘC trả lời bằng một JSON hợp lệ duy nhất, không thêm m
     "Khuyến nghị 1: Điều gì người học cần DỪNG làm ngay...",
     "Khuyến nghị 2: Năng lực/Tài sản khan hiếm nào cần TÍCH LŨY...",
     "Khuyến nghị 3: Vị thế đòn bẩy nào cần xây dựng..."
+  ],
+  "socratic_spears": [
+    {
+      "spear_id": "macro_spear_1",
+      "spear_title": "🗡️ Mũi Giáo 1 (Vật Lý & Hạ Tầng): Bong Bóng Kỳ Vọng vs Giới Hạn Cứng",
+      "targeted_vulnerability": "Điểm nghẽn vật lý hoặc rào cản năng lượng/hạ tầng mà xu hướng này chưa vượt qua được",
+      "ruthless_question": "Câu hỏi Socrates tàn nhẫn truy sát tính khả thi thực tế của xu hướng",
+      "guidance": "Gợi ý góc nhìn để kiểm chứng."
+    },
+    {
+      "spear_id": "macro_spear_2",
+      "spear_title": "🗡️ Mũi Giáo 2 (Chi Phí & Lợi Nhuận): Kẻ Nào Thực Sự Thu Tiền?",
+      "targeted_vulnerability": "Bẫy đốt tiền hoặc lợi nhuận bị kẻ nắm hạ tầng nẫng tay trên",
+      "ruthless_question": "Câu hỏi Socrates truy sát dòng tiền thực và biên lợi nhuận",
+      "guidance": "Gợi ý góc nhìn tài chính."
+    },
+    {
+      "spear_id": "macro_spear_3",
+      "spear_title": "🗡️ Mũi Giáo 3 (Bẫy Cá Nhân): Cái Giá Phải Trả Nếu Lao Vào Sai Cách",
+      "targeted_vulnerability": "Ảo tưởng cá nhân về việc cưỡi sóng mà không có đòn bẩy độc quyền",
+      "ruthless_question": "Câu hỏi Socrates về nguy cơ bị biến thành hàng hóa giá rẻ",
+      "guidance": "Gợi ý xây dựng vị thế phòng thủ."
+    }
   ]
 }
 """

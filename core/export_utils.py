@@ -66,6 +66,20 @@ def export_macro_radar_to_markdown(
     playbook = res.get("action_playbook_for_individual", [])
     playbook_text = "\n".join([f"- 🚀 {p}" for p in playbook]) if playbook else "- *(Không có dữ liệu)*"
 
+    spears = res.get("socratic_spears", [])
+    spear_lines = []
+    for s in spears:
+        spear_lines.append(f"""### {s.get('spear_title', 'Mũi Giáo Socrates')}
+- **Điểm mù truy sát:** *{s.get('targeted_vulnerability', '')}*
+- **👉 Câu hỏi khảo nghiệm:** \"{s.get('ruthless_question', '')}\"
+- **Gợi ý phản biện:** {s.get('guidance', '')}
+""")
+    spears_text = "\n".join(spear_lines) if spear_lines else ""
+    spears_section = f"""
+## 🗡️ 7. Mũi Giáo Socrates Khảo Nghiệm Thế Cuộc
+{spears_text}
+""" if spears_text else ""
+
     md = f"""# 📡 BẢN BÓC TÁCH THẾ CUỘC: {query}
 
 - **Thời gian phân tích:** `{time_str}`
@@ -100,9 +114,9 @@ def export_macro_radar_to_markdown(
 
 ## 🧭 6. Playbook Hành Động Thực Chiến Cho Cá Nhân
 {playbook_text}
-
+{spears_section}
 ---
-*Bản quyền phân tích thuộc về Elite Thinking Framework v2.2 — First Principles Architecture.*
+*Bản quyền phân tích thuộc về Elite Thinking Framework v2.5 — First Principles Macro Radar & Socratic Engine.*
 """
     return md.strip()
 
