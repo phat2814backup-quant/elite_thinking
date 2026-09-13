@@ -440,7 +440,7 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
                 # Render Top 10 F1 & Màn hình F2 ngay bên dưới F1 được chọn
                 trends = active_tree.get("trends", [])
-                selected_f1_rank = st.session_state.get("selected_f1_rank", 1)
+                selected_f1_rank = st.session_state.get("selected_f1_rank", None)
 
                 for t_item in trends:
                     t_rank = t_item.get("rank", 0)
@@ -453,99 +453,86 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
                     # Kiểm tra xem F1 này đã từng được bóc tách First Principles chưa
                     f1_scanned = any(t_title.lower() in s.get("query", "").lower() for s in saved_scans)
-                    badge_f1_scanned = " &nbsp; `✅ Đã có bản bóc tách trong Kho`" if f1_scanned else ""
+                    badge_f1_scanned = " &nbsp; `✅ Đã lưu trong Kho`" if f1_scanned else ""
 
-                    is_active_f1 = (str(selected_f1_rank) == str(t_rank))
-                    border_style = "border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.08);" if is_active_f1 else "border: 1px solid rgba(255,255,255,0.1);"
+                    is_active_f1 = (selected_f1_rank is not None and str(selected_f1_rank) == str(t_rank))
 
-                    st.markdown(f"""
-                    <div style="padding: 12px 14px; border-radius: 8px; {border_style} margin-bottom: 8px;">
-                        <span style="font-weight: 700; font-size: 1.05rem;">#{t_rank}. {t_title}</span> 
-                        &nbsp; <code style="background: rgba(99, 102, 241, 0.2);">{t_badge}</code>
-                        &nbsp; <code style="background: rgba(16, 185, 129, 0.2);">Trạng thái: {t_status}</code>
-                        {badge_f1_scanned}
-                        <p style="margin: 6px 0 2px 0; color: #cbd5e1; font-size: 0.95rem;">👉 <i>{t_one}</i></p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    # BỐ CỤC CHÍNH - PHỤ: Container viền thanh lịch, nội dung chính làm trung tâm
+                    with st.container(border=True):
+                        c_main, c_actions = st.columns([5, 2])
+                        with c_main:
+                            st.markdown(f"**#{t_rank}. {t_title}** &nbsp; `{t_badge}` &nbsp; `Trạng thái: {t_status}`{badge_f1_scanned}")
+                            st.markdown(f"👉 *{t_one}*")
+                        with c_actions:
+                            # 2 nút hành động tinh gọn
+                            c_b1, c_b2 = st.columns(2)
+                            with c_b1:
+                                if st.button("📡 Quét", key=f"btn_pick_f1_{active_tree['id']}_{t_rank}", help="Bóc tách theo First Principles", use_container_width=True):
+                                    st.session_state["room_macro_radar_input"] = t_sug
+                                    st.session_state["auto_trigger_macro_radar"] = True
+                                    st.rerun()
+                            with c_b2:
+                                if is_active_f1:
+                                    lbl_f2 = "🔼 Đóng"
+                                else:
+                                    lbl_f2 = f"🌿 Lớp 2 ({len(t_item['drill_down'].get('sub_trends', []))})" if has_f2 else "⚡ Soi F2"
+                                if st.button(lbl_f2, key=f"btn_toggle_f2_{active_tree['id']}_{t_rank}", help="Xem hoặc bóc tách các nhánh vi xu hướng F2 & F3", use_container_width=True):
+                                    if is_active_f1:
+                                        st.session_state["selected_f1_rank"] = None
+                                    else:
+                                        st.session_state["selected_f1_rank"] = t_rank
+                                        if not has_f2:
+                                            with st.spinner(f"AI đang bóc tách 3-5 nút thắt F2 cho '{t_title}'..."):
+                                                drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
+                                                if drill_res and "sub_trends" in drill_res:
+                                                    t_item["drill_down"] = drill_res
+                                                    update_tree_drilldown(active_tree["id"], t_rank, drill_res)
+                                                    st.toast("Đã lưu trữ các nhánh F2 vào cây!", icon="💾")
+                                    st.rerun()
 
-                    c_act1, c_act2 = st.columns([1, 1])
-                    with c_act1:
-                        # Nút kích hoạt bóc tách First Principles ngay lập tức
-                        if st.button(f"📡 Bóc Tách Thế Cuộc F1-#{t_rank}", key=f"btn_pick_f1_{active_tree['id']}_{t_rank}", use_container_width=True):
-                            st.session_state["room_macro_radar_input"] = t_sug
-                            st.session_state["auto_trigger_macro_radar"] = True
-                            st.rerun()
-
-                    with c_act2:
-                        # Nút mở màn hình F2: Nếu chưa có F2, tự động bóc tách F2 ngay 1-Click!
-                        label_f2_btn = f"🌿 Xem Lớp 2 ({len(t_item['drill_down'].get('sub_trends', []))} nhánh đã lưu)" if has_f2 else f"⚡ Bóc Tách Lớp 2 & 3 (F1-#{t_rank})"
-                        btn_type = "primary" if is_active_f1 else "secondary"
-                        if st.button(label_f2_btn, key=f"btn_toggle_f2_{active_tree['id']}_{t_rank}", type=btn_type, use_container_width=True):
-                            st.session_state["selected_f1_rank"] = t_rank
+                        # -----------------------------------------------------
+                        # KHU VỰC LỚP 2 (F2): THỤT LỀ DẠNG CÂY TINH GỌN
+                        # -----------------------------------------------------
+                        if is_active_f1:
+                            st.markdown("---")
                             if not has_f2:
-                                with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
-                                    drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
-                                    if drill_res and "sub_trends" in drill_res:
-                                        t_item["drill_down"] = drill_res
-                                        update_tree_drilldown(active_tree["id"], t_rank, drill_res)
-                                        st.toast("Đã bóc tách và lưu trữ các nhánh F2 vào cây!", icon="💾")
-                                    elif drill_res and drill_res.get("error"):
-                                        st.error(drill_res["error"])
-                            st.rerun()
-
-                    # ---------------------------------------------------------
-                    # MÀN HÌNH F2: HIỆN NGAY PHÍA DƯỚI F1 ĐANG CHỌN
-                    # ---------------------------------------------------------
-                    if is_active_f1:
-                        with st.container():
-                            st.markdown(f"""
-                            <div style="background: rgba(15, 23, 42, 0.85); border: 2px dashed #6366f1; border-radius: 10px; padding: 16px; margin: 10px 0 18px 0;">
-                                <h4 style="color: #a5b4fc; margin-top: 0;">🌿 MÀN HÌNH SOI SÂU LỚP 2 & 3: [F1-#{t_rank}: {t_title}]</h4>
-                            </div>
-                            """, unsafe_allow_html=True)
-
-                            if not has_f2:
-                                st.info(f"Chưa có dữ liệu bóc tách vi xu hướng F2 cho nhánh **#{t_rank}: {t_title}**.")
-                                if st.button(f"⚡ Kích Hoạt Bóc Tách F2 Ngay", key=f"btn_run_drill_manual_{active_tree['id']}_{t_rank}", type="primary", use_container_width=True):
-                                    with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
-                                        drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
-                                        if drill_res and "sub_trends" in drill_res:
-                                            t_item["drill_down"] = drill_res
-                                            update_tree_drilldown(active_tree["id"], t_rank, drill_res)
-                                            st.toast("Đã bóc tách và lưu trữ các nhánh F2 vào cây!", icon="💾")
-                                            st.rerun()
-                                        elif drill_res and drill_res.get("error"):
-                                            st.error(drill_res["error"])
+                                c_m1, c_m2 = st.columns([3, 1])
+                                with c_m1:
+                                    st.caption(f"ℹ️ Chưa có dữ liệu Lớp 2 cho nhánh **#{t_rank}**.")
+                                with c_m2:
+                                    if st.button("⚡ Bóc Tách F2 Ngay", key=f"btn_run_drill_manual_{active_tree['id']}_{t_rank}", use_container_width=True):
+                                        with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
+                                            drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
+                                            if drill_res and "sub_trends" in drill_res:
+                                                t_item["drill_down"] = drill_res
+                                                update_tree_drilldown(active_tree["id"], t_rank, drill_res)
+                                                st.toast("Đã lưu các nhánh F2 vào cây!", icon="💾")
+                                                st.rerun()
                             else:
                                 d_data = t_item["drill_down"]
                                 if d_data.get("drill_down_insight"):
-                                    st.info(f"💡 **Điểm nghẽn cốt lõi:** {d_data.get('drill_down_insight')}")
+                                    st.caption(f"💡 **Điểm nghẽn cốt lõi:** {d_data.get('drill_down_insight')}")
 
-                                st.markdown(f"**Danh sách các nút thắt & vi xu hướng ngầm ({len(d_data.get('sub_trends', []))} nhánh đã lưu):**")
-                                for sub in d_data.get("sub_trends", []):
+                                sub_trends = d_data.get("sub_trends", [])
+                                st.caption(f"🌿 **Các nút thắt & vi xu hướng ngầm ({len(sub_trends)} nhánh đã lưu):**")
+                                
+                                for sub in sub_trends:
                                     sub_rank = sub.get("sub_rank", 1)
                                     sub_title = sub.get("title", "")
                                     sub_why = sub.get("why_crucial", "")
                                     sub_sug = sub.get("suggested_query", sub_title)
-
                                     sub_scanned = any(sub_title.lower() in s.get("query", "").lower() for s in saved_scans)
-                                    badge_sub = " &nbsp; `✅ Đã có bản bóc tách trong Kho`" if sub_scanned else ""
+                                    badge_sub = " `✅ Đã lưu trong Kho`" if sub_scanned else ""
 
-                                    with st.container():
-                                        st.markdown(f"**[F2-{sub_rank}] {sub_title}**{badge_sub}")
-                                        st.caption(f"💎 *Tại sao quan trọng:* {sub_why}")
-
-                                        c_sub1, c_sub2 = st.columns([1, 1])
-                                        with c_sub1:
-                                            if st.button(f"🎯 Bóc Tách F2-{sub_rank} Theo First Principles", key=f"btn_pick_sub_{active_tree['id']}_{t_rank}_{sub_rank}", use_container_width=True):
-                                                st.session_state["room_macro_radar_input"] = sub_sug
-                                                st.session_state["auto_trigger_macro_radar"] = True
-                                                st.rerun()
-                                        with c_sub2:
-                                            if sub_scanned:
-                                                st.caption("👉 Bạn đã có bài bóc tách trong Kho Lưu Trữ (Tab 2).")
-
-                    st.divider()
+                                    c_sf1, c_sf2 = st.columns([4, 1])
+                                    with c_sf1:
+                                        st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;└── **[F2.{sub_rank}] {sub_title}**{badge_sub}")
+                                        st.caption(f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💎 *Tại sao then chốt:* {sub_why}")
+                                    with c_sf2:
+                                        if st.button(f"📡 Quét F2.{sub_rank}", key=f"btn_pick_sub_{active_tree['id']}_{t_rank}_{sub_rank}", use_container_width=True):
+                                            st.session_state["room_macro_radar_input"] = sub_sug
+                                            st.session_state["auto_trigger_macro_radar"] = True
+                                            st.rerun()
 
         # ---------------------------------------------------------------------
         # TẦNG 3: BÓC TÁCH THẾ CUỘC THEO FIRST PRINCIPLES
