@@ -45,6 +45,13 @@ from core.models_engine import (
     get_models_for_topic_chunk,
     get_model_full_detail
 )
+from core.sprint_game import (
+    generate_visual_anchor_question,
+    generate_crazy_image_reverse_question,
+    generate_reflex_duel_question,
+    get_user_rank,
+    get_anchor_image_base64
+)
 from core.macro_evolution import (
     CIVILIZATIONAL_ERAS,
     ELITE_HIDDEN_LAWS,
@@ -518,108 +525,369 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
 
 
 elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
-    st.markdown("### ⏱️ Phòng Ép Xung 10 Phút (The 10-Minute Focus Sprint)")
-    st.caption("Chạy nước rút tập trung cao độ trong 10 phút. Chọn một chủ đề Lâu Đài Ký Ức hoặc Rút 3 Thẻ Bài Farrow Tarot để thử thách não bộ!")
+    st.markdown("### 🎮 Đấu Trường Ép Xung & Trò Chơi Trí Nhớ 10 Phút (Gamified Farrow Arena)")
+    st.caption("Game hóa quá trình nạp mỏ neo ký ức theo phương pháp Dave Farrow: Ghép ảnh mỏ neo, giải mã hoạt cảnh dị biệt và đấu trường phản xạ 5 giây.")
 
-    sprint_type = st.radio(
-        "Chọn chế độ Sprint:",
-        ["📖 Chọn Chủ Đề Lâu Đài Ký Ức", "🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)"],
+    # -------------------------------------------------------------------------
+    # GAMIFICATION PROFILE & XP STATS
+    # -------------------------------------------------------------------------
+    if "farrow_xp" not in st.session_state:
+        st.session_state["farrow_xp"] = 0
+    if "farrow_streak" not in st.session_state:
+        st.session_state["farrow_streak"] = 0
+    if "farrow_correct" not in st.session_state:
+        st.session_state["farrow_correct"] = 0
+    if "farrow_total" not in st.session_state:
+        st.session_state["farrow_total"] = 0
+
+    user_xp = st.session_state["farrow_xp"]
+    user_streak = st.session_state["farrow_streak"]
+    rank_info = get_user_rank(user_xp)
+
+    c_st1, c_st2, c_st3, c_st4 = st.columns(4)
+    with c_st1:
+        st.metric("🏆 Cấp Bậc Não Bộ", rank_info["rank"])
+    with c_st2:
+        st.metric("⭐ Điểm Tinh Hoa XP", f"{user_xp} XP", f"+100 XP/câu")
+    with c_st3:
+        st.metric("🔥 Chuỗi Thắng (Streak)", f"{user_streak} liên hoàn", f"+{user_streak * 10}% bonus")
+    with c_st4:
+        total = st.session_state['farrow_total']
+        acc = int((st.session_state['farrow_correct'] / max(1, total)) * 100) if total > 0 else 100
+        st.metric("🎯 Chuẩn Xác", f"{st.session_state['farrow_correct']}/{total} ({acc}%)")
+
+    st.caption(f"💡 *Mục tiêu thăng hạng tiếp theo: {rank_info['next_goal']}* — {rank_info['desc']}")
+    st.divider()
+
+    sprint_game_mode = st.radio(
+        "Chọn chế độ Đấu Trường / Game:",
+        [
+            "🎮 Game 1: Nhìn Ảnh Đoán Mô Hình (Visual Match)",
+            "🧠 Game 2: Đọc Hoạt Cảnh Chọn Ảnh Mỏ Neo",
+            "⚡ Game 3: Đấu Trường Phản Xạ 5 Giây",
+            "⏱️ Chạy Nước Rút 10 Phút & Rút Bài Tarot (Cổ Điển)"
+        ],
         horizontal=True
     )
 
-    if sprint_type == "📖 Chọn Chủ Đề Lâu Đài Ký Ức":
-        topics = get_all_farrow_topics()
-        sprint_topic_id = st.selectbox(
-            "Chọn chủ đề để chạy nước rút 10 phút:",
-            options=[t["id"] for t in topics],
-            format_func=lambda x: [f"{t['icon']} {t['title']} [{t.get('category', '')}]" for t in topics if t["id"] == x][0]
-        )
-        s_topic = get_farrow_topic_by_id(sprint_topic_id)
-        st.info(f"🎯 **Khẩu quyết 10 phút:** *\"{s_topic['tagline']}\"*")
-        
-        # Render 3 Trinity cards for the sprint topic
-        c_s1, c_s2, c_s3 = st.columns(3)
-        cols_s = [c_s1, c_s2, c_s3]
-        for col_s, chunk in zip(cols_s, s_topic["chunks"]):
-            with col_s:
-                card_html = f"""
-                <div class="trinity-card">
-                    <div class="anchor-badge">{chunk['anchor_icon']} {chunk['anchor_name']}</div>
-                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{chunk['label']}</h3>
-                    <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{chunk.get('sub_modes', '')}</div>
-                    <div class="model-rule">💡 <b>Quy luật:</b><br>{chunk['principle']}</div>
-                    <div class="crazy-image-box">
-                        🧠 <b>ẢNH DỊ BIỆT:</b><br>{chunk['crazy_image']}
-                    </div>
-                    <div class="trigger-box">
-                        ⚡ <b>KÍCH HOẠT 5S:</b><br><i>"{chunk['trigger_question']}"</i>
-                    </div>
-                </div>
-                """
-                render_html(card_html)
-    else:
-        if "random_trio" not in st.session_state or st.button("🔀 Rút Lại 3 Thẻ Tinh Hoa Mới", type="secondary"):
-            st.session_state.random_trio = draw_random_farrow_sprint_trio()
-        
-        trio = st.session_state.random_trio
-        st.info("🎯 **Thử thách 10 phút của bạn:** Hãy ghi nhớ và kết nối 3 mô hình này vào 3 mỏ neo trong phòng học của bạn!")
-        
-        c_r1, c_r2, c_r3 = st.columns(3)
-        cols_t = [c_r1, c_r2, c_r3]
-        anchors = [("🚪 CỬA RA VÀO", "Soi Gốc"), ("🖥️ MÀN HÌNH", "Đọc Dòng"), ("🪑 BÀN GHẾ", "Ra Đòn")]
-        for idx, (col_item, m, (anc_name, anc_desc)) in enumerate(zip(cols_t, trio, anchors)):
+    # -------------------------------------------------------------------------
+    # GAME 1: NHÌN ẢNH ĐOÁN MÔ HÌNH (VISUAL ANCHOR MATCH)
+    # -------------------------------------------------------------------------
+    if sprint_game_mode == "🎮 Game 1: Nhìn Ảnh Đoán Mô Hình (Visual Match)":
+        st.markdown("#### 🔍 Nhìn Bức Tranh Mỏ Neo ➔ Chọn Đúng Trụ Cột & Quy Luật")
+        st.caption("Dave Farrow: Não bộ xử lý hình ảnh nhanh gấp 60.000 lần so với chữ viết. Hãy rèn luyện phản xạ liên tưởng từ mỏ neo không gian sang quy luật tư duy.")
+
+        if "g1_question" not in st.session_state or st.session_state.get("g1_question") is None:
+            st.session_state["g1_question"] = generate_visual_anchor_question()
+            st.session_state["g1_answered"] = False
+            st.session_state["g1_selected_idx"] = None
+
+        q1 = st.session_state["g1_question"]
+        target = q1["target"]
+        img_b64 = q1.get("image_b64")
+
+        col_img, col_opt = st.columns([1, 1])
+        with col_img:
+            if img_b64:
+                st.markdown(
+                    f'<div style="text-align: center; margin: 6px 0 14px 0;">'
+                    f'<img src="data:image/webp;base64,{img_b64}" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; border: 2px solid #6366f1; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);" alt="Mỏ neo" />'
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
+            else:
+                st.info("🖼️ Đang nạp mỏ neo trực quan...")
+
+        with col_opt:
+            st.markdown(f"**{q1['question_text']}**")
+            answered = st.session_state.get("g1_answered", False)
+            selected_idx = st.session_state.get("g1_selected_idx")
+
+            for opt_idx, opt in enumerate(q1["options"]):
+                if not answered:
+                    if st.button(opt["label"], key=f"btn_g1_opt_{opt_idx}", use_container_width=True):
+                        st.session_state["g1_answered"] = True
+                        st.session_state["g1_selected_idx"] = opt_idx
+                        st.session_state["farrow_total"] += 1
+                        if opt["is_correct"]:
+                            bonus = 50 if user_streak >= 3 else 0
+                            st.session_state["farrow_xp"] += (100 + bonus)
+                            st.session_state["farrow_streak"] += 1
+                            st.session_state["farrow_correct"] += 1
+                            if st.session_state["farrow_streak"] % 5 == 0:
+                                st.balloons()
+                        else:
+                            st.session_state["farrow_streak"] = 0
+                        st.rerun()
+                else:
+                    # Hiển thị kết quả sau khi chọn
+                    if opt["is_correct"]:
+                        st.success(f"✅ {opt['label']}")
+                    elif opt_idx == selected_idx:
+                        st.error(f"❌ {opt['label']} (Bạn đã chọn)")
+                    else:
+                        st.markdown(f"- {opt['label']}")
+
+            if answered:
+                st.divider()
+                if q1["options"][selected_idx]["is_correct"]:
+                    st.success(f"🎉 **XUẤT SẮC! +100 XP** (Chuỗi liên hoàn: {st.session_state['farrow_streak']}🔥)")
+                else:
+                    st.error("❌ **CHƯA CHÍNH XÁC!** Hãy quan sát kỹ mỏ neo này để đóng đinh vào hồi hải mã:")
+
+                with st.expander("💎 Bóc Tách Mỏ Neo Ký Ức (Active Recall)", expanded=True):
+                    st.markdown(f"- 📍 **Mỏ neo không gian:** {target['anchor_icon']} **{target['anchor_name']}**")
+                    st.markdown(f"- 💡 **Quy luật tinh hoa:** {target['principle']}")
+                    st.markdown(f"- 🧠 **Hoạt cảnh dị biệt:** *\"{target['crazy_image']}\"*")
+                    st.caption(f"⚡ *Câu hỏi kích hoạt 5 giây:* \"{target['trigger_question']}\"")
+
+                if st.button("➡️ Chơi Câu Tiếp Theo", key="btn_next_g1", type="primary", use_container_width=True):
+                    st.session_state["g1_question"] = None
+                    st.rerun()
+
+    # -------------------------------------------------------------------------
+    # GAME 2: ĐỌC HOẠT CẢNH CHỌN ẢNH MỎ NEO (REVERSE IMAGE GUESS)
+    # -------------------------------------------------------------------------
+    elif sprint_game_mode == "🧠 Game 2: Đọc Hoạt Cảnh Chọn Ảnh Mỏ Neo":
+        st.markdown("#### 🧠 Đọc Hoạt Cảnh Dị Biệt ➔ Bấm Chọn Đúng Bức Ảnh Mỏ Neo")
+        st.caption("Hãy dùng mắt tâm trí (Mind's Eye) để tái hiện hoạt cảnh gây sốc của Dave Farrow và tìm ra đúng bức tranh mỏ neo tương ứng.")
+
+        if "g2_question" not in st.session_state or st.session_state.get("g2_question") is None:
+            st.session_state["g2_question"] = generate_crazy_image_reverse_question()
+            st.session_state["g2_answered"] = False
+            st.session_state["g2_selected_chunk"] = None
+
+        q2 = st.session_state["g2_question"]
+        target = q2["target"]
+        answered_g2 = st.session_state.get("g2_answered", False)
+
+        st.info(f"📜 **Hoạt cảnh dị biệt gây sốc:**\n\n*\"{q2['story']}\"*")
+        st.markdown(f"**{q2['question_text']}**")
+
+        c_img1, c_img2, c_img3, c_img4 = st.columns(4)
+        cols_g2 = [c_img1, c_img2, c_img3, c_img4]
+
+        for idx, (col_item, img_opt) in enumerate(zip(cols_g2, q2["image_options"])):
             with col_item:
-                card_html = f"""
-                <div class="trinity-card">
-                    <div class="anchor-badge">{anc_name} ({anc_desc})</div>
-                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{m.get('name_vi', '')}</h3>
-                    <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px;">{m.get('pillar', '')}</div>
-                    <div class="model-rule">💡 <b>Quy luật:</b> {m.get('first_principle', '')}</div>
-                    <div class="trigger-box">
-                        ⚡ <b>KÍCH HOẠT 5S:</b><br>
-                        <i>"{m.get('trigger_question', '')}"</i>
-                    </div>
-                </div>
-                """
-                render_html(card_html)
+                b64 = img_opt.get("image_b64")
+                if b64:
+                    st.markdown(
+                        f'<div style="text-align: center; margin: 4px 0 8px 0;">'
+                        f'<img src="data:image/webp;base64,{b64}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);" />'
+                        f'</div>',
+                        unsafe_allow_html=True
+                    )
+                st.caption(f"**{img_opt['title']}**")
 
-    st.markdown("---")
+                if not answered_g2:
+                    if st.button(f"👉 Chọn ảnh này", key=f"btn_pick_img_{idx}", use_container_width=True):
+                        st.session_state["g2_answered"] = True
+                        st.session_state["g2_selected_chunk"] = img_opt["chunk_id"]
+                        st.session_state["farrow_total"] += 1
+                        if img_opt["is_correct"]:
+                            bonus = 50 if user_streak >= 3 else 0
+                            st.session_state["farrow_xp"] += (100 + bonus)
+                            st.session_state["farrow_streak"] += 1
+                            st.session_state["farrow_correct"] += 1
+                            if st.session_state["farrow_streak"] % 5 == 0:
+                                st.balloons()
+                        else:
+                            st.session_state["farrow_streak"] = 0
+                        st.rerun()
+                else:
+                    if img_opt["is_correct"]:
+                        st.success("✅ ĐÁP ÁN ĐÚNG")
+                    elif img_opt["chunk_id"] == st.session_state.get("g2_selected_chunk"):
+                        st.error("❌ Bạn chọn ảnh này")
 
-    # Sprint Interactive Controller
-    if "sprint_running" not in st.session_state:
-        st.session_state.sprint_running = False
-    if "sprint_seconds" not in st.session_state:
-        st.session_state.sprint_seconds = 600
+        if answered_g2:
+            st.divider()
+            selected_is_correct = (st.session_state.get("g2_selected_chunk") == target["id"])
+            if selected_is_correct:
+                st.success(f"🎉 **CHÍNH XÁC! +100 XP** (Chuỗi liên hoàn: {st.session_state['farrow_streak']}🔥)")
+            else:
+                st.error("❌ **CHƯA ĐÚNG!** Hãy liên kết hoạt cảnh với mỏ neo chuẩn:")
 
-    col_timer, col_ctrl = st.columns([2, 1])
-    with col_timer:
-        mins = st.session_state.sprint_seconds // 60
-        secs = st.session_state.sprint_seconds % 60
-        phase_label = (
-            "CHẶNG 1: BÓC TÁCH VÀ NÉN (00-02m)" if mins >= 8 else
-            "CHẶNG 2: GẮN VÀO LÂU ĐÀI KÝ ỨC (02-05m)" if mins >= 5 else
-            "CHẶNG 3: ÉP XUNG QUÉT TỐC ĐỘ X3 (05-08m)" if mins >= 2 else
-            "CHẶNG 4: PHẢN XẠ VÀ THỞ BỤNG SẠC PIN (08-10m)"
+            with st.expander("💎 Chi Tiết Mỏ Neo Chuẩn (Active Recall)", expanded=True):
+                st.markdown(f"- 📍 **Mỏ neo đúng:** {target['anchor_icon']} **{target['anchor_name']}** ({target['label']})")
+                st.markdown(f"- 💡 **Các mô hình nén:** `{target.get('sub_modes', '')}`")
+                st.markdown(f"- 🎯 **Quy luật:** {target['principle']}")
+
+            if st.button("➡️ Chơi Câu Tiếp Theo", key="btn_next_g2", type="primary", use_container_width=True):
+                st.session_state["g2_question"] = None
+                st.rerun()
+
+    # -------------------------------------------------------------------------
+    # GAME 3: ĐẤU TRƯỜNG PHẢN XẠ 5 GIÂY (SPEED REFLEX DUEL)
+    # -------------------------------------------------------------------------
+    elif sprint_game_mode == "⚡ Game 3: Đấu Trường Phản Xạ 5 Giây":
+        st.markdown("#### ⚡ Đấu Trường Phản Xạ 5 Giây: Kích Hoạt Mô Hình Tinh Hoa")
+        st.caption("Đối mặt với các nan đề và tình huống thực chiến. Lựa chọn Mô Hình Tư Duy hạt nhân chính xác trong 5 giây phản xạ.")
+
+        if "g3_question" not in st.session_state or st.session_state.get("g3_question") is None:
+            st.session_state["g3_question"] = generate_reflex_duel_question()
+            st.session_state["g3_answered"] = False
+            st.session_state["g3_selected_id"] = None
+
+        q3 = st.session_state["g3_question"]
+        target_m = q3["target"]
+        answered_g3 = st.session_state.get("g3_answered", False)
+
+        st.warning(f"⚡ **TÌNH HUỐNG THỰC CHIẾN:**\n\n👉 *\"{q3['trigger_prompt']}\"*")
+        st.markdown("**Trong tình huống trên, mô hình tư duy hạt nhân nào là đòn bẩy tối thượng?**")
+
+        c_opt_a, c_opt_b = st.columns(2)
+        for opt_idx, opt in enumerate(q3["options"]):
+            col = c_opt_a if opt_idx % 2 == 0 else c_opt_b
+            with col:
+                if not answered_g3:
+                    if st.button(opt["label"], key=f"btn_g3_opt_{opt_idx}", use_container_width=True):
+                        st.session_state["g3_answered"] = True
+                        st.session_state["g3_selected_id"] = opt["id"]
+                        st.session_state["farrow_total"] += 1
+                        if opt["is_correct"]:
+                            bonus = 50 if user_streak >= 3 else 0
+                            st.session_state["farrow_xp"] += (100 + bonus)
+                            st.session_state["farrow_streak"] += 1
+                            st.session_state["farrow_correct"] += 1
+                            if st.session_state["farrow_streak"] % 5 == 0:
+                                st.balloons()
+                        else:
+                            st.session_state["farrow_streak"] = 0
+                        st.rerun()
+                else:
+                    if opt["is_correct"]:
+                        st.success(f"✅ {opt['label']}")
+                    elif opt["id"] == st.session_state.get("g3_selected_id"):
+                        st.error(f"❌ {opt['label']} (Bạn chọn)")
+                    else:
+                        st.markdown(f"- {opt['label']}")
+
+        if answered_g3:
+            st.divider()
+            is_right = (st.session_state.get("g3_selected_id") == target_m.get("id"))
+            if is_right:
+                st.success(f"🎉 **CHUẨN XÁC! +100 XP** (Chuỗi liên hoàn: {st.session_state['farrow_streak']}🔥)")
+            else:
+                st.error("❌ **CHƯA CHÍNH XÁC!** Hãy ghi nhớ bản chất của mô hình này:")
+
+            with st.expander(f"💎 Bóc Tách Mô Hình: [{target_m.get('id')}] {target_m.get('name_vi')}", expanded=True):
+                st.markdown(f"- ⚡ **Chân lý gốc (First Principle):** {target_m.get('first_principle', '')}")
+                if target_m.get("elite_leverage"):
+                    st.markdown(f"- 🚀 **Đòn bẩy Elite:** {target_m.get('elite_leverage', '')}")
+                if target_m.get("inversion_trap"):
+                    st.markdown(f"- ⚠️ **Bẫy ngụy biện (Inversion Trap):** {target_m.get('inversion_trap', '')}")
+
+            if st.button("➡️ Tình Huống Tiếp Theo", key="btn_next_g3", type="primary", use_container_width=True):
+                st.session_state["g3_question"] = None
+                st.rerun()
+
+    # -------------------------------------------------------------------------
+    # CHẾ ĐỘ 4: CHẠY NƯỚC RÚT 10 PHÚT & RÚT BÀI TAROT (CỔ ĐIỂN)
+    # -------------------------------------------------------------------------
+    else:
+        st.markdown("#### ⏱️ Chạy Nước Rút 10 Phút & Rút 3 Lá Tarot Farrow")
+        st.caption("Ép xung tập trung cao độ trong 10 phút. Chọn một chủ đề Lâu Đài Ký Ức hoặc Rút 3 Thẻ Bài Farrow Tarot để thử thách não bộ!")
+
+        sprint_type = st.radio(
+            "Chọn chế độ Sprint:",
+            ["📖 Chọn Chủ Đề Lâu Đài Ký Ức", "🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)"],
+            horizontal=True
         )
-        timer_html = f"""
-        <div class="timer-container">
-            <div style="color: #94a3b8; font-weight: 600; text-transform: uppercase;">ĐỒNG HỒ ĐẾM NGƯỢC NƯỚC RÚT</div>
-            <div class="timer-digits">{mins:02d}:{secs:02d}</div>
-            <div style="color: #38bdf8; font-weight: 600; margin-top: 8px;">{phase_label}</div>
-        </div>
-        """
-        render_html(timer_html)
 
-    with col_ctrl:
-        st.write("")
-        st.write("")
-        if st.button("▶️ BẮT ĐẦU SPRINT 10 PHÚT", use_container_width=True, type="primary"):
-            st.session_state.sprint_running = True
-            st.success("🔥 Đồng hồ đã kích hoạt! Hãy tập trung 100% vào 3 khối hạt nhân phía trên.")
-        if st.button("🔄 ĐẶT LẠI 10 PHÚT (RESET)", use_container_width=True):
-            st.session_state.sprint_seconds = 600
+        if sprint_type == "📖 Chọn Chủ Đề Lâu Đài Ký Ức":
+            topics = get_all_farrow_topics()
+            sprint_topic_id = st.selectbox(
+                "Chọn chủ đề để chạy nước rút 10 phút:",
+                options=[t["id"] for t in topics],
+                format_func=lambda x: [f"{t['icon']} {t['title']} [{t.get('category', '')}]" for t in topics if t["id"] == x][0]
+            )
+            s_topic = get_farrow_topic_by_id(sprint_topic_id)
+            st.info(f"🎯 **Khẩu quyết 10 phút:** *\"{s_topic['tagline']}\"*")
+            
+            c_s1, c_s2, c_s3 = st.columns(3)
+            cols_s = [c_s1, c_s2, c_s3]
+            for col_s, chunk in zip(cols_s, s_topic["chunks"]):
+                with col_s:
+                    card_html = f"""
+                    <div class="trinity-card">
+                        <div class="anchor-badge">{chunk['anchor_icon']} {chunk['anchor_name']}</div>
+                        <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{chunk['label']}</h3>
+                        <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{chunk.get('sub_modes', '')}</div>
+                        <div class="model-rule">💡 <b>Quy luật:</b><br>{chunk['principle']}</div>
+                        <div class="crazy-image-box">
+                            🧠 <b>ẢNH DỊ BIỆT:</b><br>{chunk['crazy_image']}
+                        </div>
+                        <div class="trigger-box">
+                            ⚡ <b>KÍCH HOẠT 5S:</b><br><i>"{chunk['trigger_question']}"</i>
+                        </div>
+                    </div>
+                    """
+                    render_html(card_html)
+        else:
+            if "random_trio" not in st.session_state or st.button("🔀 Rút Lại 3 Thẻ Tinh Hoa Mới", type="secondary"):
+                st.session_state.random_trio = draw_random_farrow_sprint_trio()
+            
+            trio = st.session_state.random_trio
+            st.info("🎯 **Thử thách 10 phút của bạn:** Hãy ghi nhớ và kết nối 3 mô hình này vào 3 mỏ neo trong phòng học của bạn!")
+            
+            c_r1, c_r2, c_r3 = st.columns(3)
+            cols_t = [c_r1, c_r2, c_r3]
+            anchors = [("🚪 CỬA RA VÀO", "Soi Gốc"), ("🖥️ MÀN HÌNH", "Đọc Dòng"), ("🪑 BÀN GHẾ", "Ra Đòn")]
+            for idx, (col_item, m, (anc_name, anc_desc)) in enumerate(zip(cols_t, trio, anchors)):
+                with col_item:
+                    card_html = f"""
+                    <div class="trinity-card">
+                        <div class="anchor-badge">{anc_name} ({anc_desc})</div>
+                        <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{m.get('name_vi', '')}</h3>
+                        <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px;">{m.get('pillar', '')}</div>
+                        <div class="model-rule">💡 <b>Quy luật:</b> {m.get('first_principle', '')}</div>
+                        <div class="trigger-box">
+                            ⚡ <b>KÍCH HOẠT 5S:</b><br>
+                            <i>\"{m.get('trigger_question', '')}\"</i>
+                        </div>
+                    </div>
+                    """
+                    render_html(card_html)
+
+        st.markdown("---")
+
+        # Sprint Interactive Controller
+        if "sprint_running" not in st.session_state:
             st.session_state.sprint_running = False
-            st.rerun()
+        if "sprint_seconds" not in st.session_state:
+            st.session_state.sprint_seconds = 600
+
+        col_timer, col_ctrl = st.columns([2, 1])
+        with col_timer:
+            mins = st.session_state.sprint_seconds // 60
+            secs = st.session_state.sprint_seconds % 60
+            phase_label = (
+                "CHẶNG 1: BÓC TÁCH VÀ NÉN (00-02m)" if mins >= 8 else
+                "CHẶNG 2: GẮN VÀO LÂU ĐÀI KÝ ỨC (02-05m)" if mins >= 5 else
+                "CHẶNG 3: ÉP XUNG QUÉT TỐC ĐỘ X3 (05-08m)" if mins >= 2 else
+                "CHẶNG 4: PHẢN XẠ VÀ THỞ BỤNG SẠC PIN (08-10m)"
+            )
+            timer_html = f"""
+            <div class="timer-container">
+                <div style="color: #94a3b8; font-weight: 600; text-transform: uppercase;">ĐỒNG HỒ ĐẾM NGƯỢC NƯỚC RÚT</div>
+                <div class="timer-digits">{mins:02d}:{secs:02d}</div>
+                <div style="color: #38bdf8; font-weight: 600; margin-top: 8px;">{phase_label}</div>
+            </div>
+            """
+            render_html(timer_html)
+
+        with col_ctrl:
+            st.write("")
+            st.write("")
+            if st.button("▶️ BẮT ĐẦU SPRINT 10 PHÚT", use_container_width=True, type="primary"):
+                st.session_state.sprint_running = True
+                st.success("🔥 Đồng hồ đã kích hoạt! Hãy tập trung 100% vào 3 khối hạt nhân phía trên.")
+            if st.button("🔄 ĐẶT LẠI 10 PHÚT (RESET)", use_container_width=True):
+                st.session_state.sprint_seconds = 600
+                st.session_state.sprint_running = False
+                st.rerun()
+
 
 # -----------------------------------------------------------------------------
 # PHÒNG 3: MÁY QUÉT ĐỌC VỊ THẾ CUỘC (AI MACRO RADAR)
