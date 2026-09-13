@@ -304,13 +304,25 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                 f"🌲 [{t.get('domain', 'Chưa đặt tên')}] ({t.get('updated_at', '')[:10]})"
                 for t in all_saved_trees
             ]
-            
+
+            # Xác định index mặc định chính xác theo session state
+            default_tree_idx = 0
+            forced_idx = st.session_state.pop("_force_tree_idx", None)
+            if forced_idx is not None:
+                default_tree_idx = forced_idx
+            elif st.session_state.get("active_tree_id"):
+                for idx, t in enumerate(all_saved_trees):
+                    if t.get("id") == st.session_state["active_tree_id"]:
+                        default_tree_idx = idx + 1
+                        break
+
             with col_tree_sel:
                 selected_tree_idx = st.selectbox(
                     "Chọn Bản Đồ Cây Đã Lưu (Hoặc tạo mới):",
                     range(len(tree_options)),
-                    format_func=lambda i: tree_options[i],
-                    key="sb_tree_selector"
+                    index=min(default_tree_idx, len(tree_options) - 1),
+                    format_func=lambda i: tree_options[i] if i < len(tree_options) else "",
+                    key=f"sb_tree_selector_{len(all_saved_trees)}"
                 )
 
             active_tree = None
@@ -318,6 +330,9 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                 active_tree = all_saved_trees[selected_tree_idx - 1]
                 st.session_state["active_tree_id"] = active_tree["id"]
                 st.session_state["active_scout_domain"] = active_tree.get("domain", "")
+            else:
+                active_tree = None
+                st.session_state["active_tree_id"] = None
 
             # Nút xóa cây hiện tại nếu đang xem cây cũ
             with col_tree_act:
@@ -326,6 +341,7 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                     if st.button("🗑️ Xóa cây này", key=f"btn_del_tree_{active_tree['id']}", use_container_width=True):
                         delete_macro_scout_tree(active_tree["id"])
                         st.session_state.pop("active_tree_id", None)
+                        st.session_state["_force_tree_idx"] = 0
                         st.success("Đã xóa cây trinh sát!")
                         st.rerun()
 
@@ -377,6 +393,7 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                                 trends=scout_data.get("trends", [])
                             )
                             st.session_state["active_tree_id"] = saved_tree_obj["id"]
+                            st.session_state["_force_tree_idx"] = 1
                             st.session_state["active_scout_domain"] = scout_query.strip()
                             st.rerun()
                         elif scout_data and scout_data.get("error"):
@@ -438,7 +455,7 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                     f1_scanned = any(t_title.lower() in s.get("query", "").lower() for s in saved_scans)
                     badge_f1_scanned = " &nbsp; `✅ Đã có bản bóc tách trong Kho`" if f1_scanned else ""
 
-                    is_active_f1 = (selected_f1_rank == t_rank)
+                    is_active_f1 = (str(selected_f1_rank) == str(t_rank))
                     border_style = "border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.08);" if is_active_f1 else "border: 1px solid rgba(255,255,255,0.1);"
 
                     st.markdown(f"""
@@ -453,17 +470,27 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
                     c_act1, c_act2 = st.columns([1, 1])
                     with c_act1:
-                        # Nút chọn bóc tách First Principles
-                        if st.button(f"🎯 Chọn bóc tách F1-#{t_rank}", key=f"btn_pick_f1_{active_tree['id']}_{t_rank}", use_container_width=True):
+                        # Nút kích hoạt bóc tách First Principles ngay lập tức
+                        if st.button(f"📡 Bóc Tách Thế Cuộc F1-#{t_rank}", key=f"btn_pick_f1_{active_tree['id']}_{t_rank}", use_container_width=True):
                             st.session_state["room_macro_radar_input"] = t_sug
+                            st.session_state["auto_trigger_macro_radar"] = True
                             st.rerun()
 
                     with c_act2:
-                        # Nút mở màn hình F2 bên dưới
-                        label_f2_btn = f"🌿 Xem Lớp 2 ({len(t_item['drill_down'].get('sub_trends', []))} nhánh đã lưu)" if has_f2 else f"🔍 Soi Sâu Lớp 2 & 3 (F1-#{t_rank})"
+                        # Nút mở màn hình F2: Nếu chưa có F2, tự động bóc tách F2 ngay 1-Click!
+                        label_f2_btn = f"🌿 Xem Lớp 2 ({len(t_item['drill_down'].get('sub_trends', []))} nhánh đã lưu)" if has_f2 else f"⚡ Bóc Tách Lớp 2 & 3 (F1-#{t_rank})"
                         btn_type = "primary" if is_active_f1 else "secondary"
                         if st.button(label_f2_btn, key=f"btn_toggle_f2_{active_tree['id']}_{t_rank}", type=btn_type, use_container_width=True):
                             st.session_state["selected_f1_rank"] = t_rank
+                            if not has_f2:
+                                with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
+                                    drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
+                                    if drill_res and "sub_trends" in drill_res:
+                                        t_item["drill_down"] = drill_res
+                                        update_tree_drilldown(active_tree["id"], t_rank, drill_res)
+                                        st.toast("Đã bóc tách và lưu trữ các nhánh F2 vào cây!", icon="💾")
+                                    elif drill_res and drill_res.get("error"):
+                                        st.error(drill_res["error"])
                             st.rerun()
 
                     # ---------------------------------------------------------
@@ -479,10 +506,11 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
                             if not has_f2:
                                 st.info(f"Chưa có dữ liệu bóc tách vi xu hướng F2 cho nhánh **#{t_rank}: {t_title}**.")
-                                if st.button(f"⚡ Bóc Tách 3–5 Nút Thắt Ngầm (F2) Bằng AI", key=f"btn_run_drill_{active_tree['id']}_{t_rank}", type="primary", use_container_width=True):
+                                if st.button(f"⚡ Kích Hoạt Bóc Tách F2 Ngay", key=f"btn_run_drill_manual_{active_tree['id']}_{t_rank}", type="primary", use_container_width=True):
                                     with st.spinner(f"AI đang bóc tách 3-5 nút thắt ngầm cho '{t_title}'..."):
                                         drill_res = drill_down_macro_trend(t_title, context=t_one, api_key=active_api_key)
                                         if drill_res and "sub_trends" in drill_res:
+                                            t_item["drill_down"] = drill_res
                                             update_tree_drilldown(active_tree["id"], t_rank, drill_res)
                                             st.toast("Đã bóc tách và lưu trữ các nhánh F2 vào cây!", icon="💾")
                                             st.rerun()
@@ -509,8 +537,9 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
                                         c_sub1, c_sub2 = st.columns([1, 1])
                                         with c_sub1:
-                                            if st.button(f"🎯 Chọn bóc tách F2-{sub_rank} theo First Principles", key=f"btn_pick_sub_{active_tree['id']}_{t_rank}_{sub_rank}", use_container_width=True):
+                                            if st.button(f"🎯 Bóc Tách F2-{sub_rank} Theo First Principles", key=f"btn_pick_sub_{active_tree['id']}_{t_rank}_{sub_rank}", use_container_width=True):
                                                 st.session_state["room_macro_radar_input"] = sub_sug
+                                                st.session_state["auto_trigger_macro_radar"] = True
                                                 st.rerun()
                                         with c_sub2:
                                             if sub_scanned:
@@ -552,7 +581,8 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                 st.session_state.pop("latest_macro_radar_trend", None)
                 st.rerun()
 
-        if run_macro_btn:
+        should_run_macro = run_macro_btn or st.session_state.pop("auto_trigger_macro_radar", False)
+        if should_run_macro:
             if not trend_text.strip():
                 st.warning("Vui lòng nhập nội dung biến động vĩ mô cần bóc tách!")
             else:

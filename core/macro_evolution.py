@@ -410,8 +410,14 @@ def scout_macro_trends(
                             if len(lines) >= 2 and lines[-1].startswith("```"):
                                 txt = "\n".join(lines[1:-1]).strip()
                         data = json.loads(txt)
-                        if isinstance(data, dict) and "trends" in data:
-                            return data
+                        if isinstance(data, dict):
+                            if "trends" not in data:
+                                for alt in ["top_10", "bien_dong", "xu_huong", "items", "results"]:
+                                    if alt in data and isinstance(data[alt], list):
+                                        data["trends"] = data[alt]
+                                        break
+                            if "trends" in data:
+                                return data
                 except Exception:
                     continue
         except Exception:
@@ -468,14 +474,21 @@ def drill_down_macro_trend(
                             if len(lines) >= 2 and lines[-1].startswith("```"):
                                 txt = "\n".join(lines[1:-1]).strip()
                         data = json.loads(txt)
-                        if isinstance(data, dict) and "sub_trends" in data:
-                            return data
+                        if isinstance(data, dict):
+                            if "sub_trends" not in data:
+                                for alt in ["subtrends", "vi_xu_huong", "nut_that", "items", "results"]:
+                                    if alt in data and isinstance(data[alt], list):
+                                        data["sub_trends"] = data[alt]
+                                        break
+                            if "sub_trends" in data:
+                                return data
                 except Exception:
                     continue
         except Exception:
             continue
 
     return {"error": "Không thể soi sâu xu hướng qua các API Keys."}
+
 
 
 MACRO_RADAR_SYSTEM_PROMPT = """Bạn là Elite Macro Strategist & First-Principles Master (Chuyên gia Phân tích Thế cuộc & Cố vấn Chiến lược Tinh hoa).

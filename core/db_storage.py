@@ -299,16 +299,18 @@ def save_macro_scout_tree(
 
 def update_tree_drilldown(
     tree_id: str,
-    trend_rank: int,
+    trend_rank: int | str,
     drill_down_data: Dict[str, Any],
     username: str = "Phat"
 ) -> bool:
     """Lưu trữ đệm kết quả bóc tách lớp 2/3 (F2) trực tiếp vào nhánh F1 tương ứng trong cây."""
     trees = load_macro_scout_trees(username)
+    target_tid = str(tree_id).strip()
+    target_rank = str(trend_rank).strip()
     for t in trees:
-        if t.get("id") == tree_id:
+        if str(t.get("id", "")).strip() == target_tid:
             for trend in t.get("trends", []):
-                if trend.get("rank") == trend_rank:
+                if str(trend.get("rank", "")).strip() == target_rank:
                     trend["drill_down"] = drill_down_data
                     t["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     _save_json_file(LOCAL_SCOUT_TREES_FILE, trees)
