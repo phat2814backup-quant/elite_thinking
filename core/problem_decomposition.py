@@ -63,9 +63,9 @@ CẤU TRÚC 3 TRỤ CỘT & 9 LĂNG KÍNH:
    - Lăng kính 9: Multi-Timeframe Strategy (Chiến lược 3 chặng: Chịu đau ngắn hạn -> Thống trị 10 năm)
 
 3 MŨI GIÁO SOCRATES BÓC TRẦN BẪY TÂM LÝ & ĐỘC DƯỢC NHẬN THỨC (BẮT BUỘC ĐÂM VÀO ĐÚNG TỬ HUYỆT):
-- Mũi Giáo 1 (Soi Gốc): Đâm thẳng vào Giả Định Ngây Thơ, Cái Tôi Tự Phụ & Ảo Tưởng Kiểm Soát (Dunning-Kruger, Illusion of Control). Truy bức: Bạn có đang ngộ nhận sự may mắn là năng lực? Giả định ngầm sống còn nào nếu sai sẽ đánh sập toàn bộ lâu đài của bạn?
-- Mũi Giáo 2 (Đọc Dòng): Đâm thẳng vào Bẫy Động Cơ Ngầm (Incentive-Caused Bias - Charlie Munger), Xung Đột Lợi Ích & Tâm Lý Bầy Cừu (Social Proof/FOMO). Truy bức: Ai đang kiếm tiền nhiều nhất nếu bạn hành động như vậy? Lời khuyên này có đến từ 'thợ cắt tóc'? Bạn có đang bị cuốn vào cơn say đám đông?
-- Mũi Giáo 3 (Ra Đòn): Đâm thẳng vào Bẫy Chi Phí Chìm (Sunk Cost Fallacy), Ác Cảm Mất Mát, Lòng Đố Kỵ & Áp Lực Sĩ Diện Nhất Quán (Commitment Bias). Truy bức: Nếu hôm nay bắt đầu từ con số 0, bạn có đổ tiền/công sức vào không? Bạn hành động vì cơ hội thật hay vì tiếc nuối nguồn lực cũ và đố kỵ với kẻ khác? Kịch bản xấu nhất chết chắc là gì?
+- Mũi Giáo 1 (Soi Gốc): Đâm thẳng vào Giả Định Ngây Thơ, Cái Tôi Tự Phụ, Tính Phi Công Thái Học & Bẫy Nhân Với Số 0 (Dunning-Kruger, Non-Ergodicity, Ruin Risk). Truy bức: Bạn có đang ngộ nhận sự may mắn là năng lực? Bài toán này có kịch bản tử thần nào dù xác suất nhỏ nhưng nếu xảy ra sẽ nhân tài sản/tính mạng với số 0 không? Giả định ngầm sống còn nào nếu sai sẽ đánh sập toàn bộ lâu đài của bạn?
+- Mũi Giáo 2 (Đọc Dòng): Đâm thẳng vào Bẫy Động Cơ Ngầm (Incentive-Caused Bias - Charlie Munger), Tín Hiệu Rẻ Tiền & Thiếu Trách Nhiệm (Costly Signaling, Skin in the Game), Thế Kẹt Nash & Tâm Lý Bầy Cừu. Truy bức: Ai đang kiếm tiền nhiều nhất nếu bạn hành động như vậy? Lời khuyên này có đến từ 'thợ cắt tóc'? Người tư vấn có đặt tài sản/sinh mệnh (Skin in the game) vào rủi ro không hay chỉ phát tín hiệu rẻ tiền (cheap talk)?
+- Mũi Giáo 3 (Ra Đòn): Đâm thẳng vào Bẫy Chi Phí Chìm (Sunk Cost Fallacy), Trò Chơi Vị Thế Ảo Làm Kiệt Quệ Năng Lượng (Status Games vs Metabolic Cost), Ác Cảm Mất Mát & Sĩ Diện Nhất Quán. Truy bức: Nếu hôm nay bắt đầu từ con số 0, bạn có đổ tiền/công sức vào không? Bạn hành động vì tích lũy giá trị thực (Wealth) hay đang đốt cạn sinh lực vào một cuộc chiến vị thế ảo (Status game) vì sĩ diện và đố kỵ? Kịch bản xấu nhất chết chắc là gì?
 
 BẮT BUỘC TRẢ VỀ DUY NHẤT MỘT JSON HỢP LỆ (Không có markdown ```json ngoài JSON):
 {

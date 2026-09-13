@@ -306,7 +306,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
     "biology_evolution": {
         "id": "biology_evolution",
         "category": "🧬 Sinh Học & Tiến Hóa",
-        "title": "Sinh Học Tinh Hoa: Chọn Lọc, Thích Nghi & Đột Biến",
+        "title": "Sinh Học 1: Chọn Lọc Tự Nhiên, Niche & Nữ Hoàng Đỏ",
         "icon": "🧬",
         "tagline": "Nén 4 tỷ năm tiến hóa sự sống vào 3 cơ chế sinh tồn tàn khốc",
         "summary": "Hợp nhất Chọn lọc tự nhiên Darwin, Hốc sinh thái, Hiệu ứng Nữ hoàng Đỏ, Cân bằng nội môi (Homeostasis) và Đột biến di truyền.",
@@ -359,13 +359,69 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         ]
     },
 
+    "biology_evolution_2": {
+        "id": "biology_evolution_2",
+        "category": "🧬 Sinh Học & Tiến Hóa",
+        "title": "Sinh Học 2: Báo Hiệu Đắt Giá, Trò Chơi Vị Thế & Ký Sinh Trùng",
+        "icon": "🦚",
+        "tagline": "Bóc trần quy luật sinh thái xã hội: Báo hiệu đắt giá, đánh đổi năng lượng & ký sinh thao túng",
+        "summary": "Hợp nhất Thuyết Báo hiệu Đắt giá (Zahavi), Chi phí Chuyển hóa & Đánh đổi Năng lượng, Chọn lọc Giới tính & Trò chơi Vị thế, Ký sinh trùng thao túng và Gen vị kỷ (Dawkins).",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['BIO-10', 'SYS-04', 'BIO-13'],
+                "label": "TRỤ 1: THUYẾT BÁO HIỆU ĐẮT GIÁ & SKIN IN THE GAME",
+                "sub_modes": "(1) Báo hiệu Đắt giá (Costly Signaling) + (2) Rủi ro Trách nhiệm (Skin in the Game) + (3) Chọn lọc Giới tính (Sexual Selection)",
+                "principle": "1. Tín hiệu chỉ đáng tin cậy khi nó gây tổn hao chi phí thực sự mà kẻ lừa đảo không thể làm giả ➔ 2. Không bao giờ tin lời khuyên của kẻ không đặt tài sản hay tính mạng của mình vào rủi ro chung ➔ 3. Mọi xa hoa phô trương trong tự nhiên đều là cái giá trả cho quyền tiếp cận tài nguyên và truyền giống.",
+                "anchor_name": "CHIẾC ĐUÔI CÔNG NẶNG 1 TẤN & CÁN CÂN SỔ ĐỎ",
+                "anchor_icon": "🦚",
+                "crazy_image": "Tại VÁCH ĐÁ BÁO HIỆU: (1) Một chú công đực mang bộ đuôi vàng nặng 1 tấn lấp lánh nhưng vẫn chạy thoăn thoắt thoát khỏi nanh vuốt sói chứng minh sức mạnh di truyền bất hoại không thể làm giả (Báo hiệu đắt giá), (2) bên cạnh chú công giấy xốp giả tạo lập tức gãy cánh gió cuốn bay, (3) một nhà đầu tư mạo hiểm giơ chiếc cân công lý: một bên là lời hứa dự án, một bên buộc phải đặt sổ đỏ nhà riêng và tiền túi của chính mình vào thì chiếc cân mới cân bằng (Skin in the Game)!",
+                "trigger_question": "Tín hiệu này có đắt giá thực sự hay chỉ là lời chém gió rẻ tiền không tốn chi phí? Đối tác này có đặt tính mạng/tài sản (Skin in the game) vào rủi ro không? Kẻ phô trương đang trả giá bằng nguồn lực gì?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['BIO-13', 'BIO-11', 'ECON-02'],
+                "label": "TRỤ 2: TRÒ CHƠI VỊ THẾ & ĐÁNH ĐỔI NĂNG LƯỢNG (METABOLIC COST)",
+                "sub_modes": "(1) Trò chơi Vị thế (Status Games) + (2) Chi phí Chuyển hóa (Metabolic Cost) + (3) Đánh đổi Tiến hóa (Evolutionary Trade-offs)",
+                "principle": "1. Tranh giành vị thế là trò chơi tổng bằng không tiêu tốn kiệt quệ tài nguyên sinh học ➔ 2. Năng lượng cơ thể có hạn, dành calo cho hào nhoáng bên ngoài đồng nghĩa với việc rút cạn khả năng miễn dịch và sinh tồn ➔ 3. Kẻ khôn ngoan chuyển từ trò chơi vị thế ảo sang tích lũy của cải và sức mạnh thực tế (Wealth Games).",
+                "anchor_name": "CẶP HƯƠU HÚC NHAU GÃY SỪNG & ĐỒNG CỎ XANH BÌNH YÊN",
+                "anchor_icon": "🦌",
+                "crazy_image": "Tại BÃI ĐẤU HƯƠU SAVANNAH: (1) Hai chú hươu đực khổng lồ mang cặp sừng vàng cồng kềnh húc nhau tóe lửa gãy nát sừng chỉ để tranh giành danh hiệu đầu đàn (Trò chơi vị thế), (2) trên trán chúng đồng hồ pin năng lượng báo động đỏ rực nhấp nháy '0% Energy - Kiệt sức chết đói vì hư danh' (Chi phí chuyển hóa & đánh đổi), (3) trong khi đó chú hươu thông thái phớt lờ cuộc ẩu đả, ung dung gặm đồng cỏ ba lá xanh mướt tích lũy mỡ và sức đề kháng dồi dào (Wealth games)!",
+                "trigger_question": "Tôi có đang rơi vào trò chơi vị thế vô bổ làm kiệt quệ năng lượng không? Năng lượng bỏ ra có mang lại của cải và sức đề kháng thực chất? Đánh đổi sinh tồn ở đây là gì?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['BIO-09', 'BIO-12', 'BIO-14'],
+                "label": "TRỤ 3: KÝ SINH THAO TÚNG, NÚT NGHẼN CỔ CHAI & GEN VỊ KỶ",
+                "sub_modes": "(1) Ký sinh trùng Thao túng Vật chủ + (2) Thắt cổ chai Di truyền (Genetic Bottlenecks) + (3) Gen Vị kỷ & Tự Nhân bản (The Selfish Gene)",
+                "principle": "1. Cảnh giác với những ký sinh trùng tư tưởng hoặc đối tác ngấm ngầm chiếm đoạt quyền điều khiển não bộ biến bạn thành vật hy sinh ➔ 2. Quần thể bị ép qua nút thắt cổ chai sẽ suy thoái tính đa dạng và cực kỳ mong manh trước cú sốc ➔ 3. Cơ thể sinh học chỉ là cỗ máy sinh tồn tạm thời để các thông tin di truyền và ý niệm (meme/gene) tự nhân bản xuyên thế hệ.",
+                "anchor_name": "CÂY NẤM ZOMBIE ĐẦU KIẾN, NÚT NGHẼN BÌNH THỦY TINH & CHUỖI ADN BẤT TỬ",
+                "anchor_icon": "🍄",
+                "crazy_image": "Tại KHU RỪNG NẤM ZOMBIE: (1) Cây nấm Cordyceps phát sáng cắm rễ vào não chú kiến, biến chú thành zombie leo lên đỉnh ngọn cỏ cắn chặt cành lá để nấm nở hoa bung bào tử tiêu diệt cả tổ (Ký sinh thao túng), (2) một đàn bò rừng bị dồn ép qua chiếc cổ chai thủy tinh chật hẹp chỉ còn 2 con sống sót khiến thế hệ sau què quặt vì cận huyết (Thắt cổ chai di truyền), (3) từ xác con kiến bốc lên chuỗi xoắn kép ADN phát sáng rực rỡ tự nhân đôi thành hàng triệu bản sao bất tử trường tồn vượt qua cái chết của thể xác (Gen vị kỷ)!",
+                "trigger_question": "Tôi có đang bị một thế lực hay niềm tin độc hại nào ký sinh thao túng hành vi như xác sống không? Hệ thống có bị điểm nghẽn thắt cổ chai làm kiệt quệ sức chống chịu? Mã nguồn cốt lõi nào đang được nhân bản xuyên thời gian?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Thuyết Báo hiệu Đắt giá (Costly Signaling Theory) của Amotz Zahavi giải thích điều gì?",
+                "options": [
+                    "Các loài động vật thích khoe khoang để giải trí.",
+                    "Một tín hiệu (như đuôi công cồng kềnh hay chứng chỉ uy tín) chỉ đáng tin cậy nếu người phát tín hiệu phải trả một chi phí đắt đỏ thực tế mà kẻ lừa đảo không thể làm giả.",
+                    "Quảng cáo càng đắt tiền thì sản phẩm càng tệ."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Tín hiệu không có chi phí (cheap talk) là vô giá trị; chỉ có tín hiệu đắt giá (costly signaling) mới bảo chứng cho năng lực thực sự."
+            }
+        ]
+    },
+
     # =========================================================================
-    # NHÓM 4: TOÁN HỌC & XÁC SUẤT THỰC CHIẾN
+    # NHÓM 4: TOÁN HỌC & XÁC SUẤT THỰC CHIẾN (2 PHẦN)
     # =========================================================================
     "math_probability": {
         "id": "math_probability",
         "category": "🎲 Toán & Xác Suất",
-        "title": "Toán Học & Xác Suất: Bayes, Lãi Kép & Kelly",
+        "title": "Toán Học 1: Bayes, Lãi Kép & Tiêu Chuẩn Kelly",
         "icon": "🎲",
         "tagline": "Nén khoa học định lượng vào 3 cỗ máy tư duy: Đảo ngược -> Cập nhật -> Tối ưu cược",
         "summary": "Tổng hợp Lãi kép, Phân phối Pareto 80/20, Xác suất Bayes, Phân phối Đuôi béo (Fat Tails), Giá trị kỳ vọng & Tiêu chuẩn Kelly.",
@@ -414,6 +470,62 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 ],
                 "correct_idx": 1,
                 "explanation": "Chính xác! Buffett: 'Nguyên tắc 1: Đừng để mất tiền. Nguyên tắc 2: Đừng bao giờ quên nguyên tắc 1'. Đây là đỉnh cao của tư duy đảo ngược."
+            }
+        ]
+    },
+
+    "math_probability_2": {
+        "id": "math_probability_2",
+        "category": "🎲 Toán & Xác Suất",
+        "title": "Toán Học 2: Nhân Số 0, Game Theory & Nghịch Lý Dữ Liệu",
+        "icon": "🧮",
+        "tagline": "Bóc trần cạm bẫy ngụy biện thống kê, luật sinh tử phi công thái học & thế cân bằng Nash",
+        "summary": "Tính Phi công thái học & Nhân với số 0 (Non-Ergodicity), Cân bằng Nash & Nghịch lý Tù nhân (Game Theory), Nghịch lý Simpson, Tương quan vs Nhân quả và Ảo tưởng Con bạc.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['MATH-10', 'MATH-05', 'SYS-04'],
+                "label": "TRỤ 1: TÍNH PHI CÔNG THÁI HỌC & NHÂN VỚI SỐ 0 (NON-ERGODICITY)",
+                "sub_modes": "(1) Non-Ergodicity (Phi công thái học) + (2) Nhân với số 0 (Multiplying by Zero) + (3) Bất đối xứng Sống còn (Survival Asymmetry)",
+                "principle": "1. Xác suất trung bình của tập thể không áp dụng cho một cá nhân trải qua chuỗi thời gian ➔ 2. Bất kể chuỗi số trước đó lớn cỡ nào, chỉ cần một lần nhân với số 0 thì toàn bộ tài sản và công sức về con số 0 tròn trĩnh ➔ 3. Sống sót qua các ván cược là điều kiện tiên quyết duy nhất để hưởng quả ngọt tích lũy.",
+                "anchor_name": "BÀN ROULETTE NGA TỬ THẦN & KHO BÁU BỊ NHÂN SỐ 0",
+                "anchor_icon": "🔫",
+                "crazy_image": "Tại SÒNG BẠC ROULETTE NGA: (1) Khẩu súng lục 6 viên chỉ có 1 viên đạn, dù 5/6 người thắng 1 triệu USD nhưng người chơi luân phiên chắc chắn sẽ chết (Non-Ergodicity), (2) kho báu 10 tỷ USD rực rỡ bị một bàn tay gắn số 'x 0' màu đỏ rực đập xuống bốc hơi thành khói bụi không còn một xu (Nhân với số 0), (3) Warren Buffett đứng bên cạnh ôm chặt két sắt khóa vĩnh viễn không cho bất kỳ ai tham gia ván cược có nguy cơ xóa sổ (Bất đối xứng sống còn)!",
+                "trigger_question": "Thương vụ này có rủi ro dẫn đến cái chết hoặc phá sản (nhân số 0) không? Tôi đang tính trung bình trên tập thể hay trên chuỗi sống còn cá nhân? Đã khóa chặt cánh cửa tử chưa?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['SYS-10', 'ECON-10', 'MATH-03'],
+                "label": "TRỤ 2: THẾ CÂN BẰNG NASH & NGHỊCH LÝ TÙ NHÂN (GAME THEORY)",
+                "sub_modes": "(1) Thế lưỡng nan của Tù nhân (Prisoner's Dilemma) + (2) Điểm cân bằng Nash (Nash Equilibrium) + (3) Trò chơi Tổng dương vs Tổng âm",
+                "principle": "1. Khi mỗi bên hành động thuần túy vì tư lợi ích kỷ tối đa, kết quả chung của cả hai lại là sự sụp đổ tồi tệ nhất ➔ 2. Trạng thái cân bằng Nash đạt được khi không ai có thể tự ý đổi chiến thuật mà thu được lợi ích tốt hơn nếu đối phương không đổi ➔ 3. Muốn thoát khỏi vũng lầy triệt hạ, phải tái cấu trúc luật chơi thành trò chơi lặp lại tổng dương có thưởng phạt minh bạch.",
+                "anchor_name": "HAI PHÒNG GIAM KÍNH & BÀN CỜ VUA CỦA NHÀ TOÁN HỌC NASH",
+                "anchor_icon": "♟️",
+                "crazy_image": "Tại PHÒNG GIAM KÍNH ĐÔI: (1) Hai tù nhân sợ hãi trong hai phòng giam kính cách âm đồng loạt chỉ tay tố cáo nhau để rồi cả hai cùng lãnh án 10 năm tù khổ sai (Nghịch lý tù nhân), (2) ở giữa là nhà toán học John Nash điềm tĩnh đẩy quân cờ vua vào thế giằng co bất động nơi không ai dám manh động thay đổi vị trí (Cân bằng Nash), (3) bỗng một chiếc bánh kem khổng lồ tổng dương phình to chia đều phần thưởng cho hai bên khi họ cùng bắt tay hợp tác dài hạn (Trò chơi tổng dương)!",
+                "trigger_question": "Đây là trò chơi tổng âm, tổng bằng 0 hay tổng dương? Điểm cân bằng Nash của các đối thủ đang ở đâu? Nếu tôi tối ưu tư lợi cá nhân thì hệ thống có sụp đổ không?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['MATH-12', 'MATH-13', 'MATH-11'],
+                "label": "TRỤ 3: NGHỊCH LÝ SIMPSON & TƯƠNG QUAN KHÔNG PHẢI NHÂN QUẢ",
+                "sub_modes": "(1) Tương quan không phải Nhân quả (Correlation vs Causation) + (2) Nghịch lý Simpson (Simpson's Paradox) + (3) Ảo tưởng Con bạc (Gambler's Fallacy)",
+                "principle": "1. Hai hiện tượng xảy ra đồng thời không có nghĩa là cái này gây ra cái kia; luôn tìm biến số ẩn thứ ba ➔ 2. Một xu hướng biểu hiện ở các nhóm nhỏ có thể hoàn toàn đảo ngược khi gộp chung toàn bộ dữ liệu lại ➔ 3. Mỗi vòng quay độc lập hoàn toàn không có trí nhớ, đừng bao giờ ảo tưởng sau 10 lần Đỏ thì Đen chắc chắn phải ra.",
+                "anchor_name": "KEM ĂN CHẾT ĐUỐI, LĂNG KÍNH SIMPSON & VÒNG QUAY ĐỎ ĐEN",
+                "anchor_icon": "🧊",
+                "crazy_image": "Tại BỜ BIỂN NẮNG CHÁY: (1) Một biểu đồ khổng lồ ghép que kem với người chết đuối cho thấy kem tăng thì chết đuối tăng, nhưng mặt trời gay gắt trên cao bật cười vì trời nóng mới là nguyên nhân thực sự (Tương quan vs Nhân quả), (2) một lăng kính ma thuật Simpson khi nhìn từng mảnh thì thấy mũi tên đi lên nhưng khi nhìn toàn cảnh bức tranh thì mũi tên lại chúc đầu đi xuống (Nghịch lý Simpson), (3) một con bạc mồ hôi đầm đìa dốc sạch túi cược vào ô Đen sau khi bóng rơi vào ô Đỏ 10 lần liên tiếp để rồi lại thua sạch vì bóng rơi tiếp vào Đỏ (Ảo tưởng con bạc)!",
+                "trigger_question": "Hai biến số này có quan hệ nhân quả thực sự hay chỉ là tương quan bề mặt? Có biến số ẩn nào đang làm méo mó dữ liệu theo nghịch lý Simpson không? Có đang mắc bẫy con bạc tưởng quy luật độc lập có chu kỳ trả lời?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Quy tắc sống còn của Tính Phi công thái học (Non-Ergodicity) & Nhân với số 0 là gì?",
+                "options": [
+                    "Nếu tỷ lệ thắng là 90%, bạn nên vay nợ tối đa để cược tất tay.",
+                    "Bất kể bạn thành công đến đâu, nếu có một xác suất nhỏ dẫn đến kết cục bị xóa sổ hoàn toàn (nhân với số 0), kỳ vọng dài hạn của bạn trong thế giới thực là con số 0.",
+                    "Đầu tư càng liều thì thành công càng lớn."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Nassim Taleb và Warren Buffett đều nhấn mạnh: Đừng bao giờ tham gia ván cược mà nếu thua bạn sẽ mất mạng hoặc phá sản (Ruin risk)."
             }
         ]
     },
