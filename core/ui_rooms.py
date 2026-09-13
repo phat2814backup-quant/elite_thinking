@@ -19,6 +19,7 @@ from core.macro_evolution import (
 from core.problem_decomposition import (
     decompose_problem_with_ai,
     evaluate_socratic_sparring,
+    generate_next_socratic_round,
     SAMPLE_DECOMPOSITION_CASES,
 )
 from core.farrow_engine import compress_with_farrow_ai
@@ -160,7 +161,8 @@ def render_problem_decomposition_result_cards(
     prob: str = "",
     record_id: str = "latest",
     show_decision_transfer: bool = True,
-    created_at: str = ""
+    created_at: str = "",
+    active_api_key: str | None = None
 ):
     """Hiển thị toàn diện kết quả phân rã 3 Trụ Cột, 9 Lăng Kính & Võ Đài Đối Kháng Socrates."""
     if not res or not isinstance(res, dict):
@@ -236,83 +238,192 @@ def render_problem_decomposition_result_cards(
             st.success(f"⚖️ **Đòn Bẩy & Điểm Nghẽn (Leverage & Bottlenecks):**  \n{lenses.get('leverage', '')}")
 
     # -------------------------------------------------------------------------
-    # VÕ ĐÀI ĐỐI KHÁNG SOCRATES (THE SOCRATIC SPARRING ARENA)
+    # VÕ ĐÀI ĐỐI KHÁNG SOCRATES ĐA VÒNG (MULTI-ROUND SOCRATIC SPARRING ARENA)
     # -------------------------------------------------------------------------
-    spears = res.get("socratic_spears", [])
-    if spears:
+    # Khởi tạo socratic_rounds nếu chưa có
+    if "socratic_rounds" not in res or not res.get("socratic_rounds"):
+        initial_spears = res.get("socratic_spears", [])
+        if initial_spears:
+            res["socratic_rounds"] = [
+                {
+                    "round_number": 1,
+                    "round_theme": "Vòng 1: Đập Vụn Giả Định & Chân Lý Khởi Thủy (Assumption Smashing)",
+                    "round_brief": "Socrates khảo nghiệm các giả định ngầm cơ bản nhất và các kịch bản tử thần trước khi bạn bắt đầu.",
+                    "spears": initial_spears,
+                    "user_answers": {},
+                    "evaluation": None,
+                    "status": "in_progress"
+                }
+            ]
+
+    # Kiểm tra session_state có rounds cập nhật hơn không
+    ss_rounds_key = f"socratic_rounds_{record_id}"
+    if ss_rounds_key in st.session_state:
+        res["socratic_rounds"] = st.session_state[ss_rounds_key]
+    elif res.get("socratic_rounds"):
+        st.session_state[ss_rounds_key] = res["socratic_rounds"]
+
+    socratic_rounds = res.get("socratic_rounds", [])
+    if socratic_rounds:
         st.markdown("---")
-        st.markdown("### 🗡️ Võ Đài Đối Kháng Socrates: 3 Mũi Giáo Sát Thủ")
+        st.markdown("### 🥊 Võ Đài Đối Kháng Socrates: Đấu Trí Đa Vòng (Multi-Round Sparring)")
         st.caption(
-            "Đừng chỉ đọc thụ động! Hãy trực tiếp thượng đài đối mặt với 3 mũi giáo phản biện tàn nhẫn dưới đây "
-            "để bảo vệ lập luận của bạn và kiểm tra Sức Bền Nhận Thức (Cognitive Grit)."
+            "Đừng chỉ đọc thụ động! Hãy trực tiếp thượng đài đối mặt với các đợt phản công của Socrates qua từng vòng. "
+            "Càng qua nhiều vòng, đòn truy bức nhận thức càng sâu sắc và khốc liệt để tôi luyện Sức Bền Nhận Thức (Cognitive Grit)."
         )
 
-        user_sparring_answers = {}
-        for s_idx, s in enumerate(spears):
-            s_id = s.get("spear_id", f"spear_{s_idx}")
-            s_title = s.get("spear_title", f"Mũi Giáo {s_idx+1}")
-            s_vuln = s.get("targeted_vulnerability", "")
-            s_q = s.get("ruthless_question", "")
-            s_guide = s.get("guidance", "")
+        completed_rounds = [r for r in socratic_rounds if r.get("evaluation")]
+        avg_grit = int(sum(r["evaluation"].get("grit_score", 0) for r in completed_rounds) / len(completed_rounds)) if completed_rounds else 0
+        total_xp = sum(r["evaluation"].get("xp_awarded", 0) for r in completed_rounds)
 
-            with st.container(border=True):
-                st.markdown(f"**{s_title}**")
-                if s_vuln:
-                    st.caption(f"🎯 *Điểm mù truy sát:* {s_vuln}")
-                st.warning(f"👉 **\"{s_q}\"**")
-                if s_guide:
-                    st.caption(f"💡 *Gợi ý phản biện:* {s_guide}")
+        col_st1, col_st2, col_st3 = st.columns(3)
+        with col_st1:
+            st.metric("Vòng Đấu Trí Hiện Tại", f"Vòng {len(socratic_rounds)}", delta=f"{len(completed_rounds)} vòng hoàn thành")
+        with col_st2:
+            st.metric("Điểm Sức Bền (Grit TB)", f"{avg_grit} / 100" if completed_rounds else "Chưa chấm")
+        with col_st3:
+            st.metric("Tổng XP Nhận Thức", f"+{total_xp} XP")
 
-                ans_key = f"socratic_ans_{record_id}_{s_id}"
-                user_ans = st.text_area(
-                    "Câu trả lời & lập luận bảo vệ của bạn:",
-                    key=ans_key,
-                    height=80,
-                    placeholder="Nhập lập luận sắc bén của bạn để hóa giải mũi giáo này..."
-                )
-                user_sparring_answers[s_id] = user_ans
+        for idx, r_item in enumerate(socratic_rounds):
+            r_num = r_item.get("round_number", idx + 1)
+            r_theme = r_item.get("round_theme", f"Vòng {r_num}")
+            r_brief = r_item.get("round_brief", "")
+            r_spears = r_item.get("spears", [])
+            r_eval = r_item.get("evaluation")
+            r_answers = r_item.get("user_answers", {})
+            is_active = (idx == len(socratic_rounds) - 1) and (r_eval is None)
 
-        c_sp1, c_sp2 = st.columns([2, 1])
-        with c_sp1:
-            if st.button("🥊 Tiếp Chiêu & Thẩm Định Sức Bền Nhận Thức", key=f"btn_spar_{record_id}", type="primary", use_container_width=True):
-                has_any_answer = any(v.strip() for v in user_sparring_answers.values())
-                if not has_any_answer:
-                    st.warning("Vui lòng nhập câu trả lời cho ít nhất 1 mũi giáo để AI Socrates thẩm định!")
-                else:
-                    with st.spinner("🤖 Socrates đang mổ xẻ lập luận và chấm điểm Sức bền nhận thức..."):
-                        eval_result = evaluate_socratic_sparring(
+            status_tag = "🔥 [ĐANG THƯỢNG ĐÀI]" if is_active else ("✅ [ĐÃ HOÀN TẤT]" if r_eval else "⏳ [CHỜ PHẢN BIỆN]")
+            score_text = f" — Đạt {r_eval.get('grit_score', 0)}/100 Điểm Grit (+{r_eval.get('xp_awarded', 0)} XP)" if r_eval else ""
+            expander_title = f"{status_tag} {r_theme}{score_text}"
+
+            with st.expander(expander_title, expanded=(is_active or (idx == len(socratic_rounds) - 1))):
+                if r_brief:
+                    st.info(f"🗣️ **Socrates khiêu chiến:** *\"{r_brief}\"*")
+
+                current_user_answers = {}
+                for s_idx, s in enumerate(r_spears):
+                    s_id = s.get("spear_id", f"spear_r{r_num}_{s_idx}")
+                    s_title = s.get("spear_title", f"Mũi Giáo {s_idx+1}")
+                    s_vuln = s.get("targeted_vulnerability", "")
+                    s_q = s.get("ruthless_question", "")
+                    s_guide = s.get("guidance", "")
+                    saved_ans = r_answers.get(s_id, "")
+
+                    with st.container(border=True):
+                        st.markdown(f"**{s_title}**")
+                        if s_vuln:
+                            st.caption(f"🎯 *Điểm mù truy sát:* {s_vuln}")
+                        st.warning(f"👉 **\"{s_q}\"**")
+                        if s_guide:
+                            st.caption(f"💡 *Gợi ý phản biện:* {s_guide}")
+
+                        ans_key = f"socratic_ans_{record_id}_r{r_num}_{s_id}"
+                        if r_eval:
+                            st.markdown(f"🛡️ **Lập luận bảo vệ của bạn:**\n> *{saved_ans if saved_ans else '(Chưa ghi nhận)'}*")
+                        else:
+                            user_ans = st.text_area(
+                                "Câu trả lời & lập luận bảo vệ của bạn:",
+                                value=saved_ans,
+                                key=ans_key,
+                                height=80,
+                                placeholder="Nhập lập luận sắc bén của bạn để hóa giải mũi giáo này..."
+                            )
+                            current_user_answers[s_id] = user_ans
+
+                if not r_eval:
+                    st.markdown("---")
+                    col_btn_spar, _ = st.columns([2, 1])
+                    with col_btn_spar:
+                        if st.button(f"🥊 Tiếp Chiêu & Thẩm Định Vòng {r_num}", key=f"btn_spar_{record_id}_r{r_num}", type="primary", use_container_width=True):
+                            has_any = any(v.strip() for v in current_user_answers.values())
+                            if not has_any:
+                                st.warning("Vui lòng nhập câu trả lời cho ít nhất 1 mũi giáo để AI Socrates thẩm định!")
+                            else:
+                                with st.spinner(f"🤖 Socrates đang mổ xẻ lập luận Vòng {r_num} và chấm điểm Sức Bền Nhận Thức..."):
+                                    eval_result = evaluate_socratic_sparring(
+                                        problem_text=prob,
+                                        socratic_spears=r_spears,
+                                        user_answers=current_user_answers,
+                                        round_number=r_num,
+                                        round_theme=r_theme,
+                                        api_key=active_api_key
+                                    )
+                                    r_item["user_answers"] = current_user_answers
+                                    r_item["evaluation"] = eval_result
+                                    r_item["status"] = "completed"
+                                    res["socratic_rounds"] = socratic_rounds
+                                    st.session_state[ss_rounds_key] = socratic_rounds
+                                    save_problem_analysis(prob, res)
+                                    xp_plus = eval_result.get("xp_awarded", 0)
+                                    if "farrow_xp" in st.session_state:
+                                        st.session_state["farrow_xp"] += xp_plus
+                                    st.toast(f"Hoàn tất Vòng {r_num}! Nhận +{xp_plus} XP Sức bền nhận thức!", icon="🛡️")
+                                    if eval_result.get("grit_score", 0) >= 80:
+                                        st.balloons()
+                                    st.rerun()
+
+                if r_eval:
+                    st.markdown("---")
+                    st.markdown(f"#### 🛡️ Thẩm Định Bản Lĩnh Nhận Thức (Vòng {r_num})")
+                    c_g1, c_g2, c_g3 = st.columns(3)
+                    with c_g1:
+                        st.metric("Điểm Sức Bền Vòng Này", f"{r_eval.get('grit_score', 0)} / 100")
+                    with c_g2:
+                        st.metric("Thưởng XP Vòng Này", f"+{r_eval.get('xp_awarded', 0)} XP")
+                    with c_g3:
+                        st.metric("Danh Hiệu Phản Biện", r_eval.get("verdict_title", "Chiến Binh Nhận Thức"))
+
+                    if r_eval.get("overall_comment"):
+                        st.info(f"💬 **Nhận xét của Socrates:** {r_eval.get('overall_comment')}")
+
+                    for ev in r_eval.get("evaluations", []):
+                        sp_id = ev.get("spear_id", "")
+                        st.markdown(f"- **Mũi giáo [{sp_id}] (Đạt {ev.get('score', 0)}/100):** {ev.get('critique', '')}")
+
+        # Nút bước sang vòng tiếp theo nếu vòng cuối cùng đã có evaluation
+        last_round = socratic_rounds[-1]
+        if last_round.get("evaluation"):
+            st.markdown("---")
+            next_round_num = len(socratic_rounds) + 1
+            st.markdown(f"### ⚔️ Bạn Đã Vượt Qua Vòng {len(socratic_rounds)}!")
+            st.caption(
+                "Socrates chưa dừng lại ở đây. Càng đào sâu, các điểm mù và ma sát thực tế càng lộ rõ. "
+                f"Bạn có đủ dũng khí để tiếp tục thượng đài Vòng {next_round_num}?"
+            )
+            col_nxt1, col_nxt2 = st.columns([2, 1])
+            with col_nxt1:
+                if st.button(
+                    f"⚔️ Tiếp Tục Lên Đài Vòng {next_round_num}: Đón Nhận Đợt Phản Công Tiếp Theo",
+                    key=f"btn_next_round_{record_id}_{next_round_num}",
+                    type="primary",
+                    use_container_width=True
+                ):
+                    with st.spinner(f"🤖 Socrates đang chuẩn bị 3 Mũi Giáo Sát Thủ cho Vòng {next_round_num}..."):
+                        next_round_data = generate_next_socratic_round(
                             problem_text=prob,
-                            socratic_spears=spears,
-                            user_answers=user_sparring_answers
+                            next_round=next_round_num,
+                            previous_rounds=socratic_rounds,
+                            api_key=active_api_key
                         )
-                        st.session_state[f"socratic_eval_{record_id}"] = eval_result
-                        xp_plus = eval_result.get("xp_awarded", 0)
-                        if "farrow_xp" in st.session_state:
-                            st.session_state["farrow_xp"] += xp_plus
-                        st.toast(f"Đã thẩm định xong! Nhận +{xp_plus} XP Sức bền nhận thức!", icon="🛡️")
-                        if eval_result.get("grit_score", 0) >= 80:
-                            st.balloons()
+                        next_round_obj = {
+                            "round_number": next_round_num,
+                            "round_theme": next_round_data.get("round_theme", f"Vòng {next_round_num}"),
+                            "round_brief": next_round_data.get("round_brief", "Socrates tiếp tục truy kích tư duy của bạn."),
+                            "spears": next_round_data.get("spears", []),
+                            "user_answers": {},
+                            "evaluation": None,
+                            "status": "in_progress"
+                        }
+                        socratic_rounds.append(next_round_obj)
+                        res["socratic_rounds"] = socratic_rounds
+                        st.session_state[ss_rounds_key] = socratic_rounds
+                        save_problem_analysis(prob, res)
+                        st.toast(f"Đã bước vào Vòng {next_round_num}!", icon="⚔️")
                         st.rerun()
 
-        eval_key = f"socratic_eval_{record_id}"
-        if eval_key in st.session_state:
-            e_data = st.session_state[eval_key]
-            st.markdown("#### 🛡️ Kết Quả Thẩm Định Sức Bền Nhận Thức (Cognitive Grit)")
-            
-            c_g1, c_g2, c_g3 = st.columns(3)
-            with c_g1:
-                st.metric("Điểm Sức Bền (Grit)", f"{e_data.get('grit_score', 0)} / 100")
-            with c_g2:
-                st.metric("Thưởng XP Tinh Hoa", f"+{e_data.get('xp_awarded', 0)} XP")
-            with c_g3:
-                st.metric("Danh Hiệu Phản Biện", e_data.get("verdict_title", "Chiến Binh Nhận Thức"))
-
-            if e_data.get("overall_comment"):
-                st.info(f"💬 **Nhận xét của Socrates:** {e_data.get('overall_comment')}")
-
-            for ev in e_data.get("evaluations", []):
-                sp_id = ev.get("spear_id", "")
-                st.markdown(f"- **Mũi giáo [{sp_id}] (Đạt {ev.get('score', 0)}/100):** {ev.get('critique', '')}")
+            with col_nxt2:
+                st.caption(f"💡 Hiện đã hoàn thành {len(socratic_rounds)} vòng đấu trí. Bạn có thể thượng đài bao nhiêu vòng tùy ý để rèn luyện tư duy.")
 
     # 4. Actionable insights
     st.markdown("---")
@@ -767,11 +878,12 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
 
 
 def render_problem_decomposition_room(active_api_key: str | None = None):
-    """Render phòng chức năng Phân Rã Thực Chiến: Chỉ 2 Tab (Phân Rã Vấn Đề & Kho Lưu Trữ / Nhật Ký)."""
-    st.markdown("## 🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định")
+    """Render phòng chức năng Phân Rã Thực Chiến: 3 Trụ Cột, 9 Lăng Kính & Võ Đài Socrates Đa Vòng."""
+    st.markdown("## 🎯 Phân Rã Thực Chiến: 3 Trụ Cột (9 Lăng Kính) & Võ Đài Socrates")
     st.caption(
-        "Bóc tách tận gốc vấn đề phức tạp qua 9 Lăng kính Tinh hoa & First Principles. "
-        "Thiết lập Nhật ký Quyết định theo chuẩn Ray Dalio & Howard Marks để tự đo lường và hiệu chuẩn sai số nhận thức."
+        "Bóc tách tận gốc vấn đề phức tạp qua 3 Trụ Cột Tinh Hoa (Soi Gốc - Đọc Dòng - Ra Đòn), "
+        "9 Lăng Kính Hạt Nhân và Mạng lưới 152 Mô Hình Tư Duy. "
+        "Thượng đài đấu trí phản biện đa vòng cùng Socrates để tôi luyện Sức Bền Nhận Thức (Cognitive Grit)."
     )
 
     sb_client = get_supabase_client()
@@ -779,26 +891,27 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
     all_analyses = load_problem_analyses()
 
     p_tab1, p_tab2 = st.tabs([
-        "🚀 Phân Rã Vấn Đề (AI 9 Lenses)",
+        "🚀 Phân Rã 3 Trụ Cột & Võ Đài Socrates",
         f"📓 Kho Lưu Trữ & Nhật Ký Quyết Định ({len(all_analyses)})",
     ])
 
     # -------------------------------------------------------------------------
-    # TAB 1: PHÂN RÃ VẤN ĐỀ 9 LĂNG KÍNH
+    # TAB 1: PHÂN RÃ VẤN ĐỀ 3 TRỤ CỘT & ĐẤU TRÍ SOCRATES
     # -------------------------------------------------------------------------
     with p_tab1:
         st.markdown("#### 💡 Chọn tình huống thực chiến mẫu để nạp nhanh:")
         p_cols = st.columns(len(SAMPLE_DECOMPOSITION_CASES))
         for p_idx, p_case in enumerate(SAMPLE_DECOMPOSITION_CASES):
             with p_cols[p_idx]:
-                short_btn = p_case["title"].split(":")[0]
-                if st.button(short_btn, key=f"case_sample_{p_idx}", help=p_case["title"]):
+                title_clean = p_case["title"]
+                short_btn = title_clean.split("(")[0].strip() if "(" in title_clean else title_clean.split(":")[0].strip()
+                if st.button(short_btn, key=f"case_sample_{p_idx}", help=title_clean):
                     st.session_state["p_problem_input"] = p_case["query"]
                     st.rerun()
 
         default_problem = st.session_state.get(
             "p_problem_input",
-            "Đầu tư CKVN: Thị trường giảm mạnh 15% trong 2 tuần, tin tức xấu bủa vây, tâm lý hoang mang. Nên bán tháo cắt lỗ hay giải ngân mua gom tích sản cổ phiếu cơ bản tốt?"
+            "Giao dịch Vàng / XAU: Mục tiêu tăng trưởng NAV từ 5.000 USD lên 20.000 USD trong vòng 2 năm. Tính khả thi toán học, bẫy đòn bẩy, tỷ lệ sụt giảm tối đa (drawdown) và các điều kiện kỷ luật tiên quyết là gì?"
         )
         problem_text = st.text_area(
             "Mô tả cụ thể bối cảnh vấn đề, mục tiêu, các ràng buộc và điều bạn đang băn khoăn:",
@@ -809,18 +922,19 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
 
         col_run, col_reset = st.columns([3, 1])
         with col_run:
-            run_btn = st.button("🚀 Bóc Tách Vấn Đề Theo 9 Lăng Kính", type="primary", use_container_width=True, key="btn_run_decomp")
+            run_btn = st.button("🚀 Bóc Tách 3 Trụ Cột & Mở Võ Đài Socrates", type="primary", use_container_width=True, key="btn_run_decomp")
         with col_reset:
             if st.button("🔄 Làm mới ô nhập", use_container_width=True, key="btn_clear_decomp"):
                 st.session_state["p_problem_input"] = ""
                 st.session_state.pop("latest_decomposition_result", None)
+                st.session_state.pop("socratic_rounds_latest", None)
                 st.rerun()
 
         if run_btn:
             if not problem_text.strip():
                 st.warning("Vui lòng nhập nội dung vấn đề cần phân rã!")
             else:
-                with st.spinner("🤖 Đang kích hoạt 9 Lăng kính Tinh hoa & Bóc tách First Principles..."):
+                with st.spinner("🤖 Đang phân tích 3 Trụ Cột, liên kết 152 Mô hình & Rèn giũa Mũi giáo Socrates..."):
                     decomp_res = decompose_problem_with_ai(problem_text.strip(), api_key=active_api_key)
                 if not decomp_res:
                     st.error("Không nhận được phản hồi từ AI Engine.")
@@ -829,6 +943,7 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
                 else:
                     st.session_state["latest_decomposition_result"] = decomp_res
                     st.session_state["latest_decomposition_problem"] = problem_text.strip()
+                    st.session_state.pop("socratic_rounds_latest", None)
                     # Lưu vào Supabase Cloud & Local JSON
                     save_problem_analysis(problem_text.strip(), decomp_res)
                     st.toast("☁️ Đã lưu bản phân rã vào Supabase Cloud!", icon="💾")
@@ -838,12 +953,13 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
             res = st.session_state["latest_decomposition_result"]
             prob = st.session_state.get("latest_decomposition_problem", "")
 
-            st.success("✅ Đã hoàn tất bóc tách 9 Lăng kính & Lưu trữ an toàn!")
+            st.success("✅ Đã hoàn tất bóc tách 3 Trụ Cột (9 Lăng Kính) & Khởi tạo Võ Đài Socrates Vòng 1!")
             render_problem_decomposition_result_cards(
                 res,
                 prob=prob,
                 record_id="latest",
-                show_decision_transfer=True
+                show_decision_transfer=True,
+                active_api_key=active_api_key
             )
 
     # -------------------------------------------------------------------------
@@ -897,7 +1013,8 @@ def render_problem_decomposition_room(active_api_key: str | None = None):
                             prob=a_problem,
                             record_id=a_id,
                             show_decision_transfer=True,
-                            created_at=a_time
+                            created_at=a_time,
+                            active_api_key=active_api_key
                         )
 
         else:

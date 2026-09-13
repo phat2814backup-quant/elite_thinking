@@ -22,23 +22,23 @@ from core.farrow_engine import get_all_gemini_api_keys
 
 SAMPLE_DECOMPOSITION_CASES = [
     {
-        "title": "📈 Đầu tư CKVN: Thị trường giảm mạnh, bán tháo hay tích sản?",
+        "title": "📈 CKVN (Thị trường sập 15% - Bán hay Tích sản?)",
         "query": "Đầu tư CKVN: Thị trường giảm mạnh 15% trong 2 tuần, tin tức xấu về vĩ mô và lãi suất bủa vây, tâm lý hoang mang. Nên bán tháo cắt lỗ hay giải ngân mua gom tích sản cổ phiếu cơ bản tốt?"
     },
     {
-        "title": "🟡 Giao dịch Vàng / XAU: Mục tiêu x5 tài khoản trong 1 năm",
-        "query": "Giao dịch Vàng / XAU: Mục tiêu x5 tài khoản trong 1 năm từ vốn 10.000 USD lên 50.000 USD. Tính khả thi, bẫy rủi ro tiềm ẩn và các điều kiện tiên quyết cần có là gì?"
+        "title": "🟡 Vàng / XAU (Mục tiêu x4-x5 NAV trong 2 năm)",
+        "query": "Giao dịch Vàng / XAU: Mục tiêu tăng trưởng NAV từ 5.000 USD lên 20.000 USD trong vòng 2 năm. Tính khả thi toán học, bẫy đòn bẩy, tỷ lệ sụt giảm tối đa (drawdown) và các điều kiện kỷ luật tiên quyết là gì?"
     },
     {
-        "title": "💼 Sự nghiệp: Ổn định lương cao vs Khởi nghiệp mạo hiểm",
+        "title": "💼 Sự nghiệp (Lương cao 60tr vs Khởi nghiệp AI)",
         "query": "Quyết định nghề nghiệp: Nên tiếp tục ở lại vị trí quản lý công ty tập đoàn lớn với mức lương ổn định 60 triệu/tháng hay rời đi khởi nghiệp một công ty công nghệ AI với rủi ro trắng tay nhưng tiềm năng đột phá?"
     },
     {
-        "title": "🎒 Dự án & Sức bền: Học sinh/Sinh viên cân bằng thành tích & CLB",
+        "title": "🎒 Sức bền học tập (Cân bằng GPA top đầu & CLB)",
         "query": "Quản trị năng lượng học tập: Muốn vừa giữ điểm GPA top đầu, vừa tham gia 3 câu lạc bộ và làm dự án cá nhân nhưng bắt đầu có dấu hiệu kiệt sức và mất tập trung. Làm sao tái cấu trúc theo First Principles?"
     },
     {
-        "title": "⏳ Quản trị thời gian: Xả stress thụ động vs Nâng cấp trí tuệ",
+        "title": "⏳ Quản trị thời gian (Xả stress thụ động vs Nâng cấp tư duy)",
         "query": "Chi phí cơ hội thời gian: Cuối tuần thường bị cám dỗ lướt mạng xã hội và xem phim xả stress 6-8 tiếng, sau đó thấy trống rỗng và mệt mỏi. Làm sao thiết lập cơ chế để dành 3 giờ chất lượng cao nâng cấp tư duy mà không thấy gượng ép?"
     }
 ]
@@ -292,14 +292,60 @@ def decompose_problem_with_ai(
     return {"error": "Không thể phân rã qua các Key có sẵn. Vui lòng kiểm tra kết nối mạng."}
 
 
+SOCRATIC_NEXT_ROUND_SYSTEM_PROMPT = """Bạn là Socrates — Bậc Thầy Phản Biện Đối Kháng & Truy Bức Nhận Thức Tối Cao của Elite Thinking.
+Nhiệm vụ của bạn: Tạo ra 3 MŨI GIÁO PHẢN BIỆN MỚI cho Vòng đấu trí tiếp theo.
+
+Nguyên tắc tối thượng:
+1. Đọc kỹ bối cảnh vấn đề và toàn bộ lịch sử các vòng đối kháng trước (câu hỏi cũ, câu trả lời của người học, điểm yếu Socrates đã chỉ ra).
+2. Tuyệt đối KHÔNG hỏi lại câu hỏi cũ.
+3. Khai thác chính các kẽ hở, ngụy biện hoặc giả định còn sót lại trong câu trả lời của người học ở vòng trước để tung ra 3 Mũi Giáo Mới khốc liệt hơn, sâu sắc hơn.
+4. Mỗi vòng có tính chất leo thang nhận thức:
+   - Vòng 2: MA SÁT THỰC THI, THỜI GIAN & TÂM LÝ (Execution Friction, Time-decay, Psychological Biases, Hidden Costs).
+   - Vòng 3: THỬ THÁCH CỰC HẠN & THIÊN NGA ĐEN (Extreme Stress Test, Black Swan, Liquidity/Survival Crisis, Ruin Problem).
+   - Vòng 4+: SIÊU NHẬN THỨC & NGUYÊN TẮC BẤT KHẢ XÂM PHẠM (Meta-Cognition, Convexity, Antifragility, Invariant Principles).
+
+BẮT BUỘC TRẢ VỀ DUY NHẤT MỘT JSON HỢP LỆ (Không markdown ```json ngoài JSON):
+{
+  "round_number": 2,
+  "round_theme": "Tiêu đề chủ đề của vòng (ví dụ: Vòng 2: Khảo Nghiệm Ma Sát Thực Thi & Thiên Kiến Tâm Lý)",
+  "round_brief": "Lời khiêu chiến sắc bén của Socrates gửi tới người học trước khi phóng giáo (1-2 câu).",
+  "spears": [
+    {
+      "spear_id": "spear_r2_1",
+      "spear_title": "🗡️ Mũi Giáo 1: ...",
+      "targeted_vulnerability": "Điểm sơ hở trong lập luận trước đó mà mũi giáo này khoét sâu",
+      "ruthless_question": "Câu hỏi Socrates tàn nhẫn truy sát",
+      "guidance": "Gợi ý góc nhìn để phản biện"
+    },
+    {
+      "spear_id": "spear_r2_2",
+      "spear_title": "🗡️ Mũi Giáo 2: ...",
+      "targeted_vulnerability": "Điểm sơ hở tiếp theo...",
+      "ruthless_question": "Câu hỏi Socrates tàn nhẫn truy sát...",
+      "guidance": "Gợi ý góc nhìn..."
+    },
+    {
+      "spear_id": "spear_r2_3",
+      "spear_title": "🗡️ Mũi Giáo 3: ...",
+      "targeted_vulnerability": "Điểm sơ hở tiếp theo...",
+      "ruthless_question": "Câu hỏi Socrates tàn nhẫn truy sát...",
+      "guidance": "Gợi ý góc nhìn..."
+    }
+  ]
+}
+"""
+
+
 def evaluate_socratic_sparring(
     problem_text: str,
     socratic_spears: List[Dict[str, Any]],
     user_answers: Dict[str, str],
+    round_number: int = 1,
+    round_theme: str = "",
     api_key: Optional[str] = None,
     model_name: str = "gemini-2.5-flash"
 ) -> Dict[str, Any]:
-    """Thẩm định phản biện đối kháng của người học trước 3 Mũi Giáo Socrates."""
+    """Thẩm định phản biện đối kháng của người học trước 3 Mũi Giáo Socrates qua từng vòng."""
     candidate_keys = []
     if api_key and api_key.strip():
         candidate_keys.append(api_key.strip())
@@ -310,10 +356,12 @@ def evaluate_socratic_sparring(
     if not candidate_keys or genai is None:
         # Fallback offline simulation if API not available
         return {
+            "round_number": round_number,
+            "round_theme": round_theme if round_theme else f"Vòng {round_number}",
             "grit_score": 75,
             "xp_awarded": 100,
-            "verdict_title": "🛡️ Chiến Binh Nhận Thức (Offline Evaluation)",
-            "overall_comment": "Bạn đã dũng cảm đối mặt với cả 3 mũi giáo và đưa ra lập luận phòng vệ rõ ràng.",
+            "verdict_title": f"🛡️ Chiến Binh Nhận Thức (Vòng {round_number})",
+            "overall_comment": f"Bạn đã dũng cảm đối mặt với cả 3 mũi giáo của Vòng {round_number} và đưa ra lập luận phòng vệ rõ ràng.",
             "evaluations": [
                 {"spear_id": s.get("spear_id", "spear"), "score": 75, "critique": "Lập luận có trọng tâm, cần tiếp tục rèn luyện kiểm chứng thực tế."}
                 for s in socratic_spears
@@ -328,8 +376,11 @@ def evaluate_socratic_sparring(
         u_ans = user_answers.get(s_id, "(Người dùng chưa trả lời)")
         qa_pairs.append(f"MŨI GIÁO [{s.get('spear_title', s_id)}]:\nCâu hỏi: {s_q}\nCâu trả lời của người học: {u_ans}")
 
+    theme_header = f" - Chủ đề: {round_theme}" if round_theme else ""
     prompt_content = f"""BỐI CẢNH VẤN ĐỀ:
 {problem_text}
+
+VÒNG THẨM ĐỊNH: Vòng {round_number}{theme_header}
 
 CÁC MŨI GIÁO VÀ PHẢN BIỆN CỦA NGƯỜI HỌC:
 {chr(10).join(qa_pairs)}
@@ -356,6 +407,8 @@ Hãy thẩm định theo đúng chuẩn Socrates, chỉ ra điểm mạnh và đ
                     if resp and resp.text:
                         parsed = json.loads(clean_json_response(resp.text))
                         if isinstance(parsed, dict) and "grit_score" in parsed:
+                            parsed["round_number"] = round_number
+                            parsed["round_theme"] = round_theme if round_theme else f"Vòng {round_number}"
                             return parsed
                 except Exception:
                     continue
@@ -363,12 +416,130 @@ Hãy thẩm định theo đúng chuẩn Socrates, chỉ ra điểm mạnh và đ
             continue
 
     return {
+        "round_number": round_number,
+        "round_theme": round_theme if round_theme else f"Vòng {round_number}",
         "grit_score": 80,
         "xp_awarded": 100,
-        "verdict_title": "🛡️ Tiếp Chiêu Thành Công",
-        "overall_comment": "Bạn đã hoàn thành phiên đối kháng và đối diện trực tiếp với các điểm mù tư duy.",
+        "verdict_title": f"🛡️ Tiếp Chiêu Thành Công (Vòng {round_number})",
+        "overall_comment": f"Bạn đã hoàn thành phiên đối kháng Vòng {round_number} và đối diện trực tiếp với các điểm mù tư duy.",
         "evaluations": [
             {"spear_id": s.get("spear_id", "spear"), "score": 80, "critique": "Lập luận vững chắc, đã chú ý đến các rủi ro hệ thống."}
             for s in socratic_spears
         ]
     }
+
+
+def generate_next_socratic_round(
+    problem_text: str,
+    next_round: int,
+    previous_rounds: List[Dict[str, Any]],
+    api_key: Optional[str] = None,
+    model_name: str = "gemini-2.5-flash"
+) -> Dict[str, Any]:
+    """Tạo đợt 3 Mũi Giáo mới cho Vòng đấu trí Socrates tiếp theo (Vòng 2, 3, 4...)."""
+    candidate_keys = []
+    if api_key and api_key.strip():
+        candidate_keys.append(api_key.strip())
+    for k in get_all_gemini_api_keys():
+        if k not in candidate_keys:
+            candidate_keys.append(k)
+
+    # Format previous rounds history
+    history_blocks = []
+    for pr in previous_rounds:
+        r_num = pr.get("round_number", 1)
+        r_th = pr.get("round_theme", f"Vòng {r_num}")
+        ans_map = pr.get("user_answers", {})
+        eval_data = pr.get("evaluation", {})
+        block = [f"=== LỊCH SỬ VÒNG {r_num}: {r_th} ==="]
+        for sp in pr.get("spears", []):
+            sp_id = sp.get("spear_id", "")
+            sp_q = sp.get("ruthless_question", "")
+            u_ans = ans_map.get(sp_id, "(Chưa trả lời)")
+            block.append(f"- Mũi giáo [{sp.get('spear_title', sp_id)}]: {sp_q}\n  -> Người học trả lời: {u_ans}")
+        if eval_data:
+            block.append(f"- Nhận xét thẩm định của Socrates: {eval_data.get('overall_comment', '')}")
+            for ev in eval_data.get("evaluations", []):
+                block.append(f"  * {ev.get('spear_id', '')}: {ev.get('critique', '')}")
+        history_blocks.append("\n".join(block))
+
+    history_text = "\n\n".join(history_blocks) if history_blocks else "(Chưa có lịch sử vòng trước)"
+
+    round_themes = {
+        2: "Vòng 2: Khảo Nghiệm Ma Sát Thực Thi & Thiên Kiến Tâm Lý (Friction & Biases)",
+        3: "Vòng 3: Thử Thách Cực Hạn & Thiên Nga Đen Hệ Thống (Stress Test & Black Swan)",
+        4: "Vòng 4: Chiến Lược Chống Mong Manh & Bất Đối Xứng Lồi (Antifragility)",
+        5: "Vòng 5: Siêu Nhận Thức & Khế Ước Bất Khả Xâm Phạm (Meta-Cognition)",
+    }
+    target_theme = round_themes.get(next_round, f"Vòng {next_round}: Đột Phá Giới Hạn Nhận Thức Bậc Cao")
+
+    prompt_content = f"""BỐI CẢNH VẤN ĐỀ GỐC CỦA NGƯỜI HỌC:
+{problem_text}
+
+MỤC TIÊU: Thiết lập 3 Mũi Giáo Sát Thủ cho VÒNG {next_round} ({target_theme}).
+
+LỊCH SỬ CÁC VÒNG ĐỐI KHÁNG TRƯỚC ĐÓ:
+{history_text}
+
+Hãy phân tích các kẽ hở lập luận của người học qua các vòng trước và tung ra 3 Mũi Giáo Mới của Vòng {next_round} theo đúng đặc trưng vòng này.
+"""
+
+    if candidate_keys and genai is not None:
+        candidate_models = [model_name]
+        for m in ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-flash-latest"]:
+            if m not in candidate_models:
+                candidate_models.append(m)
+
+        for current_key in candidate_keys:
+            try:
+                genai.configure(api_key=current_key)
+                for m_name in candidate_models:
+                    try:
+                        model = genai.GenerativeModel(
+                            model_name=m_name,
+                            system_instruction=SOCRATIC_NEXT_ROUND_SYSTEM_PROMPT,
+                            generation_config={"response_mime_type": "application/json"}
+                        )
+                        resp = model.generate_content(prompt_content)
+                        if resp and resp.text:
+                            parsed = json.loads(clean_json_response(resp.text))
+                            if isinstance(parsed, dict) and "spears" in parsed and len(parsed["spears"]) >= 3:
+                                parsed["round_number"] = next_round
+                                if "round_theme" not in parsed:
+                                    parsed["round_theme"] = target_theme
+                                return parsed
+                    except Exception:
+                        continue
+            except Exception:
+                continue
+
+    # Fallback simulation if offline or API error
+    return {
+        "round_number": next_round,
+        "round_theme": target_theme,
+        "round_brief": f"Socrates tiếp tục truy kích lập luận của bạn ở Vòng {next_round}. Hãy đối diện với những áp lực khắc nghiệt nhất.",
+        "spears": [
+            {
+                "spear_id": f"spear_r{next_round}_1",
+                "spear_title": f"🗡️ Mũi Giáo 1 (Vòng {next_round}): Điểm Nghẽn Thời Gian & Ma Sát Thực Tế",
+                "targeted_vulnerability": "Áp lực hao mòn tài nguyên và tâm lý khi kế hoạch bị trì hoãn kéo dài",
+                "ruthless_question": f"Nếu thực tế diễn ra chậm hơn 3 lần dự kiến và bạn phải chịu chuỗi thua lỗ liên tiếp trong 6 tháng, kỷ luật nào ngăn bạn không 'all-in' gỡ gạc?",
+                "guidance": "Hãy chỉ ra quy tắc cắt lỗ cứng và quỹ dự phòng tách biệt hoàn toàn."
+            },
+            {
+                "spear_id": f"spear_r{next_round}_2",
+                "spear_title": f"🗡️ Mũi Giáo 2 (Vòng {next_round}): Kịch Bản Thiên Nga Đen Chưa Từng Thấy",
+                "targeted_vulnerability": "Niềm tin ngây thơ rằng điều kiện lịch sử sẽ luôn lặp lại y hệt",
+                "ruthless_question": f"Nếu một biến cố vĩ mô cực đoan làm tê liệt tính thanh khoản hoặc sàn/đối tác bị đóng băng, cơ chế sống sót duy nhất của bạn là gì?",
+                "guidance": "Xác định rõ kịch bản tệ nhất có thể xảy ra và cái giá tối đa bạn chấp nhận mất."
+            },
+            {
+                "spear_id": f"spear_r{next_round}_3",
+                "spear_title": f"🗡️ Mũi Giáo 3 (Vòng {next_round}): Khế Ước Bất Khả Xâm Phạm",
+                "targeted_vulnerability": "Sự thỏa hiệp ngầm khi đối diện cám dỗ lợi nhuận tức thời",
+                "ruthless_question": f"Hãy tuyên thệ một 'Lằn ranh đỏ' tuyệt đối mà bạn thà phá sản danh mục chứ nhất quyết không bao giờ vi phạm?",
+                "guidance": "Định hình nguyên tắc bất biến để bảo vệ bạn khỏi sự ngạo mạn của chính mình."
+            }
+        ]
+    }
+

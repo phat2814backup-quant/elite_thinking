@@ -142,16 +142,48 @@ def export_problem_decomposition_to_markdown(
 
         pillars_rendered = "\n---\n\n".join(pillar_blocks)
 
-        # Mũi giáo Socrates
-        spears = res.get("socratic_spears", [])
-        spear_lines = []
-        for s in spears:
-            spear_lines.append(f"""### {s.get('spear_title', 'Mũi Giáo Socrates')}
+        # Mũi giáo Socrates & Các Vòng Đấu Trí
+        socratic_rounds = res.get("socratic_rounds", [])
+        if socratic_rounds:
+            round_blocks = []
+            for r in socratic_rounds:
+                r_num = r.get("round_number", 1)
+                r_theme = r.get("round_theme", f"Vòng {r_num}")
+                r_eval = r.get("evaluation") or {}
+                r_ans = r.get("user_answers", {})
+                r_spears = r.get("spears", [])
+                
+                sp_text = []
+                for sp in r_spears:
+                    sp_id = sp.get("spear_id", "")
+                    sp_title = sp.get("spear_title", sp_id)
+                    sp_q = sp.get("ruthless_question", "")
+                    sp_u = r_ans.get(sp_id, "*(Chưa nhập câu trả lời)*")
+                    sp_text.append(f"""#### {sp_title}
+- **👉 Câu hỏi khảo nghiệm:** \"{sp_q}\"
+- **🛡️ Luận cứ của bạn:** {sp_u}
+""")
+                eval_str = ""
+                if r_eval:
+                    eval_str = f"""
+> **Kết Quả Thẩm Định Vòng {r_num}:** {r_eval.get('verdict_title', '')} ({r_eval.get('grit_score', 0)}/100 Điểm Grit - Thưởng +{r_eval.get('xp_awarded', 0)} XP)  
+> *{r_eval.get('overall_comment', '')}*
+"""
+                round_blocks.append(f"""### 🥊 {r_theme}
+{eval_str}
+{chr(10).join(sp_text)}
+""")
+            spears_rendered = "\n---\n\n".join(round_blocks)
+        else:
+            spears = res.get("socratic_spears", [])
+            spear_lines = []
+            for s in spears:
+                spear_lines.append(f"""### {s.get('spear_title', 'Mũi Giáo Socrates')}
 - **Điểm mù truy sát:** *{s.get('targeted_vulnerability', '')}*
 - **👉 Câu hỏi khảo nghiệm:** \"{s.get('ruthless_question', '')}\"
 - **Gợi ý phản biện:** {s.get('guidance', '')}
 """)
-        spears_rendered = "\n".join(spear_lines) if spear_lines else "- *(Không có dữ liệu)*"
+            spears_rendered = "\n".join(spear_lines) if spear_lines else "- *(Không có dữ liệu)*"
 
         actions = res.get("actionable_next_steps", res.get("actionable_insights", []))
         actions_text = "\n".join([f"- 💡 {a}" for a in actions]) if actions else "- *(Không có dữ liệu)*"
