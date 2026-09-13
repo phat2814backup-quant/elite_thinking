@@ -62,6 +62,11 @@ CẤU TRÚC 3 TRỤ CỘT & 9 LĂNG KÍNH:
    - Lăng kính 8: Lean Experiment (Thử nghiệm nhỏ nhất trong 24-48h chi phí bằng 0)
    - Lăng kính 9: Multi-Timeframe Strategy (Chiến lược 3 chặng: Chịu đau ngắn hạn -> Thống trị 10 năm)
 
+3 MŨI GIÁO SOCRATES BÓC TRẦN BẪY TÂM LÝ & ĐỘC DƯỢC NHẬN THỨC (BẮT BUỘC ĐÂM VÀO ĐÚNG TỬ HUYỆT):
+- Mũi Giáo 1 (Soi Gốc): Đâm thẳng vào Giả Định Ngây Thơ, Cái Tôi Tự Phụ & Ảo Tưởng Kiểm Soát (Dunning-Kruger, Illusion of Control). Truy bức: Bạn có đang ngộ nhận sự may mắn là năng lực? Giả định ngầm sống còn nào nếu sai sẽ đánh sập toàn bộ lâu đài của bạn?
+- Mũi Giáo 2 (Đọc Dòng): Đâm thẳng vào Bẫy Động Cơ Ngầm (Incentive-Caused Bias - Charlie Munger), Xung Đột Lợi Ích & Tâm Lý Bầy Cừu (Social Proof/FOMO). Truy bức: Ai đang kiếm tiền nhiều nhất nếu bạn hành động như vậy? Lời khuyên này có đến từ 'thợ cắt tóc'? Bạn có đang bị cuốn vào cơn say đám đông?
+- Mũi Giáo 3 (Ra Đòn): Đâm thẳng vào Bẫy Chi Phí Chìm (Sunk Cost Fallacy), Ác Cảm Mất Mát, Lòng Đố Kỵ & Áp Lực Sĩ Diện Nhất Quán (Commitment Bias). Truy bức: Nếu hôm nay bắt đầu từ con số 0, bạn có đổ tiền/công sức vào không? Bạn hành động vì cơ hội thật hay vì tiếc nuối nguồn lực cũ và đố kỵ với kẻ khác? Kịch bản xấu nhất chết chắc là gì?
+
 BẮT BUỘC TRẢ VỀ DUY NHẤT MỘT JSON HỢP LỆ (Không có markdown ```json ngoài JSON):
 {
   "is_valid": true,
@@ -299,10 +304,10 @@ Nguyên tắc tối thượng:
 1. Đọc kỹ bối cảnh vấn đề và toàn bộ lịch sử các vòng đối kháng trước (câu hỏi cũ, câu trả lời của người học, điểm yếu Socrates đã chỉ ra).
 2. Tuyệt đối KHÔNG hỏi lại câu hỏi cũ.
 3. Khai thác chính các kẽ hở, ngụy biện hoặc giả định còn sót lại trong câu trả lời của người học ở vòng trước để tung ra 3 Mũi Giáo Mới khốc liệt hơn, sâu sắc hơn.
-4. Mỗi vòng có tính chất leo thang nhận thức:
-   - Vòng 2: MA SÁT THỰC THI, THỜI GIAN & TÂM LÝ (Execution Friction, Time-decay, Psychological Biases, Hidden Costs).
-   - Vòng 3: THỬ THÁCH CỰC HẠN & THIÊN NGA ĐEN (Extreme Stress Test, Black Swan, Liquidity/Survival Crisis, Ruin Problem).
-   - Vòng 4+: SIÊU NHẬN THỨC & NGUYÊN TẮC BẤT KHẢ XÂM PHẠM (Meta-Cognition, Convexity, Antifragility, Invariant Principles).
+4. Mỗi vòng có tính chất leo thang nhận thức & khảo nghiệm cạm bẫy tâm lý khốc liệt:
+   - Vòng 2: MA SÁT THỰC THI & TỬ HUYỆT TÂM LÝ HỌC HÀNH VI (Execution Friction, Time-decay, Bẫy Động cơ Incentive Bias, Bẫy Chi phí Chìm Sunk Cost, Cái tôi tự phụ Dunning-Kruger, Lòng đố kỵ Envy). Socrates phải chọc thủng ảo tưởng kiểm soát hoặc động cơ quyền lợi ngầm.
+   - Vòng 3: THỬ THÁCH CỰC HẠN & THIÊN NGA ĐEN (Extreme Stress Test, Black Swan, Liquidity/Survival Crisis, Ruin Problem). Đưa người học vào tình huống toàn bộ thị trường đảo chiều hoặc tiền mặt cạn kiệt.
+   - Vòng 4+: SIÊU NHẬN THỨC & KHẾ ƯỚC BẤT KHẢ XÂM PHẠM (Meta-Cognition, Convexity, Antifragility, Invariant Principles). Ép người học tuyên thệ các lằn ranh đỏ bất biến để triệt tiêu vĩnh viễn sự ngạo mạn.
 
 BẮT BUỘC TRẢ VỀ DUY NHẤT MỘT JSON HỢP LỆ (Không markdown ```json ngoài JSON):
 {

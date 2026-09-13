@@ -534,19 +534,19 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
     },
 
     # =========================================================================
-    # NHÓM 6: TÂM LÝ HỌC & BẪY NHẬN THỨC
+    # NHÓM 6: TÂM LÝ HỌC & BẪY NHẬN THỨC (2 PHẦN)
     # =========================================================================
     "psychology_biases": {
         "id": "psychology_biases",
         "category": "🎭 Tâm Lý & Nhận Thức",
-        "title": "Tâm Lý Học: Bẫy Não, Mỏ Neo & Hiệu Ứng Lollapalooza",
+        "title": "Tâm Lý Học 1: Bẫy Não, Mỏ Neo & Hiệu Ứng Lollapalooza",
         "icon": "🎭",
-        "tagline": "Nén 25 thiên kiến nhận thức của Charlie Munger vào 3 cạm bẫy sinh tử",
-        "summary": "Ác cảm mất mát (Loss Aversion), Thiên kiến xác nhận, Bằng chứng xã hội, Mỏ neo và Hiệu ứng cộng hưởng Lollapalooza.",
+        "tagline": "Nén 9 cạm bẫy nhận thức & áp lực xã hội kinh điển vào 3 trụ sống còn",
+        "summary": "Ác cảm mất mát (Loss Aversion), Mỏ neo giá, Hiệu ứng sở hữu, Thiên kiến xác nhận, Bằng chứng xã hội, Cam kết nhất quán và Hiệu ứng cộng hưởng Lollapalooza.",
         "chunks": [
             {
                 "id": "chunk_1",
-                "model_ids": ['PSY-02', 'PSY-07', 'PSY-14'],
+                "model_ids": ['PSY-02', 'PSY-07', 'PSY-02'],
                 "label": "TRỤ 1: ÁC CẢM MẤT MÁT & NEO GIÁ TÂM LÝ",
                 "sub_modes": "(1) Ác cảm Mất mát Kahneman (Loss Aversion) + (2) Hiệu ứng Mỏ neo (Anchoring Effect) + (3) Hiệu ứng Sở hữu (Endowment Effect)",
                 "principle": "1. Nỗi đau khi mất 100 đô la tác động mạnh gấp đôi niềm vui kiếm được 100 đô la ➔ 2. Não bộ tự động bám chặt vào con số đầu tiên nhìn thấy làm chuẩn mực so sánh lệch lạc ➔ 3. Khi đã nắm giữ một món đồ trong tay, con người vô thức định giá nó cao hơn nhiều lần giá trị thị trường thực tế.",
@@ -568,7 +568,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
-                "model_ids": ['PSY-04', 'PSY-06', 'PSY-05'],
+                "model_ids": ['PSY-06', 'PSY-09', 'PSY-05'],
                 "label": "TRỤ 3: CỘNG HƯỞNG TÂM LÝ LOLLAPALOOZA & BẪY NHẤT QUÁN",
                 "sub_modes": "(1) Bẫy Cam kết & Nhất quán (Commitment & Consistency) + (2) Hiệu ứng Uy quyền Giả tạo (Authority Bias) + (3) Cơn Lốc Lollapalooza Charlie Munger",
                 "principle": "1. Khi đã công khai tuyên bố một quan điểm, con người sẽ ngoan cố bảo vệ nó đến cùng dù biết mình sai ➔ 2. Dễ dàng phục tùng một mệnh lệnh phi lý nếu kẻ ra lệnh khoác lên mình chiếc áo choàng chuyên gia uy quyền ➔ 3. Khi nhiều thiên kiến tâm lý cùng bùng phát đồng thời theo một hướng, lý trí bị xóa sổ hoàn toàn tạo nên cơn điên tập thể.",
@@ -588,6 +588,62 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 ],
                 "correct_idx": 1,
                 "explanation": "Chính xác! Munger chỉ ra rằng các bong bóng tài chính điên rồ nhất lịch sử đều sinh ra từ hiệu ứng cộng hưởng Lollapalooza."
+            }
+        ]
+    },
+
+    "psychology_biases_2": {
+        "id": "psychology_biases_2",
+        "category": "🎭 Tâm Lý & Nhận Thức",
+        "title": "Tâm Lý Học 2: Động Cơ, Bản Ngã & Cạm Bẫy Chi Phí Chìm",
+        "icon": "🎭",
+        "tagline": "Nén các lỗ hổng nội tại chết người: Động cơ ngầm, Ảo tưởng năng lực, Chi phí chìm & Lòng đố kỵ",
+        "summary": "Thiên kiến Động lực (Incentive Bias), Bẫy Chi phí Chìm (Sunk Cost), Hiệu ứng Dunning-Kruger, Ảo tưởng Kiểm soát & Thiên kiến Tương phản.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['PSY-04', 'SYS-08', 'ECON-03'],
+                "label": "TRỤ 1: BẪY ĐỘNG CƠ & XUNG ĐỘT QUYỀN LỢI",
+                "sub_modes": "(1) Bẫy Động cơ Munger (Incentive-Caused Bias) + (2) Rủi ro Đạo đức (Moral Hazard) + (3) Bẫy Người đại diện (Principal-Agent Problem)",
+                "principle": "1. 'Đừng bao giờ hỏi thợ cắt tóc xem bạn có cần cắt tóc không' — túi tiền ở đâu, não bộ tự động bẻ cong logic về đó ➔ 2. Được hưởng trọn lợi nhuận khi thắng nhưng đẩy rủi ro cho người khác gánh khi thua sẽ sinh ra sự liều lĩnh vô tội vạ ➔ 3. Người được ủy thác luôn ưu tiên túi tiền và quyền lực cá nhân hơn lợi ích của người ủy thác.",
+                "anchor_name": "CHIẾC KÉO VÀNG CỦA THỢ CẮT TÓC & SÒNG BẠC BẰNG TIỀN NGƯỜI KHÁC",
+                "anchor_icon": "✂️",
+                "crazy_image": "Tại TIỆM CẮT TÓC SÒNG BẠC: (1) Một thợ cắt tóc cầm chiếc kéo vàng khổng lồ vừa cắt trọc đầu khách vừa thề thốt 'đầu bạn nhiều tóc thừa lắm' vì mỗi nhát kéo gã đút túi 1 triệu (Bẫy động cơ), (2) một con bạc vừa uống rượu vừa ném hàng cọc tiền vào bàn cược cười lớn 'thua thì nhà nước cứu trợ trả nợ hộ' (Rủi ro đạo đức), (3) giám đốc điều hành ôm két sắt công ty trèo lên du thuyền riêng trốn đi để lại các cổ đông trắng tay (Bẫy người đại diện)!",
+                "trigger_question": "Ai đang kiếm được nhiều tiền nhất nếu tôi nghe theo lời khuyên này? Kẻ này có phải chịu trách nhiệm nếu việc thất bại không? Người đại diện có đang làm lợi cho chính họ trước không?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['PSY-15', 'PSY-17', 'PSY-16'],
+                "label": "TRỤ 2: ẢO TƯỞNG BẢN NGÃ & CÁI TÔI TỰ PHỤ",
+                "sub_modes": "(1) Hiệu ứng Dunning-Kruger (Đỉnh cao Ngu dốt) + (2) Ảo tưởng Kiểm soát (Illusion of Control) + (3) Thiên kiến Kết quả & Hồi tưởng (Outcome & Hindsight Bias)",
+                "principle": "1. Kẻ mới biết một chút luôn ngộ nhận mình là chuyên gia vì không đủ năng lực nhận thức để thấy sự dốt nát của mình ➔ 2. Não bộ tự phụ phóng đại khả năng điều khiển các biến số ngẫu nhiên của thị trường dẫn đến đòn bẩy quá mức ➔ 3. Đánh giá quyết định bằng sự ăn may ngắn hạn thay vì quy trình, và sau khi việc xảy ra thì tự vỗ ngực 'biết ngay mà'.",
+                "anchor_name": "VƯƠNG MIỆN GIẤY TRÊN ĐỈNH NÚI & VÔ LĂNG ĐỒ CHƠI ĐIỀU KHIỂN BÃO",
+                "anchor_icon": "👑",
+                "crazy_image": "Tại ĐỈNH NÚI TỰ PHỤ: (1) Một người mới đọc 1 cuốn sách đã tự đội vương miện bằng giấy đứng trên mỏm đá hét 'Tôi là thiên tài bất bại!' (Hiệu ứng Dunning-Kruger), (2) tay anh ta cầm chiếc vô lăng đồ chơi giả vờ bẻ lái điều khiển cơn sóng thần ngoài đại dương đang ập vào nghiền nát mình (Ảo tưởng kiểm soát), (3) bị sóng đánh trôi dạt vào bờ, anh ta ngoi lên vuốt tóc bảo: 'Tao đã dự đoán đúng cơn sóng này từ hôm qua, lần này là do ăn may thôi!' (Thiên kiến kết quả & nhìn lại)!",
+                "trigger_question": "Tôi đang ở Đỉnh cao Ngu dốt hay Thung lũng Tỉnh ngộ? Biến số này tôi kiểm soát được thật hay do ngẫu nhiên? Thành công vừa rồi là nhờ quy trình chuẩn hay do ăn may?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['PSY-14', 'PSY-13', 'PSY-18'],
+                "label": "TRỤ 3: BẪY CHI PHÍ CHÌM & SỰ ĐỐ KỴ TƯƠNG PHẢN",
+                "sub_modes": "(1) Bẫy Chi phí Chìm (Sunk Cost Fallacy) + (2) Phản ứng Tương phản & Bẫy Ếch Luộc (Contrast Principle) + (3) Lòng Đố kỵ Munger & Dao cạo Hanlon",
+                "principle": "1. Cố đấm ăn xôi ném thêm tiền bạc và thời gian vào một con tàu đắm chỉ vì tiếc nguồn lực quá khứ không thể thu hồi ➔ 2. Não bộ tê liệt trước những suy thoái diễn ra từ từ từng bước nhỏ cho đến khi sụp đổ hoàn toàn ➔ 3. Phát điên vì thấy người xung quanh kiếm tiền dễ hơn mình, và quy kết ác ý cho mọi hành vi vụng về của người khác.",
+                "anchor_name": "BAO TẢI ĐÁ CHÌM DƯỚI NƯỚC & CHÚ ẾCH TRONG NỒI GANG NÓNG",
+                "anchor_icon": "🐸",
+                "crazy_image": "Tại NỒI NƯỚC SÔI: (1) Một thợ lặn ôm chặt bao tải đá khắc chữ 'ĐÃ CHI 10 TỶ' từ chối cắt dây để nổi lên và tự chìm xuống đáy biển (Bẫy chi phí chìm), (2) một chú ếch khổng lồ nằm ngủ gật trong nồi gang nước ấm đang tăng dần nhiệt độ đến khi bị luộc chín mà không hề nhảy ra (Bẫy tương phản / ếch luộc), (3) bên bờ nồi, một người đàn ông nghiến răng uất hận khi thấy hàng xóm khoe vừa trúng số mua xe đẹp (Lòng đố kỵ Munger)!",
+                "trigger_question": "Nếu bắt đầu từ con số 0 hôm nay, tôi có bỏ tiền vào việc này không? Sự suy thoái này có đang diễn ra từ từ khiến tôi chủ quan? Quyết định này do tôi thực sự cần hay do đố kỵ với người khác?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Quy tắc vàng của Charlie Munger về Bẫy Động cơ (Incentive-Caused Bias) là gì?",
+                "options": [
+                    "Hãy tin tưởng tuyệt đối vào lời khuyên của người bán hàng vì họ có nhiều kinh nghiệm.",
+                    "Đừng bao giờ hỏi thợ cắt tóc xem bạn có cần cắt tóc hay không, vì túi tiền của họ gắn chặt với câu trả lời.",
+                    "Nếu một dự án thất bại, hãy tiếp tục đổ tiền vào để gỡ gạc số vốn ban đầu."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Munger nhấn mạnh động cơ quyền lợi là lực bẻ cong nhận thức mạnh mẽ nhất trong hành vi con người."
             }
         ]
     },
