@@ -112,9 +112,82 @@ def export_problem_decomposition_to_markdown(
     res: Dict[str, Any],
     created_at: str = ""
 ) -> str:
-    """Xuất kết quả phân rã vấn đề qua 9 Lăng kính ra định dạng Markdown chuẩn mực."""
+    """Xuất kết quả phân rã vấn đề qua 3 Trụ Cột, 9 Lăng kính và Võ Đài Socrates ra định dạng Markdown chuẩn mực."""
     time_str = created_at if created_at else datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
+    # Kiểm tra xem có cấu trúc 3 Trụ Cột chuẩn mới không
+    if "pillars" in res:
+        pillars = res.get("pillars", {})
+        pillar_blocks = []
+        for p_key in ["root", "flow", "strike"]:
+            p_data = pillars.get(p_key, {})
+            p_title = p_data.get("pillar_title", p_key.upper())
+            p_essence = p_data.get("essence", "")
+            p_leverage = p_data.get("pillar_leverage", "")
+            
+            lenses_text = []
+            for l_key, l_val in p_data.get("lenses", {}).items():
+                m_str = ", ".join(l_val.get("activated_models", []))
+                m_badge = f"\n  - *Mô hình hạt nhân:* `{m_str}`" if m_str else ""
+                lenses_text.append(f"#### {l_val.get('lens_name', l_key)}\n{l_val.get('analysis', '')}{m_badge}")
+            
+            p_md = f"""### {p_title}
+> *{p_essence}*
+
+{chr(10).join(lenses_text)}
+
+**🎯 Đòn bẩy của trụ:** {p_leverage}
+"""
+            pillar_blocks.append(p_md)
+
+        pillars_rendered = "\n---\n\n".join(pillar_blocks)
+
+        # Mũi giáo Socrates
+        spears = res.get("socratic_spears", [])
+        spear_lines = []
+        for s in spears:
+            spear_lines.append(f"""### {s.get('spear_title', 'Mũi Giáo Socrates')}
+- **Điểm mù truy sát:** *{s.get('targeted_vulnerability', '')}*
+- **👉 Câu hỏi khảo nghiệm:** \"{s.get('ruthless_question', '')}\"
+- **Gợi ý phản biện:** {s.get('guidance', '')}
+""")
+        spears_rendered = "\n".join(spear_lines) if spear_lines else "- *(Không có dữ liệu)*"
+
+        actions = res.get("actionable_next_steps", res.get("actionable_insights", []))
+        actions_text = "\n".join([f"- 💡 {a}" for a in actions]) if actions else "- *(Không có dữ liệu)*"
+
+        md = f"""# 🎯 BẢN PHÂN RÃ THỰC CHIẾN & VÕ ĐÀI SOCRATES: {prob}
+
+- **Thời gian phân rã:** `{time_str}`
+- **Khung phân tích:** 3 Trụ Cột (Soi Gốc - Đọc Dòng - Ra Đòn), 9 Lăng Kính & 152 Mô Hình Tinh Hoa
+
+---
+
+## ⚡ 1. Chân Lý Nguyên Bản (Executive Summary)
+> {res.get('executive_summary', res.get('first_principles_breakdown', 'Không có nội dung.'))}
+
+---
+
+## 🏛️ 2. Phân Rã Thực Chiến Qua 3 Trụ Cột & 9 Lăng Kính
+
+{pillars_rendered}
+
+---
+
+## 🗡️ 3. Võ Đài Đối Kháng Socrates (3 Mũi Giáo Sát Thủ)
+{spears_rendered}
+
+---
+
+## 🚀 4. Kế Hoạch Hành Động Đòn Bẩy Cao
+{actions_text}
+
+---
+*Bản quyền phân tích thuộc về Elite Thinking Framework v2.5 — Socratic Problem Decomposition Engine.*
+"""
+        return md.strip()
+
+    # Fallback cho bản phân rã cũ
     core_principles = res.get("core_principles_found", [])
     core_lines = []
     for p in core_principles:

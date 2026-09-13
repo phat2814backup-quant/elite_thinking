@@ -18,6 +18,7 @@ from core.macro_evolution import (
 )
 from core.problem_decomposition import (
     decompose_problem_with_ai,
+    evaluate_socratic_sparring,
     SAMPLE_DECOMPOSITION_CASES,
 )
 from core.farrow_engine import compress_with_farrow_ai
@@ -161,49 +162,164 @@ def render_problem_decomposition_result_cards(
     show_decision_transfer: bool = True,
     created_at: str = ""
 ):
-    """Hiển thị toàn diện kết quả phân rã 9 Lăng Kính & First Principles với xuất file và chuyển tiếp Farrow."""
+    """Hiển thị toàn diện kết quả phân rã 3 Trụ Cột, 9 Lăng Kính & Võ Đài Đối Kháng Socrates."""
     if not res or not isinstance(res, dict):
         st.info("Không có dữ liệu chi tiết bản phân rã.")
         return
 
-    # 1. First principles breakdown
-    st.markdown("### ⚡ Chân Lý Nguyên Bản (First Principles)")
-    st.info(res.get("first_principles_breakdown", ""))
+    # 1. Executive Summary / First principles breakdown
+    st.markdown("### ⚡ Chân Lý Nguyên Bản (Executive Summary)")
+    st.info(res.get("executive_summary", res.get("first_principles_breakdown", "")))
 
-    # 2. Core principles found (Nguyên lý hạt nhân chi phối)
-    core_principles = res.get("core_principles_found", [])
-    if core_principles:
-        st.markdown("#### 🧬 Các Nguyên Lý Hạt Nhân Chi Phối:")
-        c_pr = st.columns(min(len(core_principles), 3))
-        for pr_idx, pr in enumerate(core_principles):
-            with c_pr[pr_idx % len(c_pr)]:
-                if isinstance(pr, dict):
-                    st.markdown(f"**📌 {pr.get('name', '')}**")
-                    if pr.get("domain"):
-                        st.caption(f"Lĩnh vực: *{pr.get('domain', '')}*")
-                    if pr.get("description"):
-                        st.write(pr.get("description", ""))
+    # Kiểm tra cấu trúc 3 Trụ Cột chuẩn mới
+    if "pillars" in res:
+        pillars = res.get("pillars", {})
+        
+        # 3 Tabs tương ứng 3 Trụ Cột
+        tab_p1, tab_p2, tab_p3 = st.tabs([
+            "💎 TRỤ 1: SOI GỐC (ROOT)",
+            "🔭 TRỤ 2: ĐỌC DÒNG (FLOW)",
+            "🏹 TRỤ 3: RA ĐÒN (STRIKE)"
+        ])
+        
+        pillar_tabs_map = [
+            (tab_p1, "root"),
+            (tab_p2, "flow"),
+            (tab_p3, "strike")
+        ]
+        
+        for tab_obj, p_key in pillar_tabs_map:
+            p_data = pillars.get(p_key, {})
+            with tab_obj:
+                if p_data.get("essence"):
+                    st.caption(f"🎯 **Bản chất cốt lõi:** *{p_data.get('essence')}*")
+                
+                lenses = p_data.get("lenses", {})
+                for l_key, l_info in lenses.items():
+                    with st.container(border=True):
+                        st.markdown(f"**{l_info.get('lens_name', l_key)}**")
+                        st.markdown(l_info.get("analysis", ""))
+                        
+                        models = l_info.get("activated_models", [])
+                        if models:
+                            m_badges = " &nbsp; ".join([f"`{m}`" for m in models])
+                            st.caption(f"🧬 **Mô hình hạt nhân kích hoạt:** {m_badges}")
+                            
+                if p_data.get("pillar_leverage"):
+                    st.success(f"⚖️ **Đòn Bẩy Cốt Lõi Của Trụ:** {p_data.get('pillar_leverage')}")
+    else:
+        # Fallback cho bản phân rã cũ (5 lăng kính cũ)
+        core_principles = res.get("core_principles_found", [])
+        if core_principles:
+            st.markdown("#### 🧬 Các Nguyên Lý Hạt Nhân Chi Phối:")
+            c_pr = st.columns(min(len(core_principles), 3))
+            for pr_idx, pr in enumerate(core_principles):
+                with c_pr[pr_idx % len(c_pr)]:
+                    if isinstance(pr, dict):
+                        st.markdown(f"**📌 {pr.get('name', '')}**")
+                        if pr.get("domain"):
+                            st.caption(f"Lĩnh vực: *{pr.get('domain', '')}*")
+                        if pr.get("description"):
+                            st.write(pr.get("description", ""))
+                    else:
+                        st.markdown(f"**📌 {pr}**")
+
+        lenses = res.get("elite_lenses", {})
+        st.markdown("### 👁️ Phân Tích Đa Chiều Qua 5 Lăng Kính Lớn")
+        c_l1, c_l2 = st.columns(2)
+        with c_l1:
+            st.warning(f"🔄 **Lật Ngược Vấn Đề (Inversion - Munger):**  \n{lenses.get('inversion', '')}")
+            st.error(f"🎯 **Hệ Quả Bậc Hai & Bậc Cao (Second-Order):**  \n{lenses.get('second_order', '')}")
+            st.info(f"⏳ **Đa Khung Thời Gian (Multi-Timescale):**  \n{lenses.get('multi_timescale', '')}")
+        with c_l2:
+            st.info(f"🎲 **Xác Suất Bayes & Tỷ Lệ Nền (Bayesian Base Rate):**  \n{lenses.get('bayesian', '')}")
+            st.success(f"⚖️ **Đòn Bẩy & Điểm Nghẽn (Leverage & Bottlenecks):**  \n{lenses.get('leverage', '')}")
+
+    # -------------------------------------------------------------------------
+    # VÕ ĐÀI ĐỐI KHÁNG SOCRATES (THE SOCRATIC SPARRING ARENA)
+    # -------------------------------------------------------------------------
+    spears = res.get("socratic_spears", [])
+    if spears:
+        st.markdown("---")
+        st.markdown("### 🗡️ Võ Đài Đối Kháng Socrates: 3 Mũi Giáo Sát Thủ")
+        st.caption(
+            "Đừng chỉ đọc thụ động! Hãy trực tiếp thượng đài đối mặt với 3 mũi giáo phản biện tàn nhẫn dưới đây "
+            "để bảo vệ lập luận của bạn và kiểm tra Sức Bền Nhận Thức (Cognitive Grit)."
+        )
+
+        user_sparring_answers = {}
+        for s_idx, s in enumerate(spears):
+            s_id = s.get("spear_id", f"spear_{s_idx}")
+            s_title = s.get("spear_title", f"Mũi Giáo {s_idx+1}")
+            s_vuln = s.get("targeted_vulnerability", "")
+            s_q = s.get("ruthless_question", "")
+            s_guide = s.get("guidance", "")
+
+            with st.container(border=True):
+                st.markdown(f"**{s_title}**")
+                if s_vuln:
+                    st.caption(f"🎯 *Điểm mù truy sát:* {s_vuln}")
+                st.warning(f"👉 **\"{s_q}\"**")
+                if s_guide:
+                    st.caption(f"💡 *Gợi ý phản biện:* {s_guide}")
+
+                ans_key = f"socratic_ans_{record_id}_{s_id}"
+                user_ans = st.text_area(
+                    "Câu trả lời & lập luận bảo vệ của bạn:",
+                    key=ans_key,
+                    height=80,
+                    placeholder="Nhập lập luận sắc bén của bạn để hóa giải mũi giáo này..."
+                )
+                user_sparring_answers[s_id] = user_ans
+
+        c_sp1, c_sp2 = st.columns([2, 1])
+        with c_sp1:
+            if st.button("🥊 Tiếp Chiêu & Thẩm Định Sức Bền Nhận Thức", key=f"btn_spar_{record_id}", type="primary", use_container_width=True):
+                has_any_answer = any(v.strip() for v in user_sparring_answers.values())
+                if not has_any_answer:
+                    st.warning("Vui lòng nhập câu trả lời cho ít nhất 1 mũi giáo để AI Socrates thẩm định!")
                 else:
-                    st.markdown(f"**📌 {pr}**")
+                    with st.spinner("🤖 Socrates đang mổ xẻ lập luận và chấm điểm Sức bền nhận thức..."):
+                        eval_result = evaluate_socratic_sparring(
+                            problem_text=prob,
+                            socratic_spears=spears,
+                            user_answers=user_sparring_answers
+                        )
+                        st.session_state[f"socratic_eval_{record_id}"] = eval_result
+                        xp_plus = eval_result.get("xp_awarded", 0)
+                        if "farrow_xp" in st.session_state:
+                            st.session_state["farrow_xp"] += xp_plus
+                        st.toast(f"Đã thẩm định xong! Nhận +{xp_plus} XP Sức bền nhận thức!", icon="🛡️")
+                        if eval_result.get("grit_score", 0) >= 80:
+                            st.balloons()
+                        st.rerun()
 
-    # 3. 5 Elite Lenses cards (Đủ 5 lăng kính gồm cả Đa Khung Thời Gian)
-    lenses = res.get("elite_lenses", {})
-    st.markdown("### 👁️ Phân Tích Đa Chiều Qua 5 Lăng Kính Lớn")
+        eval_key = f"socratic_eval_{record_id}"
+        if eval_key in st.session_state:
+            e_data = st.session_state[eval_key]
+            st.markdown("#### 🛡️ Kết Quả Thẩm Định Sức Bền Nhận Thức (Cognitive Grit)")
+            
+            c_g1, c_g2, c_g3 = st.columns(3)
+            with c_g1:
+                st.metric("Điểm Sức Bền (Grit)", f"{e_data.get('grit_score', 0)} / 100")
+            with c_g2:
+                st.metric("Thưởng XP Tinh Hoa", f"+{e_data.get('xp_awarded', 0)} XP")
+            with c_g3:
+                st.metric("Danh Hiệu Phản Biện", e_data.get("verdict_title", "Chiến Binh Nhận Thức"))
 
-    c_l1, c_l2 = st.columns(2)
-    with c_l1:
-        st.warning(f"🔄 **Lật Ngược Vấn Đề (Inversion - Munger):**  \n{lenses.get('inversion', '')}")
-        st.error(f"🎯 **Hệ Quả Bậc Hai & Bậc Cao (Second-Order):**  \n{lenses.get('second_order', '')}")
-        st.info(f"⏳ **Đa Khung Thời Gian (Multi-Timescale):**  \n{lenses.get('multi_timescale', '')}")
-    with c_l2:
-        st.info(f"🎲 **Xác Suất Bayes & Tỷ Lệ Nền (Bayesian Base Rate):**  \n{lenses.get('bayesian', '')}")
-        st.success(f"⚖️ **Đòn Bẩy & Điểm Nghẽn (Leverage & Bottlenecks):**  \n{lenses.get('leverage', '')}")
+            if e_data.get("overall_comment"):
+                st.info(f"💬 **Nhận xét của Socrates:** {e_data.get('overall_comment')}")
 
-    # 4. Actionable insights & Human decision questions (Câu hỏi quyết định chỉ bạn mới trả lời được)
+            for ev in e_data.get("evaluations", []):
+                sp_id = ev.get("spear_id", "")
+                st.markdown(f"- **Mũi giáo [{sp_id}] (Đạt {ev.get('score', 0)}/100):** {ev.get('critique', '')}")
+
+    # 4. Actionable insights
+    st.markdown("---")
     c_act1, c_act2 = st.columns(2)
     with c_act1:
-        st.markdown("#### 🚀 Hành Động Đòn Bẩy Cao (Actionable Insights):")
-        act_insights = res.get("actionable_insights", [])
+        st.markdown("#### 🚀 Hành Động Đòn Bẩy Cao:")
+        act_insights = res.get("actionable_next_steps", res.get("actionable_insights", []))
         if act_insights:
             for insight in act_insights:
                 st.markdown(f"- 💡 {insight}")
@@ -211,7 +327,7 @@ def render_problem_decomposition_result_cards(
             st.caption("Không có dữ liệu.")
             
     with c_act2:
-        st.markdown("#### ❓ Câu Hỏi Quyết Định Chỉ Bạn Mới Trả Lời Được:")
+        st.markdown("#### ❓ Câu Hỏi Quyết Định Sống Còn:")
         decisions = res.get("human_decision_needed", [])
         if decisions:
             for q_item in decisions:
@@ -219,14 +335,14 @@ def render_problem_decomposition_result_cards(
         else:
             st.caption("Không có dữ liệu.")
 
-    # Thanh công cụ: Xuất Markdown & Chuyển sang Máy Ép Farrow
+    # 5. Thanh công cụ: Xuất Markdown & Chuyển sang Máy Ép Farrow
     st.divider()
     col_p1, col_p2 = st.columns(2)
     with col_p1:
         md_decomp = export_problem_decomposition_to_markdown(prob=prob, res=res, created_at=created_at)
         file_slug = sanitize_filename(prob if prob else "phan_ra")
         st.download_button(
-            label="📥 Xuất Bản Phân Rã (.md)",
+            label="📥 Xuất Bản Phân Rã & Socrates (.md)",
             data=md_decomp,
             file_name=f"Decomposition_{file_slug}.md",
             mime="text/markdown",
@@ -235,31 +351,35 @@ def render_problem_decomposition_result_cards(
         )
     with col_p2:
         if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo & Nhớ Lâu)", key=f"btn_to_farrow_decomp_{record_id}", use_container_width=True):
-            pr_list = [p.get("name", "") if isinstance(p, dict) else str(p) for p in res.get("core_principles_found", [])]
+            p_dict = res.get("pillars", {})
+            r_lev = p_dict.get("root", {}).get("pillar_leverage", "")
+            f_lev = p_dict.get("flow", {}).get("pillar_leverage", "")
+            s_lev = p_dict.get("strike", {}).get("pillar_leverage", "")
+            act_str = "; ".join(res.get("actionable_next_steps", res.get("actionable_insights", [])))
             synth_text = f"""[BÀI TOÁN THỰC CHIẾN]: {prob}
-- Chân lý nguyên bản: {res.get('first_principles_breakdown', '')}
-- Nguyên lý chi phối: {', '.join(pr_list)}
-- Lật ngược vấn đề (Inversion): {lenses.get('inversion', '')}
-- Hệ quả bậc hai (Second-Order): {lenses.get('second_order', '')}
-- Đa khung thời gian: {lenses.get('multi_timescale', '')}
-- Xác suất Bayes: {lenses.get('bayesian', '')}
-- Đòn bẩy & Nút thắt: {lenses.get('leverage', '')}
-- Hành động đòn bẩy: {'; '.join(res.get('actionable_insights', []))}
+- Chân lý nguyên bản: {res.get('executive_summary', res.get('first_principles_breakdown', ''))}
+- Trụ 1 (Soi Gốc): {r_lev}
+- Trụ 2 (Đọc Dòng): {f_lev}
+- Trụ 3 (Ra Đòn): {s_lev}
+- Hành động đòn bẩy: {act_str}
 """
             st.session_state["comp_raw_input"] = synth_text
             st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
             st.session_state["auto_run_compress"] = True
             st.rerun()
 
-    # 5. Chuyển sang Decision Journal
+    # 6. Chuyển sang Decision Journal
     if show_decision_transfer:
         st.write("")
         btn_key = f"btn_transfer_dj_{record_id}"
         if st.button("📓 Chuyển phân rã này thành Bản ghi Quyết định để kiểm chứng sau 30-90 ngày", type="primary", key=btn_key, use_container_width=True):
             st.session_state["dj_prefill_title"] = prob[:70]
-            st.session_state["dj_prefill_hypo"] = res.get("first_principles_breakdown", "")[:300]
-            st.session_state["dj_prefill_inv"] = lenses.get("inversion", "")[:250]
-            st.session_state["dj_prefill_sec"] = lenses.get("second_order", "")[:250]
+            st.session_state["dj_prefill_hypo"] = res.get("executive_summary", res.get("first_principles_breakdown", ""))[:300]
+            p_dict = res.get("pillars", {})
+            inv_text = p_dict.get("root", {}).get("lenses", {}).get("inversion", {}).get("analysis", "") or res.get("elite_lenses", {}).get("inversion", "")
+            sec_text = p_dict.get("flow", {}).get("lenses", {}).get("second_order", {}).get("analysis", "") or res.get("elite_lenses", {}).get("second_order", "")
+            st.session_state["dj_prefill_inv"] = inv_text[:250]
+            st.session_state["dj_prefill_sec"] = sec_text[:250]
             st.session_state["dj_prefill_source"] = prob[:400]
             st.info("👉 Đã nạp dữ liệu vào form! Vui lòng chuyển sang chế độ **'📓 Elite Decision Journal'** phía trên để lưu!")
 
