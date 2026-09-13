@@ -25,6 +25,239 @@ def sanitize_filename(name: str, max_len: int = 40) -> str:
 
 
 
+def _find_matching_scan(
+    title: str,
+    query: str,
+    scans: Optional[list[Dict[str, Any]]] = None
+) -> Optional[Dict[str, Any]]:
+    """Tìm bản quét First Principles tương ứng với một nhánh từ danh sách đã lưu."""
+    if not scans:
+        return None
+    t_clean = title.strip().lower()
+    q_clean = query.strip().lower()
+    for s in scans:
+        s_query = s.get("query", "").strip().lower()
+        if not s_query:
+            continue
+        if t_clean in s_query or s_query in t_clean:
+            return s.get("full_result", s)
+        if len(q_clean) > 15 and (q_clean[:35] in s_query or s_query[:35] in q_clean):
+            return s.get("full_result", s)
+    return None
+
+
+def _format_scan_details_markdown(res: Dict[str, Any], indent: str = "") -> str:
+    """Format một khối bóc tách First Principles thành markdown chuẩn."""
+    if not res or not isinstance(res, dict):
+        return ""
+    
+    blocks = []
+    if res.get("trend_summary"):
+        blocks.append(f"{indent}> 🎯 **Bản chất cốt lõi (First Principles):** *{res.get('trend_summary')}*")
+    
+    if res.get("transaction_costs_impact"):
+        blocks.append(f"{indent}- ⚡ **Tác động chi phí giao dịch (Coase):** {res.get('transaction_costs_impact')}")
+
+    comm_list = res.get("commoditized_assets", [])
+    if comm_list:
+        blocks.append(f"{indent}- 📉 **Nguồn lực bị trượt giá về 0:**")
+        for c in comm_list:
+            if isinstance(c, dict):
+                blocks.append(f"{indent}  * 📉 **{c.get('asset', '')}**: {c.get('why', '')}")
+            else:
+                blocks.append(f"{indent}  * 📉 {c}")
+
+    scarcities = res.get("complementary_scarcities", [])
+    if scarcities:
+        blocks.append(f"{indent}- 💎 **Nút thắt khan hiếm mới lên ngôi:**")
+        for sc in scarcities:
+            if isinstance(sc, dict):
+                blocks.append(f"{indent}  * 💎 **{sc.get('asset', '')}**: {sc.get('why', '')}")
+            else:
+                blocks.append(f"{indent}  * 💎 {sc}")
+
+    moves = res.get("elite_strategic_moves", [])
+    if moves:
+        blocks.append(f"{indent}- ♟️ **Nước cờ chiến lược của giới Elite:**")
+        for m in moves:
+            blocks.append(f"{indent}  * ♟️ {m}")
+
+    models = res.get("activated_mental_models", [])
+    if models:
+        blocks.append(f"{indent}- 🕸️ **Mô hình hạt nhân kích hoạt:**")
+        for m in models:
+            if isinstance(m, dict):
+                blocks.append(f"{indent}  * `{m.get('model_name', '')}`: {m.get('mechanism', '')}")
+            else:
+                blocks.append(f"{indent}  * `{m}`")
+
+    playbook = res.get("action_playbook_for_individual", [])
+    if playbook:
+        blocks.append(f"{indent}- 🧭 **Playbook hành động thực chiến:**")
+        for p in playbook:
+            blocks.append(f"{indent}  * 🚀 {p}")
+
+    spears = res.get("socratic_spears", [])
+    if spears:
+        blocks.append(f"{indent}- 🗡️ **Mũi giáo Socrates khảo nghiệm thế cuộc:**")
+        for sp in spears:
+            s_q = sp.get("ruthless_question", "")
+            s_title = sp.get("spear_title", "Mũi giáo")
+            s_guide = sp.get("guidance", "")
+            guide_str = f" *(Gợi ý: {s_guide})*" if s_guide else ""
+            blocks.append(f"{indent}  * 👉 **{s_title}:** \"{s_q}\"{guide_str}")
+
+    return "\n".join(blocks)
+
+
+def export_macro_tree_to_markdown(
+    tree_data: Dict[str, Any],
+    all_scans: Optional[list[Dict[str, Any]]] = None
+) -> str:
+    """
+    Xuất toàn bộ Bản Đồ Cây Thế Cuộc (F0 -> F1 -> F2) ra định dạng Markdown phân cấp như cây thư mục.
+    Nhánh nào đã bóc tách First Principles sẽ tự động bung toàn bộ nội dung chi tiết.
+    Càng bóc tách nhiều nhánh, cây càng đồ sộ và chi tiết.
+    """
+    domain = tree_data.get("domain", "Chưa đặt tên")
+    scout_overview = tree_data.get("scout_overview", "Không có tóm tắt tổng quan.")
+    time_created = tree_data.get("created_at", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    time_updated = tree_data.get("updated_at", time_created)
+    trends = tree_data.get("trends", [])
+
+    # Tính toán thống kê và xây dựng sơ đồ ASCII
+    scans_pool = all_scans or []
+    total_f1 = len(trends)
+    total_f2 = 0
+    scanned_nodes_count = 0
+    total_nodes = total_f1
+
+    ascii_lines = [f"└── [F0] {domain.upper()}"]
+
+    for i, t in enumerate(trends):
+        t_rank = t.get("rank", i + 1)
+        t_title = t.get("title", "")
+        t_badge = t.get("badge", "🔥")
+        sub_list = t.get("drill_down", {}).get("sub_trends", [])
+        total_f2 += len(sub_list)
+        total_nodes += len(sub_list)
+
+        # Kiểm tra bóc tách F1
+        f1_scan = t.get("scan_result") or _find_matching_scan(t_title, t.get("suggested_query", ""), scans_pool)
+        if f1_scan:
+            scanned_nodes_count += 1
+            f1_tag = " (⚡ Đã bóc tách chi tiết)"
+        else:
+            f1_tag = ""
+
+        prefix_f1 = "├──" if i < len(trends) - 1 else "└──"
+        ascii_lines.append(f"    {prefix_f1} [#{t_rank}] {t_title} [{t_badge}]{f1_tag}")
+
+        sub_connector = "│  " if i < len(trends) - 1 else "   "
+        for j, sub in enumerate(sub_list):
+            sub_rank = sub.get("sub_rank", j + 1)
+            sub_title = sub.get("title", "")
+            sub_scan = sub.get("scan_result") or _find_matching_scan(sub_title, sub.get("suggested_query", ""), scans_pool)
+            if sub_scan:
+                scanned_nodes_count += 1
+                sub_tag = " (⚡ Đã bóc tách chi tiết)"
+            else:
+                sub_tag = ""
+            prefix_f2 = "├──" if j < len(sub_list) - 1 else "└──"
+            ascii_lines.append(f"    {sub_connector} {prefix_f2} [F2.{sub_rank}] {sub_title}{sub_tag}")
+
+    ascii_tree_text = "\n".join(ascii_lines)
+    coverage_pct = int((scanned_nodes_count / total_nodes * 100)) if total_nodes > 0 else 0
+
+    # Xây dựng phần nội dung chi tiết từng nhánh
+    branches_detail = []
+    for i, t in enumerate(trends):
+        t_rank = t.get("rank", i + 1)
+        t_title = t.get("title", "")
+        t_badge = t.get("badge", "🔥 Sóng Thần Tiên Phong")
+        t_status = t.get("status", "Bùng nổ")
+        t_one = t.get("one_liner", "")
+        t_sug = t.get("suggested_query", t_title)
+
+        f1_scan = t.get("scan_result") or _find_matching_scan(t_title, t_sug, scans_pool)
+        
+        branch_md = [
+            f"## 🚀 NHÁNH #{t_rank}: {t_title}",
+            f"- **Huy hiệu thế cuộc:** `{t_badge}`",
+            f"- **Trạng thái:** `{t_status}`",
+            f"- **Nhận định cốt lõi:** *{t_one}*",
+            ""
+        ]
+
+        if f1_scan:
+            branch_md.append("### 🔬 Bản Bóc Tách Chi Tiết First Principles (Đã Quét Sâu):")
+            branch_md.append(_format_scan_details_markdown(f1_scan, indent=""))
+            branch_md.append("")
+        else:
+            branch_md.append(f"> 💡 **Định hướng bóc tách đề xuất:** \"{t_sug}\"")
+            branch_md.append("*(Nhánh này chưa quét sâu First Principles. Bấm nút [📡 Quét] trên app để bóc tách thêm vào cây)*\n")
+
+        # Duyệt F2 nếu có
+        sub_list = t.get("drill_down", {}).get("sub_trends", [])
+        if sub_list:
+            branch_md.append(f"### 🌿 CÁC NÚT THẮT & VI XU HƯỚNG F2 CỦA NHÁNH #{t_rank}:")
+            insight_f2 = t.get("drill_down", {}).get("drill_down_insight", "")
+            if insight_f2:
+                branch_md.append(f"> 🎯 **Điểm nghẽn cốt lõi tầng F2:** *{insight_f2}*\n")
+
+            for j, sub in enumerate(sub_list):
+                sub_rank = sub.get("sub_rank", j + 1)
+                sub_title = sub.get("title", "")
+                sub_why = sub.get("why_crucial", "")
+                sub_sug = sub.get("suggested_query", sub_title)
+                sub_scan = sub.get("scan_result") or _find_matching_scan(sub_title, sub_sug, scans_pool)
+
+                branch_md.append(f"#### └── [F2.{sub_rank}] {sub_title}")
+                branch_md.append(f"- **Tại sao cốt tử (Why Crucial):** {sub_why}")
+
+                if sub_scan:
+                    branch_md.append("\n  **🔬 Bóc tách First Principles chi tiết của vi xu hướng này:**")
+                    branch_md.append(_format_scan_details_markdown(sub_scan, indent="  "))
+                    branch_md.append("")
+                else:
+                    branch_md.append(f"- 👉 **Câu truy vấn đề xuất:** \"{sub_sug}\"\n")
+
+        branches_detail.append("\n".join(branch_md))
+
+    branches_rendered = "\n\n---\n\n".join(branches_detail)
+
+    md = f"""# 🌐 BẢN ĐỒ CÂY THẾ CUỘC TOÀN DIỆN: {domain.upper()}
+
+- **Lĩnh vực trinh sát (F0):** `{domain}`
+- **Thời gian khởi tạo cây:** `{time_created}`
+- **Cập nhật gần nhất:** `{time_updated}`
+- **Công cụ:** Elite First-Principles Macro Radar & Multi-Tier Trend Scout
+- **Quy mô cây:** `{total_f1} Xu hướng F1` | `{total_f2} Vi xu hướng F2` | `{scanned_nodes_count} Nhánh đã bóc tách First Principles` ({coverage_pct}% Độ bao phủ)
+
+---
+
+## 🧭 1. TỔNG QUAN CỤC DIỆN THẾ CUỘC (F0)
+> {scout_overview}
+
+---
+
+## 🌲 2. SƠ ĐỒ CÂY THƯ MỤC THẾ CUỘC (HIERARCHICAL TREE MAP)
+```
+{ascii_tree_text}
+```
+
+---
+
+## 📚 3. GIẢI PHÃU TOÀN DIỆN TỪNG NHÁNH BẢN ĐỒ CÂY
+
+{branches_rendered}
+
+---
+*Bản quyền phân tích thuộc về Elite Thinking Framework v2.5 — Hierarchical Frontier Knowledge Tree.*
+"""
+    return md.strip()
+
+
 def export_macro_radar_to_markdown(
     query: str,
     res: Dict[str, Any],

@@ -319,6 +319,48 @@ def update_tree_drilldown(
     return False
 
 
+def update_tree_scan_result(
+    tree_id: str,
+    query_or_title: str,
+    scan_result: Dict[str, Any],
+    username: str = "Phat"
+) -> bool:
+    """Lưu trữ kết quả bóc tách First Principles trực tiếp vào nhánh F1 hoặc F2 khớp nhất trong cây."""
+    trees = load_macro_scout_trees(username)
+    target_tid = str(tree_id).strip()
+    target_q = query_or_title.strip().lower()
+    
+    found = False
+    for t in trees:
+        if str(t.get("id", "")).strip() == target_tid:
+            for trend in t.get("trends", []):
+                t_title = trend.get("title", "").strip().lower()
+                t_sug = trend.get("suggested_query", "").strip().lower()
+                # Khớp F1
+                if (t_title and (t_title in target_q or target_q in t_title)) or (t_sug and (t_sug in target_q or target_q in t_sug)):
+                    trend["scan_result"] = scan_result
+                    found = True
+                    break
+                
+                # Khớp F2 nếu có
+                sub_list = trend.get("drill_down", {}).get("sub_trends", [])
+                for sub in sub_list:
+                    s_title = sub.get("title", "").strip().lower()
+                    s_sug = sub.get("suggested_query", "").strip().lower()
+                    if (s_title and (s_title in target_q or target_q in s_title)) or (s_sug and (s_sug in target_q or target_q in s_sug)):
+                        sub["scan_result"] = scan_result
+                        found = True
+                        break
+                if found:
+                    break
+            if found:
+                t["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                _save_json_file(LOCAL_SCOUT_TREES_FILE, trees)
+                _update_user_blob_field(username, "macro_scout_trees", trees)
+                return True
+    return False
+
+
 def delete_macro_scout_tree(tree_id: str, username: str = "Phat") -> bool:
     """Xóa một cây trinh sát theo ID."""
     trees = load_macro_scout_trees(username)

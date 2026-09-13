@@ -26,6 +26,7 @@ from core.farrow_engine import compress_with_farrow_ai
 from core.export_utils import (
     sanitize_filename,
     export_macro_radar_to_markdown,
+    export_macro_tree_to_markdown,
     export_problem_decomposition_to_markdown,
     export_farrow_compression_to_markdown,
 )
@@ -36,6 +37,7 @@ from core.db_storage import (
     load_macro_scout_trees,
     save_macro_scout_tree,
     update_tree_drilldown,
+    update_tree_scan_result,
     delete_macro_scout_tree,
     load_problem_analyses,
     save_problem_analysis,
@@ -59,7 +61,9 @@ def render_macro_radar_result_cards(
     res_radar: Dict[str, Any],
     query: str = "",
     record_id: str = "latest",
-    created_at: str = ""
+    created_at: str = "",
+    active_tree: Optional[Dict[str, Any]] = None,
+    all_scans: Optional[List[Dict[str, Any]]] = None
 ):
     """Hiển thị toàn diện kết quả quét vĩ mô với đầy đủ thông tin, xuất file và chuyển tiếp Farrow."""
     if not res_radar or not isinstance(res_radar, dict):
@@ -142,30 +146,62 @@ def render_macro_radar_result_cards(
                     if ms.get("guidance"):
                         st.caption(f"💡 {ms.get('guidance')}")
 
-    # Thanh công cụ: Xuất Markdown, Chuyển sang Phân Rã Socrates & Máy Ép Farrow
+    # Thanh công cụ: Xuất Toàn Bộ Bản Đồ Cây hoặc Riêng Nhánh, Chuyển sang Phân Rã Socrates & Máy Ép Farrow
     st.divider()
-    col_act1, col_act2, col_act3 = st.columns(3)
-    with col_act1:
-        md_data = export_macro_radar_to_markdown(query=query, res=res_radar, created_at=created_at)
-        file_slug = sanitize_filename(query if query else "the_cuoc")
-        st.download_button(
-            label="📥 Xuất Bản Đọc Vị Thế Cuộc (.md)",
-            data=md_data,
-            file_name=f"MacroRadar_{file_slug}.md",
-            mime="text/markdown",
-            key=f"dl_macro_{record_id}",
-            use_container_width=True
-        )
-    with col_act2:
-        if st.button("🎯 Phân Rã 3 Trụ Cột & Võ Đài Socrates", key=f"btn_to_decomp_macro_{record_id}", use_container_width=True, type="primary"):
-            st.session_state["p_problem_input"] = query
-            st.session_state["app_mode_redirect"] = "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định"
-            st.rerun()
-    with col_act3:
-        if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo)", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
-            comm_list = [c.get("asset", "") if isinstance(c, dict) else str(c) for c in res_radar.get("commoditized_assets", [])]
-            scarce_list = [s.get("asset", "") if isinstance(s, dict) else str(s) for s in res_radar.get("complementary_scarcities", [])]
-            synth_text = f"""[XU HƯỚNG VĨ MÔ]: {query}
+
+    target_tree = active_tree
+    if not target_tree:
+        active_tid = st.session_state.get("active_tree_id")
+        saved_trees = load_macro_scout_trees()
+        if active_tid:
+            target_tree = next((t for t in saved_trees if t.get("id") == active_tid), None)
+        if not target_tree and query:
+            q_lower = query.lower()
+            for t in saved_trees:
+                trends_list = t.get("trends", [])
+                if any(q_lower in item.get("title", "").lower() or item.get("title", "").lower() in q_lower for item in trends_list):
+                    target_tree = t
+                    break
+
+    scans_pool = all_scans if all_scans is not None else load_macro_scans()
+
+    if target_tree:
+        col_act1, col_act2, col_act3, col_act4 = st.columns([1.5, 1.3, 1.2, 1.2])
+        with col_act1:
+            tree_md = export_macro_tree_to_markdown(target_tree, scans_pool)
+            t_slug = sanitize_filename(target_tree.get("domain", "the_cuoc"))
+            st.download_button(
+                label="🌲 Xuất Toàn Bộ Bản Đồ Cây (.md)",
+                data=tree_md,
+                file_name=f"Tree_{t_slug}.md",
+                mime="text/markdown",
+                key=f"dl_full_tree_{record_id}",
+                use_container_width=True,
+                type="primary",
+                help="Tải toàn bộ cây thư mục F0 -> F1 -> F2 kèm chi tiết bóc tách các nhánh đã quét"
+            )
+        with col_act2:
+            md_data = export_macro_radar_to_markdown(query=query, res=res_radar, created_at=created_at)
+            file_slug = sanitize_filename(query if query else "the_cuoc")
+            st.download_button(
+                label="📄 Xuất Riêng Nhánh Này (.md)",
+                data=md_data,
+                file_name=f"MacroRadar_{file_slug}.md",
+                mime="text/markdown",
+                key=f"dl_single_macro_{record_id}",
+                use_container_width=True,
+                help="Chỉ xuất kết quả bóc tách của riêng nhánh này"
+            )
+        with col_act3:
+            if st.button("🎯 Phân Rã & Socrates", key=f"btn_to_decomp_macro_{record_id}", use_container_width=True):
+                st.session_state["p_problem_input"] = query
+                st.session_state["app_mode_redirect"] = "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định"
+                st.rerun()
+        with col_act4:
+            if st.button("⚡ Ép Nén Farrow", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
+                comm_list = [c.get("asset", "") if isinstance(c, dict) else str(c) for c in res_radar.get("commoditized_assets", [])]
+                scarce_list = [s.get("asset", "") if isinstance(s, dict) else str(s) for s in res_radar.get("complementary_scarcities", [])]
+                synth_text = f"""[XU HƯỚNG VĨ MÔ]: {query}
 - Bản chất cốt lõi: {res_radar.get('trend_summary', '')}
 - Chi phí giao dịch bị kéo tụt: {res_radar.get('transaction_costs_impact', '')}
 - Nguồn lực rớt giá về 0: {', '.join(comm_list)}
@@ -173,10 +209,44 @@ def render_macro_radar_result_cards(
 - Nước cờ chiến lược Elite: {'; '.join(res_radar.get('elite_strategic_moves', []))}
 - Hành động khuyến nghị: {'; '.join(res_radar.get('action_playbook_for_individual', []))}
 """
-            st.session_state["comp_raw_input"] = synth_text
-            st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
-            st.session_state["auto_run_compress"] = True
-            st.rerun()
+                st.session_state["comp_raw_input"] = synth_text
+                st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
+                st.session_state["auto_run_compress"] = True
+                st.rerun()
+    else:
+        col_act1, col_act2, col_act3 = st.columns(3)
+        with col_act1:
+            md_data = export_macro_radar_to_markdown(query=query, res=res_radar, created_at=created_at)
+            file_slug = sanitize_filename(query if query else "the_cuoc")
+            st.download_button(
+                label="📥 Xuất Bản Đọc Vị Thế Cuộc (.md)",
+                data=md_data,
+                file_name=f"MacroRadar_{file_slug}.md",
+                mime="text/markdown",
+                key=f"dl_macro_{record_id}",
+                use_container_width=True
+            )
+        with col_act2:
+            if st.button("🎯 Phân Rã 3 Trụ Cột & Võ Đài Socrates", key=f"btn_to_decomp_macro_{record_id}", use_container_width=True, type="primary"):
+                st.session_state["p_problem_input"] = query
+                st.session_state["app_mode_redirect"] = "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định"
+                st.rerun()
+        with col_act3:
+            if st.button("⚡ Ép Nén Farrow (3 Mỏ Neo)", key=f"btn_to_farrow_macro_{record_id}", use_container_width=True):
+                comm_list = [c.get("asset", "") if isinstance(c, dict) else str(c) for c in res_radar.get("commoditized_assets", [])]
+                scarce_list = [s.get("asset", "") if isinstance(s, dict) else str(s) for s in res_radar.get("complementary_scarcities", [])]
+                synth_text = f"""[XU HƯỚNG VĨ MÔ]: {query}
+- Bản chất cốt lõi: {res_radar.get('trend_summary', '')}
+- Chi phí giao dịch bị kéo tụt: {res_radar.get('transaction_costs_impact', '')}
+- Nguồn lực rớt giá về 0: {', '.join(comm_list)}
+- Nút thắt khan hiếm mới: {', '.join(scarce_list)}
+- Nước cờ chiến lược Elite: {'; '.join(res_radar.get('elite_strategic_moves', []))}
+- Hành động khuyến nghị: {'; '.join(res_radar.get('action_playbook_for_individual', []))}
+"""
+                st.session_state["comp_raw_input"] = synth_text
+                st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
+                st.session_state["auto_run_compress"] = True
+                st.rerun()
 
 
 def render_problem_decomposition_result_cards(
@@ -671,7 +741,7 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                 except Exception:
                     freshness_label = "⏱️ Gần đây"
 
-                col_inf1, col_inf2 = st.columns([3, 1])
+                col_inf1, col_inf2, col_inf3 = st.columns([3, 1.4, 1.6])
                 with col_inf1:
                     st.markdown(f"#### 🌐 Bản Đồ Cây: `{active_tree.get('domain', '')}`")
                     st.caption(f"📅 Cập nhật lần cuối: **{upd_time}** &nbsp; | &nbsp; Trạng thái: **{freshness_label}**")
@@ -688,6 +758,19 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                                 )
                                 st.toast("Đã cập nhật bản đồ cây!", icon="✅")
                                 st.rerun()
+                with col_inf3:
+                    full_tree_md = export_macro_tree_to_markdown(active_tree, saved_scans)
+                    tree_slug = sanitize_filename(active_tree.get("domain", "the_cuoc"))
+                    st.download_button(
+                        label="🌲 Xuất Bản Đồ Cây (.md)",
+                        data=full_tree_md,
+                        file_name=f"Tree_{tree_slug}.md",
+                        mime="text/markdown",
+                        key=f"dl_tree_header_{active_tree['id']}",
+                        use_container_width=True,
+                        type="primary",
+                        help="Tải xuống toàn bộ cây F0 -> F1 -> F2 kèm toàn bộ các nhánh đã bóc tách"
+                    )
 
                 if active_tree.get("scout_overview"):
                     st.info(f"🧭 **Cục diện hiện nay:** {active_tree['scout_overview']}")
@@ -840,6 +923,11 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                     if saved_ok:
                         st.toast("☁️ Đã tự động lưu kết quả quét vào Supabase Cloud!", icon="💾")
 
+                    # Tự động gán kết quả quét vào nhánh tương ứng trong cây trinh sát (nếu có cây đang mở)
+                    active_tid = st.session_state.get("active_tree_id")
+                    if active_tid:
+                        update_tree_scan_result(active_tid, trend_text.strip(), res_radar)
+
         # Hiển thị kết quả quét mới nhất
         if "latest_macro_radar_result" in st.session_state:
             res_radar = st.session_state["latest_macro_radar_result"]
@@ -847,7 +935,9 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
             render_macro_radar_result_cards(
                 res_radar,
                 query=st.session_state.get("latest_macro_radar_trend", ""),
-                record_id="latest"
+                record_id="latest",
+                active_tree=active_tree,
+                all_scans=saved_scans
             )
 
     # -------------------------------------------------------------------------
@@ -894,7 +984,8 @@ def render_macro_radar_room(active_api_key: str | None = None, is_embedded: bool
                         sc_res,
                         query=sc_query,
                         record_id=sc_id,
-                        created_at=sc_time
+                        created_at=sc_time,
+                        all_scans=all_scans
                     )
         else:
             st.info("💡 Chưa có bản quét nào được lưu. Hãy quét một xu hướng ở Tab 1 để tự động lưu vào đây!")
