@@ -15,6 +15,20 @@ from typing import Dict, List, Any, Optional
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 UNIFIED_FILE = os.path.join(DATA_DIR, "unified_farrow_models.json")
 
+__all__ = [
+    "load_unified_farrow_catalog",
+    "get_farrow_models_grouped",
+    "get_farrow_metrics",
+    "draw_random_farrow_sprint_trio",
+    "draw_polymath_triangulation_trio",
+    "get_models_for_topic_chunk",
+    "get_model_full_detail",
+    "load_all_mental_models",
+    "load_all_principles",
+    "get_farrow_principles_grouped",
+    "get_all_models_map",
+]
+
 
 def load_unified_farrow_catalog() -> List[Dict[str, Any]]:
     """Tải toàn bộ danh mục mô hình & nguyên lý tinh hoa đã làm sạch và hợp nhất."""

@@ -11,13 +11,19 @@ Thiết kế tối giản & Chuyên sâu:
 6. 🫁 Trạm Thở Bụng Sạc Pin — Box Breathing phục hồi pin não
 """
 
+import sys
 import os
 import time
 import textwrap
 import html
 import base64
+import importlib
 import streamlit as st
 
+# Đảm bảo đường dẫn gốc của app luôn đứng đầu sys.path trên mọi môi trường (Streamlit Cloud Linux / Windows)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 try:
     import dotenv
@@ -37,15 +43,25 @@ from core.farrow_engine import (
     get_all_gemini_api_keys,
     get_api_key_status
 )
-from core.models_engine import (
-    load_unified_farrow_catalog,
-    get_farrow_models_grouped,
-    get_farrow_metrics,
-    draw_random_farrow_sprint_trio,
-    draw_polymath_triangulation_trio,
-    get_models_for_topic_chunk,
-    get_model_full_detail
+
+# Nạp động và reload models_engine để miễn nhiễm tuyệt đối với cache RAM cũ trên Streamlit Cloud
+import core.models_engine as _models_engine
+try:
+    importlib.reload(_models_engine)
+except Exception:
+    pass
+
+load_unified_farrow_catalog = _models_engine.load_unified_farrow_catalog
+get_farrow_models_grouped = _models_engine.get_farrow_models_grouped
+get_farrow_metrics = _models_engine.get_farrow_metrics
+draw_random_farrow_sprint_trio = _models_engine.draw_random_farrow_sprint_trio
+draw_polymath_triangulation_trio = getattr(
+    _models_engine,
+    "draw_polymath_triangulation_trio",
+    _models_engine.draw_random_farrow_sprint_trio
 )
+get_models_for_topic_chunk = _models_engine.get_models_for_topic_chunk
+get_model_full_detail = _models_engine.get_model_full_detail
 from core.sprint_game import (
     generate_visual_anchor_question,
     generate_crazy_image_reverse_question,
