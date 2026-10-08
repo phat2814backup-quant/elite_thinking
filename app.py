@@ -768,7 +768,7 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
                     if img_b64:
                         st.markdown(
                             f'<div style="text-align: center; margin: 6px 0 14px 0;">'
-                            f'<img src="data:image/webp;base64,{img_b64}" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; border: 2px solid #6366f1; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);" alt="Mỏ neo" />'
+                            f'<img src="data:image/webp;base64,{img_b64}" style="width: 100%; max-width: 360px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; border: 2px solid #6366f1; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35); display: block; margin: 0 auto;" alt="Mỏ neo" />'
                             f'</div>',
                             unsafe_allow_html=True
                         )
@@ -847,7 +847,7 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
                         if b64:
                             st.markdown(
                                 f'<div style="text-align: center; margin: 4px 0 8px 0;">'
-                                f'<img src="data:image/webp;base64,{b64}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);" />'
+                                f'<img src="data:image/webp;base64,{b64}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);" />'
                                 f'</div>',
                                 unsafe_allow_html=True
                             )
