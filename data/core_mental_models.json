@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Munger Latticework: 88 Nuclear Mental Models",
     "version": "1.0",
-    "total_models": 96,
+    "total_models": 100,
     "curated_for": "Elite Thinking & Accelerated Mastery",
     "description": "88 canonical mental models across 6 pillars: Physics, Biology, Psychology, Economics, Math/Probability, Systems Thinking."
   },
@@ -1956,6 +1956,102 @@
       ],
       "boundary_conditions": "Không sử dụng ý nghĩa để tự lừa dối bản thân ở lại trong những mối quan hệ độc hại hoặc môi trường bóc lột vô lý khi hoàn toàn có quyền rời đi.",
       "real_world_case": "• Viktor Frankl trong trại tập trung Auschwitz: Ông sống sót qua trại tử thần Đức quốc xã nhờ giữ vững ước nguyện viết lại cuốn sách bản thảo bị cướp mất và khao khát gặp lại người vợ yêu quý.\n• Elon Musk & Sứ mệnh Đa hành tinh: Động lực làm việc 100 giờ/tuần tại SpaceX không phải để kiếm thêm tiền, mà xuất phát từ ý nghĩa hiện sinh: bảo vệ ngọn lửa nhận thức của loài người bằng cách biến nhân loại thành giống loài đa hành tinh.",
+      "source": "mental_model"
+    },
+    {
+      "id": "ART-05",
+      "name_vi": "Ẩn Ý Dưới Lời Thoại & Khẩu Súng Chekhov",
+      "name_en": "Subtext & Chekhov's Gun (Dramatic Economy & Show Don't Tell)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Khẩu súng Chekhov: Nếu ở hồi 1 có khẩu súng treo trên tường, ở hồi 3 nó bắt buộc phải phát nổ; mọi chi tiết thừa thãi không phụng sự cốt truyện phải bị gạt bỏ. Ẩn ý (Subtext): Cảm xúc mạnh nhất của con người không nằm ở lời nói trực diện, mà nằm ở khoảng trống giữa những điều không được nói ra.",
+      "trigger_question": "Chi tiết này có công năng kích nổ ở hồi kết không, hay chỉ là rác thị giác? Thông điệp ngầm sâu sắc nhất mà người xem tự cảm nhận được là gì?",
+      "inversion_trap": "Bẫy nói toạc móng heo (Exposition Dump): Bắt nhân vật hoặc bài viết giải thích dài dòng mọi khái niệm một cách cơ học thay vì để hành động và chi tiết tự bộc lộ ý nghĩa.",
+      "elite_leverage": "Áp dụng vào sản phẩm và marketing: Không bao giờ tự khen sản phẩm mình tốt (nói suông). Hãy để một chi tiết nhỏ có độ hoàn thiện cực hạn (như tiếng đóng cửa xe Mercedes hay độ mượt 120Hz của iPhone) đóng vai trò 'khẩu súng Chekhov' tự kích hoạt niềm tin mãnh liệt của khách hàng.",
+      "lollapalooza_pairs": [
+        "Tín hiệu đắt giá (Costly Signaling)",
+        "Quy luật Gestalt",
+        "Ít nhưng tốt hơn"
+      ],
+      "action_steps": [
+        "Kiểm toán chi tiết Chekhov: Rà soát mọi tính năng, nút bấm, slide thuyết trình; xóa ngay nếu nó không tạo ra tác động ở kết quả cuối cùng.",
+        "Tạo ẩn ý trải nghiệm: Thiết kế trải nghiệm sao cho người dùng tự rút ra kết luận 'đây là sản phẩm đẳng cấp' thay vì bị nhồi nhét khẩu hiệu.",
+        "Tận dụng khoảng lặng: Cho người xem thời gian dừng lại để tự kết nối các mẩu ghép ý nghĩa."
+      ],
+      "boundary_conditions": "Không biến ẩn ý thành sự khó hiểu, đánh đố hoặc mơ hồ khiến khách hàng bối rối không biết sản phẩm dùng để làm gì.",
+      "real_world_case": "• Điện ảnh của Christopher Nolan & Hemingway: Nguyên lý tảng băng trôi (Iceberg Theory) — 7 phần chìm dưới nước, chỉ 1 phần nổi lên bề mặt nhưng sức lay động tâm can cực lớn.\n• Tiếp thị Tesla: Không chi 1 đồng cho quảng cáo truyền thống; để các tính năng tự lái và tăng tốc 0-100km/h tự chứng minh giá trị và lan truyền trên mạng xã hội.",
+      "source": "mental_model"
+    },
+    {
+      "id": "ART-06",
+      "name_vi": "Nhịp Điệu Kịch Tính & Khoảng Lặng Thẩm Mỹ",
+      "name_en": "Dramatic Pacing & The Aesthetic of 'Ma' (Tension, Silence & Release)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Âm nhạc không chỉ là các nốt nhạc, âm nhạc là khoảng lặng giữa các nốt nhạc (Debussy). Khái niệm 'Ma' (間) trong văn hóa Nhật Bản: Khoảng trống không phải là sự thiếu thốn, mà là không gian cho ý niệm thở và lắng đọng. Nhịp điệu kịch tính được tạo nên từ sự luân phiên giữa căng thẳng tột độ và giải tỏa êm dịu.",
+      "trigger_question": "Sản phẩm hoặc bài thuyết trình này có nhịp thở (pacing) tự nhiên không, hay đang dội bom thông tin liên tục làm não người dùng bị bội thực nhận thức?",
+      "inversion_trap": "Bẫy ồn ào liên tục (Sensory Overload): Lo sợ người xem chán nên nhồi nhét nhạc ầm ĩ, hiệu ứng chớp tắt, câu chữ dày đặc suốt từ đầu đến cuối khiến não bộ kích hoạt cơ chế phòng vệ và tắt hoàn toàn khả năng tiếp nhận.",
+      "elite_leverage": "Hayao Miyazaki (Studio Ghibli) nổi tiếng với các cảnh 'Ma' tĩnh lặng (tiếng gió thổi qua ngọn cỏ, giọt nước rơi) trước khi bước vào đại cảnh chiến đấu. Trong chỉ đạo AI, yêu cầu xen kẽ giữa các luận điểm đòn bẩy nặng ký và những khoảng nghỉ suy ngẫm để đạt hiệu ứng thuyết phục cao nhất.",
+      "lollapalooza_pairs": [
+        "Ngưỡng tải nhận thức",
+        "Quy luật Weber-Fechner",
+        "Trạng thái thở sâu"
+      ],
+      "action_steps": [
+        "Thiết kế biểu đồ nhịp thở: Cứ sau 2 phút nạp thông tin nặng, bắt buộc có 30 giây khoảng lặng hoặc câu hỏi gợi mở suy ngẫm.",
+        "Bố trí khoảng trắng thị giác: Tăng độ giãn dòng và khoảng cách giữa các phần trong tài liệu/giao diện.",
+        "Tạo điểm nhấn kịch tính: Giảm âm lượng và tiết tấu trước khi tung ra thông điệp quyết định nhất."
+      ],
+      "boundary_conditions": "Khoảng lặng phải có chủ đích nghệ thuật; khoảng lặng trống rỗng thiếu bối cảnh sẽ khiến người dùng tưởng app bị đơ hoặc bài viết bị thiếu nội dung.",
+      "real_world_case": "• Phim Vùng Đất Linh Hồn (Spirited Away): Cảnh Chihiro ngồi im lặng trên chuyến tàu chạy trên mặt nước mênh mông là một trong những trường đoạn điện ảnh xúc động nhất lịch sử hoạt hình thế giới.\n• Bài phát biểu Stanford 2005 của Steve Jobs: Dừng lại 5 giây sau câu nói 'Stay hungry, Stay foolish' để dư âm lắng sâu vào tâm trí thế hệ trẻ.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-05",
+      "name_vi": "Bài Toán Căn Chỉnh AI & Mục Tiêu Sai Lệch",
+      "name_en": "The AI Alignment Problem & Instrumental Convergence (Bostrom & Russell)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Cỗ máy thông minh sẽ tối ưu hóa chính xác mục tiêu bạn giao cho nó, chứ không phải mục tiêu bạn thầm mong muốn (Vấn đề vua Midas chạm vào đâu cũng biến thành vàng). Các mục tiêu hội tụ công cụ (Instrumental Convergence): Mọi thực thể thông minh đều có xu hướng tự tích lũy quyền lực, tài nguyên và tự bảo tồn để hoàn thành nhiệm vụ.",
+      "trigger_question": "Nếu AI hoặc Robot làm đúng 100% câu lệnh này một cách mù quáng và tàn nhẫn nhất, thảm họa ngoài ý muốn nào sẽ xảy ra?",
+      "inversion_trap": "Ảo tưởng ý đồ ngầm (Implicit Intent Fallacy): Nghĩ rằng AI tự biết 'điều gì là lẽ thường tình' của con người; máy móc không có đạo đức bẩm sinh, chúng chỉ tối ưu hàm mất mát (loss function).",
+      "elite_leverage": "Khi ra lệnh cho AI Agent hoặc thiết kế hệ thống tự động, không chỉ nêu mục tiêu tích cực (Positive Goal), mà bắt buộc phải khóa chặt các ràng buộc đạo đức tiêu cực (Negative Constraints / Guardrails) và tiêu chí nghiệm thu nhân tính không thể thương lượng.",
+      "lollapalooza_pairs": [
+        "Định luật Goodhart",
+        "Hậu quả bậc hai",
+        "Rủi ro đuôi béo"
+      ],
+      "action_steps": [
+        "Chạy kịch bản 'Thần đèn tàn nhẫn': Giả định AI cố tình diễn giải câu lệnh theo cách cực đoan nhất để tìm lỗ hổng.",
+        "Thiết lập công tắc ngắt khẩn cấp (Fail-safe switch): Mọi hành động có tác động tài chính hoặc dữ liệu lớn phải có bước xác nhận của con người (Human-in-the-loop).",
+        "Định nghĩa rõ giá trị con người: Đưa phẩm giá, sự an toàn và quyền riêng tư vào ràng buộc cứng của câu lệnh."
+      ],
+      "boundary_conditions": "Không nên đặt quá nhiều rào cản vô lý làm tê liệt hoàn toàn tính sáng tạo và khả năng tự động hóa hữu ích của AI.",
+      "real_world_case": "• Thí nghiệm Cỗ máy sản xuất kẹp giấy (Paperclip Maximizer của Nick Bostrom): Một AI được giao nhiệm vụ làm càng nhiều kẹp giấy càng tốt sẽ biến cả Trái Đất và con người thành nguyên liệu làm kẹp giấy.\n• Thuật toán mạng xã hội: Được giao tối ưu 'thời gian xem' (Watch time) đã vô tình khuếch đại sự thù ghét, tin giả và chia rẽ chính trị vì cảm xúc tiêu cực giữ chân người dùng lâu nhất.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-06",
+      "name_vi": "Đạo Đức Học Đức Hạnh & Trách Nhiệm Hiện Sinh",
+      "name_en": "Virtue Ethics & Existential Stewardship (Aristotle, Kant & Hans Jonas)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Đạo đức không phải là sự tuân thủ các điều luật khô khan vì sợ phạt, mà là sự rèn luyện các đức hạnh nội tại: Dũng cảm, Tiết độ, Công bằng và Trí tuệ thực tiễn (Phronesis - Aristotle). Trách nhiệm hiện sinh (Existential Stewardship): Hành động sao cho hậu quả từ hành vi của bạn tương thích với sự trường tồn vĩnh cửu của sự sống con người trên Trái Đất.",
+      "trigger_question": "Hành động này có phản ánh phiên bản nhân cách cao quý nhất mà tôi tôn trọng không, và nếu mọi người trên Trái Đất đều làm như tôi thì tương lai nhân loại sẽ ra sao?",
+      "inversion_trap": "Chủ nghĩa thực dụng vị kỷ mù quáng (Short-term Opportunism): Sẵn sàng dẫm đạp lên niềm tin, môi trường hoặc đồng loại để kiếm lợi nhuận ngắn hạn, để lại thảm họa cho thế hệ sau.",
+      "elite_leverage": "Nguyên tắc Mệnh lệnh Tuyệt đối của Kant (Categorical Imperative) và Trí tuệ thực tế của Aristotle: Khi đứng trước ngã rẽ công nghệ lớn (như phát triển AGI hay biến đổi gen), nhà lãnh đạo tinh hoa không chỉ hỏi 'Việc này có kiếm được tiền không?' mà hỏi 'Việc này có nâng cao phẩm giá con người không?'.",
+      "lollapalooza_pairs": [
+        "Vòng tròn năng lực",
+        "Tầm nhìn 10 năm",
+        "Da thịt trong cuộc chơi"
+      ],
+      "action_steps": [
+        "Áp dụng phép thử Kant: Tự hỏi 'Nếu nguyên tắc này trở thành luật phổ quát cho toàn nhân loại, thế giới sẽ tốt hơn hay tệ hơn?'.",
+        "Bảo tồn ngọn lửa nhận thức: Ưu tiên các dự án giảm thiểu rủi ro sinh tồn và mở rộng tiềm năng của loài người.",
+        "Giữ vững danh dự nội tại: Coi trọng phẩm giá cá nhân cao hơn mọi sự tán dương hay chê bai nhất thời từ đám đông."
+      ],
+      "boundary_conditions": "Đạo đức không phải là sự phán xét giáo điều hay đạo đức giả; đạo đức phải đi đôi với tính dũng cảm thực tế và kết quả cụ thể trong đời sống.",
+      "real_world_case": "• Robert Oppenheimer & Dự án Manhattan: Sự dằn vặt hiện sinh khi chứng kiến sức mạnh hủy diệt của bom nguyên tử, dẫn đến nỗ lực quốc tế kiểm soát vũ khí hạt nhân.\n• Elon Musk & Trách nhiệm ngọn lửa nhận thức: Định vị việc phát triển thuộc địa Sao Hỏa và AI an toàn như một chính sách bảo hiểm sinh tồn cho ngọn lửa ý thức của nhân loại trong vũ trụ.",
       "source": "mental_model"
     }
   ]

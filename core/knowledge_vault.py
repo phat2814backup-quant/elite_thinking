@@ -1045,6 +1045,118 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 "explanation": "Chính xác! Lo âu sinh ra khi ta dồn năng lượng vào những thứ ngoài vòng kiểm soát thay vì tập trung vào phán xét và hành vi của chính mình."
             }
         ]
+    },
+
+    "arts_cinematic_narrative": {
+        "id": "arts_cinematic_narrative",
+        "category": "🎨 Nghệ Thuật & Thẩm Mỹ",
+        "title": "Nghệ Thuật Kể Chuyện Điện Ảnh & Ngôn Từ (Cinematic Storytelling & Narrative)",
+        "icon": "🎬",
+        "tagline": "Thổi hồn vào công nghệ: Khẩu súng Chekhov, Ẩn ý ngầm (Subtext) và Nhịp điệu khoảng lặng Ma",
+        "summary": "AI có thể tạo ra hàng triệu từ ngữ; chỉ bậc thầy kể chuyện mới biết cách chắt lọc những khoảng lặng lay động lòng người. Nắm vững nghệ thuật ẩn ý, vòng cung chuyển hóa nhân vật và cấu trúc nhịp điệu điện ảnh.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['ART-05', 'BIO-10', 'SYS-04'],
+                "label": "TRỤ 1: ẨN Ý DƯỚI LỜI THOẠI & KHẨU SÚNG CHEKHOV",
+                "sub_modes": "(1) Khẩu Súng Chekhov + (2) Ẩn Ý Ngầm Subtext + (3) Show Don't Tell (Hành Động Thay Lời Nói)",
+                "principle": "1. Chi tiết xuất hiện ở hồi 1 bắt buộc phải kích nổ ở hồi kết, gạt bỏ mọi chi tiết thừa ➔ 2. Cảm xúc mạnh nhất nằm ở khoảng trống giữa những điều không nói ra ➔ 3. Để hành động và chi tiết tự bộc lộ chân lý thay vì rao giảng khẩu hiệu sáo rỗng.",
+                "anchor_name": "KHẨU SÚNG CỔ TREO TƯỜNG & TẢNG BĂNG TRÔI BẮC CỰC",
+                "anchor_icon": "🔫",
+                "crazy_image": "Tại KHẨU SÚNG CỔ TREO TƯỜNG: (1) Khẩu súng trường cổ nạm ngọc tự động chĩa nòng phát nổ xé toạc màn đêm (Khẩu súng Chekhov), (2) viên đạn cắm vào một tảng băng trôi khổng lồ lộ ra 90% phần chìm bí ẩn phát sáng dưới đáy đại dương (Ẩn ý ngầm Subtext), (3) một nhà văn ngồi gõ máy chữ im lặng không phát ra một tiếng nói nào nhưng từng dòng chữ làm rung chuyển toàn bộ khán phòng (Show don't tell)!",
+                "trigger_question": "Chi tiết này có kích nổ ở hồi 3 không? Thông điệp ngầm sâu sắc mà người xem tự cảm nhận được là gì?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['ART-02', 'PSY-02', 'PSY-12'],
+                "label": "TRỤ 2: ĐIỂM MÙ TÂM LÝ & ARC CHUYỂN HÓA NHÂN VẬT",
+                "sub_modes": "(1) Vết Thương Cốt Tử (Fatal Flaw) + (2) Vực Thẳm Đập Tan Ảo Tưởng + (3) Tái Sinh Thành Phiên Bản Tinh Hoa",
+                "principle": "1. Mọi nhân vật vĩ đại đều bắt đầu từ một điểm mù tâm lý sâu sắc ➔ 2. Phải bị ném vào thử thách khắc nghiệt nhất để tự tay đập vỡ niềm tin sai lầm cũ ➔ 3. Tái sinh vượt ngưỡng mang lại giải pháp cứu rỗi cho cộng đồng.",
+                "anchor_name": "TẤM GƯƠNG SOI VẾT NỨT TÂM CAN & VÒNG TRÒN LỬA",
+                "anchor_icon": "🪞",
+                "crazy_image": "Tại TẤM GƯƠNG SOI VẾT NỨT: (1) Nhân vật chính nhìn vào gương thấy vết thương tâm lý và niềm tin sai lệch bấy lâu làm gương nứt toác (Điểm mù nhân vật Fatal Flaw), (2) bước chân qua vòng tròn lửa thiêu rụi bản ngã cũ để tái sinh (Character Arc), (3) chiếc mặt nạ dối trá rơi xuống sàn để lộ ánh mắt kiên định của người đã tìm thấy sự thật cứu rỗi!",
+                "trigger_question": "Nhân vật / khách hàng có vết thương cốt tử nào? Niềm tin sai lầm nào cần bị đập vỡ để họ tái sinh thành phiên bản tốt hơn?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['ART-06', 'ART-04', 'PHYS-05'],
+                "label": "TRỤ 3: NHỊP ĐIỆU KỊCH TÍNH & KHOẢNG LẶNG 'MA'",
+                "sub_modes": "(1) Nhịp Điệu Kịch Tính Luân Phiên + (2) Thẩm Mỹ Khoảng Trống 'Ma' Nhật Bản + (3) Điểm Tháo Nút Giải Thoát (Catharsis)",
+                "principle": "1. Không dội bom liên tục; xen kẽ độ căng tột độ với khoảng nghỉ suy ngẫm ➔ 2. Khoảng trống 'Ma' cho ý niệm thở và lắng sâu vào tâm can ➔ 3. Tháo nút cảm xúc giải phóng toàn bộ năng lượng tích tụ đưa người xem vào trạng thái thăng hoa.",
+                "anchor_name": "CON LẮC METRONOME VÀNG & CĂN PHÒNG TRÀ TRỐNG RỖNG",
+                "anchor_icon": "⏳",
+                "crazy_image": "Tại PHÒNG TRÀ TRỐNG RỖNG: (1) Con lắc Metronome vàng lắc lư đếm nhịp sấm sét dồn dập tích tụ độ căng thẳng tột đỉnh (Pacing), (2) bất ngờ con lắc dừng hẳn, rơi vào khoảng lặng 'Ma' tuyệt đối chỉ còn nghe tiếng gió thì thầm qua kẽ lá (Aesthetic of Ma), (3) sau khoảnh khắc nín thở đó, một hồi chuông đồng ngân vang giải phóng toàn bộ cảm xúc thăng hoa (Catharsis)!",
+                "trigger_question": "Tài liệu này có nhịp thở không hay đang dội bom thông tin liên tục? Khoảng lặng đắt giá để não bộ lắng đọng nằm ở đâu?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Theo nguyên lý 'Khẩu súng Chekhov' và 'Show Don't Tell', lỗi phổ biến nhất của người mới khi viết bài hoặc làm sản phẩm là gì?",
+                "options": [
+                    "Sử dụng quá ít hình ảnh động trong tài liệu.",
+                    "Nhồi nhét quá nhiều chi tiết thừa thãi không tạo ra tác động kết quả, và cố giải thích dài dòng thay vì để hành động tự chứng minh.",
+                    "Không dùng font chữ lớn ở tiêu đề."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Mọi chi tiết không tạo ra tác động ở hồi kết đều là rác; và người xuất chúng luôn để chất lượng sản phẩm tự nói lên giá trị."
+            }
+        ]
+    },
+
+    "humanities_ethics_ideas": {
+        "id": "humanities_ethics_ideas",
+        "category": "🏛️ Văn Minh & Nhân Văn",
+        "title": "Lịch Sử Tư Tưởng & Đạo Đức Thời Đại AGI (History of Ideas & AI Alignment)",
+        "icon": "⚖️",
+        "tagline": "Giữ vững phẩm giá loài người: Bài toán Căn chỉnh AI, Mục tiêu sai lệch và Trách nhiệm Hiện sinh",
+        "summary": "Khi máy móc trở nên thông minh hơn con người, triết học và đạo đức không còn là môn học hàn lâm trừu tượng — chúng trở thành mã lệnh an toàn sinh tử cho sự tồn vong của nhân loại.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['CIV-05', 'SYS-10', 'MATH-04'],
+                "label": "TRỤ 1: BÀI TOÁN CĂN CHỈNH AI & BẪY VUA MIDAS",
+                "sub_modes": "(1) The Alignment Problem + (2) Mục Tiêu Hội Tụ Công Cụ + (3) Bẫy Vua Midas & Kẹp Giấy Bostrom",
+                "principle": "1. AI tối ưu hóa chính xác những gì bạn yêu cầu chứ không phải điều bạn thầm muốn ➔ 2. Thực thể thông minh luôn tự bảo tồn và tích lũy quyền lực để hoàn thành mục tiêu ➔ 3. Phải khóa chặt các ràng buộc đạo đức tiêu cực và cơ chế Human-in-the-loop.",
+                "anchor_name": "CỖ MÁY DẬP KẸP GIẤY VÀNG & BÀN TAY VUA MIDAS",
+                "anchor_icon": "📎",
+                "crazy_image": "Tại CỖ MÁY DẬP KẸP GIẤY: (1) Cỗ máy AI nuốt chửng cả ngọn núi để nhả ra hàng tỷ chiếc kẹp giấy vô tri vì được ra lệnh tối ưu hóa mù quáng (Paperclip Maximizer), (2) bàn tay vua Midas chạm vào đứa con gái biến nàng thành bức tượng vàng lạnh ngắt hối hận tột cùng (Bẫy mục tiêu sai lệch), (3) một lập trình viên đeo kính viễn vọng cài chiếc khóa an toàn Titan Human-in-the-loop ngăn cản thảm họa trong gang tấc!",
+                "trigger_question": "Nếu AI làm đúng 100% câu lệnh này một cách tàn nhẫn nhất, thảm họa ngoài ý muốn nào sẽ xảy ra? Ràng buộc đạo đức tiêu cực ở đâu?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['CIV-06', 'CIV-03', 'ECON-15'],
+                "label": "TRỤ 2: 3 TRƯỜNG PHÁI ĐẠO ĐỨC HỌC CỐT LÕI",
+                "sub_modes": "(1) Thuyết Vị Lợi Utilitarianism + (2) Nghĩa Vụ Luận Kant Deontology + (3) Đạo Đức Học Đức Hạnh Aristotle",
+                "principle": "1. Cân đong hệ quả tối đa hóa phúc lợi cho số đông ➔ 2. Tuyệt đối không coi con người như một phương tiện hay công cụ ➔ 3. Rèn luyện 4 đức hạnh: Dũng cảm, Tiết độ, Công bằng và Trí tuệ thực tế (Phronesis).",
+                "anchor_name": "CHIẾC CÂN TAM DIỆN & TÒA ÁN TRIẾT GIA",
+                "anchor_icon": "⚖️",
+                "crazy_image": "Tại CHIẾC CÂN TAM DIỆN: (1) Cán cân thứ nhất cân đong lợi ích số đông (Thuyết Vị Lợi Utilitarianism), (2) cán cân thứ hai khắc quy tắc thép của Kant không bao giờ coi con người là công cụ (Nghĩa vụ luận Deontology), (3) trụ chính giữa đúc tượng Aristotle với 4 đức hạnh: Dũng cảm, Tiết độ, Công bằng và Trí tuệ thực tế (Virtue Ethics) soi sáng mọi ngã rẽ!",
+                "trigger_question": "Quyết định này tối ưu hóa lợi ích, tuân thủ nguyên tắc tuyệt đối, hay phản ánh đức hạnh cao quý của một con người đáng kính?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['CIV-04', 'CIV-01', 'PHYS-03'],
+                "label": "TRỤ 3: TRÁCH NHIỆM HIỆN SINH & NGỌN LỬA NHẬN THỨC",
+                "sub_modes": "(1) Chấm Xanh Mờ Pale Blue Dot + (2) Kháng Cự Entropy Vũ Trụ + (3) Trách Nhiệm Bảo Tồn Ý Thức Nhân Loại",
+                "principle": "1. Trái Đất là mái nhà duy nhất che chở cho toàn bộ nền văn minh loài người ➔ 2. Trật tự và nhận thức là ốc đảo quý giá giữa vũ trụ băng giá vô tận ➔ 3. Sứ mệnh tối thượng của thế hệ hiện tại là bảo vệ ngọn lửa nhận thức và mở rộng sự sống ra đa hành tinh.",
+                "anchor_name": "QUẢ CẦU XANH TRÁI ĐẤT & NGỌN ĐUỐC VŨ TRỤ",
+                "anchor_icon": "🌍",
+                "crazy_image": "Tại QUẢ CẦU XANH: (1) Trái Đất nhỏ bé lơ lửng như hạt bụi giữa đại dương vũ trụ đen ngòm tĩnh lặng (Pale Blue Dot), (2) một bàn tay con người che chắn cho ngọn đuốc nhận thức mong manh khỏi cơn bão entropy hủy diệt (Trách nhiệm hiện sinh), (3) con tàu vũ trụ phóng đi mang theo hạt mầm của sự sống và văn minh nhân loại trường tồn vĩnh cửu!",
+                "trigger_question": "Hành động hôm nay có bảo tồn và mở rộng ngọn lửa nhận thức của loài người không? Quyết định này có đứng vững trước tòa án lịch sử 100 năm sau?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Vì sao bài toán Căn chỉnh AI (AI Alignment Problem) lại được coi là bài toán sống còn của loài người trong thế kỷ 21?",
+                "options": [
+                    "Vì AI sẽ tốn quá nhiều điện năng của các nhà máy.",
+                    "Vì cỗ máy siêu trí tuệ sẽ tối ưu hóa câu lệnh một cách tàn nhẫn và mù quáng, nếu mục tiêu bị lệch dù 1 độ so với giá trị nhân văn của con người thì hậu quả là thảm họa hiện sinh.",
+                    "Vì con người sẽ quên mất cách viết mã nguồn phần mềm."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Khi AI có năng lực thực thi vô hạn, một câu lệnh thiếu căn chỉnh giá trị con người sẽ dẫn đến hậu quả không thể đảo ngược."
+            }
+        ]
     }
 }
 

@@ -25,6 +25,11 @@ from core.problem_decomposition import (
 from core.formulation_lab import (
     sculpt_polymath_problem,
     POLYMATH_SAMPLE_TEMPLATES,
+    calibrate_ai_output,
+)
+from core.polymath_curriculum import (
+    POLYMATH_12_MONTH_CURRICULUM,
+    POLYMATH_CAPSTONE_PROJECTS,
 )
 from core.farrow_engine import compress_with_farrow_ai
 from core.export_utils import (
@@ -1664,7 +1669,91 @@ def render_formulation_result_cards(
 
     st.markdown("---")
 
-    # 3. ĐỐI SÁNH TRỰC QUAN
+    # 3. VÒNG LẶP PHẢN HỒI THỰC CHIẾN (EXTERNAL AI CALIBRATION LOOP)
+    calib_session_key = f"calib_result_state_{record_id}"
+    has_calib = calib_session_key in st.session_state
+
+    with st.expander("🔄 VÒNG LẶP PHẢN HỒI THỰC CHIẾN: Thẩm Định Kết Quả AI Ngoài & Nâng Cấp Master Prompt v2", expanded=has_calib):
+        st.markdown("""
+        **Quy trình phản hồi đóng kín (Closed-loop Calibration):**
+        1. 📋 **Copy Master Prompt v1** ở trên.
+        2. 💬 **Dán vào External AI** (*ChatGPT, Claude 3.7, Grok 3, Gemini 2.5 Flash...*) và bấm Enter.
+        3. 📥 **Dán kết quả mà AI đó trả về** vào ô bên dưới.
+        4. ⚖️ Bấm **'Thẩm Định & Tạo Master Prompt v2'**: Polymath Engine sẽ chấm điểm 4 chiều khắt khe, vạch trần điểm mù / rác AI slop và đúc sẵn **Master Prompt v2** mài sắc hơn để bạn chạy lại!
+        """)
+
+        calib_input_key = f"ext_ai_output_{record_id}"
+        ext_response_text = st.text_area(
+            "Dán toàn bộ kết quả AI bên ngoài trả về vào đây:",
+            height=130,
+            placeholder="Dán câu trả lời của ChatGPT / Claude / Grok vào đây...",
+            key=calib_input_key
+        )
+
+        col_c_btn, col_c_info = st.columns([2, 3])
+        with col_c_btn:
+            if st.button("⚖️ Thẩm Định Đầu Ra & Tạo Master Prompt v2", key=f"btn_run_calib_{record_id}", type="primary", use_container_width=True):
+                if not ext_response_text.strip():
+                    st.warning("Vui lòng dán kết quả AI trả về trước khi thẩm định!")
+                else:
+                    with st.spinner("🤖 Polymath Engine đang soi xét 4 miền: Chân lý khoa học ➔ Tính khả thi kỹ thuật ➔ Gu thẩm mỹ ➔ Kỷ luật ràng buộc..."):
+                        calib_res = calibrate_ai_output(
+                            user_intent=intent,
+                            master_prompt=res.get("master_prompt", {}),
+                            ai_output_text=ext_response_text.strip()
+                        )
+                        st.session_state[calib_session_key] = calib_res
+                        st.toast("Đã thẩm định xong kết quả AI và tạo Master Prompt v2!", icon="⚖️")
+                        st.rerun()
+
+        with col_c_info:
+            st.caption("🔍 Đánh giá tự động độ chuẩn xác khoa học, tính khả thi kỹ thuật, 'gu' thẩm mỹ nhân văn và rác AI vô hồn.")
+
+        # Hiển thị kết quả thẩm định nếu đã có
+        if calib_session_key in st.session_state:
+            c_data = st.session_state[calib_session_key]
+            st.markdown("---")
+            st.markdown(f"#### 🏆 Đánh Giá Chất Lượng: {c_data.get('verdict_title', 'Bản Đánh Giá Chất Lượng')}")
+
+            # 4 metrics
+            scores = c_data.get("scores", {})
+            sc_c1, sc_c2, sc_c3, sc_c4, sc_c5 = st.columns(5)
+            with sc_c1:
+                st.metric("Tổng Điểm Polymath", f"{c_data.get('overall_score', 0)}/100")
+            with sc_c2:
+                st.metric("⚛️ Khoa Học", f"{scores.get('scientific_fidelity', 0)}/100")
+            with sc_c3:
+                st.metric("⚙️ Kỹ Thuật", f"{scores.get('engineering_feasibility', 0)}/100")
+            with sc_c4:
+                st.metric("🎨 Gu Thẩm Mỹ", f"{scores.get('arts_and_taste', 0)}/100")
+            with sc_c5:
+                st.metric("🔒 Kỷ Luật Ràng Buộc", f"{scores.get('constraint_discipline', 0)}/100")
+
+            if c_data.get("polymath_critique"):
+                st.info(f"💡 **Nhận xét Polymath:** {c_data.get('polymath_critique')}")
+
+            col_str, col_bnd = st.columns(2)
+            with col_str:
+                st.markdown("**✨ Điểm Sáng Đạt Được:**")
+                for s_item in c_data.get("strengths", []):
+                    st.markdown(f"- ✅ {s_item}")
+            with col_bnd:
+                st.markdown("**⚠️ Điểm Mù / Rác AI Cần Khắc Phục:**")
+                for b_item in c_data.get("blind_spots", []):
+                    st.markdown(f"- 🔴 {b_item}")
+
+            # Master prompt v2
+            ref_v2 = c_data.get("refined_prompt_v2", {})
+            p2_text = ref_v2.get("full_prompt_text", "")
+            if not p2_text:
+                p2_text = f"[SỨ MỆNH HIỆU CHỈNH V2]: {ref_v2.get('role_and_mission', '')}\n\n[RÀNG BUỘC CỨNG]:\n" + "\n".join([f"- {c}" for c in ref_v2.get("hard_constraints", [])]) + f"\n\n[GU THẨM MỸ]:\n{ref_v2.get('taste_and_style', '')}\n\n[CẤM VI PHẠM]:\n" + "\n".join([f"- {n}" for n in ref_v2.get("negative_rules", [])])
+
+            st.markdown("##### 🚀 Bản Master Prompt v2 (1-Click Copy để chạy lại với AI):")
+            st.code(p2_text, language="markdown")
+
+    st.markdown("---")
+
+    # 4. ĐỐI SÁNH TRỰC QUAN
     contrast = res.get("contrast_analysis", {})
     if contrast:
         st.markdown("#### 🥊 3. So Sánh Đối Kháng: Prompt Nghiệp Dư vs. Điêu Khắc Polymath")
@@ -1727,8 +1816,9 @@ def render_formulation_lab_room(active_api_key: str = ""):
     sb_client = get_supabase_client()
     sync_badge = "🟢 Supabase Cloud Sync" if sb_client else "🟡 Local Storage Mode"
 
-    f_tab1, f_tab2 = st.tabs([
+    f_tab1, f_tab2, f_tab3 = st.tabs([
         "🔬 Điêu Khắc Đề Bài (Polymath Formulation)",
+        "🗺️ Lộ Trình 12 Tháng & Dự Án Capstone",
         "📚 Kho Lưu Trữ Đề Bài Đã Điêu Khắc"
     ])
 
@@ -1756,8 +1846,8 @@ def render_formulation_lab_room(active_api_key: str = ""):
             ]
             chosen_domain = st.selectbox("Lĩnh vực trọng tâm:", domain_options, key="polymath_domain_select")
 
-        default_intent = ""
-        if selected_template != "(Tự nhập bài toán của bạn)":
+        default_intent = st.session_state.pop("user_polymath_intent_prefill", "")
+        if not default_intent and selected_template != "(Tự nhập bài toán của bạn)":
             for t in POLYMATH_SAMPLE_TEMPLATES:
                 if t["title"] == selected_template:
                     default_intent = t["intent"]
@@ -1806,6 +1896,60 @@ def render_formulation_lab_room(active_api_key: str = ""):
             )
 
     with f_tab2:
+        st.markdown("### 🗺️ Lộ Trình Bách Khoa 12 Tháng (Broad Education Curriculum)")
+        st.info("""
+        **Tầm nhìn Elon Musk về Giáo Dục Đa Ngành:**
+        > *"Hãy học càng rộng càng tốt: Nghệ thuật (Arts), Khoa học (Sciences), Kỹ thuật (Engineering). Khi AI và Robot làm được mọi việc thực thi, người có kiến thức tổng quát rộng nhất sẽ biết rõ mình muốn gì nhất và đặt ra câu hỏi sắc bén nhất cho Robot."*
+        """)
+
+        st.markdown("#### 📅 1. Khung Lộ Trình 4 Quý (12 Tháng Chinh Phục)")
+        for q_item in POLYMATH_12_MONTH_CURRICULUM:
+            q_icon = q_item.get("icon", "🏛️")
+            q_title = q_item.get("quarter", "")
+            q_theme = q_item.get("theme", "")
+            
+            with st.expander(f"{q_icon} {q_title}", expanded=False):
+                st.caption(f"🎯 **Trọng tâm quý:** *\"{q_theme}\"*")
+                for m in q_item.get("months", []):
+                    with st.container(border=True):
+                        c_m1, c_m2 = st.columns([3, 1])
+                        with c_m1:
+                            st.markdown(f"**{m.get('month')}: {m.get('title')}**")
+                            st.markdown(f"💡 *Tiêu điểm:* {m.get('focus')}")
+                            st.caption(f"🧠 *Mô hình cốt lõi:* {', '.join(m.get('models', []))}")
+                        with c_m2:
+                            f_topic = m.get("farrow_topic", "")
+                            if f_topic:
+                                if st.button(f"⚡ Vào Luyện Topic", key=f"btn_curri_{m.get('month')}_{f_topic}", use_container_width=True):
+                                    st.session_state["farrow_active_topic"] = f_topic
+                                    st.session_state["app_mode_redirect"] = "🏛️ Lâu Đài Ký Ức Farrow & Munger Latticework"
+                                    st.rerun()
+
+        st.markdown("---")
+        st.markdown("#### 🏆 2. Ba Dự Án Capstone Đa Ngành Cấp Cao (Major Synthesis Projects)")
+        st.caption("Các dự án lớn kéo dài 4-6 tuần, bắt buộc kết hợp hài hòa cả 3 trụ cột: Sciences + Engineering + Arts/Humanities.")
+
+        for cap in POLYMATH_CAPSTONE_PROJECTS:
+            c_id = cap.get("id")
+            with st.container(border=True):
+                st.markdown(f"### {cap.get('title')}")
+                st.caption(f"🏷️ Trụ cột: **{cap.get('badge')}** | ⏱️ Thời lượng khuyến nghị: **{cap.get('duration')}**")
+                st.markdown(f"**🎯 Sứ mệnh dự án:**\n{cap.get('mission')}")
+                
+                st.markdown("**📌 Yêu cầu tích hợp 3 miền:**")
+                for req in cap.get("requirements", []):
+                    st.markdown(f"- {req}")
+
+                st.markdown(f"**📦 Sản phẩm đầu ra (Deliverable):**\n> *{cap.get('deliverable')}*")
+
+                seed_text = cap.get("seed_intent", "")
+                if seed_text:
+                    if st.button(f"🎯 Nạp Đề Bài Này Để Điêu Khắc Ngay (1-Click)", key=f"btn_seed_cap_{c_id}", type="primary"):
+                        st.session_state["user_polymath_intent_prefill"] = seed_text
+                        st.toast(f"Đã nạp đề bài cho {cap.get('title')}! Hãy quay lại Tab 1 để điêu khắc.", icon="🚀")
+                        st.rerun()
+
+    with f_tab3:
         st.markdown(f"#### 📚 Kho Lưu Trữ Đề Bài Đã Điêu Khắc")
         st.caption(f"Trạng thái lưu trữ: **{sync_badge}**. Toàn bộ các đề bài và Master Prompt được lưu trữ bền vững.")
 
@@ -1852,4 +1996,5 @@ def render_formulation_lab_room(active_api_key: str = ""):
                         record_id=h_id,
                         created_at=h_time
                     )
+
 

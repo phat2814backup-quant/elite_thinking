@@ -216,3 +216,172 @@ Hãy phân tích và điêu khắc theo đúng 4 tầng bách khoa (Sciences -> 
 
     # Nếu tất cả API keys đều thất bại hoặc offline, kích hoạt bộ phân tích Heuristic
     return _generate_polymath_fallback_heuristic(cleaned_intent)
+
+
+CALIBRATION_SYSTEM_PROMPT = """Bạn là Polymath AI Calibration & Prompt Refinement Engine — Bậc thầy Thẩm định Đầu ra AI và Tinh chỉnh Đề bài Đa ngành (Sciences + Engineering + Arts/Humanities).
+
+NHIỆM VỤ:
+Tiếp nhận:
+1. Ý định ban đầu của con người (User Intent).
+2. Bản Master Prompt v1 đã giao cho AI.
+3. Kết quả thực tế mà AI bên ngoài (ChatGPT, Claude, Grok, Gemini...) đã trả về.
+
+Nhiệm vụ của bạn là soi xét, chấm điểm và bóc tách kết quả này dưới lăng kính Polymath khắt khe, phát hiện các điểm mù, sự sáo rỗng vô hồn (AI slop), ảo giác (hallucination) hoặc vi phạm ràng buộc; sau đó tạo ra BẢN MASTER PROMPT V2 ĐƯỢC TINH CHỈNH HOÀN HẢO ĐỂ CHẠY LẠI.
+
+TIÊU CHÍ CHẤM ĐIỂM (0 - 100 ĐIỂM MỖI TIÊU CHÍ):
+1. scientific_fidelity: Độ chuẩn xác khoa học, tính logic vật lý/toán học, chân lý gốc. Có bị ảo giác hay vi phạm quy luật tự nhiên không?
+2. engineering_feasibility: Tính khả thi kỹ thuật, kiến trúc cụ thể, tính hành động thực chiến, chi phí biên và độ trễ. Có làm được ngay hay chỉ nói lý thuyết chung chung?
+3. arts_and_taste: "Taste" (Vị giác/Gu thẩm mỹ), chiều sâu cảm xúc, nhân tính, văn phong điện ảnh/nghệ thuật. Có bị rơi vào bẫy rác AI vô hồn (generic AI slop) không?
+4. constraint_discipline: Kỷ luật tuân thủ các ràng buộc cứng và negative prompts đã chỉ định trong Master Prompt v1. Có bỏ sót hay vi phạm điều cấm không?
+
+BẮT BUỘC TRẢ VỀ JSON HỢP LỆ THEO CẤU TRÚC SAU (KHÔNG KÈM MARKDOWN NGOÀI JSON):
+{
+  "overall_score": 85,
+  "scores": {
+    "scientific_fidelity": 88,
+    "engineering_feasibility": 82,
+    "arts_and_taste": 78,
+    "constraint_discipline": 90
+  },
+  "verdict_title": "Danh hiệu chất lượng đầu ra (vd: 'Khung Kỹ Thuật Đạt Chuẩn - Thiếu Vị Giác Nghệ Thuật')",
+  "strengths": [
+    "Điểm sáng 1...",
+    "Điểm sáng 2..."
+  ],
+  "blind_spots": [
+    "Điểm mù / Lỗ hổng 1: Chỗ AI trả lời hời hợt hoặc sáo rỗng...",
+    "Điểm mù / Lỗ hổng 2: Chỗ vi phạm ràng buộc hoặc thiếu tính khả thi..."
+  ],
+  "polymath_critique": "Bản nhận xét tổng quan sâu sắc dưới góc nhìn của Leonardo da Vinci & Elon Musk về kết quả này (khoảng 3-4 câu).",
+  "refined_prompt_v2": {
+    "role_and_mission": "Sứ mệnh nâng cấp cho v2...",
+    "hard_constraints": ["Ràng buộc bổ sung siết chặt 1", "Ràng buộc 2"],
+    "taste_and_style": "Chỉ thị gu thẩm mỹ được mài sắc hơn...",
+    "negative_rules": ["Điều cấm mới dựa trên lỗi v1...", "Cấm lặp lại điểm mù X..."],
+    "acceptance_criteria": ["Tiêu chí nghiệm thu v2..."],
+    "full_prompt_text": "Toàn bộ đoạn prompt v2 hoàn chỉnh sẵn sàng copy 1-click để dán vào AI..."
+  }
+}
+"""
+
+
+def _generate_calibration_fallback_heuristic(user_intent: str, master_prompt: Any, ai_output_text: str) -> Dict[str, Any]:
+    """Tạo bản thẩm định Heuristic khi offline hoặc mất kết nối API."""
+    out_len = len(ai_output_text.strip())
+    score_sci = 82 if out_len > 300 else 65
+    score_eng = 80 if "bước" in ai_output_text.lower() or "kiến trúc" in ai_output_text.lower() else 68
+    score_art = 75 if any(w in ai_output_text.lower() for w in ["cảm xúc", "nghệ thuật", "thẩm mỹ", "tinh tế", "con người"]) else 60
+    score_disc = 85 if out_len > 400 else 70
+    overall = int((score_sci + score_eng + score_art + score_disc) / 4)
+
+    prompt_v2_text = f"""[SỨ MỆNH HIỆU CHỈNH V2]: Hãy hoàn thiện và giải quyết bài toán: '{user_intent}'.
+Trong lần chạy trước, bạn đã cung cấp kết quả có khung sườn nhưng còn thiếu tính hành động và vị giác thẩm mỹ. Lần này bạn phải vượt qua các tiêu chuẩn khắt khe sau:
+
+[RÀNG BUỘC CỨNG BỔ SUNG]:
+- 1. Biến mọi khái niệm trừu tượng thành thông số kỹ thuật hoặc hành động cụ thể có thể kiểm chứng.
+- 2. Đưa ra lộ trình phân rã theo tỷ lệ vàng: 40% Kỹ thuật kiến trúc, 30% Khoa học tự nhiên, 30% Trải nghiệm và thẩm mỹ nhân văn.
+- 3. Chỉ rõ nút thắt cổ chai chi phí biên và điểm gãy tiềm tàng của giải pháp.
+
+[CHỈ THỊ GU THẨM MỸ & VỊ GIÁC]:
+- Loại bỏ hoàn toàn giọng điệu giáo điều của chatbot thông thường (Generic AI Slop).
+- Sử dụng phong cách viết cô đọng, sắc bén, giàu hình ảnh gợi cảm giác như phong cách thiết kế tối giản của Apple và Braun.
+
+[CẤM VI PHẠM (NEGATIVE DIRECTIVES)]:
+- Tuyệt đối không liệt kê danh sách gạch đầu dòng hời hợt mà không giải thích cơ chế nguyên tử.
+- Không lặp lại những khuyến nghị hiển nhiên (như 'hãy nghiên cứu thị trường' hay 'cần lắng nghe khách hàng').
+
+[TIÊU CHÍ NGHIỆM THU V2]:
+- Giải pháp phải có thể bàn giao ngay cho một kỹ sư hoặc nhà thiết kế cấp cao thực thi mà không cần hỏi lại câu nào."""
+
+    return {
+        "overall_score": overall,
+        "scores": {
+            "scientific_fidelity": score_sci,
+            "engineering_feasibility": score_eng,
+            "arts_and_taste": score_art,
+            "constraint_discipline": score_disc
+        },
+        "verdict_title": "Khung Sườn Khả Thi - Cần Gia Cố Vị Giác & Ràng Buộc Cứng",
+        "strengths": [
+            "Đã bám sát chủ đề chính và phác thảo được định hướng giải pháp.",
+            "Cấu trúc phản hồi có tính hệ thống ban đầu."
+        ],
+        "blind_spots": [
+            "Còn nhiều từ ngữ sáo rỗng chung chung, chưa chạm đến chiều sâu 'vị giác' (taste) và sự đồng cảm tinh tế.",
+            "Các bước kỹ thuật chưa đưa ra được thông số ràng buộc cụ thể hoặc ngưỡng lỗi chấp nhận được."
+        ],
+        "polymath_critique": "Kết quả AI trả về đạt mức trung bình khá về kỹ thuật, nhưng thiếu linh hồn của nghệ thuật và sự khắt khe của khoa học nguyên bản. Cần siết chặt các ràng buộc tiêu cực để buộc AI vắt kiệt năng lực suy luận sâu thay vì tạo ra rác văn bản thông thường.",
+        "refined_prompt_v2": {
+            "role_and_mission": f"Giải quyết xuất sắc bài toán: '{user_intent}' với chuẩn mực tinh hoa cấp cao.",
+            "hard_constraints": [
+                "Biến mọi khái niệm trừu tượng thành thông số kỹ thuật cụ thể.",
+                "Đưa ra lộ trình phân rã theo tỷ lệ vàng đa ngành."
+            ],
+            "taste_and_style": "Cô đọng, sắc bén, mang tinh thần tối giản Bauhaus.",
+            "negative_rules": [
+                "Không dùng từ ngữ sáo rỗng chung chung.",
+                "Không đưa ra khuyến nghị hiển nhiên."
+            ],
+            "acceptance_criteria": [
+                "Kỹ sư hoặc nhà thiết kế cấp cao có thể triển khai ngay lập tức."
+            ],
+            "full_prompt_text": prompt_v2_text
+        }
+    }
+
+
+def calibrate_ai_output(user_intent: str, master_prompt: Any, ai_output_text: str) -> Dict[str, Any]:
+    """
+    Thẩm định kết quả trả về từ External AI (ChatGPT, Claude, Grok...) dưới lăng kính Polymath.
+    Chấm điểm 4 miền, chỉ ra điểm mù và kiến tạo Master Prompt v2 nâng cấp.
+    """
+    cleaned_intent = user_intent.strip()
+    cleaned_output = ai_output_text.strip()
+    if not cleaned_output:
+        return _generate_calibration_fallback_heuristic(cleaned_intent, master_prompt, "")
+
+    keys = get_all_gemini_api_keys()
+
+    prompt_repr = json.dumps(master_prompt, ensure_ascii=False) if isinstance(master_prompt, dict) else str(master_prompt)
+
+    if genai and keys:
+        calibration_request = f"""BÀI TOÁN GỐC (USER INTENT):
+\"\"\"{cleaned_intent}\"\"\"
+
+MASTER PROMPT V1 ĐÃ DÙNG:
+\"\"\"{prompt_repr[:1500]}\"\"\"
+
+KẾT QUẢ THỰC TẾ AI BÊN NGOÀI ĐÃ TRẢ VỀ CẦN THẨM ĐỊNH:
+\"\"\"{cleaned_output[:3500]}\"\"\"
+
+Hãy soi xét, chấm điểm khắt khe 4 chiều (Sciences, Engineering, Arts/Taste, Discipline) và kiến tạo Master Prompt v2 nâng cấp theo đúng format JSON đã yêu cầu."""
+
+        for api_key in keys:
+            try:
+                genai.configure(api_key=api_key)
+                for model_name in ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]:
+                    try:
+                        model = genai.GenerativeModel(
+                            model_name=model_name,
+                            system_instruction=CALIBRATION_SYSTEM_PROMPT,
+                            generation_config={"response_mime_type": "application/json"}
+                        )
+                        response = model.generate_content(calibration_request)
+                        raw_text = response.text.strip()
+                        if raw_text.startswith("```json"):
+                            raw_text = raw_text[7:]
+                        if raw_text.startswith("```"):
+                            raw_text = raw_text[3:]
+                        if raw_text.endswith("```"):
+                            raw_text = raw_text[:-3]
+                        raw_text = raw_text.strip()
+                        data = json.loads(raw_text)
+                        if isinstance(data, dict) and "overall_score" in data and "refined_prompt_v2" in data:
+                            return data
+                    except Exception:
+                        continue
+            except Exception:
+                continue
+
+    return _generate_calibration_fallback_heuristic(cleaned_intent, master_prompt, cleaned_output)
+
