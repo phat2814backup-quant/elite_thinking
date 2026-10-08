@@ -153,7 +153,7 @@ def get_anchor_image_html(topic_id: str, chunk_id: str) -> str:
                     with open(img_path, "rb") as f:
                         b64_data = base64.b64encode(f.read()).decode("utf-8")
                     mime = "image/svg+xml" if ext == ".svg" else f"image/{ext[1:]}"
-                    return f'<div style="text-align: center; margin: 10px 0 14px 0;"><img src="data:{mime};base64,{b64_data}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.4);" alt="Mỏ neo trực quan" /></div>'
+                    return f'<div style="text-align: center; margin: 10px 0 14px 0;"><img src="data:{mime};base64,{b64_data}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.4);" alt="Mỏ neo trực quan" /></div>'
                 except Exception:
                     pass
     return ""
