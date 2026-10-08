@@ -42,6 +42,7 @@ from core.models_engine import (
     get_farrow_models_grouped,
     get_farrow_metrics,
     draw_random_farrow_sprint_trio,
+    draw_polymath_triangulation_trio,
     get_models_for_topic_chunk,
     get_model_full_detail
 )
@@ -85,6 +86,7 @@ from core.ui_rooms import (
     render_macro_radar_room,
     render_problem_decomposition_room,
     render_ai_compressor_room,
+    render_formulation_lab_room,
 )
 
 
@@ -150,6 +152,8 @@ PILLAR_ICONS = {
     "Sinh học": "🧬",
     "Toán học & Xác suất": "🎲",
     "Hệ thống": "🕸️",
+    "Nghệ thuật & Thẩm mỹ": "🎨",
+    "Văn minh & Triết học": "🏛️",
 }
 
 
@@ -226,6 +230,7 @@ with st.sidebar:
     mode_options = [
         "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
         "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
+        "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
         "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
         "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
         "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
@@ -242,19 +247,21 @@ with st.sidebar:
 
     with st.expander("📖 Hướng Dẫn Nhanh (1 Phút)", expanded=False):
         st.markdown("""
-        **⚡ Triết lý Dave Farrow:** Não chỉ có pin nhỏ. Đừng học dồn 2 tiếng, hãy tập trung 10 phút!
+        **⚡ Triết lý Dave Farrow & Elon Musk:** Não chỉ có pin nhỏ. Thời đại AI thực thi mọi thứ, con người phải giỏi **đặt câu hỏi và nén tư duy 10 phút**!
 
         * **1. Muốn nạp kiến thức mới:** 
           👉 Vào **⚡ Máy Ép Farrow 1-Click** (Dán bài dài/sách -> AI nén thành 3 Mỏ Neo + Hình ảnh dị biệt để nhớ vĩnh viễn).
         * **2. Muốn học các mô hình có sẵn:** 
-          👉 Vào **🏛️ Lâu Đài Ký Ức** (13 chủ đề nén sẵn & 152 mô hình tinh hoa Munger/Khoa học).
-        * **3. Muốn rèn phản xạ tư duy:** 
-          👉 Vào **⏱️ Phòng Ép Xung 10 Phút** (Chạy nước rút 10 phút hoặc rút 3 lá Tarot ngẫu nhiên).
-        * **4. Muốn đọc vị thời cuộc, vĩ mô:** 
+          👉 Vào **🏛️ Lâu Đài Ký Ức** (18 chủ đề nén sẵn & 160 mô hình tinh hoa Munger/Khoa học/Nghệ thuật & Văn minh).
+        * **3. Muốn rèn phản xạ tư duy & Bách khoa:** 
+          👉 Vào **⏱️ Phòng Ép Xung 10 Phút** (Chạy nước rút 10 phút hoặc rút Tam Giác Bách Khoa).
+        * **4. Muốn ra lệnh & chỉ đạo AI/Robot như Elon Musk:** 
+          👉 Vào **🔬 Phòng Điêu Khắc Đề Bài** (Chuyển ý muốn thô thành Bản đặc tả tối thượng qua Khoa học + Kỹ thuật + Gu thẩm mỹ Arts).
+        * **5. Muốn đọc vị thời cuộc, vĩ mô:** 
           👉 Vào **📡 Máy Quét Thế Cuộc** (Bóc tách xu hướng, cái gì rẻ đi, cái gì khan hiếm, nước đi tinh hoa).
-        * **5. Muốn giải quyết nan đề cá nhân:** 
+        * **6. Muốn giải quyết nan đề cá nhân:** 
           👉 Vào **🎯 Phân Rã Thực Chiến** (Phân rã nguyên lý gốc, soi 5 lăng kính, lưu Nhật ký quyết định).
-        * **6. Khi não căng thẳng, kiệt pin:** 
+        * **7. Khi não căng thẳng, kiệt pin:** 
           👉 Vào **🫁 Trạm Thở Bụng** (Thở Box Breathing 2 phút để phục hồi trạng thái não Alpha).
 
         💡 **Mẹo tinh hoa:** Sau khi quét hoặc phân rã, luôn có nút **`⚡ Ép Nén Farrow`** để chuyển thành mỏ neo trí nhớ, và nút **`📥 Xuất Báo Cáo (.md)`** để lưu về máy.
@@ -953,7 +960,11 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
 
         sprint_type = st.radio(
             "Chọn chế độ Sprint:",
-            ["📖 Chọn Chủ Đề Lâu Đài Ký Ức", "🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)"],
+            [
+                "📖 Chọn Chủ Đề Lâu Đài Ký Ức",
+                "🎲 Rút 3 Thẻ Farrow Tarot (Soi Gốc - Đọc Dòng - Ra Đòn)",
+                "🔬 Rút Tam Giác Bách Khoa (Polymath Triangulation: Khoa Học + Kỹ Thuật + Nghệ Thuật)"
+            ],
             horizontal=True
         )
 
@@ -986,6 +997,38 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
                     </div>
                     """
                     render_html(card_html)
+
+        elif sprint_type == "🔬 Rút Tam Giác Bách Khoa (Polymath Triangulation: Khoa Học + Kỹ Thuật + Nghệ Thuật)":
+            if "polymath_trio" not in st.session_state or st.button("🔀 Rút Lại Tam Giác Bách Khoa Mới", type="secondary"):
+                st.session_state.polymath_trio = draw_polymath_triangulation_trio()
+            
+            p_trio = st.session_state.polymath_trio
+            st.info("🎯 **Thử Thách Bách Khoa 10 Phút (Elon Musk Challenge):** Hãy kết hợp cả 3 mô hình từ 3 thế giới khác biệt để giải một bài toán thực tế hoặc kiến tạo một câu lệnh Prompt xuất chúng!")
+            
+            c_p1, c_p2, c_p3 = st.columns(3)
+            cols_p = [c_p1, c_p2, c_p3]
+            poly_anchors = [
+                ("⚛️ SCIENCES (Khoa Học)", "Chân Lý Gốc & Giới Hạn Tự Nhiên"),
+                ("⚙️ ENGINEERING (Kỹ Thuật)", "Hệ Thống, Chi Phí & Thực Thi"),
+                ("🎨 ARTS & HUMANITIES (Nghệ Thuật)", "Gu Thẩm Mỹ, Cảm Xúc & Triết Học")
+            ]
+            for idx, (col_item, m, (anc_name, anc_desc)) in enumerate(zip(cols_p, p_trio, poly_anchors)):
+                with col_item:
+                    card_html = f"""
+                    <div class="trinity-card" style="border: 1px solid rgba(129, 140, 248, 0.4);">
+                        <div class="anchor-badge" style="background: rgba(99, 102, 241, 0.3); color: #a5b4fc;">{anc_name}</div>
+                        <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 4px;">{anc_desc}</div>
+                        <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 6px;">{m.get('name_vi', '')}</h3>
+                        <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{m.get('name_en', '')} ({m.get('pillar', '')})</div>
+                        <div class="model-rule">💡 <b>Chân lý gốc:</b> {m.get('first_principle', '')}</div>
+                        <div class="trigger-box" style="margin-top: 8px;">
+                            ⚡ <b>Đòn bẩy Elite:</b><br>
+                            <i>\"{m.get('elite_leverage', '')[:120]}...\"</i>
+                        </div>
+                    </div>
+                    """
+                    render_html(card_html)
+
         else:
             if "random_trio" not in st.session_state or st.button("🔀 Rút Lại 3 Thẻ Tinh Hoa Mới", type="secondary"):
                 st.session_state.random_trio = draw_random_farrow_sprint_trio()
@@ -1052,7 +1095,13 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
 
 
 # -----------------------------------------------------------------------------
-# PHÒNG 3: MÁY QUÉT ĐỌC VỊ THẾ CUỘC (AI MACRO RADAR)
+# PHÒNG 3: PHÒNG ĐIÊU KHẮC ĐỀ BÀI & CÂU HỎI (POLYMATH FORMULATION LAB)
+# -----------------------------------------------------------------------------
+elif app_mode == "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)":
+    render_formulation_lab_room(active_api_key=active_api_key)
+
+# -----------------------------------------------------------------------------
+# PHÒNG 4: MÁY QUÉT ĐỌC VỊ THẾ CUỘC (AI MACRO RADAR)
 # -----------------------------------------------------------------------------
 elif app_mode == "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)":
     render_macro_radar_room(active_api_key=active_api_key, is_embedded=False)

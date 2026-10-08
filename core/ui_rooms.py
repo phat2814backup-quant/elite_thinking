@@ -22,6 +22,10 @@ from core.problem_decomposition import (
     generate_next_socratic_round,
     SAMPLE_DECOMPOSITION_CASES,
 )
+from core.formulation_lab import (
+    sculpt_polymath_problem,
+    POLYMATH_SAMPLE_TEMPLATES,
+)
 from core.farrow_engine import compress_with_farrow_ai
 from core.export_utils import (
     sanitize_filename,
@@ -29,6 +33,7 @@ from core.export_utils import (
     export_macro_tree_to_markdown,
     export_problem_decomposition_to_markdown,
     export_farrow_compression_to_markdown,
+    export_formulation_to_markdown,
 )
 from core.db_storage import (
     load_macro_scans,
@@ -45,6 +50,9 @@ from core.db_storage import (
     load_compression_history,
     save_compression_record,
     delete_compression_record,
+    load_formulation_history,
+    save_formulation_record,
+    delete_formulation_record,
     get_user_decisions,
     create_decision_entry,
     resolve_decision_review,
@@ -1556,6 +1564,291 @@ def render_ai_compressor_room(active_api_key: str | None = None):
                         h_res,
                         title=h_title,
                         raw_text=h_raw,
+                        record_id=h_id,
+                        created_at=h_time
+                    )
+
+
+# =============================================================================
+# 4. PHÒNG ĐIÊU KHẮC ĐỀ BÀI & CÂU HỎI (POLYMATH FORMULATION LAB)
+# =============================================================================
+def render_formulation_result_cards(
+    res: Dict[str, Any],
+    user_intent: str = "",
+    record_id: str = "latest",
+    created_at: str = ""
+):
+    """Hiển thị toàn diện bản điêu khắc đề bài Polymath 4 tầng."""
+    if not res or not isinstance(res, dict):
+        st.info("Không có dữ liệu chi tiết bản điêu khắc.")
+        return
+
+    title = res.get("problem_title", "Bản Điêu Khắc Đề Bài Polymath")
+    intent = user_intent or res.get("fuzzy_summary", "")
+
+    st.markdown(f"### 🔬 {title}")
+    if intent:
+        st.caption(f"💭 **Ý định ban đầu của con người:** *\"{intent}\"*")
+
+    st.markdown("---")
+
+    # 1. 3 TẦNG BÁCH KHOA
+    st.markdown("#### 🏛️ 1. Lăng Kính 3 Miền Bách Khoa (Polymath Lenses)")
+    c_s, c_e, c_a = st.columns(3)
+
+    layer_sci = res.get("layer_sciences", {})
+    with c_s:
+        st.info("##### ⚛️ SCIENCES (Khoa Học)")
+        st.markdown(f"**⚡ Giới hạn vật lý/nhiệt động lực:**\n{layer_sci.get('physics_limits', '')}")
+        st.markdown(f"**🧬 Sinh học nhận thức & Chú ý:**\n{layer_sci.get('cognitive_biology', '')}")
+        st.markdown(f"**🎲 Chân lý xác suất & Số 0:**\n{layer_sci.get('probability_truth', '')}")
+
+    layer_eng = res.get("layer_engineering", {})
+    with c_e:
+        st.warning("##### ⚙️ ENGINEERING (Kỹ Thuật)")
+        st.markdown(f"**🏗️ Kiến trúc hệ thống module:**\n{layer_eng.get('architecture', '')}")
+        st.markdown(f"**📉 Chi phí biên & Điểm ma sát:**\n{layer_eng.get('friction_and_costs', '')}")
+        st.markdown(f"**🛡️ Biên an toàn & Dự phòng:**\n{layer_eng.get('fail_safes', '')}")
+
+    layer_art = res.get("layer_arts_humanities", {})
+    with c_a:
+        st.success("##### 🎨 ARTS & TASTE (Gu & Nhân Văn)")
+        st.markdown(f"**💎 Gu thẩm mỹ & Vị giác (Taste):**\n{layer_art.get('aesthetic_taste', '')}")
+        st.markdown(f"**🎭 Linh hồn & Kịch nghệ 3 hồi:**\n{layer_art.get('narrative_soul', '')}")
+        st.markdown(f"**❤️ Phẩm giá & Đạo đức con người:**\n{layer_art.get('human_ethics', '')}")
+
+    st.markdown("---")
+
+    # 2. BẢN ĐẶC TẢ TỐI THƯỢNG CHO AI / ROBOT
+    master_p = res.get("master_prompt", {})
+    st.markdown("#### 🤖 2. Bản Đặc Tả Tối Thượng Cho AI / Robot (Master Formulated Prompt)")
+
+    st.markdown(f"**🎯 Sứ mệnh & Nhân dạng cốt lõi:**")
+    st.info(master_p.get("role_and_mission", ""))
+
+    col_c1, col_c2 = st.columns(2)
+    with col_c1:
+        st.markdown("**🔒 Ràng buộc cứng (Hard Constraints):**")
+        for hc in master_p.get("hard_constraints", []):
+            st.markdown(f"- 📌 {hc}")
+
+        st.markdown("**🎨 Chỉ thị Gu & Phong cách (Taste & Style):**")
+        st.caption(f"👉 *\"{master_p.get('taste_and_style', '')}\"*")
+
+    with col_c2:
+        st.markdown("**⛔ Kịch bản CẤM Tuyệt Đối (Negative Directives):**")
+        for nr in master_p.get("negative_rules", []):
+            st.markdown(f"- 🚫 {nr}")
+
+        st.markdown("**🧪 Tiêu chí Nghiệm thu (Acceptance Criteria):**")
+        for ac in master_p.get("acceptance_criteria", []):
+            st.markdown(f"- ✅ {ac}")
+
+    # Ô copy prompt 1-click
+    full_prompt_text = f"""[SỨ MỆNH]: {master_p.get('role_and_mission', '')}
+
+[RÀNG BUỘC CỨNG]:
+""" + "\n".join([f"- {c}" for c in master_p.get("hard_constraints", [])]) + f"""
+
+[GU THẨM MỸ & PHONG CÁCH]:
+{master_p.get('taste_and_style', '')}
+
+[CẤM VI PHẠM]:
+""" + "\n".join([f"- {r}" for r in master_p.get("negative_rules", [])]) + f"""
+
+[TIÊU CHÍ NGHIỆM THU]:
+""" + "\n".join([f"- {a}" for a in master_p.get("acceptance_criteria", [])])
+
+    st.markdown("**📋 Bản Câu Lệnh Hoàn Chỉnh (1-Click Copy để chỉ đạo AI / Robot):**")
+    st.code(full_prompt_text, language="markdown")
+
+    st.markdown("---")
+
+    # 3. ĐỐI SÁNH TRỰC QUAN
+    contrast = res.get("contrast_analysis", {})
+    if contrast:
+        st.markdown("#### 🥊 3. So Sánh Đối Kháng: Prompt Nghiệp Dư vs. Điêu Khắc Polymath")
+        col_am, col_pm = st.columns(2)
+        with col_am:
+            st.error("❌ Cách Ra Lệnh Nghiệp Dư (99% Người Dùng)")
+            st.code(contrast.get("amateur_prompt", ""), language="text")
+            st.caption(f"⚠️ **Vì sao thất bại:** {contrast.get('why_amateur_fails', '')}")
+        with col_pm:
+            st.success("✅ Cách Điêu Khắc Của Nhà Bác Học (Polymath)")
+            st.markdown(f"💎 **Lợi thế xuất chúng:** {contrast.get('polymath_advantage', '')}")
+            st.caption("AI/Robot bị khóa vào đúng quỹ đạo giải pháp, không thể trả lời lan man vô thưởng vô phạt.")
+
+    # 4. MỎ NEO FARROW & ACTION BUTTONS
+    farrow = res.get("farrow_compression", {})
+    if farrow:
+        st.divider()
+        st.markdown("#### ⚡ 4. Bộ 3 Mỏ Neo Ghi Nhớ Farrow 10-Phút")
+        c_an1, c_an2, c_an3 = st.columns(3)
+        with c_an1:
+            st.markdown(f"**🚪 Mỏ neo 1 (Khoa học):**\n{farrow.get('anchor_1', '')}")
+        with c_an2:
+            st.markdown(f"**🖥️ Mỏ neo 2 (Kỹ thuật):**\n{farrow.get('anchor_2', '')}")
+        with c_an3:
+            st.markdown(f"**🪑 Mỏ neo 3 (Gu Thẩm mỹ):**\n{farrow.get('anchor_3', '')}")
+        st.info(f"⚡ **Khẩu quyết phản xạ:** *\"{farrow.get('reflex_mantra', '')}\"*")
+
+    # Nút Xuất file & Bridge
+    st.divider()
+    col_exp, col_bridge = st.columns([1, 1])
+    with col_exp:
+        md_content = export_formulation_to_markdown(res, user_intent=intent, created_at=created_at)
+        safe_fname = sanitize_filename(f"Formulation_{title}") + ".md"
+        st.download_button(
+            label="📥 Xuất Báo Cáo Markdown (.md)",
+            data=md_content.encode("utf-8"),
+            file_name=safe_fname,
+            mime="text/markdown",
+            key=f"dl_form_{record_id}_{abs(hash(title)) % 10000}"
+        )
+    with col_bridge:
+        if st.button("⚡ Chuyển Sang Máy Ép Farrow 1-Click", key=f"bridge_comp_{record_id}_{abs(hash(title)) % 10000}"):
+            st.session_state["farrow_input_text"] = f"{title}\n\n{intent}\n\n" + json.dumps(res.get("master_prompt", {}), ensure_ascii=False, indent=2)
+            st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
+            st.rerun()
+
+
+def render_formulation_lab_room(active_api_key: str = ""):
+    """Phòng Điêu Khắc Đề Bài & Câu Hỏi Tinh Hoa theo Tầm Nhìn Elon Musk (Arts + Sciences + Engineering)."""
+    st.markdown("""
+<div style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.8) 0%, rgba(67, 56, 202, 0.4) 100%); padding: 20px 24px; border-radius: 12px; border: 1px solid rgba(129, 140, 248, 0.3); margin-bottom: 24px;">
+    <span style="background: #4f46e5; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;">🔬 ELON MUSK POLYMATH LAB</span>
+    <h2 style="color: #f8fafc; margin: 8px 0 6px 0; font-size: 1.6rem; font-weight: 800;">PHÒNG ĐIÊU KHẮC ĐỀ BÀI & CÂU HỎI (FORMULATION LAB)</h2>
+    <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.5;">
+        <i>"Trong thời đại AI và Robot làm được mọi việc thực thi, lợi thế duy nhất của con người là <b>biết cách đặt vấn đề và điêu khắc câu hỏi</b>. Kiến thức càng rộng về Arts, Sciences & Engineering, câu hỏi bạn đưa ra càng sắc bén và giàu 'vị giác' (taste)."</i> — <b>Elon Musk</b>
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+    sb_client = get_supabase_client()
+    sync_badge = "🟢 Supabase Cloud Sync" if sb_client else "🟡 Local Storage Mode"
+
+    f_tab1, f_tab2 = st.tabs([
+        "🔬 Điêu Khắc Đề Bài (Polymath Formulation)",
+        "📚 Kho Lưu Trữ Đề Bài Đã Điêu Khắc"
+    ])
+
+    with f_tab1:
+        st.markdown("#### 🎯 Nhập Ý Định Thô Hoặc Bài Toán Cần Formulate")
+        st.caption("Hãy nhập một mong muốn mơ hồ, một dự án khởi nghiệp, hoặc chọn từ các bài toán mẫu đa ngành.")
+
+        # Bài toán mẫu
+        c_sel_temp, c_sel_domain = st.columns([3, 2])
+        with c_sel_temp:
+            template_options = ["(Tự nhập bài toán của bạn)"] + [t["title"] for t in POLYMATH_SAMPLE_TEMPLATES]
+            selected_template = st.selectbox(
+                "Chọn bài toán mẫu đa ngành (1-Click):",
+                template_options,
+                key="polymath_template_select"
+            )
+
+        with c_sel_domain:
+            domain_options = [
+                "Tất cả (Polymath 3 Miền: Khoa học + Kỹ thuật + Nghệ thuật)",
+                "AI Agents & Robot Hình Người (Robotics & Embodied AI)",
+                "Sáng Tạo Nội Dung & Điện Ảnh Giáo Dục (Media & Taste)",
+                "Khởi Nghiệp Công Nghệ & Sản Phẩm Tiêu Dùng (Product & Architecture)",
+                "Chiến Lược Đầu Tư & Quyết Định Cấp Cao (Strategy & M&A)"
+            ]
+            chosen_domain = st.selectbox("Lĩnh vực trọng tâm:", domain_options, key="polymath_domain_select")
+
+        default_intent = ""
+        if selected_template != "(Tự nhập bài toán của bạn)":
+            for t in POLYMATH_SAMPLE_TEMPLATES:
+                if t["title"] == selected_template:
+                    default_intent = t["intent"]
+                    break
+
+        user_intent_input = st.text_area(
+            "Ý định ban đầu của bạn (Fuzzy Intent):",
+            value=default_intent,
+            height=130,
+            placeholder="Ví dụ: Tôi muốn làm một robot AI quản gia dọn dẹp nhà cửa nhưng không làm người già trong nhà cảm thấy bị giám sát hay cô lập...",
+            key="user_polymath_intent_input"
+        )
+
+        col_act1, col_act2 = st.columns([3, 2])
+        with col_act1:
+            run_formulate_btn = st.button("🔬 Bắt Đầu Điêu Khắc Đề Bài Bách Khoa", type="primary", use_container_width=True)
+        with col_act2:
+            st.caption(f"Trạng thái đồng bộ: **{sync_badge}** | Tự động xoay tua API keys.")
+
+        if run_formulate_btn:
+            if not user_intent_input.strip():
+                st.warning("Vui lòng nhập ý định hoặc chọn bài toán mẫu để điêu khắc!")
+            else:
+                with st.spinner("🤖 Đang kích hoạt lăng kính Polymath: Soi giới hạn vật lý ➔ Thiết kế kiến trúc kỹ thuật ➔ Định hình 'Gu' thẩm mỹ..."):
+                    res_data = sculpt_polymath_problem(user_intent_input.strip(), domain_focus=chosen_domain)
+
+                if not res_data:
+                    st.error("Không nhận được kết quả phân tích từ AI Engine.")
+                else:
+                    st.session_state["latest_formulation_result"] = res_data
+                    st.session_state["latest_formulation_intent"] = user_intent_input.strip()
+                    # Lưu vào Supabase Cloud & Local JSON
+                    saved_ok = save_formulation_record(user_intent_input.strip(), res_data, domain_focus=chosen_domain)
+                    if saved_ok:
+                        st.toast("☁️ Đã lưu bản điêu khắc đề bài vào cơ sở dữ liệu!", icon="💾")
+
+        # Hiển thị kết quả mới nhất
+        if "latest_formulation_result" in st.session_state:
+            latest_res = st.session_state["latest_formulation_result"]
+            latest_intent = st.session_state.get("latest_formulation_intent", "")
+            st.success("🎉 Đã điêu khắc xong Bản Đặc Tả Tinh Hoa theo chuẩn Polymath!")
+            render_formulation_result_cards(
+                latest_res,
+                user_intent=latest_intent,
+                record_id="latest"
+            )
+
+    with f_tab2:
+        st.markdown(f"#### 📚 Kho Lưu Trữ Đề Bài Đã Điêu Khắc")
+        st.caption(f"Trạng thái lưu trữ: **{sync_badge}**. Toàn bộ các đề bài và Master Prompt được lưu trữ bền vững.")
+
+        history = load_formulation_history()
+        if not history:
+            st.info("💡 Chưa có đề bài nào được lưu. Hãy nhập ý định vào Tab 1 và bấm điêu khắc đề bài để lưu trữ tại đây!")
+        else:
+            s_kw = st.text_input("🔍 Tìm kiếm trong kho đề bài:", placeholder="Nhập từ khóa (vd: robot, video, M&A, y tế...)", key="search_formulation_history")
+            filtered_h = history
+            if s_kw.strip():
+                kw_low = s_kw.strip().lower()
+                filtered_h = [
+                    h for h in history
+                    if kw_low in h.get("title", "").lower()
+                    or kw_low in h.get("user_intent", "").lower()
+                    or kw_low in h.get("domain_focus", "").lower()
+                    or kw_low in str(h.get("result", {})).lower()
+                ]
+
+            if not filtered_h:
+                st.info("Không tìm thấy đề bài nào khớp với từ khóa tìm kiếm.")
+
+            for h_idx, h_item in enumerate(filtered_h):
+                h_id = h_item.get("id", f"form_{h_idx}")
+                h_time = h_item.get("created_at") or h_item.get("time", "Gần đây")
+                h_title = h_item.get("title") or "Bản Điêu Khắc Đề Bài"
+                h_intent = h_item.get("user_intent", "")
+                h_res = h_item.get("result", {})
+
+                with st.expander(f"📑 [{h_time}] {h_title}", expanded=(h_idx == 0 and len(filtered_h) == 1)):
+                    col_hl, col_hr = st.columns([4, 1])
+                    with col_hl:
+                        st.caption(f"💭 **Ý định thô ban đầu:** *\"{h_intent}\"*")
+                    with col_hr:
+                        if st.button("🗑️ Xóa", key=f"btn_del_form_{h_id}"):
+                            delete_formulation_record(h_id)
+                            st.success("Đã xóa bản ghi!")
+                            st.rerun()
+
+                    st.divider()
+                    render_formulation_result_cards(
+                        h_res,
+                        user_intent=h_intent,
                         record_id=h_id,
                         created_at=h_time
                     )

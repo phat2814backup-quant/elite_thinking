@@ -588,3 +588,93 @@ def export_farrow_compression_to_markdown(
 *Bản quyền thuộc về Dave Farrow Memory Palace & Elite Thinking Framework v2.2.*
 """
     return md.strip()
+
+
+def export_formulation_to_markdown(
+    res: Dict[str, Any],
+    user_intent: str = "",
+    created_at: str = ""
+) -> str:
+    """Xuất bản điêu khắc đề bài Polymath thành văn bản Markdown chuẩn mực."""
+    time_str = created_at or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    title = res.get("problem_title", "Bản Điêu Khắc Đề Bài Polymath")
+    intent = user_intent or res.get("fuzzy_summary", "")
+
+    layer_sci = res.get("layer_sciences", {})
+    layer_eng = res.get("layer_engineering", {})
+    layer_art = res.get("layer_arts_humanities", {})
+    master_p = res.get("master_prompt", {})
+    contrast = res.get("contrast_analysis", {})
+    farrow = res.get("farrow_compression", {})
+
+    hard_constraints_md = "\n".join([f"- {c}" for c in master_p.get("hard_constraints", [])])
+    negative_rules_md = "\n".join([f"- ⛔ {r}" for r in master_p.get("negative_rules", [])])
+    acceptance_md = "\n".join([f"- ✅ {a}" for a in master_p.get("acceptance_criteria", [])])
+
+    md = f"""# 🔬 BẢN ĐIÊU KHẮC ĐỀ BÀI POLYMATH (MUSK & DA VINCI SPEC)
+# {title}
+
+- **Thời gian lập:** `{time_str}`
+- **Ý định ban đầu của con người:** *"{intent}"*
+- **Triết lý kiến tạo:** Arts + Sciences + Engineering ➔ Master AI/Robot Formulation
+
+---
+
+## 🏛️ 1. LĂNG KÍNH ĐA NGÀNH (POLYMATH LENSES)
+
+### ⚛️ Tầng 1: Sciences & Natural Laws (Chân Lý Gốc & Giới Hạn Tự Nhiên)
+- **Giới hạn vật lý / nhiệt động lực:** {layer_sci.get('physics_limits', '')}
+- **Sinh học nhận thức & Ngưỡng chú ý:** {layer_sci.get('cognitive_biology', '')}
+- **Chân lý xác suất & Quy tắc nhân số 0:** {layer_sci.get('probability_truth', '')}
+
+### ⚙️ Tầng 2: Engineering & Systems (Kỹ Thuật & Kiến Trúc Thực Thi)
+- **Kiến trúc hệ thống module:** {layer_eng.get('architecture', '')}
+- **Chi phí biên & Điểm ma sát giao dịch:** {layer_eng.get('friction_and_costs', '')}
+- **Biên an toàn & Cơ chế phòng vệ:** {layer_eng.get('fail_safes', '')}
+
+### 🎨 Tầng 3: Arts, Taste & Humanities (Nghệ Thuật & Gu Thẩm Mỹ Nhân Văn)
+- **Gu thẩm mỹ & Vị giác trải nghiệm (Taste):** {layer_art.get('aesthetic_taste', '')}
+- **Linh hồn câu chuyện & Độ căng kịch nghệ:** {layer_art.get('narrative_soul', '')}
+- **Ranh giới đạo đức & Phẩm giá con người:** {layer_art.get('human_ethics', '')}
+
+---
+
+## 🤖 2. BẢN ĐẶC TẢ TỐI THƯỢNG CHO AI / ROBOT (THE MASTER PROMPT)
+
+> **🎯 Sứ mệnh & Nhân dạng:**  
+> {master_p.get('role_and_mission', '')}
+
+### 🔒 Ràng buộc cứng (Hard Constraints)
+{hard_constraints_md}
+
+### 🎨 Tiêu chuẩn Thẩm mỹ & Gu (Taste & Style)
+> {master_p.get('taste_and_style', '')}
+
+### ⛔ Kịch bản CẤM (Negative Directives)
+{negative_rules_md}
+
+### 🧪 Tiêu chí Nghiệm thu Hoàn thành (Acceptance Tests)
+{acceptance_md}
+
+---
+
+## 🥊 3. ĐỐI SÁNH TRỰC QUAN: NGHIỆP DƯ VS. POLYMATH
+
+| Yếu tố | Câu lệnh Nghiệp dư | Điêu khắc Polymath |
+| :--- | :--- | :--- |
+| **Câu lệnh mẫu** | `{contrast.get('amateur_prompt', '')}` | *(Bản Master Prompt bên trên)* |
+| **Tại sao thất bại** | {contrast.get('why_amateur_fails', '')} | **Khắc phục triệt để:** Khóa chặt giới hạn vật lý, tối ưu chi phí kỹ thuật và định hình gu thẩm mỹ. |
+| **Lợi thế xuất chúng** | 0% chiều sâu, AI trả lời chung chung | {contrast.get('polymath_advantage', '')} |
+
+---
+
+## ⚡ 4. MỎ NEO FARROW 10-PHÚT
+- **🚪 Mỏ neo 1 (Khoa học):** {farrow.get('anchor_1', '')}
+- **🖥️ Mỏ neo 2 (Kỹ thuật):** {farrow.get('anchor_2', '')}
+- **🪑 Mỏ neo 3 (Nghệ thuật & Gu):** {farrow.get('anchor_3', '')}
+- **⚡ Khẩu quyết phản xạ:** *"{farrow.get('reflex_mantra', '')}"*
+
+---
+*Xuất bản từ Elite Thinking: Farrow Edition — Problem Formulation Lab.*
+"""
+    return md.strip()

@@ -77,6 +77,35 @@ def draw_random_farrow_sprint_trio() -> List[Dict[str, Any]]:
     return trio
 
 
+def draw_polymath_triangulation_trio() -> List[Dict[str, Any]]:
+    """
+    Rút ngẫu nhiên 3 thẻ Tam Giác Bách Khoa (Polymath Triangulation) từ 3 thế giới khác biệt:
+    1. Thẻ Khoa học tự nhiên & Toán học (Sciences: Vật lý, Sinh học, Toán/Xác suất)
+    2. Thẻ Kỹ thuật & Hệ thống kinh tế (Engineering: Hệ thống, Kinh tế học)
+    3. Thẻ Nghệ thuật & Nhân văn (Arts & Humanities: Nghệ thuật & Thẩm mỹ, Văn minh & Triết học, Tâm lý học)
+    """
+    catalog = load_unified_farrow_catalog()
+
+    science_pillars = ["Vật lý học", "Sinh học", "Toán học & Xác suất"]
+    eng_pillars = ["Hệ thống", "Kinh tế học"]
+    art_pillars = ["Nghệ thuật & Thẩm mỹ", "Văn minh & Triết học", "Tâm lý học"]
+
+    pool_sci = [m for m in catalog if m.get("pillar") in science_pillars]
+    pool_eng = [m for m in catalog if m.get("pillar") in eng_pillars]
+    pool_art = [m for m in catalog if m.get("pillar") in art_pillars]
+
+    trio = []
+    for pool in [pool_sci, pool_eng, pool_art]:
+        if pool:
+            tier1 = [m for m in pool if m.get("tier") == 1]
+            chosen = random.choice(tier1 if tier1 else pool)
+            trio.append(chosen)
+
+    if len(trio) < 3:
+        return draw_random_farrow_sprint_trio()
+    return trio
+
+
 # Backward compatibility aliases
 def load_all_mental_models() -> List[Dict[str, Any]]:
     return load_unified_farrow_catalog()

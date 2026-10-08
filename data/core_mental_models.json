@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Munger Latticework: 88 Nuclear Mental Models",
     "version": "1.0",
-    "total_models": 88,
+    "total_models": 96,
     "curated_for": "Elite Thinking & Accelerated Mastery",
     "description": "88 canonical mental models across 6 pillars: Physics, Biology, Psychology, Economics, Math/Probability, Systems Thinking."
   },
@@ -1765,6 +1765,198 @@
       ],
       "boundary_conditions": "Không dùng Dao cạo Occam khi hiện tượng được quan sát là một hệ thống phi tuyến tính phức hợp có nhiều biến số ẩn tương tác lẫn nhau (chẩn đoán bệnh đa triệu chứng hiếm gặp, dự báo khủng hoảng kinh tế vĩ mô). Giả thuyết đơn giản nhất chưa chắc đúng nếu nó không bao quát được toàn bộ dữ kiện thực nghiệm.",
       "real_world_case": "• Y khoa: Nguyên tắc lâm sàng kinh điển: 'Khi bạn nghe thấy tiếng vó ngựa gõ trên đường phố New York, hãy nghĩ đến ngựa trước tiên, đừng vội nghĩ đến ngựa vằn'. Các bác sĩ ưu tiên chẩn đoán bệnh phổ biến trước khi nghĩ đến những hội chứng di truyền hiếm gặp 1 phần triệu.\n• Quan hệ Công việc & Đời sống: Nhân viên không nộp báo cáo đúng hạn. Giả thuyết A (Phức tạp): Anh ta đang ngầm chống đối, bất mãn chế độ lương và câu kết với đối thủ để phá hoại dự án. Giả thuyết B (Dao cạo Occam): Anh ta bị quá tải việc, quản lý thời gian kém hoặc người nhà bị ốm. 95% trường hợp, giả thuyết B là sự thật.\n• Đầu tư Chứng khoán: Cổ phiếu rớt giá 30%. Nhà đầu tư F0 dựng lên thuyết âm mưu: 'Đội lái đang rung lắc cố tình dìm giá gom hàng để chuẩn bị đánh lên x3'. Dao cạo Occam chỉ ra: Giá giảm đơn giản vì kết quả kinh doanh quý này sụt giảm và các nhà đầu tư lớn đang bán tháo chốt lời."
+    },
+    {
+      "id": "ART-01",
+      "name_vi": "Tỷ Lệ Vàng & Chuỗi Fibonacci",
+      "name_en": "The Golden Ratio (Phi) & Fibonacci (Phidias & Da Vinci)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Tỷ số vàng Phi (1.618033...) là nghiệm tự nhiên của sự phân bố năng lượng và hình học tối ưu: tỷ lệ giữa phần lớn và phần nhỏ bằng tỷ lệ giữa toàn thể và phần lớn. Mọi cấu trúc rung cảm thị giác của con người đều cộng hưởng sâu sắc với tỷ lệ này.",
+      "trigger_question": "Bố cục sản phẩm, tỷ lệ văn bản và nhịp điệu trải nghiệm này có tuân theo tỷ lệ hài hòa tự nhiên không, hay đang gây ma sát thị giác vô thức?",
+      "inversion_trap": "Bẫy đối xứng chết (Dead Symmetry): Ép mọi thứ vào sự đối xứng tuyệt đối cơ học khiến sản phẩm trở nên cứng nhắc, vô hồn như tượng sáp, đánh mất sự sống động của tự nhiên.",
+      "elite_leverage": "Steve Jobs và Jony Ive dùng tỷ lệ vàng thiết kế logo Apple và bán kính bo góc iPhone. Áp dụng tỷ số 1:1.618 vào cấu trúc giao diện, kích cỡ tiêu đề so với thân bài, và tỷ lệ giữa tính năng cốt lõi và không gian thở (white space).",
+      "lollapalooza_pairs": [
+        "Quy luật Gestalt",
+        "Định luật bình phương nghịch đảo",
+        "Cân bằng động"
+      ],
+      "action_steps": [
+        "Xác định tỷ lệ kích thước: Đo lường chiều dài/rộng của các khối giao diện hoặc sản phẩm vật lý theo tỷ số 1:1.618.",
+        "Tạo khoảng trống thở (White space): Giữ 62% diện tích cho nội dung chính và 38% cho không gian nghỉ mắt.",
+        "Thiết lập nhịp phân cấp thị giác: Kích cỡ chữ và hình ảnh chuyển bậc theo chuỗi số Fibonacci (8, 13, 21, 34, 55)."
+      ],
+      "boundary_conditions": "Không biến tỷ lệ vàng thành một giáo điều phong thủy; công năng và sự rõ ràng của thông điệp luôn được ưu tiên hàng đầu trước khi tinh chỉnh tỷ lệ.",
+      "real_world_case": "• Kiến trúc Parthenon Hy Lạp & Mona Lisa: Áp dụng tỷ lệ vàng vào mặt tiền và khung xương giúp tác phẩm trường tồn hơn 2.500 năm.\n• Giao diện Twitter/X & Apple: Tỷ lệ hiển thị avatar, banner và kích thước typography được căn chỉnh theo chuỗi Fibonacci giúp giảm mỏi mắt khi lướt thông tin liên tục.",
+      "source": "mental_model"
+    },
+    {
+      "id": "ART-02",
+      "name_vi": "Hành Trình Người Anh Hùng & Cấu Trúc 3 Hồi",
+      "name_en": "The Hero's Journey & 3-Act Structure (Campbell & Aristotle)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Cấu trúc kịch nghệ 3 hồi: Bình thường cũ ➔ Thử thách đứt gãy & Vực thẳm chết chóc ➔ Tái sinh biến đổi và Trở về cứu rỗi. Não người không ghi nhớ dữ liệu khô khan; não người là cỗ máy sinh học khao khát câu chuyện chuyển hóa.",
+      "trigger_question": "Khách hàng / người dùng trong câu chuyện này đang đóng vai Anh hùng vượt vực thẳm nào, và sản phẩm của tôi đang đóng vai trò Thanh gươm/Thuốc giải của Người dẫn đường (Mentor) ra sao?",
+      "inversion_trap": "Bẫy tự biến mình thành Anh hùng (Brand Hero Trap): Thương hiệu tự nhận mình là người hùng giải cứu thế giới thay vì đặt khách hàng làm nhân vật chính còn mình chỉ là pháp sư Yoda dẫn lối.",
+      "elite_leverage": "Mọi bài thuyết trình gọi vốn của Steve Jobs (ra mắt iPhone 2007) hay Elon Musk (Tesla Master Plan) đều tuân thủ chặt chẽ cấu trúc 3 hồi: chỉ ra kẻ phản diện (điện thoại bàn phím cơ vô dụng, khói bụi hóa thạch), đẩy khán giả vào vực thẳm bế tắc, rồi trao giải pháp giải thoát.",
+      "lollapalooza_pairs": [
+        "Thiên kiến tự sự (Narrative Bias)",
+        "Bằng chứng xã hội",
+        "Kích hoạt Dopamine"
+      ],
+      "action_steps": [
+        "Vẽ nhân vật chính & vết thương cốt tử: Xác định rõ nỗi đau sâu kín mà khách hàng đang chịu đựng.",
+        "Thiết lập kẻ phản diện cụ thể: Biến sự phức tạp, lãng phí thời gian hoặc sự bất công thành kẻ thù cần tiêu diệt.",
+        "Dẫn dắt qua thử thách 3 bước: Gọi lên đường ➔ Đối mặt vực sâu khủng hoảng ➔ Nhận thanh gươm giải pháp để biến đổi thành phiên bản tốt hơn."
+      ],
+      "boundary_conditions": "Không bịa đặt bi kịch giả tạo hoặc phóng đại quá đà khiến câu chuyện trở thành quảng cáo lố bịch mất niềm tin.",
+      "real_world_case": "• Star Wars & Chúa Nhẫn: George Lucas dựa 100% vào cuốn 'The Hero with a Thousand Faces' của Joseph Campbell để viết nên kịch bản Luke Skywalker.\n• Chiến dịch 'Think Different' của Apple: Tôn vinh những kẻ nổi loạn, gàn dở dám thay đổi thế giới; đưa người dùng Apple vào vai những người tiên phong vĩ đại.",
+      "source": "mental_model"
+    },
+    {
+      "id": "ART-03",
+      "name_vi": "Công Năng Định Hình Hình Thức (Bauhaus)",
+      "name_en": "Form Follows Function & Less But Better (Sullivan & Dieter Rams)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Mọi đường nét, màu sắc và cấu trúc hình thể phải bắt nguồn trực tiếp từ công năng phục vụ cốt lõi. Loại bỏ mọi chi tiết trang trí rườm rà không mang lại giá trị sử dụng. Thiết kế tốt nhất là thiết kế càng ít can thiệp càng tốt (Weniger, aber besser).",
+      "trigger_question": "Nếu gọt bỏ 30% tính năng và chi tiết này thì trải nghiệm cốt lõi của người dùng có sắc nét hơn không?",
+      "inversion_trap": "Bẫy hoa hòe giả tạo (Featuritis & Ornamentation): Cố nhồi nhét hàng tá nút bấm, viền bóng bẩy để tỏ ra nguy hiểm, làm lu mờ công năng chính và khiến người dùng rối loạn hành vi.",
+      "elite_leverage": "10 Nguyên tắc thiết kế của Dieter Rams tại Braun (tiền thân của triết lý tối giản Apple): Trung thực, trường tồn, tỉ mỉ đến từng chi tiết và tối giản đến tận xương tủy. Khi chỉ đạo AI hoặc robot, yêu cầu gọt bỏ mọi từ ngữ thừa thãi để tập trung vào hành động cốt lõi.",
+      "lollapalooza_pairs": [
+        "Tư duy khởi thủy (First Principles)",
+        "Định luật Occam",
+        "Chi phí ma sát"
+      ],
+      "action_steps": [
+        "Liệt kê công năng sinh tử: Xác định hành động duy nhất người dùng cần hoàn thành trong 3 giây.",
+        "Thực hiện giải phẫu thanh trừng: Xóa bỏ mọi đường viền, nút bấm phụ, hoặc hiệu ứng không phục vụ cho hành động trên.",
+        "Tối ưu hóa phản hồi xúc giác/thị giác: Làm cho trạng thái hoạt động tự giải thích chính nó mà không cần bảng hướng dẫn dày cộp."
+      ],
+      "boundary_conditions": "Tối giản không đồng nghĩa với tước đoạt công năng thiết yếu hoặc tạo ra sự trống rỗng vô nghĩa (Minimalism without usability is just laziness).",
+      "real_world_case": "• Máy nghe nhạc iPod thế hệ đầu: Chỉ có 1 màn hình và 1 vòng xoay điều khiển, thay thế các máy MP3 Nhật Bản vốn có 20 nút bấm phức tạp.\n• Thiết kế tên lửa SpaceX Falcon 9: Mọi chi tiết cơ khí đều được tối giản để phục vụ một mục tiêu duy nhất: hạ cánh thẳng đứng và tái sử dụng.",
+      "source": "mental_model"
+    },
+    {
+      "id": "ART-04",
+      "name_vi": "Vẻ Đẹp Bất Toàn Wabi-Sabi & Tương Phản Sáng Tối",
+      "name_en": "Wabi-Sabi & Chiaroscuro (Japanese Aesthetics & Caravaggio)",
+      "pillar": "Nghệ thuật & Thẩm mỹ",
+      "tier": 1,
+      "first_principle": "Cái đẹp không nằm ở sự hoàn hảo vô trùng mà nằm ở dấu vết của thời gian, sự vô thường, bất toàn và mộc mạc (Wabi-Sabi). Ánh sáng chỉ thực sự rực rỡ và có hồn khi được đặt cạnh bóng tối sâu thẳm (Chiaroscuro).",
+      "trigger_question": "Sản phẩm này có nét độc bản chân thật nào phân biệt với hàng triệu sản phẩm AI vô hồn được tạo ra hàng loạt?",
+      "inversion_trap": "Bẫy hoàn hảo vô trùng (Sterile Perfection): Tạo ra nội dung hoặc thiết kế nhẵn bóng, trơn tru nhưng vô cảm như robot mô hình, khiến khách hàng lướt qua mà không đọng lại bất kỳ dư vị nào.",
+      "elite_leverage": "Trong thời đại AI có thể tạo ra văn bản và hình ảnh bóng bẩy miễn phí, chính 'sự vụng về chân thật', 'vết nứt hàn vàng Kintsugi' và 'tính chân xác của con người' trở thành thứ xa xỉ đắt giá nhất. Sử dụng bóng tối và sự tương phản kịch tính để làm nổi bật thông điệp hạt nhân.",
+      "lollapalooza_pairs": [
+        "Định lý khan hiếm bổ trợ",
+        "Hiệu ứng Pratfall",
+        "Tín hiệu đắt giá"
+      ],
+      "action_steps": [
+        "Giữ lại sự độc bản: Không tẩy xóa những điểm không hoàn hảo tự nhiên mang tính cá tính của thương hiệu.",
+        "Tạo độ tương phản cực đại: Đặt giải pháp phát sáng rực rỡ ngay trong bức tranh tối tăm của nan đề khách hàng đang gặp.",
+        "Tôn vinh chất liệu thật: Dùng ngôn từ sống động, gai góc thay vì những cụm từ sáo rỗng chuẩn mực của AI."
+      ],
+      "boundary_conditions": "Không nhầm lẫn giữa sự bất toàn nghệ thuật với sự cẩu thả, sai sót nghiệp vụ hay sản phẩm lỗi kỹ thuật.",
+      "real_world_case": "• Nghệ thuật Kintsugi Nhật Bản: Bát gốm vỡ được hàn gắn bằng sơn mài trộn vàng ròng, biến vết nứt thành điểm đắt giá nhất của tác phẩm.\n• Hội họa Caravaggio & Rembrandt: Sử dụng bóng tối bao trùm để dồn toàn bộ sự chú ý của người xem vào một tia sáng rọi thẳng vào ánh mắt nhân vật.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-01",
+      "name_vi": "Quy Luật Hưng Vong Đế Chế & Gắn Kết Xã Hội",
+      "name_en": "Asabiya & Civilizational Cycles (Ibn Khaldun, Turchin & Ray Dalio)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Văn minh vận hành theo chu kỳ con lắc: Một nhóm người tôi luyện qua gian khó hình thành tinh thần gắn kết keo sơn (Asabiya) quật khởi lật đổ đế chế cũ ➔ Xây dựng trật tự mới, đạt đỉnh thịnh vượng ➔ Sinh ra tầng lớp tinh hoa dư thừa, sa đọa, bất bình đẳng sâu sắc và mất khả năng gắn kết ➔ Đế chế suy tàn và sụp đổ.",
+      "trigger_question": "Tổ chức hoặc thị trường này đang ở pha quật khởi đoàn kết từ số 0, hay đang ở pha bão hòa tinh hoa tranh giành chiếc bánh hữu hạn?",
+      "inversion_trap": "Ảo tưởng đế chế vĩnh cửu (End of History Fallacy): Tin rằng trật tự thế giới hiện tại, đồng tiền dự trữ hiện tại (USD) hoặc vị thế độc quyền của doanh nghiệp sẽ tồn tại mãi mãi mà không chịu quy luật đào thải lịch sử.",
+      "elite_leverage": "Ray Dalio dùng chu kỳ 500 năm của đế chế Hà Lan, Anh, Mỹ để dự báo sự dịch chuyển địa chính trị và cơ cấu tiền tệ. Đừng bao giờ đặt cược toàn bộ tài sản vào một thể chế đang ở giai đoạn cuối của chu kỳ suy đồi nợ và phân hóa xã hội.",
+      "lollapalooza_pairs": [
+        "Chu kỳ nợ dài hạn",
+        "Entropy tổ chức",
+        "Bẫy Thucydides"
+      ],
+      "action_steps": [
+        "Định vị pha chu kỳ: Xác định xem tổ chức hoặc nền kinh tế đang ở pha (1) Tích lũy quật khởi, (2) Đỉnh cao xa hoa, hay (3) Tranh giành phân mảnh.",
+        "Bảo tồn tinh thần Asabiya: Xây dựng văn hóa đồng cam cộng khổ trong đội ngũ hạt nhân, chia sẻ da thịt trong cuộc chơi.",
+        "Phân bổ tài sản phòng hộ đa trật tự: Nắm giữ tài sản phi chủ quyền (vàng, năng lượng, tri thức bất biến) khi bước vào giai đoạn chuyển giao trật tự thế giới."
+      ],
+      "boundary_conditions": "Chu kỳ văn minh diễn ra trong hàng thập kỷ đến hàng thế kỷ; không nên áp dụng chu kỳ này cho các biến động giao dịch ngắn hạn tính bằng ngày.",
+      "real_world_case": "• Sự sụp đổ của La Mã & Vương triều phong kiến: Các hoàng đế xa hoa in thêm tiền pha tạp, quan chức tham nhũng, mất tinh thần chiến binh vào tay các bộ lạc man tộc có tính gắn kết Asabiya cao độ.\n• Chu kỳ đổi ngôi tiền tệ của Ray Dalio: Đồng Guilder Hà Lan nhường ngôi cho Bảng Anh thế kỷ 18, Bảng Anh nhường ngôi cho USD sau Thế chiến 2; chuẩn bị cho giai đoạn đa cực tiếp theo.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-02",
+      "name_vi": "Thần Thoại Tập Thể & Thực Tại Liên Chủ Thể",
+      "name_en": "Intersubjective Realities & Shared Fictions (Yuval Noah Harari - Sapiens)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Loài người thống trị hành tinh không phải vì cơ bắp hay trí thông minh cá nhân, mà vì khả năng hợp tác linh hoạt hàng triệu người thông qua niềm tin vào các thực tại liên chủ thể: những câu chuyện tưởng tượng chung không tồn tại trong thế giới vật lý (tiền tệ, quốc gia, công ty trách nhiệm hữu hạn, luật pháp, tôn giáo).",
+      "trigger_question": "Thực thể này có căn cứ vật lý thực tế hay chỉ tồn tại dựa trên sự thỏa thuận và niềm tin tập thể của số đông?",
+      "inversion_trap": "Nhầm lẫn giữa bản đồ và lãnh thổ (Reification Trap): Coi tờ tiền giấy, chỉ số tín dụng hoặc danh xưng tập đoàn là vật chất tự nhiên, quên mất rằng nếu tập thể mất niềm tin thì mọi giá trị đó sẽ bốc hơi về con số 0 trong 1 đêm.",
+      "elite_leverage": "Người dẫn dắt vĩ đại là người kiến tạo và kiểm soát câu chuyện thần thoại tập thể (Visionary Storyteller). Để xây dựng một đế chế công nghệ hay huy động hàng tỷ USD, bạn không bán tính năng phần mềm, bạn bán một 'Thực tại tương lai' mà mọi người cùng khao khát tin vào.",
+      "lollapalooza_pairs": [
+        "Thiên kiến xã hội",
+        "Hiệu ứng bầy đàn",
+        "Tính thanh khoản"
+      ],
+      "action_steps": [
+        "Bóc tách thực tại khách quan vs liên chủ thể: Liệt kê đâu là giới hạn vật lý thật và đâu là quy ước do con người tự tạo ra.",
+        "Điêu khắc câu chuyện chung: Xây dựng một tầm nhìn rõ ràng, truyền cảm hứng để tập hợp nguồn lực vượt qua giới hạn cá nhân.",
+        "Cảnh giác trước sự tan vỡ niềm tin: Nhận diện sớm dấu hiệu rút tiền hàng loạt (bank run) hoặc khủng hoảng danh tiếng khi câu chuyện bị lung lay."
+      ],
+      "boundary_conditions": "Không thể dùng thần thoại liên chủ thể để bẻ cong quy luật vật lý; dù cả tỷ người tin rằng chiếc xe bay được mà không cần năng lượng thì chiếc xe vẫn sẽ rơi.",
+      "real_world_case": "• Giá trị của tờ tiền 100 USD: Chi phí in chỉ vài cent, nhưng có giá trị mua sắm 100 USD vì hàng tỷ người cùng chia sẻ một niềm tin vào chính phủ Mỹ.\n• Tập đoàn trách nhiệm hữu hạn (LLC): Peugeot hay Tesla không phải là các nhà máy hay con người cụ thể; chúng là những 'pháp nhân trừu tượng' được pháp luật và xã hội công nhận để bảo vệ quyền tài sản.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-03",
+      "name_vi": "Nhị Phân Quyền Kiểm Soát & Triết Học Khắc Kỷ",
+      "name_en": "Dichotomy of Control & Stoic Citadel (Epictetus & Marcus Aurelius)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Mọi sự việc trên đời chia làm đúng 2 nhóm: (1) Thứ hoàn toàn thuộc quyền kiểm soát của ta (phán xét, hành vi, ý chí, sự kỷ luật) và (2) Thứ hoàn toàn nằm ngoài quyền kiểm soát của ta (dư luận, thời tiết, biến động thị trường, hành động của người khác). Đau khổ và lo âu chỉ sinh ra khi ta cố kiểm soát những thứ thuộc nhóm 2.",
+      "trigger_question": "Sự việc đang khiến tôi bức xúc này có thuộc quyền kiểm soát trực tiếp của tôi không? Nếu không, tại sao tôi lại trao quyền làm chủ tâm trí mình cho nó?",
+      "inversion_trap": "Bẫy đóng vai nạn nhân (Victimhood & External Locus of Control): Đổ lỗi cho số phận, vĩ mô hoặc người khác về sự thất bại của bản thân, tự tước bỏ sức mạnh hành động nội tại.",
+      "elite_leverage": "Rèn luyện 'Pháo đài tâm trí' (Inner Citadel). Khi thị trường sụp đổ hoặc dự án gặp sự cố, người Khắc kỷ không than khóc mà lập tức tập trung 100% năng lượng vào hành động phản ứng tốt nhất có thể. Biến trở ngại thành nhiên liệu: 'The impediment to action advances action. What stands in the way becomes the way' (Marcus Aurelius).",
+      "lollapalooza_pairs": [
+        "Tính chống mong manh",
+        "Tư duy đảo ngược",
+        "Hạ nồng độ Cortisol"
+      ],
+      "action_steps": [
+        "Phân loại 2 cột tức thì: Khi gặp rắc rối, viết ra giấy Cột A (Kiểm soát được) và Cột B (Không kiểm soát được).",
+        "Buông bỏ 100% Cột B: Ngừng lo lắng, phàn nàn hoặc tranh cãi về các yếu tố ở Cột B.",
+        "Tấn công dứt khoát Cột A: Dồn toàn bộ nguồn lực và tâm trí để thực thi hành động ở Cột A ngay trong hôm nay."
+      ],
+      "boundary_conditions": "Khắc kỷ không phải là chai lì cảm xúc, vô cảm hay chịu đựng bất công một cách nhu nhược; Khắc kỷ là hành động dũng cảm trong khi vẫn giữ tâm trí thanh tịnh.",
+      "real_world_case": "• Đô đốc James Stockdale: Bị giam cầm và tra tấn 7 năm trong chiến tranh Việt Nam, sống sót nhờ nguyên tắc Epictetus: không bao giờ mất niềm tin vào kết cục thắng lợi nhưng đối diện thẳng thắn với hiện thực tàn nhẫn nhất mỗi ngày.\n• Marcus Aurelius trị vì La Mã: Vừa phải chống dịch bệnh Antonine tàn khốc, vừa đối phó phản bội và chiến tranh bộ lạc, ông viết 'Suy tưởng' mỗi đêm để giữ tâm trí chính trực và thanh tịnh.",
+      "source": "mental_model"
+    },
+    {
+      "id": "CIV-04",
+      "name_vi": "Ý Chí Đi Tìm Ý Nghĩa & Lạc Quan Bi Kịch",
+      "name_en": "Will to Meaning & Tragic Optimism (Viktor Frankl & Nietzsche)",
+      "pillar": "Văn minh & Triết học",
+      "tier": 1,
+      "first_principle": "Động lực nguyên thủy sâu sắc nhất của con người không phải là tìm kiếm khoái lạc (Freud) hay quyền lực (Adler), mà là đi tìm ý nghĩa cuộc đời (Frankl). Người có một lý do 'Tại sao' (Why) đủ lớn để sống có thể vượt qua hầu hết mọi hoàn cảnh 'Thế nào' (How).",
+      "trigger_question": "Sự đau khổ, vất vả hay thử thách này đang đòi hỏi tôi phải chịu trách nhiệm hoàn thành ý nghĩa vĩ đại nào?",
+      "inversion_trap": "Chủ nghĩa hư vô yếm thế (Nihilism & Hedonic Treadmill): Cho rằng cuộc đời vô nghĩa rồi chìm đắm trong các thú vui ngắn hạn (lướt mạng, game, hưởng thụ), dẫn đến khủng hoảng hiện sinh trống rỗng.",
+      "elite_leverage": "Lạc quan bi kịch (Tragic Optimism): Chấp nhận rằng cuộc đời luôn chứa đựng đau khổ, tội lỗi và cái chết, nhưng vẫn chủ động biến đau khổ thành chiến công của con người, biến tội lỗi thành cơ hội hoàn thiện bản thân, và biến sự ngắn ngủi của đời người thành động lực hành động có trách nhiệm cao nhất.",
+      "lollapalooza_pairs": [
+        "Chân lý khởi thủy",
+        "Kháng cự Entropy",
+        "Tầm nhìn 10 năm"
+      ],
+      "action_steps": [
+        "Tìm ý nghĩa qua lao động sáng tạo: Cống hiến cho một tác phẩm, sản phẩm hoặc dự án có ích cho đồng loại.",
+        "Tìm ý nghĩa qua trải nghiệm tình yêu: Rung cảm sâu sắc trước vẻ đẹp của nghệ thuật, thiên nhiên và tình yêu thương con người.",
+        "Tìm ý nghĩa qua thái độ trước nghịch cảnh: Khi không thể thay đổi hoàn cảnh, hãy thay đổi chính thái độ và phẩm giá của bản thân trước nghịch cảnh."
+      ],
+      "boundary_conditions": "Không sử dụng ý nghĩa để tự lừa dối bản thân ở lại trong những mối quan hệ độc hại hoặc môi trường bóc lột vô lý khi hoàn toàn có quyền rời đi.",
+      "real_world_case": "• Viktor Frankl trong trại tập trung Auschwitz: Ông sống sót qua trại tử thần Đức quốc xã nhờ giữ vững ước nguyện viết lại cuốn sách bản thảo bị cướp mất và khao khát gặp lại người vợ yêu quý.\n• Elon Musk & Sứ mệnh Đa hành tinh: Động lực làm việc 100 giờ/tuần tại SpaceX không phải để kiếm thêm tiền, mà xuất phát từ ý nghĩa hiện sinh: bảo vệ ngọn lửa nhận thức của loài người bằng cách biến nhân loại thành giống loài đa hành tinh.",
+      "source": "mental_model"
     }
   ]
 }

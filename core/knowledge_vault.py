@@ -930,6 +930,121 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 "explanation": "Chính xác! Tiền tệ và công nghệ mất thời gian lan tỏa qua các tầng mạng lưới; kẻ đứng ở thượng nguồn mua tài sản với giá gốc trước khi lạm phát đẩy giá lên."
             }
         ]
+    },
+
+    # =========================================================================
+    # NHÓM 5: NGHỆ THUẬT, THẨM MỸ & VĂN MINH NHÂN LOẠI (POLYMATH & TASTE)
+    # =========================================================================
+    "arts_design_aesthetics": {
+        "id": "arts_design_aesthetics",
+        "category": "🎨 Nghệ Thuật & Thẩm Mỹ",
+        "title": "Kiến Trúc Thẩm Mỹ & Nghệ Thuật Kể Chuyện (Arts, Taste & Design)",
+        "icon": "🎨",
+        "tagline": "Định hình 'Gu' (Taste) và Linh hồn trong Kỷ nguyên AI: Tỷ lệ vàng Phi, Cấu trúc 3 Hồi & Tối giản Bauhaus",
+        "summary": "Robot và AI giải quyết tính toán và thực thi; chỉ con người có gu thẩm mỹ, sự đồng cảm và khả năng kể chuyện chuyển hóa. Nắm vững 3 mỏ neo để chỉ huy AI với chiều sâu nghệ thuật xuất chúng.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['ART-01', 'MATH-04', 'PHYS-05'],
+                "label": "TRỤ 1: TỶ LỆ VÀNG, HÀI HÒA & ĐỐI XỨNG ĐỘNG",
+                "sub_modes": "(1) Tỷ Lệ Vàng Phi & Fibonacci + (2) Cân Bằng Động & Đối Xứng Bất Hoại + (3) Quy Luật Thị Giác Gestalt",
+                "principle": "1. Mọi cấu trúc rung cảm thị giác tự nhiên đều ẩn chứa tỷ số vàng 1.618 ➔ 2. Hài hòa không phải tĩnh tại vô hồn mà là cân bằng động giữa các lực thị giác ➔ 3. Não bộ tự động gom nhóm và điền khuyết khoảng trống để tạo nên ý nghĩa trọn vẹn.",
+                "anchor_name": "BỨC TƯỢNG VENUS CẨM THẠCH & THƯỚC ĐO PHI VÀNG RÒNG",
+                "anchor_icon": "🏛️",
+                "crazy_image": "Tại BỨC TƯỢNG VENUS CẨM THẠCH: (1) Bức tượng xoay tròn theo đường xoắn ốc Fibonacci vàng rực phát sáng (Tỷ lệ vàng Phi), (2) tay cầm chiếc thước đo tự động uốn cong tạo thế cân bằng động hoàn hảo giữa hai khối đá (Cân bằng động), (3) mắt kính laser quét các mảng hình lập phương lơ lửng tự động hút vào nhau thành một khuôn mặt người sống động (Quy luật thị giác Gestalt)!",
+                "trigger_question": "Bố cục này có tuân theo tỷ số vàng tự nhiên không? Điểm tựa thị giác nằm ở đâu? Não người sẽ tự gom nhóm hình ảnh này thành ý niệm gì?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['ART-02', 'PSY-01', 'BIO-01'],
+                "label": "TRỤ 2: CẤU TRÚC KỊCH NGHỆ & HÀNH TRÌNH NGƯỜI ANH HÙNG",
+                "sub_modes": "(1) Cấu Trúc 3 Hồi Aristotle + (2) Hành Trình Người Anh Hùng (Campbell) + (3) Điểm Tháo Nút Cảm Xúc (Catharsis)",
+                "principle": "1. Thiết lập bình thường cũ ➔ Thử thách đứt gãy ➔ Tái sinh biến đổi (Cấu trúc 3 hồi) ➔ 2. Kêu gọi lên đường ➔ Vượt qua vực thẳm bóng tối ➔ Trở về mang thuốc cứu rỗi ➔ 3. Tích tụ độ căng thẳng tột độ để tạo khoảnh khắc bùng nổ giải thoát tâm can.",
+                "anchor_name": "SÂN KHẤU HY LẠP CỔ & THANH KIẾM BỊ GÃY",
+                "anchor_icon": "🎭",
+                "crazy_image": "Tại SÂN KHẤU HY LẠP CỔ: (1) Sân khấu chia làm 3 tầng sấm sét từ khởi nguyên đến địa ngục và đỉnh vinh quang (3 Hồi Aristotle), (2) dũng sĩ cầm thanh kiếm gãy nhảy qua hố nham thạch tối tăm ôm lấy ngọn lửa chân lý (Hero's Journey), (3) chiếc mặt nạ bi kịch khóc ròng rồi bất ngờ cười phá lên khiến cả khán đài rơi lệ rung chuyển tâm can (Catharsis giải thoát)!",
+                "trigger_question": "Câu chuyện này có đủ 3 hồi đứt gãy không? Nhân vật đang ở đoạn nào của vực thẳm? Điểm căng thẳng tột cùng được tháo nút ở đâu?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['ART-03', 'ART-04', 'SYS-04'],
+                "label": "TRỤ 3: CÔNG NĂNG TỐI GIẢN & GU THẨM MỸ BẤT TOÀN",
+                "sub_modes": "(1) Công Năng Định Hình Hình Thức (Bauhaus) + (2) Ít Nhưng Tốt Hơn (Dieter Rams) + (3) Thẩm Mỹ Wabi-Sabi & Tương Phản Sáng Tối (Chiaroscuro)",
+                "principle": "1. Hình thức phải phụng sự công năng tối thượng, loại bỏ mọi chi tiết hoa văn giả tạo ➔ 2. Thiết kế tốt nhất là thiết kế càng ít can thiệp càng tốt, trường tồn cùng thời gian ➔ 3. Trân trọng vẻ đẹp mộc mạc bất toàn của thời gian và dùng bóng tối sâu thẳm để tôn vinh luồng sáng hạt nhân.",
+                "anchor_name": "ĐỒNG HỒ BRAUN TỐI GIẢN & BÁT GỐM NỨT VÀNG KINTSUGI",
+                "anchor_icon": "☕",
+                "crazy_image": "Tại BÀN TRÀ THIỀN: (1) Chiếc đồng hồ Braun trắng tinh không một chi tiết thừa chỉ chạy êm ru chuẩn xác (Dieter Rams / Bauhaus), (2) đặt cạnh bát trà gốm mộc nứt toác được hàn gắn bằng dòng vàng ròng sáng rực (Kintsugi Wabi-Sabi), (3) ngọn nến Caravaggio hắt luồng sáng kịch tính xuyên màn đêm làm lộ rõ vẻ đẹp gai góc của sự thật (Chiaroscuro)!",
+                "trigger_question": "Chi tiết này có công năng thực sự hay chỉ là rác trang trí? Tôi có thể lược bỏ thêm gì nữa không? Sự bất toàn chân thật ở đây nằm ở đâu?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Vì sao Elon Musk và Steve Jobs luôn nhấn mạnh 'Arts & Humanities' khi lãnh đạo kỹ sư và công nghệ?",
+                "options": [
+                    "Vì nghệ thuật giúp sản phẩm bán được giá cao hơn gấp 10 lần nhờ quảng cáo màu mè.",
+                    "Vì máy móc chỉ thực thi cơ học; nghệ thuật và nhân văn định hình 'Gu' (Taste), ý nghĩa mục đích và sự đồng cảm chạm đáy tim người dùng.",
+                    "Vì các nhà khoa học bắt buộc phải biết vẽ tranh để minh họa ý tưởng."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Công nghệ kết hôn với nghệ thuật tự do (Liberal Arts) mới tạo ra sản phẩm có linh hồn và rung động lòng người."
+            }
+        ]
+    },
+
+    "civilization_philosophy": {
+        "id": "civilization_philosophy",
+        "category": "🏛️ Văn Minh & Nhân Văn",
+        "title": "Tiến Trình Văn Minh & Triết Học Sinh Tồn (Civilization & Stoicism)",
+        "icon": "🏛️",
+        "tagline": "Nhìn thời cuộc bằng lăng kính nghìn năm: Quy luật hưng vong đế chế, Thần thoại liên chủ thể & Pháo đài tâm trí Khắc kỷ",
+        "summary": "Đừng để biến động ngắn hạn làm mù mắt. Nắm vững chu kỳ 500 năm hưng vong của Ibn Khaldun & Dalio, sức mạnh gắn kết của thần thoại loài người (Harari) và pháo đài bất hoại của Marcus Aurelius.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['CIV-01', 'ECON-01', 'SYS-10'],
+                "label": "TRỤ 1: QUY LUẬT HƯNG VONG ĐẾ CHẾ (RISE & FALL)",
+                "sub_modes": "(1) Tính Gắn Kết Xã Hội Asabiya (Ibn Khaldun) + (2) Chu Kỳ Siêu Nợ Đổi Ngôi Tiền Tệ (Ray Dalio) + (3) Bão Hòa Tinh Hoa & Suy Tàn Cấu Trúc (Peter Turchin)",
+                "principle": "1. Nhóm gắn kết từ gian khó sẽ quật khởi đánh bại đế chế xa hoa suy đồi ➔ 2. Chu kỳ nợ và in tiền luôn kết thúc bằng tái cơ cấu và chuyển dịch trật tự thế giới ➔ 3. Sản sinh quá nhiều tinh hoa tranh giành tài nguyên hữu hạn là ngòi nổ nội loạn suy vong.",
+                "anchor_name": "CỘT ĐÁ LA MÃ ĐỔ NÁT & CHIẾC ĐỒNG HỒ CÁT VÀNG",
+                "anchor_icon": "⏳",
+                "crazy_image": "Tại CỘT ĐÁ LA MÃ: (1) Đàn chiến binh du mục dũng mãnh nắm chặt tay kết thành bức tường sắt Asabiya đạp đổ tượng hoàng đế sa đọa (Ibn Khaldun), (2) chiếc đồng hồ cát in tiền khổng lồ của Dalio chảy ngược báo hiệu hồi kết siêu chu kỳ nợ (Dalio), (3) trên đỉnh cột đá, hàng trăm quan chức giành nhau một chiếc vương miện làm cột đá nứt toác sụp đổ (Turchin bão hòa tinh hoa)!",
+                "trigger_question": "Tổ chức này đang ở giai đoạn gắn kết quật khởi hay suy đồi bão hòa? Chu kỳ nợ đang ở pha nào? Trật tự nào sắp đổi ngôi?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['CIV-02', 'PSY-02', 'BIO-10'],
+                "label": "TRỤ 2: THỰC TẠI LIÊN CHỦ THỂ & THẦN THOẠI TẬP THỂ",
+                "sub_modes": "(1) Thực Tại Liên Chủ Thể (Harari - Sapiens) + (2) Biểu Tượng Quyền Lực & Nghi Thức Xã Hội + (3) Ngưỡng Bộ Lạc Dunbar 150",
+                "principle": "1. Tiền bạc, quốc gia, luật pháp và tập đoàn chỉ tồn tại trong trí tưởng tượng chung của số đông ➔ 2. Kẻ dẫn dắt là kẻ kiểm soát và điều hướng câu chuyện thần thoại tập thể ➔ 3. Muốn vượt ngưỡng 150 người phải dùng biểu tượng và niềm tin vô hình để kết nối triệu tâm trí.",
+                "anchor_name": "ĐỒNG TIỀN GIẤY BAY LƠ LỬNG & BỨC MẬT THƯ TRÊN VÁCH ĐÁ",
+                "anchor_icon": "📜",
+                "crazy_image": "Tại VÁCH ĐÁ TỔ TIÊN: (1) Một tờ tiền giấy và logo công ty lơ lửng giữa không trung nhưng hàng triệu người quỳ gối tin cậy giao dịch máu và nước mắt (Harari Shared Fiction), (2) tư tế giơ cao cây trượng biểu tượng quyền lực phát sóng thôi miên cả thành phố (Nghi thức biểu tượng), (3) chiếc vòng tròn kết nối 150 người bùng nổ thành mạng lưới tơ nhện kết nối tỷ người xuyên lục địa (Dunbar Network)!",
+                "trigger_question": "Niềm tin này có căn cứ vật lý thật hay chỉ là thỏa thuận tưởng tượng chung? Ai đang là người dẫn dắt câu chuyện thần thoại này?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['CIV-03', 'CIV-04', 'SYS-04'],
+                "label": "TRỤ 3: PHÁO ĐÀI TÂM TRÍ KHẮC KỶ & Ý NGHĨA SINH TỒN",
+                "sub_modes": "(1) Nhị Phân Quyền Kiểm Soát (Epictetus) + (2) Yêu Lấy Định Mệnh (Amor Fati - Marcus Aurelius) + (3) Ý Chí Đi Tìm Ý Nghĩa (Viktor Frankl)",
+                "principle": "1. Phân biệt tuyệt đối: Thứ ta kiểm soát được (phán xét, hành vi) vs thứ nằm ngoài tầm tay (thời cuộc, người khác) ➔ 2. Biến trở ngại thành nhiên liệu bùng cháy ngọn lửa hành động ➔ 3. Người có một lý do 'Tại sao' đủ lớn có thể chịu đựng được mọi hoàn cảnh 'Thế nào'.",
+                "anchor_name": "PHÁO ĐÀI ĐÁ ĐEN GIỮA BÃO BIỂN & NGỌN ĐÈN DẦU BẤT TẮT",
+                "anchor_icon": "🛡️",
+                "crazy_image": "Tại PHÁO ĐÀI ĐÁ ĐEN: (1) Sóng thần thời cuộc gầm rú dội vào nhưng pháo đài bình thản đóng chặt cửa, chỉ bảo vệ ngọn nến bên trong tâm trí (Nhị phân kiểm soát), (2) Marcus Aurelius đứng dưới mưa bom mỉm cười ôm lấy ngọn lửa định mệnh biến nó thành giáp sắt (Amor Fati), (3) Viktor Frankl bước đi hiên ngang giữa bóng tối nhờ giữ chặt lý tưởng sống vĩ đại trong lồng ngực (Ý chí ý nghĩa)!",
+                "trigger_question": "Biến cố này nằm trong hay ngoài vòng tròn kiểm soát của tôi? Làm sao để biến trở ngại này thành bàn đạp? Mục đích tối thượng của tôi là gì?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Theo Nhị phân quyền kiểm soát của Triết học Khắc kỷ (Stoicism), nguồn gốc sâu xa của sự lo âu và đau khổ là gì?",
+                "options": [
+                    "Do ta thiếu tiền bạc và quyền lực trong xã hội.",
+                    "Do ta cố gắng kiểm soát những thứ nằm ngoài quyền kiểm soát của bản thân (thời cuộc, phán xét của người khác, kết quả).",
+                    "Do ta không chịu làm việc chăm chỉ suốt 16 tiếng mỗi ngày."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Lo âu sinh ra khi ta dồn năng lượng vào những thứ ngoài vòng kiểm soát thay vì tập trung vào phán xét và hành vi của chính mình."
+            }
+        ]
     }
 }
 

@@ -40,6 +40,7 @@ LOCAL_ANALYSES_FILE = os.path.join(DATA_DIR, "analyses_history.json")
 LOCAL_DECISIONS_FILE = os.path.join(DATA_DIR, "decision_journal.json")
 LOCAL_COMPRESSIONS_FILE = os.path.join(DATA_DIR, "compressions_history.json")
 LOCAL_SCOUT_TREES_FILE = os.path.join(DATA_DIR, "macro_scout_trees.json")
+LOCAL_FORMULATIONS_FILE = os.path.join(DATA_DIR, "formulations_history.json")
 
 _DEFAULT_URL = "https://szprfjzeauzstvmvgjrw.supabase.co"
 
@@ -596,4 +597,54 @@ def delete_compression_record(record_id: str, username: str = "Phat") -> bool:
     updated = [c for c in current if c.get("id") != record_id]
     _save_json_file(LOCAL_COMPRESSIONS_FILE, updated)
     return _update_user_blob_field(username, "compressions", updated)
+
+
+# =============================================================================
+# 5. QUẢN TRỊ ĐIÊU KHẮC ĐỀ BÀI (POLYMATH FORMULATION HISTORY)
+# =============================================================================
+def load_formulation_history(username: str = "Phat") -> List[Dict[str, Any]]:
+    """Tải lịch sử các bản điêu khắc đề bài từ Supabase Cloud hoặc local JSON."""
+    blob = _fetch_user_blob(username)
+    if "formulations" in blob and isinstance(blob["formulations"], list):
+        records = blob["formulations"]
+        _save_json_file(LOCAL_FORMULATIONS_FILE, records)
+        return records
+    return _load_json_file(LOCAL_FORMULATIONS_FILE)
+
+
+def save_formulation_record(
+    user_intent: str,
+    result_data: Dict[str, Any],
+    domain_focus: str = "Polymath",
+    username: str = "Phat"
+) -> bool:
+    """Lưu một bản điêu khắc đề bài mới vào Supabase Cloud và local JSON."""
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    title = result_data.get("problem_title", "Bản Điêu Khắc Đề Bài Polymath")
+    record = {
+        "id": f"form_{int(datetime.now().timestamp() * 1000)}",
+        "created_at": now_str,
+        "time": now_str,
+        "title": title,
+        "user_intent": user_intent.strip(),
+        "domain_focus": domain_focus,
+        "result": result_data
+    }
+
+    current = load_formulation_history(username)
+    updated = [c for c in current if c.get("user_intent") != record["user_intent"]]
+    updated.insert(0, record)
+    if len(updated) > 50:
+        updated = updated[:50]
+
+    _save_json_file(LOCAL_FORMULATIONS_FILE, updated)
+    return _update_user_blob_field(username, "formulations", updated)
+
+
+def delete_formulation_record(record_id: str, username: str = "Phat") -> bool:
+    """Xóa một bản điêu khắc theo ID khỏi Supabase Cloud và local JSON."""
+    current = load_formulation_history(username)
+    updated = [c for c in current if c.get("id") != record_id]
+    _save_json_file(LOCAL_FORMULATIONS_FILE, updated)
+    return _update_user_blob_field(username, "formulations", updated)
 
