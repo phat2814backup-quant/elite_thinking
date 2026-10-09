@@ -946,13 +946,13 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             {
                 "id": "chunk_1",
                 "model_ids": ['ART-01', 'MATH-04', 'PHYS-05'],
-                "label": "TRỤ 1: TỶ LỆ VÀNG, HÀI HÒA & ĐỐI XỨNG ĐỘNG",
-                "sub_modes": "(1) Tỷ Lệ Vàng Phi & Fibonacci + (2) Cân Bằng Động & Đối Xứng Bất Hoại + (3) Quy Luật Thị Giác Gestalt",
-                "principle": "1. Mọi cấu trúc rung cảm thị giác tự nhiên đều ẩn chứa tỷ số vàng 1.618 ➔ 2. Hài hòa không phải tĩnh tại vô hồn mà là cân bằng động giữa các lực thị giác ➔ 3. Não bộ tự động gom nhóm và điền khuyết khoảng trống để tạo nên ý nghĩa trọn vẹn.",
+                "label": "TRỤ 1: TỶ LỆ VÀNG, ĐÒN BẨY THỊ GIÁC & DÒNG CHẢY SACCADE",
+                "sub_modes": "(1) Phi Grid & Dòng Chảy Saccade + (2) Đòn Bẩy Thị Giác & Vùng Xả 34 + (3) Vòng Lặp Gestalt & Snap-Back",
+                "principle": "1. Lưới Phi Grid co cụm sát tâm rút ngắn cự ly nhảy mắt Saccade tiết kiệm năng lượng ➔ 2. Cân bằng động đòn bẩy: điểm nóng P2 (tâm xoắn) đối trọng với ô vuông lớn 34 (vùng xả năng lượng) ➔ 3. Đi trượt mượt d2 như dòng sông êm ả, về bật Snap-back như ngọn thác để Gestalt đóng gói ký ức.",
                 "anchor_name": "BỨC TƯỢNG VENUS CẨM THẠCH & THƯỚC ĐO PHI VÀNG RÒNG",
                 "anchor_icon": "🏛️",
-                "crazy_image": "Tại BỨC TƯỢNG VENUS CẨM THẠCH: (1) Bức tượng xoay tròn theo đường xoắn ốc Fibonacci vàng rực phát sáng (Tỷ lệ vàng Phi), (2) tay cầm chiếc thước đo tự động uốn cong tạo thế cân bằng động hoàn hảo giữa hai khối đá (Cân bằng động), (3) mắt kính laser quét các mảng hình lập phương lơ lửng tự động hút vào nhau thành một khuôn mặt người sống động (Quy luật thị giác Gestalt)!",
-                "trigger_question": "Bố cục này có tuân theo tỷ số vàng tự nhiên không? Điểm tựa thị giác nằm ở đâu? Não người sẽ tự gom nhóm hình ảnh này thành ý niệm gì?"
+                "crazy_image": "Tại BỨC TƯỢNG VENUS CẨM THẠCH: (1) Bức tượng có đôi mắt laser chiếu điểm vàng fovea 1°-2° lướt êm ái trên đường xoắn ốc Fibonacci vàng rực (Phi Grid Saccades), (2) tay vung thanh đòn bẩy cân bằng khối ngọc P2 sáng rực với chiếc gương khổng lồ ô 34 (Đòn bẩy thị giác P1*d1 = P2*d2), (3) chiếc lò xo dưới chân bất ngờ bật tung (Snap-back) bắn chớp nhoáng tia sét đóng gói khuôn mặt Venus nguyên vẹn ghim chặt vào tâm trí (Quy luật thị giác Gestalt)!",
+                "trigger_question": "Điểm nóng P2 có đặt đúng tâm xoắn? Ô 34 có đủ khoảng xả năng lượng thần kinh? Hành trình nhảy Saccade có trượt mượt F/Z-pattern trước khi bật Snap-back hoàn tất Gestalt?"
             },
             {
                 "id": "chunk_2",
@@ -987,6 +987,26 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 ],
                 "correct_idx": 1,
                 "explanation": "Chính xác! Công nghệ kết hôn với nghệ thuật tự do (Liberal Arts) mới tạo ra sản phẩm có linh hồn và rung động lòng người."
+            },
+            {
+                "question": "Trong cơ chế cân bằng động thị giác (Saccades), tại sao khi mắt di chuyển từ Vùng diện tích lớn (ô 34) quay trở về Vùng tâm xoắn (ô 1-2), mắt lại NHẢY THẲNG (Snap-Back) mà không trượt ngược từng nấc?",
+                "options": [
+                    "Do cơ mắt chỉ có thể xoay theo một chiều cố định.",
+                    "Do ô 34 không có đường dẫn hướng và bị thiếu kích thích (under-stimulation); sự mất cân bằng lực cực đại tích tụ như chiếc lò xo bị nén, phát lệnh bắn cú nhảy Saccade thẳng tắp về Điểm Hút giàu thông tin P2 để hoàn thành chu trình Gestalt.",
+                    "Do mắt người bị mỏi nên vô tình bỏ qua các chi tiết trung gian."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Khi trượt đến ô 34 để xả bớt sự căng thẳng, não bộ rơi vào trạng thái đói thông tin. Momen đòn bẩy chênh lệch nén lò xo thị giác đến cực đại, kích hoạt cú nhảy Saccade thẳng tắp (Snap-back) về lại tâm xoắn P2 để não đóng gói ý nghĩa hoàn chỉnh."
+            },
+            {
+                "question": "Tại sao hệ lưới Tỷ Lệ Vàng (Phi Grid 1:0.618:1) lại giúp người dùng lướt Shopee hay TikTok hàng giờ mà ít bị mỏi cơ mắt hơn Quy tắc 1/3 (Rule of Thirds)?",
+                "options": [
+                    "Vì Phi Grid làm màu sắc của màn hình trở nên dịu nhẹ hơn.",
+                    "Vì 4 điểm giao của Phi Grid co cụm sát vào trục trung tâm hơn, giúp cự ly nhảy mắt (Saccade Distance) giữa các yếu tố ngắn hơn, giảm thời gian mù tạm thời (Saccadic Suppression) và đỡ mỏi cơ vận nhãn.",
+                    "Vì màn hình điện thoại được tối ưu riêng cho số Pi."
+                ],
+                "correct_idx": 1,
+                "explanation": "Đúng! Rule of Thirds chia 1:1:1 đẩy các điểm giao dạt ra xa mép, khiến góc nhảy Saccade rộng gây mỏi cơ mắt; trong khi Phi Grid thu gom các điểm neo vào sát bán kính quét fovea 1°-2° trung tâm."
             }
         ]
     },

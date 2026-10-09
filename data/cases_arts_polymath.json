@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "group": "G",
+    "title": "Nghệ Thuật Thị Giác, Bố Cục Fibonacci & UI/UX Đỉnh Cao",
+    "version": "1.0",
+    "total_cases": 3,
+    "target_age": "Học sinh Wellspring, Designer, Marketer, Creator & Giới Elite",
+    "description": "Các bài toán thực chiến giải mã cách thao túng sinh học thị giác (Saccades), bản đồ sức hút (Salience Map), bố cục Fibonacci (Phi Grid) và đòn bẩy thị giác trong thương mại điện tử, điện ảnh và thiết kế giao diện.",
+    "principles_focus": [
+      "The Golden Ratio & Fibonacci",
+      "Dynamic Equilibrium",
+      "Gestalt Principles",
+      "Cognitive Load Theory",
+      "Saccadic Eye Movement",
+      "Salience Map & Contrast Delta"
+    ]
+  },
+  "cases": [
+    {
+      "id": "G01",
+      "title": "Giải phẫu Giao diện Shopee: Bố cục Z-Pattern & Đòn bẩy Fibonacci nhốt ánh mắt vào nút 'MUA NGAY'",
+      "difficulty": "Nâng cao",
+      "time_minutes": 12,
+      "problem": "Người dùng lướt Shopee hoặc TikTok hàng giờ liền mà không thấy mỏi cơ mắt, và vô thức bị thôi thúc bấm vào nút 'MUA NGAY' màu cam. Cơ chế sinh học nào đang diễn ra trong mắt và não bộ, và làm sao áp dụng để thiết kế trang Landing Page bán hàng hoặc Poster chuyển đổi cao?",
+      "trigger_question": "Làm sao biến một trang thông tin phức tạp thành 'dòng sông trượt mượt' và kết thúc bằng 'ngọn thác bùng nổ' Snap-back đưa khách hàng vào vòng lặp chốt đơn?",
+      "first_principles_breakdown": [
+        "Mắt người chỉ nhìn rõ nét ở điểm vàng fovea 1°-2°. Vùng ngoại vi 120° cực mờ nhưng siêu nhạy với khối lớn và độ chênh sáng/tối.",
+        "Lưới Phi Grid (1:0.618:1) co cụm 4 điểm giao sát trục trung tâm hơn Rule of Thirds (1:1:1), rút ngắn khoảng cách đảo mắt (Saccade Distance) và giảm hiện tượng mù tạm thời (Saccadic Suppression).",
+        "Công thức đòn bẩy thị giác: Mảng ảnh lớn P1 (ô vuông 34) làm bệ đối trọng với nút MUA NGAY cam P2 (tâm xoắn ốc).",
+        "Mắt trượt mượt d2 qua nấc cận kề 1->2->...->34 để xả năng lượng thần kinh, sau đó bị đói kích thích ở ô 34 và lò xo đòn bẩy phát lệnh bắn thẳng (Snap-back Saccade) quay lại P2 để hoàn thành chu trình Gestalt."
+      ],
+      "principles": [
+        "The Golden Ratio & Fibonacci",
+        "Dynamic Equilibrium",
+        "Gestalt Principles",
+        "Cognitive Load Theory"
+      ],
+      "solution_steps": [
+        "Bước 1 (Mảng Nặng P1): Đặt ảnh sản phẩm lớn bên trái chiếm ~50% màn hình tại ô 34 để Vùng Ngoại Vi nhận diện ngay giây 0.0.",
+        "Bước 2 (Cú Nhảy Tương Phản): Đặt Giá Tiền Đỏ ở góc trên bên phải để tạo Contrast Delta cực đại, hút cú nhảy Saccade đầu tiên của điểm nét 1°-2°.",
+        "Bước 3 (Hành Trình Trượt d2): Bố trí các nút chọn biến thể (màu sắc, kích cỡ) dọc theo đường cong trượt để người dùng tiếp nhận chi tiết tự nhiên.",
+        "Bước 4 (Tâm Xoắn Ốc P2 & Snap-Back): Đặt nút 'MUA NGAY' màu cam rực rỡ tại điểm giao Phi Grid sát trung tâm; khi mắt đậu vào đây, sức căng thị giác đạt đỉnh và kích hoạt cú nhảy bật Snap-back về lại Khung ảnh lớn để xem xét lần nữa, tạo vòng lặp khép kín."
+      ],
+      "variants": [
+        "Áp dụng vào thiết kế Slide gọi vốn: Đồ thị tăng trưởng đặt ở ô 34, số liệu doanh thu cốt lõi đặt tại tâm xoắn P2.",
+        "Áp dụng vào Thumbnail YouTube triệu view: Khuôn mặt biểu cảm ở tâm xoắn P2, bối cảnh kịch tính ở ô 34."
+      ],
+      "elite_insight": "Người nghiệp dư cố nhét thật nhiều chữ kêu gọi mua hàng. Bậc thầy thao túng sinh học cơ mắt để ánh mắt khách hàng tự rơi vào bẫy hình học mà họ cứ ngỡ là do chính họ quyết định."
+    },
+    {
+      "id": "G02",
+      "title": "Bẫy Thị Giác Trong Điện Ảnh & Video Triệu View: Kỹ thuật Visual Continuity qua mỗi cú Cut",
+      "difficulty": "Thực chiến",
+      "time_minutes": 10,
+      "problem": "Khi chuyển cảnh liên tục trong video ngắn (TikTok, Reels) hoặc phim điện ảnh, nếu cắt cảnh không khéo thì người xem sẽ bị mỏi mắt, mất phương hướng và lướt qua clip khác chỉ sau 2 giây. Đạo diễn Hollywood giải quyết bài toán này như thế nào?",
+      "trigger_question": "Điểm neo của ánh mắt ở khung hình trước có trùng khớp với điểm xuất hiện của nhân vật ở khung hình kế tiếp không?",
+      "first_principles_breakdown": [
+        "Não bộ bị hiện tượng Saccadic Suppression: trong khoảng 20-50ms khi mắt nhảy từ góc này sang góc kia của màn hình, não tạm dừng tiếp nhận hình ảnh.",
+        "Nếu sau cú cắt cảnh (Cut), điểm chú ý mới nằm ở góc đối diện, mắt phải gồng cơ vận nhãn xoay góc 90 độ để dò tìm chủ thể ➔ Gây mệt mỏi và ức chế nhận thức.",
+        "Lưới Phi Grid co cụm sát tâm giúp bán kính quét của mắt luôn nằm trong biên độ tối thiểu."
+      ],
+      "principles": [
+        "Visual Continuity",
+        "Saccadic Suppression",
+        "The Golden Ratio & Fibonacci",
+        "Cognitive Load Theory"
+      ],
+      "solution_steps": [
+        "Xác định tọa độ điểm nóng P2 của Cảnh A (ví dụ: đôi mắt của nhân vật đang nói chuyện ở điểm giao Phi Grid trên-phải).",
+        "Khi cắt sang Cảnh B (ví dụ: góc nhìn từ phía sau hoặc cận cảnh đồ vật), bắt buộc đặt chủ thể trọng tâm của Cảnh B ngay tại tọa độ trên-phải đó.",
+        "Người xem tiếp nhận cảnh phim trôi chảy liên tục như một dòng chảy duy nhất mà không nhận ra thời gian và không gian vừa bị cắt ghép."
+      ],
+      "variants": [
+        "Áp dụng trong dựng video quảng cáo: Nút CTA xuất hiện đúng vị trí mà mắt người xem vừa kết thúc hành trình theo dõi chuyển động.",
+        "Áp dụng trong bài thuyết trình Keynote: Tiêu đề và biểu đồ chuyển động mượt mà theo cùng một trục thị giác giữa các slide."
+      ],
+      "elite_insight": "Sự mượt mà của một bộ phim không nằm ở kỹ xảo hoành tráng, mà nằm ở việc đạo diễn tiết kiệm từng milimet hành trình đảo mắt của khán giả."
+    },
+    {
+      "id": "G03",
+      "title": "Chẩn Đoán & Sửa Lỗi Bố Cục (Design Troubleshooting): Bản Năng vs Framework Đòn Bẩy Thị Giác",
+      "difficulty": "Cơ bản",
+      "time_minutes": 8,
+      "problem": "Một bức ảnh, poster sự kiện hoặc giao diện website trông 'sai sai' và nặng nề, nhưng người thiết kế không biết sai ở đâu và phải thử - sai (Trial & Error) hàng giờ liền trong vô vọng. Làm sao chẩn đoán chính xác lỗi bố cục trong 5 giây?",
+      "trigger_question": "Cánh tay đòn thị giác có đang bị lệch tâm không, và mảng xả năng lượng có đủ rộng để mắt 'thở' không?",
+      "first_principles_breakdown": [
+        "Người có năng khiếu làm theo bản năng: thấy vừa mắt thì dừng nhưng không giải thích được và phong độ thất thường.",
+        "Người nắm framework kiểm soát được Momen lực thị giác: M = P * d. Mọi sự nặng nề hay ngột ngạt đều do mất cân bằng động hoặc thiếu vùng xả năng lượng.",
+        "Bẫy đối xứng chết (Dead Symmetry): Cố chia đều 50/50 làm triệt tiêu sức căng thị giác, biến thiết kế thành bức tường tĩnh vô hồn."
+      ],
+      "principles": [
+        "Dynamic Equilibrium",
+        "Visual Tension",
+        "The Golden Ratio & Fibonacci",
+        "Inversion Thinking"
+      ],
+      "solution_steps": [
+        "Bước 1 (Chẩn đoán Mảng Trống): Kiểm tra xem có vùng xả năng lượng ô 34 (Negative space) hay không. Nếu chữ và hình nhồi nhét khắp 4 góc ➔ Cắt bỏ 40% chi tiết thừa.",
+        "Bước 2 (Chẩn đoán Điểm Tương Phản): Kiểm tra xem có Điểm Neo P2 sắc cạnh rõ ràng hay không. Nếu có quá nhiều điểm sáng tranh giành nhau ➔ Hạ sắc độ các điểm phụ, chỉ giữ lại 1 điểm nóng duy nhất.",
+        "Bước 3 (Kiểm tra Đòn Bẩy): Tăng khoảng cách cánh tay đòn d2 giữa điểm P2 và mảng P1 để tạo sức căng thị giác sống động."
+      ],
+      "variants": [
+        "Chụp ảnh chân dung: Đặt chủ thể ở điểm giao Phi Grid, để hướng nhìn trượt ra khoảng không gian rộng (ô 34) phía trước mặt.",
+        "Bố cục tài liệu báo cáo: Giữ 62% diện tích cho bảng biểu số liệu chính và 38% lề thoáng để mắt thư thái khi đọc."
+      ],
+      "elite_insight": "Người nghiệp dư sửa ảnh bằng cảm xúc. Bậc thầy sửa ảnh bằng cách chẩn đoán cánh tay đòn thị giác và phân bổ nhịp thở nạp - xả năng lượng."
+    }
+  ]
+}

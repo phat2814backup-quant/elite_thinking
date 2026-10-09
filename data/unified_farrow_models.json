@@ -2130,27 +2130,30 @@
     },
     {
       "id": "MM_ART-01",
-      "name_vi": "Tỷ Lệ Vàng & Chuỗi Fibonacci",
-      "name_en": "The Golden Ratio (Phi) & Fibonacci (Phidias & Da Vinci)",
+      "name_vi": "Tỷ Lệ Vàng, Đòn Bẩy Thị Giác & Chuỗi Fibonacci",
+      "name_en": "The Golden Ratio (Phi), Visual Dynamics & Saccadic Flow (Da Vinci & Modern Neurobiology)",
       "pillar": "Nghệ thuật & Thẩm mỹ",
       "farrow_pillar": "root",
       "tier": 1,
-      "first_principle": "Tỷ số vàng Phi (1.618033...) là nghiệm tự nhiên của sự phân bố năng lượng và hình học tối ưu: tỷ lệ giữa phần lớn và phần nhỏ bằng tỷ lệ giữa toàn thể và phần lớn. Mọi cấu trúc rung cảm thị giác của con người đều cộng hưởng sâu sắc với tỷ lệ này.",
-      "trigger_question": "Bố cục sản phẩm, tỷ lệ văn bản và nhịp điệu trải nghiệm này có tuân theo tỷ lệ hài hòa tự nhiên không, hay đang gây ma sát thị giác vô thức?",
-      "inversion_trap": "Bẫy đối xứng chết (Dead Symmetry): Ép mọi thứ vào sự đối xứng tuyệt đối cơ học khiến sản phẩm trở nên cứng nhắc, vô hồn như tượng sáp, đánh mất sự sống động của tự nhiên.",
-      "elite_leverage": "Steve Jobs và Jony Ive dùng tỷ lệ vàng thiết kế logo Apple và bán kính bo góc iPhone. Áp dụng tỷ số 1:1.618 vào cấu trúc giao diện, kích cỡ tiêu đề so với thân bài, và tỷ lệ giữa tính năng cốt lõi và không gian thở (white space).",
+      "first_principle": "1. Tiết kiệm năng lượng thần kinh thị giác (Cognitive Load): Mắt chỉ nhìn rõ nét ở điểm vàng fovea 1°-2°, toàn bộ vùng 120° ngoại vi mờ chỉ nhận diện sáng-tối. Lưới Phi Grid (1:0.618:1) co cụm các điểm giao sát tâm hơn Rule of Thirds (1:1:1), rút ngắn cự ly nhảy mắt (Saccade Distance) và giảm hiện tượng mù tạm thời (Saccadic Suppression). 2. Đòn bẩy cân bằng động (P1*d1 = P2*d2): Tâm xoắn ốc ô 1-2 là điểm nóng nén thông tin P2 đối trọng với ô vuông lớn 34 (P1) là vùng xả năng lượng/khoảng thở thị giác. 3. Vòng lặp Gestalt: Chiều đi trượt mượt theo đường cong Fibonacci d2 (như dòng sông êm ả) -> Chiều về nhảy thẳng Saccade Snap-back (như ngọn thác đột phá) để đóng gói ý nghĩa trọn vẹn ghim chặt vào ký ức.",
+      "trigger_question": "Điểm nóng thị giác P2 (tâm xoắn) đặt ở đâu? Ô 34 có đủ khoảng thở để xả năng lượng thần kinh không? Hành trình Saccade có trượt mượt F/Z-pattern trước khi kích hoạt Snap-back đóng gói Gestalt không?",
+      "inversion_trap": "Bẫy giật cục góc rộng (Saccadic Fatigue) và Bẫy đối xứng chết (Dead Symmetry): Bố trí các điểm quan trọng rải rác ở góc xa khiến cơ vận nhãn phải ngoặt góc 90 độ liên tục gây mỏi mắt, hoặc ép đối xứng cơ học làm triệt tiêu sức căng thị giác (Visual Tension).",
+      "elite_leverage": "Bẫy Saccade trong Thương mại Điện tử (Shopee) & Điện ảnh: Đặt hình ảnh lớn P1 ở ô 34, dẫn mắt trượt theo đường cong d2 qua giá đỏ và phân loại hàng, hạ cánh xuống nút CTA cam đậm P2 tại điểm giao Phi Grid, rồi kích hoạt Snap-back về lại ô 34 tạo vòng lặp mua hàng khép kín không mỏi mắt.",
       "lollapalooza_pairs": [
         "Quy luật Gestalt",
         "Định luật bình phương nghịch đảo",
-        "Cân bằng động"
+        "Cân bằng động",
+        "Cognitive Load Theory"
       ],
       "action_steps": [
-        "Xác định tỷ lệ kích thước: Đo lường chiều dài/rộng của các khối giao diện hoặc sản phẩm vật lý theo tỷ số 1:1.618.",
-        "Tạo khoảng trống thở (White space): Giữ 62% diện tích cho nội dung chính và 38% cho không gian nghỉ mắt.",
-        "Thiết lập nhịp phân cấp thị giác: Kích cỡ chữ và hình ảnh chuyển bậc theo chuỗi số Fibonacci (8, 13, 21, 34, 55)."
+        "Xác định Điểm Neo Khởi Đầu (Anchor / Salience Map): Đặt điểm sáng nhỏ hoặc chi tiết tương phản tuyệt đối P2 ngay tại Tâm xoắn ốc hoặc điểm giao Phi Grid sát trung tâm.",
+        "Bố trí Vùng Xả Năng Lượng 34 (Visual Release): Dành mảng diện tích lớn đối diện làm mảng tối/nền phẳng (P1) với cánh tay đòn ngắn d1 làm bệ đỡ đối trọng.",
+        "Thiết kế Hành trình Trượt d2 (F-Pattern / Z-Pattern): Dẫn dắt vùng nhìn rõ 1°-2° lướt êm ái qua các nấc cận kề 1->2->3->5->8->13->21->34 để tiếp nhận thông tin mượt mà không ngoặt góc đột ngột.",
+        "Kích hoạt Cú Nhảy Snap-Back: Tận dụng sự đói kích thích ở ô 34 để phóng thẳng mắt quay lại nút CTA / Logo P2, hoàn tất chu trình đóng gói Gestalt."
       ],
       "boundary_conditions": "Không biến tỷ lệ vàng thành một giáo điều phong thủy; công năng và sự rõ ràng của thông điệp luôn được ưu tiên hàng đầu trước khi tinh chỉnh tỷ lệ.",
-      "real_world_case": "• Kiến trúc Parthenon Hy Lạp & Mona Lisa: Áp dụng tỷ lệ vàng vào mặt tiền và khung xương giúp tác phẩm trường tồn hơn 2.500 năm.\n• Giao diện Twitter/X & Apple: Tỷ lệ hiển thị avatar, banner và kích thước typography được căn chỉnh theo chuỗi Fibonacci giúp giảm mỏi mắt khi lướt thông tin liên tục.",
+      "real_world_case": "• Shopee E-Commerce Teardown: Ảnh sản phẩm lớn P1 (ô 34) ➔ Nhảy sang Giá tiền đỏ (Contrast Delta) ➔ Trượt đường cong d2 chọn biến thể ➔ Đậu ở nút 'MUA NGAY' màu cam P2 tại điểm giao Phi Grid ➔ Snap-back về ảnh lớn P1 tạo vòng lặp chốt đơn không mỏi mắt.\n• Điện ảnh & TikTok: Quy tắc Visual Continuity giữa các cú cắt cảnh (Cut shot) luôn đặt chủ thể mới trùng vào tọa độ điểm giao Phi Grid của cảnh trước, triệt tiêu cảm giác gián đoạn thời gian.\n• Apple & Thiết Kế Cao Cấp: Bán kính bo góc Squircle và tỷ lệ phân cấp Typography Fibonacci (8, 13, 21, 34, 55px) giúp mắt tiếp nhận nhịp điệu hình ảnh tự nhiên nhất.",
+      "deep_dossier_id": "ART_01_fibonaci",
       "source": "mental_model"
     },
     {

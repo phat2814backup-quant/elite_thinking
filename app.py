@@ -104,6 +104,11 @@ from core.ui_rooms import (
     render_ai_compressor_room,
     render_formulation_lab_room,
 )
+from core.study_manager import (
+    render_study_dossier_box,
+    render_study_library_view,
+)
+
 
 
 
@@ -222,6 +227,10 @@ def render_gmm_detailed_model(m: dict, is_expanded: bool = False):
                 st.markdown("**🌐 Tình huống thực chiến đa chiều (Case Studies Thực tế):**")
                 st.markdown(m["real_world_case"])
 
+        # Tự động nạp Bản Chuyên Khảo Sâu (Polymath Deep Dossier) nếu có file nghiên cứu tương ứng
+        render_study_dossier_box(m.get("id", ""))
+
+
 
 
 # -----------------------------------------------------------------------------
@@ -245,6 +254,7 @@ with st.sidebar:
     st.markdown("### 🧭 ĐIỀU HƯỚNG FARROW")
     mode_options = [
         "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
+        "📚 Thư Viện Chuyên Khảo Sâu (Deep Dossiers)",
         "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
         "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
         "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
@@ -547,6 +557,8 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                     render_gmm_detailed_model(sub_item, is_expanded=False)
 
 
+elif app_mode == "📚 Thư Viện Chuyên Khảo Sâu (Deep Dossiers)":
+    render_study_library_view()
 
 
 elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":

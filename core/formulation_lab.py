@@ -38,6 +38,10 @@ POLYMATH_SAMPLE_TEMPLATES = [
     {
         "title": "📊 Hệ Thống Phân Tích Đầu Tư Đa Chiều",
         "intent": "Thiết lập một AI Agent chuyên phân tích các thương vụ M&A và cổ phiếu: kết hợp mô hình định giá chiết khấu dòng tiền (DCF) toán học, soi xét văn hóa lãnh đạo và động lực ngầm của ban điều hành, đồng thời cảnh báo rủi ro thiên nga đen."
+    },
+    {
+        "title": "🎨 Thiết Kế Giao Diện UI/UX & Landing Page Tỷ Lệ Vàng (Visual Saccade & Shopee Formula)",
+        "intent": "Tôi muốn thiết kế một trang Landing Page bán sản phẩm số / E-commerce và Thumbnail video: ứng dụng triệt để lưới Phi Grid (1:0.618:1), điều hướng hành trình đảo mắt Saccade (F-Pattern/Z-Pattern), tạo điểm neo nén thông tin P2 tại tâm xoắn ốc đối trọng với mảng xả năng lượng 34 (P1), và kích hoạt cú nhảy bật Snap-back nhốt ánh mắt khách hàng vào nút CTA chuyển đổi cao mà không gây mỏi cơ mắt."
     }
 ]
 
@@ -48,7 +52,7 @@ Tiếp nhận một ý tưởng hoặc bài toán thô từ con người (Fuzzy 
 
 QUY TRÌNH 4 TẦNG ĐIÊU KHẮC BÁCH KHOA:
 1. TẦNG 1: SCIENCES & NATURAL LAWS (Khoa học tự nhiên & Chân lý gốc)
-   - Giới hạn vật lý, nhiệt động lực, entropy, năng lượng và ngưỡng sinh học nhận thức nào KHÔNG THỂ BỊ BẺ CONG?
+   - Giới hạn vật lý, nhiệt động lực, entropy, năng lượng và ngưỡng sinh học nhận thức (Cognitive Load, Saccade $1^\\circ-2^\\circ$) nào KHÔNG THỂ BỊ BẺ CONG?
    - Ràng buộc toán học và xác suất nền tảng là gì?
 
 2. TẦNG 2: ENGINEERING & SYSTEMS (Kỹ thuật & Kiến trúc thực thi)
@@ -56,7 +60,8 @@ QUY TRÌNH 4 TẦNG ĐIÊU KHẮC BÁCH KHOA:
    - Các nút thắt cổ chai hệ thống và ngưỡng lỗi chấp nhận được.
 
 3. TẦNG 3: ARTS, TASTE & HUMANITIES (Nghệ thuật, Gu thẩm mỹ & Trải nghiệm nhân văn)
-   - "Taste" (Vị giác/Thẩm mỹ) của giải pháp là gì? (Tỷ lệ vàng, tối giản Bauhaus hay Wabi-Sabi?)
+   - "Taste" (Vị giác/Thẩm mỹ) của giải pháp là gì? (Tỷ lệ vàng Phi, lưới Phi Grid co cụm sát tâm, chuỗi Fibonacci, tối giản Bauhaus hay Wabi-Sabi?)
+   - Động lực học thị giác & Cân bằng đòn bẩy: Điểm nóng nén năng lượng $P_2$, mảng xả năng lượng ô 34 $P_1$, đường dẫn Saccade F/Z-Pattern và cú nhảy bật Snap-back.
    - Cấu trúc kể chuyện (Narrative arc) và sự đồng cảm chạm đáy tim người dùng.
    - Ranh giới đạo đức và phẩm giá con người mà máy móc tuyệt đối không được xâm phạm.
 
