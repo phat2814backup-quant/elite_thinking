@@ -108,6 +108,7 @@ from core.study_manager import (
     render_study_dossier_box,
     render_study_library_view,
 )
+from core.trading_desk import render_adn_trading_desk_room
 
 
 
@@ -259,6 +260,7 @@ with st.sidebar:
         "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
         "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
         "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
+        "🎯 Bàn Tác Chiến H4 & Huấn Luyện Big Boy",
         "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
         "🫁 Trạm Thở Bụng Sạc Pin"
     ]
@@ -1139,6 +1141,12 @@ elif app_mode == "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)":
 # -----------------------------------------------------------------------------
 elif app_mode == "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định":
     render_problem_decomposition_room(active_api_key=active_api_key)
+
+# -----------------------------------------------------------------------------
+# PHÒNG 4.5: BÀN TÁC CHIẾN H4 & HUẤN LUYỆN BIG BOY (AIR SNIPER DESK)
+# -----------------------------------------------------------------------------
+elif app_mode == "🎯 Bàn Tác Chiến H4 & Huấn Luyện Big Boy":
+    render_adn_trading_desk_room()
 
 # -----------------------------------------------------------------------------
 # PHÒNG 5: MÁY ÉP FARROW 1-CLICK (AI COMPRESSOR)
