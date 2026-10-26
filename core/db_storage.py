@@ -41,6 +41,7 @@ LOCAL_DECISIONS_FILE = os.path.join(DATA_DIR, "decision_journal.json")
 LOCAL_COMPRESSIONS_FILE = os.path.join(DATA_DIR, "compressions_history.json")
 LOCAL_SCOUT_TREES_FILE = os.path.join(DATA_DIR, "macro_scout_trees.json")
 LOCAL_FORMULATIONS_FILE = os.path.join(DATA_DIR, "formulations_history.json")
+LOCAL_DISTILLED_PROFILES_FILE = os.path.join(DATA_DIR, "distilled_profiles.json")
 
 _DEFAULT_URL = "https://szprfjzeauzstvmvgjrw.supabase.co"
 
@@ -647,4 +648,56 @@ def delete_formulation_record(record_id: str, username: str = "Phat") -> bool:
     updated = [c for c in current if c.get("id") != record_id]
     _save_json_file(LOCAL_FORMULATIONS_FILE, updated)
     return _update_user_blob_field(username, "formulations", updated)
+
+
+# =============================================================================
+# 6. QUẢN TRỊ HỒ SƠ CHƯNG CẤT TƯ DUY (NUWA DISTILLED PROFILES)
+# =============================================================================
+def load_distilled_profiles_storage(username: str = "Phat") -> List[Dict[str, Any]]:
+    """Tải toàn bộ danh sách hồ sơ chưng cất (14 hồ sơ cốt lõi + hồ sơ mở rộng của người dùng)."""
+    local_profiles = _load_json_file(LOCAL_DISTILLED_PROFILES_FILE)
+    if not isinstance(local_profiles, list):
+        local_profiles = []
+
+    # Cố gắng đồng bộ thêm các hồ sơ người dùng chưng cất lưu trên Supabase Cloud
+    blob = _fetch_user_blob(username)
+    if "distilled_profiles" in blob and isinstance(blob["distilled_profiles"], list):
+        cloud_profiles = blob["distilled_profiles"]
+        existing_ids = {p.get("id") for p in local_profiles}
+        changed = False
+        for cp in cloud_profiles:
+            if cp.get("id") not in existing_ids:
+                local_profiles.append(cp)
+                existing_ids.add(cp.get("id"))
+                changed = True
+        if changed:
+            _save_json_file(LOCAL_DISTILLED_PROFILES_FILE, local_profiles)
+
+    return local_profiles
+
+
+def save_distilled_profile_storage(profile_data: Dict[str, Any], username: str = "Phat") -> bool:
+    """Lưu hồ sơ đã chưng cất mới vào cơ sở dữ liệu local và Supabase Cloud để tăng kho hồ sơ bền vững."""
+    current = load_distilled_profiles_storage(username)
+    p_id = profile_data.get("id")
+    updated = [p for p in current if p.get("id") != p_id]
+    updated.append(profile_data)
+
+    _save_json_file(LOCAL_DISTILLED_PROFILES_FILE, updated)
+
+    # Đồng bộ các hồ sơ do người dùng mở rộng lên Cloud
+    custom_profiles = [p for p in updated if not p.get("is_builtin", False)]
+    return _update_user_blob_field(username, "distilled_profiles", custom_profiles)
+
+
+def delete_distilled_profile_storage(profile_id: str, username: str = "Phat") -> bool:
+    """Xóa hồ sơ chưng cất tự tạo (không cho phép xóa 14 hồ sơ cốt lõi mặc định)."""
+    current = load_distilled_profiles_storage(username)
+    target = next((p for p in current if p.get("id") == profile_id), None)
+    if target and target.get("is_builtin", False):
+        return False
+    updated = [p for p in current if p.get("id") != profile_id]
+    _save_json_file(LOCAL_DISTILLED_PROFILES_FILE, updated)
+    custom_profiles = [p for p in updated if not p.get("is_builtin", False)]
+    return _update_user_blob_field(username, "distilled_profiles", custom_profiles)
 
