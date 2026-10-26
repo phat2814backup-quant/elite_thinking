@@ -3,7 +3,7 @@
 Module Giao Diện Xưởng Chưng Cất Nhận Thức Nữ Oa (Nuwa Cognitive Forge UI)
 Tích hợp:
 1. 🎯 Bàn Hội Chẩn Vấn Đề (Problem Diagnostic & Council of Thinkers)
-2. 🏛️ Bảo Tàng Hồ Sơ Đã Chưng Cất (14+ Profiles Catalog)
+2. 🏛️ Bảo Tàng Hồ Sơ Đã Chưng Cất (Phân loại theo 7 Trụ Cột Tinh Hoa Liền Mạch)
 3. 🧪 Xưởng Đúc Chưng Cất Mới (Distill Anyone & Lưu Cơ Sở Dữ Liệu)
 """
 
@@ -25,6 +25,61 @@ from core.nuwa_engine import (
 )
 from core.db_storage import create_decision_entry
 from core.export_utils import sanitize_filename
+
+# =============================================================================
+# 7 TRỤ CỘT NHẬN THỨC CHIẾN LƯỢC (7 COGNITIVE PILLARS)
+# =============================================================================
+PILLARS_META = {
+    "🚀 Khởi Nghiệp & Sản Phẩm": {
+        "title": "🚀 Khởi Nghiệp, Sản Phẩm & Độc Quyền",
+        "desc": "Chiến lược Đi từ 0 đến 1, tìm kiếm PMF, con hào độc quyền sáng tạo, tư duy Ngày 1 và thuật toán lan truyền.",
+        "color": "#38bdf8",
+        "border": "rgba(56, 189, 248, 0.4)",
+        "bg": "rgba(56, 189, 248, 0.08)"
+    },
+    "🤖 Kỹ Thuật AI & Bán Dẫn": {
+        "title": "🤖 Kỹ Thuật AI, Bán Dẫn & Điện Toán Cực Hạn",
+        "desc": "Kiến trúc AI từ đáy, Scaling laws, siêu tính toán song song, tối ưu hóa phần cứng và nguyên lý gốc.",
+        "color": "#a855f7",
+        "border": "rgba(168, 85, 247, 0.4)",
+        "bg": "rgba(168, 85, 247, 0.08)"
+    },
+    "🪙 Đầu Tư & Quants Định Lượng": {
+        "title": "🪙 Đầu Tư Giá Trị, Quants & Quản Trị Rủi Ro",
+        "desc": "Phân bổ vốn, con hào kinh tế, khai thác tín hiệu định lượng, tư duy nghịch đảo và hệ thống chống mong manh.",
+        "color": "#eab308",
+        "border": "rgba(234, 179, 8, 0.4)",
+        "bg": "rgba(234, 179, 8, 0.08)"
+    },
+    "⚔️ Binh Pháp & Thể Chế Quốc Gia": {
+        "title": "⚔️ Binh Pháp, Thế Trận & Thể Chế Quốc Gia",
+        "desc": "Nghệ thuật bất đối xứng, thắng trước rồi mới đánh, thực dụng lập quốc và xoay chuyển cục diện hiểm nghèo.",
+        "color": "#ef4444",
+        "border": "rgba(239, 68, 68, 0.4)",
+        "bg": "rgba(239, 68, 68, 0.08)"
+    },
+    "🎙️ Đàm Phán & Quyền Lực": {
+        "title": "🎙️ Đàm Phán Áp Đảo, Quyền Lực & Tâm Lý Thực Chiến",
+        "desc": "Thấu cảm chiến thuật con tin FBI, nghệ thuật tạo đòn bẩy quyền lực và đọc vị bản tính con người sâu kín.",
+        "color": "#ec4899",
+        "border": "rgba(236, 72, 153, 0.4)",
+        "bg": "rgba(236, 72, 153, 0.08)"
+    },
+    "🎬 Kỹ Nghệ Chú Ý & Viral Media": {
+        "title": "🎬 Kỹ Nghệ Chú Ý & Lan Truyền Truyền Thông",
+        "desc": "Kỹ nghệ giữ chân người xem, tạo đòn bẩy chú ý cực đoan, tiếp thị ngược chiều và thanh khoản lưu lượng số.",
+        "color": "#f97316",
+        "border": "rgba(249, 115, 22, 0.4)",
+        "bg": "rgba(249, 115, 22, 0.08)"
+    },
+    "🔥 Sức Bền Tâm Trí & Khắc Kỷ": {
+        "title": "🔥 Sức Bền Tâm Trí, Khắc Kỷ & Định Hướng Thực Tế",
+        "desc": "Chủ nghĩa khắc kỷ, vượt ngưỡng 40% thể xác, đơn giản hóa tột cùng và định hướng thực tế thoát bẫy ảo tưởng.",
+        "color": "#10b981",
+        "border": "rgba(16, 185, 129, 0.4)",
+        "bg": "rgba(16, 185, 129, 0.08)"
+    }
+}
 
 SAMPLE_PROBLEMS = [
     {
@@ -102,6 +157,79 @@ def export_council_advice_to_markdown(problem: str, advice_data: Dict[str, Any])
     return "\n".join(lines)
 
 
+def render_profile_card(p: Dict[str, Any]):
+    """Hiển thị chi tiết 1 hồ sơ dưới dạng thẻ bài sang trọng."""
+    is_built = p.get("is_builtin", False)
+    badge_label = "🔥 GỐC NUWA" if is_built else "✨ TỰ CHƯNG CẤT"
+    badge_color = "#38bdf8" if is_built else "#34d399"
+    badge_bg = "rgba(56, 189, 248, 0.15)" if is_built else "rgba(16, 185, 129, 0.15)"
+    cat_tag = p.get("category", "✨ Khác")
+    
+    with st.expander(f"{p.get('avatar','🧠')} **{p.get('name')}** — *{p.get('domain')}*", expanded=False):
+        # Header card
+        render_html_safe(f"""
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); 
+                    border-radius: 8px; padding: 12px 16px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                <span style="font-weight: 700; color: #f8fafc; font-size: 1.15rem;">
+                    {p.get('avatar','🧠')} {p.get('name')}
+                </span>
+                <div style="display: flex; gap: 8px;">
+                    <span style="background: rgba(148, 163, 184, 0.15); color: #cbd5e1; font-size: 0.72rem; 
+                                 font-weight: 600; padding: 2px 8px; border-radius: 999px;">
+                        {cat_tag}
+                    </span>
+                    <span style="background: {badge_bg}; color: {badge_color}; font-size: 0.72rem; 
+                                 font-weight: 700; padding: 2px 8px; border-radius: 999px;">
+                        {badge_label}
+                    </span>
+                </div>
+            </div>
+            <div style="color: #38bdf8; font-size: 0.9rem; font-weight: 600; margin: 6px 0 2px 0;">
+                \"{p.get('tagline', '')}\"
+            </div>
+            <div style="color: #94a3b8; font-size: 0.82rem;">
+                <b>Định vị:</b> {p.get('domain', '')}
+            </div>
+        </div>
+        """)
+
+        # Details
+        c_p1, c_p2 = st.columns([1, 1])
+        with c_p1:
+            st.markdown("**👤 Bản sắc nhận thức (Identity):**")
+            st.caption(p.get("identity", "Không có mô tả"))
+
+            st.markdown(f"**🔍 Lăng kính nhận thức ({len(p.get('mental_models', []))} Models):**")
+            for m in p.get("mental_models", []):
+                st.markdown(f"- **{m.get('name')}**: *{m.get('one_liner', '')}*")
+
+            st.markdown("**🧬 DNA Biểu đạt & Phong cách:**")
+            for dna in p.get("expression_dna", []):
+                st.markdown(f"- {dna}")
+
+        with c_p2:
+            st.markdown(f"**⚡ Quy tắc trực giác quyết định ({len(p.get('decision_heuristics', []))} Heuristics):**")
+            for h in p.get("decision_heuristics", []):
+                st.markdown(f"- `{h}`")
+
+            st.markdown("**⚠️ Vùng cấm (Anti-patterns — Tuyệt đối không làm):**")
+            for ap in p.get("anti_patterns", []):
+                st.error(f"⛔ {ap}")
+
+            st.markdown("**🛡️ Ranh giới trung thực (Honest Boundaries — Không giải quyết được gì):**")
+            for hb in p.get("honest_boundaries", []):
+                st.warning(f"🛑 {hb}")
+
+        # Delete button for custom
+        if not is_built:
+            st.divider()
+            if st.button("🗑️ Xóa Hồ Sơ Này Khỏi CSDL", key=f"btn_del_prof_{p.get('id')}", use_container_width=True):
+                remove_distilled_profile(p.get("id"))
+                st.success(f"Đã xóa hồ sơ {p.get('name')} thành công!")
+                st.rerun()
+
+
 def render_nuwa_forge_room(active_api_key: Optional[str] = None):
     """Hiển thị toàn bộ phòng chức năng Xưởng Chưng Cất Nhận Thức Nữ Oa."""
     
@@ -140,7 +268,7 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
     # 3 Tab chức năng chính
     t1, t2, t3 = st.tabs([
         "🎯 Bàn Hội Chẩn Vấn Đề (Problem Diagnostic & Council)",
-        "🏛️ Bảo Tàng Hồ Sơ Đã Chưng Cất (14+ Profiles)",
+        "🏛️ Bảo Tàng Hồ Sơ Đã Chưng Cất (26+ Profiles Phân Nhóm)",
         "🧪 Lò Nung Chưng Cất Mới (Distill Anyone)"
     ])
 
@@ -181,7 +309,7 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
                 st.rerun()
 
         if run_diag and problem_input.strip():
-            with st.spinner("🧠 Nữ Oa đang quét 5 tầng nhận thức của các nhà tư tưởng để tìm lăng kính giải mã..."):
+            with st.spinner("🧠 Nữ Oa đang quét 5 tầng nhận thức của 26 nhà tư tưởng để tìm lăng kính giải mã..."):
                 diag_res = diagnose_and_match_thinkers(problem_input, all_profiles, top_k=3, api_key=active_api_key)
                 st.session_state["nuwa_diag_result"] = diag_res
                 st.session_state["nuwa_problem_input"] = problem_input
@@ -244,9 +372,33 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
 
             st.markdown("---")
             st.markdown("##### 🏛️ Chọn Hội Đồng Cố Vấn Tham Gia Hội Chẩn:")
-            st.caption("Bạn có thể giữ nguyên các cố vấn được đề xuất ở trên hoặc tùy chọn thêm/bớt từ kho hồ sơ:")
+            st.caption("Các cố vấn đã được phân loại theo nhóm ngành. Bạn có thể chọn nhanh theo từng trụ cột bên dưới:")
             
-            all_opts = {p["id"]: f"{p.get('avatar','🧠')} {p['name']} — {p.get('domain','')[:40]}..." for p in all_profiles}
+            # Nút chọn nhanh theo nhóm ngành
+            st.markdown("<small style='color: #94a3b8; font-weight: 600;'>⚡ NẠP NHANH CẢ NHÓM CHUYÊN GIA:</small>", unsafe_allow_html=True)
+            cp1, cp2, cp3, cp4 = st.columns(4)
+            with cp1:
+                if st.button("🚀 Khởi Nghiệp (5)", key="btn_sel_startup", use_container_width=True):
+                    st.session_state["nuwa_selected_thinkers"] = [p["id"] for p in all_profiles if "Khởi Nghiệp" in p.get("category", "")]
+                    st.rerun()
+            with cp2:
+                if st.button("🤖 Kỹ Thuật AI (4)", key="btn_sel_ai", use_container_width=True):
+                    st.session_state["nuwa_selected_thinkers"] = [p["id"] for p in all_profiles if "Kỹ Thuật AI" in p.get("category", "")]
+                    st.rerun()
+            with cp3:
+                if st.button("🪙 Đầu Tư & Quants (5)", key="btn_sel_inv", use_container_width=True):
+                    st.session_state["nuwa_selected_thinkers"] = [p["id"] for p in all_profiles if "Đầu Tư" in p.get("category", "")]
+                    st.rerun()
+            with cp4:
+                if st.button("⚔️ Binh Pháp & Thể Chế (3)", key="btn_sel_strat", use_container_width=True):
+                    st.session_state["nuwa_selected_thinkers"] = [p["id"] for p in all_profiles if "Binh Pháp" in p.get("category", "")]
+                    st.rerun()
+
+            # Format options with Category Tag
+            all_opts = {
+                p["id"]: f"[{p.get('category','Khác').split(' ')[0]}] {p.get('avatar','🧠')} {p['name']} — {p.get('domain','')[:36]}..."
+                for p in all_profiles
+            }
             default_selected = [pid for pid in st.session_state.get("nuwa_selected_thinkers", []) if pid in all_opts]
             if not default_selected and recs:
                 default_selected = [recs[0].get("profile_id")]
@@ -279,8 +431,9 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
             for t_item in t_advices:
                 prof = get_profile_by_id(t_item.get("profile_id", ""))
                 avatar = prof.get("avatar", "🧠") if prof else "🧠"
+                cat_badge = prof.get("category", "") if prof else ""
                 
-                with st.expander(f"{avatar} **Góc Nhìn Của {t_item.get('name', 'Cố vấn')}**", expanded=True):
+                with st.expander(f"{avatar} **Góc Nhìn Của {t_item.get('name', 'Cố vấn')}** [{cat_badge}]", expanded=True):
                     col_l1, col_l2 = st.columns([1, 1])
                     with col_l1:
                         st.markdown(f"**🔍 Lăng kính nhận thức (Mental Model):**\n\n{t_item.get('applied_mental_model', '')}")
@@ -348,105 +501,131 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
 
 
     # =========================================================================
-    # TAB 2: BẢO TÀNG HỒ SƠ ĐÃ CHƯNG CẤT (14+ PROFILES)
+    # TAB 2: BẢO TÀNG HỒ SƠ ĐÃ CHƯNG CẤT (PHÂN LOẠI THEO 7 TRỤ CỘT LIỀN MẠCH)
     # =========================================================================
     with t2:
-        st.markdown(f"#### 🏛️ Kho Tàng {len(all_profiles)} Hồ Sơ Nhận Thức Đã Chưng Cất")
-        st.caption("Các bộ óc xuất chúng đã được bóc tách toàn diện 5 tầng nhận thức, sẵn sàng làm việc và tư vấn bất kỳ lúc nào.")
+        st.markdown(f"#### 🏛️ Kho Tàng {len(all_profiles)} Hồ Sơ Nhận Thức Phân Loại Theo 7 Trụ Cột")
+        st.caption("Các bộ óc xuất chúng đã được phân nhóm chặt chẽ theo từng lĩnh vực chuyên môn độc lập để bạn tra cứu và áp dụng liền mạch.")
+
+        # Thống kê nhanh theo 7 Trụ Cột (Interactive Overview Bar)
+        cat_counts = {}
+        for p in all_profiles:
+            c = p.get("category", "✨ Khác")
+            cat_counts[c] = cat_counts.get(c, 0) + 1
+
+        render_html_safe(f"""
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+            <div style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #38bdf8;">
+                🚀 Khởi Nghiệp: <b>{cat_counts.get('🚀 Khởi Nghiệp & Sản Phẩm', 0)}</b>
+            </div>
+            <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #c084fc;">
+                🤖 AI & Bán Dẫn: <b>{cat_counts.get('🤖 Kỹ Thuật AI & Bán Dẫn', 0)}</b>
+            </div>
+            <div style="background: rgba(234, 179, 8, 0.15); border: 1px solid rgba(234, 179, 8, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #facc15;">
+                🪙 Đầu Tư & Quants: <b>{cat_counts.get('🪙 Đầu Tư & Quants Định Lượng', 0)}</b>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #f87171;">
+                ⚔️ Binh Pháp & Thể Chế: <b>{cat_counts.get('⚔️ Binh Pháp & Thể Chế Quốc Gia', 0)}</b>
+            </div>
+            <div style="background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #f472b6;">
+                🎙️ Đàm Phán & Quyền Lực: <b>{cat_counts.get('🎙️ Đàm Phán & Quyền Lực', 0)}</b>
+            </div>
+            <div style="background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #fb923c;">
+                🎬 Chú Ý & Viral: <b>{cat_counts.get('🎬 Kỹ Nghệ Chú Ý & Viral Media', 0)}</b>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; color: #34d399;">
+                🔥 Sức Bền & Khắc Kỷ: <b>{cat_counts.get('🔥 Sức Bền Tâm Trí & Khắc Kỷ', 0)}</b>
+            </div>
+        </div>
+        """)
 
         col_search, col_filter = st.columns([2, 1])
         with col_search:
-            search_kw = st.text_input("🔍 Tìm kiếm theo tên hoặc từ khóa:", value="", placeholder="Ví dụ: Musk, Munger, Code, Đầu tư, Sản phẩm...")
+            search_kw = st.text_input("🔍 Tìm kiếm theo tên hoặc từ khóa:", value="", placeholder="Ví dụ: Buffett, Munger, Binh pháp, First Principles, Đàm phán...", key="txt_search_p")
         with col_filter:
-            filter_type = st.selectbox("Lọc danh mục:", ["Tất cả hồ sơ", "14 Hồ Sơ Cốt Lõi (Built-in)", "Hồ Sơ Mở Rộng Của Bạn (Custom)"])
+            category_filter_list = ["🌐 Tất Cả 7 Trụ Cột Chiến Lược"] + list(PILLARS_META.keys()) + ["✨ Hồ Sơ Tự Tạo (Custom)"]
+            selected_cat = st.selectbox("📂 Lọc theo nhóm ngành tác chiến:", category_filter_list, key="sb_catalog_cat")
 
-        # Filter profiles
-        display_profiles = all_profiles
-        if filter_type == "14 Hồ Sơ Cốt Lõi (Built-in)":
-            display_profiles = [p for p in all_profiles if p.get("is_builtin", False)]
-        elif filter_type == "Hồ Sơ Mở Rộng Của Bạn (Custom)":
-            display_profiles = [p for p in all_profiles if not p.get("is_builtin", False)]
-
+        # Lọc danh sách theo từ khóa tìm kiếm
+        filtered_profiles = all_profiles
         if search_kw.strip():
             kw = search_kw.lower().strip()
-            display_profiles = [
-                p for p in display_profiles
+            filtered_profiles = [
+                p for p in filtered_profiles
                 if kw in p.get("name", "").lower()
                 or kw in p.get("domain", "").lower()
                 or kw in p.get("tagline", "").lower()
+                or kw in p.get("category", "").lower()
                 or kw in p.get("id", "").lower()
             ]
 
-        st.markdown(f"Đang hiển thị **{len(display_profiles)}** hồ sơ:")
+        # CHẾ ĐỘ 1: XEM THEO TỪNG NHÓM NGÀNH CỤ THỂ
+        if selected_cat != "🌐 Tất Cả 7 Trụ Cột Chiến Lược":
+            if selected_cat == "✨ Hồ Sơ Tự Tạo (Custom)":
+                group_list = [p for p in filtered_profiles if not p.get("is_builtin", False)]
+                meta = {
+                    "title": "✨ Hồ Sơ Chưng Cất Tự Tạo (Custom)",
+                    "desc": "Các nhân vật do chính bạn chưng cất và nạp vào cơ sở dữ liệu.",
+                    "color": "#34d399",
+                    "border": "rgba(52, 211, 153, 0.4)",
+                    "bg": "rgba(52, 211, 153, 0.08)"
+                }
+            else:
+                group_list = [p for p in filtered_profiles if p.get("category") == selected_cat]
+                meta = PILLARS_META.get(selected_cat, {
+                    "title": selected_cat, "desc": "", "color": "#38bdf8", "border": "rgba(56, 189, 248, 0.4)", "bg": "rgba(56, 189, 248, 0.08)"
+                })
 
-        # Hiển thị dạng thẻ
-        for p in display_profiles:
-            is_built = p.get("is_builtin", False)
-            badge_label = "🔥 GỐC NUWA" if is_built else "✨ TỰ CHƯNG CẤT"
-            badge_color = "#38bdf8" if is_built else "#34d399"
-            badge_bg = "rgba(56, 189, 248, 0.15)" if is_built else "rgba(16, 185, 129, 0.15)"
-            
-            with st.expander(f"{p.get('avatar','🧠')} **{p.get('name')}** — *{p.get('domain')}*", expanded=False):
-                # Header card
+            render_html_safe(f"""
+            <div style="background: {meta['bg']}; border-left: 4px solid {meta['color']}; border-radius: 8px; padding: 14px 18px; margin: 12px 0 16px 0;">
+                <h3 style="color: #f8fafc; margin: 0 0 4px 0; font-size: 1.25rem;">{meta['title']} ({len(group_list)} Hồ sơ)</h3>
+                <p style="color: #cbd5e1; margin: 0; font-size: 0.88rem;">{meta['desc']}</p>
+            </div>
+            """)
+
+            if not group_list:
+                st.info("Chưa có hồ sơ nào trong nhóm này hoặc không khớp với từ khóa tìm kiếm.")
+            else:
+                for p in group_list:
+                    render_profile_card(p)
+
+        # CHẾ ĐỘ 2: XEM TOÀN BỘ 7 TRỤ CỘT LIỀN MẠCH
+        else:
+            for cat_key, meta in PILLARS_META.items():
+                cat_members = [p for p in filtered_profiles if p.get("category") == cat_key]
+                if not cat_members and search_kw.strip():
+                    continue
+
                 render_html_safe(f"""
-                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); 
-                            border-radius: 8px; padding: 12px 16px; margin-bottom: 12px;">
+                <div style="background: {meta['bg']}; border-left: 4px solid {meta['color']}; border-radius: 8px; padding: 12px 16px; margin: 20px 0 12px 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-weight: 700; color: #f8fafc; font-size: 1.15rem;">
-                            {p.get('avatar','🧠')} {p.get('name')}
-                        </span>
-                        <span style="background: {badge_bg}; color: {badge_color}; font-size: 0.75rem; 
-                                     font-weight: 700; padding: 2px 8px; border-radius: 999px;">
-                            {badge_label}
+                        <h3 style="color: #f8fafc; margin: 0; font-size: 1.18rem;">{meta['title']}</h3>
+                        <span style="background: rgba(15, 23, 42, 0.8); color: {meta['color']}; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid {meta['border']};">
+                            {len(cat_members)} HỒ SƠ
                         </span>
                     </div>
-                    <div style="color: #38bdf8; font-size: 0.9rem; font-weight: 600; margin: 4px 0;">
-                        \"{p.get('tagline', '')}\"
-                    </div>
-                    <div style="color: #94a3b8; font-size: 0.85rem;">
-                        <b>Định vị:</b> {p.get('domain', '')}
-                    </div>
+                    <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 0.84rem;">{meta['desc']}</p>
                 </div>
                 """)
 
-                # Details
-                c_p1, c_p2 = st.columns([1, 1])
-                with c_p1:
-                    st.markdown("**👤 Bản sắc nhận thức (Identity):**")
-                    st.caption(p.get("identity", "Không có mô tả"))
+                for p in cat_members:
+                    render_profile_card(p)
 
-                    st.markdown(f"**🔍 Lăng kính nhận thức ({len(p.get('mental_models', []))} Models):**")
-                    for m in p.get("mental_models", []):
-                        st.markdown(f"- **{m.get('name')}**: *{m.get('one_liner', '')}*")
-
-                    st.markdown("**🧬 DNA Biểu đạt & Phong cách:**")
-                    for dna in p.get("expression_dna", []):
-                        st.markdown(f"- {dna}")
-
-                with c_p2:
-                    st.markdown(f"**⚡ Quy tắc trực giác quyết định ({len(p.get('decision_heuristics', []))} Heuristics):**")
-                    for h in p.get("decision_heuristics", []):
-                        st.markdown(f"- `{h}`")
-
-                    st.markdown("**⚠️ Vùng cấm (Anti-patterns — Tuyệt đối không làm):**")
-                    for ap in p.get("anti_patterns", []):
-                        st.error(f"⛔ {ap}")
-
-                    st.markdown("**🛡️ Ranh giới trung thực (Honest Boundaries — Không giải quyết được gì):**")
-                    for hb in p.get("honest_boundaries", []):
-                        st.warning(f"🛑 {hb}")
-
-                # Raw markdown view & Delete button
-                c_sub1, c_sub2 = st.columns([3, 1])
-                with c_sub1:
-                    with st.expander("📄 Xem Mã Nguồn SKILL.md Nguyên Bản", expanded=False):
-                        st.code(p.get("raw_skill_md", "Chưa có file markdown."), language="markdown")
-                with c_sub2:
-                    if not is_built:
-                        if st.button("🗑️ Xóa Hồ Sơ Này", key=f"btn_del_prof_{p.get('id')}", use_container_width=True):
-                            remove_distilled_profile(p.get("id"))
-                            st.success(f"Đã xóa hồ sơ {p.get('name')} thành công!")
-                            st.rerun()
+            # Nhóm hồ sơ tự tạo nếu có
+            custom_members = [p for p in filtered_profiles if not p.get("is_builtin", False) and p.get("category") not in PILLARS_META]
+            if custom_members:
+                render_html_safe(f"""
+                <div style="background: rgba(52, 211, 153, 0.08); border-left: 4px solid #34d399; border-radius: 8px; padding: 12px 16px; margin: 20px 0 12px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="color: #f8fafc; margin: 0; font-size: 1.18rem;">✨ Hồ Sơ Chưng Cất Tự Tạo (Custom)</h3>
+                        <span style="background: rgba(15, 23, 42, 0.8); color: #34d399; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(52, 211, 153, 0.4);">
+                            {len(custom_members)} HỒ SƠ
+                        </span>
+                    </div>
+                </div>
+                """)
+                for p in custom_members:
+                    render_profile_card(p)
 
 
     # =========================================================================
@@ -454,19 +633,24 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
     # =========================================================================
     with t3:
         st.markdown("#### 🧪 Xưởng Đúc Chưng Cất Nhận Thức Bất Kỳ Ai (Nuwa Protocol)")
-        st.caption("Muốn bổ sung Warren Buffett, Peter Thiel, Sam Altman, Jensen Huang, Lý Quang Diệu hay bất kỳ người cố vấn cá nhân nào? Hãy nhập tên và kích hoạt lò nung. Hệ thống sẽ bóc tách chuẩn 5 tầng nhận thức và lưu vào cơ sở dữ liệu để tăng kho hồ sơ vĩnh viễn!")
+        st.caption("Muốn bổ sung thêm bất kỳ ai (ví dụ: Sam Altman, Warren Buffett, Jensen Huang, hay người thầy cố vấn cá nhân)? Hãy nhập tên và kích hoạt lò nung. Hệ thống sẽ bóc tách chuẩn 5 tầng nhận thức, xếp vào nhóm ngành phù hợp và lưu vào cơ sở dữ liệu để tăng kho hồ sơ vĩnh viễn!")
 
         c_f1, c_f2 = st.columns([1, 1])
         with c_f1:
             forge_name = st.text_input(
                 "Tên nhân vật / Chuyên gia cần chưng cất (*):",
-                placeholder="Ví dụ: Warren Buffett, Peter Thiel, Jensen Huang, Lý Quang Diệu...",
+                placeholder="Ví dụ: Sam Altman, Jensen Huang, Lý Quang Diệu, Peter Lynch...",
                 key="txt_forge_name"
             )
             forge_domain = st.text_input(
                 "Lĩnh vực chuyên môn cốt lõi:",
-                placeholder="Ví dụ: Đầu tư giá trị dài hạn, Độc quyền sáng tạo 0 to 1, Bán dẫn & Siêu máy tính...",
+                placeholder="Ví dụ: Đầu tư giá trị dài hạn, Bán dẫn & Siêu máy tính, Quản trị...",
                 key="txt_forge_domain"
+            )
+            forge_cat = st.selectbox(
+                "Phân loại vào Trụ cột Chiến lược:",
+                list(PILLARS_META.keys()) + ["✨ Nhóm Ngành Mới Khác"],
+                key="sb_forge_cat"
             )
             forge_focus = st.selectbox(
                 "Tiêu điểm chưng cất ưu tiên:",
@@ -504,6 +688,7 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
                             focus_aspect=forge_focus,
                             api_key=active_api_key
                         )
+                        new_profile["category"] = forge_cat
                         st.session_state["nuwa_forge_preview"] = new_profile
                         st.success(f"🎉 Đã chưng cất thành công hồ sơ của **{new_profile.get('name')}**!")
                     except Exception as e:
@@ -520,10 +705,14 @@ def render_nuwa_forge_room(active_api_key: Optional[str] = None):
                         border-radius: 10px; padding: 16px; margin-bottom: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-size: 1.8rem;">{forge_prev.get('avatar', '🧠')}</span>
-                    <span style="background: rgba(52, 211, 153, 0.2); color: #34d399; font-size: 0.8rem; 
-                                 font-weight: 700; padding: 3px 10px; border-radius: 999px;">
-                        ✨ CHƯNG CẤT MỚI
-                    </span>
+                    <div style="display: flex; gap: 8px;">
+                        <span style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;">
+                            {forge_prev.get('category', 'Khác')}
+                        </span>
+                        <span style="background: rgba(52, 211, 153, 0.2); color: #34d399; font-size: 0.8rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;">
+                            ✨ CHƯNG CẤT MỚI
+                        </span>
+                    </div>
                 </div>
                 <h3 style="color: #f8fafc; margin: 8px 0 4px 0;">{forge_prev.get('name')}</h3>
                 <div style="color: #38bdf8; font-weight: 600; font-size: 0.95rem; margin-bottom: 6px;">

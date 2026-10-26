@@ -60,7 +60,8 @@
       "Khuôn mẫu tư duy dựa trên các công ty công nghệ vừa và nhỏ, không tối ưu cho các tập đoàn nhà nước cồng kềnh."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🚀 Khởi Nghiệp & Sản Phẩm"
   },
   {
     "id": "zhang-yiming",
@@ -122,7 +123,8 @@
       "Chỉ phát huy tối đa sức mạnh trong môi trường có mật độ nhân tài cao và công nghệ dẫn dắt."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🚀 Khởi Nghiệp & Sản Phẩm"
   },
   {
     "id": "karpathy",
@@ -184,7 +186,8 @@
       "Các góc nhìn dựa trên nền tảng khoa học máy tính và AI hiện đại."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🤖 Kỹ Thuật AI & Bán Dẫn"
   },
   {
     "id": "ilya-sutskever",
@@ -238,7 +241,8 @@
       "Tập trung hoàn toàn vào ranh giới an toàn và quy mô của AI/AGI ở cấp độ nền văn minh."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🤖 Kỹ Thuật AI & Bán Dẫn"
   },
   {
     "id": "mrbeast",
@@ -286,7 +290,8 @@
       "Mô hình được tối ưu hóa cho đại chúng và thuật toán giữ chân chú ý của thế hệ số."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🎬 Kỹ Nghệ Chú Ý & Viral Media"
   },
   {
     "id": "trump",
@@ -334,7 +339,8 @@
       "Chiến lược tạo ra sự chia rẽ và phân cực cao, đòi hỏi người dùng phải có thần kinh thép để chịu đựng áp lực."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🎙️ Đàm Phán & Quyền Lực"
   },
   {
     "id": "elon-musk",
@@ -382,7 +388,8 @@
       "Môi trường áp lực cực hạn có thể làm kiệt sức những cá nhân tìm kiếm sự cân bằng công việc - cuộc sống truyền thống."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🤖 Kỹ Thuật AI & Bán Dẫn"
   },
   {
     "id": "feynman",
@@ -429,7 +436,8 @@
       "Tập trung vào niềm vui thuần khiết của sự hiểu biết và giải thích chân lý."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🔥 Sức Bền Tâm Trí & Khắc Kỷ"
   },
   {
     "id": "munger",
@@ -482,7 +490,8 @@
       "Không tham gia vào các trò chơi đầu cơ lướt sóng ngắn hạn."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🪙 Đầu Tư & Quants Định Lượng"
   },
   {
     "id": "naval",
@@ -535,7 +544,8 @@
       "Các triết lý đòi hỏi người thực hành phải có mức độ kỷ luật tự thân và tự chịu trách nhiệm rất cao."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🪙 Đầu Tư & Quants Định Lượng"
   },
   {
     "id": "steve-jobs",
@@ -583,7 +593,8 @@
       "Không phù hợp cho các mô hình kinh doanh giá rẻ, hàng loạt chấp nhận chất lượng bình dân."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🚀 Khởi Nghiệp & Sản Phẩm"
   },
   {
     "id": "taleb",
@@ -636,7 +647,8 @@
       "Tập trung vào sự sống còn, quản trị rủi ro đuôi và đạo đức thực chiến."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🪙 Đầu Tư & Quants Định Lượng"
   },
   {
     "id": "zhangxuefeng",
@@ -684,7 +696,8 @@
       "Góc nhìn chịu ảnh hưởng từ môi trường cạnh tranh khốc liệt của thị trường lao động châu Á."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🔥 Sức Bền Tâm Trí & Khắc Kỷ"
   },
   {
     "id": "sun-yuchen",
@@ -732,7 +745,8 @@
       "Phù hợp cho thị trường tài chính công nghệ, tiền số, truyền thông cá nhân; không phù hợp cho các cơ quan nhà nước cần sự kín kẽ."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🎬 Kỹ Nghệ Chú Ý & Viral Media"
   },
   {
     "id": "warren-buffett",
@@ -780,7 +794,8 @@
       "Phương pháp đòi hỏi quy mô vốn và sự kiên nhẫn kéo dài hàng thập kỷ, không phù hợp cho người cần tiền trang trải gấp."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🪙 Đầu Tư & Quants Định Lượng"
   },
   {
     "id": "peter-thiel",
@@ -828,7 +843,8 @@
       "Tư duy đòi hỏi mức độ chấp nhận rủi ro và niềm tin kiên định vào một tương lai khác biệt."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🚀 Khởi Nghiệp & Sản Phẩm"
   },
   {
     "id": "jensen-huang",
@@ -876,7 +892,8 @@
       "Đòi hỏi nền tảng kỹ thuật và kiến thức phần cứng chuyên sâu để thẩm định các quyết định."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🤖 Kỹ Thuật AI & Bán Dẫn"
   },
   {
     "id": "jeff-bezos",
@@ -924,7 +941,8 @@
       "Phương pháp tối ưu hóa chuỗi cung ứng và vận hành quy mô lớn, có thể hơi cồng kềnh cho các dự án nghệ thuật cá nhân nhỏ."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🚀 Khởi Nghiệp & Sản Phẩm"
   },
   {
     "id": "lee-kuan-yew",
@@ -972,7 +990,8 @@
       "Tập trung vào sự thịnh vượng kinh tế và trật tự xã hội, có thể đánh đổi một phần sự phóng túng của tự do cá nhân."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "⚔️ Binh Pháp & Thể Chế Quốc Gia"
   },
   {
     "id": "sun-tzu",
@@ -1020,7 +1039,8 @@
       "Không đưa ra các công thức kỹ thuật vi mô tức thời."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "⚔️ Binh Pháp & Thể Chế Quốc Gia"
   },
   {
     "id": "vo-nguyen-giap",
@@ -1068,7 +1088,8 @@
       "Tối ưu cho các thế trận bất đối xứng ở vị thế cửa dưới; không áp dụng cho việc tấn công áp đảo chớp nhoáng khi ở thế cửa trên vượt trội."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "⚔️ Binh Pháp & Thể Chế Quốc Gia"
   },
   {
     "id": "chris-voss",
@@ -1121,7 +1142,8 @@
       "Đòi hỏi sự kiềm chế cảm xúc bản thân ở mức độ thượng thừa trong môi trường căng thẳng cao."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🎙️ Đàm Phán & Quyền Lực"
   },
   {
     "id": "marcus-aurelius",
@@ -1169,7 +1191,8 @@
       "Đòi hỏi mức độ tự soi chiếu và kỷ luật bản thân liên tục suốt cả cuộc đời."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🔥 Sức Bền Tâm Trí & Khắc Kỷ"
   },
   {
     "id": "david-goggins",
@@ -1217,7 +1240,8 @@
       "Tập trung vào sức bền và ý chí hành động đơn độc; không tối ưu cho việc điều hòa đàm phán ngoại giao phức tạp."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🔥 Sức Bền Tâm Trí & Khắc Kỷ"
   },
   {
     "id": "jim-simons",
@@ -1265,7 +1289,8 @@
       "Không cung cấp các giải pháp đầu tư dài hạn dựa trên phân tích cơ bản doanh nghiệp."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🪙 Đầu Tư & Quants Định Lượng"
   },
   {
     "id": "robert-greene",
@@ -1313,6 +1338,7 @@
       "Mô hình được thiết kế để giải mã và phòng thủ trong thế giới thực đầy cạnh tranh."
     ],
     "is_builtin": true,
-    "created_at": "2026-10-26"
+    "created_at": "2026-10-26",
+    "category": "🎙️ Đàm Phán & Quyền Lực"
   }
 ]
