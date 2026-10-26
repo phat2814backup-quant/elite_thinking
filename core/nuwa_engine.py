@@ -227,7 +227,19 @@ def _heuristic_match_thinkers(problem_text: str, profiles: List[Dict[str, Any]],
         "steve-jobs": ["thiết kế", "nghệ thuật", "trải nghiệm", "tối giản", "sản phẩm đỉnh cao", "khách hàng", "khắt khe", "nói không"],
         "taleb": ["rủi ro", "chống mong manh", "antifragile", "thiên nga đen", "skin in the game", "thất bại", "bất định", "khủng hoảng"],
         "zhangxuefeng": ["chọn ngành", "đại học", "việc làm", "thực tế", "tiền bạc", "thực dụng", "nghề nghiệp", "thất nghiệp", "ảo tưởng"],
-        "sun-yuchen": ["marketing ngược", "chú ý", "pr", "crypto", "tiền số", "đòn bẩy vốn", "tận dụng sự kiện"]
+        "sun-yuchen": ["marketing ngược", "chú ý", "pr", "crypto", "tiền số", "đòn bẩy vốn", "tận dụng sự kiện"],
+        "warren-buffett": ["giá trị", "đầu tư", "cổ phiếu", "dài hạn", "con hào", "moat", "lãi kép", "tiền mặt", "doanh nghiệp", "thị trường", "biên an toàn"],
+        "peter-thiel": ["độc quyền", "zero to one", "ngược dòng", "0 đến 1", "khởi nghiệp", "bí mật", "cạnh tranh", "venture", "công nghệ"],
+        "jensen-huang": ["gpu", "bán dẫn", "nvidia", "phần cứng", "tốc độ", "chịu đựng", "nỗi đau", "điện toán", "ai", "hạ tầng"],
+        "jeff-bezos": ["khách hàng", "amazon", "ngày 1", "day 1", "loại 1", "loại 2", "memo", "dài hạn", "thương mại", "quy mô", "vận hành"],
+        "lee-kuan-yew": ["quốc gia", "thể chế", "thực dụng", "kỷ luật", "lãnh đạo", "chính trị", "địa chính trị", "quản trị", "singapore", "nhân tài"],
+        "sun-tzu": ["binh pháp", "chiến lược", "đánh", "thắng", "đối thủ", "quân sự", "tránh thực đánh hư", "thế trận", "tôn tử", "thần tốc"],
+        "vo-nguyen-giap": ["yếu thắng mạnh", "bất đối xứng", "đánh chắc tiến chắc", "kiên nhẫn", "chiến lược", "thế trận", "lấy ít địch nhiều", "võ nguyên giáp"],
+        "chris-voss": ["đàm phán", "thương lượng", "con tin", "thấu cảm", "tâm lý", "từ chối", "không", "giá", "thỏa thuận", "soi gương"],
+        "marcus-aurelius": ["khắc kỷ", "stoic", "tâm trí", "trở ngại", "bình thản", "kiểm soát", "nghịch cảnh", "nội tâm", "bình an", "triết học"],
+        "david-goggins": ["kỷ luật", "sức bền", "bỏ cuộc", "nỗi đau", "ý chí", "chạy bộ", "40%", "vượt ngưỡng", "kiên cường", "lười biếng"],
+        "jim-simons": ["quant", "định lượng", "toán học", "xác suất", "thống kê", "quỹ", "thuật toán", "tín hiệu", "dữ liệu", "giao dịch"],
+        "robert-greene": ["quyền lực", "thao túng", "bản tính", "làm chủ", "chiến lược", "sếp", "ngầm", "tâm lý con người", "48 quy luật"]
     }
     
     for p in profiles:
